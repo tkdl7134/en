@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="reg.css" />
-<title>Insert title here</title>
 <title>会員登録フォーム</title>
   </head>
   <body>
