@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoutButton = document.getElementById("logoutButton");
 
   const clientId = "2005476894"; // LINE Developersで取得したチャネルIDを文字列として入力
-  const redirectUri = "http://localhost/En/login/loginPage.jsp"; // 設定したコールバックURLを入力
+  const redirectUri = "http://localhost/En/loginPage/loginPage.jsp"; // 設定したコールバックURLを入力
 
   lineLoginButton.addEventListener("click", () => {
     const lineAuthUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         code: code,
         redirect_uri: redirectUri,
         client_id: clientId,
-        client_secret: "YOUR_CLIENT_SECRET", // LINE Developersで取得したチャネルシークレットを入力
+        client_secret: "c023cd86708ee211f26c4344ca4347b7", // LINE Developersで取得したチャネルシークレットを入力
       }),
     });
     const data = await response.json();

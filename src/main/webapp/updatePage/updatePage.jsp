@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="regPage.css" />
-<title>会員登録</title>
+<link rel="stylesheet" href="updatePage.css" />
+<title>会員情報修正</title>
   </head>
   <body>
     <form>
-      <div class="hs_title"><h2>会員登録</h2></div>
+      <div class="hs_title"><h2>会員情報修正</h2></div>
 
       <label for="id">ID:</label>
       <input type="text" id="id" name="id" placeholder="ID" required />
