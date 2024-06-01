@@ -1,9 +1,9 @@
-/* Reset CSS */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 /* Body styling */
@@ -11,70 +11,80 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120vh;
-  background-color: #fff5e6; /* 더 밝은 베이지 */
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+  background-color: #f8f9fa;
 }
 
-/* Form styling */
-.hs_container {
-  background-color: #fff5e6; /* 더 밝은 베이지 */
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #8b0000;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 400px;
+/* Container styling */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Login form styling */
+.login-form {
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
   text-align: center;
-}
-
-.hs_title {
-  color: #8b0000; /* もう少し黒い赤 */
+  color: #333;
   margin-bottom: 20px;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 10px;
+.form-group {
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
 
-#lineLoginButton {
-  background-color: #00a84b; /* 라인 로그인의 녹색 */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-  background-color: #8b0000; /* もう少し黒い赤 */
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
   width: 100%;
-  margin: 10px 0;
-}
-
-#profile {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#userName {
-  font-size: 20px;
-  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
 }
 
-@media (max-width: 600px) {
-  .hs_container {
-    width: 90%;
-  }
+button:hover {
+  background-color: #0056b3;
+}
 
-  button {
-    font-size: 14px;
-    padding: 10px;
-  }
+#registerButton {
+  background-color: #28a745;
+}
+
+#registerButton:hover {
+  background-color: #218838;
+}
+
+#lineLoginButton {
+  background-color: #00c300;
+}
+
+#lineLoginButton:hover {
+  background-color: #009900;
 }

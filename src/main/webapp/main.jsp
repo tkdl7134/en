@@ -99,8 +99,8 @@ body {
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdownMenuLink">
 					<!-- 로그인 및 회원가입 링크 포함된 드롭다운 메뉴 -->
-					<li><a class="dropdown-item" href="loginPage/loginPage.jsp">ログイン</a></li>
-					<li><a class="dropdown-item" href="regPage/regPage.jsp">ユーザー登録</a></li>
+					<li><a class="dropdown-item" href="MemberC">ログイン</a></li>
+					<li><a class="dropdown-item" href="MemberRegC">ユーザー登録</a></li>
 				</ul>
 			</div>
 			<%
@@ -135,6 +135,13 @@ body {
 					class="btn btn-primary" role="button">詳しく</a>
 			</p>
 		</div>
+		<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-md-12 text-center">
+				<jsp:include page="${contentPage }"></jsp:include>
+			</div>
+		</div>
+	</div>
 		<%-- 写真帳 --%>
 		<div class="container mb-5">
 			<div class="slider">
