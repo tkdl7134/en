@@ -19,8 +19,9 @@ public class MemberRegC extends HttpServlet {
 			throws ServletException, IOException {
 
 		MemberDAO.regMember(request);
-		
-		response.sendRedirect("main.jsp");
+
+        // MemberDAO.regMember(request); の後に main.jsp にフォワードする
+        request.getRequestDispatcher("main.jsp").forward(request, response);
 	
 	}
 
