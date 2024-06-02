@@ -11,7 +11,7 @@
   <div class="container">
     <div class="register-form">
       <h2 class="title">会員登録</h2>
-      <form id="registerForm" method="post" action="register">
+      <form id="registerForm" method="post">
         <div class="form-group">
           <label for="userId">ユーザーID</label>
           <input type="text" id="userId" name="userId" placeholder="ユーザーID" required>
@@ -57,7 +57,7 @@
             <option value="false">いいえ</option>
           </select>
         </div>
-        <button type="submit">登録</button>
+        <button type="submit" onclick="location.href='MemberRegC'">登録</button>
       </form>
     </div>
   </div>

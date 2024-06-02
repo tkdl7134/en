@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.enmusubi.login.MemberDAO;
+import com.enmusubi.member.MemberDAO;
 
 @WebServlet("/HomeController")
 public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberDAO.logoutCheck(request);
-		request.setAttribute("contentPage", "home.jsp");
+		MemberDAO.loginCheck(request);
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}

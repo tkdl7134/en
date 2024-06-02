@@ -1,20 +1,4 @@
 document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // デフォルトのフォーム送信を防ぐ
-
-    const userId = document.getElementById("userId").value;
-    const password = document.getElementById("password").value;
-
-    if (userId && password) {
-      alert("ログイン成功: " + userId);
-      // ここにサーバーへの送信コードを追加
-    } else {
-      alert("ユーザーIDとパスワードを入力してください");
-    }
-  });
-
-document
   .getElementById("lineLoginButton")
   .addEventListener("click", function () {
     const clientId = "2005476894"; // LINE Developersで取得したチャネルIDを入力
