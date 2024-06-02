@@ -14,7 +14,7 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberDAO.loginCheck(request);
 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}
 

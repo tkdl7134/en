@@ -16,6 +16,7 @@
         <li><a href="#">マイテンプレート</a></li>
         <li><a href="#">情報管理</a></li>
         <li><a href="#">統計</a></li>
+        <li><a href="main.jsp">メイン</a></li>
       </ul>
     </aside>
     <main class="content">
@@ -23,7 +24,7 @@
       <form>
         <div class="form-group">
           <label for="userId">ID:</label>
-          <input type="text" id="userId" name="userId" readonly>
+          <div>${sessionScope.Member.m_id }</div>
         </div>
         <div class="form-group">
           <label for="password">PW:</label>
