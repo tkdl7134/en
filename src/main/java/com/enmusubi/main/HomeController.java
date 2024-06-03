@@ -11,14 +11,15 @@ import com.enmusubi.member.MemberDAO;
 
 @WebServlet("/HomeController")
 public class HomeController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberDAO.loginCheck(request);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
+		MemberDAO.loginCheck(request, response);
 		request.getRequestDispatcher("main.jsp").forward(request, response);
-		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 

@@ -1,80 +1,83 @@
 body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  margin-top: 150px;
-  margin-bottom: 150px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
 }
 
-form {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 360px;
+.hs_container {
+	width: 50%;
+	margin: 50px auto; /* 上部に余白を追加して全体を中央に配置 */
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+.hs_register-form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }
 
 .hs_title {
-  text-align: center;
-  margin-bottom: 20px;
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+.hs_form-group {
+	display: flex;
+	flex-direction: column;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: #555;
+.hs_form-group label {
+	margin-bottom: 5px;
 }
 
-input:focus,
-select:focus {
-  border-color: #66afe9;
-  outline: none;
-  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+.hs_form-group input, .hs_form-group select {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+.hs_form-group input[type="radio"] {
+	width: auto;
 }
 
-button:hover {
-  background-color: #218838;
+.hs_form-group input[type="text"][id^="postalCode1"], .hs_form-group input[type="text"][id^="postalCode2"]
+	{
+	width: 45%;
+	display: inline-block;
 }
 
-small {
-  display: block;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  color: #999;
+.hs_form-group input[type="text"][id^="postalCode1"] {
+	margin-right: 4%;
 }
 
-.notice {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 20px;
-  text-align: center;
+.hs_form-group input[type="text"][id^="birthYear"], .hs_form-group input[type="text"][id^="birthMonth"],
+	.hs_form-group input[type="text"][id^="birthDay"] {
+	width: 30%;
+	display: inline-block;
+}
+
+.hs_form-group input[type="text"][id^="birthYear"], .hs_form-group input[type="text"][id^="birthMonth"]
+	{
+	margin-right: 5%;
+}
+
+button[type="submit"] {
+	padding: 10px;
+	font-size: 16px;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+	background-color: #0056b3;
 }

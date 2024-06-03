@@ -1,345 +1,140 @@
 package com.enmusubi.member;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberDAO {
 
-	// ログイン状態をチェックするメソッド
-	public static boolean loginCheck(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("member") == null) {
-			request.setAttribute("login", "member/login.jsp");
-			return false;
-		} else {
-			request.setAttribute("login", "member/loginOK.jsp");
-			return true;
-		}
-	}
+	// ユーザー認証メソッド
+    public static MemberDTO authenticate(String memberId, String memberPW) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-	public static void login(HttpServletRequest request) {
+        try {
+            // データベース接続を取得します。
+            con = DBManager.connect();
+            // SQL クエリを準備します。
+            String sql = "SELECT * FROM Member WHERE m_id = ? AND m_pw = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, memberId);
+            pstmt.setString(2, memberPW);
+            // クエリを実行し、結果セットを取得します。
+            rs = pstmt.executeQuery();
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+            // ユーザーが見つかった場合
+            if (rs.next()) {
+                MemberDTO member = new MemberDTO();
+                member.setmId(rs.getString("m_id"));
+                member.setmPw(rs.getString("m_pw"));
+                member.setmName(rs.getString("m_name"));
+                member.setmNameKana(rs.getString("m_name_kana"));
+                member.setmBirth(rs.getString("m_birth"));
+                member.setmGender(rs.getString("m_gender"));               
+                member.setmEmail(rs.getString("m_email"));
+                member.setmBirthdate(rs.getString("m_regdate"));
+                member.setmImg(rs.getString("m_img"));
+                member.setmPhone(rs.getString("m_phone"));
+                return member;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // リソースを閉じます。
+            DBManager.close(con, pstmt, rs);
+        }
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "select * from member where m_id = ?";
+        // ユーザーが見つからなかった場合、null を返します。
+        return null;
+    }
 
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			String result = "";
+    // ログインチェックメソッド
+    public static void loginCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        MemberDTO memberDto = (MemberDTO) request.getSession().getAttribute("memberDTO");
 
-			if (rs.next()) {
-				String dbPW = rs.getString("m_pw");
-				if (pw.equals(dbPW)) {
-					result = "ログイン成功";
-					System.out.println("ログイン成功");
+        // セッションにユーザー情報がない場合は login.jsp にリダイレクトします。
+        if (memberDto == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            // セッションにユーザー情報がある場合は main.jsp にリダイレクトします。
+            response.sendRedirect("main.jsp");
+        }
+    }
+    
+    public void regMember(MemberDTO memberDto) {
+    	Connection con = null;
+        PreparedStatement pstmt = null;
+    	
+    	try {
+            String sql = "INSERT INTO members (userId, password, name, kana, gender, postalCode, prefecture, city, address, building, email, phone, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
 
-					MemberDTO memberDTO = new MemberDTO();
-					memberDTO.setId(rs.getString("m_id"));
-					memberDTO.setPassword(rs.getString("m_pw"));
-					memberDTO.setName(rs.getString("m_name"));
-					memberDTO.setNameKana(rs.getString("m_name_kana"));
-					memberDTO.setBirth(rs.getString("m_birth"));
-					memberDTO.setGender(rs.getString("m_gender"));
-					memberDTO.setEmail(rs.getString("m_email"));
-					memberDTO.setRegdate(rs.getDate("m_regdate"));
-					memberDTO.setImg(rs.getString("m_img"));
-					memberDTO.setPhone(rs.getString("m_phone"));
+            pstmt.setString(1, memberDto.getmId());
+            pstmt.setString(2, memberDto.getmPw());
+            pstmt.setString(3, memberDto.getmName());
+            pstmt.setString(4, memberDto.getmNameKana());
+            pstmt.setString(5, memberDto.getmGender());
+            pstmt.setString(6, memberDto.getmPostalCode());
+            pstmt.setString(7, memberDto.getmPrefecture());
+            pstmt.setString(8, memberDto.getmCity());
+            pstmt.setString(9, memberDto.getmAddress());
+            pstmt.setString(10, memberDto.getmBuilding());
+            pstmt.setString(11, memberDto.getmEmail());
+            pstmt.setString(12, memberDto.getmPhone());
+            pstmt.setString(13, memberDto.getmBirthdate());
 
-					HttpSession session = request.getSession();
-					session.setAttribute("member", memberDTO);
-					session.setMaxInactiveInterval(600); // 10 minutes
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public MemberDTO getMemberById(String userId) {
+        MemberDTO memberDto = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-				} else {
-					result = "パスワードが間違っています";
-					System.out.println("パスワードが間違っています");
-				}
-			} else {
-				result = "存在しない会員です";
-				System.out.println("存在しない会員です");
-			}
-			request.setAttribute("result", result);
+        try {
+            con = DBManager.connect();
+            String sql = "SELECT * FROM members WHERE userId = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
-	}
+            if (rs.next()) {
+                memberDto = new MemberDTO();
+                    rs.getString("mId");
+                    rs.getString("mPw");
+                    rs.getString("mName");
+                    rs.getString("mNameKana");
+                    rs.getString("mBirth");
+                    rs.getString("mGender");
+                    rs.getString("mPostalCode");
+                    rs.getString("mPrefecture");
+                    rs.getString("mCity");
+                    rs.getString("mAddress");
+                    rs.getString("mBuilding");
+                    rs.getString("mEmail");
+                    rs.getString("mBirthdate");
+                    
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, rs);
+        }
 
-	// 新規メンバー登録処理
-	public static void regMember(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-		try {
-			String path = request.getServletContext().getRealPath("uploads");
-			MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 10, "UTF-8",
-					new DefaultFileRenamePolicy());
-
-			String id = mr.getParameter("id");
-			String password = mr.getParameter("password");
-			String name = mr.getParameter("name");
-			String nameKana = mr.getParameter("nameKana");
-			String birth = mr.getParameter("birth");
-			String gender = mr.getParameter("gender");
-			String email = mr.getParameter("email");
-			String phone = mr.getParameter("phone");
-			File imgFile = mr.getFile("img");
-
-			byte[] img = null;
-			if (imgFile != null) {
-				try (FileInputStream fis = new FileInputStream(imgFile)) {
-					img = fis.readAllBytes();
-				}
-			}
-
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
-			pstmt.setString(3, name);
-			pstmt.setString(4, nameKana);
-			pstmt.setDate(5, Date.valueOf(birth));
-			pstmt.setString(6, gender);
-			pstmt.setString(7, email);
-			pstmt.setDate(8, new Date(System.currentTimeMillis()));
-			pstmt.setBytes(9, img);
-			pstmt.setString(10, phone);
-
-			int result = pstmt.executeUpdate();
-			if (result == 1) {
-				request.setAttribute("result", "会員登録が成功しました。");
-			} else {
-				request.setAttribute("result", "会員登録に失敗しました。");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("result", "データベースエラーが発生しました。");
-		} finally {
-			DBManager.close(con, pstmt, null);
-		}
-	}
-
-	// ログアウト処理
-	public static void logout(HttpServletRequest request) {
-		// セッションを取得
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			// セッションからメンバー情報を削除
-			session.removeAttribute("member");
-			// セッションを無効化
-			session.invalidate();
-		}
-
-		// ログイン状態を確認
-		loginCheck(request);
-	}
-
-	public static void idCheck(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(request.getParameter("id"));
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM Member WHERE m_id = ?";
-
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("id"));
-			rs = pstmt.executeQuery();
-
-			MemberDTO member = new MemberDTO();
-			if (rs.next()) {
-				System.out.println("--");
-			} else {
-				System.out.println("-----");
-			}
-			System.out.println(member.toJSON());
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
-	}
-
-	public static void idCheck2(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(request.getParameter("id"));
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM Member WHERE m_id = ?";
-
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("id"));
-			rs = pstmt.executeQuery();
-
-			int result = 0;
-			if (rs.next()) {
-				// レコードが存在する場合は1を返す
-				result = 1;
-			} else {
-				// レコードが存在しない場合は0を返す
-			}
-
-			response.getWriter().print(result);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			// エラー時は何も返さない
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
-	}
-
-	public static void idCheck3(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(request.getParameter("id"));
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) FROM Member WHERE m_id = ?";
-
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("id"));
-			rs = pstmt.executeQuery();
-
-			rs.next();
-			response.getWriter().print(rs.getInt(1));
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			// エラー時は何も返さない
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
-	}
-
-	public static void updateMember(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		String sql = "UPDATE Member SET m_pw=?, m_name=?, m_name_kana=?, m_birth=?, m_email=?, m_img=?, m_phone=? WHERE m_id=?";
-
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-
-			// 既存のMultipartRequestオブジェクトを取得
-			MultipartRequest mr = (MultipartRequest) request.getAttribute("multipartRequest");
-
-			String id = mr.getParameter("id");
-			String pw = mr.getParameter("pw");
-			String name = mr.getParameter("name");
-			String nameKana = mr.getParameter("nameKana");
-			String birth = mr.getParameter("birth");
-			String email = mr.getParameter("email");
-
-			String oldImg = mr.getParameter("oldImg");
-			String newImg = mr.getFilesystemName("newImg");
-
-			String phone = mr.getParameter("phone");
-
-			String img = oldImg;
-			if (newImg != null) {
-				img = newImg;
-			}
-
-			pstmt.setString(1, pw);
-			pstmt.setString(2, name);
-			pstmt.setString(3, nameKana);
-			pstmt.setString(4, birth);
-			pstmt.setString(5, email);
-			pstmt.setString(6, img);
-			pstmt.setString(7, phone);
-			pstmt.setString(8, id);
-
-			int rowsAffected = pstmt.executeUpdate();
-
-			if (rowsAffected == 1) {
-				System.out.println("更新成功");
-
-				// 新しい画像がアップロードされた場合、古い画像を削除
-				if (newImg != null) {
-					String path = request.getServletContext().getRealPath("myPage/imgFolder");
-					File f = new File(path + "/" + oldImg);
-					f.delete();
-				}
-
-				// セッションに格納されている会員情報を更新
-				HttpSession session = request.getSession();
-				MemberDTO member = (MemberDTO) session.getAttribute("member");
-				member.setPassword(pw);
-				member.setName(name);
-				member.setNameKana(nameKana);
-				member.setBirth(birth);
-				member.setEmail(email);
-				member.setImg(img);
-				member.setPhone(phone);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, null);
-		}
-	}
-
-	public static void deleteMember(HttpServletRequest request) {
-		MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
-		if (member == null) {
-			// セッションにメンバーオブジェクトが存在しない場合の処理
-			// 例外処理やエラーメッセージを追加するなど
-			return;
-		}
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM member WHERE m_id = ?";
-		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, member.getId());
-			int rowsAffected = pstmt.executeUpdate();
-			if (rowsAffected == 1) {
-				// 削除成功時の処理
-				System.out.println("削除成功");
-				// ログアウト処理を実行
-				logout(request);
-			} else {
-				// 削除失敗時の処理
-				// 例外処理やエラーメッセージを追加するなど
-			}
-		} catch (Exception e) {
-			// 例外処理
-			e.printStackTrace();
-		} finally {
-			// リソースの解放
-			DBManager.close(con, pstmt, null);
-		}
-	}
+        return memberDto;
+    }
 }

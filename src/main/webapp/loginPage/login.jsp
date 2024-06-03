@@ -7,25 +7,25 @@
 <link rel="stylesheet" href="login_style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="login-form">
-      <h2 class="title">ログイン</h2>
-      <form id="loginForm" method="post" action="MemberC">
-        <div class="form-group">
-          <label for="userId">ユーザーID</label>
-          <input type="text" id="userId" name="userId" placeholder="ユーザーID" required>
+  <div class="hs_container">
+    <div class="hs_login-form">
+      <h2 class="hs_title">ログイン</h2>
+      <form id="loginForm" method="post" action="/En/MemberC">
+        <div class="hs_form-group">
+          <label for="memberId">ユーザーID</label>
+          <input type="text" id="memberId" name="memberId" placeholder="ユーザーID" required>
         </div>
-        <div class="form-group">
-          <label for="password">パスワード</label>
-          <input type="password" id="password" name="password" placeholder="パスワード" required>
+        <div class="hs_form-group">
+          <label for="memberPW">パスワード</label>
+          <input type="password" id="memberPW" name="memberPW" placeholder="パスワード" required>
         </div>
-        <button type="submit" onclick="href='location.MemberRegC'">ログイン</button>
+        <button type="submit">ログイン</button>
       </form>
-      <div class="line-login">
+      <div class="hs_line-login">
         <button id="lineLoginButton">LINEログイン</button>
       </div>
-      <div class="register-link">
-        <form method="get" action="MemberRegC.jsp">
+      <div class="hs_register-link">
+        <form method="get" action="/En/regPage/reg.jsp">
           <button type="submit">会員登録</button>
         </form>
       </div>

@@ -6,17 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/MemberDetailC")
-public class MemberDetailC extends HttpServlet {
+@WebServlet("/MemberMyPageC")
+public class MemberMyPageC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String mId = (String) session.getAttribute("mId");
 
-		if (MemberDAO.loginCheck(request)) {
-			request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
-
+		if (mId != null) {
+			MemberDAO memberDao = new MemberDAO();
+			MemberDTO memberDto = memberDao.getMemberById(mId);
+			request.setAttribute("memberDto", memberDto);
+			request.getRequestDispatcher("myPage.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("main.jsp").forward(request, response);
+			response.sendRedirect("login.jsp");
 		}
 	}
 
