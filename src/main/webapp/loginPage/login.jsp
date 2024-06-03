@@ -2,35 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ログインページ</title>
-<link rel="stylesheet" href="login_style.css">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="hs_container">
-    <div class="hs_login-form">
-      <h2 class="hs_title">ログイン</h2>
-      <form id="loginForm" method="post" action="/En/MemberC">
-        <div class="hs_form-group">
-          <label for="memberId">ユーザーID</label>
-          <input type="text" id="memberId" name="memberId" placeholder="ユーザーID" required>
-        </div>
-        <div class="hs_form-group">
-          <label for="memberPW">パスワード</label>
-          <input type="password" id="memberPW" name="memberPW" placeholder="パスワード" required>
-        </div>
-        <button type="submit">ログイン</button>
-      </form>
-      <div class="hs_line-login">
-        <button id="lineLoginButton">LINEログイン</button>
-      </div>
-      <div class="hs_register-link">
-        <form method="get" action="/En/regPage/reg.jsp">
-          <button type="submit">会員登録</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="login.js"></script>
+    <h2>로그인</h2>
+    <form action="/En/MemberC" method="post">
+        <input type="text" name="m_id" placeholder="아이디" required><br>
+        <input type="password" name="m_pw" placeholder="비밀번호" required><br>
+        <input type="submit" value="로그인">
+    </form>
+    <button id="lineLoginButton">LINE로그인</button>
+    <script src="login.js"></script> 
 </body>
 </html>

@@ -1,37 +1,63 @@
-<%@page import="com.enmusubi.member.MemberDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.enmusubi.member.MemberDTO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.enmusubi.member.MemberDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>マイページ</title>
-<link rel="stylesheet" href="reg.css">
+<title>마이페이지</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<h2>마이페이지</h2>
+
 <%
-    MemberDTO memberDto = (MemberDTO) request.getAttribute("memberDto");
-    if (memberDto != null) {
+String errorMessage = (String) request.getAttribute("errorMessage");
+if (errorMessage != null) {
 %>
-    <h1>マイページ</h1>
-    <p>ユーザーID: <%= memberDto.getmId() %></p>
-    <p>氏名: <%= memberDto.getmName() %></p>
-    <p>フリガナ: <%= memberDto.getmNameKana() %></p>
-    <p>性別: <%= memberDto.getmGender() %></p>
-    <p>郵便番号: <%= memberDto.getmPostalCode() %></p>
-    <p>都道府県: <%= memberDto.getmPrefecture() %></p>
-    <p>市区町村: <%= memberDto.getmCity() %></p>
-    <p>番地: <%= memberDto.getmAddress() %></p>
-    <p>ビル・マンション名など: <%= memberDto.getmBuilding() %></p>
-    <p>メールアドレス: <%= memberDto.getmEmail() %></p>
-    <p>電話番号: <%= memberDto.getmPhone() %></p>
-    <p>生年月日: <%= memberDto.getmBirthdate() %></p>
+<p style="color: red;"><%=errorMessage%></p>
 <%
-    } else {
+}
 %>
-    <p>ユーザー情報が見つかりませんでした。</p>
+
 <%
-    }
+MemberDTO dto = (MemberDTO) request.getAttribute("dto"); // request에서 회원 정보 가져오기
+if (dto != null) {
+%>
+<p>
+	아이디:
+	<%=dto.getM_id()%></p>
+<p>
+	이름:
+	<%=dto.getM_name()%></p>
+<p>
+	이름 (카타카나):
+	<%=dto.getM_name_kana()%></p>
+<p>
+	생년월일:
+	<%=dto.getM_birth()%></p>
+<p>
+	성별:
+	<%=dto.getM_gender()%></p>
+<p>
+	이메일:
+	<%=dto.getM_email()%></p>
+<p>
+	전화번호:
+	<%=dto.getM_phone()%></p>
+<p>
+	주소:
+	<%=dto.getA_address()%></p>
+<p>
+	우편번호:
+	<%=dto.getA_postcode()%></p>
+
+<form action="/En/MemberDeleteC" method="post">
+	<input type="submit" value="탈퇴">
+</form>
+<form action="main.jsp" method="post">
+	<input type="submit" value="메인 페이지">
+</form>
+<%
+}
 %>
 </body>
 </html>

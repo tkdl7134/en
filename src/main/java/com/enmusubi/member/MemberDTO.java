@@ -1,184 +1,142 @@
 package com.enmusubi.member;
 
 public class MemberDTO {
-	private String mId;
-	private String mPw;
-	private String mName;
-	private String mNameKana;
-	private String mBirth;
-	private String mGender;
-	private String mPostalCode;
-	private String mPrefecture;
-	private String mCity;
-	private String mAddress;
-	private String mBuilding;
-	private String mEmail;
-	private String mRegdate;
-	private String mImg;
-	private String mPhone;
-	private String mBirthdate;
+	private String m_id;
+	private String m_pw;
+	private String m_name;
+	private String m_name_kana;
+	private String m_birth;
+	private String m_gender;
+	private String m_email;
+	private String m_regdate;
+	private String m_img;
+	private String m_phone;
+	private String a_address;
+	private String a_postcode;
 
-	// コンストラクタ
+	// 생성자
 	public MemberDTO() {
 	}
 
-	public MemberDTO(String mId, String mPw, String mName, String mNameKana, String mBirth, String mGender,
-			String mPostalCode, String mPrefecture, String mCity, String mAddress, String mBuilding, String mEmail,
-			String mRegdate, String mImg, String mPhone, String mBirthdate) {
-		super();
-		this.mId = mId;
-		this.mPw = mPw;
-		this.mName = mName;
-		this.mNameKana = mNameKana;
-		this.mBirth = mBirth;
-		this.mGender = mGender;
-		this.mPostalCode = mPostalCode;
-		this.mPrefecture = mPrefecture;
-		this.mCity = mCity;
-		this.mAddress = mAddress;
-		this.mBuilding = mBuilding;
-		this.mEmail = mEmail;
-		this.mRegdate = mRegdate;
-		this.mImg = mImg;
-		this.mPhone = mPhone;
-		this.mBirthdate = mBirthdate;
+	public MemberDTO(String m_id, String m_pw, String m_name, String m_name_kana, String m_birth, String m_gender,
+			String m_email, String m_regdate, String m_img, String m_phone, String a_address, String a_postcode) {
+		this.m_id = m_id;
+		this.m_pw = m_pw;
+		this.m_name = m_name;
+		this.m_name_kana = m_name_kana;
+		this.m_birth = m_birth;
+		this.m_gender = m_gender;
+		this.m_email = m_email;
+		this.m_regdate = m_regdate;
+		this.m_img = m_img;
+		this.m_phone = m_phone;
+		this.a_address = a_address;
+		this.a_postcode = a_postcode;
 	}
 
-	public String getmId() {
-		return mId;
+	// Getter & Setter
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
-	public String getmPw() {
-		return mPw;
+	public String getM_pw() {
+		return m_pw;
 	}
 
-	public void setmPw(String mPw) {
-		this.mPw = mPw;
+	public void setM_pw(String m_pw) {
+		this.m_pw = m_pw;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getM_name() {
+		return m_name;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 
-	public String getmNameKana() {
-		return mNameKana;
+	public String getM_name_kana() {
+		return m_name_kana;
 	}
 
-	public void setmNameKana(String mNameKana) {
-		this.mNameKana = mNameKana;
+	public void setM_name_kana(String m_name_kana) {
+		this.m_name_kana = m_name_kana;
 	}
 
-	public String getmBirth() {
-		return mBirth;
+	public String getM_birth() {
+		return m_birth;
 	}
 
-	public void setmBirth(String mBirth) {
-		this.mBirth = mBirth;
+	public void setM_birth(String m_birth) {
+		this.m_birth = m_birth;
 	}
 
-	public String getmGender() {
-		return mGender;
+	public String getM_gender() {
+		return m_gender;
 	}
 
-	public void setmGender(String mGender) {
-		this.mGender = mGender;
+	public void setM_gender(String m_gender) {
+		this.m_gender = m_gender;
 	}
 
-	public String getmPostalCode() {
-		return mPostalCode;
+	public String getM_email() {
+		return m_email;
 	}
 
-	public void setmPostalCode(String mPostalCode) {
-		this.mPostalCode = mPostalCode;
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
 	}
 
-	public String getmPrefecture() {
-		return mPrefecture;
+	public String getM_regdate() {
+		return m_regdate;
 	}
 
-	public void setmPrefecture(String mPrefecture) {
-		this.mPrefecture = mPrefecture;
+	public void setM_regdate(String m_regdate) {
+		this.m_regdate = m_regdate;
 	}
 
-	public String getmCity() {
-		return mCity;
+	public String getM_img() {
+		return m_img;
 	}
 
-	public void setmCity(String mCity) {
-		this.mCity = mCity;
+	public void setM_img(String m_img) {
+		this.m_img = m_img;
 	}
 
-	public String getmAddress() {
-		return mAddress;
+	public String getM_phone() {
+		return m_phone;
 	}
 
-	public void setmAddress(String mAddress) {
-		this.mAddress = mAddress;
+	public void setM_phone(String m_phone) {
+		this.m_phone = m_phone;
 	}
 
-	public String getmBuilding() {
-		return mBuilding;
+	public String getA_address() {
+		return a_address;
 	}
 
-	public void setmBuilding(String mBuilding) {
-		this.mBuilding = mBuilding;
+	public void setA_address(String a_address) {
+		this.a_address = a_address;
 	}
 
-	public String getmEmail() {
-		return mEmail;
+	public String getA_postcode() {
+		return a_postcode;
 	}
 
-	public void setmEmail(String mEmail) {
-		this.mEmail = mEmail;
-	}
-
-	public String getmRegdate() {
-		return mRegdate;
-	}
-
-	public void setmRegdate(String mRegdate) {
-		this.mRegdate = mRegdate;
-	}
-
-	public String getmImg() {
-		return mImg;
-	}
-
-	public void setmImg(String mImg) {
-		this.mImg = mImg;
-	}
-
-	public String getmPhone() {
-		return mPhone;
-	}
-
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
-	}
-
-	public String getmBirthdate() {
-		return mBirthdate;
-	}
-
-	public void setmBirthdate(String mBirthdate) {
-		this.mBirthdate = mBirthdate;
+	public void setA_postcode(String a_postcode) {
+		this.a_postcode = a_postcode;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDTO [mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mNameKana=" + mNameKana + ", mBirth="
-				+ mBirth + ", mGender=" + mGender + ", mPostalCode=" + mPostalCode + ", mPrefecture=" + mPrefecture
-				+ ", mCity=" + mCity + ", mAddress=" + mAddress + ", mBuilding=" + mBuilding + ", mEmail=" + mEmail
-				+ ", mRegdate=" + mRegdate + ", mImg=" + mImg + ", mPhone=" + mPhone + ", mBirthdate=" + mBirthdate
-				+ "]";
+		return "MemberDTO [m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name + ", m_name_kana=" + m_name_kana
+				+ ", m_birth=" + m_birth + ", m_gender=" + m_gender + ", m_email=" + m_email + ", m_regdate="
+				+ m_regdate + ", m_img=" + m_img + ", m_phone=" + m_phone + ", a_address=" + a_address + ", a_postcode="
+				+ a_postcode + "]";
 	}
 
 	public char[] toJSON() {

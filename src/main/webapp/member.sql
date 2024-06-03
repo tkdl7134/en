@@ -31,9 +31,6 @@ INSERT INTO Member (
 -- Memberテーブルのデータを選択
 SELECT * FROM Member;
 
--- Memberテーブルの削除
-DROP TABLE Member;
-
 -- Addressテーブルの作成
 CREATE TABLE Address (
     m_id VARCHAR2(40 char) PRIMARY KEY,
@@ -43,6 +40,3 @@ CREATE TABLE Address (
 
 -- Addressテーブルのデータを選択
 SELECT * FROM Address;
-
--- Addressテーブルの削除
-DROP TABLE Address;
