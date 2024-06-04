@@ -23,8 +23,8 @@
         } else {
             // 로그인되지 않은 경우
     %>
-            <a href="loginPage/login.jsp"><button>로그인</button></a>
-            <a href="regPage/reg.jsp"><button>회원가입</button></a>
+            <a href="MemberC"><button>로그인</button></a>
+            <a href="MemberRegC"><button>회원가입</button></a>
             <a href="main.jsp"><button>메인으로</button></a>
     <%
         }
