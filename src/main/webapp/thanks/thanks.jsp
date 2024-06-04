@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="thanks.css" />
+<link rel="stylesheet" href="thanks/thanks.css"/>
 </head>
 <body>
 	
@@ -17,7 +17,7 @@
 						<div>商品に関して</div>
 					</div>
 					<div class="tk_thanks_button">
-						<button>商品 ページ</button>
+						<button onclick="locations.href='TestMainC'">商品 ページ</button>
 						<button>ログイン</button>
 					</div>
 				</div>
@@ -25,4 +25,7 @@
 		</div>
 		
 </body>
+<script type="text/javascript">
+setTimeout(function(){location.href="TestMainC";},10000); //2초후 이동
+</script>
 </html>
