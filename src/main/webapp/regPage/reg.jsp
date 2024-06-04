@@ -125,21 +125,13 @@
                     success: function (response) {
                         console.log(response);
                         console.log(response.idcheck);
-                     // 중복 확인 결과 메시지 표시 (response.idCheck 값에 따라 분기)
-                        const resultSpan = $("#idCheckResult");
-                        if (response.idCheck === '사용 가능한 아이디입니다.') {
-                            resultSpan.text("사용 가능한 아이디입니다.").css("color", "green");
-                        } else if (response.idCheck === '이미 사용 중인 아이디입니다.') {
-                            resultSpan.text("이미 사용 중인 아이디입니다.").css("color", "red");
-                        } else {
-                            resultSpan.text("아이디 중복 확인 중 오류가 발생했습니다.").css("color", "red");
-                        }
+                        $('#idCheckResult').text(response.idcheck);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
                         console.log(textStatus);
                         console.log(errorThrown)
-                        $("#idCheckResult").text("중복 확인 중 오류가 발생했습니다.").css("color", "red");
+                        
                     }
                  });
             }
