@@ -24,10 +24,10 @@
         }
     %>
 
-    <form action="MemberIdCheckC" method="post"> <%-- 액션을 MemberIdCheckC로 변경 --%>
-        아이디<input type="text" name="m_id" placeholder="아이디" required>
-                <button type="submit" onclick="dupleChk()" >중복 확인</button>
-        <br><br>
+    <form action="MemberIdCheckC" method="post"> 
+        아이디<input type="text" name="m_id" id="m_id" placeholder="아이디" required>
+        <button type="button" onclick="dupleChk()">중복 확인</button> 
+        <div id="idCheckResult"></div> <br> <%-- 결과 표시 영역 추가 --%>
     </form>
         
 <!-- 	<form action="MemberRegC" method="post" onsubmit="return validatePassword()"> -->
@@ -124,12 +124,22 @@
                     dataType: 'json',
                     success: function (response) {
                         console.log(response);
-                        console.log(response.res);
+                        console.log(response.idcheck);
+                     // 중복 확인 결과 메시지 표시 (response.idCheck 값에 따라 분기)
+                        const resultSpan = $("#idCheckResult");
+                        if (response.idCheck === '사용 가능한 아이디입니다.') {
+                            resultSpan.text("사용 가능한 아이디입니다.").css("color", "green");
+                        } else if (response.idCheck === '이미 사용 중인 아이디입니다.') {
+                            resultSpan.text("이미 사용 중인 아이디입니다.").css("color", "red");
+                        } else {
+                            resultSpan.text("아이디 중복 확인 중 오류가 발생했습니다.").css("color", "red");
+                        }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
                         console.log(textStatus);
                         console.log(errorThrown)
+                        $("#idCheckResult").text("중복 확인 중 오류가 발생했습니다.").css("color", "red");
                     }
                  });
             }
