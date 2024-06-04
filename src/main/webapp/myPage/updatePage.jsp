@@ -9,11 +9,13 @@
 <body>
     <h2>회원 정보 수정</h2>
 
-     <form action="/En/MemberUpdateC" method="post">
+     <form action="/En/MemberUpdateC" method="post" onsubmit="return validatePassword()">
         <input type="hidden" name="m_id" value="${sessionScope.m_id}"> <%-- 아이디는 숨겨서 전달 --%>
         <p>아이디: ${sessionScope.m_id}</p> <%-- 아이디는 읽기 전용으로 표시 --%>
         <label for="m_pw">비밀번호:</label>
-        <input type="password" id="m_pw" name="m_pw" value="${sessionScope.m_pw}" placeholder="새 비밀번호" required><br><br>
+                <input type="password" id="m_pw" name="m_pw" placeholder="새 비밀번호" required><br><br>
+                <label for="m_pw_confirm">비밀번호 확인:</label>
+                <input type="password" id="m_pw_confirm" name="m_pw_confirm" placeholder="새 비밀번호 확인" required><br><br>
         <label for="m_name">이름:</label>
         <input type="text" id="m_name" name="m_name" value="${sessionScope.m_name}" required><br><br>
         <label for="m_name_kana">이름 (카타카나):</label>
@@ -30,5 +32,17 @@
         <input type="submit" value="수정">
     </form>
     <a href="/En/MemberDetailC"> <button>마이페이지로 돌아가기</button></a> <br> <%-- MemberDetailC 서블릿으로 이동 --%>
+    <script>
+        function validatePassword() {
+            const pw = document.getElementById('m_pw').value;
+            const pwConfirm = document.getElementById('m_pw_confirm').value;
+
+            if (pw !== pwConfirm) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return false; // 폼 제출 방지
+            }
+            return true; // 폼 제출 허용
+        }
+    </script>
 </body>
 </html>
