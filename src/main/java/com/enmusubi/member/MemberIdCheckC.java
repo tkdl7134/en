@@ -31,17 +31,21 @@ public class MemberIdCheckC extends HttpServlet {
 			throws ServletException, IOException {
 		String m_id = request.getParameter("m_id");
 
-        MemberDAO dao = new MemberDAO();
-        try {
-            boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
-            if (isDuplicate) {
-                response.getWriter().write("duplicate"); // 중복된 아이디
-            } else {
-                response.getWriter().write("available"); // 사용 가능한 아이디
+        // 입력값 유효성 검사
+        if (m_id == null || m_id.trim().isEmpty()) {
+            request.setAttribute("error", "아이디를 입력하세요.");
+        } else {
+            MemberDAO dao = new MemberDAO();
+            try {
+                boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
+                request.setAttribute("idCheckResult", isDuplicate ? "이미 사용 중인 아이디입니다." : "사용 가능한 아이디입니다.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("error", "데이터베이스 오류가 발생했습니다.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.getWriter().write("error"); // 에러 발생
         }
+        
+        // 다시 register.jsp로 포워딩
+        request.getRequestDispatcher("regPage/reg.jsp").forward(request, response); 
     }
 }

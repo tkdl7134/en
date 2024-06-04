@@ -192,19 +192,19 @@ public class MemberDAO {
 			pstmt2.executeUpdate();
 		}
 	}
-	
+
 	// 아이디 중복 확인
-    public boolean isMemberIdDuplicate(String m_id) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM Member WHERE m_id = ?";
-        try (Connection conn = DBManager.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, m_id);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt(1) > 0; // 중복된 아이디가 있으면 true 반환
-                }
-            }
-        }
-        return false; // 중복된 아이디가 없으면 false 반환
-    }
+	public boolean isMemberIdDuplicate(String m_id) throws SQLException {
+		String sql = "SELECT COUNT(*) FROM Member WHERE m_id = ?";
+		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, m_id);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					int count = rs.getInt(1); // COUNT(*) 결과 가져오기
+					return count > 0; // 중복된 아이디가 있으면 true 반환
+				}
+			}
+		}
+		return false; // 예외 발생 시 false 반환 (중복 확인 실패)
+	}
 }
