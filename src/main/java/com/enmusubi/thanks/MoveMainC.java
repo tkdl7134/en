@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/TestMainC")
-public class TestMainC extends HttpServlet {
+public class MoveMainC extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("thanks/test_main.jsp").forward(request, response);
+		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}
 
