@@ -162,8 +162,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 .kh-f-btn {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 100%;
   box-shadow: 2px 2px 2px 0px #bbbbbb;
   background-image: url("../img/confirm.png");

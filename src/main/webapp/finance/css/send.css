@@ -1,0 +1,101 @@
+.kh-s-container {
+  display: flex;
+  align-self: center;
+}
+
+.kh-s-popup {
+  width: 100%;
+  border-radius: 5%;
+  display: flex;
+  background-image: url("../img/fundPopBackGround2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 2px 2px 4px 0px #cccccc;
+  gap: 2rem;
+  padding: 5rem;
+  text-wrap: nowrap;
+}
+.kh-s-img-box {
+  width: 10rem;
+}
+.kh-s-des {
+  display: flex;
+  flex-grow: 1;
+  font-size: 2rem;
+  text-align: center;
+}
+.kh-s-input {
+  width: 20rem;
+  height: 4rem;
+  border: none;
+  border-bottom: 1px solid red;
+  background: none;
+  font-size: 2rem;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.kh-s-btn {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  box-shadow: 2px 2px 2px 0px #bbbbbb;
+  background-image: url("../img/confirm.png");
+  background-size: cover;
+}
+.kh-s-btn:hover {
+  cursor: pointer;
+}
+.kh-s-btn:active {
+  background-image: url("../img/confirm(active).png");
+  box-shadow: none;
+}
+.kh-s-product-box {
+  display: flex;
+  gap: 2rem;
+}
+.kh-s-product-des {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+}
+.kh-s-recom-box {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.kh-s-recom-item-box {
+  width: 100%;
+  background-color: #fff7f5;
+  border: 1px dashed black;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 2px 2px 2px 0px #cccccc;
+}
+.kh-s-recom-item-box:hover {
+  cursor: pointer;
+}
+.kh-s-recom-item-box:active {
+  background-color: #ffeee9;
+}
+.kh-s-recom-item {
+  width: 70%;
+  display: flex;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.kh-s-recom-item2 {
+  width: 30%;
+  display: flex;
+  font-size: 1.5rem;
+  padding: 1rem;
+  
+}
