@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.tk_letter {
+	background-image: url('C:/SBT/db/dbworkspace/En/src/main/webapp/thanks/imgFolder/backgroundSakura.jpg') ;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
