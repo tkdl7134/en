@@ -1,4 +1,4 @@
-package sending;
+package com.enmusubi.send;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
