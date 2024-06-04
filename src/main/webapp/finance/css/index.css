@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.kh-f-whole-container {
+  display: flex;
+  width: 100vw;
+  background-image: url("../img/blue_fuji_mountain_background.png");
+  background-size: cover;
+}
+.kh-f-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: calc(100% - 15rem);
+}
+.kh-f-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.kh-f-card-container {
+  height: 30rem;
+  padding-top: 10rem;
+  display: flex;
+  align-self: center;
+  width: 100%;
+  overflow-x: scroll;
+}
+.kh-f-card-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.kh-f-card-container::-webkit-scrollbar-track {
+  background-color: rgba(230, 230, 230, 0.8);
+  border-radius: 12px 12px 12px 12px;
+}
+.kh-f-card-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 219, 219, 0.8);
+  border-radius: 12px 12px 12px 12px;
+}
+.kh-f-card-container::-webkit-scrollbar-button {
+  display: none;
+}
+.kh-fund-card {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2rem;
+  width: 16rem;
+  height: 20rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px #cccccc;
+}
+.kh-fund-card:hover {
+  cursor: pointer;
+}
+.kh-fake-card {
+  flex-shrink: 0;
+  width: 10rem;
+  height: 20rem;
+}
+.kh-aside {
+  display: flex;
+  justify-self: end;
+  width: 15rem;
+  height: 100vh;
+  position: relative;
+  flex-shrink: 0;
+}
+.kh-f-left-fade {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  left: -15px;
+  top: 0px;
+  z-index: 100;
+  filter: blur(10px);
+  background-color: rgb(255, 255, 255);
+}
+.kh-f-right-fade {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  right: -15px;
+  top: 0px;
+  z-index: 100;
+  filter: blur(10px);
+  background-color: rgb(255, 255, 255);
+}
+.kh-head {
+  display: flex;
+  justify-content: center;
+}
+.kh-head > h1 {
+}
+
+.kh-furin {
+  transform-origin: center top;
+}
+.kh-swaying {
+  animation: swaying 3s infinite ease-in-out;
+}
+@keyframes swaying {
+  0% {
+    transform: rotate(-0.5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.kh-f-popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 36%;
+  height: 70%;
+  z-index: 100;
+  border-radius: 5%;
+  display: none;
+  background-image: url("../img/fundPopBackGround2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5rem 6rem;
+  box-shadow: 2px 2px 4px 0px #cccccc;
+  gap: 2rem;
+}
+.kh-f-img-box {
+  width: 10rem;
+}
+.kh-f-des {
+  display: flex;
+  flex-grow: 1;
+  font-size: 2rem;
+  text-align: center;
+}
+.kh-f-input {
+  width: 20rem;
+  height: 4rem;
+  border: none;
+  border-bottom: 1px solid red;
+  background: none;
+  font-size: 2rem;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.kh-f-btn {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100%;
+  box-shadow: 2px 2px 2px 0px #bbbbbb;
+  background-image: url("../img/confirm.png");
+  background-size: cover; 
+}
+.kh-f-btn:hover{
+	cursor: pointer;
+}
+.kh-f-btn:active {
+  background-image: url("../img/confirm(active).png");
+  box-shadow: none;
+}
+.kh-f-product-box {
+  display: flex;
+  gap: 2rem;
+}
+.kh-f-product-des {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+}

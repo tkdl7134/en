@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>회원가입</title>
-<link rel="stylesheet" href="css/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<h2>회원가입</h2>
@@ -26,8 +26,9 @@
 
     <form action="/En/MemberIdCheckC" method="post"> <%-- 액션을 MemberIdCheckC로 변경 --%>
         <input type="text" name="m_id" placeholder="아이디" required><br>
-        <input type="submit" value="중복 확인"><br><br>
-        </form>
+                <button type="button" onclick="dupleChk()" >중복 확인</button>
+        <br><br>
+    </form>
         
 	<form action="/En/MemberRegC" method="post" onsubmit="return validatePassword()">
         <input type="password" name="m_pw" id="m_pw" placeholder="비밀번호" required><br>
@@ -55,6 +56,25 @@
 			}
 			return true; // 폼 제출 허용
 		}
+		
+        function dupleChk(){
+            let id = $("input[name='m_id']").val();
+             $.ajax({
+                    type: "post",
+                    url: "MemberIdCheckC",
+                    data: {id},
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        console.log(response.res);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown)
+                    }
+                 });
+            }
 	</script>
 </body>
 </html>
