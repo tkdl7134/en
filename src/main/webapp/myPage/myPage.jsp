@@ -1,60 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.enmusubi.member.MemberDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>マイページ</title>
-  <link rel="stylesheet" href="myPage.css">
+<title>마이페이지</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <ul>
-        <li><a href="#">招待管理</a></li>
-        <li><a href="#">マイテンプレート</a></li>
-        <li><a href="#">情報管理</a></li>
-        <li><a href="#">統計</a></li>
-      </ul>
-    </aside>
-    <main class="content">
-      <h1>マイページ</h1>
-      <form>
-        <div class="form-group">
-          <label for="userId">ID:</label>
-          <input type="text" id="userId" name="userId" readonly>
-        </div>
-        <div class="form-group">
-          <label for="password">PW:</label>
-          <input type="password" id="password" name="password" readonly>
-        </div>
-        <div class="form-group">
-          <label for="name">名前:</label>
-          <input type="text" id="name" name="name" readonly>
-        </div>
-        <div class="form-group">
-          <label for="furigana">フリガナ:</label>
-          <input type="text" id="furigana" name="furigana" readonly>
-        </div>
-        <div class="form-group">
-          <label for="birthdate">生年月日:</label>
-          <input type="date" id="birthdate" name="birthdate" readonly>
-        </div>
-        <div class="form-group">
-          <label for="gender">性別:</label>
-          <input type="text" id="gender" name="gender" readonly>
-        </div>
-        <div class="form-group">
-          <label for="email">メール:</label>
-          <input type="email" id="email" name="email" readonly>
-        </div>
-        <div class="form-group">
-          <label for="newsletter">メルマガ受信の有無:</label>
-          <input type="text" id="newsletter" name="newsletter" readonly>
-        </div>
-      </form>
-    </main>
-  </div>
+<h2>마이페이지</h2>
+
+<%
+String errorMessage = (String) request.getAttribute("errorMessage");
+if (errorMessage != null) {
+%>
+<p style="color: red;"><%=errorMessage%></p>
+<%
+}
+%>
+
+<%
+MemberDTO dto = (MemberDTO) request.getAttribute("dto"); // request에서 회원 정보 가져오기
+if (dto != null) {
+%>
+<p>아이디: <%= dto.getM_id() %></p>
+            <p>이름: <%= dto.getM_name() %></p>
+            <p>이름 (카타카나): <%= dto.getM_name_kana() %></p>
+            <p>생년월일: <%= dto.getM_birth() %></p>
+            <p>성별: <%= dto.getM_gender() %></p>
+            <p>이메일: <%= dto.getM_email() %></p>
+            <p>전화번호: <%= dto.getM_phone() %></p>
+            <p>주소: <%= dto.getA_address() %></p>
+            <p>우편번호: <%= dto.getA_postcode() %></p>
+	
+	<a href="myPage/updatePage.jsp"><button>회원정보 수정</button> </a> <br>
+	<a href="/En/MemberDeleteC"><button>탈퇴</button> </a> <br>
+	<a href="main.jsp"><button>메인으로</button> </a>
+
+<%
+}
+%>
 </body>
 </html>
