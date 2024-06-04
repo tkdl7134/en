@@ -140,17 +140,56 @@ public class MemberDAO {
 
 	// 사용자 ID로 회원 정보 조회
 	public MemberDTO getMemberById(String m_id) throws SQLException {
-		String sql = "SELECT * FROM Member WHERE m_id = ?";
+		String sql = "SELECT * FROM Member M LEFT OUTER JOIN Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			pstmt.setString(1, m_id);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
-					return createMemberDTO(rs); // 기존 createMemberDTO 메소드 활용
+					return createMemberDTO(rs);
 				}
 			}
 		}
 		return null; // 회원 정보가 없으면 null 반환
+	}
+
+	// 회원 정보 업데이트 (이름, 이미지)
+	public void updateMember(MemberDTO dto) throws SQLException {
+		String sql = "UPDATE Member SET m_name = ?, m_img = ? WHERE m_id = ?";
+		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, dto.getM_name());
+			pstmt.setString(2, dto.getM_img());
+			pstmt.setString(3, dto.getM_id());
+			pstmt.executeUpdate();
+		}
+	}
+
+	// 회원 정보 업데이트 (전체 정보)
+	public void updateMemberInfo(MemberDTO dto) throws SQLException {
+		String sql1 = "UPDATE Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
+		String sql2 = "UPDATE Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
+
+		try (Connection conn = DBManager.connect();
+				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+				PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
+
+			// Member 테이블 업데이트
+			pstmt1.setString(1, dto.getM_pw());
+			pstmt1.setString(2, dto.getM_name());
+			pstmt1.setString(3, dto.getM_name_kana());
+			pstmt1.setString(4, dto.getM_birth());
+			pstmt1.setString(5, dto.getM_gender());
+			pstmt1.setString(6, dto.getM_email());
+			pstmt1.setString(7, dto.getM_phone());
+			pstmt1.setString(8, dto.getM_id());
+			pstmt1.executeUpdate();
+
+			// Address 테이블 업데이트
+			pstmt2.setString(1, dto.getA_address());
+			pstmt2.setString(2, dto.getA_postcode());
+			pstmt2.setString(3, dto.getM_id());
+			pstmt2.executeUpdate();
+		}
 	}
 }

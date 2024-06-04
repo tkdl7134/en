@@ -15,7 +15,7 @@
     <%
         }
     %>
-    <form action="MemberRegC" method="post">
+    <form action="/En/MemberRegC" method="post">
         <input type="text" name="m_id" placeholder="아이디" required><br>
         <input type="password" name="m_pw" placeholder="비밀번호" required><br>
         <input type="text" name="m_name" placeholder="이름" required><br>

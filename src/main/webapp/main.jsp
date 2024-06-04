@@ -14,18 +14,18 @@
             // 로그인된 경우
     %>
             <p>환영합니다, <%= m_name %>님!</p>
-            <a href="/En/MemberDetailC">마이페이지</a>
+            <a href="/En/MemberDetailC"> <button>마이페이지</button></a>
             <form action="/En/MemberLogoutC" method="post"> 
                 <input type="submit" value="로그아웃">
             </form>
-            <a href="main.jsp">메인으로</a>
+            <a href="main.jsp"><button>메인으로</button></a>
     <%
         } else {
             // 로그인되지 않은 경우
     %>
-            <a href="loginPage/login.jsp">로그인</a>
-            <a href="regPage/reg.jsp">회원가입</a>
-            <a href="main.jsp">메인으로</a>
+            <a href="loginPage/login.jsp"><button>로그인</button></a>
+            <a href="regPage/reg.jsp"><button>회원가입</button></a>
+            <a href="main.jsp"><button>메인으로</button></a>
     <%
         }
     %>
