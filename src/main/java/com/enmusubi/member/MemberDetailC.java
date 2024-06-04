@@ -28,16 +28,25 @@ public class MemberDetailC extends HttpServlet {
         try {
             MemberDTO dto = dao.getMypage(m_id);
             if (dto != null) {
+            	// 디버깅 메시지 출력
+                System.out.println("/En/MemberDetailC - 회원 정보 조회 성공: " + dto);
+                
                 request.setAttribute("dto", dto); // 회원 정보를 request에 담아 전달
                 request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
             } else {
             	// 회원 정보가 없을 때 로그인 페이지로 이동하는 대신,
                 // 오류 메시지를 표시하거나 다른 처리를 수행할 수도 있습니다.
+            	// 디버깅 메시지 출력
+                System.out.println("MemberDetailC - 회원 정보 조회 실패: m_id = " + m_id);
+                
                 request.setAttribute("errorMessage", "회원 정보가 없습니다.");
                 request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
             }
         } catch (SQLException e) {
             e.printStackTrace();
+         // 디버깅 메시지 출력
+            System.out.println("MemberDetailC - 데이터베이스 오류: " + e.getMessage());
+
             request.setAttribute("errorMessage", "데이터베이스 오류가 발생했습니다.");
             request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
         }

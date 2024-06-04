@@ -32,17 +32,16 @@ public class MemberUpdateC extends HttpServlet {
 		String a_address = request.getParameter("a_address");
 		String a_postcode = request.getParameter("a_postcode");
 
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, null, null, m_phone,
-				a_address, a_postcode);
+		 MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, null, null, m_phone, a_address, a_postcode);
 
-		MemberDAO dao = new MemberDAO();
-		try {
-			dao.updateMemberInfo(dto); // MemberDAO의 updateMemberInfo 메소드 호출
-			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
+	        MemberDAO dao = new MemberDAO();
+	        try {
+	            dao.updateMemberInfo(dto);
+	            response.sendRedirect("/En/MemberDetailC"); // 수정 후 마이페이지로 이동
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "회원 정보 수정 중 오류가 발생했습니다.");
-			request.getRequestDispatcher("updatePage.jsp").forward(request, response);
+			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 
 		doGet(request, response);
