@@ -1,8 +1,15 @@
+function numberMaxLength(e) {
+  if (e.value.length > e.maxLength) {
+    e.value = e.value.slice(0, e.maxLength);
+  }
+}
+
 let deg = 15;
 let zindex = 0;
 let card = document.querySelectorAll(".kh-fund-card");
 let mzindex = card.length;
 let ci = 0;
+let fpop = document.querySelector(".kh-f-popup");
 const cardColor = ["#FFE2FC", "#FFFDD1", "#E4FAFF", "#E2FFC5", "#DDD7FF"];
 card.forEach((element) => {
   let cdeg = deg;
@@ -22,12 +29,36 @@ card.forEach((element) => {
     this.style.zIndex = zindex;
     console.log(zindex);
   });
+  element.addEventListener("click", function (event) {
+    fpop.style.display = "flex";
+    event.stopPropagation();
+  });
+
   ci += 1;
   if (ci >= cardColor.length) {
     ci = 0;
   }
   deg *= -1;
   zindex += 1;
+});
+document.addEventListener("click", function (event) {
+  if (fpop.style.display === "flex") {
+    if (event.target !== fpop && !fpop.contains(event.target)) {
+      fpop.style.display = "none";
+    }
+  }
+});
+const cardCon = document.querySelector(".kh-f-card-container");
+console.log(cardCon);
+cardCon.addEventListener("scroll", function () {
+  console.log(`Scroll Position - X: ${this.scrollLeft}, Y: ${this.scrollTop}`);
+});
+cardCon.addEventListener("wheel", function (event) {
+  // Prevent the default vertical scroll
+  event.preventDefault();
+  // Scroll horizontally
+  const scrollSpeed = 0.5;
+  this.scrollLeft += event.deltaY * scrollSpeed;
 });
 let furin = document.querySelector(".kh-furin");
 furin.classList.add("kh-swaying");
