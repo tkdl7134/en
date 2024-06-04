@@ -17,7 +17,7 @@
 						<div>商品に関して</div>
 					</div>
 					<div class="tk_thanks_button">
-						<button onclick="locations.href='MoveMainC'">商品 ページ</button>
+						<button onclick="location.href='MoveMainC'">商品 ページ</button>
 						<button>ログイン</button>
 					</div>
 				</div>
@@ -26,6 +26,6 @@
 		
 </body>
 <script type="text/javascript">
-setTimeout(function(){location.href="MoveMainC";},10000); //2초후 이동
+setTimeout(function(){location.href="MoveMainC";},2000); //2초후 이동
 </script>
 </html>
