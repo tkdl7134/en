@@ -29,4 +29,14 @@
     <servlet-name>ss</servlet-name>
     <url-pattern>/ss</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InvitationController</display-name>
+    <servlet-name>InvitationController</servlet-name>
+    <servlet-class>com.enmusubi.invitation.InvitationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvitationController</servlet-name>
+    <url-pattern>/InvitationController</url-pattern>
+  </servlet-mapping>
 </web-app>
