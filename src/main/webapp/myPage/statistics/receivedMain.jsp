@@ -14,7 +14,7 @@
 <div>
  <div class="recMain-toFund" onclick="location.href='receivedFundingController'">
 	<div>펀딩 현황 확인</div>
-	<div><img alt="a" src="myPage/statistics/imgFolder/fundImg.png"></div>
+	<div><img alt="a" src="myPage/statistics/imgFolder/fundingImg.png"></div>
  </div>
 	<div class="recMain-toAmazon" onclick="location.href='아마존위시리스트페이지'">
 	<div>선물 현황 확인</div>
