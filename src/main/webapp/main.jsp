@@ -128,8 +128,7 @@ body {
 		<div class="container p-5 bg-light rounded-3 mt-5 mb-5">
 			<h1>サイト紹介</h1>
 			<p>
-				これは、JSPを使用して作成された掲示板ウェブサイトです。<br>簡単な掲示板を作成してみました。<br>デザインテンプレートはBootstrapを使用しています。
-			</p>
+ 			</p>
 			<p>
 				<a href="https://github.com/chs4649/JSP-Board.git"
 					class="btn btn-primary" role="button">詳しく</a>

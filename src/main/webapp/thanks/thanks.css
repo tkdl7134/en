@@ -66,6 +66,22 @@ body {
   object-fit: contain;
 }
 
-.tk_thanks_button h3 {
-	font-size: 1rem;
+.button_templet:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/loveicon2.png') 5 5, pointer;
 }
+
+.button_login:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/lineicon.png') 5 5, pointer;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
