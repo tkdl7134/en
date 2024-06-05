@@ -5,9 +5,8 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="finance/css/index.css" />
-    <link rel="stylesheet" href="finance/css/send.css" />
     <script src="finance/js/index.js" defer></script>
-    <script src="finance/js/send.js" defer></script>
+    
     <title>縁結び</title>
   </head>
   <body>
@@ -22,7 +21,7 @@ pageEncoding="UTF-8"%>
       </div>
       <aside class="kh-aside">
         <div style="width: 100%">
-          <img src="finance/img/furin.png" alt="noImg" class="kh-furin" />
+          <img src="finance/img/furin.png" alt="noImg" class="kh-furin kh-swaying" />
         </div>
       </aside>
     </div>
