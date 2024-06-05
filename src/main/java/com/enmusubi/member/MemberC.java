@@ -45,7 +45,7 @@ public class MemberC extends HttpServlet {
 				session.setAttribute("m_regdate", dto.getM_regdate());
 				session.setAttribute("m_phone", dto.getM_phone());
 				
-				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
+//				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
 				session.setMaxInactiveInterval(600);

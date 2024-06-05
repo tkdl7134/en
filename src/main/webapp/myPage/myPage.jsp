@@ -40,10 +40,20 @@
 
 	<a href="myPage/updatePage.jsp"><button>変更する</button></a>
 	<br>
-	<form action="MemberDeleteC" method="post">
+	<form action="MemberDeleteC" method="post" onsubmit="return confirmDelete()">
 		<button type="submit">アカウント削除</button>
 	</form>
-	<a href="javascript:window.history.back();"><button>取消</button></a>
+	<a href="javascript:window.history.back();"><button>戻る</button></a>
 </c:if>
+
+<script>
+function confirmDelete() {
+    if (confirm("本当に削除しますか？")) {
+        return true; // 확인 버튼 클릭 시 폼 제출
+    } else {
+        return false; // 취소 버튼 클릭 시 폼 제출 방지
+    }
+}
+</script>
 </body>
 </html>

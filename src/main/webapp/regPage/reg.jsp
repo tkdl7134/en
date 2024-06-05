@@ -6,14 +6,18 @@
 <head>
 <title>アカウント登録</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<style type="text/css">
+.id-duplicate { color: red; } /* 중복 ID */
+.id-available { color: blue; }  /* 사용 가능 ID */
+</style>
 </head>
 <body>
 	<h2>アカウント登録</h2>
 
 <form action="MemberRegC" method="post" onsubmit="return validatePassword()">
         ユーザーID<input type="text" name="m_id" id="m_id" placeholder="ユーザーID" required>
-        <button type="button" onclick="dupleChk()">IDチェック</button> 
-        <div id="idCheckResult"></div> <br> 
+        <button type="button" onclick="dupleChk()">IDチェック</button>
+        <div id="idCheckResult" class="id-available"></div> <br> 
     
         パスワード<input type="password" name="m_pw" id="m_pw" placeholder="パスワード" required><br><br>
         パスワード確認<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="パスワード確認" required><br><br>
@@ -76,7 +80,6 @@
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
                 </select> <br><br>
-                <!-- 주소 <input type="text" name="a_address" required><br><br> -->
       市区町村<br><input type="text" name="a_city" placeholder="市区町村" required><br><br>
         番地 <br><input type="text" name="a_street" placeholder="番地" required><br><br>
         ビル・マンション名など <br><input type="text" name="a_building" placeholder="ビル・マンション名" required><br><br>
@@ -110,6 +113,11 @@
                         console.log(response);
                         console.log(response.idcheck);
                         $('#idCheckResult').text(response.idcheck);
+                        if (response.idcheck === "使用中IDです。") {
+                            $('#idCheckResult').addClass('id-duplicate').removeClass('id-available');
+                        } else if (response.idcheck === "使用可能IDです。") {
+                            $('#idCheckResult').addClass('id-available').removeClass('id-duplicate');
+                        }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
