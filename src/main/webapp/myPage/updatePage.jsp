@@ -21,9 +21,8 @@
         <label for="m_name_kana">フリガナ:</label>
         <input type="text" id="m_name_kana" name="m_name_kana" value="${sessionScope.m_name_kana}" required><br><br>
         <label>성별:</label>
-        <input type="radio" name="m_gender" value="남성" ${sessionScope.m_gender == '남성' ? 'checked' : ''}> 남성
-        <input type="radio" name="m_gender" value="여성" ${sessionScope.m_gender == '여성' ? 'checked' : ''}> 여성
-        <input type="radio" name="m_gender" value="기타" ${sessionScope.m_gender == '기타' ? 'checked' : ''}> 기타
+        <input type="radio" name="m_gender" value="male" ${sessionScope.m_gender == '남성' ? 'checked' : ''}> 남성
+        <input type="radio" name="m_gender" value="female" ${sessionScope.m_gender == '여성' ? 'checked' : ''}> 여성
         <br><br>
         우편번호 <input type="text" name="a_postcode" value="${sessionScope.a_postcode}" placeholder="우편번호" required><br><br>
         <label for="prefecture">都道府県</label>
@@ -36,7 +35,7 @@
                     <option value="秋田県">秋田県</option>
                     <option value="山形県">山形県</option>
                     <option value="福島県">福島県</option>
-                    <option value="茨城県">茨城県</option>
+                    <option value="茨城県">茨城県</optio n>
                     <option value="栃木県">栃木県</option>
                     <option value="群馬県">群馬県</option>
                     <option value="埼玉県">埼玉県</option>
