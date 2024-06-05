@@ -17,17 +17,17 @@
                 <label for="m_pw_confirm">비밀번호 확인:</label>
                 <input type="password" id="m_pw_confirm" name="m_pw_confirm" placeholder="새 비밀번호 확인" required><br><br>
         <label for="m_name">이름:</label>
-        <input type="text" id="m_name" name="m_name" value="${sessionScope.m_name}" required><br><br>
+        <input type="text" id="m_name" name="m_name" required><br><br>
         <label for="m_name_kana">フリガナ:</label>
-        <input type="text" id="m_name_kana" name="m_name_kana" value="${sessionScope.m_name_kana}" required><br><br>
+        <input type="text" id="m_name_kana" name="m_name_kana" required><br><br>
         <label>성별:</label>
-        <input type="radio" name="m_gender" value="남성" ${sessionScope.m_gender == '남성' ? 'checked' : ''}> 남성
-        <input type="radio" name="m_gender" value="여성" ${sessionScope.m_gender == '여성' ? 'checked' : ''}> 여성
-        <input type="radio" name="m_gender" value="기타" ${sessionScope.m_gender == '기타' ? 'checked' : ''}> 기타
+        <input type="radio" name="m_gender" value="남성"> 남성
+        <input type="radio" name="m_gender" value="여성"> 여성
+        <input type="radio" name="m_gender" value="기타"> 기타
         <br><br>
-        우편번호 <input type="text" name="a_postcode" value="${sessionScope.a_postcode}" placeholder="우편번호" required><br><br>
-        <label for="prefecture">都道府県</label>
-                <select id="prefecture" name="prefecture" required>
+        우편번호 <input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
+        <label for="a_prefecture">都道府県</label>
+                <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
                     <option value="北海道">北海道</option>
                     <option value="青森県">青森県</option>
@@ -78,12 +78,12 @@
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
                 </select> <br><br>
-        市区町村<br><input type="text" name="a_address" value="${sessionScope.a_address}" required><br><br>
-        番地 <br><input type="text" name="a_address" value="${sessionScope.a_address}" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_address" value="${sessionScope.a_address}" required><br><br>
-        이메일<input type="email" name="m_email" value="${sessionScope.m_email}" placeholder="이메일" required><br><br>
-        전화번호<input type="text" name="m_phone" value="${sessionScope.m_phone}" placeholder="전화번호" required><br><br>
-        생년월일<input type="date" id="m_birth" name="m_birth" value="${sessionScope.m_birth}" required><br><br>
+        市区町村<br><input type="text" name="a_city" required><br><br>
+        番地 <br><input type="text" name="a_street" required><br><br>
+        ビル・マンション名など <br><input type="text" name="a_building" required><br><br>
+        이메일<input type="email" name="m_email" placeholder="이메일" required><br><br>
+        전화번호<input type="text" name="m_phone" placeholder="전화번호" required><br><br>
+        생년월일<input type="date" id="m_birth" name="m_birth" required><br><br>
         <input type="submit" value="수정">
     </form>
     <a href="/En/MemberDetailC"> <button>마이페이지로 돌아가기</button></a> <br> <%-- MemberDetailC 서블릿으로 이동 --%>

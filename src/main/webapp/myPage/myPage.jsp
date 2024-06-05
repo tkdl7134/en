@@ -3,6 +3,7 @@
 <%@ page import="com.enmusubi.member.MemberDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,8 @@
         <p>건물명: ${addressParts[3]}</p>
     <p>이메일: ${dto.m_email}</p>
     <p>전화번호: ${dto.m_phone}</p>
-    <p>생년월일: ${dto.m_birth}</p>
+    <fmt:parseDate value="${dto.m_birth}" pattern="yyyy-MM-dd" var="parsedDate" /> 
+<p>생년월일: <fmt:formatDate value="${parsedDate}" pattern="yyyy年 MM月 dd日"/></p>
 
     <a href="myPage/updatePage.jsp"><button>회원정보 수정</button></a><br>
     <a href="/En/MemberDeleteC"><button>탈퇴</button></a><br>
