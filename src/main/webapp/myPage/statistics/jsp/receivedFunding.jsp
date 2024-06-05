@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <link rel="stylesheet" href="myPage/statistics/css/receivedFund.css" />
+  	<script type="text/javascript" src="myPage/statistics/js/receivedFunding.js"></script>
+  	 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <!-- 상품이름이랑 그 상품 이미지 나오는 span태그랑 이미지 태그에 각각 텍스트랑 이미지 소스를 변수화해서 쓸것  -->
   <body>
@@ -65,11 +68,20 @@ pageEncoding="UTF-8"%>
       </div>
       <div id="recFund-info">
       <img id="info-page" alt="" src="myPage/statistics/imgFolder/fundContentReal.png">
-     <div>
-      <input id="start-date" type="date">
-      <input id="end-date" type="date">
+     <div style="position: relative; left: 3rem; bottom: 45rem;">
+       <form id="dateForm">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate">
+        <br>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate">
+        <br>
+        <button type="button" onclick="generateGraph()">Generate Graph</button>
+    </form>
+    <div class="chart-container">
+        <canvas id="dateChart"></canvas>
+    </div>
       </div>
-      
       
       
       </div>
