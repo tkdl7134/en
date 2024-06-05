@@ -6,13 +6,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ</title>
-  <link rel="stylesheet" href="myPage.css">
+  <link rel="stylesheet" href="myPage/myPage.css">
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
       <ul>
-        <li><a href="#">招待管理</a></li>
+        <li><a href="InvitationController" >招待管理</a></li>
         <li><a href="#">マイテンプレート</a></li>
         <li><a href="#">情報管理</a></li>
         <li><a href="#">統計</a></li>

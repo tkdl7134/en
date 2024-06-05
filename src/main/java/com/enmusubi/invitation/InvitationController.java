@@ -10,11 +10,11 @@ public class InvitationController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("content", "invitationPage/invitationPage.jsp");
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		request.getRequestDispatcher("invitationPage/invitationPage.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 
 }
