@@ -14,8 +14,8 @@
             // 로그인된 경우
     %>
             <p>환영합니다, <%= m_name %>님!</p>
-            <a href="/En/MemberDetailC"> <button>마이페이지</button></a>
-            <form action="/En/MemberLogoutC" method="post"> 
+            <a href="MemberDetailC"> <button>마이페이지</button></a>
+            <form action="MemberLogoutC" method="post"> 
                 <input type="submit" value="로그아웃">
             </form>
             <a href="main.jsp"><button>메인으로</button></a>

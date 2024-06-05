@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,30 +9,21 @@
 </head>
 <body>
 	<h2>회원가입</h2>
-    <%
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
-    %>
-            <p style="color: red;"><%= error %></p>
-    <%
-        }
 
-        String idCheckResult = (String) request.getAttribute("idCheckResult"); // 중복 확인 결과
-        if (idCheckResult != null) {
-    %>
-            <p style="color: <%= idCheckResult.equals("available") ? "green" : "red" %>;"><%= idCheckResult %></p>
-    <%
-        }
-    %>
+    <c:if test="${not empty error}">
+        <p style="color: red;">${error}</p>
+    </c:if>
 
-    <form action="MemberIdCheckC" method="post"> <%-- 액션을 MemberIdCheckC로 변경 --%>
-        아이디<input type="text" name="m_id" placeholder="아이디" required>
-                <button type="submit" onclick="dupleChk()" >중복 확인</button>
-        <br><br>
-    </form>
-        
-<!-- 	<form action="MemberRegC" method="post" onsubmit="return validatePassword()"> -->
-	<form action="MemberRegC" method="post">
+    <c:if test="${not empty idCheckResult}">
+        <p style="color: ${idCheckResult eq 'available' ? 'green' : 'red'};">${idCheckResult}</p>
+    </c:if>
+
+    
+<form action="MemberRegC" method="post" onsubmit="return validatePassword()">
+        아이디<input type="text" name="m_id" id="m_id" placeholder="아이디" required>
+        <button type="button" onclick="dupleChk()">중복 확인</button> 
+        <div id="idCheckResult"></div> <br> 
+    
         비밀번호<input type="password" name="m_pw" id="m_pw" placeholder="비밀번호" required><br><br>
         비밀번호 확인<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="비밀번호 확인" required><br><br>
         이름<input type="text" name="m_name" placeholder="이름" required><br><br>
@@ -41,8 +33,8 @@
         <input type="radio" name="m_gender" value="기타"> 기타
         <br><br>
         우편번호<input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
-        <label for="prefecture">都道府県</label>
-                <select id="prefecture" name="prefecture" required>
+       <label for="a_prefecture">都道府県</label>
+                <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
                     <option value="北海道">北海道</option>
                     <option value="青森県">青森県</option>
@@ -93,9 +85,10 @@
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
                 </select> <br><br>
-        市区町村<br><input type="text" name="a_address_1" required><br><br>
-        番地 <br><input type="text" name="a_address_2" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_address_3" required><br><br>
+                <!-- 주소 <input type="text" name="a_address" required><br><br> -->
+      市区町村<br><input type="text" name="a_city" required><br><br>
+        番地 <br><input type="text" name="a_street" required><br><br>
+        ビル・マンション名など <br><input type="text" name="a_building" required><br><br>
         이메일<input type="email" name="m_email" placeholder="이메일" required><br><br>
         전화번호<input type="text" name="m_phone" placeholder="전화번호" required><br><br>
         생년월일<input type="date" name="m_birth" required> <br><br>
@@ -124,12 +117,14 @@
                     dataType: 'json',
                     success: function (response) {
                         console.log(response);
-                        console.log(response.res);
+                        console.log(response.idcheck);
+                        $('#idCheckResult').text(response.idcheck);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
                         console.log(textStatus);
                         console.log(errorThrown)
+                        
                     }
                  });
             }
