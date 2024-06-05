@@ -73,13 +73,13 @@ public class MemberRegC extends HttpServlet {
                 response.sendRedirect("loginPage/login.jsp");
             } else {
                 // 회원가입 실패 처리 (아이디 중복 등)
-                request.setAttribute("error", "회원가입 실패");
+                request.setAttribute("error", "アカウント登録失敗");
                 request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             // SQL 예외 처리
             e.printStackTrace();
-            request.setAttribute("error", "데이터베이스 오류");
+            request.setAttribute("error", "データベースエラー");
             request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
         }
         request.setAttribute("address", combinedAddress); // JSP에서 사용할 수 있도록 설정
