@@ -47,4 +47,25 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items:center;
+	gap: 10rem;
+}
+
+.tk_thanks_button > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    height: 10rem;
+}
+
+.tk_thanks_button img {
+  width: 6rem;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.tk_thanks_button h3 {
+	font-size: 1rem;
 }

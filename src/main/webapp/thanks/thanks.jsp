@@ -17,8 +17,14 @@
 						<div>商品に関して</div>
 					</div>
 					<div class="tk_thanks_button">
-						<button onclick="location.href='MoveMainC'">商品 ページ</button>
-						<button>ログイン</button>
+						<div>
+ 						 	<h3>ログイン</h3>
+ 						 	<img src="thanks/imgFolder/sakura.png" alt="상품 페이지">
+						</div>
+						<div>
+  						 	<h3>テンプレート<br>ペイジー</h3>
+  						 	<img src="thanks/imgFolder/sakura.png" alt="로그인">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -26,6 +32,6 @@
 		
 </body>
 <script type="text/javascript">
-setTimeout(function(){location.href="MoveMainC";},2000); //2초후 이동
+setTimeout(function(){location.href="MoveMainC";},1000000000); //4초
 </script>
 </html>
