@@ -1,76 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="java.io.PrintWriter"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
-	rel="stylesheet">
-
-<!-- Bootstrap CSS를 위한 링크 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-<!-- jQuery 스크립트 링크 -->
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
-	integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-<style>
-.slider img {
-	width: 100%; /* 이미지의 너비를 슬라이더 컨테이너에 맞춤 */
-	height: 100%; /* 이미지의 높이를 고정 */
-}
-
-.slider {
-	display: flex;
-	justify-content: center; /* 슬라이더의 이미지를 가운데 정렬 */
-	align-items: center; /* 세로 방향으로 가운데 정렬 */
-	position: relative; /* 슬라이더의 위치를 상대적으로 설정 */
-	transition: transform 0.5s ease-in-out; /* 슬라이드 전환 효과를 부드럽게 */
-}
-
-body {
-	font-family: 'Noto Sans JP', sans-serif;
-}
-</style>
-
-<script>
-	$(document).ready(function() {
-		var slider = $(".slider").bxSlider({
-			auto : true,
-			pause : 3000,
-			infiniteLoop : true,
-			speed : 500, /* 슬라이드 전환 속도를 500ms로 설정 */
-			hideControlOnEnd : false, /* 첫 번째 및 마지막 슬라이드에서 컨트롤 숨김 비활성화 */
-			onSliderLoad : function() {
-				$(document).on('click', '.bx-prev, .bx-next', function() {
-					slider.stopAuto();
-					slider.startAuto();
-				});
-			}
-		});
-	});
-</script>
-
-<title>JSP掲示板ウェブサイト</title>
-
+    <title>메인 페이지</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <h2>메인 페이지</h2>
 
+<<<<<<< HEAD
 	<%
 	// 사용자 ID를 세션에서 가져오기
 	String userID = null;
@@ -154,7 +92,28 @@ body {
 	<!-- Bootstrap JS 링크 -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+=======
+    <%
+        String m_name = (String) session.getAttribute("m_name");
+        if (m_name != null) {
+            // 로그인된 경우
+    %>
+            <p>환영합니다, <%= m_name %>님!</p>
+            <a href="MemberDetailC"> <button>마이페이지</button></a>
+            <form action="MemberLogoutC" method="post"> 
+                <input type="submit" value="로그아웃">
+            </form>
+            <a href="main.jsp"><button>메인으로</button></a>
+    <%
+        } else {
+            // 로그인되지 않은 경우
+    %>
+            <a href="MemberC"><button>로그인</button></a>
+            <a href="MemberRegC"><button>회원가입</button></a>
+            <a href="main.jsp"><button>메인으로</button></a>
+    <%
+        }
+    %>
+>>>>>>> 87c6864a34ba4da16044bda5e95607c995e8d4a2
 </body>
-
-
 </html>

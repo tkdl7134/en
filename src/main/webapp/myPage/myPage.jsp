@@ -1,60 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.enmusubi.member.MemberDTO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>マイページ</title>
-  <link rel="stylesheet" href="myPage.css">
+<title>마이페이지</title>
 </head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <ul>
-        <li><a href="#">招待管理</a></li>
-        <li><a href="#">マイテンプレート</a></li>
-        <li><a href="#">情報管理</a></li>
-        <li><a href="#">統計</a></li>
-      </ul>
-    </aside>
-    <main class="content">
-      <h1>マイページ</h1>
-      <form>
-        <div class="form-group">
-          <label for="userId">ID:</label>
-          <input type="text" id="userId" name="userId" readonly>
-        </div>
-        <div class="form-group">
-          <label for="password">PW:</label>
-          <input type="password" id="password" name="password" readonly>
-        </div>
-        <div class="form-group">
-          <label for="name">名前:</label>
-          <input type="text" id="name" name="name" readonly>
-        </div>
-        <div class="form-group">
-          <label for="furigana">フリガナ:</label>
-          <input type="text" id="furigana" name="furigana" readonly>
-        </div>
-        <div class="form-group">
-          <label for="birthdate">生年月日:</label>
-          <input type="date" id="birthdate" name="birthdate" readonly>
-        </div>
-        <div class="form-group">
-          <label for="gender">性別:</label>
-          <input type="text" id="gender" name="gender" readonly>
-        </div>
-        <div class="form-group">
-          <label for="email">メール:</label>
-          <input type="email" id="email" name="email" readonly>
-        </div>
-        <div class="form-group">
-          <label for="newsletter">メルマガ受信の有無:</label>
-          <input type="text" id="newsletter" name="newsletter" readonly>
-        </div>
-      </form>
-    </main>
-  </div>
+<h2>마이페이지</h2>
+
+<c:if test="${not empty errorMessage}"> 
+    <p style="color: red;">${errorMessage}</p> 
+</c:if>
+
+<c:if test="${not empty dto}">
+    <p>아이디: ${dto.m_id}</p>
+    <p>이름: ${dto.m_name}</p>
+    <p>フリガナ: ${dto.m_name_kana}</p>
+    <p>성별: ${dto.m_gender}</p>
+    <p>우편번호: ${dto.a_postcode}</p>
+    
+    <c:set var="addressParts" value="${fn:split(dto.a_address, ', ')}" /> <%-- 주소 분리 --%>
+        <p>都道府県: ${addressParts[0]}</p>
+        <p>市区町村: ${addressParts[1]}</p>
+        <p>번지: ${addressParts[2]}</p>
+        <p>건물명: ${addressParts[3]}</p>
+    <p>이메일: ${dto.m_email}</p>
+    <p>전화번호: ${dto.m_phone}</p>
+    <p>생년월일: ${dto.m_birth}</p>
+
+    <a href="myPage/updatePage.jsp"><button>회원정보 수정</button></a><br>
+    <a href="/En/MemberDeleteC"><button>탈퇴</button></a><br>
+    <a href="main.jsp"><button>메인으로</button></a>
+</c:if>
 </body>
 </html>
