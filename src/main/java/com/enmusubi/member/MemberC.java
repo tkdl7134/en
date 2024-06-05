@@ -37,24 +37,32 @@ public class MemberC extends HttpServlet {
 				HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
 				session.setAttribute("m_id", dto.getM_id()); // 세션에 사용자 ID 저장
 				session.setAttribute("m_name", dto.getM_name()); // 세션에 사용자 이름 저장 (선택 사항)
+				session.setAttribute("m_name_kana", dto.getM_name_kana());
+				session.setAttribute("m_gender", dto.getM_gender());
+				session.setAttribute("a_postcode", dto.getA_postcode());
+				session.setAttribute("a_address", dto.getA_address());
+				session.setAttribute("m_email", dto.getM_email());
+				session.setAttribute("m_regdate", dto.getM_regdate());
+				session.setAttribute("m_phone", dto.getM_phone());
+				
 				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
 				session.setMaxInactiveInterval(600);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
-				session.setAttribute("loginMessage", "로그인 성공!");
+				session.setAttribute("loginMessage", "ログイン成功");
 				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
 			} else {
 				// 3-2. 로그인 실패
-				String errorMessage = "아이디 또는 비밀번호가 일치하지 않습니다.";
+				String errorMessage = "IDまたはPWが一致しません";
 				request.setAttribute("errorMessage", errorMessage);
 				request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
 			}
 		} catch (SQLException e) {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
-			request.setAttribute("errorMessage", "데이터베이스 오류가 발생했습니다.");
+			request.setAttribute("errorMessage", "データベースエラー");
 			request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
 		}
 	}

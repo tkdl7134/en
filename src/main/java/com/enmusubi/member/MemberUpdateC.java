@@ -10,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 @WebServlet("/MemberUpdateC")
 public class MemberUpdateC extends HttpServlet {
@@ -21,7 +24,7 @@ public class MemberUpdateC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+		
 		// request에서 파라미터 가져오기
 				String m_id = request.getParameter("m_id");
 		        String m_pw = request.getParameter("m_pw");
@@ -55,13 +58,17 @@ public class MemberUpdateC extends HttpServlet {
 
 		        MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
+		        HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
+		        session.setAttribute("a_postcode", dto.getA_postcode());
+		        session.setAttribute("a_address", dto.getA_address());
+		        
 	        MemberDAO dao = new MemberDAO();
 	        try {
 	            dao.updateMemberInfo(dto);
 	            response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 		} catch (SQLException e) {
 			e.printStackTrace();
-			request.setAttribute("errorMessage", "회원 정보 수정 중 오류가 발생했습니다.");
+			request.setAttribute("errorMessage", "アカウント情報修正エラー");
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 

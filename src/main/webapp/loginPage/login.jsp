@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>로그인</title>
+    <title>ログイン</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>로그인</h2>
+    <h2>ログイン</h2>
     <form action="/En/MemberC" method="post">
-        <input type="text" name="m_id" placeholder="아이디" required><br>
-        <input type="password" name="m_pw" placeholder="비밀번호" required><br>
-        <input type="submit" value="로그인">
+        <input type="text" name="m_id" placeholder="ユーザーID" required><br>
+        <input type="password" name="m_pw" placeholder="パスワード" required><br>
+        <button>ログイン</button>
     </form>
-    <button id="lineLoginButton">LINE로그인</button>
+    <button id="lineLoginButton">LINEログイン</button>
     <script src="login.js"></script> 
 </body>
 </html>

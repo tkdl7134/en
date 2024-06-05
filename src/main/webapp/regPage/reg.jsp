@@ -4,35 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원가입</title>
+<title>アカウント登録</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-	<h2>회원가입</h2>
+	<h2>アカウント登録</h2>
 
-    <c:if test="${not empty error}">
-        <p style="color: red;">${error}</p>
-    </c:if>
-
-    <c:if test="${not empty idCheckResult}">
-        <p style="color: ${idCheckResult eq 'available' ? 'green' : 'red'};">${idCheckResult}</p>
-    </c:if>
-
-    
 <form action="MemberRegC" method="post" onsubmit="return validatePassword()">
-        아이디<input type="text" name="m_id" id="m_id" placeholder="아이디" required>
-        <button type="button" onclick="dupleChk()">중복 확인</button> 
+        ユーザーID<input type="text" name="m_id" id="m_id" placeholder="ユーザーID" required>
+        <button type="button" onclick="dupleChk()">IDチェック</button> 
         <div id="idCheckResult"></div> <br> 
     
-        비밀번호<input type="password" name="m_pw" id="m_pw" placeholder="비밀번호" required><br><br>
-        비밀번호 확인<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="비밀번호 확인" required><br><br>
-        이름<input type="text" name="m_name" placeholder="이름" required><br><br>
-        후리가나<input type="text" name="m_name_kana" placeholder="후리가나" required><br><br>
-        성별<input type="radio" name="m_gender" value="남성" checked> 남성
-        <input type="radio" name="m_gender" value="여성"> 여성
-        <input type="radio" name="m_gender" value="기타"> 기타
+        パスワード<input type="password" name="m_pw" id="m_pw" placeholder="パスワード" required><br><br>
+        パスワード確認<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="パスワード確認" required><br><br>
+        名前<input type="text" name="m_name" placeholder="山田 太郎" required><br><br>
+        フリガナ<input type="text" name="m_name_kana" placeholder="ヤマダ タロウ" required><br><br>
+        性別<input type="radio" name="m_gender" value="male" checked> 男性
+        <input type="radio" name="m_gender" value="female"> 女性
+        <input type="radio" name="m_gender" value="other"> その他
         <br><br>
-        우편번호<input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
+        郵便番号<input type="text" name="a_postcode" placeholder="郵便番号" required><br><br>
        <label for="a_prefecture">都道府県</label>
                 <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
@@ -86,22 +77,22 @@
                     <option value="海外">海外</option>
                 </select> <br><br>
                 <!-- 주소 <input type="text" name="a_address" required><br><br> -->
-      市区町村<br><input type="text" name="a_city" required><br><br>
-        番地 <br><input type="text" name="a_street" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_building" required><br><br>
-        이메일<input type="email" name="m_email" placeholder="이메일" required><br><br>
-        전화번호<input type="text" name="m_phone" placeholder="전화번호" required><br><br>
-        생년월일<input type="date" name="m_birth" required> <br><br>
-        <input type="submit" value="회원가입">
+      市区町村<br><input type="text" name="a_city" placeholder="市区町村" required><br><br>
+        番地 <br><input type="text" name="a_street" placeholder="番地" required><br><br>
+        ビル・マンション名など <br><input type="text" name="a_building" placeholder="ビル・マンション名" required><br><br>
+        メールアドレス<input type="email" name="m_email" placeholder="example@example.com" required><br><br>
+        電話番号<input type="text" name="m_phone" placeholder="012-3456-7890" required><br><br>
+        生年月日<input type="date" name="m_birth" required> <br><br>
+        <button>アカウント登録</button>
     </form>
-
+<a href="javascript:window.history.back();"><button>取消</button></a>
 	<script>
 		function validatePassword() {
 			const pw = document.getElementById('m_pw').value;
 			const pwConfirm = document.getElementById('m_pw_confirm').value;
 
 			if (pw !== pwConfirm) {
-				alert("비밀번호가 일치하지 않습니다.");
+				alert("パスワードが一致しません。");
 				return false; // 폼 제출 방지
 			}
 			return true; // 폼 제출 허용

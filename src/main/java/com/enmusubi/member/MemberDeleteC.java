@@ -33,7 +33,7 @@ public class MemberDeleteC extends HttpServlet {
                     response.sendRedirect("main.jsp"); // 메인 페이지로 이동
                 } else {
                     // 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
-                    request.setAttribute("errorMessage", "탈퇴에 실패했습니다. 해당 회원 정보가 존재하지 않습니다.");
+                    request.setAttribute("errorMessage", "アカウント削除失敗。アカウント情報が存在しません。");
                     response.sendRedirect("myPage/myPage.jsp"); // 마이 페이지로 이동 (오류 메시지 표시)
                 }
             } catch (SQLException e) {
