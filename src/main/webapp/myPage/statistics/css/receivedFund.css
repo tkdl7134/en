@@ -17,6 +17,101 @@ body {
 	
 	
 }
+.recFund-contents {
+	
+	height : 20rem;
+	 width : 15rem;
+}
 .fund-products {
     width: 15rem;
+}
+#first-product-name {
+	position: relative;
+	 top: 4rem; 
+	 left: 2rem; 
+	 transform: 
+	 rotate(-11deg); 
+	 display: inline-block;
+}
+#product-type1 {
+	position : relative;
+	bottom : 16rem;
+	transform:
+	 rotate(-1deg); 
+	 display: inline-block;
+	left : 1.3rem;
+}
+#second-product-name {
+	position: relative;
+	 top: 12rem; 
+	 left: 5.7rem; 
+	 transform: 
+	 rotate(7deg); 
+	 display: inline-block;
+	
+}
+#product-type2 {
+	width : 6.5rem;
+	position : relative;
+	bottom : 18.5rem;
+	transform:
+	 rotate(16deg); 
+	 display: inline-block;
+	left : 4.5rem;
+}
+#third-product-name {
+	
+	position: relative;
+	 top: 5rem; 
+	 left: 5.7rem; 
+	 transform: 
+	 rotate(-5deg); 
+	 display: inline-block;
+}
+#product-type3 {
+	
+	width : 6.5rem;
+	position : relative;
+	bottom : 11rem;
+	transform:
+	 rotate(3deg); 
+	 display: inline-block;
+	left : 5rem;
+	
+}
+#fourth-product-name {
+	
+	position: relative;
+	 top: 15rem; 
+	 left:5.5rem; 
+	 transform: 
+	 rotate(8.5deg); 
+	 display: inline-block;
+	
+}
+#product-type4{
+	width : 6.5rem;
+	position : relative;
+	bottom : 18rem;
+	transform:
+	 rotate(18deg); 
+	 display: inline-block;
+	left : 5rem;
+}
+#fifth-product-name {
+	position: relative;
+	 top: 15rem; 
+	 left:6.5rem; 
+	 transform: 
+	 rotate(-8deg); 
+	 display: inline-block;
+}
+#product-type5{
+	width : 6.5rem;
+	position : relative;
+	bottom : 18rem;
+	transform:
+	 rotate(1deg); 
+	 display: inline-block;
+	left : 3.7rem;
 }
