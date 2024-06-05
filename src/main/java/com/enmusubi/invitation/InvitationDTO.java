@@ -1,6 +1,6 @@
 package com.enmusubi.invitation;
 
-public class invitationDTO {
+public class InvitationDTO {
 	      
 	private String e_no;
 	private String m_id;
@@ -10,7 +10,7 @@ public class invitationDTO {
 	private	String g_attend;//참여여부
 	private	String g_age_type;
 	private String allergy;
-public invitationDTO() {
+public InvitationDTO() {
 	// TODO Auto-generated constructor stub
 }
 public String getE_no() {
@@ -61,7 +61,7 @@ public String getAllergy() {
 public void setAllergy(String allergy) {
 	this.allergy = allergy;
 }
-public invitationDTO(String e_no, String m_id, String m_name, String m_phone, String m_email, String g_attend,
+public InvitationDTO(String e_no, String m_id, String m_name, String m_phone, String m_email, String g_attend,
 		String g_age_type, String allergy) {
 	super();
 	this.e_no = e_no;

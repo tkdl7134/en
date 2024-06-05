@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>작은 창</title>
+<link rel="stylesheet" href="invitationPage/guest.css">
 </head>
 <body>
-    <h1>작은 창</h1>
-    <p>이곳에 내용을 작성하세요.</p>
+    <div class="hw_containter">
+    	<div class="hw_img"></div>
+    </div>
 </body>
 </html>

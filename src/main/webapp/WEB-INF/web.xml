@@ -39,4 +39,24 @@
     <servlet-name>InvitationController</servlet-name>
     <url-pattern>/InvitationController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InvitationRegController</display-name>
+    <servlet-name>InvitationRegController</servlet-name>
+    <servlet-class>com.enmusubi.invitation.InvitationRegController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvitationRegController</servlet-name>
+    <url-pattern>/InvitationRegController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InvitationRegC</display-name>
+    <servlet-name>InvitationRegC</servlet-name>
+    <servlet-class>com.enmusubi.invitation.InvitationRegController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvitationRegC</servlet-name>
+    <url-pattern>/InvitationRegC</url-pattern>
+  </servlet-mapping>
 </web-app>

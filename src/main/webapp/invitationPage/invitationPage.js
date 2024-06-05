@@ -1,3 +1,3 @@
 function guest() {
-    window.open('guest.jsp', 'guest', 'width=400,height=300');
+    window.open('invitationPage/guest.jsp', 'guest', 'width=600,height=900');
 }
