@@ -63,6 +63,16 @@ pageEncoding="UTF-8"%>
           <img id="product-type5" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
       </div>
+      <div id="recFund-info">
+      <img id="info-page" alt="" src="myPage/statistics/imgFolder/fundContentReal.png">
+     <div>
+      <input id="start-date" type="date">
+      <input id="end-date" type="date">
+      </div>
+      
+      
+      
+      </div>
     </div>
    
   </body>

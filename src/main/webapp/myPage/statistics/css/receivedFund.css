@@ -9,7 +9,7 @@ body {
 }
 .recFund-title {
   margin-top: 3rem;
-	margin-bottom : 7rem;
+	margin-bottom : 14rem;
   font-size: 2.5rem;
 }
 .recFund-content {
@@ -114,4 +114,31 @@ body {
 	 rotate(1deg); 
 	 display: inline-block;
 	left : 3.7rem;
+}
+#recFund-info{
+
+	position : relative;
+	bottom : 30rem;
+	left : 7.5rem;
+	
+	
+}
+
+#info-page{
+	
+	width : 45rem;	
+	
+}
+
+#start-date{
+	position : relative;
+	bottom : 30rem;
+	left : 1rem;
+	
+}
+#end-date{
+	position : relative;
+	bottom : 30rem;
+	left : 1rem;
+	
 }
