@@ -133,16 +133,38 @@ public class MemberDAO {
 
 	// 회원탈퇴
 	public int deleteMember(String m_id) throws SQLException {
-		String deleteAddressSql = "DELETE FROM Address WHERE m_id = ?";
-		String deleteMemberSql = "DELETE FROM Member WHERE m_id = ?";
-		try (Connection conn = DBManager.connect();
-				PreparedStatement pstmt1 = conn.prepareStatement(deleteAddressSql);
-				PreparedStatement pstmt2 = conn.prepareStatement(deleteMemberSql)) {
-			pstmt1.setString(1, m_id);
-			pstmt1.executeUpdate();
-			pstmt2.setString(1, m_id);
-			return pstmt2.executeUpdate();
-		}
+		Connection con = null;
+	    PreparedStatement pstmtAddress = null;
+	    PreparedStatement pstmtMember = null;
+
+	    String sqlAddress = "DELETE FROM Address WHERE m_id = ?";
+	    String sqlMember = "DELETE FROM Member WHERE m_id = ?";
+
+	    try {
+	        con = DBManager.connect();
+	        con.setAutoCommit(false); // 트랜잭션 시작
+
+	        // 1. 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
+	        pstmtAddress = con.prepareStatement(sqlAddress);
+	        pstmtAddress.setString(1, m_id);
+	        pstmtAddress.executeUpdate();
+
+	        // 2. 회원 정보 삭제
+	        pstmtMember = con.prepareStatement(sqlMember);
+	        pstmtMember.setString(1, m_id);
+	        int result = pstmtMember.executeUpdate(); // 삭제된 행 수 반환
+
+	        con.commit(); // 트랜잭션 커밋
+	        return result; // 삭제 성공 여부 반환 (1: 성공, 0: 실패)
+	    } catch (SQLException e) {
+	        if (con != null) {
+	            con.rollback(); // 트랜잭션 롤백
+	        }
+	        throw e;
+	    } finally {
+	        DBManager.close(con, pstmtAddress, null);
+	        DBManager.close(con, pstmtMember, null);
+	    }
 	}
 
 	// ResultSet -> DTO 변환 (마이페이지 등)
