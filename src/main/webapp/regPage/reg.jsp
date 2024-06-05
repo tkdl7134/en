@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,30 +9,22 @@
 </head>
 <body>
 	<h2>회원가입</h2>
-    <%
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
-    %>
-            <p style="color: red;"><%= error %></p>
-    <%
-        }
 
-        String idCheckResult = (String) request.getAttribute("idCheckResult"); // 중복 확인 결과
-        if (idCheckResult != null) {
-    %>
-            <p style="color: <%= idCheckResult.equals("available") ? "green" : "red" %>;"><%= idCheckResult %></p>
-    <%
-        }
-    %>
+    <c:if test="${not empty error}">
+        <p style="color: red;">${error}</p>
+    </c:if>
 
-    <form action="MemberIdCheckC" method="post"> 
+    <c:if test="${not empty idCheckResult}">
+        <p style="color: ${idCheckResult eq 'available' ? 'green' : 'red'};">${idCheckResult}</p>
+    </c:if>
+
+    <form action="MemberIdCheckC" method="post">
         아이디<input type="text" name="m_id" id="m_id" placeholder="아이디" required>
-        <button type="button" onclick="dupleChk()">중복 확인</button> 
-        <div id="idCheckResult"></div> <br> <%-- 결과 표시 영역 추가 --%>
+        <button type="button" onclick="dupleChk()">중복 확인</button> 
+        <div id="idCheckResult"></div> <br> 
     </form>
         
-<!-- 	<form action="MemberRegC" method="post" onsubmit="return validatePassword()"> -->
-	<form action="MemberRegC" method="post">
+<form action="MemberRegC" method="post" onsubmit="return validatePassword()">
         비밀번호<input type="password" name="m_pw" id="m_pw" placeholder="비밀번호" required><br><br>
         비밀번호 확인<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="비밀번호 확인" required><br><br>
         이름<input type="text" name="m_name" placeholder="이름" required><br><br>
@@ -41,8 +34,8 @@
         <input type="radio" name="m_gender" value="기타"> 기타
         <br><br>
         우편번호<input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
-        <label for="prefecture">都道府県</label>
-                <select id="prefecture" name="prefecture" required>
+        <label for="a_prefecture">都道府県</label>
+                <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
                     <option value="北海道">北海道</option>
                     <option value="青森県">青森県</option>
