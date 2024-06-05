@@ -34,7 +34,7 @@
         <input type="radio" name="m_gender" value="기타"> 기타
         <br><br>
         우편번호<input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
-        <label for="a_prefecture">都道府県</label>
+        <!-- <label for="a_prefecture">都道府県</label>
                 <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
                     <option value="北海道">北海道</option>
@@ -85,10 +85,11 @@
                     <option value="鹿児島県">鹿児島県</option>
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
-                </select> <br><br>
-        市区町村<br><input type="text" name="a_address_1" required><br><br>
-        番地 <br><input type="text" name="a_address_2" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_address_3" required><br><br>
+                </select> <br><br> -->
+                주소 <input type="text" name="a_address" required><br><br>
+       <!--  市区町村<br><input type="text" name="a_city" required><br><br>
+        番地 <br><input type="text" name="a_street" required><br><br>
+        ビル・マンション名など <br><input type="text" name="a_building" required><br><br> -->
         이메일<input type="email" name="m_email" placeholder="이메일" required><br><br>
         전화번호<input type="text" name="m_phone" placeholder="전화번호" required><br><br>
         생년월일<input type="date" name="m_birth" required> <br><br>
