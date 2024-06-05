@@ -90,6 +90,9 @@
     </form>
 <a href="javascript:window.history.back();"><button>取消</button></a>
 	<script>
+	
+	let isIdAvailable = false; // 아이디 사용 가능 여부 플래그
+
 		function validatePassword() {
 			const pw = document.getElementById('m_pw').value;
 			const pwConfirm = document.getElementById('m_pw_confirm').value;
@@ -98,10 +101,14 @@
 				alert("パスワードが一致しません。");
 				return false; // 폼 제출 방지
 			}
+
 			return true; // 폼 제출 허용
+				
 		}
 		
         function dupleChk(){
+        	isIdChecked = false; // 중복 확인 플래그 초기화
+        	
             let id = $("input[name='m_id']").val();
             console.log(id);
              $.ajax({
@@ -113,6 +120,13 @@
                         console.log(response);
                         console.log(response.idcheck);
                         $('#idCheckResult').text(response.idcheck);
+
+                        // 중복된 아이디인 경우 
+                        if (!isIdAvailable) {
+                            $("#m_id").val(""); // 아이디 입력 필드 초기화
+                            $("#m_id").focus(); // 아이디 입력 필드에 포커스
+                        }
+
                         if (response.idcheck === "使用中IDです。") {
                             $('#idCheckResult').addClass('id-duplicate').removeClass('id-available');
                         } else if (response.idcheck === "使用可能IDです。") {
