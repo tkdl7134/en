@@ -17,8 +17,14 @@
 						<div>商品に関して</div>
 					</div>
 					<div class="tk_thanks_button">
-						<button onclick="location.href='MoveMainC'">商品 ページ</button>
-						<button>ログイン</button>
+						<div>
+ 						 	<h3>ログイン</h3>
+ 						 	<img class="button_login" src="thanks/imgFolder/sakura.png" alt="상품 페이지">
+						</div>
+						<div>
+  						 	<h3>テンプレート<br>ペイジー</h3>
+  						 	<img class="button_templet" src="thanks/imgFolder/sakura.png" alt="로그인">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -26,6 +32,17 @@
 		
 </body>
 <script type="text/javascript">
-setTimeout(function(){location.href="MoveMainC";},2000); //2초후 이동
+setTimeout(function(){location.href="MoveMainC";},5000); //4초
+
+const buttonlogin = document.querySelector('.button_login'); // 버튼 클래스 로그인 div 선택
+const buttontemplet = document.querySelector('.button_templet'); // 버튼 클래스 템플릿 div 선택
+
+buttonlogin.addEventListener('click', () => {
+  location.href = 'MoveMainC'; // 첫 번째 div 클릭 시 이동할 URL
+});
+
+buttontemplet.addEventListener('click', () => {
+  location.href = 'MoveTempletC'; // 두 번째 div 클릭 시 이동할 URL
+});
 </script>
 </html>

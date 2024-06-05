@@ -47,4 +47,41 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items:center;
+	gap: 10rem;
 }
+
+.tk_thanks_button > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    height: 10rem;
+}
+
+.tk_thanks_button img {
+  width: 6rem;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.button_templet:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/loveicon2.png') 5 5, pointer;
+}
+
+.button_login:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/lineicon.png') 5 5, pointer;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
