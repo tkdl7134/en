@@ -32,7 +32,7 @@
 		
 </body>
 <script type="text/javascript">
-setTimeout(function(){location.href="MoveMainC";},1000000000); //4초
+setTimeout(function(){location.href="MoveMainC";},5000); //4초
 
 const buttonlogin = document.querySelector('.button_login'); // 버튼 클래스 로그인 div 선택
 const buttontemplet = document.querySelector('.button_templet'); // 버튼 클래스 템플릿 div 선택
