@@ -29,4 +29,24 @@
     <servlet-name>ss</servlet-name>
     <url-pattern>/ss</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StatisticsTestController</display-name>
+    <servlet-name>StatisticsTestController</servlet-name>
+    <servlet-class>com.enmusubi.myPage.statistics.StatisticsTestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StatisticsTestController</servlet-name>
+    <url-pattern>/StatisticsTestController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>receivedFundingController</display-name>
+    <servlet-name>receivedFundingController</servlet-name>
+    <servlet-class>com.enmusubi.myPage.statistics.receivedFundingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>receivedFundingController</servlet-name>
+    <url-pattern>/receivedFundingController</url-pattern>
+  </servlet-mapping>
 </web-app>
