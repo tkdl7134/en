@@ -47,21 +47,53 @@ public class MemberDAO {
 	}
 
 	// 회원가입
-	public int register(MemberDTO dto) throws SQLException {
-		String sql = "INSERT INTO Member VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			pstmt.setString(1, dto.getM_id());
-			pstmt.setString(2, dto.getM_pw());
-			pstmt.setString(3, dto.getM_name());
-			pstmt.setString(4, dto.getM_name_kana());
-			pstmt.setString(5, dto.getM_birth());
-			pstmt.setString(6, dto.getM_gender());
-			pstmt.setString(7, dto.getM_email());
-			pstmt.setString(8, dto.getM_regdate());
-			pstmt.setString(9, dto.getM_img());
-			pstmt.setString(10, dto.getM_phone());
-			return pstmt.executeUpdate();
-		}
+	public int registerMemberWithAddress(MemberDTO dto) throws SQLException {
+		Connection con = null;
+	    PreparedStatement pstmtMember = null; // Member 테이블용 PreparedStatement
+	    PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
+		
+	    String sqlMember = "INSERT INTO Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    String sqlAddress = "INSERT INTO Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
+		
+		try {
+			con = DBManager.connect();
+	        con.setAutoCommit(false); // 트랜잭션 시작
+	   
+	        // 디버깅 로그 출력 (m_id 값 확인)
+            System.out.println("MemberDAO - registerMemberWithAddress - m_id: " + dto.getM_id()); // 콘솔에 m_id 값 출력
+            
+	        // 회원 정보 등록
+	        pstmtMember = con.prepareStatement(sqlMember);
+	        pstmtMember.setString(1, dto.getM_id());
+	        pstmtMember.setString(2, dto.getM_pw());
+	        pstmtMember.setString(3, dto.getM_name());
+	        pstmtMember.setString(4, dto.getM_name_kana());
+	        pstmtMember.setString(5, dto.getM_birth());
+	        pstmtMember.setString(6, dto.getM_gender());
+	        pstmtMember.setString(7, dto.getM_email());
+	        pstmtMember.setString(8, dto.getM_regdate());
+	        pstmtMember.setString(9, dto.getM_img());
+	        pstmtMember.setString(10, dto.getM_phone());
+	        pstmtMember.executeUpdate();
+			
+	     // 2. 주소 정보 등록
+	        pstmtAddress = con.prepareStatement(sqlAddress);
+	        pstmtAddress.setString(1, dto.getM_id());
+	        pstmtAddress.setString(2, dto.getA_address());
+	        pstmtAddress.setString(3, dto.getA_postcode());
+	        pstmtAddress.executeUpdate();
+
+	        con.commit(); // 트랜잭션 커밋
+	        return 1; // 성공
+	    } catch (SQLException e) {
+	        if (con != null) {
+	            con.rollback(); // 트랜잭션 롤백
+	        }
+	        throw e;
+	    } finally {
+	        DBManager.close(con, pstmtMember, null);
+	        DBManager.close(con, pstmtAddress, null);
+	    }
 	}
 
 	// 마이페이지 (정보 조회 및 수정)

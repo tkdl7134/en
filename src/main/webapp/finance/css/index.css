@@ -105,6 +105,9 @@ body {
 .kh-swaying {
   animation: swaying 3s infinite ease-in-out;
 }
+.kh-rotate {
+  animation: rotate-axis 3s infinite ease-in-out;
+}
 @keyframes swaying {
   0% {
     transform: rotate(-0.5deg);
@@ -116,7 +119,14 @@ body {
     transform: rotate(-0.5deg);
   }
 }
-
+@keyframes rotate-axis {
+  from {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(800px) rotateY(360deg);
+  }
+}
 .kh-f-popup {
   position: absolute;
   left: 50%;
@@ -167,10 +177,10 @@ input::-webkit-inner-spin-button {
   border-radius: 100%;
   box-shadow: 2px 2px 2px 0px #bbbbbb;
   background-image: url("../img/confirm.png");
-  background-size: cover; 
+  background-size: cover;
 }
-.kh-f-btn:hover{
-	cursor: pointer;
+.kh-f-btn:hover {
+  cursor: pointer;
 }
 .kh-f-btn:active {
   background-image: url("../img/confirm(active).png");
@@ -184,4 +194,31 @@ input::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   font-size: 2rem;
+  text-wrap: nowrap;
+}
+@keyframes vibration {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.vibration {
+  animation: vibration 0.1s infinite;
+}
+.kh-none {
+  display: none;
+}
+.kh-show {
+  display: block;
 }

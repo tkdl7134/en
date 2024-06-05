@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8" />
+<script type="text/javascript" src="finance/js/fund.js"></script>
 <div class="kh-f-popup">
 	<div class="kh-f-product-box">
 		<div class="kh-f-img-box">
@@ -23,14 +23,16 @@
 	<div class="kh-f-des">
 		ファンディングする金額を<br />入力してください。
 	</div>
-	<div style="font-size: 2rem">
-		<input class="kh-f-input" type="number" maxlength="8"
-			oninput="numberMaxLength(this)" />円
+	<div style="position:relative;">
+		<div style="font-size: 2rem" id="kh-input-box">
+			<input class="kh-f-input" type="number" maxlength="8"
+				oninput="numberMaxLength(this)" onclick="removeWarn()" />円
+		</div>
+		<span id="kh-warn-text"
+			style="color: red; position: absolute; bottom: -20px" class="kh-none">金額をご入力してください。</span>
 	</div>
-	<div class="kh-f-btn"></div>
+	<div class="kh-f-btn" onclick="goStatistic()"></div>
 </div>
-
-
 
 <div class="kh-f-card-container">
 	<div class="kh-fake-card"></div>

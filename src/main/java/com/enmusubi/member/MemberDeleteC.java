@@ -25,7 +25,7 @@ public class MemberDeleteC extends HttpServlet {
 
 		if (m_id == null) {
 			// 로그인되지 않은 경우 로그인 페이지로 이동
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("loginPage/login.jsp");
 			return;
 		}
 
@@ -39,7 +39,7 @@ public class MemberDeleteC extends HttpServlet {
 			} else {
 				// 탈퇴 실패 처리
 				request.setAttribute("error", "탈퇴 실패");
-				request.getRequestDispatcher("mypage.jsp").forward(request, response);
+				request.getRequestDispatcher("myPage/mypage.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

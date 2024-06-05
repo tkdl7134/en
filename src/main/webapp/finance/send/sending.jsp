@@ -2,14 +2,12 @@
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
-  </head>
+  <link rel="stylesheet" href="finance/css/send.css" />
+  <script src="finance/js/send.js" defer></script>
   <div class="kh-s-container">
     <div class="kh-s-popup">
-    	<h1>関係による金額のおすすめ</h1>
-    
+      <h1>関係による金額のおすすめ</h1>
+
       <div class="kh-s-recom-box">
         <div class="kh-s-recom-item-box" value="30000">
           <div class="kh-s-recom-item">会社同僚</div>
@@ -29,15 +27,24 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
       <div>一番大切なことはお金ではなく心です。</div>
-      <div style="font-size: 2rem">
-        <input
-          class="kh-s-input"
-          type="number"
-          maxlength="8"
-          oninput="numberMaxLength(this)"
-        />円
+      <div style="position: relative">
+        <div id="kh-input-box" style="font-size: 2rem">
+          <input
+            class="kh-s-input"
+            type="number"
+            maxlength="8"
+            oninput="numberMaxLength(this)"
+            onclick="removeWarn()"
+          />円
+        </div>
+        <span
+          id="kh-warn-text"
+          style="color: red; position: absolute; bottom: -20px"
+          class="kh-none"
+          >金額をご入力してください。</span
+        >
       </div>
-      <div class="kh-s-btn"></div>
+      <div class="kh-s-btn" onclick="goFinanceResult()"></div>
     </div>
   </div>
 </html>
