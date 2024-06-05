@@ -18,13 +18,12 @@
         <p style="color: ${idCheckResult eq 'available' ? 'green' : 'red'};">${idCheckResult}</p>
     </c:if>
 
-    <form action="MemberIdCheckC" method="post">
+    
+<form action="MemberRegC" method="post" onsubmit="return validatePassword()">
         아이디<input type="text" name="m_id" id="m_id" placeholder="아이디" required>
         <button type="button" onclick="dupleChk()">중복 확인</button> 
         <div id="idCheckResult"></div> <br> 
-    </form>
-        
-<form action="MemberRegC" method="post" onsubmit="return validatePassword()">
+    
         비밀번호<input type="password" name="m_pw" id="m_pw" placeholder="비밀번호" required><br><br>
         비밀번호 확인<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="비밀번호 확인" required><br><br>
         이름<input type="text" name="m_name" placeholder="이름" required><br><br>
@@ -34,7 +33,7 @@
         <input type="radio" name="m_gender" value="기타"> 기타
         <br><br>
         우편번호<input type="text" name="a_postcode" placeholder="우편번호" required><br><br>
-        <!-- <label for="a_prefecture">都道府県</label>
+       <label for="a_prefecture">都道府県</label>
                 <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
                     <option value="北海道">北海道</option>
@@ -85,11 +84,11 @@
                     <option value="鹿児島県">鹿児島県</option>
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
-                </select> <br><br> -->
-                주소 <input type="text" name="a_address" required><br><br>
-       <!--  市区町村<br><input type="text" name="a_city" required><br><br>
+                </select> <br><br>
+                <!-- 주소 <input type="text" name="a_address" required><br><br> -->
+      市区町村<br><input type="text" name="a_city" required><br><br>
         番地 <br><input type="text" name="a_street" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_building" required><br><br> -->
+        ビル・マンション名など <br><input type="text" name="a_building" required><br><br>
         이메일<input type="email" name="m_email" placeholder="이메일" required><br><br>
         전화번호<input type="text" name="m_phone" placeholder="전화번호" required><br><br>
         생년월일<input type="date" name="m_birth" required> <br><br>

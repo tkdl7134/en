@@ -53,7 +53,7 @@ public class MemberDAO {
 	    PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
 		
 	    String sqlMember = "INSERT INTO Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	    String sqlAddress = "inselt into address (m_id, a_address, m_postcode) valuse (?, ?, ?)";
+	    String sqlAddress = "INSERT INTO Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 		
 		try {
 			con = DBManager.connect();
@@ -76,8 +76,8 @@ public class MemberDAO {
 	        pstmtMember.setString(10, dto.getM_phone());
 	        pstmtMember.executeUpdate();
 			
-	     // 주소 정보 등록
-	        pstmtAddress = con.prepareStatement(sqlAddress); // 별도의 PreparedStatement 사용
+	     // 2. 주소 정보 등록
+	        pstmtAddress = con.prepareStatement(sqlAddress);
 	        pstmtAddress.setString(1, dto.getM_id());
 	        pstmtAddress.setString(2, dto.getA_address());
 	        pstmtAddress.setString(3, dto.getA_postcode());
@@ -91,8 +91,8 @@ public class MemberDAO {
 	        }
 	        throw e;
 	    } finally {
-	        DBManager.close(con, pstmtMember, null); // pstmtMember 종료
-	        DBManager.close(con, pstmtAddress, null); // pstmtAddress 종료
+	        DBManager.close(con, pstmtMember, null);
+	        DBManager.close(con, pstmtAddress, null);
 	    }
 	}
 

@@ -34,7 +34,6 @@ public class MemberDTO {
 		this.a_postcode = a_postcode;
 	}
 
-	// Getter & Setter
 	public String getM_id() {
 		return m_id;
 	}
