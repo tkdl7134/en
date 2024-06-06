@@ -61,6 +61,7 @@ public class MemberDetailC extends HttpServlet {
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
 		String m_name_kana = request.getParameter("m_name_kana");
+		String m_name_rome = request.getParameter("m_name_rome");
 		String m_birth = request.getParameter("m_birth");
 		String m_gender = request.getParameter("m_gender");
 		String m_email = request.getParameter("m_email");
@@ -71,9 +72,8 @@ public class MemberDetailC extends HttpServlet {
 		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
 		String m_img = "default.png"; // 기본 이미지 설정
 
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, null, m_img, m_phone,
-				a_address, a_postcode); // m_regdate는 null로 설정
-
+		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_email, m_img, m_phone, a_address, a_postcode);
+		
 		MemberDAO dao = new MemberDAO();
 		try {
 			int result = dao.updateMypage(dto);

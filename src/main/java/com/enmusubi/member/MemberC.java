@@ -35,9 +35,10 @@ public class MemberC extends HttpServlet {
 			if (dto != null) {
 				// 3-1. 로그인 성공
 				HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
-				session.setAttribute("m_id", dto.getM_id()); // 세션에 사용자 ID 저장
-				session.setAttribute("m_name", dto.getM_name()); // 세션에 사용자 이름 저장 (선택 사항)
+				session.setAttribute("m_id", dto.getM_id());
+				session.setAttribute("m_name", dto.getM_name()); 
 				session.setAttribute("m_name_kana", dto.getM_name_kana());
+				session.setAttribute("m_name_rome", dto.getM_name_rome());
 				session.setAttribute("m_gender", dto.getM_gender());
 				session.setAttribute("a_postcode", dto.getA_postcode());
 				session.setAttribute("a_address", dto.getA_address());

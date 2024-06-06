@@ -31,6 +31,7 @@ public class MemberDAO {
 		dto.setM_pw(rs.getString("m_pw"));
 		dto.setM_name(rs.getString("m_name"));
 		dto.setM_name_kana(rs.getString("m_name_kana"));
+		dto.setM_name_rome(rs.getString("m_name_rome"));
 		dto.setM_birth(rs.getString("m_birth"));
 		dto.setM_gender(rs.getString("m_gender"));
 		dto.setM_email(rs.getString("m_email"));
@@ -47,7 +48,7 @@ public class MemberDAO {
 	    PreparedStatement pstmtMember = null; // Member 테이블용 PreparedStatement
 	    PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
 		
-	    String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    String sqlAddress = "INSERT INTO s_Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 		
 		try {
@@ -63,12 +64,13 @@ public class MemberDAO {
 	        pstmtMember.setString(2, dto.getM_pw());
 	        pstmtMember.setString(3, dto.getM_name());
 	        pstmtMember.setString(4, dto.getM_name_kana());
-	        pstmtMember.setString(5, dto.getM_birth());
-	        pstmtMember.setString(6, dto.getM_gender());
-	        pstmtMember.setString(7, dto.getM_email());
-	        pstmtMember.setString(8, dto.getM_regdate());
-	        pstmtMember.setString(9, dto.getM_img());
-	        pstmtMember.setString(10, dto.getM_phone());
+	        pstmtMember.setString(5, dto.getM_name_rome());
+	        pstmtMember.setString(6, dto.getM_birth());
+	        pstmtMember.setString(7, dto.getM_gender());
+	        pstmtMember.setString(8, dto.getM_email());
+	        pstmtMember.setString(9, dto.getM_regdate());
+	        pstmtMember.setString(10, dto.getM_img());
+	        pstmtMember.setString(11, dto.getM_phone());
 	        pstmtMember.executeUpdate();
 			
 	     // 2. 주소 정보 등록
@@ -110,18 +112,19 @@ public class MemberDAO {
 	}
 
 	public int updateMypage(MemberDTO dto) throws SQLException {
-		String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, "
+		String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
 				+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, dto.getM_pw());
 			pstmt.setString(2, dto.getM_name());
 			pstmt.setString(3, dto.getM_name_kana());
-			pstmt.setString(4, dto.getM_birth());
-			pstmt.setString(5, dto.getM_gender());
-			pstmt.setString(6, dto.getM_email());
-			pstmt.setString(7, dto.getM_img());
-			pstmt.setString(8, dto.getM_phone());
-			pstmt.setString(9, dto.getM_id());
+			pstmt.setString(4, dto.getM_name_rome());
+			pstmt.setString(5, dto.getM_birth());
+			pstmt.setString(6, dto.getM_gender());
+			pstmt.setString(7, dto.getM_email());
+			pstmt.setString(8, dto.getM_img());
+			pstmt.setString(9, dto.getM_phone());
+			pstmt.setString(10, dto.getM_id());
 			return pstmt.executeUpdate();
 		}
 	}
@@ -177,6 +180,7 @@ public class MemberDAO {
 		dto.setM_phone(rs.getString("m_phone"));
 		dto.setA_address(rs.getString("a_address")); // 주소 정보 설정
 		dto.setA_postcode(rs.getString("a_postcode")); // 주소 정보 설정
+		dto.setM_name_rome(rs.getString("m_name_rome"));
 
 		// Address 정보가 없는 경우 null 처리
 		String a_address = rs.getString("a_address");
@@ -216,7 +220,7 @@ public class MemberDAO {
 
 	// 회원 정보 업데이트 (전체 정보)
 	public void updateMemberInfo(MemberDTO dto) throws SQLException {
-		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
+		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
 		String sql2 = "UPDATE s_Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
 
 		try (Connection conn = DBManager.connect();
@@ -227,11 +231,12 @@ public class MemberDAO {
 			pstmt1.setString(1, dto.getM_pw());
 			pstmt1.setString(2, dto.getM_name());
 			pstmt1.setString(3, dto.getM_name_kana());
-			pstmt1.setString(4, dto.getM_birth());
-			pstmt1.setString(5, dto.getM_gender());
-			pstmt1.setString(6, dto.getM_email());
-			pstmt1.setString(7, dto.getM_phone());
-			pstmt1.setString(8, dto.getM_id());
+			pstmt1.setString(4, dto.getM_name_rome());
+			pstmt1.setString(5, dto.getM_birth());
+			pstmt1.setString(6, dto.getM_gender());
+			pstmt1.setString(7, dto.getM_email());
+			pstmt1.setString(8, dto.getM_phone());
+			pstmt1.setString(9, dto.getM_id());
 			pstmt1.executeUpdate();
 
 			// Address 테이블 업데이트

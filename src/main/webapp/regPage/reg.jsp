@@ -23,6 +23,7 @@
         パスワード確認<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="パスワード確認" required><br><br>
         名前<input type="text" name="m_name" placeholder="山田 太郎" required><br><br>
         フリガナ<input type="text" name="m_name_kana" placeholder="ヤマダ タロウ" required><br><br>
+        名前(英語)<input type="text" name="m_name_rome" placeholder="Yamada Tarou" required><br><br>
         性別<input type="radio" name="m_gender" value="male" checked> 男性
         <input type="radio" name="m_gender" value="female"> 女性
         <input type="radio" name="m_gender" value="other"> その他

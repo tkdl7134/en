@@ -19,6 +19,7 @@
 	<p>ユーザーID: ${dto.m_id}</p>
 	<p>名前: ${dto.m_name}</p>
 	<p>フリガナ: ${dto.m_name_kana}</p>
+	<p>名前(英語): ${dto.m_name_rome}</p>
 	<p>性別: ${dto.m_gender}</p>
 	<p>郵便番号: ${dto.a_postcode}</p>
 

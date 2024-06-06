@@ -33,6 +33,7 @@ public class MemberRegC extends HttpServlet {
         String m_pw = request.getParameter("m_pw");
         String m_name = request.getParameter("m_name");
         String m_name_kana = request.getParameter("m_name_kana");
+        String m_name_rome = request.getParameter("m_name_rome");
         String m_birth = request.getParameter("m_birth");
         String m_gender = request.getParameter("m_gender");
         String m_email = request.getParameter("m_email");
@@ -59,10 +60,10 @@ public class MemberRegC extends HttpServlet {
         String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
         String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
-        MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone, combinedAddress, a_postcode);
+        MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
         // MemberDTO 생성 후 로그 출력
-        System.out.println("MemberRegC - memberDto.getM_id(): " + dto.getM_id());
+//        System.out.println("MemberRegC - memberDto.getM_id(): " + dto.getM_id());
         
         MemberDAO dao = new MemberDAO();
         try {

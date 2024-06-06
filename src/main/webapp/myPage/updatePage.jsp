@@ -22,6 +22,8 @@
 			value="${sessionScope.m_name}" required><br>
 		<br> フリガナ<input type="text" id="m_name_kana" name="m_name_kana"
 			value="${sessionScope.m_name_kana}" required><br>
+		<br> 名前(英語)<input type="text" id="m_name_rome" name="m_name_rome"
+			value="${sessionScope.m_name_rome}" required><br>
 		<br> 性別<input type="radio" name="m_gender" value="male">
 		男性 <input type="radio" name="m_gender" value="female"> 女性 <input
 			type="radio" name="m_gender" value="other"> その他 <br>
