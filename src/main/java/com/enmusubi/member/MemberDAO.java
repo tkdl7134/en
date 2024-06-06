@@ -11,7 +11,7 @@ public class MemberDAO {
 
 	// 로그인
 	public MemberDTO login(String m_id, String m_pw) throws SQLException {
-		String sql = "SELECT * FROM Member WHERE m_id = ? AND m_pw = ?";
+		String sql = "SELECT * FROM s_Member WHERE m_id = ? AND m_pw = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, m_id);
 			pstmt.setString(2, m_pw);
@@ -47,15 +47,15 @@ public class MemberDAO {
 	    PreparedStatement pstmtMember = null; // Member 테이블용 PreparedStatement
 	    PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
 		
-	    String sqlMember = "INSERT INTO Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	    String sqlAddress = "INSERT INTO Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
+	    String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    String sqlAddress = "INSERT INTO s_Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 		
 		try {
 			con = DBManager.connect();
 	        con.setAutoCommit(false); // 트랜잭션 시작
 	   
 	        // 디버깅 로그 출력 (m_id 값 확인)
-            System.out.println("MemberDAO - registerMemberWithAddress - m_id: " + dto.getM_id()); // 콘솔에 m_id 값 출력
+//            System.out.println("MemberDAO - registerMemberWithAddress - m_id: " + dto.getM_id()); // 콘솔에 m_id 값 출력
             
 	        // 회원 정보 등록
 	        pstmtMember = con.prepareStatement(sqlMember);
@@ -94,7 +94,7 @@ public class MemberDAO {
 	// 마이페이지 (정보 조회 및 수정)
 	public MemberDTO getMypage(String m_id) throws SQLException {
 		// LEFT OUTER JOIN 사용하여 Address 테이블에 데이터가 없어도 Member 정보 가져오기
-		String sql = "SELECT * FROM Member M LEFT OUTER JOIN Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
+		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
 
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -110,7 +110,7 @@ public class MemberDAO {
 	}
 
 	public int updateMypage(MemberDTO dto) throws SQLException {
-		String sql = "UPDATE Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, "
+		String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, "
 				+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, dto.getM_pw());
@@ -132,8 +132,8 @@ public class MemberDAO {
 	    PreparedStatement pstmtAddress = null;
 	    PreparedStatement pstmtMember = null;
 
-	    String sqlAddress = "DELETE FROM Address WHERE m_id = ?";
-	    String sqlMember = "DELETE FROM Member WHERE m_id = ?";
+	    String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
+	    String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
 
 	    try {
 	        con = DBManager.connect();
@@ -189,7 +189,7 @@ public class MemberDAO {
 
 	// 사용자 ID로 회원 정보 조회
 	public MemberDTO getMemberById(String m_id) throws SQLException {
-		String sql = "SELECT * FROM Member M LEFT OUTER JOIN Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
+		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			pstmt.setString(1, m_id);
@@ -205,7 +205,7 @@ public class MemberDAO {
 
 	// 회원 정보 업데이트 (이름, 이미지)
 	public void updateMember(MemberDTO dto) throws SQLException {
-		String sql = "UPDATE Member SET m_name = ?, m_img = ? WHERE m_id = ?";
+		String sql = "UPDATE s_Member SET m_name = ?, m_img = ? WHERE m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, dto.getM_name());
 			pstmt.setString(2, dto.getM_img());
@@ -216,8 +216,8 @@ public class MemberDAO {
 
 	// 회원 정보 업데이트 (전체 정보)
 	public void updateMemberInfo(MemberDTO dto) throws SQLException {
-		String sql1 = "UPDATE Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
-		String sql2 = "UPDATE Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
+		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
+		String sql2 = "UPDATE s_Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
 
 		try (Connection conn = DBManager.connect();
 				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
@@ -244,7 +244,7 @@ public class MemberDAO {
 
 	// 아이디 중복 확인
 	public boolean isMemberIdDuplicate(String m_id) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM Member WHERE m_id = ?";
+		String sql = "SELECT COUNT(*) FROM s_Member WHERE m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, m_id);
 			try (ResultSet rs = pstmt.executeQuery()) {
