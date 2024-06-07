@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 public class receivedFundingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+		StatisticsDAO.showAllList(request);
 	request.getRequestDispatcher("myPage/statistics/jsp/receivedFunding.jsp").forward(request, response);
 	
 	

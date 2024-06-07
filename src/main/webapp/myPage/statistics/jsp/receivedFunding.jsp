@@ -99,8 +99,8 @@ pageEncoding="UTF-8"%>
       </div>
       </div>
      	<div id="info-board">
-<%--      	<div><c:forEach var="i" items=""> </c:forEach></div>
- --%>     	</div>
+     	<div><c:forEach var="i" items="${wishlists }">${members.m_name }  : ${wishlist.w_price } | ${wishlist.w_date }</c:forEach></div>
+      	</div>
       
       <div><button id="return-button" onclick="hideInfo()">접기</button></div>
       </div>

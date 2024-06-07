@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 public class StatisticsTestController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		StatisticsDAO.showAllList(request);
+		
+		
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedMain.jsp").forward(request, response);
 		
 	}
