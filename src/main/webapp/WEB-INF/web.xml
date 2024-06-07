@@ -49,4 +49,14 @@
     <servlet-name>receivedFundingController</servlet-name>
     <url-pattern>/receivedFundingController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LineCallback</display-name>
+    <servlet-name>LineCallback</servlet-name>
+    <servlet-class>com.enmusubi.member.LineCallback</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LineCallback</servlet-name>
+    <url-pattern>/LineCallback</url-pattern>
+  </servlet-mapping>
 </web-app>
