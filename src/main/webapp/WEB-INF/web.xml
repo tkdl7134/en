@@ -51,6 +51,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>receivedMoneyController</display-name>
     <servlet-name>receivedMoneyController</servlet-name>
     <servlet-class>com.enmusubi.myPage.statistics.receivedMoneyController</servlet-class>
@@ -78,5 +79,14 @@
   <servlet-mapping>
     <servlet-name>receviedSpecificMoneyC</servlet-name>
     <url-pattern>/receviedSpecificMoneyC</url-pattern>
+=======
+    <display-name>LineCallback</display-name>
+    <servlet-name>LineCallback</servlet-name>
+    <servlet-class>com.enmusubi.member.LineCallback</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LineCallback</servlet-name>
+    <url-pattern>/LineCallback</url-pattern>
+>>>>>>> 06ebf20f0422573436327873790fa5383dd80c09
   </servlet-mapping>
 </web-app>
