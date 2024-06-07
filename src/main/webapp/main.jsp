@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>메인 페이지</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h2>메인 페이지</h2>
