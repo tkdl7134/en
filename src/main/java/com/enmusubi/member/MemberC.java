@@ -23,6 +23,5 @@ public class MemberC extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 한글 인코딩 설정
 
 		MemberDAO.memberC(request, response);
-		
 	}
 }
