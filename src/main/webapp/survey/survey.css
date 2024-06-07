@@ -74,6 +74,7 @@ body {
 }
 
 .tk_durumari_paper {
+  background-color: #ffe4e4;
   border: 2px solid black;
   width: 54rem;
   height: 51rem;
@@ -90,6 +91,7 @@ body {
 }
 
 .tk_survey {
+  background-color: #fffff4;
   border: 2px solid black;
   width: 50rem;
   height: 48rem;
@@ -105,14 +107,46 @@ body {
   height: 7rem;
 }
 
-.tk_survey_contents {
+.tk_index_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.tk_index_container > div {
+  /* 각 이미지 컨테이너에 스타일 적용 */
+  position: relative; /* 텍스트의 위치를 상대적으로 지정 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  top: -100px; /* 초기 높이를 이미지의 절반으로 설정 */
+  transition: height 0.5s ease; /* 높이 변화에 대한 애니메이션 효과 */
+}
+
+.tk_index_container > div.active {
+  /* 클릭된 이미지 스타일 */
+  top: -50px; /* 클릭 시 전체 높이로 확장 */
+}
+
+.tk_index_container img {
+  display: block; /* 이미지를 블록 요소로 만들어 여백 제거 */
+}
+
+.image-text {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 15px;
+}
+
+.tk_survey_content {
   border: 2px solid black;
   width: 50rem;
-  height: 7rem;
+  height: 34rem;
 }
 
 .tk_survey_footer {
   border: 2px solid black;
   width: 50rem;
-  height: 5rem;
+  height: 4rem;
 }

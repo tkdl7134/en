@@ -14,22 +14,34 @@
           </div>
           <div class="tk_durumari_paper">
             <div class="tk_survey">
-              <header class="survey_header">
-                <nav>
-                  <ul>
-                    <li>게스트 카테고리</li>
-                    <li>개인정보</li>
-                    <li>식사제한</li>
-                    <li>메세지</li>
-                  </ul>
-                </nav>
+              <header class="tk_survey_header">
+                <div>
+                  <div class="tk_index_container">
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">ゲスト· カテゴリー</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">個人情報</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">食事制限</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">メッセージ</div>
+                    </div>
+                  </div>
+                </div>
               </header>
 
-              <main class="survey_content">
+              <main class="tk_survey_content">
                 <h2>두루마리 롤</h2>
               </main>
 
-              <footer class="survey_footer">
+              <footer class="tk_survey_footer">
                 <p>진행도</p>
                 <button>다음</button>
               </footer>
@@ -45,10 +57,29 @@
     roll.addEventListener("click", function () {
       if (paper.classList.contains("tk-paper-wide")) {
         paper.classList.remove("tk-paper-wide");
+      } else {
+        paper.classList.add("tk-paper-wide");
       }
-      document
-        .querySelector(".tk_durumari_paper")
-        .classList.add("tk-paper-wide");
+    });
+
+    const imageContainers = document.querySelectorAll(
+      ".tk_index_container > div"
+    );
+
+    imageContainers.forEach((container) => {
+      container.addEventListener("click", () => {
+        // 다른 이미지 닫기 (선택 사항)
+        imageContainers.forEach((otherContainer) => {
+          if (
+            otherContainer !== container &&
+            otherContainer.classList.contains("active")
+          ) {
+            otherContainer.classList.remove("active");
+          }
+        });
+        // 클릭된 이미지 펼치기/닫기
+        container.classList.toggle("active");
+      });
     });
   </script>
 </html>
