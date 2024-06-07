@@ -29,7 +29,7 @@ INSERT INTO Member (
 );
 
 -- Memberテーブルのデータを選択
-SELECT * FROM Member;
+SELECT * FROM s_Member;
 
 -- Addressテーブルの作成
 CREATE TABLE Address (
@@ -39,4 +39,4 @@ CREATE TABLE Address (
 );
 
 -- Addressテーブルのデータを選択
-SELECT * FROM Address;
+SELECT * FROM s_Address;

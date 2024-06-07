@@ -41,13 +41,11 @@ public class MemberIdCheckC extends HttpServlet {
 			try {
 				boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
 				System.out.println(isDuplicate);
-				request.setAttribute("idCheckResult", isDuplicate ? "使用中IDです。" : "使用可能IDです。");
-				String isDuple = (String) request.getAttribute("idCheckResult");
-				System.out.println(request.getAttribute("idCheckResult"));
-				Testajax tc = new Testajax();
-				tc.setIdcheck(isDuple);
+				String idCheckResult = isDuplicate ? "使用中IDです。" : "使用可能IDです。";
+				Testajax ta = new Testajax();
+				ta.setIdcheck(idCheckResult);
 				Gson gson = new Gson();
-				String json = gson.toJson(tc);
+				String json = gson.toJson(ta);
 				System.out.println(json);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

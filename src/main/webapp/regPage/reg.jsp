@@ -92,7 +92,9 @@
 <a href="javascript:window.history.back();"><button>取消</button></a>
 	<script>
 	
-	let isIdAvailable = false; // 아이디 사용 가능 여부 플래그
+	// 아이디 중복 확인 플래그 초기화
+    isIdChecked = false; // 중복 확인 플래그 초기화
+    isIdAvailable = false; // 사용 가능 플래그 초기화
 
 		function validatePassword() {
 			const pw = document.getElementById('m_pw').value;
@@ -121,11 +123,18 @@
                         console.log(response);
                         console.log(response.idcheck);
                         $('#idCheckResult').text(response.idcheck);
+                        
+                   		// 중복 확인 여부 및 사용 가능 여부 플래그 설정
+                        isIdChecked = true;
+                        isIdAvailable = response.idcheck === "使用可能IDです。"; // 사용 가능한 경우에만 true로 설정
 
-                        // 중복된 아이디인 경우 
+                        console.log("isIdChecked:", isIdChecked); // 디버깅 로그 추가
+                        console.log("isIdAvailable:", isIdAvailable); // 디버깅 로그 추가
+                        
+                     	// 중복된 아이디인 경우에만 입력 필드 초기화 및 포커스
                         if (!isIdAvailable) {
-                            $("#m_id").val(""); // 아이디 입력 필드 초기화
-                            $("#m_id").focus(); // 아이디 입력 필드에 포커스
+                            $("#m_id").val(""); 
+                            $("#m_id").focus(); 
                         }
 
                         if (response.idcheck === "使用中IDです。") {
