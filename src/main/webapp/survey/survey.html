@@ -70,10 +70,8 @@
       container.addEventListener("click", () => {
         // 다른 이미지 닫기 (선택 사항)
         imageContainers.forEach((otherContainer) => {
-          if (
-            otherContainer !== container &&
-            otherContainer.classList.contains("active")
-          ) {
+          if (otherContainer !== container &&otherContainer.classList.contains("active")) 
+            {
             otherContainer.classList.remove("active");
           }
         });
