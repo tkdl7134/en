@@ -22,49 +22,7 @@ public class MemberC extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8"); // 한글 인코딩 설정
 
-		// 1. 로그인 정보 가져오기
-		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
-
-		// 2. DAO 객체 생성 및 로그인 처리
-		MemberDAO dao = new MemberDAO();
-		try {
-			MemberDTO dto = dao.login(m_id, m_pw);
-
-			// 3. 로그인 결과에 따른 처리
-			if (dto != null) {
-				// 3-1. 로그인 성공
-				HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
-				session.setAttribute("m_id", dto.getM_id());
-				session.setAttribute("m_name", dto.getM_name()); 
-				session.setAttribute("m_name_kana", dto.getM_name_kana());
-				session.setAttribute("m_name_rome", dto.getM_name_rome());
-				session.setAttribute("m_gender", dto.getM_gender());
-				session.setAttribute("a_postcode", dto.getA_postcode());
-				session.setAttribute("a_address", dto.getA_address());
-				session.setAttribute("m_email", dto.getM_email());
-				session.setAttribute("m_regdate", dto.getM_regdate());
-				session.setAttribute("m_phone", dto.getM_phone());
-				
-//				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
-
-				// 세션 유효 시간 10분 (600초) 설정
-				session.setMaxInactiveInterval(600);
-
-				// 로그인 성공 메시지 설정 (선택 사항)
-				session.setAttribute("loginMessage", "ログイン成功");
-				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
-			} else {
-				// 3-2. 로그인 실패
-				String errorMessage = "IDまたはPWが一致しません";
-				request.setAttribute("errorMessage", errorMessage);
-				request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
-			}
-		} catch (SQLException e) {
-			// 3-3. 데이터베이스 오류 발생
-			e.printStackTrace();
-			request.setAttribute("errorMessage", "データベースエラー");
-			request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
-		}
+		MemberDAO.memberC(request, response);
+		
 	}
 }

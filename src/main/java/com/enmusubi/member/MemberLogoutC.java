@@ -17,13 +17,9 @@ public class MemberLogoutC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false); // 기존 세션 가져오기 (없으면 null 반환)
-		if (session != null) {
-			session.invalidate(); // 세션 무효화 (로그아웃)
-		}
-		response.sendRedirect("main.jsp"); // 메인 페이지로 리다이렉트
 
-		doGet(request, response);
+		MemberDAO.MemberLogoutC(request, response);
+
 	}
 
 }

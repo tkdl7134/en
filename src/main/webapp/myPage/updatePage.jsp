@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.enmusubi.member.MemberDTO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,10 +29,10 @@
 		<br> 性別<input type="radio" name="m_gender" value="male">
 		男性 <input type="radio" name="m_gender" value="female"> 女性 <input
 			type="radio" name="m_gender" value="other"> その他 <br>
-		<br> 郵便番号<input type="text" name="a_postcode"
+		<br> 郵便番号<input type="text" id="a_postcode" name="a_postcode"
 			value="${sessionScope.a_postcode}" required><br>
 		<br> 都道府県<select id="a_prefecture" name="a_prefecture" required>
-			<option value="" disabled selected>選択してください</option>
+			<option value="${fn:length(addressParts) > 0 ? addressParts[0] : ''}">選択してください</option>
 			<option value="北海道">北海道</option>
 			<option value="青森県">青森県</option>
 			<option value="岩手県">岩手県</option>
@@ -81,11 +83,12 @@
 			<option value="海外">海外</option>
 		</select> <br>
 		<br> 市区町村<br>
-		<input type="text" name="a_city" required><br>
+		<input type="text" name="a_city" id="a_city" value="${sessionScope.a_city}" required><br>
 		<br> 番地 <br>
-		<input type="text" name="a_street" required><br>
+		<input type="text" name="a_street" id="a_street" value="${sessionScope.a_street}" required><br>
 		<br> ビル・マンション名など <br>
-		<input type="text" name="a_building" required><br>
+		<input type="text" name="a_building" id="a_building" value="${sessionScope.a_building}" required><br>
+
 		<br> メールアドレス<input type="email" name="m_email"
 			value="${sessionScope.m_email}" required><br>
 		<br> 電話番号<input type="text" name="m_phone"
@@ -108,6 +111,7 @@
 			}
 			return true; // 폼 제출 허용
 		}
+
 	</script>
 </body>
 </html>
