@@ -8,25 +8,47 @@
   <body>
     <div>
       <div class="tk_survey_container">
-        <div class="tk_durumari"></div>
-        <div class="tk_durumari_paper">
-          <div class="tk_survey">
-            <div div class="tk_survey_header">
-              설문지 HEADER
-              <div>게스트 카테고리</div>
-              <div>개인정보</div>
-              <div>식사제한</div>
-              <div>메세지</div>
-            </div>
-            <div class="tk_survey_contents">설문지 CONTENTS</div>
-            <div class="tk_survey_footer">
-              설문지 FOOTER
-              <div>진행도</div>
-              <div>버튼</div>
+        <div class="tk_durumari">
+          <div class="tk_durumari_roll">
+            <img src="imgFolder/ribbon.png" alt="ribbon" />
+          </div>
+          <div class="tk_durumari_paper">
+            <div class="tk_survey">
+              <header class="survey_header">
+                <nav>
+                  <ul>
+                    <li>게스트 카테고리</li>
+                    <li>개인정보</li>
+                    <li>식사제한</li>
+                    <li>메세지</li>
+                  </ul>
+                </nav>
+              </header>
+
+              <main class="survey_content">
+                <h2>두루마리 롤</h2>
+              </main>
+
+              <footer class="survey_footer"> 
+                <p>진행도</p>
+                <button>다음</button>
+              </footer>
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    const roll = document.querySelector(".tk_durumari_roll");
+    const paper = document.querySelector(".tk_durumari_paper");
+    roll.addEventListener("click", function () {
+      if (paper.classList.contains("tk-paper-wide")) {
+        paper.classList.remove("tk-paper-wide");
+      }
+      document
+        .querySelector(".tk_durumari_paper")
+        .classList.add("tk-paper-wide");
+    });
+  </script>
 </html>
