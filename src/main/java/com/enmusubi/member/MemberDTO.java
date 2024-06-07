@@ -5,6 +5,7 @@ public class MemberDTO {
 	private String m_pw;
 	private String m_name;
 	private String m_name_kana;
+	private String m_name_rome;
 	private String m_birth;
 	private String m_gender;
 	private String m_email;
@@ -18,12 +19,15 @@ public class MemberDTO {
 	public MemberDTO() {
 	}
 
-	public MemberDTO(String m_id, String m_pw, String m_name, String m_name_kana, String m_birth, String m_gender,
-			String m_email, String m_regdate, String m_img, String m_phone, String a_address, String a_postcode) {
+	public MemberDTO(String m_id, String m_pw, String m_name, String m_name_kana, String m_name_rome, String m_birth,
+			String m_gender, String m_email, String m_regdate, String m_img, String m_phone, String a_address,
+			String a_postcode) {
+		super();
 		this.m_id = m_id;
 		this.m_pw = m_pw;
 		this.m_name = m_name;
 		this.m_name_kana = m_name_kana;
+		this.m_name_rome = m_name_rome;
 		this.m_birth = m_birth;
 		this.m_gender = m_gender;
 		this.m_email = m_email;
@@ -64,6 +68,14 @@ public class MemberDTO {
 
 	public void setM_name_kana(String m_name_kana) {
 		this.m_name_kana = m_name_kana;
+	}
+
+	public String getM_name_rome() {
+		return m_name_rome;
+	}
+
+	public void setM_name_rome(String m_name_rome) {
+		this.m_name_rome = m_name_rome;
 	}
 
 	public String getM_birth() {
@@ -128,14 +140,6 @@ public class MemberDTO {
 
 	public void setA_postcode(String a_postcode) {
 		this.a_postcode = a_postcode;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberDTO [m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name + ", m_name_kana=" + m_name_kana
-				+ ", m_birth=" + m_birth + ", m_gender=" + m_gender + ", m_email=" + m_email + ", m_regdate="
-				+ m_regdate + ", m_img=" + m_img + ", m_phone=" + m_phone + ", a_address=" + a_address + ", a_postcode="
-				+ a_postcode + "]";
 	}
 
 	public char[] toJSON() {

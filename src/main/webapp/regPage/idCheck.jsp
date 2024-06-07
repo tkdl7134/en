@@ -2,25 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>아이디 중복 확인</title>
+    <title>IDチェック</title>
 </head>
 <body>
-    <h2>아이디 중복 확인</h2>
-    <%
-        String m_id = (String) request.getAttribute("m_id");
-        boolean isDuplicate = (boolean) request.getAttribute("isDuplicate");
-        if (isDuplicate) {
-    %>
-            <p><%= m_id %>는 이미 사용 중인 아이디입니다.</p>
-    <%
-        } else {
-    %>
-            <p><%= m_id %>는 사용 가능한 아이디입니다.</p>
-            <button onclick="useId('<%= m_id %>')">사용하기</button>
-    <%
-        }
-    %>
-
+    <h2>IDチェック</h2>
+    
     <script>
         function useId(m_id) {
             // opener는 register.jsp를 가리킴

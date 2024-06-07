@@ -4,7 +4,6 @@ body {
 }
 .kh-f-whole-container {
   display: flex;
-  width: 100vw;
   background-image: url("../img/blue_fuji_mountain_background.png");
   background-size: cover;
 }
