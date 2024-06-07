@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<script type="text/javascript" src="finance/js/fund.js"></script>
+<script type="text/javascript" src="finance/js/fund.js" defer></script>
 <div class="kh-f-popup">
 	<div class="kh-f-product-box">
 		<div class="kh-f-img-box">
@@ -15,9 +16,9 @@
 			<div>コメント</div>
 		</div>
 		<div class="kh-f-product-des">
-			<h2>: 冷蔵庫</h2>
-			<div>: 100,000</div>
-			<div>: これ必要です</div>
+			<h2><span  id="kh-f-product">冷蔵庫</span></h2>
+			<div><span id="kh-f-price">100,000</span></div>
+			<div><span id="kh-f-comment">これ必要です</span></div>
 		</div>
 	</div>
 	<div class="kh-f-des">
@@ -35,63 +36,19 @@
 </div>
 
 <div class="kh-f-card-container">
+	<input type="hidden" id="jlist" value='${jsonList}'>
 	<div class="kh-fake-card"></div>
-	<div class="kh-fund-card">
+	
+	<c:forEach items="${list }" var="l" varStatus="vs" begin="0">
+	<div class="kh-fund-card" value="${vs.index}">
 		<div>
 			<img alt="noImg" src="finance/img/refrigerator.png" />
 		</div>
 		<div>
-			<h3>冷蔵庫</h3>
+			<h3>${l.wl_product }</h3>
 		</div>
 	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
-	<div class="kh-fund-card">
-		<div>
-			<img alt="noImg" src="finance/img/refrigerator.png" />
-		</div>
-		<div>
-			<h3>冷蔵庫</h3>
-		</div>
-	</div>
+	</c:forEach>
 	<div class="kh-fake-card"></div>
 </div>
 </html>
