@@ -12,7 +12,7 @@
         <button>ログイン</button>
     </form>
     
-    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineCallbackC&state=12345abcde&scope=profile%20openid%20email&nonce=09876xyz">
+    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz">
     <button id="lineLoginButton">LINEログイン</button>
 	 </a>
 </body>

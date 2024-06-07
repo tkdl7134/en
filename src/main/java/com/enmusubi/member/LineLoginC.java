@@ -12,6 +12,10 @@ public class LineLoginC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		MemberDAO.LineApi(request);
+		
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

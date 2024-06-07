@@ -7,9 +7,9 @@
 </head>
 <body>
     <h2>메인 페이지</h2>
-<c:choose>
-        <c:when test="${not empty m_name}">
-            <p>환영합니다, ${m_name}님!</p>
+ <c:choose>
+        <c:when test="${not empty sessionScope.m_name}">
+            <p>환영합니다, ${sessionScope.m_name}님!</p>
             <a href="MemberDetailC"> <button>마이페이지</button></a>
             <form action="MemberLogoutC" method="post"> 
                 <input type="submit" value="로그아웃">
