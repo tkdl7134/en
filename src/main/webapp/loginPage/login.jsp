@@ -11,7 +11,9 @@
         <input type="password" name="m_pw" placeholder="パスワード" required><br>
         <button>ログイン</button>
     </form>
+    
+    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineCallback&state=12345abcde&scope=profile%20openid%20email&nonce=09876xyz">
     <button id="lineLoginButton">LINEログイン</button>
-
+	 </a>
 </body>
 </html>
