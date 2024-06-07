@@ -16,8 +16,7 @@
 	<div class="recMain-subtitle">펀딩 현황 확인</div>
 	<div><img class="recMainImgs" alt="a" src="myPage/statistics/imgFolder/fundingImg.png"></div>
  </div>
-	<div class="recMain-toAmazon" onclick="location.href='아마존위시리스트페이지'">
-	<div class="recMain-subtitle">선물 현황 확인</div>
+<div class="recMain-toAmazon" onclick="window.open('https://www.amazon.com/hz/wishlist/intro', '_blank')">	<div class="recMain-subtitle">선물 현황 확인</div>
 	<div><img class="recMainImgs" alt="b" src="myPage/statistics/imgFolder/presentImg.png"></div>
 	</div>
 	<div class="recMain-toMoney" onclick="location.href='receivedMoneyController'">

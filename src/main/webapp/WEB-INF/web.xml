@@ -49,4 +49,14 @@
     <servlet-name>receivedFundingController</servlet-name>
     <url-pattern>/receivedFundingController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>receivedMoneyController</display-name>
+    <servlet-name>receivedMoneyController</servlet-name>
+    <servlet-class>com.enmusubi.myPage.statistics.receivedMoneyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>receivedMoneyController</servlet-name>
+    <url-pattern>/receivedMoneyController</url-pattern>
+  </servlet-mapping>
 </web-app>
