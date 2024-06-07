@@ -63,6 +63,11 @@ public class fundDAO {
 		String pt = request.getParameter("paytype");
 		String price = request.getParameter("price");
 		String wlno = request.getParameter("wlno");
+		System.out.println(eno);
+		System.out.println(mid);
+		System.out.println(pt);
+		System.out.println(price);
+		System.out.println(wlno);
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
