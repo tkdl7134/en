@@ -1,6 +1,3 @@
-
-
-
 let deg = 15;
 let zindex = 0;
 let card = document.querySelectorAll(".kh-fund-card");

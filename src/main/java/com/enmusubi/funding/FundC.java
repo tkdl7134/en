@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/FundC")
 public class FundC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		fundDAO.selectFundList(request);
-		request.setAttribute("title", "ファンディング");
-		request.setAttribute("page", "fund/funding.jsp");
-		request.getRequestDispatcher("finance/index.jsp").forward(request, response);
+			fundDAO.selectFundList(request);
+			request.setAttribute("title", "ファンディング");
+			request.setAttribute("page", "fund/funding.jsp");
+			request.getRequestDispatcher("finance/index.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }
