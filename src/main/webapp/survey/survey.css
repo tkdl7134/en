@@ -31,7 +31,6 @@ body {
   overflow: hidden; /* 펼쳐지는 부분 숨김 */
   position: relative; /* 끈 위치 조정 */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* 은은한 그림자 효과 */
-  z-index: -2;
 }
 
 .tk_durumari_roll::before {
@@ -45,7 +44,7 @@ body {
   width: 100%; /* 끈 길이를 가로 90%로 설정 */
   height: 50px; /* 끈 두께를 2px로 설정 */
   background-color: #fb1010; /* 빨간색 */
-  z-index: -1;
+  z-index: 1;
 }
 .tk_durumari_roll::after {
   /* 빨간 끈 스타일 */
@@ -58,7 +57,7 @@ body {
   width: 100%; /* 끈 길이를 가로 90%로 설정 */
   height: 50px; /* 끈 두께를 2px로 설정 */
   background-color: #fb1010; /* 빨간색 */
-  z-index: -1;
+  z-index: 1;
 }
 
 .tk_durumari_roll img {
@@ -67,7 +66,7 @@ body {
   position: absolute;
   top: 40%;
   left: 20%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .tk_durumari_roll:hover {
@@ -86,8 +85,8 @@ body {
   transition: width 0.8s ease-in-out; /* 부드러운 펼침 효과 */
 }
 
-.tk_durumari_roll:active + .tk_durumari_paper {
-  width: 54rem;
+.tk-paper-wide {
+  width: 80%;
 }
 
 .tk_survey {
