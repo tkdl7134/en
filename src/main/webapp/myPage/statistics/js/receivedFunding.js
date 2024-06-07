@@ -53,10 +53,14 @@ function generateGraph() {
 }
   function showInfo() {
         document.getElementById('recFund-info').style.visibility = 'visible';
+        
     }
-
-    // recFund-info div를 감추는 함수
-    function hideInfo() {
+	function hideInfo(){
+		
         document.getElementById('recFund-info').style.visibility = 'hidden';
-    }
+		
+		
+	}
+  
+   
     

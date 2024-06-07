@@ -28,43 +28,47 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="recFund-contents"><span id="second-product-name">冷蔵庫</span
           >
-          <img
+          <img 
+          onclick="showInfo()"
             class="fund-products"
             id="fund-product2"
             alt=""
             src="myPage/statistics/imgFolder/fundProduct2.png"
           />
-          <img id="product-type2" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
+          <img onclick="showInfo()" id="product-type2" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
          <span id="third-product-name">冷蔵庫</span>
           <img
+          onclick="showInfo()"
             class="fund-products"
             id="fund-product3"
             alt=""
             src="myPage/statistics/imgFolder/fundProduct3.png"
           />
-          <img id="product-type3" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
+          <img onclick="showInfo()" id="product-type3" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
          <span id="fourth-product-name">冷蔵庫</span>
           <img
+          onclick="showInfo()"
             class="fund-products"
             id="fund-product4"
             alt=""
             src="myPage/statistics/imgFolder/fundProduct4.png"
           />
-          <img id="product-type4" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
+          <img onclick="showInfo()" id="product-type4" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
             <span id="fifth-product-name">冷蔵庫</span>
           <img
+          onclick="showInfo()"
             class="fund-products"
             id="fund-product5"
             alt=""
             src="myPage/statistics/imgFolder/fundProduct5.png"
           />
-          <img id="product-type5" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
+          <img onclick="showInfo()" id="product-type5" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
       </div>
       <div id="recFund-info">
@@ -85,6 +89,9 @@ pageEncoding="UTF-8"%>
       </div>
       <div id="current-info">현재 @ % 진행 되었고, 남은 목표 금액은 $$$$ Y 입니다.</div>
       <div></div>
+      
+      
+      <div><button id="return-button" onclick="hideInfo()">접기</button></div>
       </div>
     </div>
    

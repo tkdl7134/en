@@ -13,7 +13,9 @@ body {
   font-size: 2.5rem;
 }
 .recFund-content {
-	display : flex;
+	display: flex;
+    position: relative;
+    right: 8rem;
 	
 	
 }
@@ -159,5 +161,15 @@ body {
     font-size : 1.1rem;
 	
 	
+	
+}
+#return-button {
+	    position: relative;
+    bottom: 87rem;
+    left: 47rem;
+    border-style: none;
+    width: 10rem;
+    height: 3rem;
+    background-color: white;
 	
 }
