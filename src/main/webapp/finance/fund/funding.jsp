@@ -16,9 +16,9 @@
 			<div>コメント</div>
 		</div>
 		<div class="kh-f-product-des">
-			<h2><span  id="kh-f-product">冷蔵庫</span></h2>
-			<div><span id="kh-f-price">100,000</span></div>
-			<div><span id="kh-f-comment">これ必要です</span></div>
+			<h2><span  id="kh-f-product"></span></h2>
+			<div><span id="kh-f-price"></span></div>
+			<div><span id="kh-f-comment"></span></div>
 		</div>
 	</div>
 	<div class="kh-f-des">
@@ -32,7 +32,7 @@
 		<span id="kh-warn-text"
 			style="color: red; position: absolute; bottom: -20px" class="kh-none">金額をご入力してください。</span>
 	</div>
-	<div class="kh-f-btn" onclick="goStatistic()"></div>
+	<div class="kh-f-btn" onclick="goStatistic(this.getAttribute('value'))" value=""></div>
 </div>
 
 <div class="kh-f-card-container">
@@ -49,6 +49,7 @@
 		</div>
 	</div>
 	</c:forEach>
+	
 	<div class="kh-fake-card"></div>
 </div>
 </html>

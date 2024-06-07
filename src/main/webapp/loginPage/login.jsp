@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>로그인</h2>
-    <form action="/En/MemberC" method="post">
+    <form action="MemberC" method="post">
         <input type="text" name="m_id" placeholder="아이디" required><br>
         <input type="password" name="m_pw" placeholder="비밀번호" required><br>
         <input type="submit" value="로그인">

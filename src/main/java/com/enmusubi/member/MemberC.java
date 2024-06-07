@@ -25,7 +25,8 @@ public class MemberC extends HttpServlet {
 		// 1. 로그인 정보 가져오기
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
-
+		System.out.println(m_id);
+		System.out.println(m_pw);
 		// 2. DAO 객체 생성 및 로그인 처리
 		MemberDAO dao = new MemberDAO();
 		try {
@@ -33,6 +34,7 @@ public class MemberC extends HttpServlet {
 
 			// 3. 로그인 결과에 따른 처리
 			if (dto != null) {
+				System.out.println("good!");
 				// 3-1. 로그인 성공
 				HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
 				session.setAttribute("m_id", dto.getM_id()); // 세션에 사용자 ID 저장
@@ -46,6 +48,7 @@ public class MemberC extends HttpServlet {
 				session.setAttribute("loginMessage", "로그인 성공!");
 				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
 			} else {
+				System.out.println("fail!");
 				// 3-2. 로그인 실패
 				String errorMessage = "아이디 또는 비밀번호가 일치하지 않습니다.";
 				request.setAttribute("errorMessage", errorMessage);

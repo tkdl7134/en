@@ -3,9 +3,11 @@ package com.enmusubi.funding;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
 import com.google.gson.Gson;
@@ -45,6 +47,36 @@ public class fundDAO {
 			System.out.println("server err...");
 		}
 
+	}
+
+	public static void insertWishiPick(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO S_PAY values(?,?,?,?,?)";
+		//e_no,m_id,p_type,p_price,wl_no
+		String eno = request.getParameter("eno");
+		HttpSession session = request.getSession();
+		String mid = (String) session.getAttribute("m_id");
+		System.out.println(mid);
+		String pt = request.getParameter("paytype");
+		String price = request.getParameter("price");
+		String wlno = request.getParameter("wlno");
+		try {
+			con=DBManager.connect();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			pstmt.setString(2, mid);
+			pstmt.setString(3, pt);
+			pstmt.setString(4, price);
+			pstmt.setString(5, wlno);
+			if(pstmt.executeUpdate()==1){
+				System.out.println("insert success!!");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("server err...");
+		}
 	}
 
 }
