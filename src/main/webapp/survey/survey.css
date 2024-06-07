@@ -1,0 +1,53 @@
+@charset "UTF-8";
+body {
+  width: 120rem;
+  height: 68rem;
+  background-color: #fff7f5;
+}
+
+.tk_survey_container {
+  width: 77rem;
+  height: 55rem;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.tk_durumri {
+  border: 2px solid #ffe2f0;
+  width: 100%;
+  height: 100%;
+}
+
+.tk_tk_durumari_paper {
+  border: 2px solid #ffe4e4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tk_survey {
+  border: 2px solid #fffff4;
+  width: 54rem;
+  height: 51rem;
+}
+
+.tk_survey_header {
+  border: 2px solid #d9d9d9;
+  width: 50rem;
+  height: 7rem;
+}
+
+.tk_survey_contents {
+  border: 2px solid #d9d9d9;
+  width: 50rem;
+  height: 7rem;
+}
+
+.tk_survey_footer {
+  border: 2px solid #d9d9d9;
+  width: 50rem;
+  height: 5rem;
+}

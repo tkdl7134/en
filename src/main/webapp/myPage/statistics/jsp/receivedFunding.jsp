@@ -98,7 +98,9 @@ pageEncoding="UTF-8"%>
       	<div class="specific-infos">일일 입금 평균 금액 :$$$Y</div>
       </div>
       </div>
-      
+     	<div id="info-board">
+     	<div><c:forEach var="i" items=""> </c:forEach></div>
+     	</div>
       
       <div><button id="return-button" onclick="hideInfo()">접기</button></div>
       </div>
