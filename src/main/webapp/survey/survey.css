@@ -118,7 +118,7 @@ body {
   position: relative; /* 텍스트의 위치를 상대적으로 지정 */
   overflow: hidden; /* 넘치는 부분 숨김 */
   top: -100px; /* 초기 높이를 이미지의 절반으로 설정 */
-  transition: height 0.5s ease; /* 높이 변화에 대한 애니메이션 효과 */
+  transition: height 1s ease; /* 높이 변화에 대한 애니메이션 효과 */
 }
 
 .tk_index_container > div.active {
