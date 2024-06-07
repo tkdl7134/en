@@ -12,6 +12,6 @@
         <button>ログイン</button>
     </form>
     <button id="lineLoginButton">LINEログイン</button>
-    <script src="login.js"></script> 
+
 </body>
 </html>
