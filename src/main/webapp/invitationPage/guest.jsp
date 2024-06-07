@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>작은 창</title>
-<link rel="stylesheet" href="invitationPage/guest.css">
+<title>초대관리</title>
+<link rel="stylesheet" href="webapp/invitationPage/guest.css">
 </head>
 <body>
-    <div class="hw_containter">
-    	<div class="hw_img"></div>
+    <div class="hw_container">
+    	<div class="hw_content"></div>
     </div>
+   
 </body>
 </html>

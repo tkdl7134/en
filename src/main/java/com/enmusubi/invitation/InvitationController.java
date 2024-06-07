@@ -11,7 +11,8 @@ public class InvitationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-//		InvitationDAO.Invitation(request);
+//		InvitationDAO.getMDao().Invitation(request);
+		
 		request.setAttribute("content", "invitationPage/invitationPage.jsp");
 		request.getRequestDispatcher("invitationPage/invitationPage.jsp").forward(request, response);
 	}

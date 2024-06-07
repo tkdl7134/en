@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>초대 관리 페이지</title>
-<link rel="stylesheet" href="invitationPage/invitationPage.css">
-<script type="text/javascript" src="invitationPage/invitationPage.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
 <form action="InvitationController" method="post">
@@ -20,6 +18,10 @@
             <li><a href="#">통계</a></li>
         </ul>
     </div>
+    <div>
+        <h1 class="hw_head">초대 관리</h1>
+        <hr>
+        </div>
     <div class="hw_content">
         <div class="hw_invitation">
             <img class="hw_img" alt="" src="invitationPage/imgFolder/envelope.jpg">

@@ -59,4 +59,34 @@
     <servlet-name>InvitationRegC</servlet-name>
     <url-pattern>/InvitationRegC</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GuestController</display-name>
+    <servlet-name>GuestController</servlet-name>
+    <servlet-class>com.enmusubi.guest.GuestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuestController</servlet-name>
+    <url-pattern>/GuestController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MytempleteC</display-name>
+    <servlet-name>MytempleteC</servlet-name>
+    <servlet-class>com.enmusubi.mytemplate.MytempleteC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MytempleteC</servlet-name>
+    <url-pattern>/MytempleteC</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TemplateC</display-name>
+    <servlet-name>TemplateC</servlet-name>
+    <servlet-class>com.enmusubi.mytemplate.TemplateC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TemplateC</servlet-name>
+    <url-pattern>/TemplateC</url-pattern>
+  </servlet-mapping>
 </web-app>
