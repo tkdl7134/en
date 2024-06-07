@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
       <div class="recFund-title">펀딩 현황 (임시 이름)</div>
       <div class="recFund-content">
         <div class="recFund-contents" >
-          <span id="first-product-name">冷蔵庫</span
+          <span id="first-product-name">${wishlist[0].w_product }</span
           ><img
           	onclick="showInfo()"
             class="fund-products"
@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
           />
           <img onclick="showInfo()" id="product-type1" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
-        <div class="recFund-contents"><span id="second-product-name">冷蔵庫</span
+        <div class="recFund-contents"><span id="second-product-name">${wishlist[1].w_product }</span
           >
           <img 
           onclick="showInfo()"
@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type2" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-         <span id="third-product-name">冷蔵庫</span>
+         <span id="third-product-name">${wishlist[2].w_product }</span>
           <img
           onclick="showInfo()"
             class="fund-products"
@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type3" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-         <span id="fourth-product-name">冷蔵庫</span>
+         <span id="fourth-product-name">${wishlist[3].w_product }</span>
           <img
           onclick="showInfo()"
             class="fund-products"
@@ -60,7 +60,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type4" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-            <span id="fifth-product-name">冷蔵庫</span>
+            <span id="fifth-product-name">${wishlist[4].w_product }</span>
           <img
           onclick="showInfo()"
             class="fund-products"
