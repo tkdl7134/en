@@ -88,7 +88,16 @@ pageEncoding="UTF-8"%>
     </div>
       </div>
       <div id="current-info">현재 @ % 진행 되었고, 남은 목표 금액은 $$$$ Y 입니다.</div>
-      <div></div>
+      <div id="specific-info">
+      <div class="info-div1">
+      	<div class="specific-infos">최대 입금 금액 : $$$Y</div>
+      	<div class="specific-infos">인기 순위 :D위</div>
+      </div>
+      <div class="info-div2">	
+      	<div class="specific-infos">가장 많이 입금된 날짜 : B월 C일</div>
+      	<div class="specific-infos">일일 입금 평균 금액 :$$$Y</div>
+      </div>
+      </div>
       
       
       <div><button id="return-button" onclick="hideInfo()">접기</button></div>
