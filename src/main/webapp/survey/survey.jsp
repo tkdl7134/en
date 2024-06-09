@@ -2,16 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="survey.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="survey.css" />
+ 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+ 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  	<script type="text/javascript" src="slick/slick.min.js"></script>
+  </head>
+  <body>
+    <div>
       <div class="tk_survey_container">
         <div class="tk_durumari">
           <div class="tk_durumari_roll">
@@ -43,13 +45,11 @@
               </header>
 
               <main class="tk_survey_content">
-              
-              <div class="bxslider">
-  				<div><img src="https://bxslider.com/assets/coffee1-7325690f507d48962d312be15d9d8929be4a5ff04d184d5ed0a96c1b27940260.jpg" /></div>
-  				<div><img src="https://bxslider.com/assets/coffee2-8bb17517b21cc5b38f3ea7d14cfc4b4c82cc51b99e82bfc3a6d02688ab6c5988.jpg" /></div>
-  				<div><img src="https://bxslider.com/assets/coffee3-02c76c3b922183d7c5144e6856065ad68834ddc7ab5367481a225c516a308cb8.jpg" /></div>
-			 </div>
-              
+                <div class="slider">
+                  <div>your content</div>
+                  <div>your content</div>
+                  <div>your content</div>
+                </div>
               </main>
 
               <footer class="tk_survey_footer">
@@ -62,7 +62,20 @@
       </div>
     </div>
   </body>
+
   <script type="text/javascript">
+  
+  $(document).ready(function(){
+      $('.slider').slick({
+    	  dots: true,
+    	  infinite: true,
+    	  speed: 300,
+    	  slidesToShow: 1,
+    	  adaptiveHeight: true      
+    	  });
+    });
+
+
     const roll = document.querySelector(".tk_durumari_roll");
     const paper = document.querySelector(".tk_durumari_paper");
     roll.addEventListener("click", function () {
@@ -81,8 +94,10 @@
       container.addEventListener("click", () => {
         // 다른 이미지 닫기 (선택 사항)
         imageContainers.forEach((otherContainer) => {
-          if (otherContainer !== container &&otherContainer.classList.contains("active")) 
-            {
+          if (
+            otherContainer !== container &&
+            otherContainer.classList.contains("active")
+          ) {
             otherContainer.classList.remove("active");
           }
         });
@@ -90,17 +105,5 @@
         container.classList.toggle("active");
       });
     });
-    
-    $(function() {
-	$('.bxslider').bxSlider({
-    	  infiniteLoop: false,
-    	  hideControlOnEnd: true,
-    	  slideWidth: 600
-    	});
-    });
-		
-    
   </script>
-</body>
 </html>
-
