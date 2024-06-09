@@ -1,19 +1,30 @@
 package com.enmusubi.member;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import com.enmusubi.main.DBManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 public class MemberDAO {
@@ -600,4 +611,98 @@ public class MemberDAO {
 
 	}
 
-}
+	public static void lineLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getParameter("code");
+		request.getParameter("state");
+		System.out.println(request.getParameter("code"));
+		System.out.println(request.getParameter("state"));
+	}
+
+		private static String tok;
+
+		public static void LineApi(HttpServletRequest request) {
+			getToken(request);
+			requestInfo();
+		}
+
+		private static void getToken(HttpServletRequest request) {
+			try {
+				URL url = new URL("https://api.line.me/oauth2/v2.1/token");
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+				conn.setDoOutput(true);
+
+				String data = "grant_type=authorization_code" + "&code=" + request.getParameter("code") + "&redirect_uri="
+						+ "http://localhost/En/LineLoginC" + "&client_id=" + "2005476894" + "&client_secret="
+						+ "c023cd86708ee211f26c4344ca4347b7";
+
+				try (OutputStream os = conn.getOutputStream()) {
+					byte[] input = data.getBytes("utf-8");
+					os.write(input, 0, input.length);
+				}
+				int status = conn.getResponseCode();
+				if (status == 200) {
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+					StringBuilder response = new StringBuilder();
+					String responseLine;
+					while ((responseLine = br.readLine()) != null) {
+						response.append(responseLine.trim());
+					}
+
+					JSONObject jsonResponse = new JSONObject(response.toString());
+					System.out.println("Success: " + jsonResponse);
+					tok = jsonResponse.getString("access_token");
+					System.out.println("Access Token: " + tok);
+				} else {
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
+					StringBuilder response = new StringBuilder();
+					String responseLine;
+					while ((responseLine = br.readLine()) != null) {
+						response.append(responseLine.trim());
+					}
+
+					System.err.println("Error: " + response.toString());
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		private static void requestInfo() {
+			try {
+				URL url = new URL("https://api.line.me/v2/profile");
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Authorization", "Bearer " + tok);
+
+				int status = conn.getResponseCode();
+				if (status == 200) {
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+					StringBuilder response = new StringBuilder();
+					String responseLine;
+					while ((responseLine = br.readLine()) != null) {
+						response.append(responseLine.trim());
+					}
+
+					JSONObject jsonResponse = new JSONObject(response.toString());
+					System.out.println("Profile Info: " + jsonResponse);
+				} else {
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
+					StringBuilder response = new StringBuilder();
+					String responseLine;
+					while ((responseLine = br.readLine()) != null) {
+						response.append(responseLine.trim());
+					}
+
+					System.err.println("Error: " + response.toString());
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
