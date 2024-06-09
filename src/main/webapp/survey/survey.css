@@ -6,48 +6,181 @@ body {
 }
 
 .tk_survey_container {
-  width: 77rem;
-  height: 55rem;
+  width: 84rem;
+  height: 73rem;
   border: 3px solid black;
-  display: flex;
-  justify-content: center;
-}
-
-.tk_durumri {
-  border: 2px solid #ffe2f0;
-  width: 100%;
-  height: 100%;
-}
-
-.tk_tk_durumari_paper {
-  border: 2px solid #ffe4e4;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.tk_survey {
-  border: 2px solid #fffff4;
+.tk_durumari {
+  border: 2px solid black;
+  width: 77rem;
+  height: 54rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tk_durumari_roll {
+  width: 17rem;
+  height: 51rem;
+  background-color: #f2c6d9; /* 옅은 분홍색 배경 */
+  border: none; /* 테두리 제거 */
+  overflow: hidden; /* 펼쳐지는 부분 숨김 */
+  position: relative; /* 끈 위치 조정 */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* 은은한 그림자 효과 */
+}
+
+.tk_durumari_roll::before {
+  /* 빨간 끈 스타일 */
+  content: "";
+  border: 3px solid black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* 끈 길이를 가로 90%로 설정 */
+  height: 50px; /* 끈 두께를 2px로 설정 */
+  background-color: #fb1010; /* 빨간색 */
+  z-index: 1;
+}
+.tk_durumari_roll::after {
+  /* 빨간 끈 스타일 */
+  content: "";
+  border: 3px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* 끈 길이를 가로 90%로 설정 */
+  height: 50px; /* 끈 두께를 2px로 설정 */
+  background-color: #fb1010; /* 빨간색 */
+  z-index: 1;
+}
+
+.tk_durumari_roll img {
+  width: 80%; /* 이미지 너비를 컨테이너에 맞게 조절 */
+  height: auto; /* 이미지 비율 유지 */
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  z-index: 2;
+}
+
+.tk_durumari_roll:hover {
+  transform: scale(1.05);
+}
+
+.tk_durumari_paper {
+  background-color: #ffe4e4;
+  border: 2px solid black;
   width: 54rem;
   height: 51rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0; /* 초기 너비를 0으로 설정 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  transition: width 0.8s ease-in-out; /* 부드러운 펼침 효과 */
+}
+
+.tk-paper-wide {
+  width: 80%;
+}
+
+.tk_survey {
+  background-color: #fffff4;
+  border: 2px solid black;
+  width: 50rem;
+  height: 48rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .tk_survey_header {
-  border: 2px solid #d9d9d9;
+  border: 2px solid black;
   width: 50rem;
   height: 7rem;
 }
 
-.tk_survey_contents {
-  border: 2px solid #d9d9d9;
+.tk_index_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tk_index_container > div {
+  /* 각 이미지 컨테이너에 스타일 적용 */
+  position: relative; /* 텍스트의 위치를 상대적으로 지정 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  top: -100px; /* 초기 높이를 이미지의 절반으로 설정 */
+  transition: height 1s ease; /* 높이 변화에 대한 애니메이션 효과 */
+}
+
+.tk_index_container > div.active {
+  /* 클릭된 이미지 스타일 */
+  top: -50px; /* 클릭 시 전체 높이로 확장 */
+}
+
+.tk_index_container img {
+  display: block; /* 이미지를 블록 요소로 만들어 여백 제거 */
+}
+
+.image-text {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 15px;
+}
+
+.tk_survey_content {
+  border: 2px solid black;
   width: 50rem;
-  height: 7rem;
+  height: 358em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick {
+  width: 48rem;
+  height: 32rem;
+  background-color: skyblue;
+  color: black;
+  font-size: 20px;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+
+.slick-initialized .slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 32rem;
 }
 
 .tk_survey_footer {
-  border: 2px solid #d9d9d9;
+  border: 2px solid black;
   width: 50rem;
-  height: 5rem;
+  height: 4rem;
 }
