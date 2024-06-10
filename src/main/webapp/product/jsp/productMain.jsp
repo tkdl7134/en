@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,48 +25,22 @@
           </div>
           <div class="product-page-content">
             <div class="page-content">
+            <c:forEach items="${products }" var="p">
               <div class="page-content-template">
                 <div class="template-img">
-                  <img src="product/imgFolder/img9-2.png" alt="" />
+                  <img src="${p.t_preview }" alt="" />
                   <div>
                     <div class="template-img-line-red-big"></div>
                     <div class="template-img-line-red-small"></div>
                   </div>
                 </div>
-                <div class="template-title">ポエトリー</div>
+                <div class="template-title">${p.t_name }</div>
                 <div class="template-button">
                   <button class="preview" data-target="#layer2">見本</button>
                   <button>制作</button>
                 </div>
               </div>
-              <div class="page-content-template">
-                <div class="template-img">
-                  <img src="product/imgFolder/img8.png" alt="" />
-                  <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
-                  </div>
-                </div>
-                <div class="template-title">モーメント</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
-                </div>
-              </div>
-              <div class="page-content-template">
-                <div class="template-img">
-                  <img src="product/imgFolder/img6-2.png" alt="" />
-                  <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
-                  </div>
-                </div>
-                <div class="template-title">赤い糸</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
-                </div>
-              </div>
+             </c:forEach>
             </div>
           </div>
         </div>
@@ -79,7 +54,7 @@
           <div class="pop-conts">
             <!-- content //-->
             <!-- db에 저장되어있는 template-img READ -->
-            <img src="product/imgFolder/img9-2.png" alt="" />
+            <img src="" alt="" />
             <div class="btn-r">
               <a href="#" class="btn-layerClose">close</a>
             </div>
