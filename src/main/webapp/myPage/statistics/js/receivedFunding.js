@@ -1,22 +1,8 @@
 function generateGraph() {
-    const startDate = new Date(document.getElementById('startDate').value);
-    const endDate = new Date(document.getElementById('endDate').value);
+    const prices = document.getElementById('prices'); // attribute prices를 가져옴
 
-    if (startDate > endDate) {
-        alert("Start date must be before end date.");
-        return;
-    }
-
-    const dateArray = [];
-    const currentDate = new Date(startDate);
-
-    while (currentDate <= endDate) {
-        dateArray.push(new Date(currentDate));
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
-
-    const dateLabels = dateArray.map(date => date.toISOString().split('T')[0]);
-    const dateValues = dateArray.map((date, index) => index + 1);
+    const dateLabels = prices.map(price => price.w_date);
+    const dateValues = prices.map((price, index) => index + 1);
 
     const ctx = document.getElementById('dateChart').getContext('2d');
 

@@ -14,9 +14,10 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="recFund-container">
       <div class="recFund-title">펀딩 현황 (임시 이름)</div>
+      <span id="prices">${prices }</span>
       <div class="recFund-content">
         <div class="recFund-contents" >
-          <span id="first-product-name">${wishlist[0].w_product }</span
+          <span id="first-product-name"></span
           ><img
           	onclick="showInfo()"
             class="fund-products"
@@ -24,9 +25,9 @@ pageEncoding="UTF-8"%>
             alt=""
             src="myPage/statistics/imgFolder/fundProduct1.png"
           />
-          <img onclick="showInfo()" id="product-type1" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
+          <img onclick="generateGraph()" id="product-type1" alt="" src="myPage/statistics/imgFolder/opt_cream.png">
         </div>
-        <div class="recFund-contents"><span id="second-product-name">${wishlist[1].w_product }</span
+        <div class="recFund-contents"><span id="second-product-name"></span
           >
           <img 
           onclick="showInfo()"
@@ -38,7 +39,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type2" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-         <span id="third-product-name">${wishlist[2].w_product }</span>
+         <span id="third-product-name"></span>
           <img
           onclick="showInfo()"
             class="fund-products"
@@ -49,7 +50,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type3" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-         <span id="fourth-product-name">${wishlist[3].w_product }</span>
+         <span id="fourth-product-name"></span>
           <img
           onclick="showInfo()"
             class="fund-products"
@@ -60,7 +61,7 @@ pageEncoding="UTF-8"%>
           <img onclick="showInfo()" id="product-type4" alt="" src="myPage/statistics/imgFolder/product-fridge.png">
         </div>
         <div class="recFund-contents">
-            <span id="fifth-product-name">${wishlist[4].w_product }</span>
+            <span id="fifth-product-name"></span>
           <img
           onclick="showInfo()"
             class="fund-products"
@@ -72,9 +73,9 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
       <div id="recFund-info">
-      <img id="info-page" alt="" src="myPage/statistics/imgFolder/fundContentReal.png">
+      <img id="info-page" alt="" src="myPage/statistics/imgFolder/opt_pink.png">
      <div style="position: relative; left: 3rem; bottom: 45rem;">
-       <form id="dateForm">
+       <form  id="dateForm">
         <label for="startDate">Start Date:</label>
         <input type="date" id="startDate" name="startDate">
         <br>
