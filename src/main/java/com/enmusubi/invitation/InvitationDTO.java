@@ -1,22 +1,70 @@
 package com.enmusubi.invitation;
 
 public class InvitationDTO {
-	      
-	private int e_no;
+    private int e_no;
+    
+    private String w_groom;
+    private String w_bride;
+    private String w_img;
+    
+    private String m_id;
+    private String m_name;
+    private String m_name_kana;
+    private String m_name_rome;
+    private String m_phone;
+    private String m_email;
+    
+    private String g_attend;
+    private String g_guest_type;
+    private String g_age_type;
+    private String allergy;
 
-	private String m_id;
-	private String m_name;
-	private String m_name_kana;
-	private String m_name_rome;
-	private String m_phone;
-	private String m_email;
-	
-	
-	private	String g_attend;//참여여부
-	private	String g_guest_type;//참여 유형 - 게스트 유형 신랑 신부
-	private	String g_age_type;//참며인원 - 성인 어린이 유아
-	
-	private String allergy;
+    public InvitationDTO() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public InvitationDTO(int e_no, String w_groom, String w_bride, String w_img,
+                         String m_id, String m_name, String m_name_kana, String m_name_rome,
+                         String m_phone, String m_email, String g_attend, String g_guest_type,
+                         String g_age_type, String allergy) {
+        this.e_no = e_no;
+        this.w_groom = w_groom;
+        this.w_bride = w_bride;
+        this.w_img = w_img;
+        this.m_id = m_id;
+        this.m_name = m_name;
+        this.m_name_kana = m_name_kana;
+        this.m_name_rome = m_name_rome;
+        this.m_phone = m_phone;
+        this.m_email = m_email;
+        this.g_attend = g_attend;
+        this.g_guest_type = g_guest_type;
+        this.g_age_type = g_age_type;
+        this.allergy = allergy;
+    }
+
+    // Getters and setters...
+
+    
+    @Override
+    public String toString() {
+        return "InvitationDTO{" +
+               "e_no=" + e_no +
+               ", w_groom='" + w_groom + '\'' +
+               ", w_bride='" + w_bride + '\'' +
+               ", w_img='" + w_img + '\'' +
+               ", m_id='" + m_id + '\'' +
+               ", m_name='" + m_name + '\'' +
+               ", m_name_kana='" + m_name_kana + '\'' +
+               ", m_name_rome='" + m_name_rome + '\'' +
+               ", m_phone='" + m_phone + '\'' +
+               ", m_email='" + m_email + '\'' +
+               ", g_attend='" + g_attend + '\'' +
+               ", g_guest_type='" + g_guest_type + '\'' +
+               ", g_age_type='" + g_age_type + '\'' +
+               ", allergy='" + allergy + '\'' +
+               '}';
+    }
 
 	public int getE_no() {
 		return e_no;
@@ -24,6 +72,30 @@ public class InvitationDTO {
 
 	public void setE_no(int e_no) {
 		this.e_no = e_no;
+	}
+
+	public String getW_groom() {
+		return w_groom;
+	}
+
+	public void setW_groom(String w_groom) {
+		this.w_groom = w_groom;
+	}
+
+	public String getW_bride() {
+		return w_bride;
+	}
+
+	public void setW_bride(String w_bride) {
+		this.w_bride = w_bride;
+	}
+
+	public String getW_img() {
+		return w_img;
+	}
+
+	public void setW_img(String w_img) {
+		this.w_img = w_img;
 	}
 
 	public String getM_id() {
@@ -105,30 +177,4 @@ public class InvitationDTO {
 	public void setAllergy(String allergy) {
 		this.allergy = allergy;
 	}
-
-	public InvitationDTO(int e_no, String m_id, String m_name, String m_name_kana, String m_name_rome, String m_phone,
-			String m_email, String g_attend, String g_guest_type, String g_age_type, String allergy) {
-		super();
-		this.e_no = e_no;
-		this.m_id = m_id;
-		this.m_name = m_name;
-		this.m_name_kana = m_name_kana;
-		this.m_name_rome = m_name_rome;
-		this.m_phone = m_phone;
-		this.m_email = m_email;
-		this.g_attend = g_attend;
-		this.g_guest_type = g_guest_type;
-		this.g_age_type = g_age_type;
-		this.allergy = allergy;
-	}
-
-	@Override
-	public String toString() {
-		return "InvitationDTO [e_no=" + e_no + ", m_id=" + m_id + ", m_name=" + m_name + ", m_name_kana=" + m_name_kana
-				+ ", m_name_rome=" + m_name_rome + ", m_phone=" + m_phone + ", m_email=" + m_email + ", g_attend="
-				+ g_attend + ", g_guest_type=" + g_guest_type + ", g_age_type=" + g_age_type + ", allergy=" + allergy
-				+ "]";
-	}
 }
-
-	

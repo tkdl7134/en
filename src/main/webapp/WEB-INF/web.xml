@@ -2,15 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <description></description>
-    <display-name>Fund</display-name>
-    <servlet-name>Fund</servlet-name>
-    <servlet-class>com.enmusubi.funding.Fund</servlet-class>
+    <display-name>InvitationC</display-name>
+    <servlet-name>InvitationC</servlet-name>
+    <servlet-class>com.enmusubi.invitation.InvitationC</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Fund</servlet-name>
-    <url-pattern>/Fund</url-pattern>
+    <servlet-name>InvitationC</servlet-name>
+    <url-pattern>/InvitationC</url-pattern>
   </servlet-mapping>
-  <display-name>en</display-name>
+  <display-name>en-musubi</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -20,73 +20,21 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
-    <display-name>ss</display-name>
-    <servlet-name>ss</servlet-name>
-    <servlet-class>com.enmusubi.funding.ss</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ss</servlet-name>
-    <url-pattern>/ss</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>InvitationController</display-name>
-    <servlet-name>InvitationController</servlet-name>
-    <servlet-class>com.enmusubi.invitation.InvitationController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InvitationController</servlet-name>
-    <url-pattern>/InvitationController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>InvitationRegController</display-name>
-    <servlet-name>InvitationRegController</servlet-name>
-    <servlet-class>com.enmusubi.invitation.InvitationRegController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InvitationRegController</servlet-name>
-    <url-pattern>/InvitationRegController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>InvitationRegC</display-name>
-    <servlet-name>InvitationRegC</servlet-name>
-    <servlet-class>com.enmusubi.invitation.InvitationRegController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InvitationRegC</servlet-name>
-    <url-pattern>/InvitationRegC</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GuestController</display-name>
-    <servlet-name>GuestController</servlet-name>
-    <servlet-class>com.enmusubi.guest.GuestController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GuestController</servlet-name>
-    <url-pattern>/GuestController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>MytempleteC</display-name>
-    <servlet-name>MytempleteC</servlet-name>
-    <servlet-class>com.enmusubi.mytemplate.MytempleteC</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MytempleteC</servlet-name>
-    <url-pattern>/MytempleteC</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TemplateC</display-name>
     <servlet-name>TemplateC</servlet-name>
     <servlet-class>com.enmusubi.mytemplate.TemplateC</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>invitationRegC</servlet-name>
+    <servlet-class>com.enmusubi.invitation.invitationRegC</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>TestC</display-name>
+    <servlet-name>TestC</servlet-name>
+    <servlet-class>com.enmusubi.invitation.TestC</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>TemplateC</servlet-name>
-    <url-pattern>/TemplateC</url-pattern>
+    <servlet-name>TestC</servlet-name>
+    <url-pattern>/TestC</url-pattern>
   </servlet-mapping>
 </web-app>

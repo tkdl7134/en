@@ -1,8 +1,0 @@
-@charset "UTF-8";
-
-.hw_container {
-    background-image: url('./imgFolder/sakura.jpg');
-    background-size: cover; /* 이미지가 전체 컨테이너를 덮도록 설정 */
-    background-position: center; /* 이미지를 중앙에 배치 */
-    background-repeat: no-repeat; /* 이미지 반복을 방지 */
-}
