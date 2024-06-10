@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/statisticsTestC")
 public class statisticsTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+		StatisticsDAO.showAllList(request);
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedMain.jsp").forward(request, response);
 		
 	}
