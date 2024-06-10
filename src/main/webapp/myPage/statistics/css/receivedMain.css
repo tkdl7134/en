@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+body {
+  background-color: blanchedalmond;
+}
+
+.recMain-container {
+  width: 60rem;
+  margin-left: 13rem;
+  border: 1px solid black;
+}
+.recMain-title {
+  margin-top: 3rem;
+
+  font-size: 2.5rem;
+}
+
+.recMain-toPages {
+  margin-top: 4rem;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.recMainImgs {
+  height: 26rem;
+ 
+}
+.recMain-subtitle {
+	position : relative;
+	
+	font-size: 1.6rem;
+	
+}
