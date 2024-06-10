@@ -42,7 +42,7 @@
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_money.png">
 		</div>
 		<div class="texts">
-		<div class="objective">ご祝儀</div>
+		<div style="width: 19rem;" class="objective">ご祝儀</div>
 		<div class="genjyou">の現状</div>
 		</div>
 		</div>

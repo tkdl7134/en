@@ -12,9 +12,11 @@ pageEncoding="UTF-8"%>
   </head>
   <!-- 상품이름이랑 그 상품 이미지 나오는 span태그랑 이미지 태그에 각각 텍스트랑 이미지 소스를 변수화해서 쓸것  -->
   <body>
-    <div class="recFund-container">
-      <div class="recFund-title">펀딩 현황 (임시 이름)</div>
-    </div>
+   
+   
+   
+   
+   
    
   </body>
 </html>
