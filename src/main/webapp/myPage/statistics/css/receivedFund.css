@@ -1,7 +1,17 @@
 @charset "UTF-8";
-body {
-  background-color: blanchedalmond;
+@font-face {
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  src:url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 }
+body {
+  font-family:"Noto Serif JP", serif;
+  margin: 0;
+  padding: 0;
+}
+
 .recFund-container {
   width: 60rem;
   margin-left: 13rem;
@@ -11,189 +21,4 @@ body {
   margin-top: 3rem;
 	margin-bottom : 14rem;
   font-size: 2.5rem;
-}
-.recFund-content {
-	display: flex;
-    position: relative;
-    right: 8rem;
-	
-	
-}
-.recFund-contents {
-	
-	height : 20rem;
-	 width : 15rem;
-}
-.fund-products {
-    width: 15rem;
-}
-#first-product-name {
-	position: relative;
-	 top: 4rem; 
-	 left: 2rem; 
-	 transform: 
-	 rotate(-11deg); 
-	 display: inline-block;
-}
-#product-type1 {
-	position : relative;
-	bottom : 16rem;
-	transform:
-	 rotate(-1deg); 
-	 display: inline-block;
-	left : 1.3rem;
-}
-#second-product-name {
-	position: relative;
-	 top: 12rem; 
-	 left: 5.7rem; 
-	 transform: 
-	 rotate(7deg); 
-	 display: inline-block;
-	
-}
-#product-type2 {
-	width : 6.5rem;
-	position : relative;
-	bottom : 18.5rem;
-	transform:
-	 rotate(16deg); 
-	 display: inline-block;
-	left : 4.5rem;
-}
-#third-product-name {
-	
-	position: relative;
-	 top: 5rem; 
-	 left: 5.7rem; 
-	 transform: 
-	 rotate(-5deg); 
-	 display: inline-block;
-}
-#product-type3 {
-	
-	width : 6.5rem;
-	position : relative;
-	bottom : 11rem;
-	transform:
-	 rotate(3deg); 
-	 display: inline-block;
-	left : 5rem;
-	
-}
-#fourth-product-name {
-	
-	position: relative;
-	 top: 15rem; 
-	 left:5.5rem; 
-	 transform: 
-	 rotate(8.5deg); 
-	 display: inline-block;
-	
-}
-#product-type4{
-	width : 6.5rem;
-	position : relative;
-	bottom : 18rem;
-	transform:
-	 rotate(18deg); 
-	 display: inline-block;
-	left : 5rem;
-}
-#fifth-product-name {
-	position: relative;
-	 top: 15rem; 
-	 left:6.5rem; 
-	 transform: 
-	 rotate(-8deg); 
-	 display: inline-block;
-}
-#product-type5{
-	width : 6.5rem;
-	position : relative;
-	bottom : 18rem;
-	transform:
-	 rotate(1deg); 
-	 display: inline-block;
-	left : 3.7rem;
-}
-#recFund-info{
-	position : relative;
-	bottom : 30rem;
-	left : 3rem;
-	
-	
-}
-
-#info-page{
-	
-	width : 60rem;	
-	
-}
-
-#start-date{
-	position : relative;
-	    bottom: 40rem;
-    left: 4rem;
-	
-}
-#end-date{
-	position : relative;
-	    bottom: 40rem;
-    left: 4rem;
-	
-}
-      .chart-container {
-         
-    width: 36rem;
-    height: 23rem;
-        }
-        #dateChart {
-            width: 100%;
-            height: 100%;
-        }
-#current-info {
-	position: relative;
-    bottom: 80rem;
-    z-index: 3;
-    left: 31rem;
-    font-size : 1.1rem;
-	
-	
-	
-}
-#return-button {
-	    position: relative;
-    bottom: 87rem;
-    left: 47rem;
-    border-style: none;
-    width: 10rem;
-    height: 3rem;
-    background-color: white;
-	
-}
-#specific-info {
-	    left: 27rem;
-    display: flex;
-    position: relative;
-    bottom: 76rem;
-    width: 50rem;
-	
-}
-.specific-infos {
-	border : 1px solid black;
-	background-color : white;
-	
-	margin-right : 5rem;
-	width : 15rem;
-}
-.info-div1{
-	display : flex;
-	
-}
-.info-div2{
-	display : flex;
-	position : relative;
-	top : 6rem;
-	right: 40rem;
 }

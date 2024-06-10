@@ -9,21 +9,48 @@
 <script type="text/javascript" src="myPage/statistics/js/receivedMain.js"></script>
 </head>
 <body>
-	<div class="recMain-container">
-	  <div class="recMain-title">받은것 확인 (임시 이름)</div>
-<div class="recMain-toPages">
- <div class="recMain-toFund" onclick="location.href='receivedFundingController'">
-	<div class="recMain-subtitle">펀딩 현황 확인</div>
-	<div><img class="recMainImgs" alt="a" src="myPage/statistics/imgFolder/fundingImg.png"></div>
- </div>
-<div class="recMain-toAmazon" onclick="window.open('https://www.amazon.com/hz/wishlist/intro', '_blank')">	<div class="recMain-subtitle">선물 현황 확인</div>
-	<div><img class="recMainImgs" alt="b" src="myPage/statistics/imgFolder/presentImg.png"></div>
+	<div class="recMain-container"> 
+	<img id="recMain-mainImg" alt="" src="myPage/statistics/imgFolder/surveyBackground-img.png">
+		<div class="spaces" ><img id="mainbutton" alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+		<div class="spaces"><img id="navi" alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+	<div id="recMain-title">心からのお伝え</div>
+	<div id="recMain-header"><img id="header-img" alt="" src="myPage/statistics/imgFolder/footer.png"></div>
+	<div id="recMain-content">
+		<div onclick="location.href='receivedFundingController'" class="box-img">
+		<div class="boxes-img">
+		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_pink.png">
+		<img class="lines" alt="" src="myPage/statistics/imgFolder/line_funding.png">
+		</div>
+		<div class="texts">
+		<div class="objective">フンディンぐ</div>
+		<div class="genjyou">の現状</div>
+		</div>
+		</div>
+		<div onclick="goToAmazon()" class="box-img">
+		<div class="boxes-img">
+		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_yellow.png">
+		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_present.png">
+		</div>
+		<div class="texts">
+		<div class="objective">プレゼント</div>
+		<div class="genjyou">の現状</div>
+		</div>
+		</div>
+		<div onclick="location.href='receivedMoneyController'" class="box-img">
+		<div class="boxes-img">
+		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_red_line.png">
+		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_money.png">
+		</div>
+		<div class="texts">
+		<div class="objective">ご祝儀</div>
+		<div class="genjyou">の現状</div>
+		</div>
+		</div>
+	
 	</div>
-	<div class="recMain-toMoney" onclick="location.href='receivedMoneyController'">
-	<div class="recMain-subtitle">송금 현황 확인</div>
-	<div><img class="recMainImgs" alt="c" src="myPage/statistics/imgFolder/moneyImg.png"></div>
+	
+	
 	</div>
-</div>
-	</div>
+	
 </body>
 </html>

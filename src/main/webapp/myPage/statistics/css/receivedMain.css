@@ -1,34 +1,102 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  src:url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+}
 body {
-  background-color: blanchedalmond;
+  font-family:"Noto Serif JP", serif;
+  margin: 0;
+  padding: 0;
+  height : 100%;
 }
-
 .recMain-container {
-  width: 60rem;
-  margin-left: 13rem;
-  border: 1px solid black;
+	 height: 100vh; /* 컨테이너의 높이를 뷰포트 높이에 맞춤 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
 }
-.recMain-title {
-  margin-top: 3rem;
+#recMain-mainImg {
+	   width: 100%; /* 너비를 100%로 설정 */
+    height: 100%; /* 높이를 자동으로 설정 */
+}
+#mainbutton {
 
-  font-size: 2.5rem;
+		width : 5rem;
+		position: relative;
+    bottom: 42rem;
+    left: 3rem;
 }
+#navi {
+	width: 5rem;
+    position: relative;
+    bottom: 42rem;
+    left: 87rem;
+    
+}
+#recMain-title {
+	position: relative;
+    bottom: 40rem;
+    font-size: 2.5rem;
+    left: 39.3rem;
+    width : 20rem;
+}
+#recMain-header {
+	
+    position: relative;
+    bottom: 40rem;
+    left: 38.6rem;
+	width : 19.5rem;
+}
+#header-img{
+    width: 18.8rem;
 
-.recMain-toPages {
-  margin-top: 4rem;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-around;
 }
-
-.recMainImgs {
-  height: 26rem;
- 
+#recMain-content{
+	display: flex;
+    bottom: 38rem;
+    position: relative;
+	left : 18rem;
+	width : 60rem;
+	justify-content : space-between;
 }
-.recMain-subtitle {
+.box-img{
 	position : relative;
 	
-	font-size: 1.6rem;
+	
+}	
+.boxes{
+	width : 17rem;
+	position : relative;
+	
 	
 }
+.box-img:hover .boxes, .box-img:hover .lines {
+  transform: rotate(15deg);
+}
+
+.lines{
+	position: relative;
+    width: 10rem;
+    left: 3.5rem;
+    bottom: 6rem;
+	
+}
+.spaces {
+	height : 0;
+	
+}
+.texts {
+    position: relative;
+    text-align: center;
+    bottom: 16rem;
+	right : 1rem;
+}
+.objective{
+	font-size : 2rem;
+	}
+.genjyou{
+	font-size : 1.6rem;
+	margin-top : 1.5rem;
+	}
