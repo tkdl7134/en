@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @font-face {
   font-family: "Noto Serif JP", serif;
   font-optical-sizing: auto;
@@ -13,11 +14,7 @@ body {
   background-image: url("imgFolder/surveyBackground-img.png");
   background-size: cover;
   background-repeat: no-repeat;
-  body {
-    font-family: "Noto Serif JP", serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: "Noto Serif JP";
 }
 
 header {
@@ -42,4 +39,52 @@ header {
   right: 4rem;
   width: 3rem;
   height: 3rem;
+}
+
+.middle-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 4rem;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  font-family: "Noto Serif JP";
+}
+
+.middle-img {
+  width: 13.5rem;
+  height: 2rem;
+}
+
+.main-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.5rem;
+  font-size: 0.8rem;
+}
+
+.main-content-words {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Serif JP";
+}
+
+.main-content-words > div:nth-child(2) {
+  color: red;
+}
+
+.main-content-words > div:nth-child(3) {
+  margin-top: 0.4rem;
+  width: 30rem;
+}
+
+.main-content-words > div:nth-child(4) {
+  width: 20rem;
 }
