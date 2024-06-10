@@ -1,55 +1,45 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap");
+}
+
 body {
-  height: 100vh; /* 전체 화면 높이 설정 */
-  margin: 0; /* 기본 마진 제거 */
-  overflow: hidden; /* 넘치는 부분 숨김 */
-  background-color: #fffbf7;
+  margin: 0;
+  padding: 0;
+  background-image: url("imgFolder/surveyBackground-img.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  body {
+    font-family: "Noto Serif JP", serif;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.half-circle-bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 54vw;
-  border: 4px solid red;
-  border-radius: 50vw 50vw 0 0;
-  border-bottom: none;
-  background-color: transparent;
+header {
+  width: 100%;
+  position: relative;
+  height: 100px; /* 헤더 높이 설정 */
 }
 
-.half-circle-bottom-second {
-  position: fixed;
-  bottom: 0;
-  left: 1vw;
-  width: 98vw;
-  height: 53vw;
-  background-color: transparent;
-  border: 4px solid red;
-  border-radius: 50vw 50vw 0 0;
-  border-bottom: none;
+/* 왼쪽 위 모서리에 위치할 이미지 */
+.top-left {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  width: 6rem; /* 이미지 너비 */
+  height: 6rem; /* 이미지 높이 */
 }
 
-.half-circle-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 54vw;
-  border: 4px solid red;
-  border-radius: 0 0 50vw 50vw;
-  border-top: none;
-  background-color: transparent;
-}
-
-.half-circle-top-second {
-  position: fixed;
-  top: 0;
-  left: 1vw;
-  width: 98vw;
-  height: 53vw;
-  background-color: transparent;
-  border: 4px solid red;
-  border-radius: 0 0 50vw 50vw;
-  border-top: none;
+/* 오른쪽 위 모서리에 위치할 이미지 */
+.top-right {
+  position: absolute;
+  top: 3.5rem;
+  right: 4rem;
+  width: 3rem;
+  height: 3rem;
 }
