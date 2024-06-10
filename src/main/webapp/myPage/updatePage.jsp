@@ -11,7 +11,7 @@
 <body>
 	<h2>アカウント情報修正</h2>
 
-	<form action="MemberUpdateC" method="post"
+	<form action="/En/MemberUpdateC" method="post"
 		onsubmit="return validatePassword()">
 		<input type="hidden" name="m_id" value="${sessionScope.m_id}">
 		<%-- 아이디는 숨겨서 전달 --%>
@@ -26,9 +26,9 @@
 			value="${sessionScope.m_name_kana}" required><br>
 		<br> 名前(英語)<input type="text" id="m_name_rome" name="m_name_rome"
 			value="${sessionScope.m_name_rome}" required><br>
-		<br> 性別<input type="radio" name="m_gender" value="male">
-		男性 <input type="radio" name="m_gender" value="female"> 女性 <input
-			type="radio" name="m_gender" value="other"> その他 <br>
+		<br> 性別<input type="radio" name="m_gender" value="男性">
+		男性 <input type="radio" name="m_gender" value="女性"> 女性 <input
+			type="radio" name="m_gender" value="その他"> その他 <br>
 		<br> 郵便番号<input type="text" id="a_postcode" name="a_postcode"
 			value="${sessionScope.a_postcode}" required><br>
 		<br> 都道府県<select id="a_prefecture" name="a_prefecture" required>

@@ -44,7 +44,7 @@
 	<form action="MemberDeleteC" method="post" onsubmit="return confirmDelete()">
 		<button type="submit">アカウント削除</button>
 	</form>
-	<a href="javascript:window.history.back();"><button>戻る</button></a>
+	<a href="main.jsp"><button>戻る</button></a>
 </c:if>
 
 <script>

@@ -186,7 +186,7 @@ public class MemberDAO {
 	}
 
 	// ResultSet -> DTO 변환 (마이페이지 등)
-	private MemberDTO createMemberDTO(ResultSet rs) throws SQLException {
+	private static MemberDTO createMemberDTO(ResultSet rs) throws SQLException {
 		MemberDTO dto = new MemberDTO();
 		dto.setM_id(rs.getString("m_id"));
 		dto.setM_pw(rs.getString("m_pw"));
@@ -211,7 +211,7 @@ public class MemberDAO {
 		return dto;
 	}
 
-	// 사용자 ID로 회원 정보 조회
+	// 웹 사용자 ID로 회원 정보 조회
 	public MemberDTO getMemberById(String m_id) throws SQLException {
 		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
 		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -227,6 +227,21 @@ public class MemberDAO {
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
+	// 라인 사용자 ID로 회원 정보 조회
+    public static MemberDTO getMemberByLineId(String m_id) throws SQLException {
+        String sql = "SELECT * FROM s_Member WHERE m_id = ?";
+        try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, m_id);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return createMemberDTO(rs);
+                }
+            }
+        }
+        return null; // 회원 정보가 없으면 null 반환
+    }
+	
 	// 회원 정보 업데이트 (이름, 이미지)
 	public void updateMember(MemberDTO dto) throws SQLException {
 		String sql = "UPDATE s_Member SET m_name = ?, m_img = ? WHERE m_id = ?";
@@ -434,7 +449,7 @@ public class MemberDAO {
 		String a_postcode = request.getParameter("a_postcode");
 
 		// 디버깅 로그 출력 (m_id 값 확인)
-		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
+//		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
 
 		// 현재 날짜 및 시간 가져오기
 		LocalDateTime now = LocalDateTime.now();
@@ -479,11 +494,12 @@ public class MemberDAO {
 	public static void memberDetailCDoGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		HttpSession session = request.getSession();
+//		String m_name = (String) session.getAttribute("m_name");
 		String m_id = (String) session.getAttribute("m_id");
-		System.out.println("Session m_id in MemberDetailC: " + m_id); // 로그 출력 (디버깅용)
+//		System.out.println("Session m_id in MemberDetailC: " + m_id); // 로그 출력 (디버깅용)
 
 		if (m_id == null) {
-			response.sendRedirect("loginPage/login.jsp");
+			response.sendRedirect("MemberC"); // 로그인 페이지로 리다이렉트
 			return;
 		}
 
@@ -617,13 +633,15 @@ public class MemberDAO {
 		request.getParameter("state");
 		System.out.println(request.getParameter("code"));
 		System.out.println(request.getParameter("state"));
-	}
+		
+    }
+		
 
 		private static String tok;
 
 		public static void LineApi(HttpServletRequest request) {
 			getToken(request);
-			requestInfo();
+			requestInfo(request);
 		}
 
 		private static void getToken(HttpServletRequest request) {
@@ -642,6 +660,7 @@ public class MemberDAO {
 					byte[] input = data.getBytes("utf-8");
 					os.write(input, 0, input.length);
 				}
+				
 				int status = conn.getResponseCode();
 				if (status == 200) {
 					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
@@ -652,9 +671,14 @@ public class MemberDAO {
 					}
 
 					JSONObject jsonResponse = new JSONObject(response.toString());
+					 tok = jsonResponse.getString("access_token");
+		                HttpSession session = request.getSession();
+		                session.setAttribute("access_token", tok);
+					
+		            //디버깅 코드 출력
 					System.out.println("Success: " + jsonResponse);
-					tok = jsonResponse.getString("access_token");
 					System.out.println("Access Token: " + tok);
+					
 				} else {
 					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
 					StringBuilder response = new StringBuilder();
@@ -662,7 +686,6 @@ public class MemberDAO {
 					while ((responseLine = br.readLine()) != null) {
 						response.append(responseLine.trim());
 					}
-
 					System.err.println("Error: " + response.toString());
 				}
 
@@ -671,7 +694,7 @@ public class MemberDAO {
 			}
 		}
 
-		private static void requestInfo() {
+		private static void requestInfo(HttpServletRequest request) {
 			try {
 				URL url = new URL("https://api.line.me/v2/profile");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -688,7 +711,17 @@ public class MemberDAO {
 					}
 
 					JSONObject jsonResponse = new JSONObject(response.toString());
+					String m_id = jsonResponse.getString("userId");
+		            String m_name = jsonResponse.getString("displayName");
+
+		            HttpSession session = request.getSession();
+		            session.setAttribute("m_id", m_id);
+		            session.setAttribute("m_name", m_name);
+
+					//디버깅 코드 출력
+		            System.out.println("Session userId set to: " + m_id);
 					System.out.println("Profile Info: " + jsonResponse);
+					
 				} else {
 					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
 					StringBuilder response = new StringBuilder();

@@ -18,7 +18,7 @@
         </c:when>
         <c:otherwise>
             <a href="MemberC"><button>로그인</button></a>
-            <a href="MemberRegC"><button>회원가입</button></a>
+            <a href="/En/MemberRegC"><button>회원가입</button></a>
             <a href="main.jsp"><button>메인으로</button></a>
         </c:otherwise>
     </c:choose>

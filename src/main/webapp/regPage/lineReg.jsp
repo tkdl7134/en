@@ -15,18 +15,16 @@
 	<h2>アカウント登録</h2>
 
 <form action="MemberRegC" method="post" onsubmit="return validatePassword()">
-        ユーザーID<input type="text" name="m_id" id="m_id" placeholder="ユーザーID" required>
-        <button type="button" onclick="dupleChk()">IDチェック</button>
-        <div id="idCheckResult" class="id-available"></div> <br> 
+        <input type="hidden" name="m_id" id="m_id" placeholder="ユーザーID" value="${sessionScope.m_id}" required>
     
         パスワード<input type="password" name="m_pw" id="m_pw" placeholder="パスワード" required><br><br>
         パスワード確認<input type="password" name="m_pw_confirm" id="m_pw_confirm" placeholder="パスワード確認" required><br><br>
         名前<input type="text" name="m_name" placeholder="山田 太郎" required><br><br>
         フリガナ<input type="text" name="m_name_kana" placeholder="ヤマダ タロウ" required><br><br>
-        名前(英語)<input type="text" name="m_name_rome" placeholder="Yamada Tarou" required><br><br>
-        性別<input type="radio" name="m_gender" value="男性" checked> 男性
-        <input type="radio" name="m_gender" value="女性"> 女性
-        <input type="radio" name="m_gender" value="その他"> その他
+        名前(ローマ字)<input type="text" name="m_name_rome" placeholder="Yamada Tarou" required><br><br>
+        性別<input type="radio" name="m_gender" value="male" checked> 男性
+        <input type="radio" name="m_gender" value="female"> 女性
+        <input type="radio" name="m_gender" value="other"> その他
         <br><br>
         郵便番号<input type="text" name="a_postcode" placeholder="郵便番号" required><br><br>
        <label for="a_prefecture">都道府県</label>
@@ -108,49 +106,7 @@
 			return true; // 폼 제출 허용
 				
 		}
-		
-        function dupleChk(){
-        	isIdChecked = false; // 중복 확인 플래그 초기화
-        	
-            let id = $("input[name='m_id']").val();
-            console.log(id);
-             $.ajax({
-                    type: "post",
-                    url: "MemberIdCheckC",
-                    data: {id},
-                    dataType: 'json',
-                    success: function (response) {
-                        console.log(response);
-                        console.log(response.idcheck);
-                        $('#idCheckResult').text(response.idcheck);
-                        
-                   		// 중복 확인 여부 및 사용 가능 여부 플래그 설정
-                        isIdChecked = true;
-                        isIdAvailable = response.idcheck === "使用可能IDです。"; // 사용 가능한 경우에만 true로 설정
 
-                        console.log("isIdChecked:", isIdChecked); // 디버깅 로그 추가
-                        console.log("isIdAvailable:", isIdAvailable); // 디버깅 로그 추가
-                        
-                     	// 중복된 아이디인 경우에만 입력 필드 초기화 및 포커스
-                        if (!isIdAvailable) {
-                            $("#m_id").val(""); 
-                            $("#m_id").focus(); 
-                        }
-
-                        if (response.idcheck === "使用中IDです。") {
-                            $('#idCheckResult').addClass('id-duplicate').removeClass('id-available');
-                        } else if (response.idcheck === "使用可能IDです。") {
-                            $('#idCheckResult').addClass('id-available').removeClass('id-duplicate');
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown)
-                        
-                    }
-                 });
-            }
 	</script>
 </body>
 </html>
