@@ -40,7 +40,9 @@
 			<input type="hidden" name="eno" value="1">
 			<input type="hidden" name="paytype" value="send">
 			<input type="hidden" name="wlno" value="">
+			<div style="display:flex; justify-content: center; margin-top:2em">
 			<div class="kh-s-btn" onclick="goFinanceResult()"></div>
+			</div>
 		</form>
 	</div>
 </div>

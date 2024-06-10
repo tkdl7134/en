@@ -1,33 +1,79 @@
-let deg = 15;
-let zindex = 0;
-let card = document.querySelectorAll(".kh-fund-card");
-let mzindex = card.length;
-let ci = 0;
+let card = document.querySelectorAll(".kh-f-card-out");
 let fpop = document.querySelector(".kh-f-popup");
-const cardColor = ["#FFE2FC", "#FFFDD1", "#E4FAFF", "#E2FFC5", "#DDD7FF"];
+const cardColor = ["#FFF1E0", "#FFE0E0"];
+let scrollTimeout;
 let jlist = document.querySelector("#jlist");
 let jsonData = JSON.parse(jlist.value);
 const eno = jsonData[0].e_no;
 console.log(eno);
 console.log(jsonData);
-card.forEach((element) => {
-	let cdeg = deg;
-	element.style.transform = "rotate(" + cdeg + "deg)";
-	element.style.backgroundColor = cardColor[ci];
-	element.style.transition = "0.1s ease-out";
-	element.addEventListener("mouseover", function() {
-		this.style.transform = "rotate(0deg)";
-		this.style.scale = "120%";
-		this.style.zIndex = mzindex + 1;
-		this.style.transform = "translateY(-100px)";
+let isMouseOverCard;
+card.forEach((element, index, array) => {
+
+	let cardIn = element.querySelector(".kh-fund-card");
+	if (index % 2 == 0) {
+		element.style.transform = 'scale(0.9)';
+		element.classList.add("kh-f-card-min");
+		cardIn.style.backgroundColor = "#FFF1E0";
+	}
+	else {
+		cardIn.style.backgroundColor = "#FFE0E0";
+	}
+	element.style.transition = "0.8s ease-in-out";
+	element.addEventListener('mouseenter', () => {
+		isMouseOverCard = true;
+		console.log('true');
 	});
-	element.addEventListener("mouseout", function() {
-		this.style.transform = "rotate(" + cdeg + "deg)";
-		this.style.scale = "100%";
-		this.style.zIndex = zindex;
+	element.addEventListener('mouseleave', () => {
+		isMouseOverCard = false;
+		console.log('false');
+	});
+	element.addEventListener("mouseover", function(event) {
+		card.forEach((otherCard) => {
+			if (otherCard !== element) {
+				if (otherCard.classList.contains('kh-f-card-min')) {
+					otherCard.style.transform = 'scale(0.8)';
+				}
+				else {
+					otherCard.style.transform = 'scale(0.9)';
+				}
+				otherCard.style.filter = 'grayscale(100%)';
+			}
+			document.querySelector(".kh-f-mousemove > img").src = "finance/img/viewbtn.png";
+			mouseicn.classList.remove("kh-f-none");
+			mouseicn.classList.add("kh-f-block");
+		});
+		if (element.classList.contains('kh-f-card-min')) {
+			this.style.transform = "scale(1)";
+		}
+		else {
+			this.style.transform = "scale(1.1)";
+		}
+		event.stopPropagation();
+	});
+	element.addEventListener("mouseout", function(event) {
+		card.forEach((otherCard) => {
+			if (otherCard !== element) {
+				if (otherCard.classList.contains('kh-f-card-min')) {
+					otherCard.style.transform = 'scale(0.9)';
+				}
+				else {
+					otherCard.style.transform = 'scale(1)';
+				}
+				otherCard.style.filter = 'none';
+			}
+		});
+		if (element.classList.contains('kh-f-card-min')) {
+			this.style.transform = "scale(0.9)";
+		}
+		else {
+			this.style.transform = "scale(1)";
+		}
+		event.stopPropagation();
 	});
 	element.addEventListener("click", function(event) {
 		let cardChild = event.target.closest('.kh-fund-card');
+		element.classList.add("kh-f-rotate")
 		if (cardChild) {
 			let i = event.target.closest(".kh-fund-card").getAttribute("value");
 			document.querySelector("#kh-f-product").innerHTML = jsonData[i].wl_product;
@@ -35,19 +81,17 @@ card.forEach((element) => {
 			document.querySelector("#kh-f-comment").innerHTML = jsonData[i].wl_comment;
 			document.querySelector(".kh-f-btn").setAttribute("value", jsonData[i].wl_no);
 			fpop.style.display = "flex";
+			fpop.style.trasform = "transrate(-50%,-50%)";
+			fpop.classList.add("kh-f-rotate");
 		}
-
-
+		scrollTimeout = setTimeout(() => {
+				element.classList.remove("kh-f-rotate");
+				fpop.classList.remove("kh-f-rotate");
+		}, 200);
 		event.stopPropagation();
 	});
-
-	ci += 1;
-	if (ci >= cardColor.length) {
-		ci = 0;
-	}
-	deg *= -1;
-	zindex += 1;
 });
+
 document.addEventListener("click", function(event) {
 	if (fpop.style.display === "flex") {
 		if (event.target !== fpop && !fpop.contains(event.target)) {
@@ -56,14 +100,124 @@ document.addEventListener("click", function(event) {
 	}
 });
 const cardCon = document.querySelector(".kh-f-card-container");
-cardCon.addEventListener("scroll", function() {
+const cardConAll = document.querySelectorAll(".kh-f-card-container");
+const mouseicn = document.querySelector(".kh-f-mousemove");
+
+cardCon.addEventListener("mouseover", function(event) {
+	if (event.target === cardCon) {
+		document.querySelector(".kh-f-mousemove > img").src = "finance/img/dragbtn.png";
+	}
+	mouseicn.classList.remove("kh-f-none");
+	mouseicn.classList.add("kh-f-block");
+	event.stopPropagation();
 });
+document.addEventListener('mousemove', (event) => {
+	const mouseX = event.clientX;
+	const mouseY = event.clientY;
+	mouseicn.style.pointerEvents = 'none';
+	mouseicn.style.left = mouseX + 'px';
+	mouseicn.style.top = mouseY + 'px';
+});
+cardCon.addEventListener("mouseout", function() {
+	mouseicn.classList.remove("kh-f-block");
+	mouseicn.classList.add("kh-f-none");
+});
+
+
 cardCon.addEventListener("wheel", function(event) {
-	// Prevent the default vertical scroll
-	event.preventDefault();
-	// Scroll horizontally
-	const scrollSpeed = 0.5;
-	this.scrollLeft += event.deltaY * scrollSpeed;
+	if (isMouseOverCard) return;
+	card.forEach((element) => {
+		// Prevent the default vertical scroll
+		event.preventDefault();
+		element.style.transform = 'rotateY(30deg)';
+		// Scroll horizontally
+		const scrollSpeed = 0.5;
+		this.scrollLeft += event.deltaY * scrollSpeed;
+		// Add 'asd' class to start the transition
+		if (scrollTimeout) {
+			clearTimeout(scrollTimeout);
+		}
+		// Set a timeout to remove the vibration class after 1 second
+		scrollTimeout = setTimeout(() => {
+			card.forEach(function(element) {
+				element.style.transform = 'rotateY(0deg)';
+				element.style.transform = '';
+			});
+		}, 500); // 1초 동안 유지
+	});
+});
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+cardCon.addEventListener("mousedown", (e) => {
+	isDown = true;
+	cardCon.classList.add('active');
+	startX = e.pageX - cardCon.offsetLeft;
+	scrollLeft = cardCon.scrollLeft;
+});
+
+cardCon.addEventListener("mouseleave", () => {
+	isDown = false;
+	cardCon.classList.remove('active');
+});
+
+cardCon.addEventListener("mouseup", () => {
+	isDown = false;
+	cardCon.classList.remove('active');
+});
+
+cardCon.addEventListener("mousemove", (e) => {
+	if (!isDown) return;
+	e.preventDefault();
+	const x = e.pageX - cardCon.offsetLeft;
+	const walk = (x - startX) * 2; //scroll-fast
+	cardCon.scrollLeft = scrollLeft - walk;
+	card.forEach((element) => {
+		e.preventDefault();
+		element.style.transform = 'rotateY(30deg)';
+		if (scrollTimeout) {
+			clearTimeout(scrollTimeout);
+		}
+		scrollTimeout = setTimeout(() => {
+			card.forEach(function(element) {
+				element.style.transform = 'rotateY(0deg)';
+				element.style.transform = '';
+			});
+		}, 500); // 1초 동안 유지
+	});
+});
+
+// For touch devices
+cardCon.addEventListener("touchstart", (e) => {
+	isDown = true;
+	startX = e.touches[0].pageX - cardCon.offsetLeft;
+	scrollLeft = cardCon.scrollLeft;
+});
+
+cardCon.addEventListener("touchend", () => {
+	isDown = false;
+});
+
+cardCon.addEventListener("touchmove", (e) => {
+	if (!isDown) return;
+	const x = e.touches[0].pageX - cardCon.offsetLeft;
+	const walk = (x - startX) * 2; //scroll-fast
+	cardCon.scrollLeft = scrollLeft - walk;
+	card.forEach((element) => {
+		e.preventDefault();
+		element.style.transform = 'rotateY(30deg)';
+		if (scrollTimeout) {
+			clearTimeout(scrollTimeout);
+		}
+		scrollTimeout = setTimeout(() => {
+			card.forEach(function(element) {
+				element.style.transform = 'rotateY(0deg)';
+				element.style.transform = '';
+			});
+		}, 500); // 1초 동안 유지
+	});
 });
 
 function goStatistic(no) {
