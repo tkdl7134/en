@@ -2,15 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <description></description>
-    <display-name>Fund</display-name>
-    <servlet-name>Fund</servlet-name>
-    <servlet-class>com.enmusubi.funding.Fund</servlet-class>
+    <display-name>ProductController</display-name>
+    <servlet-name>ProductController</servlet-name>
+    <servlet-class>com.enmusubi.product.ProductController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Fund</servlet-name>
-    <url-pattern>/Fund</url-pattern>
+    <servlet-name>ProductController</servlet-name>
+    <url-pattern>/ProductController</url-pattern>
   </servlet-mapping>
-  <display-name>en</display-name>
+  <display-name>en-musubi</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -19,74 +19,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>ss</display-name>
-    <servlet-name>ss</servlet-name>
-    <servlet-class>com.enmusubi.funding.ss</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ss</servlet-name>
-    <url-pattern>/ss</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>StatisticsTestController</display-name>
-    <servlet-name>StatisticsTestController</servlet-name>
-    <servlet-class>com.enmusubi.myPage.statistics.StatisticsTestController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StatisticsTestController</servlet-name>
-    <url-pattern>/StatisticsTestController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>receivedFundingController</display-name>
-    <servlet-name>receivedFundingController</servlet-name>
-    <servlet-class>com.enmusubi.myPage.statistics.receivedFundingController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>receivedFundingController</servlet-name>
-    <url-pattern>/receivedFundingController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-<<<<<<< HEAD
-    <display-name>receivedMoneyController</display-name>
-    <servlet-name>receivedMoneyController</servlet-name>
-    <servlet-class>com.enmusubi.myPage.statistics.receivedMoneyController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>receivedMoneyController</servlet-name>
-    <url-pattern>/receivedMoneyController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>receviedMoneySpecificC</display-name>
-    <servlet-name>receviedMoneySpecificC</servlet-name>
-    <servlet-class>com.enmusubi.myPage.statistics.receviedMoneySpecificC</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>receviedMoneySpecificC</servlet-name>
-    <url-pattern>/receviedMoneySpecificC</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>receviedSpecificMoneyC</display-name>
-    <servlet-name>receviedSpecificMoneyC</servlet-name>
-    <servlet-class>com.enmusubi.myPage.statistics.receviedSpecificMoneyC</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>receviedSpecificMoneyC</servlet-name>
-    <url-pattern>/receviedSpecificMoneyC</url-pattern>
-=======
-    <display-name>LineCallback</display-name>
-    <servlet-name>LineCallback</servlet-name>
-    <servlet-class>com.enmusubi.member.LineCallback</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LineCallback</servlet-name>
-    <url-pattern>/LineCallback</url-pattern>
->>>>>>> 06ebf20f0422573436327873790fa5383dd80c09
-  </servlet-mapping>
 </web-app>
