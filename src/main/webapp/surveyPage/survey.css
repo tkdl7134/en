@@ -14,7 +14,6 @@ body {
   background-image: url("imgFolder/surveyBackground-img.png");
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: "Noto Serif JP";
 }
 
 header {
@@ -47,14 +46,14 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 4rem;
+  top: 5rem;
   font-size: 1.3rem;
   font-weight: bolder;
   font-family: "Noto Serif JP";
 }
 
 .middle-img {
-  width: 13.5rem;
+  width: 15rem;
   height: 2rem;
 }
 
@@ -64,8 +63,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 4.5rem;
-  font-size: 0.8rem;
+  margin-top: 6rem;
+  font-size: 1rem;
 }
 
 .main-content-words {
@@ -83,8 +82,44 @@ header {
 .main-content-words > div:nth-child(3) {
   margin-top: 0.4rem;
   width: 30rem;
+  height: 0.15rem;
 }
 
 .main-content-words > div:nth-child(4) {
+  margin-top: 1rem;
   width: 20rem;
+}
+
+.survey-input {
+  background-color: transparent;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+.survey-input > div {
+  width: 70vw;
+  height: 10vw;
+}
+.tg-slide-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+
+.slick-initialized .slick-slide {
+  justify-content: center;
+  align-items: center;
 }

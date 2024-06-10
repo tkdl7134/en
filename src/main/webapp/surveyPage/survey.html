@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <link rel="stylesheet" href="survey.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
   </head>
   <body>
     <div class="survey-container">
@@ -37,39 +47,53 @@
       </header>
 
       <main class="tk_survey_main">
-        
         <div class="main-content">
           <div class="main-content-words">
-            <div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
-            <div>2024.06.09までにご返信をお願いいたします。</div>
-            <div>          
-              <img
-              src="imgFolder/pointline.png"
-              alt="menu-button"
-              style="width: 100%; height: 100%"
-            /></div>
+            <div>
+              お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。
+            </div>
+            <div style="margin-top: 0.5rem">
+              2024.06.09までにご返信をお願いいたします。
+            </div>
             <div>
               <img
-              src="imgFolder/arrowline.png"
-              alt="menu-button"
-              style="width: 100%; height: 100%" />
+                src="imgFolder/pointline.png"
+                alt="menu-button"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+            <div>
+              <img
+                src="imgFolder/arrowline.png"
+                alt="menu-button"
+                style="width: 100%; height: 100%"
+              />
             </div>
           </div>
-
-          <div class="">
-            <action ="SurveyC">
-              お名前<input name="name" /> </br>
-              フリガナ<input name="hurigana" /> </br>
-              お名前(英語) <input name="engname" /> </br>
-              e-mail <input name="email" /> </br>
-              携帯電話 <input name="phonenum" /> </br>
-            </form>
-          </div>
+          <form action="SurveyC">
+            <div class="survey-input">
+              <div>
+                <div class="tg-slide-page">
+                  <div>お名前<input name="name" /></div>
+                  <div>フリガナ<input name="hurigana" /></div>
+                  <div>お名前(英語) <input name="engname" /></div>
+                  <div>Email<input name="email" /></div>
+                  <div>携帯電話 <input name="phonenum" /></div>
+                </div>
+              </div>
+              <div>asdf</div>
+            </div>
+          </form>
         </div>
-
       </main>
 
       <footer class="tk_survey_footer"></footer>
     </div>
   </body>
+
+  <script>
+    $(function () {
+      $(".survey-input").slick({});
+    });
+  </script>
 </html>
