@@ -1,0 +1,91 @@
+.hs_body {
+    background-image: url('./ImgFolder/-_.png');
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.enmusubi{
+	width: 6rem;
+}
+
+.menu-btn-1{
+	width: 3rem;
+}
+
+.opt-pink{
+	width: 23rem;
+	justify-content: center;
+}
+
+
+.hs_heading {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #e60012;
+}
+
+.hs_form {
+	background-image: url('./ImgFolder/BG.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    text-align: center;
+}
+
+.hs_input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.hs_btn {
+    background-color: #e60012;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.hs_btn:hover {
+    background-color: #b3000e;
+}
+
+a {
+    text-decoration: none;
+}
+
+a .hs_btn {
+    background-color: transparent;
+    color: #e60012;
+    border: 2px solid #e60012;
+}
+
+a .hs_btn:hover {
+    background-color: #e60012;
+    color: #fff;
+}
+
+a.hs_link {
+    color: #e60012;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.hs_link:hover {
+    text-decoration: underline;
+}
+
+#additional-links {
+    margin-top: 20px;
+    text-align: center;
+}
