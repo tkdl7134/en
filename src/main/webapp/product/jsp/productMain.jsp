@@ -15,28 +15,28 @@
 <script src="product/js/productMain.js"></script>
 </head>
 <body>
-      <div id="container-product">
-        <div class="product-page">
-          <div class="product-page-title">
-            <div class="page-title">テンプレート一覧</div>
-            <div class="page-title-line">
+      <div id="je_container-product">
+        <div class="je_product-page">
+          <div class="je_product-page-title">
+            <div class="je_page-title">テンプレート一覧</div>
+            <div class="je_page-title-line">
               <img src="product/imgFolder/footer.png" alt="" />
             </div>
           </div>
-          <div class="product-page-content">
-            <div class="page-content">
+          <div class="je_product-page-content">
+            <div class="je_page-content">
             <c:forEach items="${products }" var="p">
-              <div class="page-content-template">
-                <div class="template-img">
+              <div class="je_page-content-template">
+                <div class="je_template-img">
                   <img src="${p.t_preview }" alt="" />
                   <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
+                    <div class="je_template-img-line-red-big"></div>
+                    <div class="je_template-img-line-red-small"></div>
                   </div>
                 </div>
-                <div class="template-title">${p.t_name }</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
+                <div class="je_template-title">${p.t_name }</div>
+                <div class="je_template-button">
+                  <button class="je_preview" data-target="#layer2">見本</button>
                   <button>制作</button>
                 </div>
               </div>
@@ -47,16 +47,16 @@
       </div>
       
     <!--popUp-->
-    <div class="dim-layer">
-      <div class="dimBg"></div>
-      <div id="layer" class="pop-layer">
-        <div class="pop-container">
-          <div class="pop-conts">
+    <div class="je_dim-layer">
+      <div class="je_dimBg"></div>
+      <div id="layer" class="je_pop-layer">
+        <div class="je_pop-container">
+          <div class="je_pop-conts">
             <!-- content //-->
             <!-- db에 저장되어있는 template-img READ -->
             <img src="" alt="" />
-            <div class="btn-r">
-              <a href="#" class="btn-layerClose">close</a>
+            <div class="je_btn-r">
+              <a href="#" class="je_btn-layerClose">close</a>
             </div>
             <!--// content-->
           </div>
