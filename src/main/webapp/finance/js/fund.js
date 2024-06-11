@@ -85,8 +85,8 @@ card.forEach((element, index, array) => {
 			fpop.classList.add("kh-f-rotate");
 		}
 		scrollTimeout = setTimeout(() => {
-				element.classList.remove("kh-f-rotate");
-				fpop.classList.remove("kh-f-rotate");
+			element.classList.remove("kh-f-rotate");
+			fpop.classList.remove("kh-f-rotate");
 		}, 200);
 		event.stopPropagation();
 	});
@@ -167,7 +167,7 @@ cardCon.addEventListener("mouseup", () => {
 	isDown = false;
 	cardCon.classList.remove('active');
 });
-
+let isRotated = false;
 cardCon.addEventListener("mousemove", (e) => {
 	if (!isDown) return;
 	e.preventDefault();
@@ -176,16 +176,25 @@ cardCon.addEventListener("mousemove", (e) => {
 	cardCon.scrollLeft = scrollLeft - walk;
 	card.forEach((element) => {
 		e.preventDefault();
-		element.style.transform = 'rotateY(30deg)';
 		if (scrollTimeout) {
+			element.style.transform += ' rotateY(30deg)';
 			clearTimeout(scrollTimeout);
 		}
 		scrollTimeout = setTimeout(() => {
 			card.forEach(function(element) {
-				element.style.transform = 'rotateY(0deg)';
-				element.style.transform = '';
+				if (!isRotated) {
+					element.style.transform += ' rotateY(0deg)';
+					isRotated = true;
+				}
+				if (element.classList.contains("kh-f-card-min")) {
+					element.style.transform = 'scale(0.9)';
+				}
+				else {
+					element.style.transform = 'scale(1)';
+				}
 			});
-		}, 500); // 1초 동안 유지
+			isRotated = false;
+		}, 500);
 	});
 });
 
@@ -207,17 +216,28 @@ cardCon.addEventListener("touchmove", (e) => {
 	cardCon.scrollLeft = scrollLeft - walk;
 	card.forEach((element) => {
 		e.preventDefault();
-		element.style.transform = 'rotateY(30deg)';
+			element.style.transform += ' rotateY(30deg)';
 		if (scrollTimeout) {
 			clearTimeout(scrollTimeout);
 		}
 		scrollTimeout = setTimeout(() => {
 			card.forEach(function(element) {
-				element.style.transform = 'rotateY(0deg)';
-				element.style.transform = '';
+				if (!isRotated) {
+					element.style.transform += ' rotateY(0deg)';
+					isRotated = true;
+				}
+				if (element.classList.contains("kh-f-card-min")) {
+					element.style.transform = 'scale(0.9)';
+				}
+				else {
+					element.style.transform = 'scale(1)';
+				}
 			});
-		}, 500); // 1초 동안 유지
+			isRotated = false;
+		}, 500);
+
 	});
+	e.stopPropagation();
 });
 
 function goStatistic(no) {
