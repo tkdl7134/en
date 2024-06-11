@@ -10,12 +10,16 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="hs_body">
-	<img class="enmusubi" alt="" src="./ImgFolder/828a704e967fa89b.png">
-	<img class="menu-btn-1" alt="" src="./ImgFolder/menu_btn_1.png">
 
-	<img class="btn-footer" alt="" src="./ImgFolder/footer.png">
+	<div class="horizontal-container-btn">
+		<img class="enmusubi" alt="" src="./ImgFolder/828a704e967fa89b.png">
+		<img class="menu-btn-1" alt="" src="./ImgFolder/menu_btn_1.png">
+	</div>
 
-	<h2 class="hs_heading">ログイン</h2>
+	<div class="horizontal-container-title">
+		<p class="hs_heading">ログイン</p>
+		<img class="btn-footer" alt="" src="./ImgFolder/footer.png">
+	</div>
 
 	<form action="MemberC" method="post" class="hs_form">
 		<input type="text" name="m_id" placeholder="ユーザーID" required
@@ -23,7 +27,9 @@
 			placeholder="パスワード" required class="hs_input"><br>
 		<button class="hs_btn login">ログイン</button>
 	</form>
-	<a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz" class="hs_btn line-login">LINEでログイン</a>
+	<a
+		href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz"
+		class="hs_btn line-login">LINEでログイン</a>
 	<br>
 	<a href="/En/MemberRegC" class="hs_btn reg">✿会員登録はこちら✿</a>
 	<br>
