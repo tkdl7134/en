@@ -75,7 +75,7 @@
             <div class="survey-input">
               <div>
                 <div class="tg-slide-page">
-                  <div>
+                  <div class="">
                     <div>ゲストカテゴリー</div>
                     <label>
                       <input name="interest" type="checkbox" value="groom" />
@@ -86,7 +86,26 @@
                       新婦側ゲスト
                     </label>
                   </div>
-                  <div>
+                  <div class="relationship-container">
+                    <div>作成者との関係</div>
+                    <label>
+                      <input name="interest" type="checkbox" value="groom" />
+                      家族
+                    </label>
+                    <label>
+                      <input name="interest" type="checkbox" value="bride" />
+                      親友
+                    </label>
+                    <label>
+                      <input name="interest" type="checkbox" value="bride" />
+                      職場の同僚
+                    </label>
+                    <label>
+                      <input name="interest" type="checkbox" value="bride" />
+                      その他
+                    </label>
+                  </div>
+                  <div class="together-container">
                     <div>同伴人数 </div>
                     <div class="together-people">大人</div> 
                     <input
@@ -140,10 +159,19 @@
                       value="-"
                     />
                   </div>
-                  <div>
+                  <div class="name-container">
                     <fieldset>
-                      <legend>お名前</legend>
-                      <label>
+                  <legend>
+                      <div>
+                          <img                 
+                        src="imgFolder/flowersymbol.jpg"
+                      alt="flowersymbol"
+                    style="width: 100%; height: 100%"
+                  />
+                  </div>
+                <div>お名前</div>
+              </legend>
+                      <label class="kanzi-container">
                         <div>漢字</div>
                         <input
                           type="text"
@@ -151,7 +179,7 @@
                           class="name-input" />
                         <input type="text" placeholder="名" class="name-input"
                       /></label></br>
-                      <label>
+                      <label class="kata-container">
                         <div>カタカナ</div>
                         <input
                           type="text"
@@ -162,7 +190,7 @@
                           placeholder="めい"
                           class="name-input"
                       /></label></br>
-                      <label>
+                      <label class="eng-container">
                         <div>ローマ字</div>
                         <input
                           type="text"
@@ -175,8 +203,10 @@
                       /></label>
                     </fieldset>
                   </div>
-                  <div>メールアドレス<input type="email" name="email" /></div>
-                  <div>電話番号 <input type="number" name="phonenum" /></div>
+                  <div class="contact-container">
+                     <div>メールアドレス<input type="email" class="contact-input" name="email" /></div>
+                     <div>電話番号 <input type="number" class="contact-input" name="phonenum" /></div>
+                </div>
                 </div>
               </div>
               <div>asdf</div>
