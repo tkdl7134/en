@@ -1,38 +1,56 @@
-.hs_body {
+body.hs_body {
     background-image: url('./ImgFolder/-_.png');
-    background-size: cover;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Arial', sans-serif;
     color: #333;
+    position: relative; /* 背景画像の位置を調整するために使用 */
+    
 }
 
-.enmusubi{
-	width: 6rem;
+.hs_body .enmusubi {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 6rem;
 }
 
-.menu-btn-1{
-	width: 3rem;
+.hs_body .menu-btn-1 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 3rem;
 }
 
-.opt-pink{
-	width: 23rem;
-	justify-content: center;
+.btn-footer {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 23rem;
 }
-
 
 .hs_heading {
-    margin-bottom: 20px;
+    margin-top: 110px;
     font-size: 2em;
-    color: #e60012;
+    color: black;
+}
+
+.container.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hs_form {
-	background-image: url('./ImgFolder/BG.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 20px;
+    background-image: url('./ImgFolder/BG.png');
+    background-size: cover; /* 画像を完全に表示する */
+    width: 25rem; /* フォームの幅を調整 */
+    height: auto; /* フォームの高さを自動調整 */
+    padding: 5rem; /* フォーム内の余白を設定 */
     text-align: center;
+
 }
 
 .hs_input {
@@ -44,35 +62,40 @@
     box-sizing: border-box;
 }
 
-.hs_btn {
-    background-color: #e60012;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 0;
+.hs_btn.line-login{
+	color: black;
+}
+
+.hs_btn.line-login:hover {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+.hs_btn.reg{
+	color: #DD2025;
+}
+
+.hs_btn.reg:hover {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+.hs_btn.login {
+	background-color: #FFFBF7;
+    color: black;
+    border: 3px solid red;
+    padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
 }
 
-.hs_btn:hover {
-    background-color: #b3000e;
+.hs_btn.login:hover{
+	background-color: #DD2025;
+    color: #fff;
 }
 
 a {
     text-decoration: none;
-}
-
-a .hs_btn {
-    background-color: transparent;
-    color: #e60012;
-    border: 2px solid #e60012;
-}
-
-a .hs_btn:hover {
-    background-color: #e60012;
-    color: #fff;
 }
 
 a.hs_link {
