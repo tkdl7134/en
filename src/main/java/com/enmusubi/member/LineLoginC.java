@@ -13,9 +13,11 @@ public class LineLoginC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		MemberDAO.LineApi(request);
+		LineDAO.LineApi(request);
 
-		MemberDAO.LineCheck(request);
+		LineDAO.LineCheck(request);
+		
+		response.sendRedirect("main.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

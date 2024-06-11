@@ -27,15 +27,25 @@ public class MemberDAO {
 
 	// 로그인
 	public MemberDTO login(String m_id, String m_pw) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT * FROM s_Member WHERE m_id = ? AND m_pw = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
 			pstmt.setString(2, m_pw);
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					return createMemberDTOForLogin(rs); // 로그인용 DTO 생성 메소드 호출
-				}
+			if (rs.next()) {
+				return createMemberDTOForLogin(rs); // 로그인용 DTO 생성 메소드 호출
+
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		return null;
 	}
@@ -63,12 +73,12 @@ public class MemberDAO {
 		Connection con = null;
 		PreparedStatement pstmtMember = null; // Member 테이블용 PreparedStatement
 		PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
-
+		DBManager dbManager = DBManager.getInstance();
 		String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlAddress = "INSERT INTO s_Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 
 		try {
-			con = DBManager.connect();
+			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
 
 			// 디버깅 로그 출력 (m_id 값 확인)
@@ -104,33 +114,47 @@ public class MemberDAO {
 			}
 			throw e;
 		} finally {
-			DBManager.close(con, pstmtMember, null);
-			DBManager.close(con, pstmtAddress, null);
+			dbManager.close(con, pstmtMember, null);
+			dbManager.close(con, pstmtAddress, null);
 		}
+
 	}
 
 	// 마이페이지 (정보 조회 및 수정)
 	public MemberDTO getMypage(String m_id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		// LEFT OUTER JOIN 사용하여 Address 테이블에 데이터가 없어도 Member 정보 가져오기
 		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
 
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return createMemberDTO(rs);
 
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					return createMemberDTO(rs);
-				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
 	public int updateMypage(MemberDTO dto) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
 				+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_pw());
 			pstmt.setString(2, dto.getM_name());
 			pstmt.setString(3, dto.getM_name_kana());
@@ -142,7 +166,12 @@ public class MemberDAO {
 			pstmt.setString(9, dto.getM_phone());
 			pstmt.setString(10, dto.getM_id());
 			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, null);
 		}
+		return 0;
 	}
 
 	// 회원탈퇴
@@ -150,12 +179,12 @@ public class MemberDAO {
 		Connection con = null;
 		PreparedStatement pstmtAddress = null;
 		PreparedStatement pstmtMember = null;
-
+		DBManager dbManager = DBManager.getInstance();
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
 
 		try {
-			con = DBManager.connect();
+			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
 
 			// 1. 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
@@ -176,8 +205,8 @@ public class MemberDAO {
 			}
 			throw e;
 		} finally {
-			DBManager.close(con, pstmtAddress, null);
-			DBManager.close(con, pstmtMember, null);
+			dbManager.close(con, pstmtAddress, null);
+			dbManager.close(con, pstmtMember, null);
 		}
 	}
 
@@ -209,54 +238,86 @@ public class MemberDAO {
 
 	// 웹 사용자 ID로 회원 정보 조회
 	public MemberDTO getMemberById(String m_id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
 
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					return createMemberDTO(rs);
-				}
+			if (rs.next()) {
+				return createMemberDTO(rs);
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
 	// 라인 사용자 ID로 회원 정보 조회
 	public static MemberDTO getMemberByLineId(String m_id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT * FROM s_Member WHERE m_id = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
 
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					return createMemberDTO(rs);
-				}
+			if (rs.next()) {
+				return createMemberDTO(rs);
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
 	// 회원 정보 업데이트 (이름, 이미지)
 	public void updateMember(MemberDTO dto) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "UPDATE s_Member SET m_name = ?, m_img = ? WHERE m_id = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_name());
 			pstmt.setString(2, dto.getM_img());
 			pstmt.setString(3, dto.getM_id());
 			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, null);
 		}
 	}
 
 	// 회원 정보 업데이트 (전체 정보)
 	public void updateMemberInfo(MemberDTO dto) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
 		String sql2 = "UPDATE s_Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
 
-		try (Connection conn = DBManager.connect();
-				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
-				PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
+		try {
+			con = dbManager.connect();
+			pstmt1 = con.prepareStatement(sql1);
+			pstmt2 = con.prepareStatement(sql2);
 
 			// Member 테이블 업데이트
 			pstmt1.setString(1, dto.getM_pw());
@@ -275,20 +336,34 @@ public class MemberDAO {
 			pstmt2.setString(2, dto.getA_postcode());
 			pstmt2.setString(3, dto.getM_id());
 			pstmt2.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt1, rs);
+			dbManager.close(con, pstmt2, rs);
 		}
 	}
 
 	// 아이디 중복 확인
 	public boolean isMemberIdDuplicate(String m_id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT COUNT(*) FROM s_Member WHERE m_id = ?";
-		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					int count = rs.getInt(1); // COUNT(*) 결과 가져오기
-					return count > 0; // 중복된 아이디가 있으면 true 반환
-				}
+			if (rs.next()) {
+				int count = rs.getInt(1); // COUNT(*) 결과 가져오기
+				return count > 0; // 중복된 아이디가 있으면 true 반환
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		return false; // 예외 발생 시 false 반환 (중복 확인 실패)
 	}
@@ -319,7 +394,7 @@ public class MemberDAO {
 				session.setAttribute("m_regdate", dto.getM_regdate());
 				session.setAttribute("m_phone", dto.getM_phone());
 
-//						System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
+//				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
 				session.setMaxInactiveInterval(600);
@@ -356,8 +431,8 @@ public class MemberDAO {
 					response.sendRedirect("main.jsp"); // 메인 페이지로 이동
 				} else {
 					// 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
-					request.setAttribute("errorMessage", "アカウント削除失敗。アカウント情報が存在しません。");
-					response.sendRedirect("myPage/myPage.jsp"); // 마이 페이지로 이동 (오류 메시지 표시)
+					System.out.println("アカウント削除失敗。アカウント情報が存在しません。");
+					response.sendRedirect("MemberDetailC"); // 마이 페이지로 이동 (오류 메시지 표시)
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -365,7 +440,7 @@ public class MemberDAO {
 			}
 		} else {
 			// 로그인되지 않은 경우 로그인 페이지로 이동
-			response.sendRedirect("loginPage/login.jsp");
+			response.sendRedirect("MemberC");
 		}
 
 	}
@@ -470,17 +545,16 @@ public class MemberDAO {
 			int result = dao.registerMemberWithAddress(dto);
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
-				response.sendRedirect("loginPage/login.jsp");
+				response.sendRedirect("MEmberC");
 			} else {
 				// 회원가입 실패 처리 (아이디 중복 등)
-				request.setAttribute("error", "アカウント登録失敗");
-				request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
+				System.out.println("アカウント登録失敗");
+				request.getRequestDispatcher("MemberRegC").forward(request, response);
 			}
 		} catch (SQLException e) {
 			// SQL 예외 처리
 			e.printStackTrace();
-			request.setAttribute("error", "データベースエラー");
-			request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
+			request.getRequestDispatcher("MemberRegC").forward(request, response);
 		}
 		request.setAttribute("address", combinedAddress); // JSP에서 사용할 수 있도록 설정
 
@@ -503,7 +577,7 @@ public class MemberDAO {
 			MemberDTO dto = dao.getMypage(m_id);
 			if (dto != null) {
 				// 디버깅 메시지 출력
-//                System.out.println("/En/MemberDetailC - 회원 정보 조회 성공: " + dto);
+//                System.out.println("MemberDetailC - 회원 정보 조회 성공: " + dto);
 
 				request.setAttribute("dto", dto); // 회원 정보를 request에 담아 전달
 				request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
@@ -511,17 +585,15 @@ public class MemberDAO {
 				// 회원 정보가 없을 때 로그인 페이지로 이동하는 대신,
 				// 오류 메시지를 표시하거나 다른 처리를 수행할 수도 있습니다.
 				// 디버깅 메시지 출력
-//                System.out.println("MemberDetailC - 회원 정보 조회 실패: m_id = " + m_id);
+				System.out.println("MemberDetailC - 회원 정보 조회 실패: m_id = " + m_id);
 
-				request.setAttribute("errorMessage", "アカウント情報が存在しません。");
 				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// 디버깅 메시지 출력
-//            System.out.println("MemberDetailC - 데이터베이스 오류: " + e.getMessage());
+			System.out.println("MemberDetailC - 데이터베이스 오류: " + e.getMessage());
 
-			request.setAttribute("errorMessage", "データベースエラー");
 			request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
 		}
 
@@ -616,7 +688,7 @@ public class MemberDAO {
 			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 		} catch (SQLException e) {
 			e.printStackTrace();
-			request.setAttribute("errorMessage", "アカウント情報修正エラー");
+			System.out.println("アカウント情報修正エラー");
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 
@@ -629,111 +701,5 @@ public class MemberDAO {
 		System.out.println(request.getParameter("code"));
 		System.out.println(request.getParameter("state"));
 
-	}
-
-	private static String tok;
-
-	public static void LineApi(HttpServletRequest request) {
-		getToken(request);
-		requestInfo(request);
-	}
-
-	private static void getToken(HttpServletRequest request) {
-		try {
-			URL url = new URL("https://api.line.me/oauth2/v2.1/token");
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			conn.setDoOutput(true);
-
-			String data = "grant_type=authorization_code" + "&code=" + request.getParameter("code") + "&redirect_uri="
-					+ "http://localhost/En/LineLoginC" + "&client_id=" + "2005476894" + "&client_secret="
-					+ "c023cd86708ee211f26c4344ca4347b7";
-
-			try (OutputStream os = conn.getOutputStream()) {
-				byte[] input = data.getBytes("utf-8");
-				os.write(input, 0, input.length);
-			}
-
-			int status = conn.getResponseCode();
-			if (status == 200) {
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-				StringBuilder response = new StringBuilder();
-				String responseLine;
-				while ((responseLine = br.readLine()) != null) {
-					response.append(responseLine.trim());
-				}
-
-				JSONObject jsonResponse = new JSONObject(response.toString());
-				tok = jsonResponse.getString("access_token");
-				HttpSession session = request.getSession();
-				session.setAttribute("access_token", tok);
-
-				// 디버깅 코드 출력
-				System.out.println("Success: " + jsonResponse);
-				System.out.println("Access Token: " + tok);
-
-			} else {
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-				StringBuilder response = new StringBuilder();
-				String responseLine;
-				while ((responseLine = br.readLine()) != null) {
-					response.append(responseLine.trim());
-				}
-				System.err.println("Error: " + response.toString());
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private static void requestInfo(HttpServletRequest request) {
-		try {
-			URL url = new URL("https://api.line.me/v2/profile");
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Authorization", "Bearer " + tok);
-
-			int status = conn.getResponseCode();
-			if (status == 200) {
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-				StringBuilder response = new StringBuilder();
-				String responseLine;
-				while ((responseLine = br.readLine()) != null) {
-					response.append(responseLine.trim());
-				}
-
-				JSONObject jsonResponse = new JSONObject(response.toString());
-				String m_id = jsonResponse.getString("userId");
-				String m_name = jsonResponse.getString("displayName");
-
-				HttpSession session = request.getSession();
-				session.setAttribute("m_id", m_id);
-				session.setAttribute("m_name", m_name);
-
-				// 디버깅 코드 출력
-//		            System.out.println("Session userId set to: " + m_id);
-				System.out.println("Profile Info: " + jsonResponse);
-
-			} else {
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-				StringBuilder response = new StringBuilder();
-				String responseLine;
-				while ((responseLine = br.readLine()) != null) {
-					response.append(responseLine.trim());
-				}
-
-				System.err.println("Error: " + response.toString());
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void LineCheck(HttpServletRequest request) {
-
-		
 	}
 }

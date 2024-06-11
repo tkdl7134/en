@@ -22,6 +22,8 @@ public class MemberUpdateC extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		MemberDAO.memberUpdateC(request, response);
+		
+//		request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
 
 	}
 
