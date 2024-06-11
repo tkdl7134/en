@@ -7,10 +7,10 @@ pageEncoding="UTF-8"%>
     <div class="kh-f-res-box">
       <div class="kh-f-res-text">
         <h1>ありがとうございます。</h1>
-        <h1>お会いできるのを<br />楽しみにしております。</h1>
+        <h1>${msg }</h1>
       </div>
-      <div><button class="kh-f-res-btn">縁結び会員登録</button></div>
-      <div><a href="">メインに戻る</a></div>
+      <div><button class="kh-f-res-btn" onclick="location.href='MemberRegC'">縁結び会員登録</button></div>
+      <div><a href="MainC">メインに戻る</a></div>
     </div>
   </div>
 </html>
