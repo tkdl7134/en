@@ -11,7 +11,7 @@
 <body>
 	<h2>アカウント情報修正</h2>
 
-	<form action="/En/MemberUpdateC" method="post"
+	<form action="MemberUpdateC" method="post"
 		onsubmit="return validatePassword()">
 		<input type="hidden" name="m_id" value="${sessionScope.m_id}">
 		<%-- 아이디는 숨겨서 전달 --%>

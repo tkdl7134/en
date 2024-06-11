@@ -14,7 +14,8 @@
     </form>
     
     <button id="lineLoginButton">LINEログイン</button> <br>
-    <a href="/En/MemberRegC"><button>会員登録</button></a>
+    <a href="MemberRegC"><button>会員登録</button></a> <br>
+    <a href="main.jsp"><button>メインページ</button></a>
 
 <script>
 $(document).ready(function() {

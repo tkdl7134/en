@@ -28,7 +28,7 @@
         <input type="radio" name="m_gender" value="女性"> 女性
         <input type="radio" name="m_gender" value="その他"> その他
         <br><br>
-        郵便番号<input type="text" name="a_postcode" placeholder="郵便番号" required><br><br>
+        郵便番号<input type="text" name="a_postcode" id="a_postcode" placeholder="郵便番号" required><br><br>
        <label for="a_prefecture">都道府県</label>
                 <select id="a_prefecture" name="a_prefecture" required>
                     <option value="" disabled selected>選択してください</option>
@@ -81,9 +81,9 @@
                     <option value="沖縄県">沖縄県</option>
                     <option value="海外">海外</option>
                 </select> <br><br>
-      市区町村<br><input type="text" name="a_city" placeholder="市区町村" required><br><br>
-        番地 <br><input type="text" name="a_street" placeholder="番地" required><br><br>
-        ビル・マンション名など <br><input type="text" name="a_building" placeholder="ビル・マンション名" required><br><br>
+      市区町村<br><input type="text" name="a_city" id="a_city" placeholder="市区町村" required><br><br>
+        番地 <br><input type="text" name="a_street" id="a_street" placeholder="番地" required><br><br>
+        ビル・マンション名など <br><input type="text" name="a_building" id="a_building" placeholder="ビル・マンション名" required><br><br>
         メールアドレス<input type="email" name="m_email" placeholder="example@example.com" required><br><br>
         電話番号<input type="text" name="m_phone" placeholder="012-3456-7890" required><br><br>
         生年月日<input type="date" name="m_birth" required> <br><br>

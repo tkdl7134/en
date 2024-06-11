@@ -12,9 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +21,6 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 
 import com.enmusubi.main.DBManager;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 public class MemberDAO {
@@ -228,20 +224,20 @@ public class MemberDAO {
 	}
 
 	// 라인 사용자 ID로 회원 정보 조회
-    public static MemberDTO getMemberByLineId(String m_id) throws SQLException {
-        String sql = "SELECT * FROM s_Member WHERE m_id = ?";
-        try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, m_id);
+	public static MemberDTO getMemberByLineId(String m_id) throws SQLException {
+		String sql = "SELECT * FROM s_Member WHERE m_id = ?";
+		try (Connection conn = DBManager.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, m_id);
 
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return createMemberDTO(rs);
-                }
-            }
-        }
-        return null; // 회원 정보가 없으면 null 반환
-    }
-	
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return createMemberDTO(rs);
+				}
+			}
+		}
+		return null; // 회원 정보가 없으면 null 반환
+	}
+
 	// 회원 정보 업데이트 (이름, 이미지)
 	public void updateMember(MemberDTO dto) throws SQLException {
 		String sql = "UPDATE s_Member SET m_name = ?, m_img = ? WHERE m_id = ?";
@@ -311,7 +307,7 @@ public class MemberDAO {
 			// 3. 로그인 결과에 따른 처리
 			if (dto != null) {
 				// 3-1. 로그인 성공
-				HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
+				HttpSession session = request.getSession(); // 세션 얻기
 				session.setAttribute("m_id", dto.getM_id());
 				session.setAttribute("m_name", dto.getM_name());
 				session.setAttribute("m_name_kana", dto.getM_name_kana());
@@ -329,19 +325,18 @@ public class MemberDAO {
 				session.setMaxInactiveInterval(600);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
-				session.setAttribute("loginMessage", "ログイン成功");
 				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
 			} else {
 				// 3-2. 로그인 실패
 				String errorMessage = "IDまたはPWが一致しません";
 				request.setAttribute("errorMessage", errorMessage);
-				request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
+				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 			}
 		} catch (SQLException e) {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "データベースエラー");
-			request.getRequestDispatcher("loginPage/login.jsp").forward(request, response); // 로그인 페이지로 다시 포워딩
+			request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 		}
 
 	}
@@ -459,7 +454,7 @@ public class MemberDAO {
 		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
 		String m_img = "default.png"; // 기본 이미지 설정
 
-//         5. 주소 정보 합치기 (구분자 사용)
+//      5. 주소 정보 합치기 (구분자 사용)
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
@@ -633,109 +628,112 @@ public class MemberDAO {
 		request.getParameter("state");
 		System.out.println(request.getParameter("code"));
 		System.out.println(request.getParameter("state"));
-		
-    }
-		
 
-		private static String tok;
+	}
 
-		public static void LineApi(HttpServletRequest request) {
-			getToken(request);
-			requestInfo(request);
-		}
+	private static String tok;
 
-		private static void getToken(HttpServletRequest request) {
-			try {
-				URL url = new URL("https://api.line.me/oauth2/v2.1/token");
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("POST");
-				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-				conn.setDoOutput(true);
+	public static void LineApi(HttpServletRequest request) {
+		getToken(request);
+		requestInfo(request);
+	}
 
-				String data = "grant_type=authorization_code" + "&code=" + request.getParameter("code") + "&redirect_uri="
-						+ "http://localhost/En/LineLoginC" + "&client_id=" + "2005476894" + "&client_secret="
-						+ "c023cd86708ee211f26c4344ca4347b7";
+	private static void getToken(HttpServletRequest request) {
+		try {
+			URL url = new URL("https://api.line.me/oauth2/v2.1/token");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			conn.setDoOutput(true);
 
-				try (OutputStream os = conn.getOutputStream()) {
-					byte[] input = data.getBytes("utf-8");
-					os.write(input, 0, input.length);
-				}
-				
-				int status = conn.getResponseCode();
-				if (status == 200) {
-					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-					StringBuilder response = new StringBuilder();
-					String responseLine;
-					while ((responseLine = br.readLine()) != null) {
-						response.append(responseLine.trim());
-					}
+			String data = "grant_type=authorization_code" + "&code=" + request.getParameter("code") + "&redirect_uri="
+					+ "http://localhost/En/LineLoginC" + "&client_id=" + "2005476894" + "&client_secret="
+					+ "c023cd86708ee211f26c4344ca4347b7";
 
-					JSONObject jsonResponse = new JSONObject(response.toString());
-					 tok = jsonResponse.getString("access_token");
-		                HttpSession session = request.getSession();
-		                session.setAttribute("access_token", tok);
-					
-		            //디버깅 코드 출력
-					System.out.println("Success: " + jsonResponse);
-					System.out.println("Access Token: " + tok);
-					
-				} else {
-					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-					StringBuilder response = new StringBuilder();
-					String responseLine;
-					while ((responseLine = br.readLine()) != null) {
-						response.append(responseLine.trim());
-					}
-					System.err.println("Error: " + response.toString());
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
+			try (OutputStream os = conn.getOutputStream()) {
+				byte[] input = data.getBytes("utf-8");
+				os.write(input, 0, input.length);
 			}
-		}
 
-		private static void requestInfo(HttpServletRequest request) {
-			try {
-				URL url = new URL("https://api.line.me/v2/profile");
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Authorization", "Bearer " + tok);
-
-				int status = conn.getResponseCode();
-				if (status == 200) {
-					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-					StringBuilder response = new StringBuilder();
-					String responseLine;
-					while ((responseLine = br.readLine()) != null) {
-						response.append(responseLine.trim());
-					}
-
-					JSONObject jsonResponse = new JSONObject(response.toString());
-					String m_id = jsonResponse.getString("userId");
-		            String m_name = jsonResponse.getString("displayName");
-
-		            HttpSession session = request.getSession();
-		            session.setAttribute("m_id", m_id);
-		            session.setAttribute("m_name", m_name);
-
-					//디버깅 코드 출력
-		            System.out.println("Session userId set to: " + m_id);
-					System.out.println("Profile Info: " + jsonResponse);
-					
-				} else {
-					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-					StringBuilder response = new StringBuilder();
-					String responseLine;
-					while ((responseLine = br.readLine()) != null) {
-						response.append(responseLine.trim());
-					}
-
-					System.err.println("Error: " + response.toString());
+			int status = conn.getResponseCode();
+			if (status == 200) {
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+				StringBuilder response = new StringBuilder();
+				String responseLine;
+				while ((responseLine = br.readLine()) != null) {
+					response.append(responseLine.trim());
 				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
+				JSONObject jsonResponse = new JSONObject(response.toString());
+				tok = jsonResponse.getString("access_token");
+				HttpSession session = request.getSession();
+				session.setAttribute("access_token", tok);
+
+				// 디버깅 코드 출력
+				System.out.println("Success: " + jsonResponse);
+				System.out.println("Access Token: " + tok);
+
+			} else {
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
+				StringBuilder response = new StringBuilder();
+				String responseLine;
+				while ((responseLine = br.readLine()) != null) {
+					response.append(responseLine.trim());
+				}
+				System.err.println("Error: " + response.toString());
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
+	private static void requestInfo(HttpServletRequest request) {
+		try {
+			URL url = new URL("https://api.line.me/v2/profile");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Authorization", "Bearer " + tok);
+
+			int status = conn.getResponseCode();
+			if (status == 200) {
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+				StringBuilder response = new StringBuilder();
+				String responseLine;
+				while ((responseLine = br.readLine()) != null) {
+					response.append(responseLine.trim());
+				}
+
+				JSONObject jsonResponse = new JSONObject(response.toString());
+				String m_id = jsonResponse.getString("userId");
+				String m_name = jsonResponse.getString("displayName");
+
+				HttpSession session = request.getSession();
+				session.setAttribute("m_id", m_id);
+				session.setAttribute("m_name", m_name);
+
+				// 디버깅 코드 출력
+//		            System.out.println("Session userId set to: " + m_id);
+				System.out.println("Profile Info: " + jsonResponse);
+
+			} else {
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
+				StringBuilder response = new StringBuilder();
+				String responseLine;
+				while ((responseLine = br.readLine()) != null) {
+					response.append(responseLine.trim());
+				}
+
+				System.err.println("Error: " + response.toString());
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void LineCheck(HttpServletRequest request) {
+
+		
+	}
+}
