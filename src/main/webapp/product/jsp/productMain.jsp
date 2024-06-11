@@ -20,7 +20,7 @@
           <div class="je_product-page-title">
             <div class="je_page-title">テンプレート一覧</div>
             <div class="je_page-title-line">
-              <img src="product/imgFolder/footer.png" alt="" />
+              <img src="product/imgFolder/pageTop_line.png" alt="" />
             </div>
           </div>
           <div class="je_product-page-content">
@@ -49,7 +49,7 @@
     <!--popUp-->
     <div class="je_dim-layer">
       <div class="je_dimBg"></div>
-      <div id="layer" class="je_pop-layer">
+      <div id="je_layer" class="je_pop-layer">
         <div class="je_pop-container">
           <div class="je_pop-conts">
             <!-- content //-->
