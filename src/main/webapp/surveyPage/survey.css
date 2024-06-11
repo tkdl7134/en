@@ -181,6 +181,10 @@ header {
   align-items: center;
 }
 
+.name-container {
+  padding-top: 2rem;
+}
+
 fieldset {
   border: 1px solid red;
   padding: 0.8rem;
@@ -220,4 +224,25 @@ legend div:nth-child(1) {
 
 .contact-container > div {
   padding-right: 4rem;
+}
+
+.tg-slide-second-page {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-container {
+  background-color: transparent;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 50rem;
+  width: 100%;
+}
+
+.address-contents-contaoner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
