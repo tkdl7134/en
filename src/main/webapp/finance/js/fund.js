@@ -8,8 +8,9 @@ const eno = jsonData[0].e_no;
 console.log(eno);
 console.log(jsonData);
 let isMouseOverCard;
+//카드 초기배치 
+//크기,색상 호버시 확대 및 다른요소 비활성화
 card.forEach((element, index, array) => {
-
 	let cardIn = element.querySelector(".kh-fund-card");
 	if (index % 2 == 0) {
 		element.style.transform = 'scale(0.9)';
@@ -99,10 +100,12 @@ document.addEventListener("click", function(event) {
 		}
 	}
 });
+
+//변수 설정
 const cardCon = document.querySelector(".kh-f-card-container");
 const cardConAll = document.querySelectorAll(".kh-f-card-container");
 const mouseicn = document.querySelector(".kh-f-mousemove");
-
+//마우스 따라다니는 요소
 cardCon.addEventListener("mouseover", function(event) {
 	if (event.target === cardCon) {
 		document.querySelector(".kh-f-mousemove > img").src = "finance/img/dragbtn.png";
@@ -123,27 +126,39 @@ cardCon.addEventListener("mouseout", function() {
 	mouseicn.classList.add("kh-f-none");
 });
 
-
+//마우스 휠할때 도는 애니메이션
+let isRotated = false;
 cardCon.addEventListener("wheel", function(event) {
 	if (isMouseOverCard) return;
 	card.forEach((element) => {
 		// Prevent the default vertical scroll
 		event.preventDefault();
-		element.style.transform = 'rotateY(30deg)';
 		// Scroll horizontally
 		const scrollSpeed = 0.5;
 		this.scrollLeft += event.deltaY * scrollSpeed;
 		// Add 'asd' class to start the transition
 		if (scrollTimeout) {
+			if (element.classList.contains("kh-f-card-min")) {
+				element.style.transform = 'scale(0.9) rotateY(30deg)';
+			}
+			else {
+				element.style.transform = 'rotateY(30deg)';
+			}
 			clearTimeout(scrollTimeout);
 		}
 		// Set a timeout to remove the vibration class after 1 second
 		scrollTimeout = setTimeout(() => {
 			card.forEach(function(element) {
 				element.style.transform = 'rotateY(0deg)';
-				element.style.transform = '';
+				if (element.classList.contains("kh-f-card-min")) {
+					element.style.transform = 'scale(0.9)';
+				}
+				else {
+					element.style.transform = 'scale(1)';
+				}
 			});
-		}, 500); // 1초 동안 유지
+			isRotated = false;
+		}, 300); // 1초 동안 유지
 	});
 });
 
@@ -167,35 +182,13 @@ cardCon.addEventListener("mouseup", () => {
 	isDown = false;
 	cardCon.classList.remove('active');
 });
-let isRotated = false;
+
 cardCon.addEventListener("mousemove", (e) => {
 	if (!isDown) return;
 	e.preventDefault();
 	const x = e.pageX - cardCon.offsetLeft;
 	const walk = (x - startX) * 2; //scroll-fast
 	cardCon.scrollLeft = scrollLeft - walk;
-	card.forEach((element) => {
-		e.preventDefault();
-		if (scrollTimeout) {
-			element.style.transform += ' rotateY(30deg)';
-			clearTimeout(scrollTimeout);
-		}
-		scrollTimeout = setTimeout(() => {
-			card.forEach(function(element) {
-				if (!isRotated) {
-					element.style.transform += ' rotateY(0deg)';
-					isRotated = true;
-				}
-				if (element.classList.contains("kh-f-card-min")) {
-					element.style.transform = 'scale(0.9)';
-				}
-				else {
-					element.style.transform = 'scale(1)';
-				}
-			});
-			isRotated = false;
-		}, 500);
-	});
 });
 
 // For touch devices
@@ -214,30 +207,6 @@ cardCon.addEventListener("touchmove", (e) => {
 	const x = e.touches[0].pageX - cardCon.offsetLeft;
 	const walk = (x - startX) * 2; //scroll-fast
 	cardCon.scrollLeft = scrollLeft - walk;
-	card.forEach((element) => {
-		e.preventDefault();
-			element.style.transform += ' rotateY(30deg)';
-		if (scrollTimeout) {
-			clearTimeout(scrollTimeout);
-		}
-		scrollTimeout = setTimeout(() => {
-			card.forEach(function(element) {
-				if (!isRotated) {
-					element.style.transform += ' rotateY(0deg)';
-					isRotated = true;
-				}
-				if (element.classList.contains("kh-f-card-min")) {
-					element.style.transform = 'scale(0.9)';
-				}
-				else {
-					element.style.transform = 'scale(1)';
-				}
-			});
-			isRotated = false;
-		}, 500);
-
-	});
-	e.stopPropagation();
 });
 
 function goStatistic(no) {
