@@ -12,9 +12,13 @@ pageEncoding="UTF-8"%>
   </head>
   <!-- 상품이름이랑 그 상품 이미지 나오는 span태그랑 이미지 태그에 각각 텍스트랑 이미지 소스를 변수화해서 쓸것  -->
   <body>
+   <div id="recFund-container">
+   <img id="fundBack-img" alt="" src="myPage/statistics/imgFolder/fundBackground-withoutTitle.png">
+   
+   <div class="contents"><img class="bigBox" onclick="location.href='receivedSpecificFundingC'" alt="" src="myPage/statistics/imgFolder/big.png"></div>
    
    
-   
+   </div>
    
    
    
