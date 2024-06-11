@@ -1,25 +1,55 @@
-
-// invitationPage.js에 추가
 document.addEventListener("DOMContentLoaded", function() {
-    var modal = document.getElementById("invitationModal");
-    var span = document.getElementsByClassName("close")[0];
+    const tabHeaders = document.querySelectorAll(".hw_tab_header");
 
-    function openModal() {
-        modal.style.display = "block";
-    }
+    tabHeaders.forEach((header) => {
+        const tabItems = header.querySelectorAll(".hw_tab__item");
+        const tabContents = header.nextElementSibling.querySelectorAll(".hw_tab_content");
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+        tabItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                tabItems.forEach((content) => {
+                    content.classList.remove("active");
+                });
+                tabContents.forEach((content) => {
+                    content.classList.remove("active");
+                });
+                tabItems[index].classList.add("active");
+                tabContents[index].classList.add("active");
+            });
+        });
+    });
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    const topButton = document.querySelector(".top_button");
+    topButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    const moreButton = document.querySelector(".hw_more_button");
+    const detailWrapper = document.querySelector(".hw_detail_wrapper");
+
+    moreButton.addEventListener("click", () => {
+        if (detailWrapper.style.display === "none" || detailWrapper.style.display === "") {
+            detailWrapper.style.display = "block";
+            moreButton.textContent = "접기";
+        } else {
+            detailWrapper.style.display = "none";
+            moreButton.textContent = "더보기";
         }
-    }
+    });
 
-    var invitationElements = document.getElementsByClassName("hw_invitation_content");
-    for (var i = 0; i < invitationElements.length; i++) {
-        invitationElements[i].onclick = openModal;
-    }
+    window.sortBy = function(type) {
+        const form = document.querySelector("form");
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "sortType";
+        input.value = type;
+        form.appendChild(input);
+        form.submit();
+    };
+
 });

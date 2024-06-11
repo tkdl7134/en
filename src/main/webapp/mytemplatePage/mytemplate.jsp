@@ -1,52 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>초대 관리 페이지</title>
+<link rel="stylesheet" href="invitationPage/invitationPage.css">
+<script type="text/javascript" src="invitationPage/invitationPage.js"></script>
 </head>
-<body>
+<body id="page_top">
 <form action="InvitationController" method="post">
 <div class="hw_container">
-    <div class="hw_sidebar left">
-       <a href="main.jsp"> <img src="logo.png" alt="로고" class="logo"></a>
-        <ul>
-            <li><a href="InvitationController">초대 관리</a></li>
-            <li><a href="#">마이 템플릿</a></li>
-            <li><a href="#">정보 관리</a></li>
-            <li><a href="#">통계</a></li>
-        </ul>
-    </div>
-    <div>
-        <h1 class="hw_head">초대 관리</h1>
-        <hr>
-        </div>
-    <div class="hw_content">
-        <div class="hw_invitation">
-            <img class="hw_img" alt="" src="invitationPage/imgFolder/envelope.jpg">
-            <div class="hw_titles" onclick="location.href ='javascript:guest()'" style="cursor:pointer;">김정수님 결혼식</div>
-        </div>
-        <div class="hw_invitation">
-            <img class="hw_img" alt="" src="invitationPage/imgFolder/envelope.jpg">
-            <div class="hw_titles" onclick="location.href ='javascript:guest()'" style="cursor:pointer;">김정수님 결혼식</div>
-        </div>
-        <div class="hw_invitation">
-            <img class="hw_img" alt="" src="invitationPage/imgFolder/envelope.jpg">
-			<div class="hw_titles" onclick="location.href ='javascript:guest()'" style="cursor:pointer;">김정수님 결혼식</div>        </div>
-        <div class="hw_invitation">
-            <img class="hw_img" alt="" src="invitationPage/imgFolder/envelope.jpg">
-          	<div class="hw_titles" onclick="location.href ='javascript:guest()'" style="cursor:pointer;">김정수님 결혼식</div>
-        </div>
-    </div>
-    <div class="hw_sidebar right">
-        <ul>
-            <li><a href="#">연결</a></li>
-            <li><a href="#">서비스</a></li>
-            <li><a href="#">FAQ</a></li>
-        </ul>
-    </div>
+   <header class="hw_header">
+			<a href="main.jsp"><img src="invitationPage/imgFolder/logo.png"alt="로고" class="logo"></a>
+			<div class="hw_title">
+				<h1>관리페이지</h1>
+			</div>
+			<input >
+
+			<a href="main.jsp"> <img
+				src="invitationPage/imgFolder/menu_btn.png" alt="로고" class="menu"></a>
+		</header>
 </div>
+<main class="hw_main">
+	<div class="hw_content">
+		<img alt="" src="invitationPage/imgFolde/${invitations.w_img }">
+	</div>
+	
+	
+	<a href="#page_top"> <img src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
+</main>
 </form>
+
+
+
+
+
+
+
 </body>
 </html>

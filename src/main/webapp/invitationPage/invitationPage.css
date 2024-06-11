@@ -1,243 +1,179 @@
-/* invitationPage.css */
+/* Google Fonts에서 폰트 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 
-
-@font-face {
-  font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  src:url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
-}
-
+/* 공통 스타일 */
 body {
-  font-family:"Noto Serif JP", serif;
+  background-image: url('imgFolder/pageimg2.png');
+  background-size: cover;
+  background-attachment: scroll; /* 스크롤 시 배경 이미지도 함께 이동 */
+  font-family: 'Noto Serif JP', serif; /* 가져온 폰트를 body에 적용 */
   margin: 0;
   padding: 0;
 }
 
 .hw_container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.hw_sidebar {
-    width: 15%;
-    background-color: #fff8e5;
-    padding: 20px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.hw_sidebar.left {
-    border-right: 1px solid #ccc;
+.logo, .menu {
+  height: 50px;
 }
 
-.hw_sidebar.right {
-    border-left: 1px solid #ccc;
+.hw_title h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 20px;
-    width: 80%;
+/* hw_card 가운데 정렬 */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.hw_sidebar ul {
-    list-style: none;
-    padding: 0;
+.hw_card {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.hw_sidebar ul li {
-    margin-bottom: 10px;
+.hw_card img {
+  max-width: 100%;
+  height: auto;
 }
 
-.hw_sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
+.hw_card_message {
+  margin: 20px 0;
 }
 
-.hw_sidebar ul li a:hover {
-    background-color: #e5e5e5;
+.hw_content, .hw_content_detail, .hw_content_absent {
+  border: 1px solid red;
+  border-radius: 30px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffdede; /* 변경된 백그라운드 컬러 */
 }
 
-.hw_content {
-    width: 70%;
-    padding: 20px;
-    background-color: #f4fdff;
-    display: flex;
-    flex-direction: row;
+/* 탭 스타일 */
+.hw_tab_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.hw_head {
-    font-size: 24px;
-    margin-bottom: 10px;
-    
+.hw_tab_title {
+  margin: 0;
 }
 
-.hw_invitation {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-direction: column;
+.tab_bnt {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.hw_img {
-    width: 100px;
-    height: auto;
-    margin-right: 20px;
+.hw_tab__item {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin-left: -1px; /* 탭 간 경계 없애기 */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.hw_titles {
-    font-size: 20px;
-    color: #333;
-    text-decoration: none;
+.hw_tab__item:first-child {
+  margin-left: 0; /* 첫 번째 탭의 좌측 마진 제거 */
 }
 
-.hw_titles:hover {
-    text-decoration: underline;
+.hw_tab__item a {
+  text-decoration: none;
+  color: inherit;
 }
 
-
-/* invitationPage.css에 추가 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+.hw_tab__item.active, .hw_tab__item:hover {
+  background-color: #e74c3c; /* 붉은색 배경 */
+  color: white; /* 흰색 글씨 */
+  border: 1px solid #e74c3c; /* 붉은색 테두리 */
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    height: 60%;
+.hw_tab_content-wrapper {
+  background-color: #ffdede;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 100%;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.hw_tab_content {
+  display: none;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-
-
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; 
-    background-color: rgb(0, 0, 0); 
-    background-color: rgba(0, 0, 0, 0.4); 
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* 모달 너비 */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    
-}
-
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.hw_tab_content.active {
+  display: block;
 }
 
 /* 테이블 스타일 */
-table {
-    width: 100%;
-    border-collapse: collapse; /* 테두리 겹침 방지 */
-    margin-top: 20px;
+.styled-table {
+  border-collapse: separate;
+  border-spacing: 0 10px; /* 세로 간격을 10px로 설정, 가로 간격은 0으로 설정 */
+  margin: 25px 0;
+  font-size: 18px;
+  width: 100%;
+  text-align: left;
+  overflow-x: auto; /* 테이블이 삐져나가지 않도록 설정 */
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+.styled-table thead tr {
+  background-color: white;
+  color: #333;
+  text-align: left;
+  font-weight: bold;
 }
 
-th, td {
-    padding: 8px;
-    text-align: left;
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
 }
 
-th {
-    background-color: #f2f2f2;
+.styled-table tbody tr {
+  background-color: white;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+.top_button {
+  display: block;
+  margin: 20px auto;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+/* 더보기 버튼 스타일 */
+.hw_more_button {
+  background: none;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  outline: none;
 }
-
-
-.hw_container {
-    display: flex;
-}
-
-.hw_sidebar.left, .hw_sidebar.right {
-    flex: 1;
-}
-
-.hw_content {
-    flex: 3;
-}
-
-.hw_invitation {
-    margin-bottom: 20px;
-}
-
-.hw_img img {
-    max-width: 100%;
-    height: auto;
-}
-
-.hw_title {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-
-
-
-
-
-

@@ -20,7 +20,7 @@ public class InvitationDAO {
         // Default constructor
     }
 
-    public void invitations(HttpServletRequest request) {
+    public static void invitations(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -56,21 +56,27 @@ public class InvitationDAO {
                 String g_guest_type = rs.getString("g_guest_type");
                 String g_age_type = rs.getString("g_age_type");
                 String allergy = rs.getString("allergy");
+                
                 i = new InvitationDTO();
-                i.setAllergy(allergy);
+                
                 i.setE_no(e_no);
-                i.setG_age_type(g_age_type);
-                i.setG_attend(g_attend);
-                i.setG_guest_type(g_guest_type);
-                i.setM_email(m_email);
+                
+                i.setW_groom(w_groom);
+                i.setW_bride(w_bride);
+                i.setW_img(w_img);
+                
                 i.setM_id(m_id);
-                i.setM_name(m_name_rome);
+                i.setM_name(m_name);
                 i.setM_name_kana(m_name_kana);
                 i.setM_name_rome(m_name_rome);
                 i.setM_phone(m_phone);
-                i.setW_bride(w_bride);
-                i.setW_groom(w_groom);
-                i.setW_img(w_img);
+                i.setM_email(m_email);
+                
+                i.setG_attend(g_attend);
+                i.setG_guest_type(g_guest_type);
+                i.setG_age_type(g_age_type);
+                
+                i.setAllergy(allergy);
                 invitations.add(i);
             }
 
