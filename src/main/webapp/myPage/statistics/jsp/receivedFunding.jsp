@@ -39,7 +39,7 @@
                 <div class="kh-f-card-fake"></div>
                 <c:forEach items="${list }" var="l" varStatus="vs" begin="0">
                     <div class="kh-f-card-out">
-                        <div onclick="location.href='receivedSpecificFundingC'" class="kh-fund-card" value="${vs.index}">
+                        <div onclick="location.href='receivedSpecificFundingC?no=${l.wl_no}&product=${l.wl_product }&eno=${l.e_no }'" class="kh-fund-card" value="${vs.index}">
                             <div>
                                 <img class="fundProduct-img" alt="noImg" src="myPage/statistics/imgFolder/${l.wl_product }.png" onerror="this.onerror=null; this.src='myPage/statistics/imgFolder/else.png'" />
                             </div>

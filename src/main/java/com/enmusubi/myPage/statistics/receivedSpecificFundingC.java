@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.enmusubi.funding.fundDAO;
+
 @WebServlet("/receivedSpecificFundingC")
 public class receivedSpecificFundingC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			
+		fundDAO.selectFundList(request);
+		StatisticsDAO.getProductRanking(request);
+		StatisticsDAO.getFundData(request);
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedSpecificFunding.jsp").forward(request, response);
 		
 	
