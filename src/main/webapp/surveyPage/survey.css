@@ -295,3 +295,32 @@ legend div:nth-child(1) {
 .tg-include-btu-page {
   display: flex;
 }
+
+.tg-slide-third-page {
+  display: flex !important; /* flexbox 레이아웃 적용 */
+  justify-content: center;
+  align-items: center;
+}
+
+.allergy-container {
+  background-color: transparent;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 40rem;
+  width: 100%;
+}
+
+.allergy-contents-container div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem; /* 패딩 조정 */
+  font-size: 1.2rem;
+}
+
+.allergy-contents-container input,
+.allergy-contents-container select {
+  width: 20rem;
+  height: 2rem;
+}
