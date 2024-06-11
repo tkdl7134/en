@@ -15,25 +15,23 @@ body {
 #fundBack-img {
 	
 	width : 100%;
-	height : 100vh;
 	
 	
 }
-#recFund-container {
+.recFund-container {
 	height : 100vh;
 	overflow : hidden;
 	
 	
 }
-
-.contents {
-	position : relative;
-	bottom : 400px;
-	
-	
+.recFund-title {
+	font-size : 1.7rem;
+	position: relative;
+    bottom: 49rem;
+    left: 39rem;
 	
 }
-.bigBox {
-	width : 15rem;
-		
+.fundProduct-img {
+	width: 15rem;
+	
 }
