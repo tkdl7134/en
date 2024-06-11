@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="survey_test.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <div class="tk_survey_container">
+        <div class="tk_durumari">
+          <div class="tk_durumari_roll">
+            <img src="imgFolder/ribbon.png" alt="ribbon" />
+          </div>
+          <div class="tk_durumari_paper">
+            <div class="tk_survey">
+              <header class="tk_survey_header">
+                <div>
+                  <div class="tk_index_container">
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">ゲスト· カテゴリー</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">個人情報</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">食事制限</div>
+                    </div>
+                    <div>
+                      <img src="imgFolder/indeximg.png" alt="index" />
+                      <div class="image-text">メッセージ</div>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <main class="tk_survey_content">
+                <div class="slick">
+                  <div>
+                    <div>참</div>
+                    <div>불참</div>
+                  </div>
+                  <div>
+                    <div>신랑</div>
+                    <div>신부</div>
+                  </div>
+                  <div>
+                    <action ="SurveyC">
+                      お名前<input name="name" /> </br>
+                      フリガナ<input name="hurigana" /> </br>
+                      お名前(英語) <input name="engname" /> </br>
+                      e-mail <input name="email" /> </br>
+                      携帯電話 <input name="phonenum" /> </br>
+                    </form>
+                  </div>
+                </div>
+              </main>
+
+              <footer class="tk_survey_footer">
+                <p>진행도</p>
+                <button>다음</button>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    $(".slick").slick();
+  </script>
+
+  <script type="text/javascript">
+    const roll = document.querySelector(".tk_durumari_roll");
+    const paper = document.querySelector(".tk_durumari_paper");
+    roll.addEventListener("click", function () {
+      if (paper.classList.contains("tk-paper-wide")) {
+        paper.classList.remove("tk-paper-wide");
+      } else {
+        paper.classList.add("tk-paper-wide");
+      }
+    });
+
+    const imageContainers = document.querySelectorAll(
+      ".tk_index_container > div"
+    );
+
+    imageContainers.forEach((container) => {
+      container.addEventListener("click", () => {
+        // 다른 이미지 닫기 (선택 사항)
+        imageContainers.forEach((otherContainer) => {
+          if (
+            otherContainer !== container &&
+            otherContainer.classList.contains("active")
+          ) {
+            otherContainer.classList.remove("active");
+          }
+        });
+        // 클릭된 이미지 펼치기/닫기
+        container.classList.toggle("active");
+      });
+    });
+  </script>
+</html>
