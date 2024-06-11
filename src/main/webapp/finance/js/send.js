@@ -19,6 +19,6 @@ function goFinanceResult() {
 		warnspan.classList.add("kh-show");
 	}
   } else {
-    location.href = "ResultC";
+    document.querySelector("form").submit();
   }
 }
