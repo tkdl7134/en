@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.enmusubi.funding.fundDAO;
+import com.enmusubi.finance.funding.fundDAO;
 @WebServlet("/receivedFundingController")
 public class receivedFundingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-	fundDAO.selectFundList(request);
+	com.enmusubi.finance.funding.fundDAO.selectFundList(request, response);
+	
+//	fundDAO.selectFundList(request);
 	request.getRequestDispatcher("myPage/statistics/jsp/receivedFunding.jsp").forward(request, response);
 	
 	

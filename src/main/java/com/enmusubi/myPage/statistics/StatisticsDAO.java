@@ -15,19 +15,21 @@ public class StatisticsDAO {
 
 	public static void getPrice(HttpServletRequest request) {
 			// 날짜 2개 사이의 금액 받는 메서드
+		
 		String startDate =	request.getParameter("startDate");
 	String endDate = request.getParameter("endDate");
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
+			DBManager dbManager = DBManager.getInstance();
 			 String sql = "SELECT p_date, SUM(p_price) AS total_price\r\n"
 			 		+ "FROM s_pay\r\n"
 			 		+ "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')\r\n"
 			 		+ "GROUP BY p_date\r\n"
 			 		+ "ORDER BY p_date";			
 			 try {
-				con = DBManager.connect();
+				con = dbManager.connect();
 				pstmt = con.prepareStatement(sql);
 				 pstmt.setString(1, startDate);
 		            pstmt.setString(2, endDate);
@@ -46,7 +48,7 @@ public class StatisticsDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				DBManager.close(con, pstmt, rs);
+				dbManager.close(con, pstmt, rs);
 			}
 		
 	}
@@ -61,6 +63,7 @@ public class StatisticsDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT wl_no,\r\n"
 				+ "       total_price,\r\n"
 				+ "       RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
@@ -75,7 +78,7 @@ public class StatisticsDAO {
 		String sql2 = "select wl_price from s_wishlist where wl_product=?";
 		try {
 			
-			con = DBManager.connect();
+			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, no);
 			rs= pstmt.executeQuery();
@@ -111,7 +114,7 @@ public class StatisticsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			dbManager.close(con, pstmt, rs);
 		}
 		
 		
@@ -131,11 +134,12 @@ public class StatisticsDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 				+ "FROM s_pay\r\n"
 				+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?";
 		try {
-			con = DBManager.connect();
+			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, wlno);
 			pstmt.setString(2, eno);
@@ -159,7 +163,7 @@ public class StatisticsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			dbManager.close(con, pstmt, rs);
 			
 		}
 		
