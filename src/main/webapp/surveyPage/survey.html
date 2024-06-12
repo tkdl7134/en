@@ -86,30 +86,30 @@
                   <div class="">
                     <div>ゲストカテゴリー</div>
                     <label>
-                      <input name="interest" type="checkbox" value="groom" />
+                      <input name="couple" type="checkbox" value="groom" />
                       新郎側ゲスト
                     </label>
                     <label>
-                      <input name="interest" type="checkbox" value="bride" />
+                      <input name="couple" type="checkbox" value="bride" />
                       新婦側ゲスト
                     </label>
                   </div>
                   <div class="relationship-container">
                     <div>作成者との関係</div>
                     <span>
-                      <input name="interest" type="checkbox" value="groom" />
+                      <input name="relationship" type="checkbox" value="groom" />
                       家族
                     </span>
                     <span>
-                      <input name="interest" type="checkbox" value="bride" />
+                      <input name="relationship" type="checkbox" value="bride" />
                       親友
                     </span>
                     <span>
-                      <input name="interest" type="checkbox" value="bride" />
+                      <input name="relationship" type="checkbox" value="bride" />
                       職場の同僚
                     </span>
                     <label>
-                      <input name="interest" type="checkbox" value="bride" />
+                      <input name="relationship" type="checkbox" value="bride" />
                       その他
                     </label>
                   </div>
@@ -464,6 +464,34 @@
   // 결과 출력
   resultElement.value = number;
 }
+
+    const coupleCheckboxes = document.querySelectorAll('input[name="couple"]');
+
+    coupleCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change',function() {
+        if (this.checked) {
+            coupleCheckboxes.forEach(otherCheckbox => {
+              if (otherCheckbox !== this) {
+                  otherCheckbox.checked = false;
+              }
+            });      
+        }
+      });
+    });
+
+        const relationshipCheckboxes = document.querySelectorAll('input[name="relationship"]');
+
+    relationshipCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change',function() {
+        if (this.checked) {
+            relationshipCheckboxes.forEach(otherCheckbox => {
+              if (otherCheckbox !== this) {
+                  otherCheckbox.checked = false;
+              }
+            });      
+        }
+      });
+    });
 
     // 알레르기 셀렉트 박스 변경 이벤트 처리
     const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
