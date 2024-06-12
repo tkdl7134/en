@@ -15,36 +15,24 @@ body {
   width: 100vw;
 }
 
+.yj-main-first-musubi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .yj-main-first-musubi img {
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 100%;
 }
 
-.yj-main-first-icon img {
-  /* size */
-  width: 10rem;
-  height: 10rem;
-  /* location */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* animation */
-  animation: float 2s ease-in-out infinite;
+/* 
+.red-bar {
+  background-color: red;
+  height: 20px;
+  animation: unroll 2s ease-in-out forwards;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(-50%, -50%);
-  }
-  50% {
-    transform: translate(-50%, -60%);
-  }
-}
-
-/* @keyframes unroll {
+@keyframes unroll {
   0% {
     width: 100%;
   }
@@ -52,9 +40,77 @@ body {
     width: 0;
   }
 }
+*/
 
-.red-bar {
-  background-color: red;
-  height: 20px;
-  animation: unroll 2s ease-in-out forwards;
-} */
+.yj-main-first-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.yj-main-first-icon img {
+  /* size */
+  width: 10rem;
+  height: 10rem;
+  /* location */
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  /* style */
+  border-radius: 100%;
+  box-shadow: 0 5px 5px 5px #fd5356;
+  /* animation */
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 10%);
+  }
+}
+
+.yj-main-first-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.scroll-line {
+  width: 5px;
+  height: 100%;
+  background-color: #dd2025;
+}
+
+.scroll-arrow {
+  /* size */
+  width: 5px;
+  height: 5px;
+  /* location */
+  margin-left: -15px;
+  margin-bottom: 150px;
+  /* style */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #dd2025;
+  /* animation */
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(800%);
+  }
+}
