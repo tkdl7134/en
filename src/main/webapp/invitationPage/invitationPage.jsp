@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -10,219 +9,190 @@
 <script type="text/javascript" src="invitationPage/invitationPage.js"></script>
 </head>
 <body id="page_top">
-	<form action="InvitationController" method="post">
-		<div class="hw_container">
+    <form action="InvitationController" method="post">
+        <div class="hw_container">
 
-			<header class="hw_invitation_header">
-				<a href="main.jsp"> <img src="invitationPage/imgFolder/logo.png"
-					alt="로고" class="logo"></a>
-				<div class="hw_title">
-					<h1>アンケート 管理</h1>
-				</div>
-				<a href="main.jsp"> <img
-					src="invitationPage/imgFolder/menu_btn.png" alt="로고" class="menu"></a>
-			</header>
+            <header class="hw_invitation_header">
+                <a href="main.jsp"> <img src="invitationPage/imgFolder/logo.png" alt="logo" class="logo"></a>
+                <div class="hw_title">
+                    <h1>アンケート 管理</h1>
+                </div>
+                <a href="main.jsp"> <img src="invitationPage/imgFolder/menu_btn.png" alt="메뉴" class="menu"></a>
+            </header>
 
-			<main class="hw_invitation_main">
-				<div class="hw_card">
-					<img alt="hw_cardimg"
-						src="invitationPage/imgFolder/wedding_chapel.png">
-					<h2 class="hw_card_message">
-						✿いただいたアンケートの回答です。どうぞその気持ちをご確認ください✿</h2>
-				</div>
-				<!-- 출석 탭 영역 -->
-				<div class="hw_content">
-					<div class="hw_tab_header">
-						<h3 class="hw_tab_title">出席の方</h3>
-						<ul class="tab_bnt">
-							<li class="hw_tab__item active"><a href="#tab1">名前順</a></li>
-							<li class="hw_tab__item"><a href="#tab2">新郎側</a></li>
-							<li class="hw_tab__item"><a href="#tab3">新婦側</a></li>
-						</ul>
-					</div>
-					<!-- 탭 내용 영역 -->
-					<div class="hw_tab_content-wrapper">
-						<div id="tab1" class="hw_tab_content active">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div id="tab2" class="hw_tab_content">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div id="tab3" class="hw_tab_content">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<!-- 출석 특기사항 영역 -->
-				<div class="hw_content_detail">
-					<div class="hw_tab_header">
-						<h3 class="hw_tab_title">出席の方特記事項</h3>
-						<button type="button" class="hw_more_button">クリック</button>
-					</div>
-					<!-- 특기사항 내용 영역 -->
-					<div class="hw_detail_wrapper" style="display: none;">
-						<table class="styled-table">
-							<thead>
-								<tr>
-									<th>名前</th>
-									<th>同伴人数</th>
-									<th>アレルギー ・ 特記事項</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="invitation" items="${invitations}">
-									<tr>
-										<td>${invitation.m_name}</td>
-										<td>${invitation.g_age_type}</td>
-										<td>${invitation.allergy}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- 결석 탭 영역 -->
-				<div class="hw_content_absent">
-					<div class="hw_tab_header">
-						<h3 class="hw_tab_title">欠席の方</h3>
-						<ul class="tab_bnt">
-							<li class="hw_tab__item active"><a href="#tab1">名前順</a></li>
-							<li class="hw_tab__item"><a href="#tab2">新郎側</a></li>
-							<li class="hw_tab__item"><a href="#tab3">新婦側</a></li>
-						</ul>
-					</div>
-					<!-- 탭 내용 영역 -->
-					<div class="hw_tab_content-wrapper">
-						<div id="tab1" class="hw_tab_content active">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div id="tab2" class="hw_tab_content">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div id="tab3" class="hw_tab_content">
-							<table class="styled-table">
-								<thead>
-									<tr>
-										<th>名前</th>
-										<th>ゲスト</th>
-										<th>電話番号</th>
-										<th>メール</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="invitation" items="${invitations}">
-										<tr>
-											<td>${invitation.m_name}</td>
-											<td>${invitation.g_guest_type}</td>
-											<td>${invitation.m_phone}</td>
-											<td>${invitation.m_email}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<a href="#page_top"><img
-					src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
-			</main>
+            <main class="hw_invitation_main">
+                <div class="hw_card">
+                    <img alt="hw_cardimg" src="invitationPage/imgFolder/wedding_chapel.png">
+                    <h2 class="hw_card_message">✿いただいたアンケートの回答です。どうぞその気持ちをご確認ください✿</h2>
+                </div>
+                <!-- 출석 탭 영역 -->
+                <div class="hw_content">
+                    <div class="hw_tab_header">
+                        <h3 class="hw_tab_title">出席の方</h3>
+                        <ul class="tab_bnt">
+                            <li class="hw_tab__item active"><a href="#tabYes">名前順</a></li>
+                            <li class="hw_tab__item"><a href="#tabYesMale">新郎側</a></li>
+                            <li class="hw_tab__item"><a href="#tabYesFemale">新婦側</a></li>
+                        </ul>
+                    </div>
+                    <!-- 탭 내용 영역 -->
+                    <div class="hw_tab_content-wrapper">
+                        <div id="tabYes" class="hw_tab_content active">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsYes}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div id="tabYesMale" class="hw_tab_content">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsYesMale}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div id="tabYesFemale" class="hw_tab_content">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsYesFemale}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 출석 특기사항 영역 -->
+                <div class="hw_content_detail">
+                    <div class="hw_tab_header">
+                        <h3 class="hw_tab_title">出席の方特記事項</h3>
+                        <button type="button" class="hw_more_button">クリック</button>
+                    </div>
+                    <!-- 특기사항 내용 영역 -->
+                    <div class="hw_detail_wrapper" style="display: none;">
+                        <div class="styled-table-wrapper">
+                            <div class="hw_invitation_title">
+                                <span>名前</span>
+                                <span>同伴人数</span>
+                                <span>アレルギー ・ 要請事項</span>
+                            </div>
+                            <c:forEach var="invitation" items="${invitationsYes}" varStatus="status">
+                                <div class="hw_invitation_content">
+                                    <span>${invitation.m_name}</span>
+                                    <span>${invitation.g_age_type}</span>
+                                    <span>${invitation.allergy}${invitation.g_messagge}</span>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+                <!-- 결석 탭 영역 -->
+                <div class="hw_content_absent">
+                    <div class="hw_tab_header">
+                        <h3 class="hw_tab_title">欠席の方</h3>
+                        <ul class="tab_bnt">
+                            <li class="hw_tab__item active"><a href="#tabNo">名前順</a></li>
+                            <li class="hw_tab__item"><a href="#tabNoMale">新郎側</a></li>
+                            <li class="hw_tab__item"><a href="#tabNoFemale">新婦側</a></li>
+                        </ul>
+                    </div>
+                    <!-- 탭 내용 영역 -->
+                    <div class="hw_tab_content-wrapper">
+                        <div id="tabNo" class="hw_tab_content active">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsNo}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div id="tabNoMale" class="hw_tab_content">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsNoMale}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div id="tabNoFemale" class="hw_tab_content">
+                            <div class="styled-table-wrapper">
+                                <div class="hw_invitation_title">
+                                    <span>名前</span>
+                                    <span>ゲスト</span>
+                                    <span>電話番号</span>
+                                    <span>メール</span>
+                                </div>
+                                <c:forEach var="invitation" items="${invitationsNoFemale}">
+                                    <div class="hw_invitation_content">
+                                        <span>${invitation.m_name}</span>
+                                        <span>${invitation.g_guest_type}</span>
+                                        <span>${invitation.m_phone}</span>
+                                        <span>${invitation.m_email}</span>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#page_top"><img src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
+            </main>
 
-		</div>
-	</form>
+        </div>
+        <!-- 마우스 아이콘 -->
+        <div class="hw-f-mousemove hw-f-none">
+            <img src="invitationPage/imgFolder/back_btn.png" alt="마우스 아이콘">
+        </div>
+    </form>
 </body>
 </html>

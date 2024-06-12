@@ -30,15 +30,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const moreButton = document.querySelector(".hw_more_button");
-    const detailWrapper = document.querySelector(".hw_detail_wrapper");
-
+    const detailTableWrapper = document.querySelector(".hw_detail_wrapper");
     moreButton.addEventListener("click", () => {
-        if (detailWrapper.style.display === "none" || detailWrapper.style.display === "") {
-            detailWrapper.style.display = "block";
-            moreButton.textContent = "접기";
+        if (detailTableWrapper.style.display === "none" || detailTableWrapper.style.display === "") {
+            detailTableWrapper.style.display = "block";
+            moreButton.textContent = "クリック";
         } else {
-            detailWrapper.style.display = "none";
-            moreButton.textContent = "더보기";
+            detailTableWrapper.style.display = "none";
+            moreButton.textContent = "クリック";
         }
     });
 
@@ -52,4 +51,29 @@ document.addEventListener("DOMContentLoaded", function() {
         form.submit();
     };
 
+    // 마우스 이동 기능 추가
+    const mouseIcon = document.querySelector(".hw-f-mousemove");
+    const cardCon = document.querySelector(".hw_invitation_main");
+
+    cardCon.addEventListener("mouseover", function(event) {
+        mouseIcon.classList.remove("hw-f-block");
+        mouseIcon.classList.add("hw-f-none");
+    });
+
+    document.addEventListener("mousemove", (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        mouseIcon.style.pointerEvents = "none";
+        mouseIcon.style.left = mouseX + "px";
+        mouseIcon.style.top = mouseY + "px";
+    });
+
+    cardCon.addEventListener("mouseout", function() {
+        if (event.target === cardCon) {
+            document.querySelector(".hw-f-mousemove > img").src = "invitationPage/imgFolder/back_btn.png";
+        }
+        mouseIcon.classList.remove("hw-f-none");
+        mouseIcon.classList.add("hw-f-block");
+        event.stopPropagation();
+    });
 });

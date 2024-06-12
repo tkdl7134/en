@@ -2,7 +2,7 @@
 create sequence s_event_seq;
 insert into s_member values('testuser5','2222','ccc','ccc','ccc','00/01/13','female','testuser7@example.com','24/06/11','default.png','01012341239');
 insert into s_event values(event_seq.nextval,'testuser2','https://www.amazon.com/hz/wishlist/ls/3R5PIDFJ3SD4X?ref_=wl_share');
-insert into s_wedding_info values('3','신랑3','신부3','test.jsp');
+insert into s_allergy values('1','testuser9','魚');
 
 insert into  S_GUEST values('1','testuser2','yes','g','kids:1','ㅊㅋㅊㅋ','no');
 

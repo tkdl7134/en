@@ -4,11 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Comparator;
 import javax.servlet.http.HttpServletRequest;
 import com.enmusubi.main.DBManager;
 
 public class InvitationDAO {
-    public static ArrayList<InvitationDTO> invitations;
+    public static ArrayList<InvitationDTO> invitationsYes;
+    public static ArrayList<InvitationDTO> invitationsYesMale;
+    public static ArrayList<InvitationDTO> invitationsYesFemale;
+    public static ArrayList<InvitationDTO> invitationsNo;
+    public static ArrayList<InvitationDTO> invitationsNoMale;
+    public static ArrayList<InvitationDTO> invitationsNoFemale;
 
     private static final InvitationDAO IDAO = new InvitationDAO();
 
@@ -33,12 +39,18 @@ public class InvitationDAO {
                      "LEFT OUTER JOIN S_ALLERGY sa2 ON sm.M_ID = sa2.M_ID " +
                      "LEFT OUTER JOIN S_WEDDING_INFO swi ON se.E_NO = swi.E_NO " +
                      "WHERE se.M_ID = 'testuser' AND sg.E_NO = '1'";
+
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
-            invitations = new ArrayList<>();
+            invitationsYes = new ArrayList<>();
+            invitationsYesMale = new ArrayList<>();
+            invitationsYesFemale = new ArrayList<>();
+            invitationsNo = new ArrayList<>();
+            invitationsNoMale = new ArrayList<>();
+            invitationsNoFemale = new ArrayList<>();
             InvitationDTO i = null;
 
             while (rs.next()) {
@@ -55,32 +67,39 @@ public class InvitationDAO {
                 String g_attend = rs.getString("g_attend");
                 String g_guest_type = rs.getString("g_guest_type");
                 String g_age_type = rs.getString("g_age_type");
+                String g_messagge = rs.getString("g_messagge");
+                
                 String allergy = rs.getString("allergy");
                 
-                i = new InvitationDTO();
+                i = new InvitationDTO(e_no, w_groom, w_bride, w_img, m_id, m_name, m_name_kana, m_name_rome, m_phone, m_email, g_attend, g_guest_type, g_age_type, g_messagge,allergy);
                 
-                i.setE_no(e_no);
-                
-                i.setW_groom(w_groom);
-                i.setW_bride(w_bride);
-                i.setW_img(w_img);
-                
-                i.setM_id(m_id);
-                i.setM_name(m_name);
-                i.setM_name_kana(m_name_kana);
-                i.setM_name_rome(m_name_rome);
-                i.setM_phone(m_phone);
-                i.setM_email(m_email);
-                
-                i.setG_attend(g_attend);
-                i.setG_guest_type(g_guest_type);
-                i.setG_age_type(g_age_type);
-                
-                i.setAllergy(allergy);
-                invitations.add(i);
+                if ("yes".equalsIgnoreCase(g_attend)) {
+                    invitationsYes.add(i);
+                    if ("新郎".equalsIgnoreCase(g_guest_type)) {
+                        invitationsYesMale.add(i);
+                    } else if ("新婦".equalsIgnoreCase(g_guest_type)) {
+                        invitationsYesFemale.add(i);
+                    }
+                } else if ("no".equalsIgnoreCase(g_attend)) {
+                    invitationsNo.add(i);
+                    if ("新郎".equalsIgnoreCase(g_guest_type)) {
+                        invitationsNoMale.add(i);
+                    } else if ("新婦".equalsIgnoreCase(g_guest_type)) {
+                        invitationsNoFemale.add(i);
+                    }
+                }
             }
 
-            request.setAttribute("invitations", invitations);
+            // 이름순으로 정렬
+            invitationsYes.sort(Comparator.comparing(InvitationDTO::getM_name));
+            invitationsNo.sort(Comparator.comparing(InvitationDTO::getM_name));
+
+            request.setAttribute("invitationsYes", invitationsYes);
+            request.setAttribute("invitationsYesMale", invitationsYesMale);
+            request.setAttribute("invitationsYesFemale", invitationsYesFemale);
+            request.setAttribute("invitationsNo", invitationsNo);
+            request.setAttribute("invitationsNoMale", invitationsNoMale);
+            request.setAttribute("invitationsNoFemale", invitationsNoFemale);
 
         } catch (Exception e) {
             e.printStackTrace();
