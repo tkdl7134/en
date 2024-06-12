@@ -45,7 +45,7 @@
 				href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz"
 				class="hs_btn line-login">LINEでログイン</a>
 				<a href="MemberRegC"
-				class="hs_btn reg">✿会員登録はこちら✿</a>
+				class="hs_btn reg">✿ 会員登録はこちら ✿</a>
 				<img class="yellow_line" alt=""
 				src="loginPage/ImgFolder/yellow_line.png">
 		</div>
