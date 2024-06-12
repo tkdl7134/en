@@ -1,0 +1,1 @@
+INSERT INTO s_guest (g_guest_type, )
