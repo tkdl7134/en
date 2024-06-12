@@ -90,54 +90,7 @@ body {
   }
 }
 
-.kh-f-img-box {
-  width: 10rem;
-}
-.kh-f-des {
-  display: flex;
-  flex-grow: 1;
-  font-size: 2rem;
-  text-align: center;
-}
-.kh-f-input {
-  width: 20rem;
-  height: 4rem;
-  border: none;
-  border-bottom: 1px solid red;
-  background: none;
-  font-size: 2rem;
-  text-align: center;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.kh-f-btn {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 100%;
-  box-shadow: 2px 2px 2px 0px #bbbbbb;
-  background-image: url("../img/confirm.png");
-  background-size: cover;
-}
-.kh-f-btn:hover {
-  cursor: pointer;
-}
-.kh-f-btn:active {
-  background-image: url("../img/confirm(active).png");
-  box-shadow: none;
-}
-.kh-f-product-box {
-  display: flex;
-  gap: 2rem;
-}
-.kh-f-product-des {
-  display: flex;
-  flex-direction: column;
-  font-size: 2rem;
-  text-wrap: nowrap;
-}
+
 @keyframes vibration {
   0% {
     transform: translateX(0);
@@ -149,7 +102,7 @@ input::-webkit-inner-spin-button {
     transform: translateX(5px);
   }
   75% {
-    transform: translateX(-5px);
+    transform: translateX(-5 );
   }
   100% {
     transform: translateX(0);
