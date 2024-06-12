@@ -1,53 +1,45 @@
 let card = document.querySelectorAll(".kh-f-card-out");
 let fpop = document.querySelector(".kh-f-popup");
 const cardColor = ["#FFF1E0", "#FFE0E0"];
+const modal = document.getElementById("modal");
 let scrollTimeout;
-let jlist = document.querySelector("#jlist");
-let jsonData = JSON.parse(jlist.value);
-const eno = jsonData[0].e_no;
-console.log(eno);
-console.log(jsonData);
 let isMouseOverCard;
-//카드 초기배치 
+//카드 초기배치
 //크기,색상 호버시 확대 및 다른요소 비활성화
 card.forEach((element, index, array) => {
 	let cardIn = element.querySelector(".kh-fund-card");
 	if (index % 2 == 0) {
-		element.style.transform = 'scale(0.9)';
+		element.style.transform = "scale(0.9)";
 		element.classList.add("kh-f-card-min");
 		cardIn.style.backgroundColor = "#FFF1E0";
-	}
-	else {
+	} else {
 		cardIn.style.backgroundColor = "#FFE0E0";
 	}
 	element.style.transition = "0.8s ease-in-out";
-	element.addEventListener('mouseenter', () => {
+	element.addEventListener("mouseenter", () => {
 		isMouseOverCard = true;
-		console.log('true');
 	});
-	element.addEventListener('mouseleave', () => {
+	element.addEventListener("mouseleave", () => {
 		isMouseOverCard = false;
-		console.log('false');
 	});
 	element.addEventListener("mouseover", function(event) {
 		card.forEach((otherCard) => {
 			if (otherCard !== element) {
-				if (otherCard.classList.contains('kh-f-card-min')) {
-					otherCard.style.transform = 'scale(0.8)';
+				if (otherCard.classList.contains("kh-f-card-min")) {
+					otherCard.style.transform = "scale(0.8)";
+				} else {
+					otherCard.style.transform = "scale(0.9)";
 				}
-				else {
-					otherCard.style.transform = 'scale(0.9)';
-				}
-				otherCard.style.filter = 'grayscale(100%)';
+				otherCard.style.filter = "grayscale(100%)";
 			}
-			document.querySelector(".kh-f-mousemove > img").src = "finance/img/viewbtn.png";
+			document.querySelector(".kh-f-mousemove > img").src =
+				"finance/img/viewbtn.png";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 		});
-		if (element.classList.contains('kh-f-card-min')) {
+		if (element.classList.contains("kh-f-card-min")) {
 			this.style.transform = "scale(1)";
-		}
-		else {
+		} else {
 			this.style.transform = "scale(1.1)";
 		}
 		event.stopPropagation();
@@ -55,49 +47,68 @@ card.forEach((element, index, array) => {
 	element.addEventListener("mouseout", function(event) {
 		card.forEach((otherCard) => {
 			if (otherCard !== element) {
-				if (otherCard.classList.contains('kh-f-card-min')) {
-					otherCard.style.transform = 'scale(0.9)';
+				if (otherCard.classList.contains("kh-f-card-min")) {
+					otherCard.style.transform = "scale(0.9)";
+				} else {
+					otherCard.style.transform = "scale(1)";
 				}
-				else {
-					otherCard.style.transform = 'scale(1)';
-				}
-				otherCard.style.filter = 'none';
+				otherCard.style.filter = "none";
 			}
 		});
-		if (element.classList.contains('kh-f-card-min')) {
+		if (element.classList.contains("kh-f-card-min")) {
 			this.style.transform = "scale(0.9)";
-		}
-		else {
+		} else {
 			this.style.transform = "scale(1)";
 		}
 		event.stopPropagation();
 	});
 	element.addEventListener("click", function(event) {
-		let cardChild = event.target.closest('.kh-fund-card');
-		element.classList.add("kh-f-rotate")
-		if (cardChild) {
-			let i = event.target.closest(".kh-fund-card").getAttribute("value");
-			document.querySelector("#kh-f-product").innerHTML = jsonData[i].wl_product;
-			document.querySelector("#kh-f-price").innerHTML = jsonData[i].wl_price;
-			document.querySelector("#kh-f-comment").innerHTML = jsonData[i].wl_comment;
-			document.querySelector(".kh-f-btn").setAttribute("value", jsonData[i].wl_no);
-			fpop.style.display = "flex";
-			fpop.style.trasform = "transrate(-50%,-50%)";
-			fpop.classList.add("kh-f-rotate");
+		let cardParent = event.target.closest(".kh-fund-card");
+		element.classList.add("kh-f-rotate");
+		if (cardParent) {
+			let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
+			console.log("wlno:"+wlno);
+			$.ajax({
+				type: "post",
+				url: "FundC",
+				data: { no: wlno },
+				dataType: "json",
+				success: function(response) {
+					console.log(response);
+					let percent = response.percent;
+					if(percent === undefined){
+						percent = 0;
+					}
+					fpop.classList.remove("kh-f-rotate-full");
+					document.querySelector("#kh-f-price").innerHTML = percent;
+					document.querySelector("#kh-f-product").innerHTML = response.wl_product;
+					document.querySelector(".kh-f-btn").setAttribute("value", response.wl_no);
+					document.querySelector("#kh-f-img").src = "finance/img/" + response.wl_product + ".png";
+					modal.showModal();
+					document.querySelector(".kh-f-mousemove > img").src =
+			"finance/img/backbtn.png";
+					fpop.classList.add("kh-f-rotate");
+				},
+			});
 		}
 		scrollTimeout = setTimeout(() => {
 			element.classList.remove("kh-f-rotate");
 			fpop.classList.remove("kh-f-rotate");
-		}, 200);
+		}, 1000);
 		event.stopPropagation();
 	});
 });
 
-document.addEventListener("click", function(event) {
-	if (fpop.style.display === "flex") {
-		if (event.target !== fpop && !fpop.contains(event.target)) {
-			fpop.style.display = "none";
-		}
+modal.addEventListener("click", function(event) {
+	if (!fpop.contains(event.target)) {
+		closeModal();
+	}
+});
+
+// 모달 내부 클릭 시 이벤트 전파를 막기
+modal.addEventListener("click", function(event) {
+	if (!fpop.contains(event.target)) {
+		event.stopPropagation();
 	}
 });
 
@@ -108,18 +119,19 @@ const mouseicn = document.querySelector(".kh-f-mousemove");
 //마우스 따라다니는 요소
 cardCon.addEventListener("mouseover", function(event) {
 	if (event.target === cardCon) {
-		document.querySelector(".kh-f-mousemove > img").src = "finance/img/dragbtn.png";
+		document.querySelector(".kh-f-mousemove > img").src =
+			"finance/img/dragbtn.png";
 	}
 	mouseicn.classList.remove("kh-f-none");
 	mouseicn.classList.add("kh-f-block");
 	event.stopPropagation();
 });
-document.addEventListener('mousemove', (event) => {
+document.addEventListener("mousemove", (event) => {
 	const mouseX = event.clientX;
 	const mouseY = event.clientY;
-	mouseicn.style.pointerEvents = 'none';
-	mouseicn.style.left = mouseX + 'px';
-	mouseicn.style.top = mouseY + 'px';
+	mouseicn.style.pointerEvents = "none";
+	mouseicn.style.left = mouseX + "px";
+	mouseicn.style.top = mouseY + "px";
 });
 cardCon.addEventListener("mouseout", function() {
 	mouseicn.classList.remove("kh-f-block");
@@ -136,25 +148,22 @@ cardCon.addEventListener("wheel", function(event) {
 		// Scroll horizontally
 		const scrollSpeed = 0.5;
 		this.scrollLeft += event.deltaY * scrollSpeed;
-		// Add 'asd' class to start the transition
 		if (scrollTimeout) {
 			if (element.classList.contains("kh-f-card-min")) {
-				element.style.transform = 'scale(0.9) rotateY(30deg)';
-			}
-			else {
-				element.style.transform = 'rotateY(30deg)';
+				element.style.transform = "scale(0.9) rotateY(30deg)";
+			} else {
+				element.style.transform = "rotateY(30deg)";
 			}
 			clearTimeout(scrollTimeout);
 		}
 		// Set a timeout to remove the vibration class after 1 second
 		scrollTimeout = setTimeout(() => {
 			card.forEach(function(element) {
-				element.style.transform = 'rotateY(0deg)';
+				element.style.transform = "rotateY(0deg)";
 				if (element.classList.contains("kh-f-card-min")) {
-					element.style.transform = 'scale(0.9)';
-				}
-				else {
-					element.style.transform = 'scale(1)';
+					element.style.transform = "scale(0.9)";
+				} else {
+					element.style.transform = "scale(1)";
 				}
 			});
 			isRotated = false;
@@ -168,19 +177,19 @@ let scrollLeft;
 
 cardCon.addEventListener("mousedown", (e) => {
 	isDown = true;
-	cardCon.classList.add('active');
+	cardCon.classList.add("active");
 	startX = e.pageX - cardCon.offsetLeft;
 	scrollLeft = cardCon.scrollLeft;
 });
 
 cardCon.addEventListener("mouseleave", () => {
 	isDown = false;
-	cardCon.classList.remove('active');
+	cardCon.classList.remove("active");
 });
 
 cardCon.addEventListener("mouseup", () => {
 	isDown = false;
-	cardCon.classList.remove('active');
+	cardCon.classList.remove("active");
 });
 
 cardCon.addEventListener("mousemove", (e) => {
@@ -213,6 +222,7 @@ function goStatistic(no) {
 	const container = document.querySelector("#kh-input-box");
 	const finput = document.querySelector(".kh-f-input");
 	const warnspan = document.querySelector("#kh-warn-text");
+	const eno = document.querySelector(".eno").value;
 	if (finput.value == "") {
 		container.classList.add("vibration");
 		setTimeout(function() {
@@ -223,8 +233,21 @@ function goStatistic(no) {
 			warnspan.classList.add("kh-show");
 		}
 	} else {
-		console.log(jsonData[0]);
-		location.href = "StatisticsC?paytype=fund&price=" + finput.value
-			+ "&eno=" + eno + "&wlno=" + no;
+		location.href =
+			"StatisticsC?paytype=fund&price=" +
+			finput.value +
+			"&eno=" +
+			eno +
+			"&wlno=" +
+			no;
 	}
+}
+function openModal() {
+	const modal = document.getElementById("modal");
+	modal.showModal();
+}
+
+function closeModal() {
+	const modal = document.getElementById("modal");
+	modal.close();
 }
