@@ -21,11 +21,11 @@ public class StatisticsDAO {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			 String sql = "SELECT w_date, SUM(w_price) AS total_price\r\n"
-			 		+ "FROM s_wishlist\r\n"
-			 		+ "WHERE w_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')\r\n"
-			 		+ "GROUP BY w_date\r\n"
-			 		+ "ORDER BY w_date;";			
+			 String sql = "SELECT p_date, SUM(p_price) AS total_price\r\n"
+			 		+ "FROM s_pay\r\n"
+			 		+ "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')\r\n"
+			 		+ "GROUP BY p_date\r\n"
+			 		+ "ORDER BY p_date";			
 			 try {
 				con = DBManager.connect();
 				pstmt = con.prepareStatement(sql);
@@ -101,11 +101,11 @@ public class StatisticsDAO {
 			System.out.println(rank);
 			System.out.println(price);
 			System.out.println(totalPrice);
-		int leftPrice=(price - totalPrice)/100 ;
-			
+			int leftPrice = (int)(((double)(price - totalPrice) / price) * 100);
+			System.out.println(leftPrice);
 			request.setAttribute("rank", rank);
 			request.setAttribute("leftPrice", leftPrice);
-			
+			request.setAttribute("product", product);
 			
 			
 		} catch (Exception e) {
@@ -133,7 +133,7 @@ public class StatisticsDAO {
 		ResultSet rs = null;
 		String sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 				+ "FROM s_pay\r\n"
-				+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? , e_no=?";
+				+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?";
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -141,7 +141,6 @@ public class StatisticsDAO {
 			pstmt.setString(2, eno);
 			rs = pstmt.executeQuery();
 			ArrayList<payDTO> fundedlists = new ArrayList<payDTO>();
-			ArrayList<MemberDTO> memberlist = new ArrayList<MemberDTO>();
 			payDTO fundlist = new payDTO();
 			MemberDTO member = new MemberDTO();
 			
@@ -149,15 +148,12 @@ public class StatisticsDAO {
 				
 			fundlist.setP_price(rs.getInt("p_price"));	
 			fundlist.setP_date(rs.getDate("p_date"));	
-			member.setM_name(rs.getString("m_name"));
+			fundlist.setM_name(rs.getString("m_name"));
 			fundedlists.add(fundlist);
-			memberlist.add(member);
 			
 			}
 			System.out.println(fundedlists);
-			System.out.println(memberlist);
 			request.setAttribute("fund", fundedlists);
-			request.setAttribute("member", member);
 			
 			
 		} catch (Exception e) {

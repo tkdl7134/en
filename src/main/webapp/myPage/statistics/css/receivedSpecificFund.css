@@ -13,8 +13,125 @@ body {
     padding: 0;
 }
 
-#fundSpecBack-img {
-		width : 100%;
-			
+
+
+.recFundSpec-container{
+	display : flex
+	
+	
 }
 
+#fundSpecBack-img {
+		width : 100%;
+		
+		position: absolute;
+    z-index: -1;
+}
+#fundSpecPro-img {
+	
+	
+	width : 20rem;
+	    position: absolute;
+    top: 15rem;
+    left: 37rem;
+}
+#fundSpecProduct-name {
+	
+	top: 31rem;
+    position: absolute;
+    font-size: 4rem;
+    width: 120rem;
+    height: 5rem;
+    left: 20.9rem;
+}
+#fundSpecProduct-rank {
+	position: absolute;
+    top: 38.4rem;
+    font-size: 2rem;
+    width: 100rem;
+    color: red;
+    height: 3rem;
+	
+	
+	
+}
+
+#fundSpec-leftPrice{
+	position : absolute;
+	top : 45rem;
+	
+	
+}
+#fundSpec-chartAlert{
+	position : absolute;
+	top : 47rem;
+	
+	
+}
+#fundSpec-inputDate{
+		position : absolute;
+		top : 49rem;
+		
+		
+	
+	
+}
+#fundSpec-dataBoard-container {
+	
+	border: 1px solid black;
+    position: relative;
+    top: 53rem;
+    left: 22rem;
+    width: 50rem;
+    height: 35rem;
+	border-radius: 25px;
+}
+#fundSpec-arrBtn{
+	position : relative;
+	left: 40rem;
+	margin-bottom: 1rem;
+    margin-top: 1rem;
+	
+}
+#fundSpec-dataBoard{
+	position: relative;
+   
+    font-size: 2rem;
+	margin-left: 5rem;
+}
+#fundSpec-dataBoard-navi{
+	
+	 display: flex;
+    justify-content: space-around;
+    position: relative;
+    border: 1px solid;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    background-color: white;
+    height: 3rem;
+    align-items: center;
+    width: 40rem;
+}
+
+#recSpecPriceAndDate{
+	position: relative;
+    display: flex;
+    justify-content: space-evenly;
+   width: 40rem;
+    border: 1px solid;
+    border-radius: 15px;
+        margin-top: 1rem;
+            background-color: white;
+            font-size: 1.3rem;
+    height: 3rem;
+    align-items: center;
+}
+
+.recSpecReturn-img{
+	position : absolute;
+	top : 103rem;
+	right : 37rem;
+	
+	
+	
+}

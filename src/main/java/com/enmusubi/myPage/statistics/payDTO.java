@@ -11,12 +11,15 @@ public class payDTO {
 	private int p_price;
 	private int wl_no;
 	private Date p_date;
+	private String m_name;
 	
 	public payDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public payDTO(int e_no, String m_id, String p_type, int p_price, int wl_no, Date p_date) {
+	
+
+	public payDTO(int e_no, String m_id, String p_type, int p_price, int wl_no, Date p_date, String m_name) {
 		super();
 		this.e_no = e_no;
 		this.m_id = m_id;
@@ -24,7 +27,10 @@ public class payDTO {
 		this.p_price = p_price;
 		this.wl_no = wl_no;
 		this.p_date = p_date;
+		this.m_name = m_name;
 	}
+
+
 
 	public int getE_no() {
 		return e_no;
@@ -74,11 +80,26 @@ public class payDTO {
 		this.p_date = p_date;
 	}
 
+	public String getM_name() {
+		return m_name;
+	}
+
+
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "payDTO [e_no=" + e_no + ", m_id=" + m_id + ", p_type=" + p_type + ", p_price=" + p_price + ", wl_no="
-				+ wl_no + ", p_date=" + p_date + "]";
+				+ wl_no + ", p_date=" + p_date + ", m_name=" + m_name + "]";
 	}
+
+
+
 	
 	
 }

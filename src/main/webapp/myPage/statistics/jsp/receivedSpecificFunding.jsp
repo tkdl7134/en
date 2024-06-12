@@ -12,32 +12,39 @@
 
 	<div class="recFundSpec-container">
 	<img id="fundSpecBack-img" alt="" src="myPage/statistics/imgFolder/fundSpecificBack.png">
-	<div>${list.wl.product }</div>
-	<div>現在第${rank }位！ ✿目標金額まで後${leftPrice }％です✿</div>
-	<div>統計を確認したい場合は、日付を入力してください</div>
-	<div>
+	<div><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
+	<div id="fundSpecProduct-name">${product }</div>
+	<div id="fundSpecProduct-rank">現在第${rank }位！ </div>
+	<div id="fundSpec-leftPrice">✿目標金額まで後${leftPrice }％です✿</div>
+	<div id="fundSpec-chartAlert">統計を確認したい場合は、日付を入力してください</div>
+	<div id="fundSpec-inputDate">
 	<input type="date">
 	<span>~</span>
 	<input type="date">
 	</div>
-	
-	<div>
-	<div>
+	<div id="fundSpec-dataBoard-container">
+	<div id="fundSpec-arrBtn">
 	<button>金額順</button>	
 	<button>日付順</button>	
 	</div>
-	<div>恩人|金額|日付</div>
-	<c:forEach items="${member }" var="m" begin="0">
-	<div> ${m.m_name }</div>
-	</c:forEach>	
+	<div id="fundSpec-dataBoard">
+	<div id="fundSpec-dataBoard-navi">
+	
+	<div>恩人</div>
+	<div>金額</div>
+	<div>日付</div>
+	
+	</div>
 	<c:forEach items="${fund }" var="f" varStatus="vs" begin="0">
-	<div> 
-	${f.p_price }
-	${f.p_date }
+	<div class="recSpecMemberInfo" id="recSpecPriceAndDate"> 
+	<div style="margin-left: -2rem; ">${f.m_name }</div>
+	<div style="margin-left: 4rem;"> ${f.p_price }円</div>
+	<div style="margin-right: -4rem;">${f.p_date }</div>
 	</div>
 	</c:forEach>
 	</div>
-	<div><img alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
+	</div>
+	<div class="recSpecReturn-img"><img style="width : 20rem;" alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
 	
 	</div>
 	
