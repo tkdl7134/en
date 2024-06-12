@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overlapping Circles</title>
+    <style>
+.allergy-container {
+  /* 컨테이너 스타일 */
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.allergy-container legend {
+  /* 범례 스타일 */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.allergy-container img {
+  /* 알레르기 아이콘 스타일 */
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.allergy-question,
+.allergy-details > div {
+  /* 질문 및 세부 항목 스타일 */
+  margin-bottom: 10px;
+}
+
+.allergy-details input[type="text"],
+.allergy-details textarea {
+  /* 입력 필드 스타일 */
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+    </style>
+  </head>
+  <body>
+<div class="allergy-container">
+  <fieldset>
+    <legend>
+      <img src="imgFolder/allergyicon.png" alt="アレルギーマーク" />
+      アレルギーについて
+    </legend>
+
+    <div class="allergy-question">
+      <label for="allergy">アレルギーはありますか？</label>
+      <select id="allergy" name="allergy">
+        <option value="no">いいえ</option>
+        <option value="yes">はい</option>
+      </select>
+    </div>
+
+    <div id="allergy-details" style="display: none;">
+      <label for="allergy-type">アレルギーの種類:</label>
+      <input type="text" id="allergy-type" name="allergy-type" placeholder="例：卵, 小麦, 乳製品" />
+
+      <label for="allergy-severity">アレルギーの程度:</label>
+      <select id="allergy-severity" name="allergy-severity">
+        <option value="mild">軽度</option>
+        <option value="moderate">中等度</option>
+        <option value="severe">重度</option>
+      </select>
+
+      <label for="allergy-note">その他特記事項:</label>
+      <textarea id="allergy-note" name="allergy-note"></textarea>
+    </div>
+  </fieldset>
+</div>
+  <body>
+<script>
+
+  document.getElementById('allergy').addEventListener('change', function() {
+  const allergyDetails = document.getElementById('allergy-details');
+  if (this.value === 'yes') {
+    allergyDetails.style.display = 'block';
+  } else {
+    allergyDetails.style.display = 'none';
+  }
+});
+
+</script>
+</html>

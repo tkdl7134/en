@@ -10,7 +10,7 @@
       href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700;900&display=swap" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
@@ -96,18 +96,18 @@
                   </div>
                   <div class="relationship-container">
                     <div>作成者との関係</div>
-                    <label>
+                    <span>
                       <input name="interest" type="checkbox" value="groom" />
                       家族
-                    </label>
-                    <label>
+                    </span>
+                    <span>
                       <input name="interest" type="checkbox" value="bride" />
                       親友
-                    </label>
-                    <label>
+                    </span>
+                    <span>
                       <input name="interest" type="checkbox" value="bride" />
                       職場の同僚
-                    </label>
+                    </span>
                     <label>
                       <input name="interest" type="checkbox" value="bride" />
                       その他
@@ -252,9 +252,9 @@
           />
           </div>
           </div>   
-                    <div class="address-contents-contaoner">
+                  <div class="address-contents-contaoner">
                       <div><span for="prefecture">都道府県</span></div>
-                    <div><select id="prefecture" name="prefecture" required>
+                        <div><select id="prefecture" name="prefecture" required>
                         <option value="">選択してください</option>
                         <option value="hokkaido">北海道</option>
                         <option value="aomori">青森県</option>
@@ -293,30 +293,30 @@
                         <option value="yamaguchi">山口県</option>
                         <option value="tokushima">徳島県</option>
                         <option value="kagawa">香川県</option>
-          <option value="ehime">愛媛県</option>
-        <option value="kochi">高知県</option>
-      <option value="fukuoka">福岡県</option>
-    <option value="saga">佐賀県</option>
-  <option value="nagasaki">長崎県</option>
-<option value="kumamoto">熊本県</option>
-<option value="oita">大分県</option>
-<option value="miyazaki">宮崎県</option>
-<option value="kagoshima">鹿児島県</option>
-<option value="okinawa">沖縄県</option>
-</select>
-</div>
-</div>
-                    <div class="address-contents-contaoner">                   
-                      <div><span for="city">市区町村</span></div>
+                        <option value="ehime">愛媛県</option>
+                        <option value="kochi">高知県</option>
+                        <option value="fukuoka">福岡県</option>
+                        <option value="saga">佐賀県</option>
+                        <option value="nagasaki">長崎県</option>
+                        <option value="kumamoto">熊本県</option>
+                        <option value="oita">大分県</option>
+                        <option value="miyazaki">宮崎県</option>
+                        <option value="kagoshima">鹿児島県</option>
+                        <option value="okinawa">沖縄県</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="address-contents-contaoner">                   
+                    <div><span for="city">市区町村</span></div>
                       <div><input
                         type="text"
                         id="city"
-                      name="city"
+                        name="city"
                         placeholder="新宿区"
                         required
-                      />
-                      </div>
-                      </div>
+                         />
+                        </div>
+                         </div>
                       
                       <div class="address-contents-contaoner">
                       <div><span for="address-line1">町域・番地</span>
@@ -336,7 +336,8 @@
                       <div>
                       <span for="address-line2">建物名・部屋番号</span>
                     </div>
-                     <div><input
+                     <div>
+                      <input
                         type="text"
                         id="address-line2"
                         name="address-line2"
@@ -344,45 +345,56 @@
                         required
                       />
                     </div>
-                      </div>                                                
+                    </div>                                                
                     </fieldset>
                 </div>
               </div>
 
-              <div> 
-                <div class="tg-slide-third-page">
-                  <div class="allergy-container">
-                    <fieldset>
-                        <legend>
-                            <div>
-                                <img src="imgFolder/allergyicon.png" alt="allergy symbol" style="width: 100%; height: 100%;"/> 
-                            </div>
-                            &nbsp&nbsp&nbsp
-                            <div style="font-size: 1.5rem;">アレルギーについて</div>
-                        </legend>
-                        <div class="allergy-contents-container">
-                            <div>
-                                <span for="allergy">アレルギーはありますか？</span>
-                                <select id="allergy" name="allergy">
-                                    <option value="no">いいえ</option>
-                                    <option value="yes">はい</option>
-                                </select>
-                            </div>
-                            <div id="allergy-details" style="display: none;">
-                                <span for="allergy-type">アレルギーの種類:</span>
-                                <input type="text" id="allergy-type" name="allergy-type" />
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
+              <div class="tg-slide-third-page">
 
-            </div>
+                <div class="allergy-container">
+                  <fieldset>
+                      <legend>
+                          <img src="" alt="アレルギーマーク" />
+                          アレルギーについて
+                      </legend>
+
+                      <div class="allergy-question">
+                          <span for="allergy">アレルギーはありますか？</span>
+                              <label>
+                                <input type="radio" name="allergy" value="no" checked /> いいえ
+                              </label>
+                              <label>
+                                <input type="radio" name="allergy" value="yes" /> はい
+                              </label>
+                      </div>
+
+                      <div class="allergy-details" id="allergy-details" style="display: none;">
+                          <label for="allergy-type">アレルギーの種類:</label>
+                          <input class="allergy-type" type="text" id="allergy-type" name="allergy-type" placeholder="例：卵, 小麦, 乳製品" />
+                          &nbsp;&nbsp;&nbsp;&nbsp;<label for="allergy-note">その他特記事項:</label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<textarea class="allergy-note" id="allergy-note" name="allergy-note"></textarea>
+                    </div>
+                  </fieldset>
+                </div>
+               
+                <div class="special-notes-container">
+
+                  <div>
+                      その他特記事項
+                      <textarea id="special-notes" name="special-notes" placeholder="ご要望、ご質問などございましたらご記入ください。"></textarea>
+                  </div>
+
+                </div>
+
+                </div>
+              </div>
 
             <div class="slider-navigation">
               <button type="button" class="next-slide">次へ</button>
             </div>
 
+          </div>
           </div>
 
           </form>
@@ -396,67 +408,57 @@
 
   <script>
     
-$(function () {
-    let slideCount = 0; // 슬라이드 개수를 저장할 변수 추가
+    $(document).ready(function () {
+      $(".survey-input").slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        prevArrow: $(".prev-slide"),
+        nextArrow: $(".next-slide")
+      });
 
-    function initializeSlick() { // 슬라이더 초기화 함수
-        $(".survey-input").slick({
-            infinite: false,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true,
-            arrows: false,
-            draggable: false,
-        });
-        slideCount = $(".survey-input").slick("getSlick").slideCount; // 슬라이드 개수 업데이트
-        updateSliderButtons(0); // 초기 버튼 상태 설정
-    }
-
-    function updateSliderButtons(currentSlide) { // 슬라이더 버튼 업데이트 함수
+      // Show/Hide navigation buttons
+      $(".survey-input").on("afterChange", function (event, slick, currentSlide) {
         if (currentSlide === 0) {
-            $(".prev-slide").hide();
+          $(".prev-slide").hide();
         } else {
-            $(".prev-slide").show();
+          $(".prev-slide").show();
         }
 
-        if (currentSlide === slideCount - 1) {
-            $(".next-slide").hide();
+        if (currentSlide === slick.slideCount - 1) {
+          $(".next-slide").hide();
         } else {
-            $(".next-slide").show();
+          $(".next-slide").show();
         }
-    }
+      });
 
-    initializeSlick(); // 초기 슬라이더 초기화
-
-    // '다음' 버튼 클릭 시 슬라이드 이동
-    $(".next-slide").on("click", function () {
-        $(".survey-input").slick("slickNext");
-    });
-
-    // '이전' 버튼 클릭 시 슬라이드 이동
-    $(".prev-slide").on("click", function () {
-        $(".survey-input").slick("slickPrev");
-    });
-
-    // 슬라이드 변경 시 호출되는 이벤트
-    $(".survey-input").on("afterChange", function (event, slick, currentSlide) {
-        updateSliderButtons(currentSlide);
+      $(".survey-input").slick("slickGoTo", 0); // Move to the first slide
     });
 
     // 알레르기 셀렉트 박스 변경 이벤트 처리
-    const allergySelect = document.getElementById("allergy");
+    const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
     const allergyDetails = document.getElementById("allergy-details");
 
-    allergySelect.addEventListener("change", function () {
-        if (allergySelect.value === "yes") {
-            allergyDetails.style.display = "flex"; // "예" 선택 시 입력 필드 표시
-            $(".survey-input").slick("refresh"); // 슬라이더 재초기화 (필요에 따라)
+    allergyCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        allergyCheckboxes.forEach(otherCheckbox => {
+          if(otherCheckbox !== this) {
+            otherCheckbox.checked = false;
+          }
+        });
+
+        if (this.value === 'yes') {
+          allergyDetails.style.display = 'block'; // "はい" 체크 시 세부 정보 표시
         } else {
-            allergyDetails.style.display = "none"; // "아니오" 선택 시 입력 필드 숨김
-            $(".survey-input").slick("refresh"); // 슬라이더 재초기화 (필요에 따라)
+          allergyDetails.style.display = 'none';  // 체크 해제 시 세부 정보 숨김
+          }         
         }
+        });
     });
-});
+
     
   </script>
+
 </html>

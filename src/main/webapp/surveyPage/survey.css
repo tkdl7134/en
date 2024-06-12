@@ -20,9 +20,11 @@ body {
   background-repeat: no-repeat;
   background-image: url("imgFolder/surveyBackground-img.png");
   display: flex;
+  width: 100%;
   flex-grow: 1;
   flex-direction: column;
   background-position: top center;
+  background-size: 100% 100%;
 }
 
 header {
@@ -66,6 +68,10 @@ header {
   justify-content: center;
   align-items: center;
   padding-top: 5rem;
+}
+
+.tg-include-btu-page {
+  display: flex;
 }
 
 .main-content-words {
@@ -279,48 +285,55 @@ legend div:nth-child(1) {
   height: 5rem;
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.slider-navigation button:hover:before {
-  background-color: #2980b9;
 }
 
 .slick-arrow {
   display: block !important;
 }
 
-.tg-include-btu-page {
+.tg-slide-third-page {
+  height: 18rem !important;
   display: flex;
+  justify-content: center;
 }
 
-.tg-slide-third-page {
-  display: flex !important; /* flexbox 레이아웃 적용 */
-  justify-content: center;
-  align-items: center;
+.allergy-note {
+  position: relative;
+  top: 0.5rem;
+  width: 30rem;
 }
 
 .allergy-container {
-  background-color: transparent;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 40rem;
-  width: 100%;
+  width: 50rem;
 }
 
-.allergy-contents-container div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem; /* 패딩 조정 */
-  font-size: 1.2rem;
+allergy-details textarea {
+  height: 10rem;
 }
 
-.allergy-contents-container input,
-.allergy-contents-container select {
-  width: 20rem;
-  height: 2rem;
+.special-notes-container {
+  padding: 1rem;
+}
+
+.special-notes-container textarea {
+  width: 50%;
+  height: 120px; /* textarea 높이 조절 */
+  padding: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: vertical; /* 세로 크기 조절만 허용 */
+}
+
+/* 특정 너비 이하일 때 배경 이미지 조정 */
+@media (max-width: 1600px) {
+  .main-content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+  }
 }
