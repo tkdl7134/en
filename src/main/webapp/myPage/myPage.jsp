@@ -39,12 +39,12 @@
 		<fmt:formatDate value="${parsedDate}" pattern="yyyy年 MM月 dd日" />
 	</p>
 
-	<a href="myPage/updatePage.jsp"><button>変更する</button></a>
+	<a href="MemberUpdateC"><button>変更する</button></a>
 	<br>
 	<form action="MemberDeleteC" method="post" onsubmit="return confirmDelete()">
 		<button type="submit">アカウント削除</button>
 	</form>
-	<a href="javascript:window.history.back();"><button>戻る</button></a>
+	<a href="main.jsp"><button>戻る</button></a>
 </c:if>
 
 <script>
