@@ -37,7 +37,7 @@
 	</div>
 	</c:forEach>
 	</div>
-	
+	<div><img alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
 	
 	</div>
 	
