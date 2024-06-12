@@ -294,8 +294,8 @@ legend div:nth-child(1) {
 }
 
 .tg-slide-third-page {
-  height: 18rem !important;
-  display: flex;
+  display: flex !important;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -309,17 +309,41 @@ legend div:nth-child(1) {
   width: 50rem;
 }
 
-allergy-details textarea {
-  height: 10rem;
+.allergy-container > fieldset > legend {
+  font-size: 1.2rem;
+}
+
+.allergy-details {
+  font-size: 1em;
+  padding: 0.2rem;
+}
+
+.allergy-details textarea {
+  width: 100%;
+  height: 5.25em;
+  border: none;
+  resize: none;
 }
 
 .special-notes-container {
   padding: 1rem;
 }
 
+.allergy-question {
+  padding: 0.2rem;
+}
+
+.allergy-details label {
+  line-height: 3rem;
+}
+
+.allergy-question label {
+  padding-left: 5rem;
+}
+
 .special-notes-container textarea {
-  width: 50%;
-  height: 120px; /* textarea 높이 조절 */
+  width: 100%;
+  height: 13rem; /* textarea 높이 조절 */
   padding: 4px;
   border: 1px solid #ccc;
   box-sizing: border-box;
