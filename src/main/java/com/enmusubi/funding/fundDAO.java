@@ -23,10 +23,12 @@ public class fundDAO {
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
+			// 이벤트 파라미터 받게되면 활성화
+			// pstmt.setString(1, request.getParameter("eno"));
 			pstmt.setString(1, "1");
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			ArrayList<FundListDTO> flists = new ArrayList<FundListDTO>();
-			while(rs.next()) {
+			while (rs.next()) {
 				FundListDTO fldto = new FundListDTO();
 				fldto.setWl_no(rs.getString("wl_no"));
 				fldto.setWl_product(rs.getString("wl_product"));
@@ -41,7 +43,7 @@ public class fundDAO {
 			System.out.println(json);
 			request.setAttribute("list", flists);
 			request.setAttribute("jsonList", json);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("server err...");
@@ -53,7 +55,7 @@ public class fundDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO S_PAY values(?,?,?,?,?)";
-		//e_no,m_id,p_type,p_price,wl_no
+		// e_no,m_id,p_type,p_price,wl_no
 		String eno = request.getParameter("eno");
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("m_id");
@@ -61,22 +63,54 @@ public class fundDAO {
 		String pt = request.getParameter("paytype");
 		String price = request.getParameter("price");
 		String wlno = request.getParameter("wlno");
+		System.out.println(eno);
+		System.out.println(mid);
+		System.out.println(pt);
+		System.out.println(price);
+		System.out.println(wlno);
 		try {
-			con=DBManager.connect();
-			pstmt=con.prepareStatement(sql);
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, eno);
 			pstmt.setString(2, mid);
 			pstmt.setString(3, pt);
 			pstmt.setString(4, price);
 			pstmt.setString(5, wlno);
-			if(pstmt.executeUpdate()==1){
+			if (pstmt.executeUpdate() == 1) {
 				System.out.println("insert success!!");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("server err...");
 		}
+	}
+
+	public static boolean financeCheck(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from s_pay where m_id = ? and e_no = ?";
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			HttpSession session = request.getSession();
+			System.out.println(session.getAttribute("m_id"));
+			if (session.getAttribute("m_id").equals(null)) {
+				return false;
+			}
+			pstmt.setString(1, (String) session.getAttribute("m_id"));
+			pstmt.setString(2, request.getParameter("eno"));
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+
 	}
 
 }
