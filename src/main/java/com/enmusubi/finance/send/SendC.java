@@ -1,4 +1,4 @@
-package com.enmusubi.send;
+package com.enmusubi.finance.send;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.enmusubi.funding.fundDAO;
+import com.enmusubi.finance.funding.fundDAO;
 
 @WebServlet("/SendC")
 public class SendC extends HttpServlet {
