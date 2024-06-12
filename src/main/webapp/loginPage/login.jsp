@@ -4,45 +4,39 @@
 <html>
 <head>
 <title>ログイン</title>
-<link rel="stylesheet" type="text/css" href="login.css">
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
-	integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/loginPage/login.css">
+
 </head>
 <body class="hs_body">
 
 	<div class="horizontal-container-btn">
-		<img class="enmusubi" alt="" src="./ImgFolder/828a704e967fa89b.png">
-		<img class="menu-btn-1" alt="" src="./ImgFolder/menu_btn_1.png">
+		<img class="enmusubi" alt=""
+			src="loginPage/ImgFolder/828a704e967fa89b.png"> <img
+			class="menu-btn-1" alt="" src="loginPage/ImgFolder/menu_btn_1.png">
 	</div>
 
 	<div class="horizontal-container-title">
 		<p class="hs_heading">ログイン</p>
-		<img class="btn-footer" alt="" src="./ImgFolder/footer.png">
+		<img class="btn-footer" alt="" src="/loginPage/ImgFolder/footer.png">
 	</div>
 
 	<form action="MemberC" method="post" class="hs_form">
-		<input type="text" name="m_id" placeholder="ユーザーID" required
-			class="hs_input"><br> <input type="password" name="m_pw"
-			placeholder="パスワード" required class="hs_input"><br>
-		<button class="hs_btn login">ログイン</button>
+		<div class="hs_container-login">
+			<p class="hs_login id">ID</p>
+			<input type="text" name="m_id" placeholder="ユーザーID" required
+				class="hs_input">
+			<p class="hs_login pw">パスワード</p>
+			<input type="password" name="m_pw" placeholder="パスワード" required
+				class="hs_input"><br>
+			<button class="hs_btn login">ログイン</button>
+		</div>
 	</form>
 	<a
 		href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz"
 		class="hs_btn line-login">LINEでログイン</a>
 	<br>
-	<a href="/En/MemberRegC" class="hs_btn reg">✿会員登録はこちら✿</a>
+	<a href="MemberRegC" class="hs_btn reg">✿会員登録はこちら✿</a>
 	<br>
-	<!-- <script>
-		$(document)
-				.ready(
-						function() {
-							$('#lineLoginButton')
-									.click(
-											function() {
-												window.location.href = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz";
-											});
-						});
-	</script> -->
+	<img class="yellow_line" alt="" src="./ImgFolder/yellow_line.png">
 </body>
 </html>

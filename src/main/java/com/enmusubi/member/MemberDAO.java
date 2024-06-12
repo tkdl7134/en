@@ -1,11 +1,6 @@
 package com.enmusubi.member;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.json.JSONObject;
 
 import com.enmusubi.main.DBManager;
 import com.google.gson.Gson;
@@ -43,7 +36,6 @@ public class MemberDAO {
 
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -167,7 +159,7 @@ public class MemberDAO {
 			pstmt.setString(10, dto.getM_id());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt, null);
 		}
@@ -253,7 +245,7 @@ public class MemberDAO {
 				return createMemberDTO(rs);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -277,7 +269,7 @@ public class MemberDAO {
 				return createMemberDTO(rs);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -298,7 +290,7 @@ public class MemberDAO {
 			pstmt.setString(3, dto.getM_id());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt, null);
 		}
@@ -361,7 +353,7 @@ public class MemberDAO {
 				return count > 0; // 중복된 아이디가 있으면 true 반환
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -400,17 +392,15 @@ public class MemberDAO {
 				session.setMaxInactiveInterval(600);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
-				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
+				request.getRequestDispatcher("HSC").forward(request, response); // 메인 페이지로 이동
 			} else {
 				// 3-2. 로그인 실패
-				String errorMessage = "IDまたはPWが一致しません";
-				request.setAttribute("errorMessage", errorMessage);
+				System.out.println("IDまたはPWが一致しません");
 				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 			}
 		} catch (SQLException e) {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
-			request.setAttribute("errorMessage", "データベースエラー");
 			request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 		}
 
@@ -495,7 +485,7 @@ public class MemberDAO {
 		if (session != null) {
 			session.invalidate(); // 세션 무효화 (로그아웃)
 		}
-		response.sendRedirect("main.jsp"); // 메인 페이지로 리다이렉트
+		response.sendRedirect("HSC"); // 메인 페이지로 리다이렉트
 
 	}
 

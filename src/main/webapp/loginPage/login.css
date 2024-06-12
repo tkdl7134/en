@@ -1,6 +1,5 @@
-body.hs_body {
-	min-width: 1910px;
-    background-image: url('./ImgFolder/-_.png');
+.hs_body {
+    background-image: url('/loginPage/ImgFolder/-_.png');
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,18 +51,25 @@ body.hs_body {
 
 .hs_form {
 	margin-top: 100px;
-    background-image: url('./ImgFolder/BG.png');
+    background-image: url('/loginPage/ImgFolder/BG.png');
     background-size: cover; /* 画像を完全に表示する */
-    width: 40rem; /* フォームの幅を調整 */
-    height: auto; /* フォームの高さを自動調整 */
-    padding: 5rem; /* フォーム内の余白を設定 */
-    text-align: center;
-
+    width: 45rem; /* フォームの幅を調整 */
+    height: 28rem; /* フォームの高さを調整 */
 }
 
+.hs_container-login{
+margin-top: 5rem;
+margin-left: 5rem;
+}
+
+/* .hs_login{
+	position: relative;
+	right: 7rem;
+} */
+
 .hs_input {
-    width: 80%;
-    padding: 10px;
+    width: 35rem;
+	height: 3rem;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -72,6 +78,7 @@ body.hs_body {
 
 .hs_btn.line-login{
 	color: black;
+	margin-top: 2rem;
 }
 
 .hs_btn.line-login:hover {
@@ -85,6 +92,10 @@ body.hs_body {
 .hs_btn.reg:hover {
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
+        
+.yellow_line{
+	width: 12rem;
+}
 
 .hs_btn.login {
 	background-color: #FFFBF7;
@@ -95,6 +106,8 @@ body.hs_body {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
+    margin-top: 2rem;
+    margin-left: 15rem;
 }
 
 .hs_btn.login:hover{
