@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HSC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	request.getRequestDispatcher("main.jsp").forward(request, response);
+	response.sendRedirect("main.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

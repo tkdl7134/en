@@ -28,14 +28,17 @@ public class MemberDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
 			pstmt.setString(2, m_pw);
+			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
+				
 				return createMemberDTOForLogin(rs); // 로그인용 DTO 생성 메소드 호출
 
 			}
 		} catch (Exception e) {
+			
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -56,6 +59,7 @@ public class MemberDAO {
 		dto.setM_regdate(rs.getString("m_regdate"));
 		dto.setM_img(rs.getString("m_img"));
 		dto.setM_phone(rs.getString("m_phone"));
+		System.out.println("cmd: " + dto);
 		// 로그인 시에는 주소 정보 불필요
 		return dto;
 	}
@@ -365,12 +369,14 @@ public class MemberDAO {
 		// 1. 로그인 정보 가져오기
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
+		
+		System.out.println(m_id);
+		System.out.println(m_pw);
 
 		// 2. DAO 객체 생성 및 로그인 처리
 		MemberDAO dao = new MemberDAO();
 		try {
 			MemberDTO dto = dao.login(m_id, m_pw);
-
 			// 3. 로그인 결과에 따른 처리
 			if (dto != null) {
 				// 3-1. 로그인 성공
@@ -392,15 +398,16 @@ public class MemberDAO {
 				session.setMaxInactiveInterval(600);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
-				request.getRequestDispatcher("HSC").forward(request, response); // 메인 페이지로 이동
+				System.out.println("성공");
 			} else {
 				// 3-2. 로그인 실패
 				System.out.println("IDまたはPWが一致しません");
 				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
+			System.out.println("DB오류");
 			request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
 		}
 
