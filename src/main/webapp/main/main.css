@@ -1,1 +1,60 @@
 @charset "UTF-8";
+body {
+  background-color: #fffbf7;
+  margin: 0; /* == 기본 margin 제거 */
+  height: 100vh; /* == 뷰포트 높이를 채우도록 설정 */
+  /* 페이지 내용 중앙 배치 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yj-main {
+  position: relative; /* 뷰포트 전체를 채우도록 설정 */
+  height: 100vh;
+  width: 100vw;
+}
+
+.yj-main-first-musubi img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.yj-main-first-icon img {
+  /* size */
+  width: 10rem;
+  height: 10rem;
+  /* location */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* animation */
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -60%);
+  }
+}
+
+/* @keyframes unroll {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.red-bar {
+  background-color: red;
+  height: 20px;
+  animation: unroll 2s ease-in-out forwards;
+} */
