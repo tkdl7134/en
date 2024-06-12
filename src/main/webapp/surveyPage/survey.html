@@ -139,7 +139,7 @@
                       value="+"
                     />
                     <input
-                      style="width: 2rem"
+                      style="width: 2rem; font-size: 1rem"
                       class="result"
                       value="0"
                       id="child"
@@ -224,8 +224,8 @@
                     </fieldset>
                   </div>
                   <div class="contact-container">
-                     <div>メールアドレス<input style="font-size: 1rem;" type="email" class="contact-input" name="email" required/></div>
-                     <div>電話番号 <input style="font-size: 1rem;" type="number" class="contact-input" name="phonenum" required/></div>
+                     <div>メールアドレス<input style="font-size: 1rem;" type="email" class="contact-input" name="email" placeholder="enmusubi@gmail.com" required/></div>
+                     <div>電話番号 <input style="font-size: 1rem;" type="number" class="contact-input" name="phonenum" placeholder="000-0000-0000" required/></div>
                 </div>
                 </div>
               </div>
@@ -390,7 +390,16 @@
 
                 </div>
 
-                </div>
+                  <div>
+
+                    <button type="submit" class="tg-survey-button">
+                      <span>確認</span>
+                    </button>
+          
+                  </div>
+
+              </div>
+              
               </div>
 
             <div class="slider-navigation">
@@ -438,6 +447,23 @@
 
       $(".survey-input").slick("slickGoTo", 0); // Move to the first slide
     });
+
+    function count(type, inputId) {
+  const resultElement = document.getElementById(inputId);
+
+  let number = parseInt(resultElement.value);
+
+  if (type === "plus") {
+    number += 1;
+  } else if (type === "minus") {
+    if (number > 0) {
+      number -= 1;
+    }
+  }
+
+  // 결과 출력
+  resultElement.value = number;
+}
 
     // 알레르기 셀렉트 박스 변경 이벤트 처리
     const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
