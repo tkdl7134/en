@@ -13,6 +13,11 @@ public class SurveyC extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		SurveyDAO.summit(request);
+		
+		
+		
 
 	}
 
