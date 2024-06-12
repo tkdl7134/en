@@ -16,11 +16,11 @@ import com.google.gson.GsonBuilder;
 
 public class fundDAO {
 
-	public static void selectFundList(HttpServletRequest request) {
+	public static void selectFundList(HttpServletRequest request, HttpServletResponse response) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from s_wishlist where e_no = ?";
+		String sql = "SELECT wl_no,wl_price,WL_PRODUCT,E_NO ,(SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO) payed, FLOOR(((SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO)/WL_PRICE)*100) percent  FROM S_WISHLIST sw WHERE e_NO =? ORDER BY WL_PRICE desc";
 		DBManager dbManager = DBManager.getInstance();
 		try {
 			con = dbManager.connect();
@@ -35,14 +35,16 @@ public class fundDAO {
 				fldto.setWl_no(rs.getString("wl_no"));
 				fldto.setWl_product(rs.getString("wl_product"));
 				fldto.setWl_price(rs.getString("wl_price"));
-				fldto.setWl_comment(rs.getString("wl_comment"));
 				fldto.setE_no(rs.getString("e_no"));
+				fldto.setPayed(rs.getString("payed"));
+				fldto.setPercent(rs.getString("percent"));
 				flists.add(fldto);
 			}
 			System.out.println(flists);
 			Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 			String json = gson.toJson(flists);
 			System.out.println(json);
+			response.getWriter().print(json);
 			request.setAttribute("list", flists);
 			request.setAttribute("jsonList", json);
 
