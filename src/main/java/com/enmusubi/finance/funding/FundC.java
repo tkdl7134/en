@@ -1,4 +1,4 @@
-package com.enmusubi.funding;
+package com.enmusubi.finance.funding;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

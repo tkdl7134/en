@@ -1,4 +1,4 @@
-package com.enmusubi.send;
+package com.enmusubi.finance.send;
 
 import javax.servlet.http.HttpServletRequest;
 

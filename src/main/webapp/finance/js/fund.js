@@ -1,41 +1,42 @@
-const eno = 1;
+let eventno = 1;
 let scrollTimeout;
 let isMouseOverCard;
+let jsoninfos;
 //카드 초기배치
 $.ajax({
 	type: "post",
 	url: "FundC",
-	data: { eno: eno },
+	data: { eno: eventno },
 	async: false,
 	dataType: "json",
 	success: function(response) {
 		console.log(response);
+		jsoninfos = response;
 		response.forEach((element, index) => {
-			console.log(element);
+			eventno = element.e_no;
 			$(".kh-f-card-container").append(`
-						<div class="kh-f-card-out" value="${element.e_no}">
-							<div class="kh-fund-card" value=${element}>
-								<div style="height: 18rem">
-									<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" />
-								</div>
-								<div>
-									<h3>${element.wl_product}</h3>
-								</div>
-							</div>
-						</div>`);
+				<div class="kh-f-card-out">
+					<div class="kh-fund-card" value="${element.wl_no}">
+						<div style="height: 18rem">
+							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" />
+						</div>
+						<div>
+							<h3>${element.wl_product}</h3>
+						</div>
+					</div>
+				</div>`);
 		});
 		$(".kh-f-card-container").append(`<div class="kh-f-card-fake"></div>`)
 		let percent = response.percent;
 		if (percent === undefined) {
 			percent = 0;
 		}
-
 		let card = document.querySelectorAll(".kh-f-card-out");
 		let fpop = document.querySelector(".kh-f-popup");
 		const modal = document.getElementById("modal");
 		card.forEach((element, index, array) => {
 			let cardIn = element.querySelector(".kh-fund-card");
-			console.log('cardin:' + cardIn);
+			cardIn.stri
 			if (index % 2 == 0) {
 				element.style.transform = "scale(0.9)";
 				element.classList.add("kh-f-card-min");
@@ -91,15 +92,24 @@ $.ajax({
 				event.stopPropagation();
 			});
 			element.addEventListener("click", function(event) {
+				console.log(jsoninfos);
 				let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
 				if (cardParent) {
 					let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
-					console.log("wlno:" + wlno);
+					let selectobj = jsoninfos.find(function(element) {
+						return element.wl_no === wlno;
+					});
+					if (selectobj.percent === undefined) {
+						percent = 0;
+					}
+					else{
+						percent = selectobj.percent;
+					};
 					document.querySelector("#kh-f-price").innerHTML = percent;
-					document.querySelector("#kh-f-product").innerHTML = response.wl_product;
-					document.querySelector(".kh-f-btn").setAttribute("value", response.wl_no);
-					document.querySelector("#kh-f-img").src = "finance/img/" + response.wl_product + ".png";
+					document.querySelector("#kh-f-product").innerHTML = selectobj.wl_product;
+					document.querySelector(".kh-f-btn").setAttribute("value", selectobj.wl_no);
+					document.querySelector("#kh-f-img").src = "finance/img/" + selectobj.wl_product + ".png";
 					modal.showModal();
 					document.querySelector(".kh-f-mousemove > img").src =
 						"finance/img/backbtn.png";
@@ -246,7 +256,7 @@ function goStatistic(no) {
 	const container = document.querySelector("#kh-input-box");
 	const finput = document.querySelector(".kh-f-input");
 	const warnspan = document.querySelector("#kh-warn-text");
-	const eno = document.querySelector(".eno").value;
+	const eno = eventno;
 	if (finput.value == "") {
 		container.classList.add("vibration");
 		setTimeout(function() {

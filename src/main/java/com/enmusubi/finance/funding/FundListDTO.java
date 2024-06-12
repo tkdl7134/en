@@ -1,4 +1,4 @@
-package com.enmusubi.funding;
+package com.enmusubi.finance.funding;
 
 public class FundListDTO {
 	private String wl_no;
