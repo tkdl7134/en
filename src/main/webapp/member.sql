@@ -1,8 +1,8 @@
 -- Memberテーブルの作成
-CREATE TABLE Member (
+CREATE TABLE s_Member (
     m_id VARCHAR2(40 char) PRIMARY KEY,
     m_pw VARCHAR2(40 char) NOT NULL,
-    m_name VARCHAR2(10 char) NOT NULL,
+    m_name VARCHAR2(20 char) NOT NULL,
     m_name_kana VARCHAR2(20 char) NOT NULL,
     m_birth VARCHAR2(20 char) NOT NULL,
     m_gender VARCHAR2(10 char) NOT NULL,

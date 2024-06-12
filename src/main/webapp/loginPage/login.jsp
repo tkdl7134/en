@@ -1,19 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ログイン</title>
+<title>ログイン</title>
+<link rel="stylesheet" type="text/css" href="login.css">
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+	integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+	crossorigin="anonymous"></script>
 </head>
-<body>
-    <h2>ログイン</h2>
-    <form action="/En/MemberC" method="post">
-        <input type="text" name="m_id" placeholder="ユーザーID" required><br>
-        <input type="password" name="m_pw" placeholder="パスワード" required><br>
-        <button>ログイン</button>
-    </form>
-    
-    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz">
-    <button id="lineLoginButton">LINEログイン</button>
-	 </a>
+<body class="hs_body">
+
+	<div class="horizontal-container-btn">
+		<img class="enmusubi" alt="" src="./ImgFolder/828a704e967fa89b.png">
+		<img class="menu-btn-1" alt="" src="./ImgFolder/menu_btn_1.png">
+	</div>
+
+	<div class="horizontal-container-title">
+		<p class="hs_heading">ログイン</p>
+		<img class="btn-footer" alt="" src="./ImgFolder/footer.png">
+	</div>
+
+	<form action="MemberC" method="post" class="hs_form">
+		<input type="text" name="m_id" placeholder="ユーザーID" required
+			class="hs_input"><br> <input type="password" name="m_pw"
+			placeholder="パスワード" required class="hs_input"><br>
+		<button class="hs_btn login">ログイン</button>
+	</form>
+	<a
+		href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz"
+		class="hs_btn line-login">LINEでログイン</a>
+	<br>
+	<a href="/En/MemberRegC" class="hs_btn reg">✿会員登録はこちら✿</a>
+	<br>
+	<!-- <script>
+		$(document)
+				.ready(
+						function() {
+							$('#lineLoginButton')
+									.click(
+											function() {
+												window.location.href = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005476894&redirect_uri=http://localhost/En/LineLoginC&state=enmusubi123&scope=profile%20openid&nonce=09876xyz";
+											});
+						});
+	</script> -->
 </body>
 </html>
