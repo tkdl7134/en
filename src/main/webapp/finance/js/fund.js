@@ -31,12 +31,12 @@ $.ajax({
 		if (percent === undefined) {
 			percent = 0;
 		}
+		//색상 등
 		let card = document.querySelectorAll(".kh-f-card-out");
 		let fpop = document.querySelector(".kh-f-popup");
 		const modal = document.getElementById("modal");
 		card.forEach((element, index, array) => {
 			let cardIn = element.querySelector(".kh-fund-card");
-			cardIn.stri
 			if (index % 2 == 0) {
 				element.style.transform = "scale(0.9)";
 				element.classList.add("kh-f-card-min");
@@ -103,7 +103,7 @@ $.ajax({
 					if (selectobj.percent === undefined) {
 						percent = 0;
 					}
-					else{
+					else {
 						percent = selectobj.percent;
 					};
 					document.querySelector("#kh-f-price").innerHTML = percent;
@@ -146,6 +146,7 @@ $.ajax({
 				document.querySelector(".kh-f-mousemove > img").src =
 					"finance/img/dragbtn.png";
 			}
+			cardCon.style.cursor = "none";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 			event.stopPropagation();
@@ -163,7 +164,6 @@ $.ajax({
 		});
 
 		//마우스 휠할때 도는 애니메이션
-		let isRotated = false;
 		cardCon.addEventListener("wheel", function(event) {
 			if (isMouseOverCard) return;
 			card.forEach((element) => {
@@ -241,11 +241,6 @@ $.ajax({
 			const walk = (x - startX) * 2; //scroll-fast
 			cardCon.scrollLeft = scrollLeft - walk;
 		});
-
-
-
-
-
 
 	},
 });//ajax 종료
