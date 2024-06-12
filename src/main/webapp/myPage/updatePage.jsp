@@ -18,20 +18,20 @@
 		<%-- 아이디는 읽기 전용으로 표시 --%>
 		パスワード<input type="password" id="m_pw" name="m_pw" required><br>
 		<br> パスワード確認<input type="password" id="m_pw_confirm"
-			name="m_pw_confirm" required><br>
-		<br> 名前<input type="text" id="m_name" name="m_name"
-			value="${sessionScope.m_name}" required><br>
-		<br> フリガナ<input type="text" id="m_name_kana" name="m_name_kana"
-			value="${sessionScope.m_name_kana}" required><br>
-		<br> 名前(英語)<input type="text" id="m_name_rome" name="m_name_rome"
-			value="${sessionScope.m_name_rome}" required><br>
-		<br> 性別<input type="radio" name="m_gender" value="male">
-		男性 <input type="radio" name="m_gender" value="female"> 女性 <input
-			type="radio" name="m_gender" value="other"> その他 <br>
-		<br> 郵便番号<input type="text" id="a_postcode" name="a_postcode"
-			value="${sessionScope.a_postcode}" required><br>
-		<br> 都道府県<select id="a_prefecture" name="a_prefecture" required>
-			<option value="${fn:length(addressParts) > 0 ? addressParts[0] : ''}">選択してください</option>
+			name="m_pw_confirm" required><br> <br> 名前<input
+			type="text" id="m_name" name="m_name" value="${sessionScope.m_name}"
+			required><br> <br> フリガナ<input type="text"
+			id="m_name_kana" name="m_name_kana"
+			value="${sessionScope.m_name_kana}" required><br> <br>
+		名前(ローマ字)<input type="text" id="m_name_rome" name="m_name_rome"
+			value="${sessionScope.m_name_rome}" required><br> <br>
+		性別<input type="radio" name="m_gender" value="男性"> 男性 <input
+			type="radio" name="m_gender" value="女性"> 女性 <input
+			type="radio" name="m_gender" value="その他"> その他 <br> <br>
+		郵便番号<input type="text" id="a_postcode" name="a_postcode"
+			value="${sessionScope.a_postcode}" required><br> <br>
+		都道府県<select id="a_prefecture" name="a_prefecture" required>
+			<option value="">選択してください</option>
 			<option value="北海道">北海道</option>
 			<option value="青森県">青森県</option>
 			<option value="岩手県">岩手県</option>
@@ -80,23 +80,19 @@
 			<option value="鹿児島県">鹿児島県</option>
 			<option value="沖縄県">沖縄県</option>
 			<option value="海外">海外</option>
-		</select> <br>
-		<br> 市区町村<br>
-		<input type="text" name="a_city" id="a_city" value="${sessionScope.a_city}" required><br>
-		<br> 番地 <br>
-		<input type="text" name="a_street" id="a_street" value="${sessionScope.a_street}" required><br>
-		<br> ビル・マンション名など <br>
-		<input type="text" name="a_building" id="a_building" value="${sessionScope.a_building}" required><br>
-
-		<br> メールアドレス<input type="email" name="m_email"
-			value="${sessionScope.m_email}" required><br>
+		</select> <br> <br> 市区町村<br> <input type="text" name="a_city"
+			id="a_city" value="" required><br> <br> 番地 <br>
+		<input type="text" name="a_street" id="a_street" value="" required><br>
+		<br> ビル・マンション名など <br> <input type="text" name="a_building"
+			id="a_building" value="" required><br> <br> メールアドレス<input
+			type="email" name="m_email" value="${sessionScope.m_email}" required><br>
 		<br> 電話番号<input type="text" name="m_phone"
-			value="${sessionScope.m_phone}" required><br>
-		<br> 生年月日<input type="date" id="m_birth" name="m_birth"
-			value="${sessionScope.m_regdate}" required><br>
-		<br> <button>修正</button>
+			value="${sessionScope.m_phone}" required><br> <br>
+		生年月日<input type="date" id="m_birth" name="m_birth"
+			value="${sessionScope.m_regdate}" required><br> <br>
+		<button>修正</button>
 	</form>
-	<a href="javascript:window.history.back();"><button>取消</button></a>
+	<a href="MemberDetailC"><button>取消</button></a>
 	<br>
 	<%-- MemberDetailC 서블릿으로 이동 --%>
 	<script>
@@ -110,7 +106,6 @@
 			}
 			return true; // 폼 제출 허용
 		}
-
 	</script>
 </body>
 </html>

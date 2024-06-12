@@ -1,6 +1,7 @@
 package com.enmusubi.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +13,11 @@ public class LineLoginC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		MemberDAO.LineApi(request);
-		
-		
+		LineDAO.LineApi(request);
 
+		LineDAO.LineCheck(request);
+		
+		response.sendRedirect("main.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

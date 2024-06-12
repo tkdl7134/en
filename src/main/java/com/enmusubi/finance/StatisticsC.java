@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.enmusubi.funding.fundDAO;
+import com.enmusubi.finance.funding.fundDAO;
 
 @WebServlet("/StatisticsC")
 public class StatisticsC extends HttpServlet {
