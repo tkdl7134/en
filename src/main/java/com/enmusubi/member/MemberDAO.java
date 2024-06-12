@@ -333,7 +333,7 @@ public class MemberDAO {
 			pstmt2.setString(3, dto.getM_id());
 			pstmt2.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		} finally {
 			dbManager.close(con, pstmt1, rs);
 			dbManager.close(con, pstmt2, rs);
@@ -346,22 +346,27 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "SELECT COUNT(*) FROM s_Member WHERE m_id = ?";
+		boolean isDuplicate = false;
+		
 		try {
 			con = dbManager.connect();
+			String sql = "SELECT COUNT(*) FROM s_Member WHERE m_id = ?";
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
 			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
-				int count = rs.getInt(1); // COUNT(*) 결과 가져오기
-				return count > 0; // 중복된 아이디가 있으면 true 반환
-			}
+                int count = rs.getInt(1);
+                if (count > 0) {
+                    isDuplicate = true;
+                }
+            }
 		} catch (Exception e) {
 			
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
-		return false; // 예외 발생 시 false 반환 (중복 확인 실패)
+		return isDuplicate;
 	}
 
 	public static void memberC(HttpServletRequest request, HttpServletResponse response)
@@ -451,7 +456,6 @@ public class MemberDAO {
 			boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
 			request.setAttribute("isDuplicate", isDuplicate);
 			request.setAttribute("m_id", m_id);
-			request.getRequestDispatcher("/regPage/idCheck.jsp").forward(request, response); // 결과 페이지로 포워딩
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
