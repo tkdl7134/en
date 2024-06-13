@@ -1,6 +1,7 @@
 package com.enmusubi.member;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
