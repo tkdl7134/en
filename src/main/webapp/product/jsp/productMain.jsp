@@ -12,12 +12,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script src="product/js/productMain.js"></script>
+
 </head>
 <body>
 <div id="je_container-product">
       <div class="je_page-deco">
-      <img src="product/imgFolder/page-combine.png" alt="" />
+      <img src="product/imgFolder/product-combine.png" alt="" />
     </div>
       <div class="je_product-page">
       <div class="je_product-page-title">
@@ -28,7 +28,7 @@
         </div>
         <div class="je_product-page-content">
             <div class="je_page-content">
-            <c:forEach items="${products }" var="p">
+   <c:forEach items="${products }" var="p">
               <div class="je_page-content-template">
                 <div class="je_template-img">
                   <img src="${p.t_preview }" alt="" />
@@ -40,10 +40,10 @@
                 <div class="je_template-title">${p.t_name }</div>
                 <div class="je_template-button">
                   <button class="je_preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
+                  <button >制作</button>
                 </div>
               </div>
-             </c:forEach>
+    </c:forEach>
 <!-- 	<div style="height: 100rem"></div> -->
             </div>
           </div>
@@ -67,5 +67,6 @@
         </div>
       </div>
     </div>
+    <script src="product/js/productMain.js"></script>
   </body>
 </html>

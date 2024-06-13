@@ -23,7 +23,7 @@
     <div class="je_page-deco">
       <img src="product/imgFolder/product-up.png" alt="" />
     </div>
-    <div id="je_container-product">
+    <div id="je_container-productMake">
       <div class="je_product-make-page">
         <div class="je_product-make-page-title">
           <div class="je_page-title">テンプレート 制作</div>
