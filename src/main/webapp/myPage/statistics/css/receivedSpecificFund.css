@@ -23,7 +23,7 @@ body {
 	align-items: center;
 	
 }
-
+ 
 #fundSpecProduct-img{
 	
 	margin-top : 20rem;
@@ -78,6 +78,9 @@ body {
     text-align: center;
     font-size: 1.2rem;
 }
+#priceChart {
+    width: 600px;
+}
 #fundSpec-dataBoard-container {
 	
     width: 50rem;
@@ -87,7 +90,20 @@ body {
   padding: 1rem;
   margin-bottom: 1.25rem;
   background-color: #ffdede;
+   max-height: 30rem; /* 필요한 높이로 조절 */
+        overflow-y: scroll; /* 스크롤바 항상 표시 */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
+#fundSpec-dataBoard-container::-webkit-scrollbar {
+        width: 8px; /* 스크롤바 너비 설정 */
+        background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 배경 색상 설정 */
+    }
+
+    #fundSpec-dataBoard-container::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5); 
+        border-radius: 4px;
+    }
 #fundSpec-arrBtn{
 	margin-bottom: 1rem;
     margin-top: 1rem;
@@ -103,6 +119,14 @@ body {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   color: black;
   transition: background-color 0.3s, color 0.3s;
+	
+	
+}
+.arrButtons :active ,.arrButtons :hover {
+	
+	background-color: #ff3b3f;
+  color: white;
+  border: 0.1875rem solid #c82626;
 	
 	
 }

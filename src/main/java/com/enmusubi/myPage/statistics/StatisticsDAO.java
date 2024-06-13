@@ -32,11 +32,11 @@ public class StatisticsDAO {
 	    ResultSet rs = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    JsonArray jsonArray = new JsonArray();
-	    String sql = "SELECT p_date, SUM(p_price) AS total_price " +
-	                 "FROM s_pay " +
-	                 "WHERE p_date BETWEEN ? AND ? " +
-	                 "GROUP BY p_date " +
-	                 "ORDER BY p_date";		
+	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
+	             "FROM s_pay " +
+	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') " +
+	             "GROUP BY p_date " +
+	             "ORDER BY p_date";		
 	    try {
 	        con = dbManager.connect();
 	        pstmt = con.prepareStatement(sql);
@@ -55,7 +55,9 @@ public class StatisticsDAO {
 	        Gson gson = new Gson();
 	        String jsonResponse = gson.toJson(jsonArray);
 	        System.out.println(jsonResponse);
-	        
+	     String product=   request.getParameter("product");
+	     System.out.println(product);
+	     request.setAttribute("product", product);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
@@ -65,6 +67,9 @@ public class StatisticsDAO {
 	}
 
 	public static void getProductRanking(HttpServletRequest request) {
+		
+			
+		
 		
 		// ranking 구하는 메서드
 		String wl_no_param = request.getParameter("wlno");
@@ -96,6 +101,9 @@ public class StatisticsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
+		
+		
+		
 		String sql = "SELECT wl_no,\r\n"
 				+ "       total_price,\r\n"
 				+ "       RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
@@ -173,7 +181,7 @@ public class StatisticsDAO {
 		             e_no = fldto.getE_no();
 		            // wl_no, wl_product 값을 출력합니다.
 		            System.out.println("wl_no: " + wl_no);
-		            System.out.println("wl_product: " + wl_product);
+		            System.out.println("e_no: " + e_no);
 		        }
 		    }
 		} else {
@@ -188,9 +196,25 @@ public class StatisticsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-				+ "FROM s_pay\r\n"
-				+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?";
+		String order = "M";
+		String orderParam = request.getParameter("order");
+		String sql = null;
+		if (orderParam != null && orderParam.equals("D")) {
+			order = "D";
+		}
+		
+		
+		if (order.equals("M")) {
+			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
+					+ "FROM s_pay\r\n"
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? order by p_price desc";
+			
+		}else if (order.equals("D")) {
+			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
+					+ "FROM s_pay\r\n"
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? order by p_date desc";
+			
+		}
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -198,14 +222,21 @@ public class StatisticsDAO {
 			pstmt.setString(2, e_no);
 			rs = pstmt.executeQuery();
 			ArrayList<payDTO> fundedlists = new ArrayList<payDTO>();
-			payDTO fundlist = new payDTO();
 			
 			while (rs.next()) {
+				payDTO fundlist = new payDTO();
+				System.out.println(rs.getInt("p_price"));
+				System.out.println(rs.getDate("p_date"));
+				System.out.println(rs.getString("m_name"));
+				
 				
 			fundlist.setP_price(rs.getInt("p_price"));	
 			fundlist.setP_date(rs.getDate("p_date"));	
 			fundlist.setM_name(rs.getString("m_name"));
+			
+			
 			fundedlists.add(fundlist);
+			
 			
 			}
 			System.out.println(fundedlists);
