@@ -10,7 +10,6 @@
 </head>
 <body>
 	<h2>アカウント情報修正</h2>
-
 	<form action="MemberUpdateC" method="post"
 		onsubmit="return validatePassword()">
 		<input type="hidden" name="m_id" value="${sessionScope.m_id}">
