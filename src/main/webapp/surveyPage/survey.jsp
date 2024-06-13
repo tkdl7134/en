@@ -31,13 +31,6 @@
 
         <div class="middle-title">
           <div>出席の方</div>
-          <div class="middle-img">
-            <img
-              src="imgFolder/footer.png"
-              alt="title"
-              style="width: 100%; height: 100%"
-            />
-          </div>
         </div>
 
         <div class="top-right">
