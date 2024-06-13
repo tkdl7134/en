@@ -182,8 +182,9 @@
                           type="text"
                           placeholder="姓"
                           class="name-input"
+                          name="kanzi-firstname"
                           required />
-                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input"
+                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input" name="kanzi-lastname"
                         required
                       /></label></br>
                       <label class="kata-container">
@@ -193,6 +194,7 @@
                           type="text"
                           placeholder="せい"
                           class="name-input" 
+                          
                           required/>
                         <input
                           style="font-size: 1rem;"
