@@ -12,16 +12,13 @@ import com.enmusubi.finance.funding.fundDAO;
 public class receivedFundingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	com.enmusubi.finance.funding.fundDAO.selectFundList(request, response);
 	
-//	fundDAO.selectFundList(request);
 	request.getRequestDispatcher("myPage/statistics/jsp/receivedFunding.jsp").forward(request, response);
-	
-	
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		fundDAO.selectFundList(request, response);
 		
 	}
 

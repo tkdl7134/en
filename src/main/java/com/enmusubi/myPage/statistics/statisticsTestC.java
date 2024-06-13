@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/statisticsTestC")
 public class statisticsTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	
 		
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedMain.jsp").forward(request, response);
 		

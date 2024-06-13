@@ -12,23 +12,22 @@ body {
     margin: 0;
     padding: 0;
 }
-#fundBack-img {
-	
-	width : 100%;
-	
-	
-}
+
+
 .recFund-container {
-	height : 100vh;
-	overflow : hidden;
+	overflow : hidden; 
+	height:100vh;
+	background-image: url("../imgFolder/fundBackground-withoutTitle.png");
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	
 	
 }
 .recFund-title {
 	font-size : 1.7rem;
-	position: relative;
-    bottom: 49rem;
-    left: 39rem;
+	margin-left: 38.9rem;
+    margin-top: 6rem;
 	
 }
 .fundProduct-img {

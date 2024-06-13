@@ -16,85 +16,97 @@ body {
 
 
 .recFundSpec-container{
-	display : flex
-	
+	background-image:url("../imgFolder/fundSpecificBack.png");
+	display : flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	
 }
 
-#fundSpecBack-img {
-		width : 100%;
-		
-		position: absolute;
-    z-index: -1;
+#fundSpecProduct-img{
+	
+	margin-top : 20rem;
+	
 }
 #fundSpecPro-img {
 	
 	
 	width : 20rem;
-	    position: absolute;
-    top: 15rem;
-    left: 37rem;
 }
 #fundSpecProduct-name {
 	
-	top: 31rem;
-    position: absolute;
     font-size: 4rem;
-    width: 120rem;
     height: 5rem;
-    left: 20.9rem;
 }
 #fundSpecProduct-rank {
-	position: absolute;
-    top: 38.4rem;
     font-size: 2rem;
-    width: 100rem;
     color: red;
     height: 3rem;
-	
+	margin-top: 2rem;
 	
 	
 }
 
 #fundSpec-leftPrice{
-	position : absolute;
-	top : 45rem;
-	
+	font-size: 1.5rem;
 	
 }
 #fundSpec-chartAlert{
-	position : absolute;
-	top : 47rem;
 	
+	    margin-top: 5rem;
+    font-size: 1.5rem;
 	
 }
 #fundSpec-inputDate{
-		position : absolute;
-		top : 49rem;
 		
-		
+		margin-top: 3rem;
 	
 	
+}
+#startDate {
+	    width: 10rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+#endDate {
+	  width: 10rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2rem;
 }
 #fundSpec-dataBoard-container {
 	
-	border: 1px solid black;
-    position: relative;
-    top: 53rem;
-    left: 22rem;
     width: 50rem;
     height: 35rem;
-	border-radius: 25px;
+	 border: 0.0625rem solid #ff7e81;
+  border-radius: 1.875rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background-color: #ffdede;
 }
 #fundSpec-arrBtn{
-	position : relative;
-	left: 40rem;
 	margin-bottom: 1rem;
     margin-top: 1rem;
 	
 }
+.arrButtons {
+	 padding: 0.625rem 1.25rem;
+  background-color: #ffefef;
+  border: 0.1875rem solid #c82626;
+  text-align: center;
+  margin-left: -0.0625rem;
+  border-radius: 0.9375rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+	
+	
+}
 #fundSpec-dataBoard{
-	position: relative;
    
     font-size: 2rem;
 	margin-left: 5rem;
@@ -103,7 +115,6 @@ body {
 	
 	 display: flex;
     justify-content: space-around;
-    position: relative;
     border: 1px solid;
     border-radius: 15px;
     margin-bottom: 2rem;
@@ -114,7 +125,6 @@ body {
 }
 
 #recSpecPriceAndDate{
-	position: relative;
     display: flex;
     justify-content: space-evenly;
    width: 40rem;
@@ -128,9 +138,6 @@ body {
 }
 
 .recSpecReturn-img{
-	position : absolute;
-	top : 103rem;
-	right : 37rem;
 	
 	
 	
