@@ -31,13 +31,6 @@
 
         <div class="middle-title">
           <div>出席の方</div>
-          <div class="middle-img">
-            <img
-              src="imgFolder/footer.png"
-              alt="title"
-              style="width: 100%; height: 100%"
-            />
-          </div>
         </div>
 
         <div class="top-right">
@@ -73,6 +66,7 @@
               />
             </div>
           </div>
+          
           <form action="SurveyC" method="post">
 
             <div class="tg-include-btu-page">
@@ -99,19 +93,19 @@
                   <div class="relationship-container">
                     <div>作成者との関係</div>
                     <span>
-                      <input name="relationship" type="checkbox" value="groom" />
+                      <input name="relation" type="checkbox" value="groom" />
                       家族
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       親友
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       職場の同僚
                     </span>
                     <label>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relations" type="checkbox" value="bride" />
                       その他
                     </label>
                   </div>
@@ -122,19 +116,20 @@
                       type="button"
                       onclick='count("plus","adult")'
                       value="+"
-                    />
+                    /> 
                     <input 
                       style="width: 2rem; font-size: 1rem;"
                       class="result"
                       value="0"
                       id="adult"
+                      name="adult"
                     />
                     <input
                       type="button"
                       onclick='count("minus","adult")'
                       value="-"
                     /> 
-                    <div class="together-people">子供</div> 
+                    <div value="子供" class="together-people">子供</div> 
                     <input
                       type="button"
                       onclick='count("plus","child")'
@@ -145,13 +140,14 @@
                       class="result"
                       value="0"
                       id="child"
+                      name="child"
                     />
                     <input
                       type="button"
                       onclick='count("minus","child")'
                       value="-"
                     />
-                     <div class="together-people">幼児</div> 
+                     <div value="幼児" class="together-people">幼児</div> 
                      <input
                       type="button"
                       onclick='count("plus","baby")'
@@ -162,6 +158,7 @@
                       class="result baby"
                       value="0"
                       id="baby"
+                      name="baby"
                     />
                     <input
                       type="button"
@@ -189,8 +186,9 @@
                           type="text"
                           placeholder="姓"
                           class="name-input"
+                          name="kanzi-name"
                           required />
-                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input"
+                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input" name="kanzi-name"
                         required
                       /></label></br>
                       <label class="kata-container">
@@ -200,12 +198,14 @@
                           type="text"
                           placeholder="せい"
                           class="name-input" 
+                          name="kata-name"
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="めい"
                           class="name-input"
+                          name="kata-name"
                           required
                       /></label></br>
                       <label class="eng-container">
@@ -214,13 +214,15 @@
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="Last Name"
-                          class="name-input" 
+                          class="name-input"
+                          name="roma-name" 
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="First Name"
                           class="name-input"
+                          name="roma-name"
                           required
                       /></label>
                     </fieldset>
@@ -261,7 +263,7 @@
           </div>   
                   <div class="address-contents-contaoner">
                       <div><span for="prefecture">都道府県</span></div>
-                        <div><select style="font-size: 1rem" id="prefecture" name="prefecture" required>
+                        <div><select style="font-size: 1rem" id="prefecture" name="address" required>
                         <option value="">選択してください</option>
                         <option value="hokkaido">北海道</option>
                         <option value="aomori">青森県</option>
@@ -318,7 +320,7 @@
                       <div><input style="font-size: 1rem"
                         type="text"
                         id="city"
-                        name="city"
+                        name="address"
                         placeholder="新宿区"
                         required
                          />
@@ -332,7 +334,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line1"
-                        name="address-line1"
+                        name="address"
                       placeholder="西新宿2-8-1"
                       required
                     />
@@ -347,7 +349,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line2"
-                        name="address-line2"
+                        name="address"
                         placeholder="新宿ビル 101"
                         required
                       />
@@ -412,7 +414,9 @@
           </div>
 
           </form>
+          
         </div>
+        
       </main>
 
       <footer class="tk_survey_footer">
