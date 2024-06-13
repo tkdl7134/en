@@ -14,73 +14,58 @@ body {
   height : 100%;
 }
 .recMain-container {
-	 height: 100vh; /* 컨테이너의 높이를 뷰포트 높이에 맞춤 */
-    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+	 height: 100vh;
+    background-image: url(../imgFolder/surveyBackground-img.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#recMain-mainImg {
-	   width: 100%; /* 너비를 100%로 설정 */
-    height: 100%; /* 높이를 자동으로 설정 */
-}
+
 #mainbutton {
 
 		width : 5rem;
-		position: relative;
-    bottom: 42rem;
-    left: 3rem;
 }
 #navi {
 	width: 5rem;
-    position: relative;
-    bottom: 42rem;
-    left: 87rem;
     
 }
 #recMain-title {
-	position: relative;
-    bottom: 40rem;
-    font-size: 2.5rem;
-    left: 39.3rem;
-    width : 20rem;
+        font-size: 2.5rem;
+    width: 20rem;
+    margin-top: 7rem;
+    margin-left: 1.5rem;
 }
 #recMain-header {
 	
-    position: relative;
-    bottom: 40rem;
-    left: 38.6rem;
-	width : 19.5rem;
 }
 #header-img{
-    width: 18.8rem;
+        width: 24rem;
 
 }
 #recMain-content{
-	display: flex;
-    bottom: 38rem;
-    position: relative;
-	left : 20rem;
-	width : 60rem;
-	justify-content : space-between;
+	   display: flex;
+    margin-top: 14rem;
+    width: 70rem;
+    justify-content: space-evenly;
+    margin-right : 6rem;
 }
 .box-img{
-	position : relative;
-	
 	
 }	
 .boxes{
-	width : 17rem;
-	position : relative;
-	
-	
+    width: 17rem;
+    position: absolute;
 }
+	
+	
+
 .box-img:hover .boxes, .box-img:hover .lines {
   transform: rotate(6deg);
 }
 
 .lines{
-	position: relative;
     width: 10rem;
-    left: 3.5rem;
-    bottom: 6rem;
+    margin-left: 3.5rem;
 	
 }
 .spaces {
@@ -88,10 +73,9 @@ body {
 	
 }
 .texts {
-    position: relative;
-    text-align: center;
-    bottom: 16rem;
-	right : 1rem;
+        text-align: center;
+        margin-top: 6rem;
+    margin-left: 1.5rem;
 }
 .objective{
 	font-size : 2.4rem;
@@ -101,5 +85,4 @@ body {
 	font-size : 1.3rem;
 	margin-top : 1.5rem;
 	color : darkslategrey;
-	width: 19rem;
 	}
