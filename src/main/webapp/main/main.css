@@ -3,61 +3,28 @@ body {
   background-color: #fffbf7;
   margin: 0; /* == 기본 margin 제거 */
   height: 100vh; /* == 뷰포트 높이를 채우도록 설정 */
-  /* 페이지 내용 중앙 배치 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Prevent default scrolling (== 기본 스크롤 숨기기) */
+  overflow: hidden;
 }
 
-.yj-main {
-  position: relative; /* 뷰포트 전체를 채우도록 설정 */
+.yj-main-section {
+  /* 뷰포트 전체를 채우도록 설정 */
   height: 100vh;
-  width: 100vw;
+  /* transition: transform 1s ease-in-out; Smooth transition */
 }
 
-.yj-main-first-musubi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.yj-main-first-musubi img {
-  width: 100%;
-}
-
-/* 
-.red-bar {
-  background-color: red;
-  height: 20px;
-  animation: unroll 2s ease-in-out forwards;
-}
-
-@keyframes unroll {
-  0% {
-    width: 100%;
-  }
-  100% {
-    width: 0;
-  }
-}
-*/
-
-.yj-main-first-icon {
+.yj-main-s1-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
 }
 
-.yj-main-first-icon img {
+.yj-main-s1-icon img {
   /* size */
   width: 10rem;
   height: 10rem;
-  /* location */
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+
   /* style */
   border-radius: 100%;
   box-shadow: 0 5px 5px 5px #fd5356;
@@ -75,7 +42,7 @@ body {
   }
 }
 
-.yj-main-first-scroll {
+.yj-main-s1-scroll {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -113,4 +80,36 @@ body {
   100% {
     transform: translateY(800%);
   }
+}
+
+.yj-main-section:nth-child(1) {
+  background-color: #1d3d67;
+}
+
+.yj-main-section:nth-child(2) {
+  background-color: #9fff7c;
+}
+
+.yj-main-section:nth-child(3) {
+  background-color: #20c7dd;
+}
+
+.yj-main-section:nth-child(4) {
+  background-color: #2030dd;
+}
+
+.yj-main-section:nth-child(5) {
+  background-color: #faf865;
+}
+
+.yj-main-section:nth-child(6) {
+  background-color: #9e65fa;
+}
+
+.yj-main-section:nth-child(7) {
+  background-color: #fa65e1;
+}
+
+img {
+  width: 100%;
 }
