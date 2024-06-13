@@ -116,19 +116,20 @@
                       type="button"
                       onclick='count("plus","adult")'
                       value="+"
-                    />
+                    /> 
                     <input 
                       style="width: 2rem; font-size: 1rem;"
                       class="result"
                       value="0"
                       id="adult"
+                      name="adult"
                     />
                     <input
                       type="button"
                       onclick='count("minus","adult")'
                       value="-"
                     /> 
-                    <div class="together-people">子供</div> 
+                    <div value="子供" class="together-people">子供</div> 
                     <input
                       type="button"
                       onclick='count("plus","child")'
@@ -139,13 +140,14 @@
                       class="result"
                       value="0"
                       id="child"
+                      name="child"
                     />
                     <input
                       type="button"
                       onclick='count("minus","child")'
                       value="-"
                     />
-                     <div class="together-people">幼児</div> 
+                     <div value="幼児" class="together-people">幼児</div> 
                      <input
                       type="button"
                       onclick='count("plus","baby")'
@@ -156,6 +158,7 @@
                       class="result baby"
                       value="0"
                       id="baby"
+                      name="baby"
                     />
                     <input
                       type="button"
@@ -183,9 +186,9 @@
                           type="text"
                           placeholder="姓"
                           class="name-input"
-                          name="kanzi-firstname"
+                          name="kanzi-name"
                           required />
-                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input" name="kanzi-lastname"
+                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input" name="kanzi-name"
                         required
                       /></label></br>
                       <label class="kata-container">
@@ -195,13 +198,14 @@
                           type="text"
                           placeholder="せい"
                           class="name-input" 
-                          
+                          name="kata-name"
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="めい"
                           class="name-input"
+                          name="kata-name"
                           required
                       /></label></br>
                       <label class="eng-container">
@@ -210,13 +214,15 @@
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="Last Name"
-                          class="name-input" 
+                          class="name-input"
+                          name="roma-name" 
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="First Name"
                           class="name-input"
+                          name="roma-name"
                           required
                       /></label>
                     </fieldset>

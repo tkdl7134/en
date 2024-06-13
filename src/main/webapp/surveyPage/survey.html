@@ -29,13 +29,6 @@
 
         <div class="middle-title">
           <div>出席の方</div>
-          <div class="middle-img">
-            <img
-              src="imgFolder/footer.png"
-              alt="title"
-              style="width: 100%; height: 100%"
-            />
-          </div>
         </div>
 
         <div class="top-right">
@@ -71,6 +64,7 @@
               />
             </div>
           </div>
+          
           <form action="SurveyC" method="post">
 
             <div class="tg-include-btu-page">
@@ -97,24 +91,78 @@
                   <div class="relationship-container">
                     <div>作成者との関係</div>
                     <span>
-                      <input name="relationship" type="checkbox" value="groom" />
+                      <input name="relation" type="checkbox" value="groom" />
                       家族
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       親友
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       職場の同僚
                     </span>
                     <label>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relations" type="checkbox" value="bride" />
                       その他
                     </label>
                   </div>
-                  <div class="together-container" id="together-container">
-                        <div>同伴人数 </div>
+                  <div class="together-container">
+                    <div>同伴人数 </div>
+                    <div class="together-people">大人</div> 
+                    <input 
+                      type="button"
+                      onclick='count("plus","adult")'
+                      value="+"
+                    /> 
+                    <input 
+                      style="width: 2rem; font-size: 1rem;"
+                      class="result"
+                      value="0"
+                      id="adult"
+                      name="adult"
+                    />
+                    <input
+                      type="button"
+                      onclick='count("minus","adult")'
+                      value="-"
+                    /> 
+                    <div value="子供" class="together-people">子供</div> 
+                    <input
+                      type="button"
+                      onclick='count("plus","child")'
+                      value="+"
+                    />
+                    <input
+                      style="width: 2rem; font-size: 1rem"
+                      class="result"
+                      value="0"
+                      id="child"
+                      name="child"
+                    />
+                    <input
+                      type="button"
+                      onclick='count("minus","child")'
+                      value="-"
+                    />
+                     <div value="幼児" class="together-people">幼児</div> 
+                     <input
+                      type="button"
+                      onclick='count("plus","baby")'
+                      value="+"
+                    />
+                    <input
+                      style="width: 2rem; font-size: 1rem;"
+                      class="result baby"
+                      value="0"
+                      id="baby"
+                      name="baby"
+                    />
+                    <input
+                      type="button"
+                      onclick='count("minus","baby")'
+                      value="-"
+                    />
                   </div>
                   <div class="name-container">
                     <fieldset>
@@ -136,8 +184,9 @@
                           type="text"
                           placeholder="姓"
                           class="name-input"
+                          name="kanzi-name"
                           required />
-                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input"
+                        <input style="font-size: 1rem;" type="text" placeholder="名" class="name-input" name="kanzi-name"
                         required
                       /></label></br>
                       <label class="kata-container">
@@ -147,12 +196,14 @@
                           type="text"
                           placeholder="せい"
                           class="name-input" 
+                          name="kata-name"
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="めい"
                           class="name-input"
+                          name="kata-name"
                           required
                       /></label></br>
                       <label class="eng-container">
@@ -161,13 +212,15 @@
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="Last Name"
-                          class="name-input" 
+                          class="name-input"
+                          name="roma-name" 
                           required/>
                         <input
                           style="font-size: 1rem;"
                           type="text"
                           placeholder="First Name"
                           class="name-input"
+                          name="roma-name"
                           required
                       /></label>
                     </fieldset>
@@ -208,7 +261,7 @@
           </div>   
                   <div class="address-contents-contaoner">
                       <div><span for="prefecture">都道府県</span></div>
-                        <div><select style="font-size: 1rem" id="prefecture" name="prefecture" required>
+                        <div><select style="font-size: 1rem" id="prefecture" name="address" required>
                         <option value="">選択してください</option>
                         <option value="hokkaido">北海道</option>
                         <option value="aomori">青森県</option>
@@ -265,7 +318,7 @@
                       <div><input style="font-size: 1rem"
                         type="text"
                         id="city"
-                        name="city"
+                        name="address"
                         placeholder="新宿区"
                         required
                          />
@@ -279,7 +332,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line1"
-                        name="address-line1"
+                        name="address"
                       placeholder="西新宿2-8-1"
                       required
                     />
@@ -294,7 +347,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line2"
-                        name="address-line2"
+                        name="address"
                         placeholder="新宿ビル 101"
                         required
                       />
@@ -359,7 +412,9 @@
           </div>
 
           </form>
+          
         </div>
+        
       </main>
 
       <footer class="tk_survey_footer">
@@ -464,157 +519,7 @@
         });
     });
 
-      let personCount = 0;
-      const maxPersons = 3;
-      const allOptions = ["大人", "子供", "幼児"];
-      let selectedOptions = [];
-
-      function addPerson() {
-        if (personCount < maxPersons) {
-          personCount++;
-
-          // 새로운 항목 추가
-          const container = document.getElementById("together-container");
-          const personDiv = document.createElement("div");
-          personDiv.className = "person";
-          personDiv.id = `person${personCount}`;
-
-          const selectBox = document.createElement("select");
-          selectBox.className = "together-people";
-          const availableOptions = allOptions.filter(
-            (option) => !selectedOptions.includes(option)
-          );
-          availableOptions.forEach((option) => {
-            const opt = document.createElement("option");
-            opt.value = option;
-            opt.textContent = option;
-            selectBox.appendChild(opt);
-          });
-          selectBox.onchange = function () {
-            updateSelectedOptions();
-          };
-          personDiv.appendChild(selectBox);
-
-          const plusButton = document.createElement("input");
-          plusButton.type = "button";
-          plusButton.value = "+";
-          plusButton.onclick = function () {
-            count("plus", `result${personCount}`);
-          };
-          personDiv.appendChild(plusButton);
-
-          const resultInput = document.createElement("input");
-          resultInput.type = "text";
-          resultInput.className = "result";
-          resultInput.value = "0";
-          resultInput.id = `result${personCount}`;
-          personDiv.appendChild(resultInput);
-
-          const minusButton = document.createElement("input");
-          minusButton.type = "button";
-          minusButton.value = "-";
-          minusButton.onclick = function () {
-            count("minus", `result${personCount}`);
-          };
-          personDiv.appendChild(minusButton);
-
-          const removeButton = document.createElement("input");
-          removeButton.type = "button";
-          removeButton.value = "削除";
-          removeButton.onclick = function () {
-            removePerson(personDiv.id);
-          };
-          personDiv.appendChild(removeButton);
-
-          // 컨테이너에 항목 추가
-          container.appendChild(personDiv);
-
-          // 이전의 추가 버튼 제거
-          const existingAddButton = document.getElementById("addButton");
-          if (existingAddButton) {
-            existingAddButton.remove();
-          }
-
-          // 새로운 추가 버튼 생성 및 추가
-          if (personCount < maxPersons) {
-            const newAddButton = document.createElement("button");
-            newAddButton.id = "addButton";
-            newAddButton.onclick = addPerson;
-            newAddButton.textContent = "+";
-            container.appendChild(newAddButton);
-          }
-
-          updateSelectedOptions();
-        } else {
-          alert("最大3人まで追加できます。");
-        }
-      }
-
-      function count(action, id) {
-        const element = document.getElementById(id);
-        let value = parseInt(element.value);
-
-        if (action === "plus") {
-          value++;
-        } else if (action === "minus" && value > 0) {
-          value--;
-        }
-
-        element.value = value;
-      }
-
-      function removePerson(personId) {
-        const personDiv = document.getElementById(personId);
-        personDiv.remove();
-        personCount--;
-
-        updateSelectedOptions();
-
-        // 모든 사람이 제거되면 추가 버튼 다시 추가
-        if (personCount < maxPersons) {
-          const container = document.getElementById("together-container");
-          const existingAddButton = document.getElementById("addButton");
-          if (!existingAddButton) {
-            const newAddButton = document.createElement("button");
-            newAddButton.id = "addButton";
-            newAddButton.onclick = addPerson;
-            newAddButton.textContent = "+";
-            container.appendChild(newAddButton);
-          }
-        }
-      }
-
-      function updateSelectedOptions() {
-        selectedOptions = [];
-        const selects = document.querySelectorAll(".together-people");
-        selects.forEach((select) => {
-          if (select.value) {
-            selectedOptions.push(select.value);
-          }
-        });
-
-        // 기존 select 박스들 업데이트
-        selects.forEach((select) => {
-          const currentValue = select.value;
-          select.innerHTML = "";
-          const availableOptions = allOptions.filter(
-            (option) =>
-              !selectedOptions.includes(option) || option === currentValue
-          );
-          availableOptions.forEach((option) => {
-            const opt = document.createElement("option");
-            opt.value = option;
-            opt.textContent = option;
-            if (option === currentValue) {
-              opt.selected = true;
-            }
-            select.appendChild(opt);
-          });
-        });
-      }
-
-      // 초기 추가 버튼 설정
-      addPerson();
+    
   </script>
 
 </html>
