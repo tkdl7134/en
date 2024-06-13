@@ -15,15 +15,18 @@
 <script src="product/js/productMain.js"></script>
 </head>
 <body>
-      <div id="je_container-product">
-        <div class="je_product-page">
-          <div class="je_product-page-title">
-            <div class="je_page-title">テンプレート一覧</div>
-            <div class="je_page-title-line">
-              <img src="product/imgFolder/pageTop_line.png" alt="" />
-            </div>
-          </div>
-          <div class="je_product-page-content">
+    <div id="je_container-product">
+     <div class="je_page-deco">
+      <img src="product/imgFolder/page-deco.png" alt="" />
+    </div>
+      </div>
+      <div class="je_product-page">
+      <div class="je_product-page-title">
+        <div class="je_page-title">テンプレート一覧</div>
+        <div class="je_page-title-line">
+          <img src="product/imgFolder/pageTop_line.png" alt="" />
+        </div>
+        <div class="je_product-page-content">
             <div class="je_page-content">
             <c:forEach items="${products }" var="p">
               <div class="je_page-content-template">
@@ -44,6 +47,7 @@
             </div>
           </div>
         </div>
+<div style="height: 100rem"></div>
       </div>
       
     <!--popUp-->

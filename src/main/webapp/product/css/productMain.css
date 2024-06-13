@@ -4,21 +4,43 @@
 }
 body {
   background-color: #fffbf7;
+  margin: 0;
+  padding: 0;
+  /* 화면 줄어들 때 왼쪽 여백 없애는 거 */
+  /* display: flex;
+  justify-content: center; */
+}
+
+.je_page-deco {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  /* height: 100vh; */
+  z-index: 10;
+}
+.je_page-deco > img {
+  /* width: 100%; */
+  width: 100%;
+  height: 100vh;
 }
 
 #je_container-product {
-  margin: 0;
-  padding: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  /* margin-top: rem; */
 }
 
 .je_product-page {
-  margin-left: 19rem;
-  margin-right: 19rem;
+  height: max-content;
+  /* display: flex;
+  justify-content: center; */
+  width: 82rem;
 }
 
 /* 상품소개 - title */
 .je_product-page-title {
-  margin-top: 5rem;
+  margin-top: 7rem;
   display: flex;
   justify-content: center;
   position: relative;
@@ -44,16 +66,15 @@ body {
 
 .je_page-content {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .je_page-content-template {
+  margin-bottom: 1rem;
   width: 23.2rem;
   height: 39rem;
   padding-top: 1rem;
-}
-.je_page-content-template:nth-child(1),
-.je_page-content-template:nth-child(2) {
-  margin-right: 6.5rem;
 }
 
 .je_template-img {
@@ -75,7 +96,7 @@ body {
   left: 0;
   border: 0.1rem solid #ec0000;
   border-radius: 45% / 35%;
-  box-shadow: 1px 1px 10px #c82626;
+  box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
 }
 .je_template-img-line-red-small {
   width: 95%;
@@ -105,7 +126,7 @@ body {
   font-weight: bold;
   border: 0.1rem solid #c82626;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 5px #c82626;
+  box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
 }
 
 .je_template-button > button:nth-child(1) {
