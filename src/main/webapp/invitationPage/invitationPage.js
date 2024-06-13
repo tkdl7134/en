@@ -69,11 +69,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     cardCon.addEventListener("mouseout", function() {
+		
         if (event.target === cardCon) {
             document.querySelector(".hw-f-mousemove > img").src = "invitationPage/imgFolder/back_btn.png";
+             
         }
         mouseIcon.classList.remove("hw-f-none");
         mouseIcon.classList.add("hw-f-block");
         event.stopPropagation();
+        
     });
 });

@@ -9,17 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/InvitationController")
 public class InvitationController extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		InvitationDAO.invitations(request);
-		
-		request.setAttribute("content", "invitationPage/invitationPage.jsp");
-		request.getRequestDispatcher("invitationPage/invitationPage.jsp").forward(request, response);
-	}
+    private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        InvitationDAO.invitations(request);
+        request.getRequestDispatcher("invitationPage/invitationPage.jsp").forward(request, response);
+    }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
