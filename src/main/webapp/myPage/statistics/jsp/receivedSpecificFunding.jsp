@@ -15,7 +15,26 @@
 $(document).ready(function() {
     let priceChart = null;
     $('#priceChart').css('height', '0');
+    // byMoney 버튼 클릭 시
+    $('#byMoney').on('click', function() {
+        $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
+        $('#byDate').removeClass('active'); // 다른 버튼에서 active 클래스 제거
 
+    });
+
+    // byDate 버튼 클릭 시
+    $('#byDate').on('click', function() {
+        $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
+        $('#byMoney').removeClass('active'); // 다른 버튼에서 active 클래스 제거
+	
+        // 다른 코드들...
+    });
+
+    // 페이지 로딩 시 초기 상태 설정 (byMoney를 기본으로 active 상태로 만듦)
+    $('#byMoney').addClass('active');
+    
+    
+    
     $('#dateForm').submit(function(event) {
     	 event.preventDefault();
     	
@@ -116,7 +135,7 @@ function GoToTop() {
 
     <div id="fundSpec-dataBoard-container">
         <div id="fundSpec-arrBtn">
-            <button class="arrButtons" id="byMoney">金額順</button>
+            <button class="arrButtons	" id="byMoney">金額順</button>
             <button class="arrButtons" id="byDate" >日付順</button>
         </div>
         <div id="fundSpec-dataBoard">

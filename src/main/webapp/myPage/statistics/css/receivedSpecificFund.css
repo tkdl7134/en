@@ -110,25 +110,26 @@ body {
 	
 }
 .arrButtons {
-	 padding: 0.625rem 1.25rem;
-  background-color: #ffefef;
-  border: 0.1875rem solid #c82626;
-  text-align: center;
-  margin-left: -0.0625rem;
-  border-radius: 0.9375rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-  color: black;
-  transition: background-color 0.3s, color 0.3s;
-	
-	
+    padding: 0.625rem 1.25rem;
+    background-color: #ffefef;
+    border: 0.1875rem solid #c82626;
+    text-align: center;
+    margin-left: -0.0625rem;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
 }
-.arrButtons :active ,.arrButtons :hover {
-	
-	background-color: #ff3b3f;
-  color: white;
-  border: 0.1875rem solid #c82626;
-	
-	
+
+.arrButtons:hover{
+    background-color: #ff3b3f;
+    color: white;
+    border: 0.1875rem solid #c82626;
+}
+.arrButtons.active{
+    background-color: #ff3b3f;
+    color: white;
+    border: 0.1875rem solid #c82626;
 }
 #fundSpec-dataBoard{
    
