@@ -16,7 +16,7 @@
 	<div class="hs_background">
 		<div class="horizontal-container-btn">
 			<img class="menu-btn-enmusubi" alt="asd"
-				src="loginPage/ImgFolder/828a704e967fa89b.png"> <img
+				src="loginPage/ImgFolder/menu-btn-enmusubi.png"> <img
 				class="menu-btn-1" alt="asd"
 				src="loginPage/ImgFolder/menu_btn_1.png">
 		</div>
@@ -29,10 +29,10 @@
 			<div class="hs_container-login-border">
 				<div class="hs_login">
 					<div class="hs_login id">ID</div>
-					<input type="text" name="m_id" placeholder="   ユーザーID" required
+					<input type="text" name="m_id" placeholder="  縁結びID" required
 						class="hs_input">
 					<div class="hs_login pw">パスワード</div>
-					<input type="password" name="m_pw" placeholder="   パスワード" required
+					<input type="password" name="m_pw" placeholder="  パスワード" required
 						class="hs_input"><br>
 					<button class="hs_btn-login">ログイン</button>
 				</div>

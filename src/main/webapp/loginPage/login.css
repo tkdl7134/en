@@ -97,7 +97,7 @@
 }
 
 .hs_btn.reg {
-	color: #DD2025;
+	color: #FF4C50;
 	font-weight: bold;
 	font-size: 1.2rem;
 }
@@ -115,7 +115,7 @@
 	color: black;
 	height: 3rem;
 	width: 7rem;
-	border: 2px solid #DD2025;
+	border: 2px solid #C82626;
 	padding: 5px 15px;
 	border-radius: 13px;
 	cursor: pointer;
@@ -134,7 +134,7 @@
 }
 
 .hs_btn-login:hover {
-	background-color: #DD2025;
+	background-color: #FF4C50;
 	color: #fff;
 }
 

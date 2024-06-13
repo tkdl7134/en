@@ -388,16 +388,20 @@ public class MemberDAO {
 				// 3-1. 로그인 성공
 				HttpSession session = request.getSession(); // 세션 얻기
 				session.setAttribute("m_id", dto.getM_id());
-				session.setAttribute("m_name", dto.getM_name());
-				session.setAttribute("m_name_kana", dto.getM_name_kana());
-				session.setAttribute("m_name_rome", dto.getM_name_rome());
-				session.setAttribute("m_gender", dto.getM_gender());
-				session.setAttribute("a_postcode", dto.getA_postcode());
-				session.setAttribute("a_address", dto.getA_address());
-				session.setAttribute("m_email", dto.getM_email());
-				session.setAttribute("m_regdate", dto.getM_regdate());
-				session.setAttribute("m_phone", dto.getM_phone());
+//				session.setAttribute("m_dto", dto);
+				/*
+				 * session.setAttribute("m_name", dto.getM_name());
+				 * session.setAttribute("m_name_kana", dto.getM_name_kana());
+				 * session.setAttribute("m_name_rome", dto.getM_name_rome());
+				 * session.setAttribute("m_gender", dto.getM_gender());
+				 * session.setAttribute("a_postcode", dto.getA_postcode());
+				 * session.setAttribute("a_address", dto.getA_address());
+				 * session.setAttribute("m_email", dto.getM_email());
+				 * session.setAttribute("m_regdate", dto.getM_regdate());
+				 * session.setAttribute("m_phone", dto.getM_phone());
+				 */
 
+				
 //				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정

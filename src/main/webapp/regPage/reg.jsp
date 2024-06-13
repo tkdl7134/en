@@ -47,7 +47,7 @@
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							required>
+							placeholder="  縁結びID" required>
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 						<!-- <div id="idCheckResult" class="hs_id-available"></div> -->
 					</div>
@@ -55,12 +55,12 @@
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							required>
+							placeholder="  パスワード" required>
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード確認</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" required>
+							class="hs_input pw" placeholder="  パスワード確認" required>
 					</div>
 				</div>
 
@@ -90,11 +90,21 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text gender">性別</div>
 						<div class="radio-gender">
-							<input type="radio" name="m_gender" class="hs_input gender"
-								value="男性"> 男性 <input type="radio" name="m_gender"
-								class="hs_input gender" value="女性"> 女性 <input
-								type="radio" name="m_gender" class="hs_input gender" value="その他">
-							その他
+							<div class="radio-gender male">
+								<input type="radio" id="gender_male" name="m_gender"
+									class="hs_input gender" value="男性"> <label
+									for="gender_male">男性</label>
+							</div>
+							<div class="radio-gender male">
+								<input type="radio" id="gender_female" name="m_gender"
+									class="hs_input gender" value="女性"> <label
+									for="gender_female">女性</label>
+							</div>
+							<div class="radio-gender male">
+								<input type="radio" id="gender_other" name="m_gender"
+									class="hs_input gender" value="その他"> <label
+									for="gender_other">その他</label>
+							</div>
 						</div>
 					</div>
 
@@ -117,6 +127,7 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text post">郵便番号</div>
+						<div class="hs_content-text postmark">〒</div>
 						<input type="text" name="a_postcode" id="a_postcode"
 							class="hs_input post" placeholder="  郵便番号">
 					</div>
@@ -195,12 +206,19 @@
 							class="hs_input building" placeholder="  ビル・マンション名">
 					</div>
 
-					<button>アカウント登録</button>
+					<button id="btnReg" class="btn-reg">登録</button>
 
 				</div>
 			</div>
 		</form>
 	</div>
+
+
+
+	<div class="go-to-top">
+		<img class="btn-top" alt="" src="top_button.png">
+	</div>
+
 	<a href="javascript:window.history.back();"><button>取消</button></a>
 	<script>
 	
@@ -274,6 +292,41 @@
                     }
                  });
             }
+        
+        function checkFormCompletion() {
+            // 각 필수 입력 필드에 대한 값 가져오기
+            let m_id = document.getElementById('m_id').value.trim();
+            let m_pw = document.getElementById('m_pw').value.trim();
+            let m_pw_confirm = document.getElementById('m_pw_confirm').value.trim();
+            let m_name = document.getElementsByName('m_name')[0].value.trim();
+            let m_name_kana = document.getElementsByName('m_name_kana')[0].value.trim();
+            let m_name_rome = document.getElementsByName('m_name_rome')[0].value.trim();
+            let m_gender = document.querySelector('input[name="m_gender"]:checked');
+            let m_birth = document.getElementsByName('m_birth')[0].value.trim();
+            let m_email = document.getElementsByName('m_email')[0].value.trim();
+            let a_postcode = document.getElementById('a_postcode').value.trim();
+            let a_prefecture = document.getElementsByName('a_prefecture')[0].value.trim();
+            let a_city = document.getElementById('a_city').value.trim();
+            let a_street = document.getElementById('a_street').value.trim();
+            let a_building = document.getElementById('a_building').value.trim();
+
+            // 모든 필수 입력 필드가 채워져 있는지 확인
+            if (m_id !== '' && m_pw !== '' && m_pw_confirm !== '' &&
+                m_name !== '' && m_name_kana !== '' && m_name_rome !== '' &&
+                m_gender !== null && m_birth !== '' && m_email !== '' &&
+                a_postcode !== '' && a_prefecture !== '' && a_city !== '' &&
+                a_street !== '' && a_building !== '') {
+                document.getElementById('btnReg').classList.add('btn-reg-complete');
+            } else {
+                document.getElementById('btnReg').classList.remove('btn-reg-complete');
+            }
+        }
+
+        // 각 입력 필드에 대한 change 이벤트 리스너 추가
+        let inputs = document.querySelectorAll('.hs_input');
+        inputs.forEach(input => {
+            input.addEventListener('input', checkFormCompletion);
+        });
 	</script>
 
 </body>
