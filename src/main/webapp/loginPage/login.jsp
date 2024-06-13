@@ -13,7 +13,7 @@
 
 </head>
 <body class="hs_body">
-	<div class="background">
+	<div class="hs_background">
 		<div class="horizontal-container-btn">
 			<img class="menu-btn-enmusubi" alt="asd"
 				src="loginPage/ImgFolder/828a704e967fa89b.png"> <img
@@ -23,7 +23,6 @@
 
 		<div class="horizontal-container-title">
 			<p class="hs_heading">ログイン</p>
-			<img class="ribbon" alt="" src="loginPage/ImgFolder/footer.png">
 		</div>
 
 		<form action="MemberC" method="post">

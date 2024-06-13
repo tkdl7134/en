@@ -474,7 +474,7 @@ public class MemberDAO {
 			try {
 				boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
 				System.out.println(isDuplicate);
-				String idCheckResult = isDuplicate ? "使用中IDです。" : "使用可能IDです。";
+				String idCheckResult = isDuplicate ? "使用中ID" : "使用可能ID";
 				Testajax ta = new Testajax();
 				ta.setIdcheck(idCheckResult);
 				Gson gson = new Gson();

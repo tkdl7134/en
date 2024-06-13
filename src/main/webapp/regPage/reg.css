@@ -1,0 +1,151 @@
+.hs_body {
+	font-family: 'Noto Serif JP', serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #FFF5F4;
+}
+
+.hs_background-1 {
+	background-image: 
+	url('ImgFolder/background-1.png'),
+	url('ImgFolder/background-2.png');
+	background-size: 100% 100%;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+
+.horizontal-container-btn {
+	display: flex;
+	align-items: center; /* 수직 가운데 정렬 */
+	justify-content: space-between; /* 수평 가운데 정렬 */
+	padding-left: 5rem;
+	padding-right: 5rem;
+	margin-top: 3rem;
+}
+
+.hs_body .menu-btn-enmusubi {
+	width: 10rem;
+}
+
+.hs_body .menu-btn-1 {
+	width: 5rem;
+}
+
+.hs_title {
+	margin-top: -7rem;
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 13rem;
+}
+
+.hs_content-title-account, .hs_content-title-user {
+	font-size: 1.5rem;
+	border: 2px solid #FF7E81;
+	text-align: left;
+	flex-direction: column;
+	margin: auto;
+	width: 35rem;
+	padding: 1.3rem;
+	font-weight: bold;
+	border-radius: 20px;
+	background-color: #FFDBDB;
+	position: relative;
+	z-index: 3;
+}
+
+.hs_content-title-user {
+	margin-top: 3rem;
+}
+
+.hs_container-input {
+	position: relative;
+	top: -1rem;
+	border: 2px solid #FF7E81;
+	border-radius: 20px;
+	flex-direction: column;
+	text-align: left;
+	margin: auto;
+	width: 35rem;
+	background-color: #FFEEEE;
+	padding-top: 1.5rem;
+}
+
+.hs_content-input {
+	font-size: 1rem;
+	display: flex;
+	margin-left: 3rem;
+	justify-content: flex-end;
+	align-items: center; /* 수직 가운데 정렬 */
+	margin-right: 2rem;
+}
+
+.hs_content-input.id {
+	margin-top: 1rem;
+	display: flex;
+}
+
+.hs_content-input.pw,
+.hs_content-input.pw-confirm {
+	margin-top: 1rem;
+}
+
+.hs_content-input.pw-confirm{
+	padding-bottom: 1.5rem;
+}
+
+.hs_content-text {
+	margin-right: 3rem;
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+.hs_content-text.id,
+.hs_content-text.pw,
+.hs_content-text.pwconfirm {
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+}
+
+.hs_input {
+	font-family: 'Noto Serif JP', serif;
+	font-size: 1.5rem;
+	width: 10rem;
+	display: flex;
+	height: 3rem;
+	margin-right: 0.5rem;
+	border: 1.5px solid #ccc;
+	border-radius: 3px;
+	position: relative;
+}
+
+.hs_input.pw{
+	width: 17.5rem;
+}
+
+.hs_idcheck {
+	width: 7rem;
+	height: 3.2rem;
+	margin-right: 0.5rem; border : 1px solid #C3C3C3;
+	background-color: #FFDBDB;
+	border-radius: 3px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	font-family: 'Noto Serif JP', serif;
+	font-size: 1rem;
+	color: #828282;
+	border: 1px solid #C3C3C3;
+}
+
+.hs_id-available {
+	font-size: 1rem;
+	margin-left: 0.5rem;
+}
