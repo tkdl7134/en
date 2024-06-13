@@ -1,0 +1,163 @@
+.hs_body {
+	font-family: 'Noto Serif JP', serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.background {
+	background-image: url('ImgFolder/-_.png');
+	background-size: 100% 100%;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+
+.horizontal-container-btn {
+	display: flex;
+	align-items: center; /* 수직 가운데 정렬 */
+	justify-content: space-between; /* 수평 가운데 정렬 */
+	padding-left: 5rem;
+	padding-right: 5rem;
+	margin-top: 3rem;
+}
+
+.hs_body .menu-btn-enmusubi {
+	width: 10rem;
+}
+
+.hs_body .menu-btn-1 {
+	width: 5rem;
+}
+
+.horizontal-container-title {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 배치 */
+	align-items: center; /* 수평 중앙 정렬 */
+}
+
+.hs_heading {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-top: -5.5rem;
+}
+
+.ribbon {
+	margin-top: -2rem;
+	width: 23rem; /* 적절한 크기로 설정 */
+}
+
+.hs_container-login-border {
+	background-image: url('ImgFolder/BG.png');
+	margin: auto;
+	margin-top: 8rem;
+	background-size: cover; /* 画像を完全に表示する */
+	width: 45rem; /* フォームの幅を調整 */
+	height: 28rem; /* フォームの高さを調整 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.hs_login {
+	margin-top: 2rem;
+	text-align: left;
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.hs_input {
+	width: 33rem;
+	height: 4rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	font-family: 'Noto Serif JP', serif;
+}
+
+.hs_btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+}
+
+.hs_btn.line-login {
+	color: black;
+	font-size: 1.2rem;
+}
+
+.hs_btn.line-login:hover {
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hs_btn.reg {
+	color: #DD2025;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.hs_btn.reg:hover {
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.yellow_line {
+	width: 16rem;
+}
+
+.hs_btn-login {
+	background-color: #FFFBF7;
+	color: black;
+	height: 3rem;
+	width: 7rem;
+	border: 2px solid #DD2025;
+	padding: 5px 15px;
+	border-radius: 13px;
+	cursor: pointer;
+	box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	font-family: 'Noto Serif JP', serif;
+	font-weight: bolder;
+	font-size: 1.1rem; display : flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 1.5rem;
+	margin-bottom: 2rem;
+	display: flex;
+}
+
+.hs_btn-login:hover {
+	background-color: #DD2025;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+}
+
+a.hs_link {
+	color: #e60012;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.hs_link:hover {
+	text-decoration: underline;
+}
+
+#additional-links {
+	margin-top: 20px;
+	text-align: center;
+}

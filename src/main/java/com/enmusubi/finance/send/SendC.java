@@ -1,4 +1,4 @@
-package com.enmusubi.finance;
+package com.enmusubi.finance.send;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.enmusubi.finance.funding.fundDAO;
 
-@WebServlet("/StatisticsC")
-public class StatisticsC extends HttpServlet {
+@WebServlet("/SendC")
+public class SendC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(fundDAO.financeCheck(request)) {
-			
-		fundDAO.insertWishiPick(request);
-		request.setAttribute("title", "ファンディング");
-		request.setAttribute("page", "fund/fundstatistic.jsp");
+		request.setAttribute("title", "送金");
+		request.setAttribute("page", "send/sending.jsp");
 		request.getRequestDispatcher("finance/index.jsp").forward(request, response);
-		}
-		else {
-			response.sendRedirect("ResultC?done=done");
-		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(fundDAO.financeCheck(request)) {
+			fundDAO.insertWishiPick(request);
+			response.sendRedirect("ResultC");
+			}
+			else {
+				response.sendRedirect("ResultC?done=done");
+			}
 	}
 
 }
