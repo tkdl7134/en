@@ -7,18 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/ProductController")
-public class ProductController extends HttpServlet {
+@WebServlet("/ProductMakeController")
+public class ProductMakeController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO.getAllTemplate(request);
-		request.getRequestDispatcher("product/jsp/productMain.jsp").forward(request, response);
+	request.getRequestDispatcher("product/jsp/productMake.jsp").forward(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
 }
