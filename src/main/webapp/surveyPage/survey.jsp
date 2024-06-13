@@ -66,6 +66,7 @@
               />
             </div>
           </div>
+          
           <form action="SurveyC" method="post">
 
             <div class="tg-include-btu-page">
@@ -92,19 +93,19 @@
                   <div class="relationship-container">
                     <div>作成者との関係</div>
                     <span>
-                      <input name="relationship" type="checkbox" value="groom" />
+                      <input name="relation" type="checkbox" value="groom" />
                       家族
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       親友
                     </span>
                     <span>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relation" type="checkbox" value="bride" />
                       職場の同僚
                     </span>
                     <label>
-                      <input name="relationship" type="checkbox" value="bride" />
+                      <input name="relations" type="checkbox" value="bride" />
                       その他
                     </label>
                   </div>
@@ -256,7 +257,7 @@
           </div>   
                   <div class="address-contents-contaoner">
                       <div><span for="prefecture">都道府県</span></div>
-                        <div><select style="font-size: 1rem" id="prefecture" name="prefecture" required>
+                        <div><select style="font-size: 1rem" id="prefecture" name="address" required>
                         <option value="">選択してください</option>
                         <option value="hokkaido">北海道</option>
                         <option value="aomori">青森県</option>
@@ -313,7 +314,7 @@
                       <div><input style="font-size: 1rem"
                         type="text"
                         id="city"
-                        name="city"
+                        name="address"
                         placeholder="新宿区"
                         required
                          />
@@ -327,7 +328,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line1"
-                        name="address-line1"
+                        name="address"
                       placeholder="西新宿2-8-1"
                       required
                     />
@@ -342,7 +343,7 @@
                       <input style="font-size: 1rem"
                         type="text"
                         id="address-line2"
-                        name="address-line2"
+                        name="address"
                         placeholder="新宿ビル 101"
                         required
                       />
@@ -407,7 +408,9 @@
           </div>
 
           </form>
+          
         </div>
+        
       </main>
 
       <footer class="tk_survey_footer">

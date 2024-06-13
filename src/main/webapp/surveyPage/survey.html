@@ -113,59 +113,8 @@
                       その他
                     </label>
                   </div>
-                  <div class="together-container">
-                    <div>同伴人数 </div>
-                    <div class="together-people">大人</div> 
-                    <input 
-                      type="button"
-                      onclick='count("plus","adult")'
-                      value="+"
-                    />
-                    <input 
-                      style="width: 2rem; font-size: 1rem;"
-                      class="result"
-                      value="0"
-                      id="adult"
-                    />
-                    <input
-                      type="button"
-                      onclick='count("minus","adult")'
-                      value="-"
-                    /> 
-                    <div class="together-people">子供</div> 
-                    <input
-                      type="button"
-                      onclick='count("plus","child")'
-                      value="+"
-                    />
-                    <input
-                      style="width: 2rem; font-size: 1rem"
-                      class="result"
-                      value="0"
-                      id="child"
-                    />
-                    <input
-                      type="button"
-                      onclick='count("minus","child")'
-                      value="-"
-                    />
-                     <div class="together-people">幼児</div> 
-                     <input
-                      type="button"
-                      onclick='count("plus","baby")'
-                      value="+"
-                    />
-                    <input
-                      style="width: 2rem; font-size: 1rem;"
-                      class="result baby"
-                      value="0"
-                      id="baby"
-                    />
-                    <input
-                      type="button"
-                      onclick='count("minus","baby")'
-                      value="-"
-                    />
+                  <div class="together-container" id="together-container">
+                        <div>同伴人数 </div>
                   </div>
                   <div class="name-container">
                     <fieldset>
@@ -515,7 +464,157 @@
         });
     });
 
-    
+      let personCount = 0;
+      const maxPersons = 3;
+      const allOptions = ["大人", "子供", "幼児"];
+      let selectedOptions = [];
+
+      function addPerson() {
+        if (personCount < maxPersons) {
+          personCount++;
+
+          // 새로운 항목 추가
+          const container = document.getElementById("together-container");
+          const personDiv = document.createElement("div");
+          personDiv.className = "person";
+          personDiv.id = `person${personCount}`;
+
+          const selectBox = document.createElement("select");
+          selectBox.className = "together-people";
+          const availableOptions = allOptions.filter(
+            (option) => !selectedOptions.includes(option)
+          );
+          availableOptions.forEach((option) => {
+            const opt = document.createElement("option");
+            opt.value = option;
+            opt.textContent = option;
+            selectBox.appendChild(opt);
+          });
+          selectBox.onchange = function () {
+            updateSelectedOptions();
+          };
+          personDiv.appendChild(selectBox);
+
+          const plusButton = document.createElement("input");
+          plusButton.type = "button";
+          plusButton.value = "+";
+          plusButton.onclick = function () {
+            count("plus", `result${personCount}`);
+          };
+          personDiv.appendChild(plusButton);
+
+          const resultInput = document.createElement("input");
+          resultInput.type = "text";
+          resultInput.className = "result";
+          resultInput.value = "0";
+          resultInput.id = `result${personCount}`;
+          personDiv.appendChild(resultInput);
+
+          const minusButton = document.createElement("input");
+          minusButton.type = "button";
+          minusButton.value = "-";
+          minusButton.onclick = function () {
+            count("minus", `result${personCount}`);
+          };
+          personDiv.appendChild(minusButton);
+
+          const removeButton = document.createElement("input");
+          removeButton.type = "button";
+          removeButton.value = "削除";
+          removeButton.onclick = function () {
+            removePerson(personDiv.id);
+          };
+          personDiv.appendChild(removeButton);
+
+          // 컨테이너에 항목 추가
+          container.appendChild(personDiv);
+
+          // 이전의 추가 버튼 제거
+          const existingAddButton = document.getElementById("addButton");
+          if (existingAddButton) {
+            existingAddButton.remove();
+          }
+
+          // 새로운 추가 버튼 생성 및 추가
+          if (personCount < maxPersons) {
+            const newAddButton = document.createElement("button");
+            newAddButton.id = "addButton";
+            newAddButton.onclick = addPerson;
+            newAddButton.textContent = "+";
+            container.appendChild(newAddButton);
+          }
+
+          updateSelectedOptions();
+        } else {
+          alert("最大3人まで追加できます。");
+        }
+      }
+
+      function count(action, id) {
+        const element = document.getElementById(id);
+        let value = parseInt(element.value);
+
+        if (action === "plus") {
+          value++;
+        } else if (action === "minus" && value > 0) {
+          value--;
+        }
+
+        element.value = value;
+      }
+
+      function removePerson(personId) {
+        const personDiv = document.getElementById(personId);
+        personDiv.remove();
+        personCount--;
+
+        updateSelectedOptions();
+
+        // 모든 사람이 제거되면 추가 버튼 다시 추가
+        if (personCount < maxPersons) {
+          const container = document.getElementById("together-container");
+          const existingAddButton = document.getElementById("addButton");
+          if (!existingAddButton) {
+            const newAddButton = document.createElement("button");
+            newAddButton.id = "addButton";
+            newAddButton.onclick = addPerson;
+            newAddButton.textContent = "+";
+            container.appendChild(newAddButton);
+          }
+        }
+      }
+
+      function updateSelectedOptions() {
+        selectedOptions = [];
+        const selects = document.querySelectorAll(".together-people");
+        selects.forEach((select) => {
+          if (select.value) {
+            selectedOptions.push(select.value);
+          }
+        });
+
+        // 기존 select 박스들 업데이트
+        selects.forEach((select) => {
+          const currentValue = select.value;
+          select.innerHTML = "";
+          const availableOptions = allOptions.filter(
+            (option) =>
+              !selectedOptions.includes(option) || option === currentValue
+          );
+          availableOptions.forEach((option) => {
+            const opt = document.createElement("option");
+            opt.value = option;
+            opt.textContent = option;
+            if (option === currentValue) {
+              opt.selected = true;
+            }
+            select.appendChild(opt);
+          });
+        });
+      }
+
+      // 초기 추가 버튼 설정
+      addPerson();
   </script>
 
 </html>

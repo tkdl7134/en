@@ -16,8 +16,6 @@ public class SurveyC extends HttpServlet {
 		
 		SurveyDAO.updateMember(request);
 		
-		
-		
 
 	}
 
