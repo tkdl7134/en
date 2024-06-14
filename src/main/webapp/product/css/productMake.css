@@ -1,0 +1,373 @@
+* {
+  font-family: "Noto Serif JP", serif;
+}
+body {
+  background-color: #fffbf7;
+  margin: 0;
+  padding: 0;
+}
+
+.je_page-deco {
+  width: 100vw;
+}
+.je_page-deco > img {
+  /* width: 100%; */
+  width: 100%;
+}
+
+#je_container-productMake {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.je_product-make-page {
+  /* margin-left: 19rem;
+  margin-right: 19rem;
+  border: 1px solid; */
+}
+
+/* 작성페이지 - title */
+.je_product-make-page-title {
+  /* margin-top: 7rem; */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.je_page-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.je_page-title-line {
+  position: absolute;
+  top: 2.5rem;
+}
+.je_page-title-line > img {
+  width: 21rem;
+}
+
+/* 작성페이지 - content */
+.je_product-make-page-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 4.3rem;
+  /* margin-bottom: 20rem; */
+}
+.je_make-page-content {
+  /* border: 0.05rem solid #696969; */
+  box-shadow: 0rem 0.4rem 0.6rem #696969;
+  border-radius: 1rem;
+  height: max-content;
+  width: 50%;
+  /* width: 40rem; */
+}
+
+.je_content-title {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1.5rem;
+}
+/* ---プレビュー-------------------------------------------------------------------------- */
+.je_template-output {
+  background-color: aqua;
+  margin-right: 3rem;
+  width: 30rem;
+  height: 126rem;
+}
+
+.je_template {
+  /* border: 1px solid red; */
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+}
+.je_template-content {
+  background-image: url(./img/wedding-template.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 100rem;
+  position: relative;
+}
+
+/* 템플릿 내용 조정 */
+.je_template-content > div {
+  /* position: absolute;
+  top: 0; */
+}
+/* ---作成欄-------------------------------------------------------------------------- */
+.je_template-input {
+  width: 50rem;
+}
+
+.je_content-boxes {
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+}
+
+.je_content-box {
+  border: 0.15rem solid #696969;
+  border-radius: 1rem;
+  padding: 0.3rem;
+}
+
+.je_box-title {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.je_box-bottom-line {
+  position: absolute;
+  bottom: -0.7rem;
+  left: 0;
+  width: 100%;
+}
+.je_box-bottom-line > img {
+  width: 100%;
+}
+
+.je_box-content {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.je_host-info {
+  background-color: #fff4f4;
+  border: 0.1rem solid #ffdbdb;
+  border-radius: 1rem;
+  width: 50%;
+  padding-bottom: 0.5rem;
+  height: max-content;
+}
+.je_host-info:nth-child(1) {
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+.je_host-info:nth-child(2) {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.je_info-title {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.3rem;
+  /* border-bottom: 0.1rem solid #e60112; */
+}
+.je_info-title-line {
+  position: absolute;
+  width: 90%;
+  bottom: -0.5rem;
+}
+.je_info-title-line > img {
+  width: 100%;
+}
+
+.je_info-content {
+  margin-top: 0.5rem;
+}
+
+.je_info-inputbox {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+}
+.je_inputbox-title {
+  /* background-color: blue; */
+  width: 6rem;
+  margin-left: 1rem;
+  text-align: left;
+  font-size: 95%;
+}
+.je_inputbox-input {
+  display: flex;
+  justify-content: end;
+  margin-right: 1rem;
+  width: 75%;
+}
+.je_inputbox-input > input {
+  width: 40%;
+  border: 0.1rem solid #c8c8c8;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+}
+.je_inputbox-input > input:nth-child(2) {
+  margin-left: 0.5rem;
+}
+
+input::placeholder {
+  color: #c8c8c8;
+}
+input::-webkit-input-placeholder {
+  /*크롬, 사파리*/
+  color: #c8c8c8;
+}
+input:-ms-input-placeholder {
+  /*엣지*/
+  color: #c8c8c8;
+  color: #c8c8c8;
+}
+
+/* 일정정보 */
+.je_content-box:nth-child(2) {
+  margin-top: 1.5rem;
+}
+.je_box-title2 {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.je_box-calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.je_box-calendar > input {
+  width: 10rem;
+  height: 2rem;
+  border: 0.15rem solid #ffdbdb;
+  border-radius: 0.4rem;
+  background-color: #fff4f4;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.je_box-calendar > input:focus {
+  outline: 0.15rem solid #ff7e81;
+}
+
+.je_time_input > input {
+  text-align: right;
+}
+.je_building-input > input {
+  width: 87%;
+}
+.je_address-input > input {
+  width: 87%;
+  height: 5rem;
+}
+
+/* 메세지 및 사진 */
+.je_content-box:nth-child(3) {
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.je_inputbox-input > textarea {
+  resize: none;
+  border: 0.1rem solid #c8c8c8;
+}
+
+/* 사진 */
+.je_box-content:nth-last-child(1) {
+  margin-right: 0rem;
+}
+.je_photo-info {
+  margin-left: 1rem;
+  width: 100%;
+}
+.je_inputbox-input:nth-last-child(1) {
+  width: 100%;
+  justify-content: center;
+}
+
+.je_photobox {
+  width: 30%;
+  height: 18rem;
+  border: 0.1rem solid #c8c8c8;
+  background-color: #ffffff;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.je_photobox:hover {
+  cursor: pointer;
+}
+
+.je_photobox > input {
+  display: none;
+}
+.je_photobox > span {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  border: 0.1rem solid #989898;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  color: #6a6a6a;
+  font-size: 0.8rem;
+}
+.je_photo1-pre {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* 제작버튼 */
+.je_finish-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.je_finish-button > button {
+  width: 8rem;
+  font-size: 1.4rem;
+  font-weight: bolder;
+  padding: 0.5rem;
+  border: 0.2rem solid #c82626;
+  border-radius: 2rem;
+  background-color: #ff3b3f;
+  color: #ffffff;
+  box-shadow: 0.1rem 0.1rem 0.6rem #c82626;
+}
+
+.je_finish-button > button:hover {
+  background-color: #ffffff;
+  color: #ff3b3f;
+  font-weight: 900;
+  transition: 0.5s;
+}
+/* test */
+.je_photobox {
+  position: relative;
+  z-index: 2;
+}
+#je_photoOut1,
+#je_photoOut2,
+#je_photoOut3 {
+  /* display: none; */
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+#je_photoOut1 img,
+#je_photoOut2 img,
+#je_photoOut3 img {
+  width: 100%;
+}

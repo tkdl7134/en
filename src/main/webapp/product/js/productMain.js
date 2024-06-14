@@ -1,9 +1,9 @@
 // dimlayout만 적용할 때
 
 $(function () {
-  $(".preview").click(function () {
-    var $el = $("#layer"); // pop-up 창
-    $(".dim-layer").fadeIn();
+  $(".je_preview").click(function () {
+    var $el = $("#je_layer"); // pop-up 창
+    $(".je_dim-layer").fadeIn();
 
     var $elWidth = ~~$el.outerWidth(),
       $elHeight = ~~$el.outerHeight(),
@@ -19,13 +19,13 @@ $(function () {
       $el.css({ top: 0, left: 0 });
     }
 
-    $("a.btn-layerClose").click(function () {
+    $("a.je_btn-layerClose").click(function () {
       console.log(this);
-      $(".dim-layer").fadeOut();
+      $(".je_dim-layer").fadeOut();
     });
 
-    $(".dimBg").click(function () {
-      $(".dim-layer").fadeOut();
+    $(".je_dimBg").click(function () {
+      $(".je_dim-layer").fadeOut();
     });
   });
 });
