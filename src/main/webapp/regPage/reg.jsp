@@ -47,7 +47,7 @@
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							placeholder="  縁結びID" required>
+							placeholder="縁結びID" required>
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 						<!-- <div id="idCheckResult" class="hs_id-available"></div> -->
 					</div>
@@ -55,12 +55,12 @@
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="  パスワード" required>
+							placeholder="パスワード" required>
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="  パスワード(確認)" required>
+							class="hs_input pw" placeholder="パスワード(確認)" required>
 					</div>
 				</div>
 
@@ -72,19 +72,19 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="  山田 太郎" required>
+							placeholder="山田 太郎" required>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="  ヤマダ タロウ" required>
+							placeholder="ヤマダ タロウ" required>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="  Yamada Tarou" required>
+							placeholder="Yamada Tarou" required>
 					</div>
 
 					<div class="hs_content-input">
@@ -110,31 +110,34 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birthY" class="hs_input birth">
+						<input type="text" name="m_birthY" class="hs_input birth"
+							maxlength="4">
 						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birthM" class="hs_input birth">
+						<input type="text" name="m_birthM" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birthD" class="hs_input birth">
+						<input type="text" name="m_birthD" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="  example@example.com" required>
+							placeholder="example@example.com" required>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
 						<input type="text" name="m_phone" class="hs_input phone"
-							placeholder="  012-3456-7890">
+							placeholder="ハイフン(-)なしでご入力ください">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text post">郵便番号</div>
 						<div class="hs_content-text postmark">〒</div>
-						<input type="text" name="a_postcode" id="a_postcode"
-							class="hs_input post" placeholder="  郵便番号">
+						<input type="number" name="a_postcode" id="a_postcode"
+							class="hs_input post" placeholder="郵便番号">
 					</div>
 
 					<div class="hs_content-input">
@@ -196,19 +199,19 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text city">住所</div>
 						<input type="text" name="a_city" id="a_city" class="hs_input city"
-							placeholder="  市区町村">
+							placeholder="市区町村">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text street"></div>
 						<input type="text" name="a_street" id="a_street"
-							class="hs_input street" placeholder="  番地">
+							class="hs_input street" placeholder="番地">
 					</div>
 
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="  ビル・マンション名">
+							class="hs_input building" placeholder="ビル・マンション名">
 					</div>
 
 					<button id="btnReg" class="btn-reg">登録</button>
@@ -218,14 +221,22 @@
 		</form>
 	</div>
 
-
-
-	<div class="go-to-top">
-		<img class="btn-top" alt="" src="top_button.png">
-	</div>
-
-	<a href="javascript:window.history.back();"><button>取消</button></a>
 	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  const registerButton = document.getElementById("registerButton");
+	  
+	  // 入力フィールドに数字のみ許可
+	  document.querySelectorAll('input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthD"], input[name="m_phone"]').forEach(input => {
+	    input.addEventListener("input", function() {
+	      this.value = this.value.replace(/[^0-9]/g, ''); // 数字のみ許可
+	    });
+	  });
+
+	  // 入力フィールドに英字とスペースのみ許可
+	  document.querySelector('input[name="m_name_rome"]').addEventListener("input", function() {
+	    this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); // 英字とスペースのみ許可
+	  });
+	});
 	
 	// 아이디 중복 확인 플래그 초기화
     isIdChecked = false; // 중복 확인 플래그 초기화
@@ -307,7 +318,9 @@
             let m_name_kana = document.getElementsByName('m_name_kana')[0].value.trim();
             let m_name_rome = document.getElementsByName('m_name_rome')[0].value.trim();
             let m_gender = document.querySelector('input[name="m_gender"]:checked');
-            let m_birth = document.getElementsByName('m_birth')[0].value.trim();
+            let m_birthY = document.getElementsByName('m_birthY')[0].value.trim();
+            let m_birthM = document.getElementsByName('m_birthM')[0].value.trim();
+            let m_birthD = document.getElementsByName('m_birthD')[0].value.trim();
             let m_email = document.getElementsByName('m_email')[0].value.trim();
             let a_postcode = document.getElementById('a_postcode').value.trim();
             let a_prefecture = document.getElementsByName('a_prefecture')[0].value.trim();
@@ -318,7 +331,7 @@
             // 모든 필수 입력 필드가 채워져 있는지 확인
             if (m_id !== '' && m_pw !== '' && m_pw_confirm !== '' &&
                 m_name !== '' && m_name_kana !== '' && m_name_rome !== '' &&
-                m_gender !== null && m_birth !== '' && m_email !== '' &&
+                m_gender !== null && m_birthY !== '' && m_birthM !== '' && m_birthD !== '' && m_email !== '' &&
                 a_postcode !== '' && a_prefecture !== '' && a_city !== '' &&
                 a_street !== '' && a_building !== '') {
                 document.getElementById('btnReg').classList.add('btn-reg-complete');
@@ -327,11 +340,6 @@
             }
         }
 
-        // 각 입력 필드에 대한 change 이벤트 리스너 추가
-        let inputs = document.querySelectorAll('.hs_input');
-        inputs.forEach(input => {
-            input.addEventListener('input', checkFormCompletion);
-        });
 	</script>
 
 </body>

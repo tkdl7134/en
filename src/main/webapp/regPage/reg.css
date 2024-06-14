@@ -142,7 +142,7 @@ body {
 .hs_content-text.postmark {
 	position: absolute;
 	left: 0;
-	margin-left: 19rem;
+	margin-left: 18rem;
 	margin-top: 2rem;
 }
 
@@ -160,6 +160,7 @@ body {
 	border: 1.5px solid #ccc;
 	border-radius: 3px;
 	position: relative;
+	padding-left: 1rem;
 }
 
 .hs_input.pw, .hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
@@ -175,7 +176,7 @@ body {
 }
 
 .hs_input.post {
-	width: 18rem;
+	width: 18.5rem;
 	margin-top: 2rem;
 }
 
@@ -200,12 +201,13 @@ body {
 }
 
 .hs_input.prefecture {
-	width: 22.4rem;
+	width: 23.2rem;
 	color: #828282;
 }
 
 .hs_input.birth {
-	width: 4.45rem;
+	width: 4.85rem;
+	padding-left: 0;
 	text-align: center;
 }
 
