@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("regPage/reg.jsp");
+		request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
 
 	}
 

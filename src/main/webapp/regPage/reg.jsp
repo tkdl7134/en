@@ -58,9 +58,9 @@
 							placeholder="  パスワード" required>
 					</div>
 					<div class="hs_content-input pw-confirm">
-						<div class="hs_content-text pwconfirm">パスワード確認</div>
+						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="  パスワード確認" required>
+							class="hs_input pw" placeholder="  パスワード(確認)" required>
 					</div>
 				</div>
 
@@ -110,7 +110,12 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="date" name="m_birth" class="hs_input birth">
+						<input type="text" name="m_birth" class="hs_input birth">
+						<div class="hs_content-text bd">年</div>
+						<input type="text" name="m_birth" class="hs_input birth">
+						<div class="hs_content-text bd">月</div>
+						<input type="text" name="m_birth" class="hs_input birth">
+						<div class="hs_content-text bd">日</div>
 					</div>
 
 					<div class="hs_content-input">

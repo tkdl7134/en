@@ -634,11 +634,11 @@ public class MemberDAO {
 			int result = dao.updateMypage(dto);
 			if (result == 1) {
 				// 수정 성공 처리
-				response.sendRedirect("/En/MemberDetailC"); // 마이페이지 다시 조회 (새로운 정보 반영)
+				response.sendRedirect("HSC"); // 메인 페이지로
 			} else {
 				// 수정 실패 처리
-				request.setAttribute("error", "修正失敗");
-				request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
+				System.out.println("修正失敗");
+				request.getRequestDispatcher("MemberDetailC").forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -695,7 +695,7 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("アカウント情報修正エラー");
-			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
+			request.getRequestDispatcher("MemberUpdateC").forward(request, response);
 		}
 
 	}
