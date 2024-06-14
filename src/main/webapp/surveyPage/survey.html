@@ -404,6 +404,13 @@
     } else {
         $(".next-slide").show();
     }
+    
+    if (currentSlide === slick.slideCount) {
+      console.log('언제걸려222?')
+        $(".next-slide").hide();
+    } else {
+        $(".next-slide").show();
+    }
 
     // document.querySelector('.entry-box-img').click()
 });
@@ -477,7 +484,7 @@
         });
         
     });
-       function selectDiv(div, tf) {
+      function selectDiv(div, tf) {
       console.log(div, tf)
             // 선택된 상태 초기화
             document.querySelectorAll('.entry-box-img, .no-entry-box-img').forEach(item => {
@@ -490,7 +497,7 @@
             // 선택한 텍스트 가져오기
             const selectedText = div.querySelector('.objective').innerText;
 
-         
+        
             if(tf == 1) {
               document.querySelector('.tg-slide-third-page').style.display = 'block';
               document.querySelector('.tg-slide-forth-page').style.display = 'none';
@@ -518,11 +525,13 @@
             event.preventDefault();
             $(".survey-input").slick('slickGoTo', 3);
 
-        } else if (currentSlide==4 && nextSlide === 5) {
-        	console.log('왜 안되는거야!!')
-        	$(".survey-input").slick('slickRemove', 5);
-            event.preventDefault();
-            $(".survey-input").slick('slickGoTo', 3);
+        } else if (currentSlide==3 && nextSlide === 5) {
+        console.log('왜 안되는거야!!')
+        $(".survey-input").slick('slickRemove', 3);
+          event.preventDefault();
+          $(".survey-input").slick('slickGoTo', 4);
+                    console.log('멈춰 by 태곤')
+
             
         }
     });
