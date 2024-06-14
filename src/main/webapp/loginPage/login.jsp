@@ -29,7 +29,7 @@
 			<p class="hs_heading">ログイン</p>
 		</div>
 
-		<form action="MemberC" method="post">
+		<form id="loginForm" action="MemberC" method="post">
 			<div class="hs_container-login-border">
 				<div class="hs_login">
 					<div class="hs_login id">ID</div>
@@ -38,7 +38,7 @@
 					<div class="hs_login pw">パスワード</div>
 					<input type="password" id="m_pw" name="m_pw" placeholder="パスワード"
 						class="hs_input"><br>
-					<button type="submit" class="hs_btn-login" onclick="login()">ログイン</button>
+					<button type="submit" class="hs_btn-login">ログイン</button>
 				</div>
 			</div>
 		</form>
@@ -52,42 +52,47 @@
 		</div>
 	</div>
 	<script>
-		function login() {
-			var id = document.getElementById('m_id').value;
-			var pw = document.getElementById('m_pw').value;
+	$(document).ready(function() {
+	    $('#loginForm').submit(function(event) {
+	        event.preventDefault(); // 기본 폼 제출 방지
 
-			// 입력값이 비어있는지 확인
-			if (id.trim() === '') {
-				alert('ID를 입력해주세요.');
-				return false;
-			}
-			if (pw.trim() === '') {
-				alert('비밀번호를 입력해주세요.');
-				return false;
-			}
+	        var id = $('#m_id').val();
+	        var pw = $('#m_pw').val();
 
-			// 클라이언트에서 처리하는 방법
+	        // 입력값 유효성 검사
+	        if (id.trim() === '') {
+	            alert('IDを入力してください。');
+	            return;
+	        }
+	        if (pw.trim() === '') {
+	            alert('パスワードを入力してください。');
+	            return;
+	        }
 
-			// DB에서 가져온 예시 ID와 비밀번호
-			var dbId = 'm_id'; // 실제로는 DB에서 가져오는 값
-			var dbPw = 'm_pw'; // 실제로는 DB에서 가져오는 값
-
-			// ID와 비밀번호 비교
-			if (id !== dbId) {
-				alert('존재하지 않는 회원입니다.');
-				return false;
-			}
-			if (pw !== dbPw) {
-				alert('비밀번호가 다릅니다.');
-				return false;
-			}
-
-			// 로그인 성공 시 다음 동작을 수행하거나 페이지를 이동합니다.
-			alert('로그인 성공!');
-			// 예를 들어, 로그인 성공 후의 동작을 여기에 추가할 수 있습니다.
-
-			return true; // 로그인 성공
-		}
+	        // 서버로 로그인 요청
+	        $.ajax({
+	            type : 'POST',
+	            url : 'MemberC',
+	            data : {
+	                'm_id' : id,
+	                'm_pw' : pw
+	            },
+	            success : function(response) {
+	                if (response.trim() === 'success') {
+	                    // 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
+	                    window.location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
+	                } else {
+	                    alert('IDまたはPWが一致しません。'); //메시지 출력
+	                    $("#m_id").val(""); 
+	                    $("#m_pw").val(""); 
+	                }
+	            },
+	            error : function() {
+	                alert('서버 오류가 발생했습니다.');
+	            }
+	        });
+	    });
+	});
 	</script>
 
 </body>

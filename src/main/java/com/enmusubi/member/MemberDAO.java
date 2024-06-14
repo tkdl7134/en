@@ -83,19 +83,23 @@ public class MemberDAO {
 				session.setMaxInactiveInterval(600);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
-				System.out.println("성공");
+				System.out.println("로그인 성공");
+				response.getWriter().println("success"); // 성공 메시지를 클라이언트에 보냄
+				
 			} else {
 				// 3-2. 로그인 실패
-				System.out.println("IDまたはPWが一致しません");
-				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
+	            System.out.println("IDまたはPWが一致しません");
+	            // 로그인 실패 시 메시지를 클라이언트에게 전달하고, 새로고침을 유도
+//	            response.getWriter().println("IDまたはPWが一致しません");
+	            response.getWriter().close();
 			}
 		} catch (Exception e) {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
 			System.out.println("DB오류");
-			request.getRequestDispatcher("HSC").forward(request, response); // 로그인 페이지로 다시 포워딩
-		}
-
+	        response.getWriter().println("서버 오류가 발생했습니다."); // 서버 오류 메시지를 클라이언트에 보냄
+	    }
+	    response.getWriter().close(); // 응답 종료
 	}
 
 	// ResultSet -> DTO 변환 (로그인 시)
