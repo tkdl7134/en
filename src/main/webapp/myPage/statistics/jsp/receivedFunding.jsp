@@ -29,7 +29,7 @@
 	<div class="recFund-container">
 		<div class="jh-half-circle">
 		<div class="recFund-title">ファンディング の現状</div>
-		<div style="margin-top: 11rem;" class="kh-f-card-container">
+		<div style="margin-top: 17rem; gap : 10rem;" class="kh-f-card-container">
 			<div class="kh-f-mousemove kh-f-none">
 				<img alt="" src="finance/img/dragbtn.png">
 			</div>

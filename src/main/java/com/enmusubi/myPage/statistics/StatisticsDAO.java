@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.connector.Response;
 
 import com.enmusubi.finance.funding.FundListDTO;
 import com.enmusubi.main.DBManager;
@@ -149,7 +152,7 @@ public class StatisticsDAO {
 			request.setAttribute("rank", rank);
 			request.setAttribute("leftPrice", leftPrice);
 			request.setAttribute("product", wl_product);
-			
+			request.setAttribute("wlno", wl_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -165,7 +168,7 @@ public class StatisticsDAO {
 		
 	}
 
-	public static void getFundData(HttpServletRequest request) {
+	public static void getFundData(HttpServletRequest request, HttpServletResponse response) {
 			
 		String wl_no_param = request.getParameter("wlno");
 		ArrayList<FundListDTO> flists = (ArrayList<FundListDTO>) request.getAttribute("list");
@@ -237,11 +240,14 @@ public class StatisticsDAO {
 			
 			fundedlists.add(fundlist);
 			
-			
 			}
 			System.out.println(fundedlists);
 			request.setAttribute("fund", fundedlists);
 				
+			if (orderParam.equals("M")||orderParam.equals("D")) {
+				
+				FundToJson(request);
+			}
 			
 			// 날짜 구하는 기능
 			   LocalDateTime currentDateTime = LocalDateTime.now();
@@ -270,6 +276,21 @@ public class StatisticsDAO {
 			dbManager.close(con, pstmt, rs);
 			
 		}
+		
+		
+		
+	}
+
+	private static void FundToJson(HttpServletRequest request) {
+			
+		Gson gson = new Gson();
+        String json = gson.toJson(request.getAttribute("fund")); // payDTO 객체 배열을 JSON 문자열로 변환합니다.
+
+        // HttpServletRequest에 JSON 문자열을 "fund"라는 이름의 속성으로 설정합니다.
+        request.setAttribute("fund", json);
+		
+		
+		
 		
 		
 		

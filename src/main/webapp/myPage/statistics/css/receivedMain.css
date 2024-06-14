@@ -23,20 +23,23 @@ body {
 
 #mainbutton {
 
-		width : 5rem;
+		    width: 5rem;
+    margin-right: 95rem;
+    margin-top: 5rem;
 }
 #navi {
 	width: 5rem;
-    
+        margin-left: 95rem;
+    margin-top: 5rem;
 }
 #recMain-title {
         font-size: 2.5rem;
     width: 20rem;
     margin-top: 7rem;
-    margin-left: 1.5rem;
+    margin-left: 4rem;
 }
 #recMain-header {
-	
+	margin-left : 2rem;
 }
 #header-img{
         width: 24rem;
@@ -45,9 +48,9 @@ body {
 #recMain-content{
 	   display: flex;
     margin-top: 14rem;
-    width: 70rem;
+    width: 90rem;
     justify-content: space-evenly;
-    margin-right : 6rem;
+    margin-right : 3rem;
 }
 .box-img{
 	

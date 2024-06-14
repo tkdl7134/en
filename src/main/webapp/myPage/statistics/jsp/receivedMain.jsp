@@ -26,7 +26,7 @@
 		<div onclick="goToAmazon()" class="box-img">
 		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_yellow.png">
 		<div class="texts">
-		<div style="margin-left: 1rem;" class="objective">プレゼント</div>
+		<div style="margin-left: 1.3rem;" class="objective">プレゼント</div>
 		<div class="genjyou">の現状</div>
 		</div>
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_present.png">

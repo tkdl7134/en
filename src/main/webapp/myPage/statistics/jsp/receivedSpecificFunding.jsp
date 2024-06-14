@@ -15,20 +15,102 @@
 $(document).ready(function() {
     let priceChart = null;
     $('#priceChart').css('height', '0');
-    // byMoney 버튼 클릭 시
-    $('#byMoney').on('click', function() {
-        $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
-        $('#byDate').removeClass('active'); // 다른 버튼에서 active 클래스 제거
+    
+    let wlno = $('#fundSpecProduct-wlno').text();
+    
+    
+    $('[id^=MemberInfoPrice]').each(function() {
+        let number = $(this).text();
+        console.log(number);  // 예: "1234567"
 
+        // 문자열을 정수로 변환
+        number = parseInt(number, 10);
+
+        // 쉼표를 추가하여 포맷팅
+        let formattedNumber = number.toLocaleString();
+        console.log(formattedNumber);  // 출력: "1,234,567"
+
+        // 값을 업데이트
+        $(this).text(formattedNumber + '円');
     });
+    
+    
+    
+    // byMoney 버튼 클릭 시
+
+$('#byMoney').on('click', function() {
+    $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
+    $('#byDate').removeClass('active'); // 다른 버튼에서 active 클래스 제거
+
+    $.ajax({
+        url: 'receivedSpecificFundingC?order=M&wlno=' + wlno,
+        success: function(response) {
+            console.log('request accessed', '${fund}');
+                // 기존의 fund 요소들을 제거
+                $('.recSpecMemberInfo').remove();
+                try {
+                    let newFund = JSON.parse('${fund}'); // 서버에서 JSON 문자열을 받아 JavaScript 객체로 변환
+
+                    // 새로운 데이터로 반복문을 통해 UI 업데이트
+                    newFund.forEach(function(f, index) {
+                        let formattedPrice = parseInt(f.p_price, 10).toLocaleString() + '円';
+                        let newItem = `
+                            <div class="recSpecMemberInfo" id="recSpecPriceAndDate">
+                                <div style="border-right: 1px solid;" class="recSpecMemberInfos">${f.m_name}</div>
+                                <div id="MemberInfoPrice${index}" style="border-right: 1px solid;" class="recSpecMemberInfos">${formattedPrice}</div>
+                                <div class="recSpecMemberInfos">${f.p_date}</div>
+                            </div>`;
+                        $('#fundSpec-dataBoard').append(newItem);
+                    });
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
+                }
+             
+        },
+        error: function(xhr, status, error) {
+            console.error('request denied', status, error);
+        }
+    });
+});
+
 
     // byDate 버튼 클릭 시
-    $('#byDate').on('click', function() {
-        $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
-        $('#byMoney').removeClass('active'); // 다른 버튼에서 active 클래스 제거
-	
-        // 다른 코드들...
+   $('#byDate').on('click', function() {
+    $(this).addClass('active'); // 클릭된 버튼에 active 클래스 추가
+    $('#byMoney').removeClass('active'); // 다른 버튼에서 active 클래스 제거
+
+    $.ajax({
+        url: 'receivedSpecificFundingC?order=D&wlno=' + wlno,
+        success: function(response) {
+            console.log('request accessed', '${fund}');
+
+
+                // 기존의 fund 요소들을 제거
+                $('.recSpecMemberInfo').remove();
+                try {
+                    let newFund = JSON.parse('${fund}'); // 서버에서 JSON 문자열을 받아 JavaScript 객체로 변환
+
+                    // 새로운 데이터로 반복문을 통해 UI 업데이트
+                    newFund.forEach(function(f, index) {
+                        let formattedPrice = parseInt(f.p_price, 10).toLocaleString() + '円';
+                        let newItem = `
+                            <div class="recSpecMemberInfo" id="recSpecPriceAndDate">
+                                <div style="border-right: 1px solid;" class="recSpecMemberInfos">${f.m_name}</div>
+                                <div id="MemberInfoPrice${index}" style="border-right: 1px solid;" class="recSpecMemberInfos">${formattedPrice}</div>
+                                <div class="recSpecMemberInfos">${f.p_date}</div>
+                            </div>`;
+                        $('#fundSpec-dataBoard').append(newItem);
+                    });
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
+                }
+        },
+        error: function(xhr, status, error) {
+            console.error('request denied', status, error);
+        }
     });
+});
+
 
     // 페이지 로딩 시 초기 상태 설정 (byMoney를 기본으로 active 상태로 만듦)
     $('#byMoney').addClass('active');
@@ -118,6 +200,7 @@ function GoToTop() {
 <div class="recFundSpec-container">
     <div id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
+    <div id="fundSpecProduct-wlno">${wlno }</div>
     <div id="fundSpecProduct-rank">現在第${rank }位！ </div>
     <div id="fundSpec-leftPrice">✿目標金額まで後${leftPrice }％です✿</div>
     <div id="fundSpec-chartAlert">統計を確認したい場合は、日付を入力してください</div>
@@ -127,7 +210,7 @@ function GoToTop() {
             <input id="startDate" name="startDate" value="${lastWeekDate }" type="date">
             <span style="font-size: 1.6rem; margin-left: 1rem; margin-right: 1rem;">~</span>
             <input id="endDate"  name="endDate"  value="${todayDate }" type="date">
-            <input type="submit" value="Submit">
+            <input id="submit" type="submit" value="確認する">
             <input type="hidden" name="product" value="${product }">
         </form>
     </div>
@@ -135,20 +218,20 @@ function GoToTop() {
 
     <div id="fundSpec-dataBoard-container">
         <div id="fundSpec-arrBtn">
-            <button class="arrButtons	" id="byMoney">金額順</button>
+            <button class="arrButtons" id="byMoney">金額順</button>
             <button class="arrButtons" id="byDate" >日付順</button>
         </div>
         <div id="fundSpec-dataBoard">
             <div id="fundSpec-dataBoard-navi">
-                <div>恩人</div>
-                <div>金額</div>
-                <div>日付</div>
+                <div style="border-right: 1px solid;" class="recSpecMemberInfos">恩人</div>
+                <div style="border-right: 1px solid;" class="recSpecMemberInfos">金額</div>
+                <div class="recSpecMemberInfos">日付</div>
             </div>
             <c:forEach items="${fund }" var="f" varStatus="vs" begin="0">
                 <div class="recSpecMemberInfo" id="recSpecPriceAndDate">
-                    <div style="margin-left: -2rem; ">${f.m_name }</div>
-                    <div style="margin-left: 4rem;"> ${f.p_price }円</div>
-                    <div style="margin-right: -4rem;">${f.p_date }</div>
+                    <div style="border-right: 1px solid;" class="recSpecMemberInfos">${f.m_name }</div>
+                    <div id="MemberInfoPrice${vs.index}" style="border-right: 1px solid;" class="recSpecMemberInfos"> ${f.p_price }</div>
+                    <div class="recSpecMemberInfos">${f.p_date }</div>
                 </div>
             </c:forEach>
         </div>

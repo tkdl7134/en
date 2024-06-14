@@ -2,6 +2,8 @@ package com.enmusubi.myPage.statistics;
 
 import java.util.Date;
 
+import com.google.gson.Gson;
+
 public class payDTO {
 
 	
@@ -99,7 +101,13 @@ public class payDTO {
 	}
 
 
-
+	public String toJSON() {
+		Gson gson = new Gson();
+		return gson.toJson(this);
+			
+		
+		
+	}
 	
 	
 }

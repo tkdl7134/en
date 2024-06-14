@@ -78,11 +78,19 @@ body {
     text-align: center;
     font-size: 1.2rem;
 }
+#submit{
+	background-color: white;
+    width: 5rem;
+    height: 3rem;
+    margin-left: 3rem;
+    font-family: "Noto Serif JP", serif;
+    font-size : 1rem;
+}
 #priceChart {
     width: 600px;
 }
 #fundSpec-dataBoard-container {
-	
+	    margin-top: 5rem;
     width: 50rem;
     height: 35rem;
 	 border: 0.0625rem solid #ff7e81;
@@ -107,6 +115,9 @@ body {
 #fundSpec-arrBtn{
 	margin-bottom: 1rem;
     margin-top: 1rem;
+    display : flex;
+    justify-content: end;
+    margin-right: 3rem;
 	
 }
 .arrButtons {
@@ -120,7 +131,18 @@ body {
     color: black;
     transition: background-color 0.3s, color 0.3s;
 }
-
+#byMoney {
+	margin-right: 1rem;
+	
+	
+}
+.recSpecMemberInfos{
+	
+    width: 14rem;
+    text-align: center;
+	
+	
+}
 .arrButtons:hover{
     background-color: #ff3b3f;
     color: white;

@@ -20,7 +20,7 @@ public class receivedSpecificFundingC extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		fundDAO.selectFundList(request, response);
 		StatisticsDAO.getProductRanking(request);
-		StatisticsDAO.getFundData(request);
+		StatisticsDAO.getFundData(request , response);
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedSpecificFunding.jsp").forward(request, response);
 		
 	
