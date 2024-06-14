@@ -110,11 +110,11 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birth" class="hs_input birth">
+						<input type="text" name="m_birthY" class="hs_input birth">
 						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birth" class="hs_input birth">
+						<input type="text" name="m_birthM" class="hs_input birth">
 						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birth" class="hs_input birth">
+						<input type="text" name="m_birthD" class="hs_input birth">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
