@@ -47,7 +47,7 @@
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" required>
+							placeholder="縁結びID">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 						<!-- <div id="idCheckResult" class="hs_id-available"></div> -->
 					</div>
@@ -55,12 +55,12 @@
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード" required>
+							placeholder="パスワード">
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)" required>
+							class="hs_input pw" placeholder="パスワード(確認)">
 					</div>
 				</div>
 
@@ -72,19 +72,19 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎" required>
+							placeholder="山田 太郎">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ" required>
+							placeholder="ヤマダ タロウ">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou" required>
+							placeholder="Yamada Tarou">
 					</div>
 
 					<div class="hs_content-input">
@@ -124,7 +124,7 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" required>
+							placeholder="example@example.com">
 					</div>
 
 					<div class="hs_content-input">
@@ -136,7 +136,7 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text post">郵便番号</div>
 						<div class="hs_content-text postmark">〒</div>
-						<input type="number" name="a_postcode" id="a_postcode"
+						<input type="text" name="a_postcode" id="a_postcode"
 							class="hs_input post" placeholder="郵便番号">
 					</div>
 
@@ -211,10 +211,10 @@
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名">
+							class="hs_input building" placeholder="ビル・マンション名など">
 					</div>
 
-					<button id="btnReg" class="btn-reg">登録</button>
+					<button id="btnReg" class="btn-reg" onclick="register()">登録</button>
 
 				</div>
 			</div>
@@ -238,6 +238,40 @@
 	  });
 	});
 	
+	function checkForm() {
+	    let m_id = $("#m_id").val().trim();
+	    let m_pw = $("#m_pw").val().trim();
+	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
+	    let m_name = $("input[name='m_name']").val().trim();
+	    let m_name_kana = $("input[name='m_name_kana']").val().trim();
+	    let m_name_rome = $("input[name='m_name_rome']").val().trim();
+	    let m_gender = $("input[name='m_gender']:checked").val();
+	    let m_birthY = $("input[name='m_birthY']").val().trim();
+	    let m_birthM = $("input[name='m_birthM']").val().trim();
+	    let m_birthD = $("input[name='m_birthD']").val().trim();
+	    let m_email = $("input[name='m_email']").val().trim();
+	    let m_phone = $("input[name='m_phone']").val().trim();
+	    let a_postcode = $("#a_postcode").val().trim();
+	    let a_prefecture = $("#a_prefecture").val();
+	    let a_city = $("#a_city").val().trim();
+	    let a_street = $("#a_street").val().trim();
+
+	    // 필수 입력란 체크
+	    if (m_id === '' || m_pw === '' || m_pw_confirm === '' || m_name === '' || m_name_kana === '' || 
+	        m_name_rome === '' || !m_gender || m_birthY === '' || m_birthM === '' || m_birthD === '' || 
+	        m_email === '' || m_phone === '' || a_postcode === '' || a_prefecture === '' || a_city === '' || 
+	        a_street === '') {
+	        // 하나라도 비어 있는 경우
+	        $("#btnReg").removeClass("btn-reg-complete");
+	    } else {
+	        // 모든 필수 항목이 입력된 경우
+	        $("#btnReg").addClass("btn-reg-complete");
+	    }
+	}
+
+	// 입력란이 변경될 때마다 확인
+	$("input, select").on("change keyup", checkForm);
+	
 	// 아이디 중복 확인 플래그 초기화
     isIdChecked = false; // 중복 확인 플래그 초기화
     isIdAvailable = false; // 사용 가능 플래그 초기화
@@ -250,15 +284,11 @@
 				alert("パスワードが一致しません。");
 				return false; // 폼 제출 방지
 			}
-
 			return true; // 폼 제출 허용
-				
 		}
 		
         function dupleChk(){
         	isIdChecked = false; // 중복 확인 플래그 초기화
-        	
-
         	
             let id = $("input[name='m_id']").val().trim();
             console.log(id);
@@ -304,42 +334,110 @@
                         console.log(jqXHR);
                         console.log(textStatus);
                         console.log(errorThrown)
-                        
                     }
                  });
             }
+			
+
+function register() {
+	// 필수 입력 항목들을 확인
+    let m_id = $("#m_id").val().trim();
+    let m_pw = $("#m_pw").val().trim();
+    let m_pw_confirm = $("#m_pw_confirm").val().trim();
+    let m_name = $("input[name='m_name']").val().trim();
+    let m_name_kana = $("input[name='m_name_kana']").val().trim();
+    let m_name_rome = $("input[name='m_name_rome']").val().trim();
+    let m_gender = $("input[name='m_gender']:checked").val();
+    let m_birthY = $("input[name='m_birthY']").val().trim();
+    let m_birthM = $("input[name='m_birthM']").val().trim();
+    let m_birthD = $("input[name='m_birthD']").val().trim();
+    let m_email = $("input[name='m_email']").val().trim();
+    let m_phone = $("input[name='m_phone']").val().trim();
+    let a_postcode = $("#a_postcode").val().trim();
+    let a_prefecture = $("#a_prefecture").val();
+    let a_city = $("#a_city").val().trim();
+    let a_street = $("#a_street").val().trim();
+
+    // 필수 입력란 체크
+    if (m_id === '') {
+    alert("IDを入力してください。");
+    $("#m_id").focus();
+    return false;
+}
+if (m_pw === '') {
+    alert("パスワードを入力してください。");
+    $("#m_pw").focus();
+    return false;
+}
+if (m_pw_confirm === '') {
+    alert("パスワード（確認）を入力してください。");
+    $("#m_pw_confirm").focus();
+    return false;
+}
+if (m_name === '') {
+    alert("名前を入力してください。");
+    $("input[name='m_name']").focus();
+    return false;
+}
+if (m_name_kana === '') {
+    alert("フリガナを入力してください。");
+    $("input[name='m_name_kana']").focus();
+    return false;
+}
+if (m_name_rome === '') {
+    alert("名前（ローマ字）を入力してください。");
+    $("input[name='m_name_rome']").focus();
+    return false;
+}
+if (!m_gender) {
+    alert("性別を選択してください。");
+    $("input[name='m_gender']").focus();
+    return false;
+}
+if (m_birthY === '' || m_birthM === '' || m_birthD === '') {
+    alert("生年月日をすべて入力してください。");
+    $("input[name='m_birthY']").focus();
+    return false;
+}
+if (m_email === '') {
+    alert("メールアドレスを入力してください。");
+    $("input[name='m_email']").focus();
+    return false;
+}
+if (m_phone === '') {
+    alert("電話番号を入力してください。");
+    $("input[name='m_phone']").focus();
+    return false;
+}
+if (a_postcode === '') {
+    alert("郵便番号を入力してください。");
+    $("#a_postcode").focus();
+    return false;
+}
+if (a_prefecture === '') {
+    alert("都道府県を選択してください。");
+    $("#a_prefecture").focus();
+    return false;
+}
+if (a_city === '') {
+    alert("市区町村を入力してください。");
+    $("#a_city").focus();
+    return false;
+}
+if (a_street === '') {
+    alert("番地を入力してください。");
+    $("#a_street").focus();
+    return false;
+}
+
+if (!isIdChecked || !isIdAvailable) {
+    alert("IDのチェックを行ってください。");
+    $("#m_id").focus(); 
+    return false;
+}
+
+}
         
-        function checkFormCompletion() {
-            // 각 필수 입력 필드에 대한 값 가져오기
-            let m_id = document.getElementById('m_id').value.trim();
-            let m_pw = document.getElementById('m_pw').value.trim();
-            let m_pw_confirm = document.getElementById('m_pw_confirm').value.trim();
-            let m_name = document.getElementsByName('m_name')[0].value.trim();
-            let m_name_kana = document.getElementsByName('m_name_kana')[0].value.trim();
-            let m_name_rome = document.getElementsByName('m_name_rome')[0].value.trim();
-            let m_gender = document.querySelector('input[name="m_gender"]:checked');
-            let m_birthY = document.getElementsByName('m_birthY')[0].value.trim();
-            let m_birthM = document.getElementsByName('m_birthM')[0].value.trim();
-            let m_birthD = document.getElementsByName('m_birthD')[0].value.trim();
-            let m_email = document.getElementsByName('m_email')[0].value.trim();
-            let a_postcode = document.getElementById('a_postcode').value.trim();
-            let a_prefecture = document.getElementsByName('a_prefecture')[0].value.trim();
-            let a_city = document.getElementById('a_city').value.trim();
-            let a_street = document.getElementById('a_street').value.trim();
-            let a_building = document.getElementById('a_building').value.trim();
-
-            // 모든 필수 입력 필드가 채워져 있는지 확인
-            if (m_id !== '' && m_pw !== '' && m_pw_confirm !== '' &&
-                m_name !== '' && m_name_kana !== '' && m_name_rome !== '' &&
-                m_gender !== null && m_birthY !== '' && m_birthM !== '' && m_birthD !== '' && m_email !== '' &&
-                a_postcode !== '' && a_prefecture !== '' && a_city !== '' &&
-                a_street !== '' && a_building !== '') {
-                document.getElementById('btnReg').classList.add('btn-reg-complete');
-            } else {
-                document.getElementById('btnReg').classList.remove('btn-reg-complete');
-            }
-        }
-
 	</script>
 
 </body>
