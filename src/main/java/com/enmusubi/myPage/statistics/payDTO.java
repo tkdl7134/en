@@ -100,14 +100,6 @@ public class payDTO {
 				+ wl_no + ", p_date=" + p_date + ", m_name=" + m_name + "]";
 	}
 
-
-	public String toJSON() {
-		Gson gson = new Gson();
-		return gson.toJson(this);
-			
-		
-		
-	}
 	
 	
 }

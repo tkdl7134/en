@@ -18,11 +18,12 @@ public class receivedSpecificFundingC extends HttpServlet {
 		
 	//	com.enmusubi.finance.funding.fundDAO.selectFundList(request, response);
 		response.setCharacterEncoding("utf-8");
-		fundDAO.selectFundList(request, response);
+		response.setContentType("application/json");
+		StatisticsDAO.getAjaxData(request, response);
 		StatisticsDAO.getProductRanking(request);
 		StatisticsDAO.getFundData(request , response);
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedSpecificFunding.jsp").forward(request, response);
-		
+
 	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

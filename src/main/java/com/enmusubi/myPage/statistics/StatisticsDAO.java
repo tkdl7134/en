@@ -1,5 +1,6 @@
 package com.enmusubi.myPage.statistics;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ import com.enmusubi.finance.funding.FundListDTO;
 import com.enmusubi.main.DBManager;
 import com.enmusubi.member.MemberDTO;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -201,6 +203,7 @@ public class StatisticsDAO {
 		DBManager dbManager = DBManager.getInstance();
 		String order = "M";
 		String orderParam = request.getParameter("order");
+		System.out.println(request.getParameter("order"));
 		String sql = null;
 		if (orderParam != null && orderParam.equals("D")) {
 			order = "D";
@@ -244,10 +247,6 @@ public class StatisticsDAO {
 			System.out.println(fundedlists);
 			request.setAttribute("fund", fundedlists);
 				
-			if (orderParam.equals("M")||orderParam.equals("D")) {
-				
-				FundToJson(request);
-			}
 			
 			// 날짜 구하는 기능
 			   LocalDateTime currentDateTime = LocalDateTime.now();
@@ -270,6 +269,15 @@ public class StatisticsDAO {
 		        System.out.println("7 days ago: " + formattedDateTime2);
 		        request.setAttribute("lastWeekDate", formattedDateTime2);
 					
+		        if (orderParam!=null&&orderParam.equals("M")||orderParam.equals("D")) {
+		        	
+		        	Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+					String json = gson.toJson(fundedlists);
+					System.out.println(json);
+					response.getWriter().print(json);
+		        }else {
+		        	
+		        }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -281,19 +289,68 @@ public class StatisticsDAO {
 		
 	}
 
-	private static void FundToJson(HttpServletRequest request) {
+	private static void FundToJson(HttpServletRequest request, HttpServletResponse response) throws IOException {
 			
-		Gson gson = new Gson();
-        String json = gson.toJson(request.getAttribute("fund")); // payDTO 객체 배열을 JSON 문자열로 변환합니다.
+		  Gson gson = new Gson();
 
-        // HttpServletRequest에 JSON 문자열을 "fund"라는 이름의 속성으로 설정합니다.
-        request.setAttribute("fund", json);
+		    // fund 속성으로부터 ArrayList<payDTO> 객체를 가져옵니다.
+		    @SuppressWarnings("unchecked")
+		    ArrayList<payDTO> fundedlists = (ArrayList<payDTO>) request.getAttribute("fund");
+
+		    // payDTO 객체들을 JSON으로 변환하는 과정
+		    ArrayList<String> jsonList = new ArrayList<>();
+		    for (payDTO fundlist : fundedlists) {
+		        String json = gson.toJson(fundlist); // 각 payDTO 객체를 JSON 문자열로 변환합니다.
+		        jsonList.add(json); // 변환된 JSON 문자열을 리스트에 추가합니다.
+		    }
+
+		    // 전체 리스트를 JSON 배열 형태의 문자열로 변환합니다.
+		    String jsonArray = gson.toJson(fundedlists);
+		    System.out.println("this>>"+jsonArray);
+		    response.getWriter().print(jsonArray);
+		    // 변환된 JSON 배열을 "fund"라는 이름의 속성으로 HttpServletRequest에 설정합니다.
+		    //request.setAttribute("fund", jsonArray);
+
+		    //System.out.println(jsonArray); // JSON 출력 (테스트 용도)
 		
 		
 		
-		
-		
-		
+	}
+
+	public static void getAjaxData(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT wl_no,wl_price,WL_PRODUCT,E_NO ,(SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO) payed, FLOOR(((SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO)/WL_PRICE)*100) percent  FROM S_WISHLIST sw WHERE e_NO =? ORDER BY WL_PRICE desc";
+		DBManager dbManager = DBManager.getInstance();
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			// 이벤트 파라미터 받게되면 활성화
+			// pstmt.setString(1, request.getParameter("eno"));
+			pstmt.setString(1, "1");
+			rs = pstmt.executeQuery();
+			ArrayList<FundListDTO> flists = new ArrayList<FundListDTO>();
+			while (rs.next()) {
+				FundListDTO fldto = new FundListDTO();
+				fldto.setWl_no(rs.getString("wl_no"));
+				fldto.setWl_product(rs.getString("wl_product"));
+				fldto.setWl_price(rs.getString("wl_price"));
+				fldto.setE_no(rs.getString("e_no"));
+				fldto.setPayed(rs.getString("payed"));
+				fldto.setPercent(rs.getString("percent"));
+				flists.add(fldto);
+			}
+			System.out.println(flists);
+			request.setAttribute("list", flists);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("server err...");
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+
 	}
 	
 	
