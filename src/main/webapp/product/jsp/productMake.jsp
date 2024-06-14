@@ -28,7 +28,7 @@
         <div class="je_product-make-page-title">
           <div class="je_page-title">テンプレート 制作</div>
           <div class="je_page-title-line">
-            <img src=".product/imgFolder/pageTop_line.png" alt="" />
+            <img src="product/imgFolder/pageTop_line.png" alt="" />
           </div>
         </div>
         <!-- content -->

@@ -155,6 +155,8 @@ body {
 .je_pop-layer .je_pop-container {
   padding: 20px 25px;
   z-index: 300;
+  height: 40rem;
+  overflow: auto;
 }
 
 .je_pop-layer p.ctxt {
@@ -210,16 +212,25 @@ body {
   display: block;
 }
 
+.je_btn-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 a.je_btn-layerClose {
   display: inline-block;
-  height: 1.5rem;
-  padding: 0 0.8rem 0;
+  width: 3rem;
+  height: 2rem;
+  padding: 0.4rem 0.8rem 0;
   border: 0.1rem solid #c82626;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 5px #c82626;
   background-color: #c82626;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
   text-decoration: none;
 }
 
@@ -227,4 +238,15 @@ a.je_btn-layerClose:hover {
   border: 1px solid #c82626;
   background-color: #fff;
   color: #c82626;
+  transition: 0.5s;
 }
+
+.je_pop-image {
+  /* 템플릿샘플 길이만큼 변경 */
+  height: 100rem;
+  width: 90%;
+}
+.je_pop-image > img {
+  width: 100%;
+}
+ 
