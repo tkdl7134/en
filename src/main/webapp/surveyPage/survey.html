@@ -55,13 +55,13 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" onclick="selectDiv(this)">
+									<div class="entry-box-img" onclick="selectDiv(this, 1)">
 										<div class="texts">
 											<div class="objective">出席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/yesline.png">
 									</div>
-									<div class="no-entry-box-img" onclick="selectDiv(this)">
+									<div class="no-entry-box-img" onclick="selectDiv(this, 0)">
 										<div class="texts">
 											<div style="margin-left: 1rem;" class="objective">欠席</div>
 										</div>
@@ -329,7 +329,29 @@
 
 								</div>
 
-							</div>
+							</div> 
+
+              <div>
+
+              <div class="tg-slide-forth-page">
+
+                <div class="reject-notes-container">
+									  <div style="line-height: 3rem; font-size: 1.5rem;">
+										お断り·お祝いメッセージ
+										<div><textarea style="font-size: 1.3rem" id="special-notes"
+											name="special-notes" placeholder="ご結婚、誠におめでとうございます。 残念ですが.."></textarea>
+                      </div>
+									</div>
+
+                  <button type="submit" class="tg-survey-button">
+										<span>送信</span>
+									</button>
+
+              </div>
+
+						</div>
+
+              </div>
 
 						</div>
 
@@ -350,9 +372,8 @@
 </body>
 
 <script>
-    
-    $(document).ready(function () {
-      $(".survey-input").slick({
+    function slickSlide(){
+        $(".survey-input").slick({
         infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -361,23 +382,33 @@
         nextArrow: $(".next-slide")
       });
 
-      // Show/Hide navigation buttons
-      $(".survey-input").on("afterChange", function (event, slick, currentSlide) {
-        if (currentSlide === 0) {
-          $(".prev-slide").hide();
-        } else {
-          $(".prev-slide").show();
-        }
 
-        if (currentSlide === slick.slideCount - 1) {
-          $(".next-slide").hide();
-        } else {
-          $(".next-slide").show();
-        }
-      });
+//$(".survey-input").slick("slickGoTo", 0); // 처음에 첫 번째 슬라이드로 이동ove to the first slide
 
-      $(".survey-input").slick("slickGoTo", 0); // Move to the first slide
-    });
+    }
+    $(document).ready(function () {
+      $(".entry-box-img").click();
+      slickSlide();
+
+    $(".survey-input").on("afterChange", function (event, slick, currentSlide) {
+    if (currentSlide === 0) {
+        $(".prev-slide").hide();
+    } else {
+        $(".prev-slide").show();
+    }
+    console.log('current : ' + currentSlide);
+    console.log('cnt : ' + slick.slideCount);
+    if (currentSlide === slick.slideCount - 1) {
+      console.log('언제걸려?')
+        $(".next-slide").hide();
+    } else {
+        $(".next-slide").show();
+    }
+
+    // document.querySelector('.entry-box-img').click()
+});
+
+});
 
     function count(type, inputId) {
   const resultElement = document.getElementById(inputId);
@@ -446,8 +477,8 @@
         });
         
     });
-    
-    function selectDiv(div) {
+       function selectDiv(div, tf) {
+      console.log(div, tf)
             // 선택된 상태 초기화
             document.querySelectorAll('.entry-box-img, .no-entry-box-img').forEach(item => {
                 item.classList.remove('selected');
@@ -459,8 +490,44 @@
             // 선택한 텍스트 가져오기
             const selectedText = div.querySelector('.objective').innerText;
 
+         
+            if(tf == 1) {
+              document.querySelector('.tg-slide-third-page').style.display = 'block';
+              document.querySelector('.tg-slide-forth-page').style.display = 'none';
+              console.log('true');
+              } else {
+                document.querySelector('.tg-slide-third-page').style.display = 'none';
+                console.log( document.querySelector('.tg-slide-third-page').style.display = 'none !important')
+                document.querySelector('.tg-slide-forth-page').style.display = 'block';
+                console.log('false')
             }
-    
+
+
+
+    var preventLastSlide = false;
+    var skipFourthSlide = false;
+
+  
+
+    $(".survey-input").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+      console.log(currentSlide)
+      console.log(nextSlide)
+        if (currentSlide==3 && nextSlide == 4) {
+          console.log('없어줘~~')
+          $(".survey-input").slick('slickRemove', 4);
+            event.preventDefault();
+            $(".survey-input").slick('slickGoTo', 3);
+
+        } else if (currentSlide==4 && nextSlide === 5) {
+        	console.log('왜 안되는거야!!')
+        	$(".survey-input").slick('slickRemove', 5);
+            event.preventDefault();
+            $(".survey-input").slick('slickGoTo', 3);
+            
+        }
+    });
+  }
+
   </script>
 
 </html>
