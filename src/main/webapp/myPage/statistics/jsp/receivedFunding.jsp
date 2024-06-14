@@ -29,11 +29,12 @@
 	<div class="recFund-container">
 		<div class="jh-half-circle">
 		<div class="recFund-title">ファンディング の現状</div>
-		<div class="kh-f-card-container">
+		<div style="margin-top: 11rem;" class="kh-f-card-container">
 			<div class="kh-f-mousemove kh-f-none">
 				<img alt="" src="finance/img/dragbtn.png">
 			</div>
 			<div class="kh-f-card-fake"></div>
+		
 		</div>
 		</div>
 	</div>

@@ -15,19 +15,32 @@ body {
 
 
 .recFund-container {
-	overflow : hidden; 
 	height:100vh;
-	background-image: url("../imgFolder/fundBackground-withoutTitle.png");
 	background-position: top center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	
+	background-color : pink;
+	background-image : url(../imgFolder/halfCircle2.png)
 	
 }
+.jh-half-circle{
+	 width: 116rem;
+    height: 90vh; /* 높이는 반원이 되도록 합니다 */
+    border-top-left-radius: 60rem;
+    border-top-right-radius: 60rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+	top: 5rem;
+}
+
 .recFund-title {
-	font-size : 1.7rem;
-	margin-left: 38.9rem;
-    margin-top: 6rem;
+	font-size: 1.7rem;
+    margin-left: 48.9rem;
+    margin-top: 3rem;
 	
 }
 .fundProduct-img {
