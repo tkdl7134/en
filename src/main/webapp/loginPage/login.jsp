@@ -15,6 +15,20 @@
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style type="text/css">
+.swal2-popup {
+	background-color: #FFF5F4 !important; /* 배경색 설정 */
+}
+
+.swal2-confirm {
+	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
+	color: white !important; /* 텍스트 색상 */
+
+}
+</style>
+
 </head>
 <body class="hs_body">
 	<div class="hs_background">
@@ -51,48 +65,81 @@
 				src="loginPage/ImgFolder/yellow_line.png">
 		</div>
 	</div>
+
+
 	<script>
-	$(document).ready(function() {
-	    $('#loginForm').submit(function(event) {
-	        event.preventDefault(); // 기본 폼 제출 방지
+		$(document).ready(function() {
+			$('#loginForm').submit(function(event) {
+				event.preventDefault(); // 기본 폼 제출 방지
 
-	        var id = $('#m_id').val();
-	        var pw = $('#m_pw').val();
+				var id = $('#m_id').val();
+				var pw = $('#m_pw').val();
 
-	        // 입력값 유효성 검사
-	        if (id.trim() === '') {
-	            alert('IDを入力してください。');
-	            return;
-	        }
-	        if (pw.trim() === '') {
-	            alert('パスワードを入力してください。');
-	            return;
-	        }
+				// 입력값 유효성 검사
+				if (id.trim() === '') {
+					Swal.fire({
+						icon: 'warning',
+						title : 'IDを入力してください。',
+						/*  text: 'IDを入力してください。', */
+						customClass : {
+							popup : 'swal2-popup',
+							confirmButton : 'swal2-confirm'
+						}
+					});
+					return;
+				}
+				if (pw.trim() === '') {
+					Swal.fire({
+						icon: 'warning',
+						title : 'パスワードを入力してください。',
+						/*  text: 'パスワードを入力してください。', */
+						customClass : {
+							confirmButton : 'swal2-confirm'
+						}
+					});
+					return;
+				}
 
-	        // 서버로 로그인 요청
-	        $.ajax({
-	            type : 'POST',
-	            url : 'MemberC',
-	            data : {
-	                'm_id' : id,
-	                'm_pw' : pw
-	            },
-	            success : function(response) {
-	                if (response.trim() === 'success') {
-	                    // 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
-	                    window.location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
-	                } else {
-	                    alert('IDまたはPWが一致しません。'); //메시지 출력
-	                    $("#m_id").val(""); 
-	                    $("#m_pw").val(""); 
-	                }
-	            },
-	            error : function() {
-	                alert('서버 오류가 발생했습니다.');
-	            }
-	        });
-	    });
-	});
+				// 서버로 로그인 요청
+				$.ajax({
+					type : 'POST',
+					url : 'MemberC',
+					data : {
+						'm_id' : id,
+						'm_pw' : pw
+					},
+					success : function(response) {
+						if (response.trim() === 'success') {
+							// 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
+							window.location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
+						} else {
+							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
+							Swal.fire({
+								icon: 'warning',
+								title : 'IDまたはPWが一致しません。',
+								/*  text: 'IDまたはPWが一致しません。', */
+								customClass : {
+									confirmButton : 'swal2-confirm'
+								}
+							});
+							$("#m_id").val("");
+							$("#m_pw").val("");
+						}
+					},
+					error : function() {
+						/* alert('サーバーエラーが発生しました。'); */
+						Swal.fire({
+							icon: 'error',
+							title : 'サーバーエラーが発生しました。',
+							/*  text: 'サーバーエラーが発生しました。', */
+							customClass : {
+								confirmButton : 'swal2-confirm'
+							}
+						});
+					}
+				});
+			});
+		});
 	</script>
 
 </body>

@@ -97,7 +97,7 @@ public class MemberDAO {
 			// 3-3. 데이터베이스 오류 발생
 			e.printStackTrace();
 			System.out.println("DB오류");
-	        response.getWriter().println("서버 오류가 발생했습니다."); // 서버 오류 메시지를 클라이언트에 보냄
+	        response.getWriter().println("サーバーエラーが発生しました。"); // 서버 오류 메시지를 클라이언트에 보냄
 	    }
 	    response.getWriter().close(); // 응답 종료
 	}
@@ -544,8 +544,10 @@ public class MemberDAO {
 		System.out.println(m_id);
 		// 입력값 유효성 검사
 		if (m_id == null || m_id.trim().isEmpty()) {
-			request.setAttribute("error", "IDを入力してください");
+		    request.setAttribute("error", "IDを入力してください");
+		    // 추가 작업이 필요할 수 있음
 		} else {
+		    // 이어서 처리
 			MemberDAO dao = new MemberDAO();
 			try {
 				boolean isDuplicate = dao.isMemberIdDuplicate(m_id);
@@ -562,11 +564,11 @@ public class MemberDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				request.setAttribute("error", "データベースエラー");
-			}
+			} 
 		}
-
 	}
 
+	
 	public static void MemberLogoutC(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false); // 기존 세션 가져오기 (없으면 null 반환)
 		if (session != null) {

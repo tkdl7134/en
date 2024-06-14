@@ -131,7 +131,8 @@
 	transition: background-color 0.3s ease;
 	font-family: 'Noto Serif JP', serif;
 	font-weight: bolder;
-	font-size: 1.1rem; display : flex;
+	font-size: 1.1rem;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -164,3 +165,4 @@ a.hs_link:hover {
 	margin-top: 20px;
 	text-align: center;
 }
+
