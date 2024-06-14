@@ -1,36 +1,4 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const sections = document.querySelectorAll(".yj-main-section");
-//   console.log(sections);
-//   let currentSection = 0;
-
-//   const showSection = (index) => {
-//     sections.forEach((section, i) => {
-//       section.style.transform = `translateY(${(i - index) * 100}vh)`;
-//     });
-//   };
-
-//   showSection(currentSection);
-
-//   const handleScroll = (event) => {
-//     console.log("scrolling..");
-//     if (event.deltaY > 0) {
-//       // Scrolling down
-//       if (currentSection < sections.length - 1) {
-//         currentSection++;
-//         showSection(currentSection);
-//       }
-//     } else {
-//       // Scrolling up
-//       if (currentSection > 0) {
-//         currentSection--;
-//         showSection(currentSection);
-//       }
-//     }
-//   };
-
-//   window.addEventListener("wheel", handleScroll);
-// });
-
+// Full Page Scroll
 const sections = document.querySelectorAll(".yj-main-section");
 let currentSectionIndex = 0;
 let isThrottled = false;
@@ -67,4 +35,70 @@ document.addEventListener("wheel", function (event) {
     // 스크롤 업
     throttle(goToPrevSection, 1000);
   }
+});
+
+// 배경 이미지  슬라이드
+function slickStart() {
+  $(".yj-main-s2-bg").css(
+    "background-image",
+    "url('imgFolder/yj-main-s2-img1.png')"
+  );
+  // 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
+  $(".yj-main-s2-list").on(
+    "beforeChange",
+    function (event, slick, currentSlide, nextSlide) {
+      console.log(currentSlide);
+      // 각 슬라이드의 배경 이미지 URL을 설정할 배열
+      var bgImageUrls = [
+        "imgFolder/yj-main-s2-img1.png",
+        "imgFolder/yj-main-s2-img2.png",
+        "imgFolder/yj-main-s2-img3.png",
+        "imgFolder/yj-main-s2-img4.png",
+        "imgFolder/yj-main-s2-img5.png",
+        "imgFolder/yj-main-s2-img6.png",
+        // 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
+      ];
+      // 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
+      var nextBackgroundImage = bgImageUrls[nextSlide];
+      console.log(nextBackgroundImage);
+
+      // 배경 이미지 변경
+      $(".yj-main-s2-bg").css(
+        "background-image",
+        "url('" + nextBackgroundImage + "')"
+      );
+    }
+  );
+}
+
+// Single Item Slide
+$(document).ready(function () {
+  $(".yj-main-s2-list").slick({
+    autoplay: true,
+    autoplaySpeed: 2000,
+    fade: true,
+    infinite: true,
+    centerMode: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: "40px",
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: "40px",
+          slidesToShow: 1,
+        },
+      },
+    ],
+  });
+  //slickStart();
 });

@@ -10,7 +10,15 @@ body {
 .yj-main-section {
   /* 뷰포트 전체를 채우도록 설정 */
   height: 100vh;
-  /* transition: transform 1s ease-in-out; Smooth transition */
+}
+
+/* Section 1 */
+#yj-main-s1 {
+  background-color: #fffbf7;
+}
+
+.yj-main-s1-musubi img {
+  width: 100%;
 }
 
 .yj-main-s1-icon {
@@ -24,7 +32,6 @@ body {
   /* size */
   width: 10rem;
   height: 10rem;
-
   /* style */
   border-radius: 100%;
   box-shadow: 0 5px 5px 5px #fd5356;
@@ -46,7 +53,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   height: 200px;
@@ -82,34 +89,85 @@ body {
   }
 }
 
-.yj-main-section:nth-child(1) {
-  background-color: #1d3d67;
+/* Section 2 */
+#yj-main-s2 {
+  z-index: 1;
+  position: relative;
+  background-color: #fff5f4;
 }
 
-.yj-main-section:nth-child(2) {
-  background-color: #9fff7c;
+.yj-main-s2-bg {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("imgFolder/yj-main-s2-img1.png");
+  background: center;
+  background-repeat: no-repeat;
 }
 
-.yj-main-section:nth-child(3) {
+.yj-main-s2-bg img {
+  width: 100%;
+}
+
+/* Slick slider arrows hidden */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+.yj-main-s2-list {
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.slick-initialized .slick-slide {
+  display: flex !important;
+}
+
+.slick-track {
+  height: 100vh;
+}
+
+.yj-main-s2-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.yj-main-s2-img > img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+/* Section 3 */
+#yj-main-s3 {
   background-color: #20c7dd;
 }
 
-.yj-main-section:nth-child(4) {
+/* Section 4 */
+#yj-main-s4 {
   background-color: #2030dd;
 }
 
-.yj-main-section:nth-child(5) {
+/* Section 5 */
+#yj-main-s5 {
   background-color: #faf865;
 }
 
-.yj-main-section:nth-child(6) {
+/* Section 6 */
+#yj-main-s6 {
   background-color: #9e65fa;
 }
 
-.yj-main-section:nth-child(7) {
+/* Section 7 */
+#yj-main-s7 {
   background-color: #fa65e1;
-}
-
-img {
-  width: 100%;
 }
