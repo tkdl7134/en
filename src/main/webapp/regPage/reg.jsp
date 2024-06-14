@@ -19,6 +19,19 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="regPage/reg.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style type="text/css">
+.swal2-popup {
+	background-color: #FFF5F4 !important; /* 배경색 설정 */
+}
+
+.swal2-confirm {
+	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
+	color: white !important; /* 텍스트 색상 */
+}
+</style>
 </head>
 
 <body class="hs_body">
@@ -110,14 +123,14 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birthY" class="hs_input birth"
-							maxlength="4">
+						<input type="number" name="m_birthY" class="hs_input birth"
+							maxlength="4" min="1" max="9999">
 						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birthM" class="hs_input birth"
-							maxlength="2">
+						<input type="number" name="m_birthM" class="hs_input birth"
+							maxlength="2" min="1" max="12">
 						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birthD" class="hs_input birth"
-							maxlength="2">
+						<input type="number" name="m_birthD" class="hs_input birth"
+							maxlength="2" min="1" max="31">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
@@ -129,7 +142,7 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
-						<input type="text" name="m_phone" class="hs_input phone"
+						<input type="" name="m_phone" class="hs_input phone"
 							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
 					</div>
 
@@ -222,11 +235,12 @@
 	</div>
 
 	<script>
+
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("registerButton");
 	  
 	  // 入力フィールドに数字のみ許可
-	  document.querySelectorAll('input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthD"], input[name="m_phone"]').forEach(input => {
+	  document.querySelectorAll('input[name="m_phone"]').forEach(input => {
 	    input.addEventListener("input", function() {
 	      this.value = this.value.replace(/[^0-9]/g, ''); // 数字のみ許可
 	    });
@@ -244,6 +258,225 @@
 	    this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); // 英字とスペースのみ許可
 	  });
 	});
+	
+	function register() {
+		// 필수 입력 항목들을 확인
+	    let m_id = $("#m_id").val().trim();
+	    let m_pw = $("#m_pw").val().trim();
+	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
+	    let m_name = $("input[name='m_name']").val().trim();
+	    let m_name_kana = $("input[name='m_name_kana']").val().trim();
+	    let m_name_rome = $("input[name='m_name_rome']").val().trim();
+	    let m_gender = $("input[name='m_gender']:checked").val();
+	    let m_birthY = $("input[name='m_birthY']").val().trim();
+	    let m_birthM = $("input[name='m_birthM']").val().trim();
+	    let m_birthD = $("input[name='m_birthD']").val().trim();
+	    let m_email = $("input[name='m_email']").val().trim();
+	    let m_phone = $("input[name='m_phone']").val().trim();
+	    let a_postcode = $("#a_postcode").val().trim();
+	    let a_prefecture = $("#a_prefecture").val();
+	    let a_city = $("#a_city").val().trim();
+	    let a_street = $("#a_street").val().trim();
+
+	    // 필수 입력란 체크
+	    if (m_id === '') {
+	    /* alert("IDを入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'IDを入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#m_id").focus();
+	    return false;
+	}
+	if (m_pw === '') {
+	    /* alert("パスワードを入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'パスワードを入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#m_pw").focus();
+	    return false;
+	}
+	if (m_pw_confirm === '') {
+	    /* alert("パスワード(確認)を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'パスワードを入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#m_pw_confirm").focus();
+	    return false;
+	}
+	if (m_name === '') {
+	    /* alert("名前を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '名前を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_name']").focus();
+	    return false;
+	}
+	if (m_name_kana === '') {
+	    /* alert("フリガナを入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'フリガナを入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_name_kana']").focus();
+	    return false;
+	}
+	if (m_name_rome === '') {
+	    /* alert("名前（ローマ字）を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '名前(ローマ字)を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_name_rome']").focus();
+	    return false;
+	}
+	if (!m_gender) {
+	    /* alert("性別を選択してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '性別を選択してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_gender']").focus();
+	    return false;
+	}
+	if (m_birthY === '' || m_birthM === '' || m_birthD === '') {
+	    /* alert("生年月日をすべて入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '生年月日をすべて入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_birthY']").focus();
+	    return false;
+	}
+	if (m_email === '') {
+	    /* alert("メールアドレスを入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'メールアドレスを入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_email']").focus();
+	    return false;
+	}
+	if (m_phone === '') {
+	    /* alert("電話番号を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '電話番号を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("input[name='m_phone']").focus();
+	    return false;
+	}
+	if (a_postcode === '') {
+	    /* alert("郵便番号を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '郵便番号を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#a_postcode").focus();
+	    return false;
+	}
+	if (a_prefecture === '') {
+	    /* alert("都道府県を選択してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '都道府県を選択してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#a_prefecture").focus();
+	    return false;
+	}
+	if (a_city === '') {
+	    /* alert("市区町村を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '市区町村を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#a_city").focus();
+	    return false;
+	}
+	if (a_street === '') {
+	    /* alert("番地を入力してください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : '番地を入力してください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#a_street").focus();
+	    return false;
+	}
+
+	if (!isIdChecked || !isIdAvailable) {
+	    /* alert("IDのチェックを行ってください。"); */
+	    Swal.fire({
+			icon: 'warning',
+			title : 'IDのチェックを行ってください。',
+			customClass : {
+				popup : 'swal2-popup',
+				confirmButton : 'swal2-confirm'
+			}
+		});
+	    $("#m_id").focus(); 
+	    return false;
+	}
+	}
+	
 	
 	function checkForm() {
 	    let m_id = $("#m_id").val().trim();
@@ -288,7 +521,15 @@
 			const pwConfirm = document.getElementById('m_pw_confirm').value;
 
 			if (pw !== pwConfirm) {
-				alert("パスワードが一致しません。");
+				/* alert("パスワードが一致しません。"); */
+				Swal.fire({
+					icon: 'warning',
+					title : 'パスワードが一致しません。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
 				return false; // 폼 제출 방지
 			}
 			return true; // 폼 제출 허용
@@ -301,7 +542,15 @@
             console.log(id);
             
             if (!id) { // id가 null이거나 공백일 경우
-                alert("IDを入力してください。");
+                /* alert("IDを入力してください。"); */
+                Swal.fire({
+					icon: 'warning',
+					title : 'IDを入力してください。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
                 return;
             }
             
@@ -324,11 +573,28 @@
                         
                      	// 중복된 아이디인 경우에만 입력 필드 초기화 및 포커스
                         if (!isIdAvailable) {
-                        	alert("このIDは使用中です。別のIDを入力してください。"); // alert 창 표시
+                        	/* alert("このIDは使用中です。別のIDを入力してください。"); // alert 창 표시 */
+                        	Swal.fire({
+            					icon: 'warning',
+            					title : 'このIDは使用中です。',
+            					text : '別のIDを入力してください。',
+            					customClass : {
+            						popup : 'swal2-popup',
+            						confirmButton : 'swal2-confirm'
+            					}
+            				});
                             $("#m_id").val(""); 
                             $("#m_id").focus(); 
                         } else {
-                            alert("このIDは使用可能です。"); // 사용 가능한 ID일 때 alert 창 표시
+                            /* alert("このIDは使用可能です。"); // 사용 가능한 ID일 때 alert 창 표시 */
+                            Swal.fire({
+            					icon: 'warning',
+            					title : 'このIDは使用可能です。',
+            					customClass : {
+            						popup : 'swal2-popup',
+            						confirmButton : 'swal2-confirm'
+            					}
+            				});
                         }
 
                         if (response.idcheck === "使用中ID") {
@@ -345,105 +611,6 @@
                  });
             }
 			
-
-function register() {
-	// 필수 입력 항목들을 확인
-    let m_id = $("#m_id").val().trim();
-    let m_pw = $("#m_pw").val().trim();
-    let m_pw_confirm = $("#m_pw_confirm").val().trim();
-    let m_name = $("input[name='m_name']").val().trim();
-    let m_name_kana = $("input[name='m_name_kana']").val().trim();
-    let m_name_rome = $("input[name='m_name_rome']").val().trim();
-    let m_gender = $("input[name='m_gender']:checked").val();
-    let m_birthY = $("input[name='m_birthY']").val().trim();
-    let m_birthM = $("input[name='m_birthM']").val().trim();
-    let m_birthD = $("input[name='m_birthD']").val().trim();
-    let m_email = $("input[name='m_email']").val().trim();
-    let m_phone = $("input[name='m_phone']").val().trim();
-    let a_postcode = $("#a_postcode").val().trim();
-    let a_prefecture = $("#a_prefecture").val();
-    let a_city = $("#a_city").val().trim();
-    let a_street = $("#a_street").val().trim();
-
-    // 필수 입력란 체크
-    if (m_id === '') {
-    alert("IDを入力してください。");
-    $("#m_id").focus();
-    return false;
-}
-if (m_pw === '') {
-    alert("パスワードを入力してください。");
-    $("#m_pw").focus();
-    return false;
-}
-if (m_pw_confirm === '') {
-    alert("パスワード（確認）を入力してください。");
-    $("#m_pw_confirm").focus();
-    return false;
-}
-if (m_name === '') {
-    alert("名前を入力してください。");
-    $("input[name='m_name']").focus();
-    return false;
-}
-if (m_name_kana === '') {
-    alert("フリガナを入力してください。");
-    $("input[name='m_name_kana']").focus();
-    return false;
-}
-if (m_name_rome === '') {
-    alert("名前（ローマ字）を入力してください。");
-    $("input[name='m_name_rome']").focus();
-    return false;
-}
-if (!m_gender) {
-    alert("性別を選択してください。");
-    $("input[name='m_gender']").focus();
-    return false;
-}
-if (m_birthY === '' || m_birthM === '' || m_birthD === '') {
-    alert("生年月日をすべて入力してください。");
-    $("input[name='m_birthY']").focus();
-    return false;
-}
-if (m_email === '') {
-    alert("メールアドレスを入力してください。");
-    $("input[name='m_email']").focus();
-    return false;
-}
-if (m_phone === '') {
-    alert("電話番号を入力してください。");
-    $("input[name='m_phone']").focus();
-    return false;
-}
-if (a_postcode === '') {
-    alert("郵便番号を入力してください。");
-    $("#a_postcode").focus();
-    return false;
-}
-if (a_prefecture === '') {
-    alert("都道府県を選択してください。");
-    $("#a_prefecture").focus();
-    return false;
-}
-if (a_city === '') {
-    alert("市区町村を入力してください。");
-    $("#a_city").focus();
-    return false;
-}
-if (a_street === '') {
-    alert("番地を入力してください。");
-    $("#a_street").focus();
-    return false;
-}
-
-if (!isIdChecked || !isIdAvailable) {
-    alert("IDのチェックを行ってください。");
-    $("#m_id").focus(); 
-    return false;
-}
-
-}
         
 	</script>
 

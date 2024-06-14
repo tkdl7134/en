@@ -224,16 +224,17 @@ public class MemberDAO {
 			int result = dao.registerMemberWithAddress(dto);
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
+				System.out.println("회원가입 성공");
 				request.getRequestDispatcher("MemberC").forward(request, response);
 			} else {
-				// 회원가입 실패 처리 (아이디 중복 등)
+				// 회원가입 실패 처리
 				System.out.println("アカウント登録失敗");
 				request.getRequestDispatcher("MemberRegC").forward(request, response);
 			}
 		} catch (SQLException e) {
 			// SQL 예외 처리
 			e.printStackTrace();
-			request.getRequestDispatcher("MemberRegC").forward(request, response);
+			request.getRequestDispatcher("HSC").forward(request, response);
 		}
 		// JSP에서 사용할 수 있도록 설정
 		request.setAttribute("address", combinedAddress);

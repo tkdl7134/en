@@ -25,8 +25,8 @@
 .swal2-confirm {
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
-
 }
+
 </style>
 
 </head>
