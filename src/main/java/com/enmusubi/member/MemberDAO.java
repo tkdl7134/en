@@ -32,18 +32,70 @@ public class MemberDAO {
 			pstmt.setString(1, m_id);
 			pstmt.setString(2, m_pw);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
-				
+
 				return createMemberDTOForLogin(rs); // 로그인용 DTO 생성 메소드 호출
 
 			}
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
 		return null;
+	}
+
+	public static void memberC(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 1. 로그인 정보 가져오기
+		String m_id = request.getParameter("m_id");
+		String m_pw = request.getParameter("m_pw");
+
+		System.out.println(m_id);
+		System.out.println(m_pw);
+
+		// 2. DAO 객체 생성 및 로그인 처리
+		MemberDAO dao = new MemberDAO();
+		try {
+			MemberDTO dto = dao.login(m_id, m_pw);
+			// 3. 로그인 결과에 따른 처리
+			if (dto != null) {
+				// 3-1. 로그인 성공
+				HttpSession session = request.getSession(); // 세션 얻기
+				session.setAttribute("m_id", dto.getM_id());
+//				session.setAttribute("m_dto", dto);
+				/*
+				 * session.setAttribute("m_name", dto.getM_name());
+				 * session.setAttribute("m_name_kana", dto.getM_name_kana());
+				 * session.setAttribute("m_name_rome", dto.getM_name_rome());
+				 * session.setAttribute("m_gender", dto.getM_gender());
+				 * session.setAttribute("a_postcode", dto.getA_postcode());
+				 * session.setAttribute("a_address", dto.getA_address());
+				 * session.setAttribute("m_email", dto.getM_email());
+				 * session.setAttribute("m_regdate", dto.getM_regdate());
+				 * session.setAttribute("m_phone", dto.getM_phone());
+				 */
+
+//				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
+
+				// 세션 유효 시간 10분 (600초) 설정
+				session.setMaxInactiveInterval(600);
+
+				// 로그인 성공 메시지 설정 (선택 사항)
+				System.out.println("성공");
+			} else {
+				// 3-2. 로그인 실패
+				System.out.println("IDまたはPWが一致しません");
+				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
+			}
+		} catch (Exception e) {
+			// 3-3. 데이터베이스 오류 발생
+			e.printStackTrace();
+			System.out.println("DB오류");
+			request.getRequestDispatcher("HSC").forward(request, response); // 로그인 페이지로 다시 포워딩
+		}
+
 	}
 
 	// ResultSet -> DTO 변환 (로그인 시)
@@ -116,7 +168,7 @@ public class MemberDAO {
 		}
 
 	}
-	
+
 	public static void MemberRegC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// request에서 파라미터 가져오기
@@ -155,8 +207,9 @@ public class MemberDAO {
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
 		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
-		
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email, m_regdate, m_img, m_phone, combinedAddress, a_postcode);
+
+		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
+				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
 		// MemberDTO 생성 후 로그 출력
 //        System.out.println("MemberRegC - memberDto.getM_id(): " + dto.getM_id());
@@ -178,7 +231,7 @@ public class MemberDAO {
 			e.printStackTrace();
 			request.getRequestDispatcher("MemberRegC").forward(request, response);
 		}
-		 // JSP에서 사용할 수 있도록 설정
+		// JSP에서 사용할 수 있도록 설정
 		request.setAttribute("address", combinedAddress);
 		request.setAttribute("birth", combinedBirth);
 
@@ -231,7 +284,7 @@ public class MemberDAO {
 			pstmt.setString(10, dto.getM_id());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, null);
 		}
@@ -317,7 +370,7 @@ public class MemberDAO {
 				return createMemberDTO(rs);
 			}
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -341,7 +394,7 @@ public class MemberDAO {
 				return createMemberDTO(rs);
 			}
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
@@ -362,7 +415,7 @@ public class MemberDAO {
 			pstmt.setString(3, dto.getM_id());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, null);
 		}
@@ -401,7 +454,7 @@ public class MemberDAO {
 			pstmt2.setString(3, dto.getM_id());
 			pstmt2.executeUpdate();
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt1, rs);
 			dbManager.close(con, pstmt2, rs);
@@ -415,79 +468,26 @@ public class MemberDAO {
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		boolean isDuplicate = false;
-		
+
 		try {
 			con = dbManager.connect();
 			String sql = "SELECT COUNT(*) FROM s_Member WHERE m_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
-                int count = rs.getInt(1);
-                if (count > 0) {
-                    isDuplicate = true;
-                }
-            }
+				int count = rs.getInt(1);
+				if (count > 0) {
+					isDuplicate = true;
+				}
+			}
 		} catch (Exception e) {
-			
+
 		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
 		return isDuplicate;
-	}
-
-	public static void memberC(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// 1. 로그인 정보 가져오기
-		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
-		
-		System.out.println(m_id);
-		System.out.println(m_pw);
-
-		// 2. DAO 객체 생성 및 로그인 처리
-		MemberDAO dao = new MemberDAO();
-		try {
-			MemberDTO dto = dao.login(m_id, m_pw);
-			// 3. 로그인 결과에 따른 처리
-			if (dto != null) {
-				// 3-1. 로그인 성공
-				HttpSession session = request.getSession(); // 세션 얻기
-				session.setAttribute("m_id", dto.getM_id());
-//				session.setAttribute("m_dto", dto);
-				/*
-				 * session.setAttribute("m_name", dto.getM_name());
-				 * session.setAttribute("m_name_kana", dto.getM_name_kana());
-				 * session.setAttribute("m_name_rome", dto.getM_name_rome());
-				 * session.setAttribute("m_gender", dto.getM_gender());
-				 * session.setAttribute("a_postcode", dto.getA_postcode());
-				 * session.setAttribute("a_address", dto.getA_address());
-				 * session.setAttribute("m_email", dto.getM_email());
-				 * session.setAttribute("m_regdate", dto.getM_regdate());
-				 * session.setAttribute("m_phone", dto.getM_phone());
-				 */
-
-				
-//				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
-
-				// 세션 유효 시간 10분 (600초) 설정
-				session.setMaxInactiveInterval(600);
-
-				// 로그인 성공 메시지 설정 (선택 사항)
-				System.out.println("성공");
-			} else {
-				// 3-2. 로그인 실패
-				System.out.println("IDまたはPWが一致しません");
-				request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
-			}
-		} catch (Exception e) {
-			// 3-3. 데이터베이스 오류 발생
-			e.printStackTrace();
-			System.out.println("DB오류");
-			request.getRequestDispatcher("MemberC").forward(request, response); // 로그인 페이지로 다시 포워딩
-		}
-
 	}
 
 	public static void memberDeleteC(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -571,8 +571,6 @@ public class MemberDAO {
 		response.sendRedirect("HSC"); // 메인 페이지로 리다이렉트
 
 	}
-
-	
 
 	public static void memberDetailCDoGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -691,7 +689,7 @@ public class MemberDAO {
 //         5. 주소 정보 합치기 (구분자 사용)
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
-		
+
 		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
 
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
