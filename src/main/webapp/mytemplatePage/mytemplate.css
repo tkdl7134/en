@@ -1,0 +1,39 @@
+body {
+        background-attachment: scroll;
+        background-color: #FFF5F4;
+        font-family: "Noto Serif JP", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        background-image: url('mytemplatePage/imgFolder/up_page.png'), url('mytemplatePage/imgFolder/up_line.png'), url('mytemplatePage/imgFolder/down_page.png'), url('mytemplatePage/imgFolder/down_line.png');
+        background-position: top center, top center, bottom center, bottom center;
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+        background-size: contain, contain, contain, contain;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 3rem;
+    }
+
+    .hw_logo img {
+        height: 7.1rem;
+    }
+
+    .hw_menu img {
+        height: 3.5rem;
+    }
+
+    .hw_pagetitle img {
+        height: 1.5rem;
+    }
+
+    .hw_title {
+        flex-grow: 1;
+        text-align: center;
+    }

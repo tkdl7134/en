@@ -3,221 +3,230 @@
 
 /* 공통 스타일 */
 body {
-  background-attachment: scroll;
-  background-position: top center, bottom center;
-  font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* 기본 폰트 두께를 지정 */
-  font-style: normal;
-  margin: 0;
-  padding: 0;
-  position: relative;
+    background-attachment: scroll;
+    background-color: #FFF5F4;
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* 기본 폰트 두께를 지정 */
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-image: url('imgFolder/up_page.png'), url('imgFolder/up_line.png'), url('imgFolder/down_page.png'), url('imgFolder/down_line.png');
+    background-position: top center, top center, bottom center, bottom center;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: contain, contain, contain, contain;
 }
 
 .hw_container {
-  border-radius: 1rem;
-  max-width: 90%;
-  margin: auto;
-  position: relative;
-  z-index: 1;
- 
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 3rem;
+  
 }
 
-.logo {
-  height: 7.5rem;
+.hw_logo img {
+    height: 7.1rem;
 }
 
-.menu {
-  height: 4.375rem;
+.hw_menu img{
+    height: 3.5rem;
+}
+.hw_pagetitle img{
+	height: 1.5rem;
 }
 
 .hw_title {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.hw_title h1 {
-  margin: 0;
-  font-size: 1.875rem;
+    flex-grow: 1;
+    text-align: center;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hw_card {
-  text-align: center;
-  margin: 1.25rem 0;
-  padding: 1.25rem;
-  border-radius: 1rem;
+    text-align: center;
+    margin: 1.25rem 0;
+    padding: 1.25rem;
+    border-radius: 1rem;
 }
 
 .hw_card img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .hw_card_message {
-  margin: 1.25rem 0;
+    margin: 1.25rem 0;
 }
 
 .hw_content, .hw_content_detail, .hw_content_absent {
-  border: 0.0625rem solid #ff7e81;
-  border-radius: 1.875rem;
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1.25rem;
-  background-color: #ffdede;
+    border: 0.0625rem solid #ff7e81;
+    border-radius: 1.875rem;
+    width: 70%;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    background-color: #ffdede;
 }
 
+.hw_content_detail {
+    background-color: #ffefee;
+}
 
 .hw_tab_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.65rem;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.65rem;
+    width: 100%;
 }
 
 .hw_tab_title {
-  font-size: 1.875rem;
-  margin: 0;
+    font-size: 1.875rem;
+    margin: 0;
 }
 
 .tab_bnt {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  gap: 0.625rem;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.625rem;
 }
 
 .hw_tab__item {
-  padding: 0.625rem 1.25rem;
-  cursor: pointer;
-  background-color: #ffefef;
-  border: 0.1875rem solid #c82626;
-  text-align: center;
-  margin-left: -0.0625rem;
-  border-radius: 0.9375rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-  color: black;
-  transition: background-color 0.3s, color 0.3s;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    background-color: #ffefef;
+    border: 0.1875rem solid #c82626;
+    text-align: center;
+    margin-left: -0.0625rem;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .hw_tab__item:first-child {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .hw_tab__item a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .hw_tab__item.active, .hw_tab__item:hover {
-  background-color: #ff3b3f;
-  color: white;
-  border: 0.1875rem solid #c82626;
+    background-color: #ff3b3f;
+    color: white;
+    border: 0.1875rem solid #c82626;
 }
 
 .hw_tab_content-wrapper {
-  padding: 0.625rem;
-  width: 100%;
-  overflow: hidden;
+    padding: 0.625rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 .hw_tab_content {
-  display: none;
+    display: none;
 }
 
 .hw_tab_content.active {
-  display: block;
+    display: block;
 }
 
 .styled-table-wrapper {
-  height: 22.5rem;
-  overflow-y: scroll;
-  scrollbar-width: none;
+    height: 18.5rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .styled-table-wrapper::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
-
 .hw_invitation_title, .hw_invitation_content {
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  border: 0.0625rem solid #ddd;
-  border-radius: 0.9375rem;
-  padding: 0.75rem 0.9375rem;
-  margin-bottom: 0.625rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.9375rem;
+    padding: 0.75rem 0.9375rem;
+    margin-bottom: 0.625rem;
+}
+
+.hw_invitation_title {
+    font-weight: bold;
 }
 
 .hw_invitation_content {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .hw_invitation_title span, .hw_invitation_content span {
-  flex: 1;
-  text-align: center;
+    flex: 1;
+    text-align: center;
 }
 
 .hw_invitation_small {
-  border-right: 0.1rem solid black;
+    border-right: 0.1rem solid black;
 }
 
 .hw_invitation_big {
-  border-left: 0.1rem solid black;
+    border-left: 0.1rem solid black;
 }
 
 .top_button {
-  display: block;
-  margin: 0.625rem auto;
-  width: 12.5rem;
-  height: 12.5rem;
-  cursor: pointer;
-  padding: 1rem;
+    display: block;
+    margin: 0 auto 10rem auto; /* 상, 좌우, 하 방향 마진을 지정 */
+    width: 8.7rem;
+    height: 8.7rem;
+    cursor: pointer;
+    padding: 1rem;
 }
 
+
 .hw_more_button {
-  background: none;
-  color: white;
-  text-shadow: 0.0625rem 0.0625rem 0.125rem black;
-  font-size: 2rem;
-  cursor: pointer;
-  border: none;
-  padding: 1rem;
-  outline: none;
+    background: none;
+    color: white;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem black;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    padding: 1rem;
+    outline: none;
 }
 
 /* 마우스 아이콘 스타일 */
 .hw-f-mousemove {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    pointer-events: none;
 }
 
 .hw-f-block {
-  display: block;
+    display: block;
 }
 
 .hw-f-none {
-  display: none;
+    display: none;
 }
