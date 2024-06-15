@@ -292,7 +292,7 @@ legend div:nth-child(1) {
 }
 
 .tg-slide-third-page {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;

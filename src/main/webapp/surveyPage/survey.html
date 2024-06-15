@@ -55,13 +55,13 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" onclick="selectDiv(this, 1)">
+									<div class="entry-box-img">
 										<div class="texts">
 											<div class="objective">出席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/yesline.png">
 									</div>
-									<div class="no-entry-box-img" onclick="selectDiv(this, 0)">
+									<div class="no-entry-box-img" \>
 										<div class="texts">
 											<div style="margin-left: 1rem;" class="objective">欠席</div>
 										</div>
@@ -373,7 +373,7 @@
 
 <script>
     function slickSlide(){
-        $(".survey-input").slick({
+    	$(".survey-input").slick({
         infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -398,22 +398,30 @@
     }
     console.log('current : ' + currentSlide);
     console.log('cnt : ' + slick.slideCount);
-    if (currentSlide === slick.slideCount - 1) {
+    if (currentSlide === slick.slideCount - 2) {
       console.log('언제걸려?')
         $(".next-slide").hide();
     } else {
         $(".next-slide").show();
     }
-    
-    if (currentSlide === slick.slideCount) {
-      console.log('언제걸려222?')
-        $(".next-slide").hide();
-    } else {
-        $(".next-slide").show();
-    }
 
+	
+    
     // document.querySelector('.entry-box-img').click()
 });
+
+$(".entry-box-img").on("click", function() {
+		$(".survey-input").slick('slickUnfilter');
+		$(".survey-input").slick('slickFilter', function(index) {
+      return index < 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
+    });
+	})
+	$(".no-entry-box-img").on("click", function() {
+		$(".survey-input").slick('slickUnfilter');
+		$(".survey-input").slick('slickFilter', function(index) {
+      return index == 0 || index == 1 || index == 2 || index == 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
+    });
+	})
 
 });
 
@@ -484,58 +492,59 @@
         });
         
     });
-      function selectDiv(div, tf) {
-      console.log(div, tf)
-            // 선택된 상태 초기화
-            document.querySelectorAll('.entry-box-img, .no-entry-box-img').forEach(item => {
-                item.classList.remove('selected');
-            });
+	
+
+
+
+// //       function selectDiv(div, tf) {
+//       console.log(div, tf)
+//             // 선택된 상태 초기화
+//             document.querySelectorAll('.entry-box-img, .no-entry-box-img').forEach(item => {
+//                 item.classList.remove('selected');
+//             });
             
-            // 클릭한 div에 선택된 상태 추가
-            div.classList.add('selected');
+//             // 클릭한 div에 선택된 상태 추가
+//             div.classList.add('selected');
             
-            // 선택한 텍스트 가져오기
-            const selectedText = div.querySelector('.objective').innerText;
+//             // 선택한 텍스트 가져오기
+//             const selectedText = div.querySelector('.objective').innerText;
 
         
-            if(tf == 1) {
-              document.querySelector('.tg-slide-third-page').style.display = 'block';
-              document.querySelector('.tg-slide-forth-page').style.display = 'none';
-              console.log('true');
-              } else {
-                document.querySelector('.tg-slide-third-page').style.display = 'none';
-                console.log( document.querySelector('.tg-slide-third-page').style.display = 'none !important')
-                document.querySelector('.tg-slide-forth-page').style.display = 'block';
-                console.log('false')
-            }
+//             if(tf == 1) {
+//               document.querySelector('.tg-slide-forth-page').style.display = 'block';
+//               document.querySelector('.tg-slide-forth-page').style.display = 'none';
+//               console.log('true');
+//               } else {
+//                 document.querySelector('.tg-slide-third-page').style.display = 'block';
+//                 console.log( document.querySelector('.tg-slide-third-page').style.display = 'none !important')
+//                 document.querySelector('.tg-slide-forth-page').style.display = 'block';
+//                 console.log('false')
+//             }
 
 
 
-    var preventLastSlide = false;
-    var skipFourthSlide = false;
+//     $(".survey-input").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+// 	console.log("check current slide => "+currentSlide)
+//     console.log("check next slide => "+nextSlide)
+//         if (currentSlide==2 && nextSlide == 3) {
+//         console.log('없어줘~~')
+//         // $(".survey-input").slick('slickRemove', 4);
+//         //     event.preventDefault();
+//         //     $(".survey-input").slick('slickGoTo', 3);
+// 		// 			console.log('출석 by 태곤')
 
-  
 
-    $(".survey-input").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
-      console.log(currentSlide)
-      console.log(nextSlide)
-        if (currentSlide==3 && nextSlide == 4) {
-          console.log('없어줘~~')
-          $(".survey-input").slick('slickRemove', 4);
-            event.preventDefault();
-            $(".survey-input").slick('slickGoTo', 3);
+//         } else if (currentSlide==2 && nextSlide == 5) {
+//         console.log('왜 안되는거야!!')
+// 	    $(".survey-input").slick('slickRemove', 3);
+//         $(".survey-input").slick('slickRemove', 5);
+//         event.preventDefault();
+//         $(".survey-input").slick('slickGoTo', 4);
+//                     console.log('불참 by 태곤')
 
-        } else if (currentSlide==3 && nextSlide === 5) {
-        console.log('왜 안되는거야!!')
-        $(".survey-input").slick('slickRemove', 3);
-          event.preventDefault();
-          $(".survey-input").slick('slickGoTo', 4);
-                    console.log('멈춰 by 태곤')
-
-            
-        }
-    });
-  }
+//         }
+//     });
+//   }
 
   </script>
 
