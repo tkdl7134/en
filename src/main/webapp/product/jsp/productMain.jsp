@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,82 +12,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script src="product/js/productMain.js"></script>
+
 </head>
 <body>
-      <div id="container-product">
-        <div class="product-page">
-          <div class="product-page-title">
-            <div class="page-title">テンプレート一覧</div>
-            <div class="page-title-line">
-              <img src="product/imgFolder/footer.png" alt="" />
-            </div>
-          </div>
-          <div class="product-page-content">
-            <div class="page-content">
-              <div class="page-content-template">
-                <div class="template-img">
-                  <img src="product/imgFolder/img9-2.png" alt="" />
+<div id="je_container-product">
+      <div class="je_page-deco">
+      <img src="product/imgFolder/product-combine.png" alt="" />
+    </div>
+      <div class="je_product-page">
+      <div class="je_product-page-title">
+        <div class="je_page-title">テンプレート一覧</div>
+        <div class="je_page-title-line">
+          <img src="product/imgFolder/pageTop_line.png" alt="" />
+        </div>
+        </div>
+        <div class="je_product-page-content">
+            <div class="je_page-content">
+   <c:forEach items="${products }" var="p">
+              <div class="je_page-content-template">
+                <div class="je_template-img">
+                  <img src="${p.t_preview }" alt="" />
                   <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
+                    <div class="je_template-img-line-red-big"></div>
+                    <div class="je_template-img-line-red-small"></div>
                   </div>
                 </div>
-                <div class="template-title">ポエトリー</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
+                <div class="je_template-title">${p.t_name }</div>
+                <div class="je_template-button">
+                  <button class="je_preview" data-target="#layer2">見本</button>
+                  <button >制作</button>
                 </div>
               </div>
-              <div class="page-content-template">
-                <div class="template-img">
-                  <img src="product/imgFolder/img8.png" alt="" />
-                  <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
-                  </div>
-                </div>
-                <div class="template-title">モーメント</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
-                </div>
-              </div>
-              <div class="page-content-template">
-                <div class="template-img">
-                  <img src="product/imgFolder/img6-2.png" alt="" />
-                  <div>
-                    <div class="template-img-line-red-big"></div>
-                    <div class="template-img-line-red-small"></div>
-                  </div>
-                </div>
-                <div class="template-title">赤い糸</div>
-                <div class="template-button">
-                  <button class="preview" data-target="#layer2">見本</button>
-                  <button>制作</button>
-                </div>
-              </div>
+    </c:forEach>
+<!-- 	<div style="height: 100rem"></div> -->
             </div>
           </div>
         </div>
-      </div>
+</div>
       
     <!--popUp-->
-    <div class="dim-layer">
-      <div class="dimBg"></div>
-      <div id="layer" class="pop-layer">
-        <div class="pop-container">
-          <div class="pop-conts">
+    <div class="je_dim-layer">
+      <div class="je_dimBg"></div>
+      <div id="je_layer" class="je_pop-layer">
+        <div class="je_pop-container">
+          <div class="je_pop-conts">
             <!-- content //-->
             <!-- db에 저장되어있는 template-img READ -->
-            <img src="product/imgFolder/img9-2.png" alt="" />
-            <div class="btn-r">
-              <a href="#" class="btn-layerClose">close</a>
+            <img src="" alt="" />
+            <div class="je_btn-r">
+              <a href="#" class="je_btn-layerClose">close</a>
             </div>
             <!--// content-->
           </div>
         </div>
       </div>
     </div>
+    <script src="product/js/productMain.js"></script>
   </body>
 </html>
