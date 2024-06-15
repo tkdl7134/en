@@ -56,6 +56,7 @@ function slickStart() {
         "imgFolder/yj-main-s2-img4.png",
         "imgFolder/yj-main-s2-img5.png",
         "imgFolder/yj-main-s2-img6.png",
+        "imgFolder/yj-main-s2-img7.png",
         // 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
       ];
       // 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
@@ -73,32 +74,39 @@ function slickStart() {
 
 // Single Item Slide
 $(document).ready(function () {
-  $(".yj-main-s2-list").slick({
-    autoplay: true,
-    autoplaySpeed: 2000,
-    fade: true,
-    infinite: true,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "40px",
-          slidesToShow: 3,
+  $(".yj-main-s2-list")
+    .slick({
+      // autoplay: true,
+      // autoplaySpeed: 2000,
+      fade: true,
+      infinite: true,
+      centerMode: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: "40px",
+            slidesToShow: 3,
+          },
         },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "40px",
-          slidesToShow: 1,
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: "40px",
+            slidesToShow: 1,
+          },
         },
-      },
-    ],
-  });
-  //slickStart();
+      ],
+    })
+    .on("afterChange", function (event, slick, currentSlide) {
+      var currentSlideImage = slick.$slides
+        .eq(currentSlide)
+        .find("img")
+        .attr("src");
+      $("#currentSlideImage").attr("src", currentSlideImage);
+    });
 });

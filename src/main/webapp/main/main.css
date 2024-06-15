@@ -14,7 +14,7 @@ body {
 
 /* Section 1 */
 #yj-main-s1 {
-  background-color: #fffbf7;
+  background-image: url("imgFolder/yj-main-default-bg.png");
 }
 
 .yj-main-s1-musubi img {
@@ -56,16 +56,16 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 200px;
+  height: 150px;
 }
 
-.scroll-line {
+.s1-scroll-line {
   width: 5px;
   height: 100%;
   background-color: #dd2025;
 }
 
-.scroll-arrow {
+.s1-scroll-arrow {
   /* size */
   width: 5px;
   height: 5px;
@@ -93,10 +93,10 @@ body {
 #yj-main-s2 {
   z-index: 1;
   position: relative;
-  background-color: #fff5f4;
+  background-image: url("imgFolder/yj-main-default-bg.png");
 }
 
-.yj-main-s2-bg {
+.yj-main-s2-cover {
   z-index: 3;
   position: absolute;
   top: 0;
@@ -109,7 +109,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.yj-main-s2-bg img {
+.yj-main-s2-cover img {
   width: 100%;
 }
 
@@ -139,22 +139,68 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .yj-main-s2-img > img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   position: absolute;
   top: 0;
 }
 
 /* Section 3 */
 #yj-main-s3 {
-  background-color: #20c7dd;
+  background-image: url("imgFolder/yj-main-default-bg.png");
+  position: relative;
+}
+
+.yj-main-s3-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.s3-scroll-line {
+  width: 5px;
+  height: 100%;
+  background-color: #dd2025;
+  /* box-shadow: 0 0 0 1px #fffbf7; */
+}
+
+.s3-scroll-arrow {
+  /* size */
+  width: 5px;
+  height: 5px;
+  /* location */
+  margin-left: -15px;
+  margin-bottom: 150px;
+  /* style */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #dd2025;
+  /* animation */
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(300%);
+  }
+  100% {
+    transform: translateY(800%);
+  }
 }
 
 /* Section 4 */
 #yj-main-s4 {
-  background-color: #2030dd;
+  background-image: url("imgFolder/yj-main-default-bg.png ");
 }
 
 /* Section 5 */
