@@ -1,3 +1,4 @@
+// Overall
 // Full Page Scroll
 const sections = document.querySelectorAll(".yj-main-section");
 let currentSectionIndex = 0;
@@ -37,6 +38,26 @@ document.addEventListener("wheel", function (event) {
   }
 });
 
+// Section 2
+// 메뉴 버튼 클릭 이벤트
+const menuBtn = document.getElementById("yj-main-s2-menuBtn");
+const menuBtn1 = "imgFolder/yj-main-default-menu1.png";
+const menuBtn2 = "imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(menuBtn1)) {
+    this.querySelector("img").src = menuBtn2;
+  } else {
+    this.querySelector("img").src = menuBtn1;
+  }
+});
+
+// Section 2
 // 배경 이미지  슬라이드
 function slickStart() {
   $(".yj-main-s2-bg").css(
@@ -72,6 +93,7 @@ function slickStart() {
   );
 }
 
+// Section 2
 // Single Item Slide
 $(document).ready(function () {
   $(".yj-main-s2-list")

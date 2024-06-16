@@ -21,14 +21,14 @@ body {
   width: 100%;
 }
 
-.yj-main-s1-icon {
+.yj-main-s1-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
 }
 
-.yj-main-s1-icon img {
+.yj-main-s1-logo img {
   /* size */
   width: 10rem;
   height: 10rem;
@@ -36,10 +36,10 @@ body {
   border-radius: 100%;
   box-shadow: 0 5px 5px 5px #fd5356;
   /* animation */
-  animation: float 2s ease-in-out infinite;
+  animation: s1-logo-float 2s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes s1-logo-float {
   0%,
   100% {
     transform: translate(0, 0%);
@@ -94,6 +94,46 @@ body {
   z-index: 1;
   position: relative;
   background-image: url("imgFolder/yj-main-default-bg.png");
+}
+
+.yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
 }
 
 .yj-main-s2-cover {
@@ -155,6 +195,32 @@ body {
 #yj-main-s3 {
   background-image: url("imgFolder/yj-main-default-bg.png");
   position: relative;
+}
+
+.yj-main-s3-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s3-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
 }
 
 .yj-main-s3-scroll {
