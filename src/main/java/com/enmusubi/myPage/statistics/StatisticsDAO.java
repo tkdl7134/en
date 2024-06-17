@@ -1,6 +1,7 @@
 package com.enmusubi.myPage.statistics;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -367,12 +368,13 @@ public class StatisticsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "SELECT s_member.m_name, s_guest.g_relation\r\n"
+		String sql = "SELECT s_member.m_name, s_guest.g_relation , s_pay.p_price\r\n"
 				+ "FROM s_guest\r\n"
 				+ "JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
 				+ "JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
 				+ "WHERE s_guest.e_no = ?\r\n"
-				+ "  AND s_pay.p_type = 'fund'";
+				+ "  AND s_pay.p_type = 'send'";
+		
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -390,6 +392,13 @@ public class StatisticsDAO {
 				
 				
 			}
+			Gson gson = new Gson();
+	        String json = gson.toJson(sendlists);
+
+	        // JSON을 HttpServletResponse에 작성
+	        PrintWriter out = response.getWriter();
+	        out.print(json);
+	        out.flush();
 			System.out.println(sendlists);
 			request.setAttribute("sendlist", sendlists);
 			
