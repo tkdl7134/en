@@ -20,7 +20,8 @@ public class fundDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT wl_no,wl_price,WL_PRODUCT,E_NO ,(SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO) payed, FLOOR(((SELECT sum(p_price) tot FROM s_pay sp WHERE P_TYPE = 'fund' AND WL_NO = sw.WL_NO)/WL_PRICE)*100) percent  FROM S_WISHLIST sw WHERE e_NO =? ORDER BY WL_PRICE desc";
+		String sql = "WITH wish_fund AS (SELECT wl_no, wl_price, wl_product, e_no, (SELECT SUM(p_price) FROM s_pay sp WHERE p_type = 'fund' AND wl_no = sw.wl_no) AS payed, FLOOR((SELECT SUM(p_price) FROM s_pay sp WHERE p_type = 'fund' AND wl_no = sw.wl_no) / wl_price * 100) AS percent FROM s_wishlist sw WHERE e_no = ?)"
+				+ " SELECT wl_no, wl_price, wl_product, e_no, payed, COALESCE(percent, 0) AS percent FROM wish_fund ORDER BY percent DESC";
 		DBManager dbManager = DBManager.getInstance();
 		try {
 			con = dbManager.connect();
@@ -66,6 +67,7 @@ public class fundDAO {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("m_id");
 		System.out.println(mid);
+		
 		String pt = request.getParameter("paytype");
 		String price = request.getParameter("price");
 		String wlno = request.getParameter("wlno");
