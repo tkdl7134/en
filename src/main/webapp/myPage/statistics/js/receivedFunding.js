@@ -107,7 +107,7 @@ $.ajax({
 						percent = selectobj.percent;
 					};
 				let wl_no = cardIn.getAttribute("value");
-				location.href = `receivedSpecificFundingC?wlno=${wl_no}`;
+				location.href = `receivedSpecificFundingC?wlno=${wl_no}&eno=`+eventno;
 					document.querySelector("#kh-f-price").innerHTML = percent;
 					document.querySelector("#kh-f-product").innerHTML = selectobj.wl_product;
 					document.querySelector(".kh-f-btn").setAttribute("value", selectobj.wl_no);

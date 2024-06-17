@@ -30,8 +30,10 @@ public class StatisticsDAO {
 		
 		String startDate = request.getParameter("startDate");
 	    String endDate = request.getParameter("endDate");
+	    String e_no = request.getParameter("eno");
 	    System.out.println(startDate);
 	    System.out.println(endDate);
+	    System.out.println(e_no);
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;
@@ -39,7 +41,7 @@ public class StatisticsDAO {
 	    JsonArray jsonArray = new JsonArray();
 	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
 	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') " +
+	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? " +
 	             "GROUP BY p_date " +
 	             "ORDER BY p_date";		
 	    try {
@@ -47,6 +49,7 @@ public class StatisticsDAO {
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, startDate);
 	        pstmt.setString(2, endDate);
+	        pstmt.setString(3, e_no);
 	        rs = pstmt.executeQuery();
 	        
 	        while (rs.next()) {
@@ -327,8 +330,9 @@ public class StatisticsDAO {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			// 이벤트 파라미터 받게되면 활성화
-			// pstmt.setString(1, request.getParameter("eno"));
-			pstmt.setString(1, "1");
+			System.out.println(request.getParameter("eno"));
+			pstmt.setString(1, request.getParameter("eno"));
+			//pstmt.setString(1, "1");
 			rs = pstmt.executeQuery();
 			ArrayList<FundListDTO> flists = new ArrayList<FundListDTO>();
 			while (rs.next()) {
@@ -343,7 +347,7 @@ public class StatisticsDAO {
 			}
 			System.out.println(flists);
 			request.setAttribute("list", flists);
-
+			request.setAttribute("eno" , request.getParameter("eno"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("server err...");
@@ -351,6 +355,52 @@ public class StatisticsDAO {
 			dbManager.close(con, pstmt, rs);
 		}
 
+	}
+
+	public static void getSentMoney(HttpServletRequest request, HttpServletResponse response) {
+
+		// event no 가져오기
+		
+		String eventNo = "1";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "SELECT s_member.m_name, s_guest.g_relation\r\n"
+				+ "FROM s_guest\r\n"
+				+ "JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+				+ "JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+				+ "WHERE s_guest.e_no = ?\r\n"
+				+ "  AND s_pay.p_type = 'fund'";
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, eventNo);
+			rs = pstmt.executeQuery();
+			
+			ArrayList<payDTO> sendlists = new ArrayList<payDTO>();
+			
+			while (rs.next()) {
+				payDTO sendlist = new payDTO();
+				sendlist.setM_name(rs.getString("m_name"));
+				sendlist.setG_relation(rs.getString("g_relation"));
+				sendlists.add(sendlist);
+				
+				
+				
+			}
+			System.out.println(sendlists);
+			request.setAttribute("sendlist", sendlists);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbManager.close(con, pstmt, rs);
+			
+		}
+		
+		
 	}
 	
 	

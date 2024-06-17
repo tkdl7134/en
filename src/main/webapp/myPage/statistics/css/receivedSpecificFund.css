@@ -21,13 +21,12 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	
+	height : 163rem;
 }
  
 #fundSpecProduct-img{
 	
-	margin-top : 20rem;
-	
+	margin-top: 10rem;
 }
 #fundSpecPro-img {
 	
@@ -52,39 +51,62 @@ body {
 	font-size: 1.5rem;
 	
 }
+#fundSpec-lineShort{
+	
+	margin-top : 3rem;
+	
+}
+
 #fundSpec-chartAlert{
 	
-	    margin-top: 5rem;
+	    margin-top: 3rem;
     font-size: 1.5rem;
 	
 }
 #fundSpec-inputDate{
 		
 		margin-top: 3rem;
+    border: 1px solid red;
+    border-radius: 2rem;
+    width: 40rem;
+    height: 7rem;
+    align-content: center;
 	
 	
 }
 #startDate {
 	    width: 10rem;
-    height: 2.5rem;
+    height: 5rem;
     border-radius: 5px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-left: 2.5rem;
 }
 #endDate {
-	  width: 10rem;
-    height: 2.5rem;
+	     width: 10rem;
+    height: 5rem;
     border-radius: 5px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 #submit{
 	background-color: white;
-    width: 5rem;
     height: 3rem;
     margin-left: 3rem;
     font-family: "Noto Serif JP", serif;
     font-size : 1rem;
+    
+    padding: 0.625rem 1.25rem;
+    background-color: #ffefef;
+    border: 0.1875rem solid #c82626;
+    text-align: center;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+    
+    
+    
 }
 #priceChart {
     width: 600px;

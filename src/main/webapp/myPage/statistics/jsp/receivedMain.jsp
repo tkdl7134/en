@@ -31,7 +31,7 @@
 		</div>
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_present.png">
 		</div>
-		<div onclick="location.href='receivedMoneyController'" class="box-img">
+		<div onclick="location.href='receivedMoneyController?eno=1'" class="box-img">
 		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_red_line.png">
 		<div class="texts">
 		<div style="margin-left: 2rem;" class="objective">ご祝儀</div>

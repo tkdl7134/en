@@ -2,8 +2,10 @@ $(document).ready(function() {
     let priceChart = null;
     $('#priceChart').css('height', '0');
     
-    let wlno = $('#fundSpecProduct-wlno').text();
-    
+    let wlno = $('#fundSpecWlno').val();
+    let eno = $('#fundSpecEno').val();
+    console.log(eno);
+    console.log(wlno);
     
     $('[id^=MemberInfoPrice]').each(function() {
         let number = $(this).text();
@@ -30,7 +32,7 @@ $('#byMoney').on('click', function() {
 
     $.ajax({
     	type: 'get',
-        url: 'receivedajaxC?order=M&wlno=' + wlno,
+        url: 'receivedajaxC?order=M&wlno=' + wlno+'&eno='+eno,
         dataType: 'json',
         success: function(response) {
         	console.log("hereVVVVVVVV")
@@ -43,11 +45,19 @@ $('#byMoney').on('click', function() {
                     // 새로운 데이터로 반복문을 통해 UI 업데이트
                     newFund.forEach(function(f, index) {
                         let formattedPrice = parseInt(f.p_price, 10).toLocaleString() + '円';
+                      
+                         let originalDate = f.p_date; // 예: "06월 15, 2023"
+                    let [month, day, year] = originalDate.split(/[\s월,]+/);
+                    month = month.padStart(2, '0');
+                    day = day.padStart(2, '0');
+                    let formattedDate = `${year}-${month}-${day}`;
+                        
+                        
                         let newItem = `
                             <div class="recSpecMemberInfo" id="recSpecPriceAndDate">
                                 <div style="border-right: 1px solid;" class="recSpecMemberInfos">${f.m_name}</div>
                                 <div id="MemberInfoPrice${index}" style="border-right: 1px solid;" class="recSpecMemberInfos">${formattedPrice}</div>
-                                <div class="recSpecMemberInfos">${f.p_date}</div>
+                                <div class="recSpecMemberInfos">${formattedDate}</div>
                             </div>`;
                         $('#fundSpec-dataBoard').append(newItem);
                             
@@ -71,7 +81,7 @@ $('#byMoney').on('click', function() {
 
     $.ajax({
     	type: 'get',
-        url: 'receivedajaxC?order=D&wlno=' + wlno,
+        url: 'receivedajaxC?order=D&wlno=' + wlno+'&eno='+eno ,
         dataType: 'json',
         success: function(response) {
         	console.log("hereVVVVVVVV")
@@ -79,15 +89,27 @@ $('#byMoney').on('click', function() {
                 $('.recSpecMemberInfo').remove();
                 try {
                     let newFund = response; // 서버에서 JSON 문자열을 받아 JavaScript 객체로 변환
+					console.log(newFund);	
+				
+					
+					
 					
                     // 새로운 데이터로 반복문을 통해 UI 업데이트
                     newFund.forEach(function(f, index) {
                         let formattedPrice = parseInt(f.p_price, 10).toLocaleString() + '円';
+                      
+                      		 let originalDate = f.p_date; // 예: "06월 15, 2023"
+                    let [month, day, year] = originalDate.split(/[\s월,]+/);
+                    month = month.padStart(2, '0');
+                    day = day.padStart(2, '0');
+                    let formattedDate = `${year}-${month}-${day}`;
+                      
+                      
                         let newItem = `
                             <div class="recSpecMemberInfo" id="recSpecPriceAndDate">
                                 <div style="border-right: 1px solid;" class="recSpecMemberInfos">${f.m_name}</div>
                                 <div id="MemberInfoPrice${index}" style="border-right: 1px solid;" class="recSpecMemberInfos">${formattedPrice}</div>
-                                <div class="recSpecMemberInfos">${f.p_date}</div>
+                                <div class="recSpecMemberInfos">${formattedDate}</div>
                             </div>`;
                         $('#fundSpec-dataBoard').append(newItem);
                     });
