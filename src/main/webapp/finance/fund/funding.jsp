@@ -28,7 +28,7 @@
 </div>
 
 
-<dialog id="modal">
+<dialog id="modal" class="modal">
 <div class="kh-f-popup">
 	<div class="kh-f-popup-in">
 		<div class="kh-f-img-box">
@@ -46,7 +46,7 @@
 		<div class="kh-f-des">✿ ファンディング金額を入力してください ✿</div>
 		<div style="position: relative;">
 			<div style="font-size: 2rem" id="kh-input-box">
-				<input class="kh-f-input" type="number" maxlength="8"
+				<input class="kh-f-input" type="text" maxlength="8"
 					oninput="numberMaxLength(this)" onclick="removeWarn()" />円 <img
 					alt="" src="finance/img/money.png">
 			</div>
@@ -57,6 +57,44 @@
 		<div style="display: flex; justify-content: center;">
 			<div class="kh-f-btn"
 				onclick="goStatistic(this.getAttribute('value'))" value="">ファンディング</div>
+		</div>
+	</div>
+</div>
+</dialog>
+
+<dialog id="statisticModal" class="modal">
+<div class="kh-f-statistic-pop">
+	<div class="kh-f-statistic-pop-in">
+		<div class="kh-f-statistic-title">
+			<div>
+				<img alt="" src="finance/img/crown.png">
+			</div>
+			<h1>ファンディングランキング</h1>
+			<div>
+				<img alt="" src="finance/img/crown.png">
+			</div>
+		</div>
+		<div class="kh-f-statistic-conCon">
+			<!-- <div class="kh-f-statistic-content">
+				<div class="kh-f-statistic-name">
+					<div class="kh-f-none"><span>私の選択</span><img alt="noImg" src="finance/img/flash.png"> </div>
+					<h1>${element.wl_product}</h1>
+				</div>
+				<div class="kh-f-statistic-bar">
+					<div>
+						<div class="kh-f-statistic-abled-bar"><div><img alt="noImg" src="finance/img/menubtn.png"></div></div>
+					</div>
+				</div>
+				<div class="kh-f-statistic-percent" data-value="${element.percent}">
+					<img class="kh-f-none" alt="noImg" src="finance/img/threehearts.png">
+					<h1><span>0</span>％ 達成</h1>
+				</div>
+			</div> -->
+		</div>
+		<div class="kh-f-statistic-timer">
+			<img alt="" src="">
+			<span>10秒後に画面が移動します。</span>
+			
 		</div>
 	</div>
 </div>

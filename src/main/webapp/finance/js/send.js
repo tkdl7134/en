@@ -1,4 +1,8 @@
+let eventno = 1;
+
 let card = document.querySelectorAll(".kh-s-card-out");
+let spop = document.querySelector(".kh-s-popup");
+
 let scrollTimeout;
 card.forEach((element, index, array) => {
 	element.style.transition = "0.8s ease-in-out";
@@ -9,11 +13,11 @@ card.forEach((element, index, array) => {
 		cardIn.style.backgroundColor = "#FFE0E0";
 	}
 	element.addEventListener("mouseover", function(event) {
-		element.style.cursor="default";
-			mouseicn.classList.remove("kh-s-block");
-			mouseicn.classList.add("kh-s-none");
-			event.stopPropagation();
-		});
+		element.style.cursor = "default";
+		mouseicn.classList.remove("kh-s-block");
+		mouseicn.classList.add("kh-s-none");
+		event.stopPropagation();
+	});
 });
 const cardCon = document.querySelector(".kh-s-card-container");
 const mouseicn = document.querySelector(".kh-s-mousemove");
@@ -23,7 +27,7 @@ cardCon.addEventListener("mouseover", function(event) {
 		document.querySelector(".kh-s-mousemove > img").src =
 			"finance/img/dragbtn.png";
 	}
-	cardCon.style.cursor="none";
+	cardCon.style.cursor = "none";
 	mouseicn.classList.remove("kh-s-none");
 	mouseicn.classList.add("kh-s-block");
 	event.stopPropagation();
@@ -106,3 +110,70 @@ cardCon.addEventListener("touchmove", (e) => {
 	const walk = (x - startX) * 2; //scroll-fast
 	cardCon.scrollLeft = scrollLeft - walk;
 });
+
+function envelopChanger() {
+	const envelope = document.querySelector(".kh-s-envelope > img");
+	const input = document.querySelector(".kh-s-input").value;
+	let inputVal = input.replace(',', '');
+	if (inputVal < 50000) {
+		envelope.src = "finance/img/envelope01.png";
+	}
+	else if (inputVal < 70000) {
+		envelope.src = "finance/img/envelope02.png";
+	}
+	else {
+		envelope.src = "finance/img/envelope03.png";
+	}
+}
+
+
+
+function sendModal(money) {
+	envelopChanger();
+	openModal();
+}
+function setMoney(money) {
+	const input = document.querySelector(".kh-s-input");
+	let value = money;
+	// 숫자를 현지화된 문자열로 변환하여 천 단위마다 쉼표를 추가
+	value = Number(value).toLocaleString('ja-JP');
+	// 포맷된 값을 입력 상자에 설정
+	input.value = value;
+	envelopChanger();
+}
+
+const modal = document.getElementById("modal");
+modal.addEventListener("click", function(event) {
+	if (!spop.contains(event.target)) {
+		closeModal();
+	}
+});
+function openModal() {
+	const modal = document.getElementById("modal");
+	modal.showModal();
+}
+
+function closeModal() {
+	const modal = document.getElementById("modal");
+	modal.close();
+}
+
+function goStatistic(wlno) {
+	const container = document.querySelector("#kh-input-box");
+	const sinput = document.querySelector(".kh-s-input");
+	const warnspan = document.querySelector("#kh-warn-text");
+	const eno = eventno;
+	if (sinput.value == "") {
+		container.classList.add("vibration");
+		setTimeout(function() {
+			container.classList.remove("vibration");
+		}, 300);
+		if (warnspan.classList.contains("kh-none")) {
+			warnspan.classList.remove("kh-none");
+			warnspan.classList.add("kh-show");
+		}
+	} else {
+		//	location.href =	"StatisticsC?paytype=fund&price=" +	sinput.value +"&eno=" +	eno +"&wlno=" +	wlno;
+		alert('pass!!')
+	}
+}
