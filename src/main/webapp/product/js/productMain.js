@@ -3,7 +3,7 @@
 $(function () {
   var scrollPosition = 0;
 
-  $(".je_preview").click(function () {
+  $(".je_preview-button").click(function () {
     var $el = $("#je_layer"); // pop-up 창
     scrollPosition = $(window).scrollTop(); // 현재 스크롤 위치 저장
     $("body").css({
