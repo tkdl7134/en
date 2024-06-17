@@ -47,8 +47,7 @@
 
 		<div class="hs_title">会員登録</div>
 
-		<form action="MemberRegC" method="post"
-			onsubmit="return validatePassword()">
+		<form action="MemberRegC" method="post">
 
 			<div class="hs_container">
 
@@ -62,7 +61,6 @@
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
 							placeholder="縁結びID">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
-						<!-- <div id="idCheckResult" class="hs_id-available"></div> -->
 					</div>
 
 					<div class="hs_content-input pw">
@@ -324,6 +322,23 @@
 	});
 	
 	function register() {
+		
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+
+		if (pw !== pwConfirm) {
+			/* alert("パスワードが一致しません。"); */
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
 	    // 필수 입력 항목들을 확인
 	    let requiredFields = [
 	        { field: $("#m_id"), name: 'ID' },
@@ -354,7 +369,7 @@
 	                    confirmButton: 'swal2-confirm'
 	                }
 	            });
-	            requiredFields[i].field.focus();
+	            /* requiredFields[i].field.focus(); */
 	            return false;
 	        }
 	    }
@@ -368,216 +383,11 @@
 	                confirmButton: 'swal2-confirm'
 	            }
 	        });
-	        $("#m_id").focus();
+	        /* $("#m_id").focus(); */
 	        return false;
 	    }
-
 	    document.querySelector('form').submit();
 	}
-	
-/* 	function register() {
-		// 필수 입력 항목들을 확인
-	    let m_id = $("#m_id").val().trim();
-	    let m_pw = $("#m_pw").val().trim();
-	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
-	    let m_name = $("input[name='m_name']").val().trim();
-	    let m_name_kana = $("input[name='m_name_kana']").val().trim();
-	    let m_name_rome = $("input[name='m_name_rome']").val().trim();
-	    let m_gender = $("input[name='m_gender']:checked").val();
-	    let m_birthY = $("input[name='m_birthY']").val().trim();
-	    let m_birthM = $("input[name='m_birthM']").val().trim();
-	    let m_birthD = $("input[name='m_birthD']").val().trim();
-	    let m_email = $("input[name='m_email']").val().trim();
-	    let m_phone = $("input[name='m_phone']").val().trim();
-	    let a_postcode = $("#a_postcode").val().trim();
-	    let a_prefecture = $("#a_prefecture").val();
-	    let a_city = $("#a_city").val().trim();
-	    let a_street = $("#a_street").val().trim();
-
-	    // 필수 입력란 체크
-	    if (m_id === null || m_id === '') {
-		    Swal.fire({
-				icon: 'warning',
-				title : 'IDを入力してください。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-		    $("#m_id").focus();
-		    return false;
-		}
-	if (m_pw === null || m_pw === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : 'パスワードを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_pw").focus();
-	    return false;
-	}
-	if (m_pw_confirm === null || m_pw_confirm === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : 'パスワードを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_pw_confirm").focus();
-	    return false;
-	}
-	if (m_name === null || m_name === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '名前を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name']").focus();
-	    return false;
-	}
-	if (m_name_kana === null || m_name_kana === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : 'フリガナを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name_kana']").focus();
-	    return false;
-	}
-	if (m_name_rome === null || m_name_rome === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '名前(ローマ字)を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name_rome']").focus();
-	    return false;
-	}
-	if (!m_gender) {
-	    Swal.fire({
-			icon: 'warning',
-			title : '性別を選択してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_gender']").focus();
-	    return false;
-	}
-	if (m_birthY === null || m_birthM === null || m_birthD === null || m_birthY === '' || m_birthM === '' || m_birthD === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '生年月日をすべて入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_birthY']").focus();
-	    return false;
-	}
-	if (m_email === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : 'メールアドレスを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_email']").focus();
-	    return false;
-	}
-	if (m_phone === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '電話番号を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_phone']").focus();
-	    return false;
-	}
-	if (a_postcode === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '郵便番号を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_postcode").focus();
-	    return false;
-	}
-	if (a_prefecture === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '都道府県を選択してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_prefecture").focus();
-	    return false;
-	}
-	if (a_city === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '市区町村を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_city").focus();
-	    return false;
-	}
-	if (a_street === null || m_email === '') {
-	    Swal.fire({
-			icon: 'warning',
-			title : '番地を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_street").focus();
-	    return false;
-	}
-
-	if (!isIdChecked || !isIdAvailable) {
-	    Swal.fire({
-			icon: 'warning',
-			title : 'IDのチェックを行ってください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_id").focus(); 
-	    return false;
-	}
-	document.querySelector('form').submit();
-} */
 	
 	function checkForm() {
 	    let m_id = $("#m_id").val().trim();
@@ -617,25 +427,6 @@
     isIdChecked = false; // 중복 확인 플래그 초기화
     isIdAvailable = false; // 사용 가능 플래그 초기화
 
-		function validatePassword() {
-			const pw = document.getElementById('m_pw').value;
-			const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-			if (pw !== pwConfirm) {
-				/* alert("パスワードが一致しません。"); */
-				Swal.fire({
-					icon: 'warning',
-					title : 'パスワードが一致しません。',
-					customClass : {
-						popup : 'swal2-popup',
-						confirmButton : 'swal2-confirm'
-					}
-				});
-				return false; // 폼 제출 방지
-			}
-			return true; // 폼 제출 허용
-		}
-		
         function dupleChk(){
         	isIdChecked = false; // 중복 확인 플래그 초기화
         	

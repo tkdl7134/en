@@ -225,7 +225,7 @@ public class MemberDAO {
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
 				System.out.println("회원가입 성공");
-				request.getRequestDispatcher("MemberC").forward(request, response);
+//				request.getRequestDispatcher("MemberC").forward(request, response);
 			} else {
 				// 회원가입 실패 처리
 				System.out.println("アカウント登録失敗");

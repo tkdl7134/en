@@ -17,7 +17,7 @@
 
 .hs_background {
 	background-image: url('ImgFolder/background-1.png'),
-		url('ImgFolder/background-2.png');
+	url('ImgFolder/background-1-1.png');
 	background-size: cover;
 	background-position: center;
 	width: 100%;
@@ -269,8 +269,7 @@
 }
 
 .hs_footer-background{
-	background-image : url('ImgFolder/background-4.png'),
-	url('ImgFolder/background-3.png');
+	background-image : url('ImgFolder/background-2.png');
 	background-size: cover;
 	background-position: center;
 	width: 100%;
