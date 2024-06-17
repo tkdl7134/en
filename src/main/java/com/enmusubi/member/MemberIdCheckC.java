@@ -18,6 +18,8 @@ public class MemberIdCheckC extends HttpServlet {
 		
 		MemberDAO.MemberIdCheckCDoGet(request, response);
 		
+		request.getRequestDispatcher("regPage/idCheck.jsp").forward(request, response); // 결과 페이지로 포워딩
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
