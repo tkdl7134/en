@@ -42,7 +42,7 @@
               </div>
               <div class="je_detail-title">${p.t_name }</div>
               <div class="je_detail-buttons">
-                <button class="je_preview-button" data-target="#layer" data-example="${p.t_example }" type="button">
+                <button class="je_preview-button" data-target="#layer" data-example="product/imgFolder/${p.t_example }" type="button">
                   見本</button
                 >
                 <button class="je_make-button" name="templatePK" value="${p.t_pk }">制作</button>
@@ -61,7 +61,7 @@
             <div class="je_pop-conts">
               <!-- content //-->
               <div class="je_pop-image">
-                <img src="${p.t_example }" alt="" />
+                <img src="" alt="" />
               </div>
               <!-- db에 저장되어있는 template-img READ -->
               <img src="" alt="" />

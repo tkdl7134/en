@@ -6,12 +6,11 @@ body {
   background-color: #fffbf7;
   margin: 0;
   padding: 0;
+  border: none;
 }
 form{
-	  margin: 0;
-  padding: 0;
+	display: contents;
 }
-
 /* LOGO & NAV */
 #enmusubi-logo {
   position: absolute;
