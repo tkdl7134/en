@@ -14,6 +14,7 @@
 <body>
 
 <div class="recFundSpec-container">
+			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
     <div id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
     <div id="fundSpecProduct-rank">現在第${rank }位！ </div>

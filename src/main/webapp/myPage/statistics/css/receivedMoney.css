@@ -23,6 +23,30 @@ body {
 	background-image : url(../imgFolder/halfCircle2.png)
 	
 }
+.yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
 .jh-half-circle{
 	 width: 116rem;
     height: 90vh; /* 높이는 반원이 되도록 합니다 */

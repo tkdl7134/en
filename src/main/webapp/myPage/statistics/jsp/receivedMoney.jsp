@@ -27,6 +27,7 @@
 </head>
 <body>
 	<div class="recFund-container">
+		<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
 		<div class="jh-half-circle">
 		<div style="margin-left : 52rem;" class="recFund-title">ご祝儀の現状</div>
 		<div style="margin-top: 17rem; gap : 10rem;" class="kh-f-card-container">

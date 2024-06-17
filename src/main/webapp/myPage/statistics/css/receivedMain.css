@@ -23,12 +23,22 @@ body {
 
 #mainbutton {
 
-		    width: 5rem;
+		    width: 9.4rem;
     margin-right: 95rem;
     margin-top: 5rem;
+     animation: logo-float 2s ease-in-out infinite;
+}
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
 }
 #navi {
-	width: 5rem;
+	width: 9.4rem;
         margin-left: 95rem;
     margin-top: 5rem;
 }
@@ -42,7 +52,7 @@ body {
 }
 #header-img{
         width: 24rem;
-        margin-right: 2rem;
+      
 
 }
 #recMain-content{
