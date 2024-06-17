@@ -41,10 +41,12 @@ body {
 	object-fit:cover;
 }
 .kh-f-container {
+	position:relative;
 	width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .kh-f-content {
   width: 100%;
@@ -113,4 +115,45 @@ body {
 }
 .kh-show {
   display: block;
+}
+
+
+.yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
 }

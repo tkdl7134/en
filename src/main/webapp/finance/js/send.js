@@ -129,6 +129,12 @@ function envelopChanger() {
 
 
 function sendModal(money) {
+	const input = document.querySelector(".kh-s-input");
+	let value = money;
+	// 숫자를 현지화된 문자열로 변환하여 천 단위마다 쉼표를 추가
+	value = Number(value).toLocaleString('ja-JP');
+	// 포맷된 값을 입력 상자에 설정
+	input.value = value;
 	envelopChanger();
 	openModal();
 }
@@ -158,7 +164,7 @@ function closeModal() {
 	modal.close();
 }
 
-function goStatistic(wlno) {
+function goFinal(wlno) {
 	const container = document.querySelector("#kh-input-box");
 	const sinput = document.querySelector(".kh-s-input");
 	const warnspan = document.querySelector("#kh-warn-text");
@@ -173,7 +179,7 @@ function goStatistic(wlno) {
 			warnspan.classList.add("kh-show");
 		}
 	} else {
-		//	location.href =	"StatisticsC?paytype=fund&price=" +	sinput.value +"&eno=" +	eno +"&wlno=" +	wlno;
-		alert('pass!!')
+		let justnum = sinput.value.replace(',','');
+		location.href = "InsertFundC?paytype=send&price=" + justnum +"&eno=" + eno +"&wlno=" + wlno;
 	}
 }
