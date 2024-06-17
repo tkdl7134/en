@@ -22,7 +22,7 @@ public class MemberRegC extends HttpServlet {
 
 		MemberDAO.MemberRegC(request, response);
 		
-		request.getRequestDispatcher("MemberC").forward(request, response);
+		response.sendRedirect("MemberC");
 		
 	}
 }
