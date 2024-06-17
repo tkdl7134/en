@@ -307,22 +307,21 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-											<label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="no" checked /> いいえ
-											</label> <label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="yes" /> はい
-											</label>
+										<label>
+    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="no" checked /> いいえ
+										</label>
+										<label>
+    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="yes" /> はい
+										</label>
 										</div>
 
 										<div class="allergy-details" id="allergy-details"
 											style="display: none;">
 											<label for="allergy-type">アレルギーの種類:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-											<textarea class="allergy-type"
-												type="text" id="allergy-type" name="allergy-type"
-												placeholder="例：卵, 小麦, 乳製品" /></textarea>
+											<textarea class="allergy-type" id="allergy-type" name="allergy-type" placeholder="例：卵, 小麦, 乳製品"></textarea>
 										</div>
-									</fieldset>
-								</div>
+								</fieldset>
+										</div>
 
 								<div class="special-notes-container">
 									<div style="line-height: 3rem; font-size: 1.4rem;">
@@ -385,155 +384,132 @@
 </body>
 
 <script>
-// slick 시작 함수
+//slick 시작 함수
 let $slider;
-function slickSlide() {
-    var selected = false;
-    $slider = $(".survey-input").slick({
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        adaptiveHeight: false,
-        prevArrow: null,
-        nextArrow: null,
+	function slickSlide() {
+	var selected = false;
+		$slider = $(".survey-input").slick({
+    	infinite: false,
+    	slidesToShow: 1,
+    	slidesToScroll: 1,
+    	adaptiveHeight: false,
+    	prevArrow: null,
+    	nextArrow: null,
 		draggable: false,  // 마우스로 드래그 금지
-        swipe: false,      // 터치 스와이프 금지
-        touchMove: false  // 터치 무브 금지
-	}).on('init', function (event, slick) {
+     	swipe: false,      // 터치 스와이프 금지
+     	touchMove: false  // 터치 무브 금지
+		}).on('init', function (event, slick) {
 		console.log('왼쪽 버튼 삭제')
-            // 초기에 왼쪽 버튼 숨기기
-            $(".prev-slide").hide();
+         // 초기에 왼쪽 버튼 숨기기
+        $(".prev-slide").hide();
 	})
 
 	// 슬라이드 초기화 시 필터링 로직 추가
-        $slider.on('init', function (event, slick) {
-            if (!selected) {
-                $('.next-slide').prop('disabled', true); // '다음' 버튼 비활성화
-            }
-        });
-
-        // 슬라이드 변경 시 필터링 상태 유지
-        $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            if (currentSlide === 0 && !selected) {
-                alert('出席または欠席を選択してください。');
-                return false; // 슬라이드 변경을 막습니다.
-            }
-        });
-
-    // 슬라이드 변경 후 상태 확인
-    $slider.on('afterChange', function (event, slick, currentSlide) {
-        // 슬라이드 초기화 상태에서 버튼 상태를 다시 설정
-        if (currentSlide === 0 && !selected) {
-            $('.next-slide').prop('disabled', true);
-        } else {
-            $('.next-slide').prop('disabled', false);
-        }
-
-        if (currentSlide === 0) {
-            $(".prev-slide").hide();
-        } else {
-            $(".prev-slide").show();
-        }
-
-        if (currentSlide === slick.slideCount - 1) {
-            $(".next-slide").hide();
-        } else {
-            $(".next-slide").show();
+    $slider.on('init', function (event, slick) {
+        if (!selected) {
+             $('.next-slide').prop('disabled', true); // '다음' 버튼 비활성화
         }
     });
 
-        // 선택 버튼 클릭 시 '다음' 버튼 활성화
-        $('.entry-box-img, .no-entry-box-img').on('click', function () {
-            selected = true;
-            $('.next-slide').prop('disabled', false); // '다음' 버튼 활성화
-        });
+     // 슬라이드 변경 시 필터링 상태 유지
+    $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (currentSlide === 0 && !selected) {
+            alert('出席または欠席を選択してください。');
+             return false; // 슬라이드 변경을 막습니다.
+        }
+    });
 
-        // 이전 버튼 클릭 핸들러
-        $('.prev-slide').on('click', function () {
-            $slider.slick('slickPrev');
-        });
-
-        // 다음 버튼 클릭 핸들러
-        $('.next-slide').on('click', function () {
-            if (!selected && $slider.slick('slickCurrentSlide') === 0) {
-                alert('出席または欠席を選択してください。');
-                return false;
-            }
-            $slider.slick('slickNext');
-        });
+ // 슬라이드 변경 후 상태 확인
+	$slider.on('afterChange', function (event, slick, currentSlide) {
+     // 슬라이드 초기화 상태에서 버튼 상태를 다시 설정
+		if (currentSlide === 0 && !selected) {
+        $('.next-slide').prop('disabled', true);
+    } else {
+        $('.next-slide').prop('disabled', false);
     }
 
-    $(document).ready(function () {
-        slickSlide();
+    if (currentSlide === 0) {
+        $(".prev-slide").hide();
+	} else {
+        $(".prev-slide").show();
+    }
 
-        $(".entry-box-img").on("click", function () {
-            $(".survey-input").slick('slickUnfilter');
-            $(".survey-input").slick('slickFilter', function (index) {
-                return index < 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
-            });
-        });
+    if (currentSlide === slick.slideCount - 1) {
+        $(".next-slide").hide();
+    } else {
+        $(".next-slide").show();
+    }
+ });
 
-        $(".no-entry-box-img").on("click", function () {
-            $(".survey-input").slick('slickUnfilter');
-            $(".survey-input").slick('slickFilter', function (index) {
-                return index === 0 || index === 1 || index === 2 || index === 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
-            });
+     // 선택 버튼 클릭 시 '다음' 버튼 활성화
+    $('.entry-box-img, .no-entry-box-img').on('click', function () {
+        selected = true;
+         $('.next-slide').prop('disabled', false); // '다음' 버튼 활성화
+    });
+
+     // 이전 버튼 클릭 핸들러
+    $('.prev-slide').on('click', function () {
+        $slider.slick('slickPrev');
+    });
+
+     // 다음 버튼 클릭 핸들러
+    $('.next-slide').on('click', function () {
+        if (!selected && $slider.slick('slickCurrentSlide') === 0) {
+            alert('出席または欠席を選択してください。');
+            return false;
+        }
+        $slider.slick('slickNext');
+    });
+}
+
+$(document).ready(function () {
+    slickSlide();
+
+    $(".entry-box-img").on("click", function () {
+        $(".survey-input").slick('slickUnfilter');
+        $(".survey-input").slick('slickFilter', function (index) {
+             return index < 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
         });
     });
 
-		        // 서버로 데이터 전송 (AJAX 예시)
-        $.ajax({
-            type: 'POST',
-            url: '/SurveyC',
-            data: { g_attend: attendValue },
-            success: function(response) {
-                console.log('서버 응답:', response);
-            },
-            error: function(error) {
-                console.error('에러:', error);
-            }
+    $(".no-entry-box-img").on("click", function () {
+        $(".survey-input").slick('slickUnfilter');
+        $(".survey-input").slick('slickFilter', function (index) {
+             return index === 0 || index === 1 || index === 2 || index === 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
         });
-
-    $('.entry-box-img').on('click', function() {
-        handleSelectionClick($(this), 'yes');
     });
-
-    $('.no-entry-box-img').on('click', function() {
-        handleSelectionClick($(this), 'no');
-    });	
-
-	
+});
 
 
 $(document).ready(function() {
-    var $activeBox = null; // 활성화된 상자를 추적할 변수
+ var $activeBox = null; // 활성화된 상자를 추적할 변수
 
-    // 상자를 클릭했을 때 active 클래스를 관리합니다.
-    $('.entry-box-img, .no-entry-box-img').on('click', function(event) {
-        event.stopPropagation(); // 이벤트 전파를 멈춥니다.
-        
-        var $clickedBox = $(this);
+ // 상자를 클릭했을 때 active 클래스를 관리합니다.
+$('.entry-box-img, .no-entry-box-img').on('click', function(event) {
+     event.stopPropagation(); // 이벤트 전파를 멈춥니다.
+    
+    var $clickedBox = $(this);
 
-        // 클릭된 상자가 이미 활성화 상태인지 확인합니다.
-        if (!$clickedBox.hasClass('active')) {
-            // 현재 활성화된 상자와 다른 모든 상자에서 active 클래스를 제거합니다.
-            $('.entry-box-img.active, .no-entry-box-img.active').removeClass('active');
-            $('.entry-box-img.selected, .no-entry-box-img.selected').removeClass('selected');
+     // 클릭된 상자가 이미 활성화 상태인지 확인합니다.
+    if (!$clickedBox.hasClass('active')) {
+         // 현재 활성화된 상자와 다른 모든 상자에서 active 클래스를 제거합니다.
+        $('.entry-box-img.active, .no-entry-box-img.active').removeClass('active');
+        $('.entry-box-img.selected, .no-entry-box-img.selected').removeClass('selected');
 
-            // 클릭된 상자에 active 클래스를 추가합니다.
-            $clickedBox.addClass('active');
-            $clickedBox.addClass('selected');
+         // 클릭된 상자에 active 클래스를 추가합니다.
+        $clickedBox.addClass('active');
+        $clickedBox.addClass('selected');
 
-            // 활성화된 상자를 추적합니다.
-            $activeBox = $clickedBox;
-        }
-    });
+         // 활성화된 상자를 추적합니다.
+        $activeBox = $clickedBox;
+    }
+});
 
-    $(document).on('click', function(event) {
-        if ($activeBox !== null && !$activeBox.is(event.target) && $activeBox.has(event.target).length === 0) {
+$(document).on('click', function(event) {
+    if ($activeBox !== null && !$activeBox.is(event.target) && $activeBox.has(event.target).length === 0) {
 
-        }
-    });
+    }
+});
 });
 
 	function count(type, inputId) {
@@ -544,66 +520,108 @@ $(document).ready(function() {
 		if (type === "plus") {
 	number += 1;
 	} else if (type === "minus") {
-    if (number > 0) {
-    number -= 1;
-    }
+if (number > 0) {
+number -= 1;
+}
 	}
 
-  // 결과 출력
-    resultElement.value = number;
+// 결과 출력
+resultElement.value = number;
 }
 
-    const coupleCheckboxes = document.querySelectorAll('input[name="couple"]');
+const coupleCheckboxes = document.querySelectorAll('input[name="couple"]');
 
-    coupleCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change',function() {
-        if (this.checked) {
-            coupleCheckboxes.forEach(otherCheckbox => {
-            if (otherCheckbox !== this) {
-                otherCheckbox.checked = false;
-            }
-            });      
-        }
-    });
-    });
-
-        const relationshipCheckboxes = document.querySelectorAll('input[name="relation"]');
-
-    relationshipCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change',function() {
-        if (this.checked) {
-            relationshipCheckboxes.forEach(otherCheckbox => {
-            if (otherCheckbox !== this) {
-                otherCheckbox.checked = false;
-            }
-            });      
-        }
-    });
-    });
-
-    // 알레르기 셀렉트 박스 변경 이벤트 처리
-    const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
-    const allergyDetails = document.getElementById("allergy-details");
-
-    allergyCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
+coupleCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change',function() {
     if (this.checked) {
-        allergyCheckboxes.forEach(otherCheckbox => {
-        if(otherCheckbox !== this) {
+        coupleCheckboxes.forEach(otherCheckbox => {
+        if (otherCheckbox !== this) {
             otherCheckbox.checked = false;
         }
-        });
+        });      
+    }
+});
+});
 
-        if (this.value === 'yes') {
-          allergyDetails.style.display = 'block'; // "はい" 체크 시 세부 정보 표시
-        } else {
-          allergyDetails.style.display = 'none';  // 체크 해제 시 세부 정보 숨김
-        }         
+    const relationshipCheckboxes = document.querySelectorAll('input[name="relation"]');
+
+relationshipCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change',function() {
+    if (this.checked) {
+        relationshipCheckboxes.forEach(otherCheckbox => {
+        if (otherCheckbox !== this) {
+            otherCheckbox.checked = false;
         }
-        });
+        });      
+    }
+});
+});
+
+ // 알레르기 셀렉트 박스 변경 이벤트 처리
+const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
+const allergyDetails = document.getElementById("allergy-details");
+
+allergyCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+if (this.checked) {
+    allergyCheckboxes.forEach(otherCheckbox => {
+    if(otherCheckbox !== this) {
+        otherCheckbox.checked = false;
+    }
     });
 
+    if (this.value === 'yes') {
+       allergyDetails.style.display = 'block'; // "はい" 체크 시 세부 정보 표시
+    } else {
+       allergyDetails.style.display = 'none';  // 체크 해제 시 세부 정보 숨김
+    }         
+    }
+    });
+});
 
+	function validateForm() {
+        var kanzinames = document.getElementById("kanzi-name").value.trim();
+        var katanames = document.getElementById("kata-name").value.trim();
+        var romanames = document.getElementById("roma-name").value.trim();
+		var phonenumber = document.getElementById("phonenum") .value.trim();
+		var emails = document.getElementById("email") .value.trim();
+		var phonenumber = document.getElementById("postal-code") .value.trim();
+		var phonenumber = document.getElementById("city") .value.trim();
+		var phonenumber = document.getElementById("address-line1") .value.trim();
+		var phonenumber = document.getElementById("address-line2") .value.trim();
+		var phonenumber = document.getElementById("phonenum") .value.trim();
+		var phonenumber = document.getElementById("phonenum") .value.trim();
+
+
+        // 체크 로직
+        if (kanzinames === "" || katanames === "" || romanames === "") {
+        alert("이름 항목을 입력해주세요.");
+            return false; // 폼 제출 방지
+            }
+            return true; // 폼 제출 허용
+        
+		if (phonenumber === "") {
+		alert("연락처 항목을 입력해주세요")	
+			return true;
+		}	
+		return false;
+
+		if (emails === "") {
+		alert("이메일을 입력해주세요")	
+			return true;
+		}	
+		return false;
+
+		if (kanzinames === "" || katanames === "" || romanames === "") {
+        alert("주소 항목을 입력해주세요.");
+            return false; 
+            }
+            return true; 
+
+
+		}
+
+	
 </script>
 
 </html>

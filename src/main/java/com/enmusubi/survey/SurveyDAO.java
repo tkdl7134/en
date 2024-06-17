@@ -30,15 +30,6 @@ public class SurveyDAO {
             getMemberNormal(request);
         }
     }
-	
-    private static boolean whichLogin(HttpServletRequest request) {
-        // 여기에서 어떻게 로그인 방식을 판별할지 로직을 구현합니다.
-        // 예를 들어 request.getParameter("loginType") 등을 활용하여 판별할 수 있습니다.
-        // 예시로 "loginType"이라는 파라미터가 LINE 인지, 일반 회원 인지를 구분하도록 한다면:
-
-        String loginType = request.getParameter("Line");
-        return "LINE".equals(loginType); // "LINE"이면 true를 반환하고, 그 외에는 false를 반환합니다.
-    }
     
 
 	// LINE 로그인 시 정보 추가 입력
