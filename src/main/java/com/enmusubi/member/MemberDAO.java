@@ -205,7 +205,7 @@ public class MemberDAO {
 
 		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
 		String m_img = "default.png"; // 기본 이미지 설정
-
+		
 //      정보 합치기 (구분자 사용)
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;

@@ -22,5 +22,7 @@ public class MemberRegC extends HttpServlet {
 
 		MemberDAO.MemberRegC(request, response);
 		
+		
+		
 	}
 }

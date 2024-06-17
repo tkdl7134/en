@@ -36,13 +36,13 @@
 
 <body class="hs_body">
 
-	<div class="hs_background-1">
+	<div class="hs_background">
 
 
 		<div class="horizontal-container-btn">
 			<img class="menu-btn-enmusubi" alt=""
-				src="regPage/ImgFolder/menu-btn-enmusubi.png"> <img
-				class="menu-btn-1" alt="" src="regPage/ImgFolder/menu_btn_1.png">
+				src="regPage/ImgFolder/Logo.png"> <img class="menu-btn-1"
+				alt="" src="regPage/ImgFolder/default_menu_1.png">
 		</div>
 
 		<div class="hs_title">会員登録</div>
@@ -123,14 +123,14 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="number" name="m_birthY" class="hs_input birth"
-							maxlength="4" min="1" max="9999">
+						<input type="text" name="m_birthY" class="hs_input birth"
+							maxlength="4">
 						<div class="hs_content-text bd">年</div>
-						<input type="number" name="m_birthM" class="hs_input birth"
-							maxlength="2" min="1" max="12">
+						<input type="text" name="m_birthM" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">月</div>
-						<input type="number" name="m_birthD" class="hs_input birth"
-							maxlength="2" min="1" max="31">
+						<input type="text" name="m_birthD" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
@@ -142,7 +142,7 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
-						<input type="" name="m_phone" class="hs_input phone"
+						<input type="text" name="m_phone" class="hs_input phone"
 							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
 					</div>
 
@@ -227,11 +227,16 @@
 							class="hs_input building" placeholder="ビル・マンション名など">
 					</div>
 
-					<button id="btnReg" class="btn-reg" onclick="register()">登録</button>
+					<button id="btnReg" class="btn-reg" type="button"
+						onclick="register()">登録</button>
 
 				</div>
 			</div>
 		</form>
+
+		<footer class="hs_footer">
+			<div class="hs_footer-background"></div>
+		</footer>
 	</div>
 
 	<script>
@@ -240,7 +245,7 @@
 	  const registerButton = document.getElementById("registerButton");
 	  
 	  // 入力フィールドに数字のみ許可
-	  document.querySelectorAll('input[name="m_phone"]').forEach(input => {
+	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
 	    input.addEventListener("input", function() {
 	      this.value = this.value.replace(/[^0-9]/g, ''); // 数字のみ許可
 	    });
@@ -259,7 +264,106 @@
 	  });
 	});
 	
+	// input 요소를 선택합니다.
+	const inputElementd = document.querySelector('input[name="m_birthD"]');
+
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementd.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
+
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 31) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
+	});
+	// input 요소를 선택합니다.
+	const inputElementm = document.querySelector('input[name="m_birthM"]');
+
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementm.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
+
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 12) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
+	});
+	
 	function register() {
+	    // 필수 입력 항목들을 확인
+	    let requiredFields = [
+	        { field: $("#m_id"), name: 'ID' },
+	        { field: $("#m_pw"), name: 'パスワード' },
+	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
+	        { field: $("input[name='m_name']"), name: '名前' },
+	        { field: $("input[name='m_name_kana']"), name: 'フリガナ' },
+	        { field: $("input[name='m_name_rome']"), name: '名前(ローマ字)' },
+	        { field: $("input[name='m_gender']:checked"), name: '性別' },
+	        { field: $("input[name='m_birthY']"), name: '生年月日' },
+	        { field: $("input[name='m_birthM']"), name: '生年月日' },
+	        { field: $("input[name='m_birthD']"), name: '生年月日' },
+	        { field: $("input[name='m_email']"), name: 'メールアドレス' },
+	        { field: $("input[name='m_phone']"), name: '電話番号' },
+	        { field: $("#a_postcode"), name: '郵便番号' },
+	        { field: $("#a_prefecture"), name: '都道府県' },
+	        { field: $("#a_city"), name: '市区町村' },
+	        { field: $("#a_street"), name: '番地' }
+	    ];
+
+	    for (let i = 0; i < requiredFields.length; i++) {
+	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
+	            Swal.fire({
+	                icon: 'warning',
+	                title: '入力してない項目があります。',
+	                customClass: {
+	                    popup: 'swal2-popup',
+	                    confirmButton: 'swal2-confirm'
+	                }
+	            });
+	            requiredFields[i].field.focus();
+	            return false;
+	        }
+	    }
+
+	    if (!isIdChecked || !isIdAvailable) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'IDのチェックを行ってください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        $("#m_id").focus();
+	        return false;
+	    }
+
+	    document.querySelector('form').submit();
+	}
+	
+/* 	function register() {
 		// 필수 입력 항목들을 확인
 	    let m_id = $("#m_id").val().trim();
 	    let m_pw = $("#m_pw").val().trim();
@@ -279,21 +383,19 @@
 	    let a_street = $("#a_street").val().trim();
 
 	    // 필수 입력란 체크
-	    if (m_id === '') {
-	    /* alert("IDを入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'IDを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_id").focus();
-	    return false;
-	}
-	if (m_pw === '') {
-	    /* alert("パスワードを入力してください。"); */
+	    if (m_id === null || m_id === '') {
+		    Swal.fire({
+				icon: 'warning',
+				title : 'IDを入力してください。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+		    $("#m_id").focus();
+		    return false;
+		}
+	if (m_pw === null || m_pw === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : 'パスワードを入力してください。',
@@ -305,8 +407,7 @@
 	    $("#m_pw").focus();
 	    return false;
 	}
-	if (m_pw_confirm === '') {
-	    /* alert("パスワード(確認)を入力してください。"); */
+	if (m_pw_confirm === null || m_pw_confirm === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : 'パスワードを入力してください。',
@@ -318,8 +419,7 @@
 	    $("#m_pw_confirm").focus();
 	    return false;
 	}
-	if (m_name === '') {
-	    /* alert("名前を入力してください。"); */
+	if (m_name === null || m_name === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '名前を入力してください。',
@@ -331,8 +431,7 @@
 	    $("input[name='m_name']").focus();
 	    return false;
 	}
-	if (m_name_kana === '') {
-	    /* alert("フリガナを入力してください。"); */
+	if (m_name_kana === null || m_name_kana === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : 'フリガナを入力してください。',
@@ -344,8 +443,7 @@
 	    $("input[name='m_name_kana']").focus();
 	    return false;
 	}
-	if (m_name_rome === '') {
-	    /* alert("名前（ローマ字）を入力してください。"); */
+	if (m_name_rome === null || m_name_rome === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '名前(ローマ字)を入力してください。',
@@ -358,7 +456,6 @@
 	    return false;
 	}
 	if (!m_gender) {
-	    /* alert("性別を選択してください。"); */
 	    Swal.fire({
 			icon: 'warning',
 			title : '性別を選択してください。',
@@ -370,8 +467,7 @@
 	    $("input[name='m_gender']").focus();
 	    return false;
 	}
-	if (m_birthY === '' || m_birthM === '' || m_birthD === '') {
-	    /* alert("生年月日をすべて入力してください。"); */
+	if (m_birthY === null || m_birthM === null || m_birthD === null || m_birthY === '' || m_birthM === '' || m_birthD === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '生年月日をすべて入力してください。',
@@ -383,8 +479,7 @@
 	    $("input[name='m_birthY']").focus();
 	    return false;
 	}
-	if (m_email === '') {
-	    /* alert("メールアドレスを入力してください。"); */
+	if (m_email === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : 'メールアドレスを入力してください。',
@@ -396,8 +491,7 @@
 	    $("input[name='m_email']").focus();
 	    return false;
 	}
-	if (m_phone === '') {
-	    /* alert("電話番号を入力してください。"); */
+	if (m_phone === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '電話番号を入力してください。',
@@ -409,8 +503,7 @@
 	    $("input[name='m_phone']").focus();
 	    return false;
 	}
-	if (a_postcode === '') {
-	    /* alert("郵便番号を入力してください。"); */
+	if (a_postcode === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '郵便番号を入力してください。',
@@ -422,8 +515,7 @@
 	    $("#a_postcode").focus();
 	    return false;
 	}
-	if (a_prefecture === '') {
-	    /* alert("都道府県を選択してください。"); */
+	if (a_prefecture === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '都道府県を選択してください。',
@@ -435,8 +527,7 @@
 	    $("#a_prefecture").focus();
 	    return false;
 	}
-	if (a_city === '') {
-	    /* alert("市区町村を入力してください。"); */
+	if (a_city === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '市区町村を入力してください。',
@@ -448,8 +539,7 @@
 	    $("#a_city").focus();
 	    return false;
 	}
-	if (a_street === '') {
-	    /* alert("番地を入力してください。"); */
+	if (a_street === null || m_email === '') {
 	    Swal.fire({
 			icon: 'warning',
 			title : '番地を入力してください。',
@@ -463,7 +553,6 @@
 	}
 
 	if (!isIdChecked || !isIdAvailable) {
-	    /* alert("IDのチェックを行ってください。"); */
 	    Swal.fire({
 			icon: 'warning',
 			title : 'IDのチェックを行ってください。',
@@ -475,8 +564,8 @@
 	    $("#m_id").focus(); 
 	    return false;
 	}
-	}
-	
+	document.querySelector('form').submit();
+} */
 	
 	function checkForm() {
 	    let m_id = $("#m_id").val().trim();

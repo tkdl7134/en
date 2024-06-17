@@ -34,9 +34,9 @@
 	<div class="hs_background">
 		<div class="horizontal-container-btn">
 			<img class="menu-btn-enmusubi" alt="asd"
-				src="loginPage/ImgFolder/menu-btn-enmusubi.png"> <img
+				src="loginPage/ImgFolder/Logo.png"> <img
 				class="menu-btn-1" alt="asd"
-				src="loginPage/ImgFolder/menu_btn_1.png">
+				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
 		<div class="horizontal-container-title">
