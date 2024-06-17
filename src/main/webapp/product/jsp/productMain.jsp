@@ -30,6 +30,7 @@
         <div class="je_title-line">
           <img src="product/imgFolder/page-title-Line.png" alt="" />
         </div>
+<<<<<<< HEAD
       </div>
       <div class="je_content-product">
         <div class="je_products">
@@ -46,6 +47,25 @@
                   見本</button
                 >
                 <button class="je_make-button" name="templatePK" value="${p.t_pk }">制作</button>
+=======
+        </div>
+        <div class="je_product-page-content">
+            <div class="je_page-content">
+   <c:forEach items="${products }" var="p">
+              <div class="je_page-content-template">
+                <div class="je_template-img">
+                  <img src="${p.t_preview }" alt="" />
+                  <div>
+                    <div class="je_template-img-line-red-big"></div>
+                    <div class="je_template-img-line-red-small"></div>
+                  </div>
+                </div>
+                <div class="je_template-title">${p.t_name }</div>
+                <div class="je_template-button">
+                  <button class="je_preview" data-target="#layer2">見本</button>
+                  <button >制作</button>
+                </div>
+>>>>>>> parent of d258d6d ([Add] imgFolder - 이미지 추가)
               </div>
             </div>
           </div>
