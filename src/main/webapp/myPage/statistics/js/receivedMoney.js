@@ -111,6 +111,7 @@ $.ajax({
 				console.log(jsoninfos);
 				let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
+				location.href = `receviedSpecificMoneyC?&eno=`+eventno;
 				if (cardParent) {
 					let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
 					let selectobj = jsoninfos.find(function(element) {
@@ -123,7 +124,6 @@ $.ajax({
 						percent = selectobj.percent;
 					};
 				let wl_no = cardIn.getAttribute("value");
-				location.href = `receivedSpecificMoneyC?wlno=${wl_no}&eno=`+eventno;
 					document.querySelector("#kh-f-price").innerHTML = percent;
 					document.querySelector("#kh-f-product").innerHTML = selectobj.wl_product;
 					document.querySelector(".kh-f-btn").setAttribute("value", selectobj.wl_no);

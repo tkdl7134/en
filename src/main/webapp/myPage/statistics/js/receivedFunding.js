@@ -93,21 +93,21 @@ $.ajax({
 			});
 			element.addEventListener("click", function(event) {
 				console.log(jsoninfos);
-				let cardParent = event.target.closest(".kh-fund-card");
+			let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
 				if (cardParent) {
 					let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
 					let selectobj = jsoninfos.find(function(element) {
 						return element.wl_no === wlno;
 					});
-					if (selectobj.percent === undefined) {
-						percent = 0;
-					}
+				if (selectobj.percent === undefined) {
+					percent = 0;
+			}
 					else{
 						percent = selectobj.percent;
 					};
 				let wl_no = cardIn.getAttribute("value");
-				location.href = `receivedSpecificFundingC?wlno=${wl_no}&eno=`+eventno;
+				location.href = `receivedSpecificMoneyC?wlno=${wl_no}&eno=`+eventno;
 					document.querySelector("#kh-f-price").innerHTML = percent;
 					document.querySelector("#kh-f-product").innerHTML = selectobj.wl_product;
 					document.querySelector(".kh-f-btn").setAttribute("value", selectobj.wl_no);
