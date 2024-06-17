@@ -68,7 +68,7 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" data-selccted="no">
+									<div class="entry-box-img" data-selccted="yes">
 										<div class="texts">
 											<div class="objective">出席</div>
 										</div>
@@ -480,6 +480,29 @@ function slickSlide() {
             });
         });
     });
+
+		        // 서버로 데이터 전송 (AJAX 예시)
+        $.ajax({
+            type: 'POST',
+            url: '/SurveyC',
+            data: { g_attend: attendValue },
+            success: function(response) {
+                console.log('서버 응답:', response);
+            },
+            error: function(error) {
+                console.error('에러:', error);
+            }
+        });
+
+    $('.entry-box-img').on('click', function() {
+        handleSelectionClick($(this), 'yes');
+    });
+
+    $('.no-entry-box-img').on('click', function() {
+        handleSelectionClick($(this), 'no');
+    });	
+
+	
 
 
 $(document).ready(function() {
