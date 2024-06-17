@@ -123,15 +123,12 @@
 					
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birthY" class="hs_input birth"
-							maxlength="4">
-						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birthM" class="hs_input birth"
-							maxlength="2">
-						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birthD" class="hs_input birth"
-							maxlength="2">
-						<div class="hs_content-text bd">日</div>
+						
+						<div class="hs_content-text bd"><span id="sessionYear">年</span></div>
+						
+						<div class="hs_content-text bd"><span id="sessionMonth">月</span></div>
+						
+						<div class="hs_content-text bd"><span id="sessionDay">日</span></div>
 					</div>
 
 					<div class="hs_content-input">
@@ -412,6 +409,21 @@
 
 	// 입력란이 변경될 때마다 확인
 	$("input, select").on("change keyup", checkForm);
+	
+	function displayBirthDate() {
+        // 세션 스토리지에서 값 가져오기
+        const birthYear = sessionStorage.getItem('birthYear');
+        const birthMonth = sessionStorage.getItem('birthMonth');
+        const birthDay = sessionStorage.getItem('birthDay');
+
+        // HTML 요소에 값 설정
+        document.getElementById('sessionYear').textContent = birthYear || 'N/A';
+        document.getElementById('sessionMonth').textContent = birthMonth || 'N/A';
+        document.getElementById('sessionDay').textContent = birthDay || 'N/A';
+    }
+
+    // 페이지 로드 시 세션 스토리지 값을 표시
+    document.addEventListener('DOMContentLoaded', displayBirthDate);
         
 	</script>
 </body>

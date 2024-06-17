@@ -121,13 +121,13 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birthY" class="hs_input birth"
+						<input type="text" name="m_birthY" id="m_birthY" class="hs_input birth"
 							maxlength="4">
 						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birthM" class="hs_input birth"
+						<input type="text" name="m_birthM" id="m_birthM" class="hs_input birth"
 							maxlength="2">
 						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birthD" class="hs_input birth"
+						<input type="text" name="m_birthD" id="m_birthD" class="hs_input birth"
 							maxlength="2">
 						<div class="hs_content-text bd">日</div>
 					</div>
@@ -433,8 +433,10 @@
             let id = $("input[name='m_id']").val().trim();
             console.log(id);
             
-            if (!id) { // id가 null이거나 공백일 경우
-                /* alert("IDを入力してください。"); */
+            // 특수문자 확인 정규식
+            let specialCharPattern = /[^a-zA-Z0-9]/;
+            
+            if (!id) {
                 Swal.fire({
 					icon: 'warning',
 					title : 'IDを入力してください。',
@@ -443,6 +445,19 @@
 						confirmButton : 'swal2-confirm'
 					}
 				});
+                return;
+            }
+            
+            if (specialCharPattern.test(id)) { // id에 특수문자가 포함되어 있는 경우
+                Swal.fire({
+                    icon: 'warning',
+                    title: '使用できない文字が含まれています。',
+                    text: '英語と数字のみ入力お願いします。',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal2-confirm'
+                    }
+                });
                 return;
             }
             
@@ -503,7 +518,22 @@
                  });
             }
 			
-        
+        function saveBirthDate() {
+            // 입력값을 가져옴
+            const birthYear = document.getElementById('m_birthY').value;
+            const birthMonth = document.getElementById('m_birthM').value;
+            const birthDay = document.getElementById('m_birthD').value;
+
+            // 세션 스토리지에 값 저장
+            sessionStorage.setItem('birthYear', birthYear);
+            sessionStorage.setItem('birthMonth', birthMonth);
+            sessionStorage.setItem('birthDay', birthDay);
+
+            // 저장된 값을 출력 (개발용으로 확인)
+            console.log('Saved Birth Date:', birthYear, birthMonth, birthDay);
+        }
+    
+    
 	</script>
 
 </body>
