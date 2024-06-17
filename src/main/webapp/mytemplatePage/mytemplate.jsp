@@ -1,43 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>アンケート 管理</title>
-<link rel="stylesheet" href="invitationPage/invitationPage.css">
-<script type="text/javascript" src="invitationPage/invitationPage.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="product/css/productMain.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
-<body id="page_top">
-	<form action="InvitationController" method="post">
-		<div class="hw_container">
-			<header class="hw_invitation_header">
-				<a class="hw_logo" href="main.jsp"><img
-					src="invitationPage/imgFolder/logo.png" alt="logo"></a> <a
-					class="hw_pagetitle" href="main.jsp"><img
-					src="invitationPage/imgFolder/template_title.png" alt="pagetitle"></a>
-				<a class="hw_menu" href="main.jsp"><img
-					src="invitationPage/imgFolder/menu_btn.png" alt="메뉴"></a>
-			</header>
-
-			<main class="hw_template_main">
-
-
-
-
-				<!-- 출석 탭 영역 -->
-				<div class="hw_content"></div>
-		</div>
-
-		<a href="#page_top"><img
-			src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
-
-		<!-- 마우스 아이콘 -->
-		<div class="hw-f-mousemove hw-f-none">
-			<img src="invitationPage/imgFolder/back_btn.png" alt="마우스 아이콘">
-		</div>
-		</main>
-	</form>
-</body>
+<body>
+<div id="je_container-product">
+      <div class="je_page-deco">
+      <img src="product/imgFolder/product-combine.png" alt="" />
+    </div>
+      <div class="je_product-page">
+      <div class="je_product-page-title">
+        <div class="je_page-title">テンプレート一覧</div>
+        <div class="je_page-title-line">
+          <img src="product/imgFolder/pageTop_line.png" alt="" />
+        </div>
+        </div>
+        <div class="je_product-page-content">
+            <div class="je_page-content">
+   <c:forEach items="${products }" var="p">
+              <div class="je_page-content-template">
+                <div class="je_template-img">
+                  <img src="${p.t_preview }" alt="" />
+                  <div>
+                    <div class="je_template-img-line-red-big"></div>
+                    <div class="je_template-img-line-red-small"></div>
+                  </div>
+                </div>
+                <div class="je_template-title">${p.t_name }</div>
+                <div class="je_template-button">
+                  <button class="je_preview" data-target="#layer2">見本</button>
+                  <button >制作</button>
+                </div>
+              </div>
+    </c:forEach>
+<!-- 	<div style="height: 100rem"></div> -->
+            </div>
+          </div>
+        </div>
+</div>
+      
+    <!--popUp-->
+    <div class="je_dim-layer">
+      <div class="je_dimBg"></div>
+      <div id="je_layer" class="je_pop-layer">
+        <div class="je_pop-container">
+          <div class="je_pop-conts">
+            <!-- content //-->
+            <!-- db에 저장되어있는 template-img READ -->
+            <img src="" alt="" />
+            <div class="je_btn-r">
+              <a href="#" class="je_btn-layerClose">close</a>
+            </div>
+            <!--// content-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="product/js/productMain.js"></script>
+  </body>
 </html>

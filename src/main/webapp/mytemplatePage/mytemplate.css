@@ -1,258 +1,230 @@
-/* Google Fonts에서 폰트 가져오기 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
-
-/* 공통 스타일 */
+@charset "UTF-8";
+* {
+  font-family: "Noto Serif JP", serif;
+}
 body {
-    background-attachment: scroll;
-    background-color: #FFF5F4;
-    font-family: "Noto Serif JP", serif;
-    font-optical-sizing: auto;
-    font-weight: 400; /* 기본 폰트 두께를 지정 */
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    background-image: url('imgFolder/up_page.png'), url('imgFolder/up_line.png'), url('imgFolder/down_page.png'), url('imgFolder/down_line.png');
-    background-position: top center, top center, bottom center, bottom center;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-size: contain, contain, contain, contain;
+  background-color: #fffbf7;
+  margin: 0;
+  padding: 0;
+  /* 화면 줄어들 때 왼쪽 여백 없애는 거 */
+  /* display: flex;
+  justify-content: center; */
 }
 
-.hw_container {
-    border-radius: 1rem;
-    max-width: 90%;
-    margin: auto;
-    position: relative;
-    z-index: 1;
+.je_page-deco {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  /* height: 100vh; */
+  z-index: 10;
+}
+.je_page-deco > img {
+  /* width: 100%; */
+  width: 100%;
+  height: 100vh;
 }
 
-header {
-    display: flex;
-    justify-content: center; /* 가운데 정렬 */
-    align-items: center;
-    padding: 5rem 3rem; /* 1rem 아래로 이동 */
-    position: relative; /* 상대적 위치 지정 */
+#je_container-product {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  /* margin-top: rem; */
 }
 
-.hw_logo {
-    z-index: 4;
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    top: 4rem; /* 아래로 이동 */
-    left: 1rem;
+.je_product-page {
+  height: max-content;
+  /* display: flex;
+  justify-content: center; */
+  width: 82rem;
 }
 
-.hw_logo img {
-    width: 100%;
-    height: 100%;
-    animation: logo-float 2s ease-in-out infinite;
+/* 상품소개 - title */
+.je_product-page-title {
+  margin-top: 7rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.je_page-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.je_page-title-line {
+  position: absolute;
+  top: 2.5rem;
+}
+.je_page-title-line > img {
+  width: 21rem;
 }
 
-@keyframes logo-float {
-    0%, 100% {
-        transform: translate(0, 0%);
-    }
-    50% {
-        transform: translate(0, 5%);
-    }
+/* 상품소개 - content */
+.je_product-page-content {
+  /* background-color: aqua; */
+  margin-top: 4.3rem;
 }
 
-.hw_pagetitle {
-    flex-grow: 1; /* 남은 공간 차지 */
-    text-align: center;
-    padding: 2rem;
+.je_page-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.hw_pagetitle img {
-    height: 1.5rem;
+.je_page-content-template {
+  margin-bottom: 1rem;
+  width: 23.2rem;
+  height: 39rem;
+  padding-top: 1rem;
 }
 
-.hw_menu {
-    position: absolute;
-    right: 1rem; /* 오른쪽 여백 */
+.je_template-img {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.je_template-img > img {
+  width: 93%;
+  border: 0.3rem solid #ffd600;
+  border-radius: 45% / 35%;
 }
 
-.hw_menu img {
-    height: 3.5rem;
+.je_template-img-line-red-big {
+  width: 100%;
+  height: 102%;
+  position: absolute;
+  top: -0.3rem;
+  left: 0;
+  border: 0.1rem solid #ec0000;
+  border-radius: 45% / 35%;
+  box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+}
+.je_template-img-line-red-small {
+  width: 95%;
+  height: 100%;
+  position: absolute;
+  left: 0.5rem;
+  border: 0.1rem solid #ec0000;
+  border-radius: 45% / 35%;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
+.je_template-title {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-.hw_card {
-    text-align: center;
-    margin: 1.25rem 0;
-    padding: 1.25rem;
-    border-radius: 1rem;
+.je_template-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.je_template-button > button {
+  width: 4.4rem;
+  height: 1.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 0.1rem solid #c82626;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+  z-index: 100;
 }
 
-.hw_card img {
-    max-width: 100%;
-    height: auto;
+.je_template-button > button:nth-child(1) {
+  margin-right: 1.8rem;
+  background-color: #fff4f4;
+  color: #5c5c5c;
+}
+.je_template-button > button:nth-child(1):hover {
+  background-color: #c8c8c8;
+  color: #fff4f4;
+  transition: 0.5s;
 }
 
-.hw_card_message {
-    margin: 1.25rem 0;
+.je_template-button > button:nth-child(2) {
+  background-color: #ff3b3f;
+  color: #ffffff;
+}
+.je_template-button > button:nth-child(2):hover {
+  background-color: #fff4f4;
+  color: #ff3b3f;
+  transition: 0.5s;
 }
 
-.hw_content, .hw_content_detail, .hw_content_absent {
-    border: 0.0625rem solid #ff7e81;
-    border-radius: 1.875rem;
-    width: 70%;
-    padding: 1rem;
-    margin-bottom: 1.25rem;
-    background-color: #ffdede;
+/* 팝업 */
+.je_pop-layer .je_pop-container {
+  padding: 20px 25px;
+  z-index: 300;
 }
 
-.hw_content_detail {
-    background-color: #ffefee;
+.je_pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+  z-index: 300;
 }
 
-.hw_tab_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0.65rem;
-    width: 100%;
+.je_pop-layer .je_btn-r {
+  width: 100%;
+  margin: 0.6rem 0 1.2rem;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+  z-index: 300;
 }
 
-.hw_tab_title {
-    font-size: 1.875rem;
-    margin: 0;
+.je_pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30rem;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid #c82626;
+  z-index: 300;
 }
 
-.tab_bnt {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    gap: 0.625rem;
+.je_dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
 }
 
-.hw_tab__item {
-    padding: 0.625rem 1.25rem;
-    cursor: pointer;
-    background-color: #ffefef;
-    border: 0.1875rem solid #c82626;
-    text-align: center;
-    margin-left: -0.0625rem;
-    border-radius: 0.9375rem;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-    color: black;
-    transition: background-color 0.3s, color 0.3s;
+.je_dim-layer .je_dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
-.hw_tab__item:first-child {
-    margin-left: 0;
+.je_dim-layer .je_pop-layer {
+  display: block;
 }
 
-.hw_tab__item a {
-    text-decoration: none;
-    color: inherit;
+a.je_btn-layerClose {
+  display: inline-block;
+  height: 1.5rem;
+  padding: 0 0.8rem 0;
+  border: 0.1rem solid #c82626;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px #c82626;
+  background-color: #c82626;
+  color: #ffffff;
+  font-size: 13px;
+  text-decoration: none;
 }
 
-.hw_tab__item.active, .hw_tab__item:hover {
-    background-color: #ff3b3f;
-    color: white;
-    border: 0.1875rem solid #c82626;
-}
-
-.hw_tab_content-wrapper {
-    padding: 0.625rem;
-    width: 100%;
-    overflow: hidden;
-}
-
-.hw_tab_content {
-    display: none;
-}
-
-.hw_tab_content.active {
-    display: block;
-}
-
-.styled-table-wrapper {
-    height: 18.5rem;
-    overflow-y: scroll;
-    scrollbar-width: none;
-}
-
-.styled-table-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.hw_invitation_title, .hw_invitation_content {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    border: 0.0625rem solid #ddd;
-    border-radius: 0.9375rem;
-    padding: 0.75rem 0.9375rem;
-    margin-bottom: 0.625rem;
-}
-
-.hw_invitation_title {
-    font-weight: bold;
-}
-
-.hw_invitation_content {
-    background-color: #fff;
-}
-
-.hw_invitation_title span, .hw_invitation_content span {
-    flex: 1;
-    text-align: center;
-}
-
-.hw_invitation_small {
-    border-right: 0.1rem solid black;
-}
-
-.hw_invitation_big {
-    border-left: 0.1rem solid black;
-}
-
-.top_button {
-    display: block;
-    margin: 0 auto 10rem auto; /* 상, 좌우, 하 방향 마진을 지정 */
-    width: 8.7rem;
-    height: 8.7rem;
-    cursor: pointer;
-    padding: 1rem;
-}
-
-.hw_more_button {
-    background: none;
-    color: white;
-    text-shadow: 0.0625rem 0.0625rem 0.125rem black;
-    font-size: 2rem;
-    cursor: pointer;
-    border: none;
-    padding: 1rem;
-    outline: none;
-}
-
-/* 마우스 아이콘 스타일 */
-.hw-f-mousemove {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
-    pointer-events: none;
-}
-
-.hw-f-block {
-    display: block;
-}
-
-.hw-f-none {
-    display: none;
+a.je_btn-layerClose:hover {
+  border: 1px solid #c82626;
+  background-color: #fff;
+  color: #c82626;
 }
