@@ -117,7 +117,7 @@
 							Swal.fire({
 								icon: 'warning',
 								title : 'IDまたはPWが一致しません。',
-								/*  text: 'IDまたはPWが一致しません。', */
+								text: '存在しないアカウントか、ID＆PWが一致しません。',
 								customClass : {
 									confirmButton : 'swal2-confirm'
 								}

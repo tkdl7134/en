@@ -235,11 +235,23 @@
 		</form>
 
 		<footer class="hs_footer">
+			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
 			<div class="hs_footer-background"></div>
 		</footer>
 	</div>
 
 	<script>
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    const topButton = document.querySelector('.top-button');
+	    
+	    topButton.addEventListener('click', function() {
+	        window.scrollTo({
+	            top: 0,
+	            behavior: 'smooth' // 부드러운 스크롤
+	        });
+	    });
+	});
 
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("registerButton");
