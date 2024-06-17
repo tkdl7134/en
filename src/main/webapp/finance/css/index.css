@@ -1,14 +1,11 @@
-
-@font-face {
-  font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  src:url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
-}
+/* Google Fonts 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 
 body {
-  font-family:"Noto Serif JP", serif;
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* 기본 폰트 두께를 지정 */
+  font-style: normal;
   margin: 0;
   padding: 0;
   -webkit-user-select:none;
