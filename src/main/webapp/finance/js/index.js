@@ -1,7 +1,12 @@
-function numberMaxLength(e) {
-  if (e.value.length > e.maxLength) {
-    e.value = e.value.slice(0, e.maxLength);
+function numberMaxLength(money) {
+  if (money.value.length > money.maxLength) {
+    money.value = money.value.slice(0, money.maxLength);
   }
+  let value = money.value.replace(/\D/g, '');
+      // 숫자를 현지화된 문자열로 변환하여 천 단위마다 쉼표를 추가
+      value = Number(value).toLocaleString('ja-JP');
+      // 포맷된 값을 입력 상자에 설정
+      money.value = value;
 }
 
 //let furin = document.querySelector(".kh-furin");
