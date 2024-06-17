@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="product/css/fundingSetting.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="product/js/fundingSetting.js"></script>
   </head>
   <body>
@@ -34,7 +35,7 @@
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
               <div class="je_detail-img">
-                <img src=".product/imgFolder/funding-sofa.png" alt="" />
+                <img src="product/imgFolder/funding-sofa.png" alt="" />
               </div>
               <div class="je_detail-title">ソファー</div>
               <div class="je_detail-input">
@@ -61,7 +62,7 @@
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
+              <div class="je_detail-img  je_washing-img">
                 <img src="product/imgFolder/funding-washing.png" alt="" />
               </div>
               <div class="je_detail-title">洗濯機</div>
@@ -75,7 +76,7 @@
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
+              <div class="je_detail-img je_tv-img"">
                 <img src="product/imgFolder/funding-televison.png" alt="" />
               </div>
               <div class="je_detail-title">テレビジョン</div>
@@ -103,7 +104,7 @@
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
+              <div class="je_detail-img je_bed-img">
                 <img src="product/imgFolder/funding-bed.png" alt="" />
               </div>
               <div class="je_detail-title">ベット</div>
@@ -120,7 +121,7 @@
               <div class="je_detail-img">
                 <img src="product/imgFolder/funding-table.png" alt="" />
               </div>
-              <div class="je_detail-title">テーブル</div>
+              <div class="je_detail-title je_table-img">テーブル</div>
               <div class="je_detail-input">
                 <input type="text" placeholder="円" />
               </div>
@@ -158,13 +159,13 @@
         </div>
       </div>
       <div class="je_top-button">
-        <div class="je_top-button-img">
+        <div class="je_top-button-img" id="topBtn" >
           <img src="product/imgFolder/top_button.png" alt="" />
         </div>
       <!--   <div class="je_back-button"><a href="">戻る</a></div> -->
       </div>
       <div class="je_pageDeco-bottom">
-        <img src=".product/imgFolder/fundingSet-under.png" alt="" />
+        <img src="product/imgFolder/fundingSet-bottom.png" alt="" />
       </div>
     </div>
   </body>

@@ -16,7 +16,7 @@ function copyDiv(button) {
   var imgDiv = document.createElement("div");
   imgDiv.className = "je_detail-img je_detail-img-more";
   var img = document.createElement("img");
-  img.src = "./img/funding-more.png";
+  img.src = "product/imgFolder/funding-more.png";
   img.alt = `Image ${cloneCount}`;
   imgDiv.appendChild(img);
   clonedBox.querySelector(".je_copyBox-default").appendChild(imgDiv);
@@ -59,3 +59,14 @@ function copyDiv(button) {
 
   originalBox.parentNode.insertBefore(clonedBox, originalBox);
 }
+
+/*function scrollUp(){
+	window.scrollTo(0,0);
+}*/
+$(function(){
+	$('#topBtn').click(function(){
+		$('html, body').animate({scrollTop: 0}, 400);
+
+	});
+});
+

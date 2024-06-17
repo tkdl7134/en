@@ -124,8 +124,24 @@ body {
   margin-top: 2rem;
   /* padding: 1rem; */
 }
+.je_washing-img{
+	margin-top: 1.6rem;
+}
+
+.je_tv-img{
+	margin-top: 3.7rem;
+}
+
 .je_detail-img > img {
   width: 50%;
+}
+
+.je_bed-img > img{
+	width: 43%;
+    margin-bottom: -.9rem;
+}
+.je_table-img{
+	margin-bottom: -0.3rem;
 }
 
 .je_detail-title {
@@ -171,7 +187,7 @@ body {
 .je_detail-button > button {
   /* width: 4.3rem; 70px */
   width: 20%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #5c5c5c;
   font-weight: bold;
   border: 0.1rem solid #c82626;
@@ -229,27 +245,36 @@ body {
 
 .je_pageDeco-bottom > img {
   width: 100%;
+  z-index: -1;
 }
 
 .je_top-button {
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
+
+
 .je_top-button-img {
   width: 12.5rem;
+}
+
+.je_top-button-img:hover{
+cursor: pointer;
+	
 }
 .je_top-button-img > img {
   width: 100%;
 }
 
-.je_back-button {
+/* .je_back-button {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   right: 3%;
-  width: 5rem; /* 80px */
-  height: 4.3rem; /* 70px */
+  width: 5rem; 80px
+  height: 4.3rem; 70px
   border: 0.2rem solid #696969;
   border-radius: 50%;
   background-color: #fffbf7;
@@ -259,3 +284,4 @@ body {
   font-size: 1.1rem;
   text-decoration: none;
 }
+ */
