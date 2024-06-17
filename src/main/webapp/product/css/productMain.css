@@ -6,123 +6,116 @@ body {
   background-color: #fffbf7;
   margin: 0;
   padding: 0;
-  /* 화면 줄어들 때 왼쪽 여백 없애는 거 */
-  /* display: flex;
-  justify-content: center; */
 }
 
-.je_page-deco {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  /* height: 100vh; */
-  z-index: 10;
+/* LOGO & NAV */
+#enmusubi-logo {
+  position: absolute;
+  width: 9.3rem; /*150px*/
+  top: 3.1rem; /*50px*/
+  left: 5rem; /*80px*/
 }
-.je_page-deco > img {
-  /* width: 100%; */
+#enmusubi-logo > img {
+  width: 100%;
+}
+
+#enmusubi-nav {
+  position: absolute;
+  width: 4.8rem; /*78px*/
+  top: 5.25rem; /*84px*/
+  right: 6.25rem; /*100px*/
+}
+#enmusubi-nav > img {
+  width: 100%;
+}
+
+/* product page */
+
+#je_container-product {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* page Deco */
+.je_pageDeco-top {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+.je_pageDeco-top > img {
   width: 100%;
   height: 100vh;
 }
 
-#je_container-product {
-  width: 100vw;
+/* title */
+.je_title-product {
+}
+.je_title-txt {
   display: flex;
   justify-content: center;
-  /* margin-top: rem; */
-}
-
-.je_product-page {
-  height: max-content;
-  /* display: flex;
-  justify-content: center; */
-  width: 82rem;
-}
-
-/* 상품소개 - title */
-.je_product-page-title {
-  margin-top: 7rem;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-.je_page-title {
-  text-align: center;
+  margin-top: 7.3rem; /* 118px */
   font-size: 1.8rem;
-  font-weight: 900;
-}
-.je_page-title-line {
-  position: absolute;
-  top: 2.5rem;
-}
-.je_page-title-line > img {
-  width: 21rem;
+  font-weight: bolder;
 }
 
-/* 상품소개 - content */
-.je_product-page-content {
-  /* background-color: aqua; */
+.je_title-line {
+  display: flex;
+  justify-content: center;
+}
+
+/* page content */
+
+.je_content-product {
   margin-top: 4.3rem;
+  margin-left: 15.3rem; /*245px*/
+  margin-right: 15.3rem;
 }
-
-.je_page-content {
+.je_products {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
-
-.je_page-content-template {
-  margin-bottom: 1rem;
-  width: 23.2rem;
-  height: 39rem;
-  padding-top: 1rem;
-}
-
-.je_template-img {
+.je_productBox {
+  width: 33.3%;
   display: flex;
-  position: relative;
   justify-content: center;
-  width: 23.1rem;
-}
-.je_template-img > img {
-  width: 93%;
-  border: 0.3rem solid #ffd600;
-  border-radius: 45% / 35%;
+  margin-bottom: 5.8rem;
+  /* height: 39.1rem; 626px */
 }
 
-.je_template-img-line-red-big {
+.je_productBox-details {
+  width: 85%;
+}
+
+.je_detail-img {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* 21.9rem 351px */
+  /* height: 32rem; 513px */
+}
+.je_detail-img > img {
   width: 100%;
-  height: 103%;
-  position: absolute;
-  top: -0.5rem;
-  left: -0.1rem;
-  border: 0.1rem solid #ec0000;
-  border-radius: 45% / 35%;
-  box-shadow: 0.05rem 0.05rem 0.3rem #c82626;
-}
-.je_template-img-line-red-small {
-    width: 96%;
-    height: 100%;
-    position: absolute;
-    left: 0.4rem;
-    border: 0.1rem solid #ec0000;
-    border-radius: 45% / 35%;
 }
 
-
-
-.je_template-title {
+.je_detail-title {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
   text-align: center;
   margin-top: 1.5rem;
-  font-size: 1.3rem;
-  font-weight: bold;
 }
 
-.je_template-button {
+.je_detail-buttons {
   display: flex;
   justify-content: center;
   margin-top: 1.25rem;
 }
-.je_template-button > button {
+
+.je_detail-buttons > button {
   width: 4.4rem;
   height: 1.8rem;
   font-size: 1rem;
@@ -133,22 +126,24 @@ body {
   z-index: 100;
 }
 
-.je_template-button > button:nth-child(1) {
+.je_preview-button {
   margin-right: 1.8rem;
   background-color: #fff4f4;
   color: #5c5c5c;
+  z-index: 200;
 }
-.je_template-button > button:nth-child(1):hover {
+.je_preview-button:hover {
   background-color: #c8c8c8;
   color: #fff4f4;
   transition: 0.5s;
 }
 
-.je_template-button > button:nth-child(2) {
+.je_make-button {
   background-color: #ff3b3f;
   color: #ffffff;
+  z-index: 300;
 }
-.je_template-button > button:nth-child(2):hover {
+.je_make-button:hover {
   background-color: #fff4f4;
   color: #ff3b3f;
   transition: 0.5s;
@@ -160,6 +155,7 @@ body {
   z-index: 300;
   height: 40rem;
   overflow: auto;
+  z-index: 300;
 }
 
 .je_pop-layer p.ctxt {
@@ -252,4 +248,3 @@ a.je_btn-layerClose:hover {
 .je_pop-image > img {
   width: 100%;
 }
- 

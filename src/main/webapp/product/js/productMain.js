@@ -3,7 +3,7 @@
 $(function () {
   var scrollPosition = 0;
 
-  $(".je_preview").click(function () {
+  $(".je_preview-button").click(function () {
     var $el = $("#je_layer"); // pop-up 창
     scrollPosition = $(window).scrollTop(); // 현재 스크롤 위치 저장
     $("body").css({
@@ -11,12 +11,8 @@ $(function () {
       position: "fixed",
       top: -scrollPosition + "px",
       width: "100%",
-    }); 
-    
-    // 템플릿 예시 설정
-    var exampleSrc = $(this).data("example");
-   $("#je_layer .je_pop-image img").attr("src", exampleSrc);
-   
+    }); // 바디 스크롤 막기
+
     $(".je_dim-layer").fadeIn();
     $el.scrollTop(0); // 팝업 레이어의 스크롤을 최상단으로 이동
     $(".je_pop-container").scrollTop(0); // 팝업 레이어 안의 스크롤 가능한 컨텐츠의 스크롤을 최상단으로 이동
@@ -56,5 +52,3 @@ $(function () {
     closeLayer();
   });
 });
-
-
