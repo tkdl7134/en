@@ -13,7 +13,16 @@ body {
     padding: 0;
 }
 
-
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
 
 .recFundSpec-container{
 	background-image:url("../imgFolder/fundSpecificBack.png");
@@ -51,7 +60,7 @@ body {
 }
 #fundSpecProduct-img{
 	
-	margin-top: 10rem;
+	margin-top: 7rem;
 }
 #fundSpecPro-img {
 	

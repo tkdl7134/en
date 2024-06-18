@@ -49,6 +49,19 @@ body {
     transform: translate(0, 5%);
   }
 }
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
 #fundSpecProduct-img{
 	
 	margin-top: 10rem;

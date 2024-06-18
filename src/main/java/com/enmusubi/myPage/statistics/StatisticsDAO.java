@@ -24,6 +24,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import oracle.net.aso.f;
+
 public class StatisticsDAO {
 
 	public static JsonArray getPrice(HttpServletRequest request) {
@@ -509,6 +511,37 @@ public class StatisticsDAO {
 			dbManager.close(con, pstmt, rs);
 			
 		}
+		
+	}
+
+	public static void getAmazonLink(HttpServletRequest request) {
+		
+		// eno 든 id든 받기
+		int eno = 1;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "select e_alink from s_event where e_no=?";
+		
+		try {
+		con = dbManager.connect();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, eno);
+		rs = pstmt.executeQuery();
+		payDTO amazon = new payDTO();
+		if (rs.next()) {
+			System.out.println(rs.getString("e_alink"));
+		}
+		request.setAttribute("amazon",rs.getString("e_alink") );
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
 		
 	}
 	
