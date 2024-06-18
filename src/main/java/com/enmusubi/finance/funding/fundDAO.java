@@ -61,7 +61,7 @@ public class fundDAO {
 	public static void insertWishiPick(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO S_PAY values(?,?,?,?,?)";
+		String sql = "INSERT INTO S_PAY values(?,?,?,?,?,sysdate)";
 		// e_no,m_id,p_type,p_price,wl_no
 		String eno = request.getParameter("eno");
 		HttpSession session = request.getSession();
@@ -70,7 +70,13 @@ public class fundDAO {
 		
 		String pt = request.getParameter("paytype");
 		String price = request.getParameter("price");
-		String wlno = request.getParameter("wlno");
+		String wlno;
+		if(request.getParameter("wlno").equals("nodata")) {
+			wlno = null;
+		}
+		else {
+			wlno = request.getParameter("wlno");
+		}
 		System.out.println(eno);
 		System.out.println(mid);
 		System.out.println(pt);
