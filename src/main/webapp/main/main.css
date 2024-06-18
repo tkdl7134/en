@@ -362,6 +362,10 @@ body {
   height: 100vh;
 }
 
+.clickable-image {
+  /* cursor: pointer; */
+}
+
 .yj-main-s4-flexContainer {
   z-index: 2;
   display: flex;
