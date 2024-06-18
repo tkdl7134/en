@@ -93,7 +93,7 @@
 		</div>
 		<div class="kh-f-statistic-timer">
 			<img alt="" src="">
-			<span>10秒後に画面が移動します。</span>
+			<span><span id="finalCount" style="color:#C82626">10</span>秒後に画面が移動します。</span>
 			
 		</div>
 	</div>

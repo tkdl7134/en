@@ -36,19 +36,20 @@
 
 <body class="hs_body">
 
-	<div class="hs_background-1">
-
-
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt=""
-				src="regPage/ImgFolder/menu-btn-enmusubi.png"> <img
-				class="menu-btn-1" alt="" src="regPage/ImgFolder/menu_btn_1.png">
+	<div class="hs_background">
+	
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
+				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
 		<div class="hs_title">会員登録</div>
 
-		<form action="MemberRegC" method="post"
-			onsubmit="return validatePassword()">
+		<form action="MemberRegC" method="post">
 
 			<div class="hs_container">
 
@@ -62,7 +63,6 @@
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
 							placeholder="縁結びID">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
-						<!-- <div id="idCheckResult" class="hs_id-available"></div> -->
 					</div>
 
 					<div class="hs_content-input pw">
@@ -123,14 +123,14 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="number" name="m_birthY" class="hs_input birth"
-							maxlength="4" min="1" max="9999">
+						<input type="text" name="m_birthY" id="m_birthY" class="hs_input birth"
+							maxlength="4">
 						<div class="hs_content-text bd">年</div>
-						<input type="number" name="m_birthM" class="hs_input birth"
-							maxlength="2" min="1" max="12">
+						<input type="text" name="m_birthM" id="m_birthM" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">月</div>
-						<input type="number" name="m_birthD" class="hs_input birth"
-							maxlength="2" min="1" max="31">
+						<input type="text" name="m_birthD" id="m_birthD" class="hs_input birth"
+							maxlength="2">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
@@ -142,7 +142,7 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
-						<input type="" name="m_phone" class="hs_input phone"
+						<input type="text" name="m_phone" class="hs_input phone"
 							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
 					</div>
 
@@ -227,20 +227,37 @@
 							class="hs_input building" placeholder="ビル・マンション名など">
 					</div>
 
-					<button id="btnReg" class="btn-reg" onclick="register()">登録</button>
+					<button id="btnReg" class="btn-reg" type="button"
+						onclick="register()">登録</button>
 
 				</div>
 			</div>
 		</form>
+
+		<footer class="hs_footer">
+			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
+			<div class="hs_footer-background"></div>
+		</footer>
 	</div>
 
 	<script>
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    const topButton = document.querySelector('.top-button');
+	    
+	    topButton.addEventListener('click', function() {
+	        window.scrollTo({
+	            top: 0,
+	            behavior: 'smooth' // 부드러운 스크롤
+	        });
+	    });
+	});
 
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("registerButton");
 	  
 	  // 入力フィールドに数字のみ許可
-	  document.querySelectorAll('input[name="m_phone"]').forEach(input => {
+	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
 	    input.addEventListener("input", function() {
 	      this.value = this.value.replace(/[^0-9]/g, ''); // 数字のみ許可
 	    });
@@ -259,224 +276,120 @@
 	  });
 	});
 	
-	function register() {
-		// 필수 입력 항목들을 확인
-	    let m_id = $("#m_id").val().trim();
-	    let m_pw = $("#m_pw").val().trim();
-	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
-	    let m_name = $("input[name='m_name']").val().trim();
-	    let m_name_kana = $("input[name='m_name_kana']").val().trim();
-	    let m_name_rome = $("input[name='m_name_rome']").val().trim();
-	    let m_gender = $("input[name='m_gender']:checked").val();
-	    let m_birthY = $("input[name='m_birthY']").val().trim();
-	    let m_birthM = $("input[name='m_birthM']").val().trim();
-	    let m_birthD = $("input[name='m_birthD']").val().trim();
-	    let m_email = $("input[name='m_email']").val().trim();
-	    let m_phone = $("input[name='m_phone']").val().trim();
-	    let a_postcode = $("#a_postcode").val().trim();
-	    let a_prefecture = $("#a_prefecture").val();
-	    let a_city = $("#a_city").val().trim();
-	    let a_street = $("#a_street").val().trim();
+	// input 요소를 선택합니다.
+	const inputElementd = document.querySelector('input[name="m_birthD"]');
 
-	    // 필수 입력란 체크
-	    if (m_id === '') {
-	    /* alert("IDを入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'IDを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_id").focus();
-	    return false;
-	}
-	if (m_pw === '') {
-	    /* alert("パスワードを入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'パスワードを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_pw").focus();
-	    return false;
-	}
-	if (m_pw_confirm === '') {
-	    /* alert("パスワード(確認)を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'パスワードを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_pw_confirm").focus();
-	    return false;
-	}
-	if (m_name === '') {
-	    /* alert("名前を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '名前を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name']").focus();
-	    return false;
-	}
-	if (m_name_kana === '') {
-	    /* alert("フリガナを入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'フリガナを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name_kana']").focus();
-	    return false;
-	}
-	if (m_name_rome === '') {
-	    /* alert("名前（ローマ字）を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '名前(ローマ字)を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_name_rome']").focus();
-	    return false;
-	}
-	if (!m_gender) {
-	    /* alert("性別を選択してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '性別を選択してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_gender']").focus();
-	    return false;
-	}
-	if (m_birthY === '' || m_birthM === '' || m_birthD === '') {
-	    /* alert("生年月日をすべて入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '生年月日をすべて入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_birthY']").focus();
-	    return false;
-	}
-	if (m_email === '') {
-	    /* alert("メールアドレスを入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'メールアドレスを入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_email']").focus();
-	    return false;
-	}
-	if (m_phone === '') {
-	    /* alert("電話番号を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '電話番号を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("input[name='m_phone']").focus();
-	    return false;
-	}
-	if (a_postcode === '') {
-	    /* alert("郵便番号を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '郵便番号を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_postcode").focus();
-	    return false;
-	}
-	if (a_prefecture === '') {
-	    /* alert("都道府県を選択してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '都道府県を選択してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_prefecture").focus();
-	    return false;
-	}
-	if (a_city === '') {
-	    /* alert("市区町村を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '市区町村を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_city").focus();
-	    return false;
-	}
-	if (a_street === '') {
-	    /* alert("番地を入力してください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : '番地を入力してください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#a_street").focus();
-	    return false;
-	}
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementd.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
 
-	if (!isIdChecked || !isIdAvailable) {
-	    /* alert("IDのチェックを行ってください。"); */
-	    Swal.fire({
-			icon: 'warning',
-			title : 'IDのチェックを行ってください。',
-			customClass : {
-				popup : 'swal2-popup',
-				confirmButton : 'swal2-confirm'
-			}
-		});
-	    $("#m_id").focus(); 
-	    return false;
-	}
-	}
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 31) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
+	});
+	// input 요소를 선택합니다.
+	const inputElementm = document.querySelector('input[name="m_birthM"]');
+
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementm.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
+
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 12) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
+	});
 	
+	function register() {
+		
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+
+		if (pw !== pwConfirm) {
+			/* alert("パスワードが一致しません。"); */
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
+	    // 필수 입력 항목들을 확인
+	    let requiredFields = [
+	        { field: $("#m_id"), name: 'ID' },
+	        { field: $("#m_pw"), name: 'パスワード' },
+	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
+	        { field: $("input[name='m_name']"), name: '名前' },
+	        { field: $("input[name='m_name_kana']"), name: 'フリガナ' },
+	        { field: $("input[name='m_name_rome']"), name: '名前(ローマ字)' },
+	        { field: $("input[name='m_gender']:checked"), name: '性別' },
+	        { field: $("input[name='m_birthY']"), name: '生年月日' },
+	        { field: $("input[name='m_birthM']"), name: '生年月日' },
+	        { field: $("input[name='m_birthD']"), name: '生年月日' },
+	        { field: $("input[name='m_email']"), name: 'メールアドレス' },
+	        { field: $("input[name='m_phone']"), name: '電話番号' },
+	        { field: $("#a_postcode"), name: '郵便番号' },
+	        { field: $("#a_prefecture"), name: '都道府県' },
+	        { field: $("#a_city"), name: '市区町村' },
+	        { field: $("#a_street"), name: '番地' }
+	    ];
+
+	    for (let i = 0; i < requiredFields.length; i++) {
+	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
+	            Swal.fire({
+	                icon: 'warning',
+	                title: '入力してない項目があります。',
+	                customClass: {
+	                    popup: 'swal2-popup',
+	                    confirmButton: 'swal2-confirm'
+	                }
+	            });
+	            /* requiredFields[i].field.focus(); */
+	            return false;
+	        }
+	    }
+
+	    if (!isIdChecked || !isIdAvailable) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'IDのチェックを行ってください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        /* $("#m_id").focus(); */
+	        return false;
+	    }
+	    document.querySelector('form').submit();
+	}
 	
 	function checkForm() {
 	    let m_id = $("#m_id").val().trim();
@@ -516,33 +429,16 @@
     isIdChecked = false; // 중복 확인 플래그 초기화
     isIdAvailable = false; // 사용 가능 플래그 초기화
 
-		function validatePassword() {
-			const pw = document.getElementById('m_pw').value;
-			const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-			if (pw !== pwConfirm) {
-				/* alert("パスワードが一致しません。"); */
-				Swal.fire({
-					icon: 'warning',
-					title : 'パスワードが一致しません。',
-					customClass : {
-						popup : 'swal2-popup',
-						confirmButton : 'swal2-confirm'
-					}
-				});
-				return false; // 폼 제출 방지
-			}
-			return true; // 폼 제출 허용
-		}
-		
         function dupleChk(){
         	isIdChecked = false; // 중복 확인 플래그 초기화
         	
             let id = $("input[name='m_id']").val().trim();
             console.log(id);
             
-            if (!id) { // id가 null이거나 공백일 경우
-                /* alert("IDを入力してください。"); */
+            // 특수문자 확인 정규식
+            let specialCharPattern = /[^a-zA-Z0-9]/;
+            
+            if (!id) {
                 Swal.fire({
 					icon: 'warning',
 					title : 'IDを入力してください。',
@@ -551,6 +447,19 @@
 						confirmButton : 'swal2-confirm'
 					}
 				});
+                return;
+            }
+            
+            if (specialCharPattern.test(id)) { // id에 특수문자가 포함되어 있는 경우
+                Swal.fire({
+                    icon: 'warning',
+                    title: '使用できない文字が含まれています。',
+                    text: '英語と数字のみ入力お願いします。',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal2-confirm'
+                    }
+                });
                 return;
             }
             
@@ -611,7 +520,22 @@
                  });
             }
 			
-        
+        function saveBirthDate() {
+            // 입력값을 가져옴
+            const birthYear = document.getElementById('m_birthY').value;
+            const birthMonth = document.getElementById('m_birthM').value;
+            const birthDay = document.getElementById('m_birthD').value;
+
+            // 세션 스토리지에 값 저장
+            sessionStorage.setItem('birthYear', birthYear);
+            sessionStorage.setItem('birthMonth', birthMonth);
+            sessionStorage.setItem('birthDay', birthDay);
+
+            // 저장된 값을 출력 (개발용으로 확인)
+            console.log('Saved Birth Date:', birthYear, birthMonth, birthDay);
+        }
+    
+    
 	</script>
 
 </body>
