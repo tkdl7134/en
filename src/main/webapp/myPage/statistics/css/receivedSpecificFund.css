@@ -25,13 +25,14 @@ body {
 }
 
 .recFundSpec-container{
-	background-image:url("../imgFolder/fundSpecificBack.png");
+	background-image:url("../imgFolder/halfCircle2.png");
 	display : flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height : 163rem;
+	height : 195rem;
 	 background-repeat : no-repeat;
+	 background-color : #FFF5F4
 }
  
  .yj-main-s2-logo {
@@ -67,6 +68,7 @@ body {
 	
 	width : 20rem;
 }
+
 #fundSpecProduct-name {
 	
     font-size: 4rem;
@@ -244,4 +246,9 @@ body {
 	
 	
 	
+}
+.recFundSpecLastImg {
+	background-image:url("../imgFolder/bottomHalfCircle.png");
+	    height: 67rem;
+    margin-top: -62.8rem;
 }

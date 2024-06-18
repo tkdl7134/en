@@ -14,9 +14,24 @@
 <body>
 
 <div class="recFundSpec-container">
+
+	<div  style="display : flex; margin-top : 8rem;    width: 80rem;" id="toGoTexts">
+	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+	</div>
+	<div style="display: flex; " id="toGoLines">
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	</div>
+
+
     <div  id="fundSpecProduct-img" style=""><img style="width: 37.5rem;" id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/bg_wedding_chapel.jpg"></div>
   	<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
   	<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+    
+    
+    
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div  style="height : 85rem; max-height : 60rem;" id="fundSpec-dataBoard-container">

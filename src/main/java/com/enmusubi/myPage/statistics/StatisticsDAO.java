@@ -424,14 +424,14 @@ public class StatisticsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
-		String order = "M";
+		String order = "N";
 		String orderParam = request.getParameter("order");
 		System.out.println(request.getParameter("order"));
 		String sql = null;
 		if (orderParam != null && orderParam.equals("D")) {
 			order = "D";
-		}else if (orderParam != null && orderParam.equals("N")) {
-			order = "N";
+		}else if (orderParam != null && orderParam.equals("M")) {
+			order = "M";
 		}
 		
 		

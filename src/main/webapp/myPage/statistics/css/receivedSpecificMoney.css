@@ -146,6 +146,16 @@ body {
     
     
 }
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
 #priceChart {
     width: 600px;
 }
