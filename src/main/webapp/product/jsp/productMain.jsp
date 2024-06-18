@@ -30,7 +30,7 @@
       <div class="je_title-product">
         <div class="je_title-txt">テンプレート一覧</div>
         <div class="je_title-line">
-          <img src="product/imgFolder/page-title-Line.png" alt="" />
+          <img src="product/imgFolder/page_title.png" alt="" />
         </div>
       </div>
       <div class="je_content-product">
