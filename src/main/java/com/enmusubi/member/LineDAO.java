@@ -96,7 +96,7 @@ public class LineDAO {
 				String m_name = jsonResponse.getString("displayName");
 
 				HttpSession session = request.getSession();
-				session.setAttribute("m_id", m_id);
+				session.setAttribute("m_id", "LINE_" + m_id);
 				session.setAttribute("m_name", m_name);
 
 				// 디버깅 코드 출력

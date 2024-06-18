@@ -21,7 +21,7 @@ $.ajax({
 							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" />
 						</div>
 						<div>
-							<h3>${element.wl_product}</h3>
+							<h1 style="margin:0">${element.wl_product}</h1>
 						</div>
 					</div>
 				</div>`);
@@ -31,12 +31,12 @@ $.ajax({
 		if (percent === undefined) {
 			percent = 0;
 		}
+		//색상 등
 		let card = document.querySelectorAll(".kh-f-card-out");
 		let fpop = document.querySelector(".kh-f-popup");
 		const modal = document.getElementById("modal");
 		card.forEach((element, index, array) => {
 			let cardIn = element.querySelector(".kh-fund-card");
-			cardIn.stri
 			if (index % 2 == 0) {
 				element.style.transform = "scale(0.9)";
 				element.classList.add("kh-f-card-min");
@@ -103,14 +103,14 @@ $.ajax({
 					if (selectobj.percent === undefined) {
 						percent = 0;
 					}
-					else{
+					else {
 						percent = selectobj.percent;
 					};
 					document.querySelector("#kh-f-price").innerHTML = percent;
 					document.querySelector("#kh-f-product").innerHTML = selectobj.wl_product;
 					document.querySelector(".kh-f-btn").setAttribute("value", selectobj.wl_no);
 					document.querySelector("#kh-f-img").src = "finance/img/" + selectobj.wl_product + ".png";
-					modal.showModal();
+					openModal()
 					document.querySelector(".kh-f-mousemove > img").src =
 						"finance/img/backbtn.png";
 					fpop.classList.add("kh-f-rotate");
@@ -122,7 +122,7 @@ $.ajax({
 				event.stopPropagation();
 			});
 		});
-
+		//모달 클로즈 이벤트
 		modal.addEventListener("click", function(event) {
 			if (!fpop.contains(event.target)) {
 				closeModal();
@@ -132,6 +132,21 @@ $.ajax({
 		// 모달 내부 클릭 시 이벤트 전파를 막기
 		modal.addEventListener("click", function(event) {
 			if (!fpop.contains(event.target)) {
+				event.stopPropagation();
+			}
+		});
+		//통계 모달 클로즈 이벤트
+		let statispop = document.querySelector(".kh-f-statistic-pop");
+		const statisticModal = document.getElementById("statisticModal");
+		statisticModal.addEventListener("click", function(event) {
+			if (!statispop.contains(event.target)) {
+				closeStatistic()
+			}
+		});
+
+		// 통계 모달 내부 클릭 시 이벤트 전파를 막기
+		statisticModal.addEventListener("click", function(event) {
+			if (!statispop.contains(event.target)) {
 				event.stopPropagation();
 			}
 		});
@@ -146,6 +161,7 @@ $.ajax({
 				document.querySelector(".kh-f-mousemove > img").src =
 					"finance/img/dragbtn.png";
 			}
+			cardCon.style.cursor = "none";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 			event.stopPropagation();
@@ -163,7 +179,6 @@ $.ajax({
 		});
 
 		//마우스 휠할때 도는 애니메이션
-		let isRotated = false;
 		cardCon.addEventListener("wheel", function(event) {
 			if (isMouseOverCard) return;
 			card.forEach((element) => {
@@ -180,7 +195,6 @@ $.ajax({
 					}
 					clearTimeout(scrollTimeout);
 				}
-				// Set a timeout to remove the vibration class after 1 second
 				scrollTimeout = setTimeout(() => {
 					card.forEach(function(element) {
 						element.style.transform = "rotateY(0deg)";
@@ -242,21 +256,15 @@ $.ajax({
 			cardCon.scrollLeft = scrollLeft - walk;
 		});
 
-
-
-
-
-
 	},
 });//ajax 종료
 //크기,색상 호버시 확대 및 다른요소 비활성화
 
 
-function goStatistic(no) {
+function goStatistic(wlno) {
 	const container = document.querySelector("#kh-input-box");
 	const finput = document.querySelector(".kh-f-input");
 	const warnspan = document.querySelector("#kh-warn-text");
-	const eno = eventno;
 	if (finput.value == "") {
 		container.classList.add("vibration");
 		setTimeout(function() {
@@ -267,15 +275,102 @@ function goStatistic(no) {
 			warnspan.classList.add("kh-show");
 		}
 	} else {
-		location.href =
-			"StatisticsC?paytype=fund&price=" +
-			finput.value +
-			"&eno=" +
-			eno +
-			"&wlno=" +
-			no;
+		let justnum = finput.value.replace(',', '');
+		$.ajax({
+			type: "post",
+			url: "InsertFundC",
+			data: { eno: eventno, paytype: 'fund', price: justnum, wlno: wlno },
+			dataType: "json",
+			success: function(response) {
+				$(".kh-f-statistic-conCon").html("");
+				closeModal();
+				jsoninfos.forEach((element, index) => {
+					let doms = `
+				<div class="kh-f-statistic-content">
+					<div class="kh-f-statistic-name">
+						<div class="kh-f-none"><span>私の選択</span><img alt="noImg" src="finance/img/flash.png"> </div>
+						<h1>${element.wl_product}</h1>
+					</div>
+					<div class="kh-f-statistic-bar">
+						<div>
+							<div class="kh-f-statistic-abled-bar" data-value="${element.percent}"><div><img alt="noImg" src="finance/img/menubtn.png"></div></div>
+						</div>
+					</div>
+					<div class="kh-f-statistic-percent" >
+						<img class="kh-f-none" alt="noImg" src="finance/img/threehearts.png">
+						<h1><span data-value="${element.percent}">10</span>％ 達成</h1>
+					</div>
+				</div>
+			`;
+
+					if (element.wl_no == wlno) {
+						$(".kh-f-statistic-conCon").prepend(doms)
+					}
+					else {
+						$(".kh-f-statistic-conCon").append(doms);
+					}
+				});
+
+				openStatistic();
+				statisticModal.querySelector('.kh-f-statistic-name > div:nth-child(1)').classList.remove('kh-f-none');
+				let statisBars = statisticModal.querySelectorAll('.kh-f-statistic-abled-bar')
+				statisBars.forEach((element) => {
+					console.log(element.getAttribute("data-value"));
+					element.style.width = element.getAttribute("data-value") + "%";
+					console.log(element.style.width);
+				});
+				let statisNumber = statisticModal.querySelectorAll('.kh-f-statistic-percent > h1 > span')
+				statisNumber.forEach((element) => {
+					console.log(element.getAttribute("data-value"));
+					animateValue(element, 0, parseInt(element.getAttribute("data-value")), 1000);
+				});
+				//카운트다운
+				let countDown = document.getElementById('finalCount');
+				let count = 10;
+				let interval = setInterval(function() {
+					count--;
+					countDown.textContent = count;
+					if (count <= 0) {
+						clearInterval(interval);
+					}
+				}, 1000);
+
+				//페이지 이동
+				setTimeout(function() {
+					location.href = "ResultC";
+				}, 10000);
+
+
+			},
+			error: function(request, status, error) {
+				console.log("code: " + request.status)
+				console.log("message: " + request.responseText)
+				console.log("error: " + error);
+			}
+		});
+
 	}
 }
+
+function animateValue(element, start, end, duration) {
+	let startTime = null;
+	const step = (currentTime) => {
+		if (!startTime) startTime = currentTime;
+		const progress = currentTime - startTime;
+		const value = Math.min(Math.floor(progress / duration * (end - start) + start), end);
+		element.innerText = value;
+		if (progress < duration) {
+			requestAnimationFrame(step);
+		} else {
+			element.innerText = end;
+		}
+	};
+	requestAnimationFrame(step);
+}
+
+
+
+
 function openModal() {
 	const modal = document.getElementById("modal");
 	modal.showModal();
@@ -283,5 +378,14 @@ function openModal() {
 
 function closeModal() {
 	const modal = document.getElementById("modal");
+	modal.close();
+}
+function openStatistic() {
+	const modal = document.getElementById("statisticModal");
+	modal.showModal();
+}
+
+function closeStatistic() {
+	const modal = document.getElementById("statisticModal");
 	modal.close();
 }

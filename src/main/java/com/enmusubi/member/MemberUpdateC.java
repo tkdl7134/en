@@ -23,7 +23,7 @@ public class MemberUpdateC extends HttpServlet {
 		
 		MemberDAO.memberUpdateC(request, response);
 		
-//		request.getRequestDispatcher("myPage/myPage.jsp").forward(request, response);
+		request.getRequestDispatcher("HSC").forward(request, response);
 
 	}
 

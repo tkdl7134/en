@@ -142,6 +142,7 @@ public class MemberDTO {
 		this.a_postcode = a_postcode;
 	}
 
+<<<<<<< HEAD
 	public char[] toJSON() {
 		// TODO Auto-generated method stub
 		return null;
