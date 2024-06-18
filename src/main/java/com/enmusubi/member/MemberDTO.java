@@ -142,4 +142,20 @@ public class MemberDTO {
 		this.a_postcode = a_postcode;
 	}
 
+<<<<<<< HEAD
+	public char[] toJSON() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name + ", m_name_kana=" + m_name_kana
+				+ ", m_name_rome=" + m_name_rome + ", m_birth=" + m_birth + ", m_gender=" + m_gender + ", m_email="
+				+ m_email + ", m_regdate=" + m_regdate + ", m_img=" + m_img + ", m_phone=" + m_phone + ", a_address="
+				+ a_address + ", a_postcode=" + a_postcode + "]";
+	}
+	
+=======
+>>>>>>> 5ea87a4ac77e796aa270ddafa04a69ba1a761cba
 }
