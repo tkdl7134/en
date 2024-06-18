@@ -151,6 +151,7 @@ body {
 
 .yj-main-s2-cover img {
   width: 100%;
+  height: 100vh;
 }
 
 /* Slick slider arrows hidden */
@@ -185,8 +186,8 @@ body {
 .yj-main-s2-img > img {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0;
 }
@@ -234,8 +235,8 @@ body {
 .yj-main-s3-img > img {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0;
 }
@@ -285,6 +286,12 @@ body {
 #yj-main-s4 {
   z-index: 1;
   background-image: url("imgFolder/yj-main-default-bg.png ");
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: 100vh; /*Viewport의 높이를 100%로 설정 */
+  position: relative; /* position을 relative로 설정 */
+  overflow: hidden;
 }
 
 .yj-main-s4-cover {
@@ -292,19 +299,29 @@ body {
   position: absolute;
 }
 
-.yj-main-s4-list {
+.yj-main-s4-cover img {
+  width: 100vw;
+  height: 100vh;
+}
+
+.yj-main-s4-flexContainer {
   z-index: 2;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; */
+  display: flex;
+  flex-wrap: nowrap; /* Ensures items stay in a single row */
+  overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+  column-gap: 3rem;
+  align-items: center;
 }
 
-#섹션4 img-1-2-3 {
+.yj-main-s4-container {
+  display: flex;
+  flex-direction: column; /* Stack images vertically within each column */
+  row-gap: 3rem;
 }
 
-.yj-main-s4-list img {
-  width: 100px;
-  height: auto;
+.yj-main-s4-container img {
+  max-width: 100%; /* Ensures images don't exceed their container width */
+  height: auto; /* Maintains aspect ratio */
 }
 
 /* Section 5 */
