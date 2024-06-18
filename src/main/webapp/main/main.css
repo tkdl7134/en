@@ -223,6 +223,23 @@ body {
   }
 }
 
+.yj-main-s3-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.yj-main-s3-img > img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+}
+
 .yj-main-s3-scroll {
   display: flex;
   justify-content: center;
@@ -266,7 +283,28 @@ body {
 
 /* Section 4 */
 #yj-main-s4 {
+  z-index: 1;
   background-image: url("imgFolder/yj-main-default-bg.png ");
+}
+
+.yj-main-s4-cover {
+  z-index: 3;
+  position: absolute;
+}
+
+.yj-main-s4-list {
+  z-index: 2;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; */
+}
+
+#섹션4 img-1-2-3 {
+}
+
+.yj-main-s4-list img {
+  width: 100px;
+  height: auto;
 }
 
 /* Section 5 */
