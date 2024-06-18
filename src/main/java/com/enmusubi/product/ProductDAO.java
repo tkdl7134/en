@@ -18,11 +18,12 @@ public class ProductDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
 		
 		String sql = "select * from s_template";
 		
 		try {
-			con = DBManager.connect();
+		    con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -37,10 +38,35 @@ public class ProductDAO {
 			request.setAttribute("products", products);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("SERVER ERROR - get all template");
+			    e.printStackTrace();
+			    System.out.println("server err...");
+			} finally {
+			    dbManager.close(con, pstmt, rs);
+			}
+		
+	}
+
+	
+	public static void regIvitation(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		
+		String sql = "";
+		
+		try {
+			 con = dbManager.connect();
+			 pstmt = con.prepareStatement(sql);
+			
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    System.out.println("server err...");
+		} finally {
+		    dbManager.close(con, pstmt, rs);
 		}
 		
 	}
+
 
 }

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProductMakeController")
-public class ProductMakeController extends HttpServlet {
+@WebServlet("/ProductMakeC")
+public class ProductMakeC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	request.getRequestDispatcher("product/jsp/productMake.jsp").forward(request, response);

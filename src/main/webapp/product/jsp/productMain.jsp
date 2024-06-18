@@ -15,9 +15,11 @@
 <script src="product/js/productMain.js"></script>
 </head>
  <body>
-    <!-- 로고 / 네비 -->
-    <div id="enmusubi-logo"><img src="product/imgFolder/Logo.png" alt="" /></div>
-    <div id="enmusubi-nav">
+     <!-- 로고 / 네비 -->
+    <div id="yj-main-s2-logo">
+      <img src="product/imgFolder/Logo.png" alt="" />
+    </div>
+    <div id="yj-main-s2-menu">
       <img src="product/imgFolder/menu_btn_1.png" alt="" />
     </div>
     <!-- 상품소개 page -->
@@ -34,7 +36,7 @@
       <div class="je_content-product">
         <div class="je_products">
           <c:forEach items="${products }" var="p">
-<form action="ProductMakeController">
+<form action="ProductMakeC">
           <div class="je_productBox">
             <div class="je_productBox-details">
               <div class="je_detail-img">
