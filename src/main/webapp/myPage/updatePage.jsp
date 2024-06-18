@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>アカウント情報修正</title>
-<link rel="stylesheet" type="text/css" href="updatePage/update.css">
+<title>会員情報</title>
+<link rel="stylesheet" type="text/css" href="myPage/update.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
-
-<link rel="stylesheet" type="text/css" href="regPage/reg.css">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -38,7 +36,6 @@
 
 	<div class="hs_background">
 
-
 		<div class="yj-main-s2-logo">
 			<img class="yj-main-s2-logo img" alt=""
 				src="loginPage/ImgFolder/Logo.png">
@@ -48,7 +45,28 @@
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">会員情報修正</div>
+		<div class="hs_title">会員情報</div>
+
+		<div class="hs_mypage-menus">
+			<div class="hs_btn-container">
+				<a href="MemberDetailC" class="hs_btn me">✿ 会員情報 ✿</a> <img
+					class="yellow_line" alt=""
+					src="loginPage/ImgFolder/yellow_line.png">
+			</div>
+			<div class="hs_btn-container">
+				<a href="#" class="hs_btn ">✿ テンプレート管理 ✿</a> <img
+					class="yellow_line" alt=""
+					src="loginPage/ImgFolder/yellow_line.png">
+			</div>
+			<div class="hs_btn-container">
+				<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img class="yellow_line"
+					alt="" src="loginPage/ImgFolder/yellow_line.png">
+			</div>
+			<div class="hs_btn-container">
+				<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+					alt="" src="loginPage/ImgFolder/yellow_line.png">
+			</div>
+		</div>
 
 		<form action="MemberUpdateC" method="post">
 
@@ -104,23 +122,13 @@
 					</div>
 
 					<div class="hs_content-input">
-						<div class="hs_content-text gender">性別</div>
-						<div class="radio-gender">
-							<div class="radio-gender male">${sessionScope.m_gender}</div>
-						</div>
-					</div>
-
-					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-
 						<div class="hs_content-text bd">
 							<span id="sessionYear">年</span>
 						</div>
-
 						<div class="hs_content-text bd">
 							<span id="sessionMonth">月</span>
 						</div>
-
 						<div class="hs_content-text bd">
 							<span id="sessionDay">日</span>
 						</div>
@@ -270,53 +278,6 @@
 	  });
 	});
 	
-	// input 요소를 선택합니다.
-	const inputElementd = document.querySelector('input[name="m_birthD"]');
-
-	// input 요소에 input 이벤트 리스너를 추가합니다.
-	inputElementd.addEventListener('input', function() {
-	    // 현재 입력된 값(value)을 가져옵니다.
-	    let value = this.value;
-
-	    // 입력된 값이 숫자인지 체크합니다.
-	    if (/^\d*$/.test(value)) {
-	        // 숫자이면, 입력된 값을 정수로 변환합니다.
-	        let num = parseInt(value, 10);
-
-	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
-	        if (num < 1 || num > 31) {
-	            // 범위를 벗어나면 입력값을 잘라냅니다.
-	            this.value = value.slice(0, value.length - 1);
-	        }
-	    } else {
-	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
-	        this.value = value.slice(0, value.length - 1);
-	    }
-	});
-	// input 요소를 선택합니다.
-	const inputElementm = document.querySelector('input[name="m_birthM"]');
-
-	// input 요소에 input 이벤트 리스너를 추가합니다.
-	inputElementm.addEventListener('input', function() {
-	    // 현재 입력된 값(value)을 가져옵니다.
-	    let value = this.value;
-
-	    // 입력된 값이 숫자인지 체크합니다.
-	    if (/^\d*$/.test(value)) {
-	        // 숫자이면, 입력된 값을 정수로 변환합니다.
-	        let num = parseInt(value, 10);
-
-	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
-	        if (num < 1 || num > 12) {
-	            // 범위를 벗어나면 입력값을 잘라냅니다.
-	            this.value = value.slice(0, value.length - 1);
-	        }
-	    } else {
-	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
-	        this.value = value.slice(0, value.length - 1);
-	    }
-	});
-	
 	function register() {
 		
 		const pw = document.getElementById('m_pw').value;
@@ -405,20 +366,25 @@
 	// 입력란이 변경될 때마다 확인
 	$("input, select").on("change keyup", checkForm);
 	
-	function displayBirthDate() {
-        // 세션 스토리지에서 값 가져오기
-        const birthYear = sessionStorage.getItem('birthYear');
-        const birthMonth = sessionStorage.getItem('birthMonth');
-        const birthDay = sessionStorage.getItem('birthDay');
+	// 세션 스토리지에서 값을 불러오는 함수
+	function loadFromSessionStorage() {
+	  const birthYear = sessionStorage.getItem('birthYear');
+	  const birthMonth = sessionStorage.getItem('birthMonth');
+	  const birthDay = sessionStorage.getItem('birthDay');
 
-        // HTML 요소에 값 설정
-        document.getElementById('sessionYear').textContent = birthYear || 'N/A';
-        document.getElementById('sessionMonth').textContent = birthMonth || 'N/A';
-        document.getElementById('sessionDay').textContent = birthDay || 'N/A';
-    }
+	  if (birthYear) {
+	    document.getElementById('m_birthY').value = birthYear;
+	  }
+	  if (birthMonth) {
+	    document.getElementById('m_birthM').value = birthMonth;
+	  }
+	  if (birthDay) {
+	    document.getElementById('m_birthD').value = birthDay;
+	  }
+	}
 
-    // 페이지 로드 시 세션 스토리지 값을 표시
-    document.addEventListener('DOMContentLoaded', displayBirthDate);
+	// 페이지가 로드될 때 값을 불러옴
+	window.addEventListener('load', loadFromSessionStorage);
         
 	</script>
 </body>

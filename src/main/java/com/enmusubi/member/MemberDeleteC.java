@@ -22,5 +22,7 @@ public class MemberDeleteC extends HttpServlet {
 		
 		MemberDAO.memberDeleteC(request, response);
 		
+//		response.sendRedirect("HSC");
+		
     }
 }

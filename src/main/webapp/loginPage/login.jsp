@@ -144,6 +144,26 @@
 				});
 			});
 		});
+		
+		// 세션 스토리지에서 값을 불러오는 함수
+		function loadFromSessionStorage() {
+		  const birthYear = sessionStorage.getItem('birthYear');
+		  const birthMonth = sessionStorage.getItem('birthMonth');
+		  const birthDay = sessionStorage.getItem('birthDay');
+
+		  if (birthYear) {
+		    document.getElementById('m_birthY').value = birthYear;
+		  }
+		  if (birthMonth) {
+		    document.getElementById('m_birthM').value = birthMonth;
+		  }
+		  if (birthDay) {
+		    document.getElementById('m_birthD').value = birthDay;
+		  }
+		}
+
+		// 페이지가 로드될 때 값을 불러옴
+		window.addEventListener('load', loadFromSessionStorage);
 	</script>
 
 </body>

@@ -27,6 +27,8 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
+	min-height: 1080px;
+	min-width: 1920px;
 }
 
 .yj-main-s2-logo {
@@ -69,10 +71,39 @@
 }
 
 .hs_title {
-	margin-top: 7rem;
+	padding-top: 6%;
 	font-size: 2rem;
 	font-weight: bold;
-	margin-bottom: 13rem;
+	margin-bottom: 5rem;
+}
+
+.hs_mypage-menus {
+	display: flex;
+    justify-content: center;
+    width: 55%;
+    font-size: 15pt;
+    text-align: center;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.hs_btn-container{
+	display: block;
+	
+}
+
+.hs_btn {
+  text-decoration: none;
+  color: #696969;
+}
+
+.hs_btn.me{
+	color: #ff2828;
+}
+
+.yellow_line{
+	width: 15rem;
+	margin-bottom: 100px;
 }
 
 .hs_content-title-account, .hs_content-title-user {
@@ -298,6 +329,8 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	margin-top: -55rem;
+	min-height: 1080px;
+	min-width: 1920px;
 }
 
 .top-button {
