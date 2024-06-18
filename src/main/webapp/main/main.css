@@ -12,6 +12,7 @@ body {
   height: 100vh;
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 1 */
 #yj-main-s1 {
   background-image: url("imgFolder/yj-main-default-bg.png");
@@ -89,6 +90,7 @@ body {
   }
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 2 */
 #yj-main-s2 {
   z-index: 1;
@@ -101,8 +103,8 @@ body {
   width: 150px;
   height: 150px;
   position: absolute;
-  top: 3rem;
-  left: 4rem;
+  top: 4rem;
+  left: 5rem;
 }
 
 .yj-main-s2-logo img {
@@ -127,7 +129,7 @@ body {
   width: 80px;
   height: 80px;
   position: absolute;
-  top: 3rem;
+  top: 6rem;
   right: 5rem;
 }
 
@@ -192,6 +194,7 @@ body {
   top: 0;
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 3 */
 #yj-main-s3 {
   background-image: url("imgFolder/yj-main-default-bg.png");
@@ -203,8 +206,8 @@ body {
   width: 150px;
   height: 150px;
   position: absolute;
-  top: 3rem;
-  left: 4rem;
+  top: 4rem;
+  left: 5rem;
 }
 
 .yj-main-s3-logo img {
@@ -222,6 +225,20 @@ body {
   50% {
     transform: translate(0, 5%);
   }
+}
+
+.yj-main-s3-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 6rem;
+  right: 5rem;
+}
+
+.yj-main-s3-menu img {
+  width: 100%;
+  height: 100%;
 }
 
 .yj-main-s3-img {
@@ -282,6 +299,7 @@ body {
   }
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 4 */
 #yj-main-s4 {
   z-index: 1;
@@ -292,6 +310,46 @@ body {
   height: 100vh; /*Viewport의 높이를 100%로 설정 */
   position: relative; /* position을 relative로 설정 */
   overflow: hidden;
+}
+
+.yj-main-s4-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.yj-main-s4-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s4-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 6rem;
+  right: 5rem;
+}
+
+.yj-main-s4-menu img {
+  width: 100%;
+  height: 100%;
 }
 
 .yj-main-s4-cover {
@@ -322,18 +380,33 @@ body {
 .yj-main-s4-container img {
   max-width: 100%; /* Ensures images don't exceed their container width */
   height: auto; /* Maintains aspect ratio */
+  /* animation */
+  animation: imgs-float 2s ease-in-out infinite;
 }
 
+@keyframes imgs-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 2%);
+  }
+}
+
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 5 */
 #yj-main-s5 {
-  background-color: #faf865;
+  background-image: url("imgFolder/yj-main-default-bg.png ");
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 6 */
 #yj-main-s6 {
   background-color: #9e65fa;
 }
 
+/* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 7 */
 #yj-main-s7 {
   background-color: #fa65e1;

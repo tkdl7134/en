@@ -38,22 +38,23 @@ document.addEventListener("wheel", function (event) {
   }
 });
 
+// ////////// ////////// ////////// ////////// ////////// //////////
 // Section 2
 // 메뉴 버튼 클릭 이벤트
-const menuBtn = document.getElementById("yj-main-s2-menuBtn");
-const menuBtn1 = "imgFolder/yj-main-default-menu1.png";
-const menuBtn2 = "imgFolder/yj-main-default-menu2.png";
+const s2menuBtn = document.getElementById("yj-main-s2-menuBtn");
+const s2menuBtn1 = "imgFolder/yj-main-default-menu1.png";
+const s2menuBtn2 = "imgFolder/yj-main-default-menu2.png";
 
 // 메뉴 이미지 클릭 이벤트 리스너 등록
-menuBtn.addEventListener("click", function () {
+s2menuBtn.addEventListener("click", function () {
   // 현재 이미지 src 확인
   const currentSrc = this.querySelector("img").src;
 
   // 이미지 변경
-  if (currentSrc.includes(menuBtn1)) {
-    this.querySelector("img").src = menuBtn2;
+  if (currentSrc.includes(s2menuBtn1)) {
+    this.querySelector("img").src = s2menuBtn2;
   } else {
-    this.querySelector("img").src = menuBtn1;
+    this.querySelector("img").src = s2menuBtn1;
   }
 });
 
@@ -131,4 +132,44 @@ $(document).ready(function () {
         .attr("src");
       $("#currentSlideImage").attr("src", currentSlideImage);
     });
+});
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// Section 3
+// 메뉴 버튼 클릭 이벤트
+const s3menuBtn = document.getElementById("yj-main-s3-menuBtn");
+const s3menuBtn1 = "imgFolder/yj-main-default-menu1.png";
+const s3menuBtn2 = "imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s3menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s3menuBtn1)) {
+    this.querySelector("img").src = s3menuBtn2;
+  } else {
+    this.querySelector("img").src = s3menuBtn1;
+  }
+});
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// Section 4
+// 메뉴 버튼 클릭 이벤트
+const s4menuBtn = document.getElementById("yj-main-s4-menuBtn");
+const s4menuBtn1 = "imgFolder/yj-main-default-menu1.png";
+const s4menuBtn2 = "imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s4menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s4menuBtn1)) {
+    this.querySelector("img").src = s4menuBtn2;
+  } else {
+    this.querySelector("img").src = s4menuBtn1;
+  }
 });
