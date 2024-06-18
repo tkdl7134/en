@@ -16,16 +16,34 @@
 			<header class="hw_invitation_header">
 				<a class="hw_logo" href="main.jsp"><img
 					src="invitationPage/imgFolder/logo.png" alt="logo"></a> <a
-					class="hw_pagetitle"><img
-					src="invitationPage/imgFolder/pagetitle.png" alt="pagetitle"></a>
-				<a class="hw_menu" href="main.jsp"><img
+					class="hw_menu" href="main.jsp"><img
 					src="invitationPage/imgFolder/menu_btn.png" alt="메뉴"></a>
+				<div class="hw_header_title">
+					<a class="hw_pagetitle"><img
+						src="invitationPage/imgFolder/pagetitle.png" alt="pagetitle"></a>
+				</div>
 			</header>
-
+			<nav class="hw_menubar">
+				<div class="hw_menubar_item">
+					<a class="hw_menubar_menu" href="">✿ 会員情報 ✿</a>
+					<img class="hw_yellow_line" alt="" src="invitationPage/imgFolder/yellow_line.png">
+				</div>
+				<div class="hw_menubar_item">
+					<a class="hw_menubar_menu" href="">✿ テンプレート管理 ✿</a>
+					<img class="hw_yellow_line" alt="" src="invitationPage/imgFolder/yellow_line.png">
+				</div>
+				<div class="hw_menubar_item">
+					<a class="hw_menubar_menu" href="">✿ 心からのお伝え ✿</a>
+					<img class="hw_yellow_line" alt="" src="invitationPage/imgFolder/yellow_line.png">
+				</div>
+				<div class="hw_menubar_item">
+					<a class="hw_menubar_menu" href="">✿ 会リスト ✿</a>
+					<img class="hw_yellow_line" alt="" src="invitationPage/imgFolder/yellow_line.png">
+				</div>
+			</nav>
 			<main class="hw_invitation_main">
 				<div class="hw_card">
-					<img alt="hw_cardimg"
-						src="invitationPage/imgFolder/wedding_chapel.jpg">
+					<img alt="hw_cardimg" src="invitationPage/imgFolder/wedding_chapel.jpg">
 					<h2 class="hw_card_message">✿いただいたアンケートの回答です。どうぞその気持ちをご確認ください✿</h2>
 					<img alt="Line" src="invitationPage/imgFolder/Line.png">
 				</div>
@@ -44,10 +62,7 @@
 						<div id="tabYes" class="hw_tab_content active">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
+									<span class="hw_invitation_small">名前</span> <span class="hw_invitation_small">ゲスト</span> <span class="hw_invitation_middie">電話番号</span> <span class="hw_invitation_big">メール</span>
 								</div>
 								<c:forEach var="invitation" items="${invitationsYes}">
 									<div class="hw_invitation_content">
@@ -62,10 +77,7 @@
 						<div id="tabYesMale" class="hw_tab_content">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
+									<span class="hw_invitation_small">名前</span> <span class="hw_invitation_small">ゲスト</span> <span class="hw_invitation_middie">電話番号</span> <span class="hw_invitation_big">メール</span>
 								</div>
 								<c:forEach var="invitation" items="${invitationsYesMale}">
 									<div class="hw_invitation_content">
@@ -80,10 +92,7 @@
 						<div id="tabYesFemale" class="hw_tab_content">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
+									<span class="hw_invitation_small">名前</span> <span class="hw_invitation_small">ゲスト</span> <span class="hw_invitation_middie">電話番号</span> <span class="hw_invitation_big">メール</span>
 								</div>
 								<c:forEach var="invitation" items="${invitationsYesFemale}">
 									<div class="hw_invitation_content">
@@ -107,17 +116,13 @@
 					<div class="hw_detail_wrapper" style="display: none;">
 						<div class="styled-table-wrapper">
 							<div class="hw_invitation_title">
-								<span class="hw_invitation_small">名前</span> <span
-									class="hw_invitation_middie">同伴人数</span> <span
-									class="hw_invitation_big">アレルギー ・ 要請事項</span>
+								<span class="hw_invitation_small">名前</span> <span class="hw_invitation_middie">同伴人数</span> <span class="hw_invitation_big">アレルギー ・ 要請事項</span>
 							</div>
-							<c:forEach var="invitation" items="${invitationsYes}"
-								varStatus="status">
+							<c:forEach var="invitation" items="${invitationsYes}" varStatus="status">
 								<div class="hw_invitation_content">
-									<span class="hw_invitation_small">${invitation.m_name}</span> <span
-										class="hw_invitation_middie">大人: ${invitation.p_adult}
-										子供: ${invitation.p_child} 幼児: ${invitation.p_baby}</span> <span
-										class="hw_invitation_big">${invitation.allergy}${invitation.g_message}</span>
+									<span class="hw_invitation_small">${invitation.m_name}</span>
+									<span class="hw_invitation_middie">大人: ${invitation.p_adult} 子供: ${invitation.p_child} 幼児: ${invitation.p_baby}</span>
+									<span class="hw_invitation_big">${invitation.allergy}${invitation.g_message}</span>
 								</div>
 							</c:forEach>
 						</div>
@@ -139,11 +144,11 @@
 						<div id="tabNo" class="hw_tab_content active">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
-								</div>
+										<span class="hw_invitation_small">名前</span> <span
+											class="hw_invitation_small">ゲスト</span> <span
+											class="hw_invitation_middie">電話番号</span> <span
+											class="hw_invitation_big">メール</span>
+									</div>
 								<c:forEach var="invitation" items="${invitationsNo}">
 									<div class="hw_invitation_content">
 										<span class="hw_invitation_small">${invitation.m_name}</span>
@@ -157,10 +162,7 @@
 						<div id="tabNoMale" class="hw_tab_content">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
+									<span class="hw_invitation_small">名前</span> <span class="hw_invitation_small">ゲスト</span> <span class="hw_invitation_middie">電話番号</span> <span class="hw_invitation_big">メール</span>
 								</div>
 								<c:forEach var="invitation" items="${invitationsNoMale}">
 									<div class="hw_invitation_content">
@@ -175,10 +177,7 @@
 						<div id="tabNoFemale" class="hw_tab_content">
 							<div class="styled-table-wrapper">
 								<div class="hw_invitation_title">
-									<span class="hw_invitation_small">名前</span> <span
-										class="hw_invitation_small">ゲスト</span> <span
-										class="hw_invitation_middie">電話番号</span> <span
-										class="hw_invitation_big">メール</span>
+									<span class="hw_invitation_small">名前</span> <span class="hw_invitation_small">ゲスト</span> <span class="hw_invitation_middie">電話番号</span> <span class="hw_invitation_big">メール</span>
 								</div>
 								<c:forEach var="invitation" items="${invitationsNoFemale}">
 									<div class="hw_invitation_content">
@@ -192,8 +191,7 @@
 						</div>
 					</div>
 				</div>
-				<a href="#page_top"><img
-					src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
+				<a href="#page_top"><img src="invitationPage/imgFolder/top_button.png" class="top_button"></a>
 
 				<!-- 마우스 아이콘 -->
 				<div class="hw-f-mousemove hw-f-none">

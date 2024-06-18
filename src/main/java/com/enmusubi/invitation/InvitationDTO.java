@@ -4,10 +4,6 @@ public class InvitationDTO {
 	
     private int e_no;
     
-    private String w_groom;
-    private String w_bride;
-    private String w_img;
-    
     private String m_id;
     private String m_name;
     private String m_phone;
@@ -30,13 +26,23 @@ public class InvitationDTO {
 	}
 
 
-	@Override
-	public String toString() {
-		return "InvitationDTO [e_no=" + e_no + ", w_groom=" + w_groom + ", w_bride=" + w_bride + ", w_img=" + w_img
-				+ ", m_id=" + m_id + ", m_name=" + m_name + ", m_phone=" + m_phone + ", m_email=" + m_email
-				+ ", g_attend=" + g_attend + ", g_guest_type=" + g_guest_type + ", g_message=" + g_message
-				+ ", g_relation=" + g_relation + ", allergy=" + allergy + ", p_adult=" + p_adult + ", p_child="
-				+ p_child + ", p_baby=" + p_baby + "]";
+	public InvitationDTO(int e_no, String m_id, String m_name, String m_phone, String m_email, String g_attend,
+			String g_guest_type, String g_message, String g_relation, String allergy, int p_adult, int p_child,
+			int p_baby) {
+		super();
+		this.e_no = e_no;
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_phone = m_phone;
+		this.m_email = m_email;
+		this.g_attend = g_attend;
+		this.g_guest_type = g_guest_type;
+		this.g_message = g_message;
+		this.g_relation = g_relation;
+		this.allergy = allergy;
+		this.p_adult = p_adult;
+		this.p_child = p_child;
+		this.p_baby = p_baby;
 	}
 
 
@@ -47,36 +53,6 @@ public class InvitationDTO {
 
 	public void setE_no(int e_no) {
 		this.e_no = e_no;
-	}
-
-
-	public String getW_groom() {
-		return w_groom;
-	}
-
-
-	public void setW_groom(String w_groom) {
-		this.w_groom = w_groom;
-	}
-
-
-	public String getW_bride() {
-		return w_bride;
-	}
-
-
-	public void setW_bride(String w_bride) {
-		this.w_bride = w_bride;
-	}
-
-
-	public String getW_img() {
-		return w_img;
-	}
-
-
-	public void setW_img(String w_img) {
-		this.w_img = w_img;
 	}
 
 
@@ -200,25 +176,14 @@ public class InvitationDTO {
 	}
 
 
-	public InvitationDTO(int e_no, String w_groom, String w_bride, String w_img, String m_id, String m_name,
-			String m_phone, String m_email, String g_attend, String g_guest_type, String g_message, String g_relation,
-			String allergy, int p_adult, int p_child, int p_baby) {
-		super();
-		this.e_no = e_no;
-		this.w_groom = w_groom;
-		this.w_bride = w_bride;
-		this.w_img = w_img;
-		this.m_id = m_id;
-		this.m_name = m_name;
-		this.m_phone = m_phone;
-		this.m_email = m_email;
-		this.g_attend = g_attend;
-		this.g_guest_type = g_guest_type;
-		this.g_message = g_message;
-		this.g_relation = g_relation;
-		this.allergy = allergy;
-		this.p_adult = p_adult;
-		this.p_child = p_child;
-		this.p_baby = p_baby;
+	@Override
+	public String toString() {
+		return "InvitationDTO [e_no=" + e_no + ", m_id=" + m_id + ", m_name=" + m_name + ", m_phone=" + m_phone
+				+ ", m_email=" + m_email + ", g_attend=" + g_attend + ", g_guest_type=" + g_guest_type + ", g_message="
+				+ g_message + ", g_relation=" + g_relation + ", allergy=" + allergy + ", p_adult=" + p_adult
+				+ ", p_child=" + p_child + ", p_baby=" + p_baby + "]";
 	}
+
+
+	
 }

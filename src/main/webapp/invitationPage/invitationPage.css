@@ -19,7 +19,7 @@ body.background-image {
 	background-position: top center, top center, bottom center;
 	background-repeat: no-repeat, no-repeat, no-repeat;
 	background-size: contain, contain, contain;
-	position: relative
+	position: relative;
 }
 
 .hw_container {
@@ -35,28 +35,36 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 4rem 3rem;
+	padding: 3.5rem 3rem;
 	width: 90%;
 }
 
+.hw_header_title {
+	display: contents;
+	padding: 3rem;
+	margin-top: 10rem;
+}
+
 .hw_logo {
-	width: 10%;
-	height: auto;
+	z-index: 4;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
 }
 
 .hw_logo img {
 	width: 100%;
-	height: auto;
+	height: 100%;
 	animation: logo-float 2s ease-in-out infinite;
 }
 
 @keyframes logo-float {
-
 	0%,
 	100% {
 		transform: translate(0, 0%);
 	}
-
 	50% {
 		transform: translate(0, 5%);
 	}
@@ -65,7 +73,9 @@ header {
 .hw_pagetitle {
 	text-align: center;
 	flex-grow: 1;
-	padding: 0 3%;
+	padding: 3rem;
+	margin-top: 1rem;
+	margin-left: 5.2rem;
 }
 
 .hw_pagetitle img {
@@ -73,13 +83,48 @@ header {
 }
 
 .hw_menu {
-	width: 5rem;
-	height: 5rem;
+	z-index: 4;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
 }
 
 .hw_menu img {
 	width: 100%;
 	height: 100%;
+}
+
+.hw_menubar {
+	display: flex;
+	justify-content: center; /* 중앙 정렬을 위해 추가 */
+	align-items: center;
+	margin-top: 1rem;
+	padding: 3rem;
+}
+
+.hw_menubar_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+}
+
+.hw_menubar_menu {
+	font-size: 20px;
+	text-decoration-line: none;
+	color: #696969;
+}
+
+.hw_menubar_menu:hover {
+	color: #ff2828;
+}
+
+.hw_yellow_line {
+	width: 14rem;
+	height: 1rem;
 }
 
 main {
@@ -252,7 +297,7 @@ main {
 
 /* 커서 이미지 스타일 */
 .cursor-custom {
-    cursor: url('invitationPage/imgFolder/back_btn.png'), auto;
+	cursor: url('invitationPage/imgFolder/back_btn.png'), auto;
 }
 
 /* 마우스 아이콘 스타일 */
@@ -357,5 +402,5 @@ main {
 }
 
 #canvas1 {
-	display: none
+	display: none;
 }

@@ -1,6 +1,6 @@
 
 
-create sequence s_event_seq;
+create sequence  s_templatet_seq;
 insert into s_member values('testuser5','2222','ccc','ccc','ccc','00/01/13','female','testuser7@example.com','24/06/11','default.png','01012341239');
 insert into s_event values(event_seq.nextval,'testuser2','https://www.amazon.com/hz/wishlist/ls/3R5PIDFJ3SD4X?ref_=wl_share');
 insert into s_allergy values('1','testuser9','魚');
@@ -11,10 +11,10 @@ insert into  s_party values('1','testuser9','0','1','1');
 
 
 
-insert into S_GUEST values('1','신랑3','신부3','test.jsp');
+insert into s_template values('1','test','preview1.png','test','test.jsp','1');
 
 select * from s_member;
-select * from S_GUEST;
+select * from s_template;
 
 select * from s_event;
 select * from s_wedding_info;
