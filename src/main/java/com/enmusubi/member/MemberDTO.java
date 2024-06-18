@@ -154,5 +154,5 @@ public class MemberDTO {
 				+ m_email + ", m_regdate=" + m_regdate + ", m_img=" + m_img + ", m_phone=" + m_phone + ", a_address="
 				+ a_address + ", a_postcode=" + a_postcode + "]";
 	}
-	
+  
 }
