@@ -156,4 +156,6 @@ public class MemberDTO {
 				+ a_address + ", a_postcode=" + a_postcode + "]";
 	}
 	
+=======
+>>>>>>> 5ea87a4ac77e796aa270ddafa04a69ba1a761cba
 }
