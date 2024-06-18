@@ -282,3 +282,15 @@
 	margin-top: 5rem;
 	width: 200px;
 }
+
+/* update page css */
+.hs_content-input.id{
+	margin-top: 2rem;
+}
+
+.hs_update-id {
+	justify-content: center;
+	position: absolute;
+    left: 17.5rem;
+    font-size: 1.5rem;
+}
