@@ -25,9 +25,11 @@ public class SurveyDAO {
         String type = loginType.substring(0,1);
         if (type.equals("l_")) {
             // LINE 로그인 시
+        	request.setAttribute("loginType", "line");
             getMemberLine(request);
         } else {
-            // 일반 회원 로그인 시
+            // 일반 회원 로그인 
+        	request.setAttribute("loginType", "normal");
             getMemberNormal(request);
         }
     }
@@ -169,7 +171,7 @@ public class SurveyDAO {
 		pstmtParty.setString(4, request.getParameter("child"));
 		pstmtParty.setString(5, request.getParameter("baby"));
 		
-		if (pstmtParty.executeUpdate() == 1) {
+		if (pstmtParty.executeUpdate() == 1) { 
 			System.out.println("동반자 등록성공!!");
 		}
 		

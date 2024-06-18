@@ -389,6 +389,8 @@
 </body>
 
 <script>
+console.log("${loginType } " )
+
 //slick 시작 함수
 let $slider;
 	function slickSlide() {
