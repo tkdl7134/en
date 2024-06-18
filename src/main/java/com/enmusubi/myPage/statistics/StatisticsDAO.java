@@ -217,12 +217,12 @@ public class StatisticsDAO {
 		if (order.equals("M")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? order by p_price desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? and p_type='fund' order by p_price desc";
 			
 		}else if (order.equals("D")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? order by p_date desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? p_type='fund' order by p_date desc";
 			
 		}
 		try {
@@ -361,8 +361,8 @@ public class StatisticsDAO {
 	public static void getSentMoney(HttpServletRequest request, HttpServletResponse response) {
 
 		// event no 가져오기
+		int eventNo = Integer.parseInt(request.getParameter("eno")) ;
 		
-		String eventNo = "1";
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -378,7 +378,7 @@ public class StatisticsDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, eventNo);
+			pstmt.setInt(1, eventNo);
 			rs = pstmt.executeQuery();
 			
 			ArrayList<payDTO> sendlists = new ArrayList<payDTO>();
@@ -387,6 +387,7 @@ public class StatisticsDAO {
 				payDTO sendlist = new payDTO();
 				sendlist.setM_name(rs.getString("m_name"));
 				sendlist.setG_relation(rs.getString("g_relation"));
+				sendlist.setE_no(eventNo);
 				sendlists.add(sendlist);
 				
 				
@@ -409,6 +410,105 @@ public class StatisticsDAO {
 			
 		}
 		
+		
+	}
+
+	public static void getSentMoneyData(HttpServletRequest request, HttpServletResponse response) {
+
+		
+		int eno = Integer.parseInt(request.getParameter("eno")) ;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String order = "M";
+		String orderParam = request.getParameter("order");
+		System.out.println(request.getParameter("order"));
+		String sql = null;
+		if (orderParam != null && orderParam.equals("D")) {
+			order = "D";
+		}else if (orderParam != null && orderParam.equals("N")) {
+			order = "N";
+		}
+		
+		
+		if (order.equals("M")) {
+			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
+					+ "FROM s_pay\r\n"
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_price desc";
+			
+		}else if (order.equals("D")) {
+			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
+					+ "FROM s_pay\r\n"
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? p_type='send' order by p_date desc";
+			
+		}else if (order.equals("N")) {
+			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
+					+ "FROM s_pay\r\n"
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? p_type='send' order by m_name desc";
+		}
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, eno);
+			rs = pstmt.executeQuery();
+			ArrayList<payDTO> fundedlists = new ArrayList<payDTO>();
+			
+			while (rs.next()) {
+				payDTO fundlist = new payDTO();
+				System.out.println(rs.getInt("p_price"));
+				System.out.println(rs.getDate("p_date"));
+				System.out.println(rs.getString("m_name"));
+				System.out.println(eno);
+				
+			fundlist.setP_price(rs.getInt("p_price"));	
+			fundlist.setP_date(rs.getDate("p_date"));	
+			fundlist.setM_name(rs.getString("m_name"));
+			fundlist.setE_no(eno);
+			
+			fundedlists.add(fundlist);
+			
+			}
+			System.out.println(fundedlists);
+			request.setAttribute("fund", fundedlists);
+			request.setAttribute("eno", eno);
+			
+			// 날짜 구하는 기능
+			   LocalDateTime currentDateTime = LocalDateTime.now();
+		        // 포맷 지정
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		        // 포맷을 적용하여 문자열로 변환
+		        String formattedDateTime = currentDateTime.format(formatter);
+		        System.out.println("Formatted Date: " + formattedDateTime);
+		        request.setAttribute("todayDate", formattedDateTime);
+
+		        // 7일 전의 날짜 계산
+		        LocalDateTime sevenDaysAgoDateTime = currentDateTime.minusDays(7);
+
+		        // 포맷 지정
+		        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		        // 포맷을 적용하여 문자열로 변환
+		        String formattedDateTime2 = sevenDaysAgoDateTime.format(formatter);
+
+		        System.out.println("7 days ago: " + formattedDateTime2);
+		        request.setAttribute("lastWeekDate", formattedDateTime2);
+					
+		        if (orderParam!=null&&orderParam.equals("M")||orderParam.equals("D")) {
+		        	
+		        	Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+					String json = gson.toJson(fundedlists);
+					System.out.println(json);
+					response.getWriter().print(json);
+		        }else {
+		        	
+		        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbManager.close(con, pstmt, rs);
+			
+		}
 		
 	}
 	

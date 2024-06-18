@@ -13,6 +13,8 @@ $.ajax({
 		console.log(response);
 		jsoninfos = response;
 		response.forEach((element, index) => {
+			
+			console.log(element.e_no);
 			eventno = element.e_no;
 		let num =	element.p_price;
 		let picNum = 3;
@@ -111,7 +113,7 @@ $.ajax({
 				console.log(jsoninfos);
 				let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
-				location.href = `receviedSpecificMoneyC?&eno=`+eventno;
+				location.href = `receviedSpecificMoneyC?eno=`+eventno;
 				if (cardParent) {
 					let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
 					let selectobj = jsoninfos.find(function(element) {

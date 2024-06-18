@@ -20,7 +20,9 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color :#FFF5F4;
-	background-image : url(../imgFolder/halfCircle2.png)
+	background-image : url(../imgFolder/halfCircle2.png);
+	 background-repeat : no-repeat;
+	 
 	
 }
 .yj-main-s2-logo {
