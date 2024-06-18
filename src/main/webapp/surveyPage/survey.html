@@ -31,14 +31,15 @@
 		<header class="tk_survey_header">
 			<div class="top-left">
 				<img src="imgFolder/logo.png" alt="logo"
-					style="width: 100%; height: 100%" />
+					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;
+" />
 			</div>
 
 			<div class="middle-title">
 				<div>出席の方</div>
 			</div>
 
-			<div class="top-right">
+			<div class="top-menu">
 				<img src="imgFolder/menu-btn.png" alt="menu-button"
 					style="width: 100%; height: 100%" />
 			</div>
@@ -68,17 +69,19 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" data-selccted="yes">
+									<div class="entry-box-img" data-selccted="yes" onclick="selectAttendance('出席')">
 										<div class="texts">
-											<div class="objective">出席</div>
+											<div>出席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/yesline.png">
+										<input type="hidden" name="attendance" value="present">
 									</div>
-									<div class="no-entry-box-img" data-selccted="no">
+									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
 										<div class="texts">
-											<div style="margin-left: 1rem;" class="objective">欠席</div>
+											<div>欠席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/noline.png">
+										<input type="hidden" name="attendance" value="absent">
 									</div>
 
 								</div>
@@ -335,7 +338,7 @@
 
 								<div>
 
-									<button id="submitBtn" class="tg-survey-button">
+									<button id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
 										<span>送信</span>
 									</button>
 
@@ -355,7 +358,7 @@
                     					</div>
 									</div>
 
-        						 <button id="submitBtn2" class="tg-survey-button">
+        						 <button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
 									<span>送信</span>
 								</button>
 
@@ -505,6 +508,8 @@ $('.entry-box-img, .no-entry-box-img').on('click', function(event) {
     }
 });
 
+
+
 $(document).on('click', function(event) {
     if ($activeBox !== null && !$activeBox.is(event.target) && $activeBox.has(event.target).length === 0) {
 
@@ -609,6 +614,23 @@ if (this.checked) {
                 document.getElementById("surveyForm").submit();
             }
         });
+
+function openModal(attemp) {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
+
 
 
     </script>
