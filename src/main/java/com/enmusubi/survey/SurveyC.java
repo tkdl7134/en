@@ -14,10 +14,11 @@ public class SurveyC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SurveyDAO.updateMember(request);
-		
-
-	}
+        SurveyDAO.processLogin(request);
+        
+        // 결과를 JSP 페이지로 포워딩
+        request.getRequestDispatcher("surveyPage/survey.jsp").forward(request, response);
+    }		
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -8,6 +8,16 @@
   src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap");
 }
 
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -28,8 +38,8 @@ body {
 header {
   padding-top: 5.5rem;
   display: flex;
-  justify-content: space-between;
-  padding-left: 5rem;
+  justify-content: center;
+  padding-left: 8rem;
   padding-right: 5rem;
   position: relative;
   z-index: 1;
@@ -37,14 +47,22 @@ header {
 
 /* 왼쪽 위 모서리에 위치할 이미지 */
 .top-left {
-  width: 6rem; /* 이미지 너비 */
-  height: 6rem; /* 이미지 높이 */
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
 }
 
 /* 오른쪽 위 모서리에 위치할 이미지 */
-.top-right {
-  width: 3rem;
-  height: 3rem;
+.top-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
 }
 
 .middle-title {
@@ -466,4 +484,59 @@ legend div:nth-child(1) {
 .slick-prev.enabled,
 .slick-next.enabled {
   pointer-events: auto;
+}
+.tg-modal {
+  display: none;
+  background: none !important;
+  box-shadow: none;
+}
+
+.tg-modal[open] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rem;
+  overflow: hidden;
+}
+
+.tg-modal-container {
+  width: 50vw;
+  height: 26vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5vh;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 1s ease;
+}
+
+.tg-modal-img-box {
+  width: 25%;
+}
+
+.tg-modal-img-box > img {
+  width: 100%;
+}
+
+dialog {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+dialog::backdrop {
+  background: none;
+}
+@keyframes burstIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }

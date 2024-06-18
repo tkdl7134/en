@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -94,13 +95,19 @@ public class SurveyDAO {
 	        pstmt.setString(1, normalUserId);
 	        rs = pstmt.executeQuery();
 	        
-	        if (rs.next()) {
-	            request.setAttribute("kanzi-name", rs.getString("m_name"));
-	            request.setAttribute("kata-name", rs.getString("m_name_kana"));
-	            request.setAttribute("roma-name", rs.getString("m_name_rome"));
-	            request.setAttribute("email", rs.getString("m_email"));
-	            request.setAttribute("phonenum", rs.getString("m_phone"));
+	        ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+	        while (rs.next()) {
+	        	MemberDTO m = new MemberDTO();
+	        	m.setM_name(rs.getString(1));
+	        	m.setM_name_kana(rs.getString(2));
+	        	m.setM_name_rome(rs.getString(3));
+	        	m.setM_phone(rs.getString(4));
+	        	m.setM_email(rs.getString(5));
+	        	
+	        	members.add(m);
 	        }
+	        System.out.println(members);
+	        request.setAttribute("members", members);
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -142,9 +149,9 @@ public class SurveyDAO {
 		
 		// 회원 개인정보 입력
 		pstmtGuest = con.prepareStatement(sqlGuest);
-		pstmtGuest.setString(1, "e_no");
+		pstmtGuest.setString(1, "1");
 		pstmtGuest.setString(2, id);
-		pstmtGuest.setString(3, "g_attend");
+		pstmtGuest.setString(3, request.getParameter("attendance"));
 		pstmtGuest.setString(4, request.getParameter("couple"));
 		pstmtGuest.setString(5, request.getParameter("allergy"));
 		pstmtGuest.setString(6, note);
@@ -156,7 +163,7 @@ public class SurveyDAO {
 		
 		// 동반자 정보 입력
 		pstmtParty = con.prepareStatement(sqlParty);
-		pstmtParty.setString(1, "e_no");
+		pstmtParty.setString(1, "1");
 		pstmtParty.setString(2, id);
 		pstmtParty.setString(3, request.getParameter("adult"));
 		pstmtParty.setString(4, request.getParameter("child"));

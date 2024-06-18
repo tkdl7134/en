@@ -33,14 +33,15 @@
 		<header class="tk_survey_header">
 			<div class="top-left">
 				<img src="imgFolder/logo.png" alt="logo"
-					style="width: 100%; height: 100%" />
+					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;
+" />
 			</div>
 
 			<div class="middle-title">
 				<div>出席の方</div>
 			</div>
 
-			<div class="top-right">
+			<div class="top-menu">
 				<img src="imgFolder/menu-btn.png" alt="menu-button"
 					style="width: 100%; height: 100%" />
 			</div>
@@ -57,7 +58,7 @@
 					</div>
 				</div>
 
-				<form action="SurveyC" method="post">
+				<form action="SurveyC" method="post" id="surveyForm">
 
 					<div class="tg-include-btu-page">
 
@@ -70,17 +71,19 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" data-selccted="yes">
+									<div class="entry-box-img" data-selccted="yes" onclick="selectAttendance('出席')">
 										<div class="texts">
-											<div class="objective">出席</div>
+											<div>出席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/yesline.png">
+										<input type="hidden" name="attendance" value="present">
 									</div>
-									<div class="no-entry-box-img" data-selccted="no">
+									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
 										<div class="texts">
-											<div style="margin-left: 1rem;" class="objective">欠席</div>
+											<div>欠席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/noline.png">
+										<input type="hidden" name="attendance" value="absent">
 									</div>
 
 								</div>
@@ -337,7 +340,7 @@
 
 								<div>
 
-									<button type="submit" class="tg-survey-button">
+									<button id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
 										<span>送信</span>
 									</button>
 
@@ -357,9 +360,9 @@
                     					</div>
 									</div>
 
-                <button type="submit" class="tg-survey-button">
-										<span>送信</span>
-									</button>
+        						 <button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
+									<span>送信</span>
+								</button>
 
     			</div>
 
@@ -507,6 +510,8 @@ $('.entry-box-img, .no-entry-box-img').on('click', function(event) {
     }
 });
 
+
+
 $(document).on('click', function(event) {
     if ($activeBox !== null && !$activeBox.is(event.target) && $activeBox.has(event.target).length === 0) {
 
@@ -581,47 +586,56 @@ if (this.checked) {
     });
 });
 
-	function validateForm() {
-        var kanzinames = document.getElementById("kanzi-name").value.trim();
-        var katanames = document.getElementById("kata-name").value.trim();
-        var romanames = document.getElementById("roma-name").value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
-		var emails = document.getElementById("email") .value.trim();
-		var phonenumber = document.getElementById("postal-code") .value.trim();
-		var phonenumber = document.getElementById("city") .value.trim();
-		var phonenumber = document.getElementById("address-line1") .value.trim();
-		var phonenumber = document.getElementById("address-line2") .value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
+        function validateForm() {
+            var kanzinames = document.getElementById("kanzi-name").value.trim();
+            var katanames = document.getElementById("kata-name").value.trim();
+            var romanames = document.getElementById("roma-name").value.trim();
+            var phonenumber = document.getElementById("phonenum").value.trim();
+            var emails = document.getElementById("email").value.trim();
+            var postalcode = document.getElementById("postal-code").value.trim();
+            var city = document.getElementById("city").value.trim();
+            var addressline1 = document.getElementById("address-line1").value.trim();
+            var addressline2 = document.getElementById("address-line2").value.trim();
 
-
-        // 체크 로직
-        if (kanzinames === "" || katanames === "" || romanames === "") {
-        alert("이름 항목을 입력해주세요.");
-            return false; // 폼 제출 방지
+            // 필수 입력 필드 체크
+            if (kanzinames === "" || katanames === "" || romanames === "" ||
+                phonenumber === "" || emails === "" ||
+                postalcode === "" || city === "" || addressline1 === "" || addressline2 === "") {
+                
+                alert("모든 필드를 입력해주세요.");
+                return false; // 폼 제출 방지
             }
-            return true; // 폼 제출 허용
-        
-		if (phonenumber === "") {
-		alert("연락처 항목을 입력해주세요")	
-			return true;
-		}	
-		return false;
 
-		if (emails === "") {
-		alert("이메일을 입력해주세요")	
-			return true;
-		}	
-		return false;
+            return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
+        }
 
-		if (kanzinames === "" || katanames === "" || romanames === "") {
-        alert("주소 항목을 입력해주세요.");
-            return false; 
+        document.getElementById("submitBtn").addEventListener("click", function(event) {
+            if (!validateForm()) {
+                event.preventDefault();
+            } else {
+                document.getElementById("surveyForm").submit();
             }
-            return true; 
+        });
+
+function openModal(attemp) {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
 
 
-		}
+
+    </script>
 
 	
 </script>
