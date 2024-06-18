@@ -13,6 +13,8 @@
 	align-items: center;
 	text-align: center;
 	background-color: #FFF5F4;
+	margin: auto;
+	max-width: 1920px;
 }
 
 .hs_background {
@@ -27,6 +29,9 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
+min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
 }
 
 .yj-main-s2-logo {
@@ -69,10 +74,39 @@
 }
 
 .hs_title {
-	margin-top: 7rem;
+	padding-top: 6%;
 	font-size: 2rem;
 	font-weight: bold;
-	margin-bottom: 13rem;
+	margin-bottom: 5rem;
+}
+
+.hs_mypage-menus {
+	display: flex;
+    justify-content: center;
+    width: 55%;
+    font-size: 15pt;
+    text-align: center;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.hs_btn-container{
+	display: block;
+	
+}
+
+.hs_btn {
+  text-decoration: none;
+  color: #696969;
+}
+
+.hs_btn.me{
+	color: #ff2828;
+}
+
+.yellow_line{
+	width: 15rem;
+	margin-bottom: 100px;
 }
 
 .hs_content-title-account, .hs_content-title-user {
@@ -117,11 +151,15 @@
 }
 
 .hs_content-input.id {
-	margin-top: 1rem;
+	margin-top: 5rem;
 	display: flex;
 }
 
-.hs_content-input.pw, .hs_content-input.pw-confirm {
+.hs_content-input.pw{
+	margin-top: 3rem;
+}
+
+.hs_content-input.pw-confirm {
 	margin-top: 2rem;
 }
 
@@ -298,6 +336,9 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	margin-top: -55rem;
+	min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
 }
 
 .top-button {
@@ -305,9 +346,8 @@
 	width: 200px;
 }
 
-/* update page css */
 .hs_content-input.id{
-	margin-top: 2rem;
+	margin-top: 3rem;
 }
 
 .hs_update-id {
@@ -315,4 +355,5 @@
 	position: absolute;
     left: 17.5rem;
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
