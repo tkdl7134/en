@@ -275,11 +275,12 @@ legend div:nth-child(1) {
   height: 1.7rem;
 }
 
-.address-contents-contaoner select {
+.address-contents-container select {
   width: 20.5rem;
+  height: 1.7rem;
 }
 
-.address-contents-contaoner > div:nth-child(2) > div:nth-child(2) {
+.address-contents-container > div:nth-child(2) > div:nth-child(2) {
   display: flex;
   justify-content: flex-start !important;
 }

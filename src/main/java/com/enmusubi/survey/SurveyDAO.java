@@ -84,10 +84,10 @@ public class SurveyDAO {
 	    DBManager dbManager = DBManager.getInstance();
 	    ResultSet rs = null;
 	    String sql = "SELECT m_name, m_name_kana, m_name_rome, m_email, m_phone FROM s_member WHERE m_id = ?";
+	    String sqlAddress = "SELECT a_address, a_postcode FROM s_address WHERE m_id = ?";
 	    
 	    try {
 	        con = dbManager.connect();
-	        pstmt = con.prepareStatement(sql);
 	        
 	        HttpSession session = request.getSession();
 	        String normalUserId = (String) session.getAttribute("m_id");
@@ -95,48 +95,72 @@ public class SurveyDAO {
 	        // 추가적인 처리를 수행하세요
 	    
 	        
+	        
+	        // 일반회원 개인정보
+	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, normalUserId);
 	        rs = pstmt.executeQuery();
+	        TMemberDTO m = new TMemberDTO();
 	        
-	        ArrayList<TMemberDTO> members = new ArrayList<TMemberDTO>();
-	        while (rs.next()) {
-	            TMemberDTO m = new TMemberDTO();
+	        
+	        if (rs.next()) {
 	            
 	            String fullName = rs.getString(1);
 	            String[] nameParts = fullName.split(" ");
-	            if (nameParts.length == 2) {
+	            if (nameParts.length >= 2) {
 	                m.setM_first_name(nameParts[0]);
 	                m.setM_last_name(nameParts[1]);
+	            } else if (nameParts.length == 1) {
+	                m.setM_first_name(nameParts[0]);
+	                m.setM_last_name(""); // 또는 적절한 기본값 설정
 	            } else {
-	                m.setM_first_name(fullName); // fallback in case the split doesn't result in exactly 2 parts
+	                m.setM_first_name(""); // 또는 적절한 기본값 설정
+	                m.setM_last_name("");  // 또는 적절한 기본값 설정
 	            }
 	            
+	            // m_name_kana 처리
 	            String fullNameKana = rs.getString(2);
-	            String[] nameParts1 = fullName.split(" ");
-	            if (nameParts1.length == 2) {
-	                m.setM__first_name_kana(nameParts1[0]);
+	            String[] nameParts1 = fullNameKana.split(" ");
+	            if (nameParts1.length >= 2) {
+	                m.setM__first_name_kana(normalUserId);
 	                m.setM__last_name_kana(nameParts1[1]);
+	            } else if (nameParts1.length == 1) {
+	                m.setM__first_name_kana(nameParts1[0]);
+	                m.setM__last_name_kana(""); // 또는 적절한 기본값 설정
 	            } else {
-	                m.setM__first_name_kana(fullNameKana); // fallback in case the split doesn't result in exactly 2 parts
+	                m.setM__first_name_kana(""); // 또는 적절한 기본값 설정
+	                m.setM__last_name_kana("");  // 또는 적절한 기본값 설정
 	            }
 	            
-	            String fullNameRome = rs.getString(2);
-	            String[] nameParts2 = fullName.split(" ");
-	            if (nameParts1.length == 2) {
-	                m.setM_first_name_rome(nameParts2[0]);
-	                m.setM_last_name_rome(nameParts2[1]);
+	            // m_name_rome 처리
+	            String fullNameRome = rs.getString(3);
+	            String[] nameParts2 = fullNameRome.split(" ");
+	            if (nameParts2.length >= 2) {
+	            	m.setM_first_name_rome(nameParts2[0]);
+	            	m.setM_last_name_rome(nameParts2[1]);
+	            } else if (nameParts2.length == 1) {
+	            	m.setM_first_name_rome(nameParts2[0]);
+	            	m.setM_last_name_rome(""); // 또는 적절한 기본값 설정
 	            } else {
-	                m.setM__first_name_kana(fullNameRome); // fallback in case the split doesn't result in exactly 2 parts
-	            }
-	            
+	            	m.setM_first_name_rome(""); // 또는 적절한 기본값 설정
+	            	m.setM_last_name_rome(""); // 또는 적절한 기본값 설정
+	            	}
 
-	            m.setM_phone(rs.getString(4));
-	            m.setM_email(rs.getString(5));
-	            
-	            members.add(m);
+	            m.setM_email(rs.getString(4));
+	            m.setM_phone(rs.getString(5));
+
+	            	            
+		        System.out.println(rs.getString(1));
+		        System.out.println(rs.getString(2));
+		        System.out.println(rs.getString(3));
+		        System.out.println(rs.getString(4));
+		        System.out.println(rs.getString(5));
+
 	        }
+	        System.out.println(m);
+	        request.setAttribute("members", m);
 	        
-	        request.setAttribute("members", members);
+	        // 주소 정보 입력
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -152,11 +176,9 @@ public class SurveyDAO {
 	Connection con = null;
 	PreparedStatement pstmtGuest = null; 
 	PreparedStatement pstmtMember = null; 
-	PreparedStatement pstmtAddress = null; 
 	PreparedStatement pstmtAllergy = null;
 	PreparedStatement pstmtParty = null;
 	DBManager dbManager = DBManager.getInstance();
-	String sqlAddress = "INSERT INTO s_Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
@@ -219,25 +241,14 @@ public class SurveyDAO {
             }
         }
 		
-		// 주소 입력
-		pstmtAddress = con.prepareStatement(sqlAddress);
-		pstmtAddress.setString(1, id);
-		pstmtAddress.setString(2, request.getParameter("address"));
-		pstmtAddress.setString(3, request.getParameter("postal-code"));
-		
-		if (pstmtAddress.executeUpdate() == 1) {
-			System.out.println("주소 등록성공!!");
-		}
-		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
+		dbManager.close(null, pstmtAllergy, null);
+		dbManager.close(null, pstmtParty, null);
         dbManager.close(con, pstmtGuest, null);
         dbManager.close(null, pstmtMember, null);
-        dbManager.close(null, pstmtAddress, null);
-        dbManager.close(null, pstmtAllergy, null);
-        dbManager.close(null, pstmtParty, null);
 	}
 
 }

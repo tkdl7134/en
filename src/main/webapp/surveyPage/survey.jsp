@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,26 +105,53 @@
 												&nbsp&nbsp&nbsp
 												<div style="font-size: 2rem;">お名前</div>
 											</legend>
+									<c:choose>
+										<c:when test="${loginType == 'normal' }">
+										    <c:set var="members" value="${members }" />
 											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">漢字</div> <input
-												style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" name="kanzi-name" required /> <input
-												style="font-size: 1.2rem;" type="text" placeholder="名"
+												<div style="font-size: 1.5rem;">漢字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="kanzi-name" required value="${members.m_first_name}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												class="name-input" name="kanzi-name" required value="${members.m_last_name}" readonly />
+											</label><br> <label class="kata-container">
+												<div style="font-size: 1.5rem;">カタカナ</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="kata-name" required value="${members.m__first_name_kana}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												class="name-input" name="kata-name" required value="${members.m__last_name_kana}" readonly />
+											</label><br> <label class="eng-container">
+												<div style="font-size: 1.5rem;">ローマ字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="roma-name" required value="${members.m_first_name_rome}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text"
+												placeholder=" - " class="name-input" name="roma-name"
+												required value="${members.m_last_name_rome}" readonly />
+											</label>
+										 </c:when>
+										 <c:otherwise>
+											<label class="kanzi-container">
+												<div style="font-size: 1.5rem;">漢字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="姓"
+												class="name-input" name="kanzi-name" required /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder="名"
 												class="name-input" name="kanzi-name" required />
 											</label><br> <label class="kata-container">
-												<div style="font-size: 1.5rem;">カタカナ</div> <input
-												style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" name="kata-name" required /> <input
-												style="font-size: 1.2rem;" type="text" placeholder="めい"
+												<div style="font-size: 1.5rem;">カタカナ</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="せい"
+												class="name-input" name="kata-name" required /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder="めい"
 												class="name-input" name="kata-name" required />
 											</label><br> <label class="eng-container">
-												<div style="font-size: 1.5rem;">ローマ字</div> <input
-												style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" name="roma-name" required /> <input
-												style="font-size: 1.2rem;" type="text"
+												<div style="font-size: 1.5rem;">ローマ字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
+												class="name-input" name="roma-name" required/> 
+												<input style="font-size: 1.2rem;" type="text"
 												placeholder="First Name" class="name-input" name="roma-name"
-												required />
+												required/>
 											</label>
+										 </c:otherwise>
+										</c:choose>									 
 										</fieldset>
 									</div>
 
@@ -152,7 +180,24 @@
 							</div>
 
 							<div class="tg-slide-second-page">
-
+						
+						<c:choose>
+							<c:when test="${loginType == 'normal' }">
+								<c:set var="members" value="${members}" />
+            					<div class="contact-container">
+										<div>
+											メールアドレス<input style="font-size: 1.2rem;" type="email"
+												class="contact-input" name="email"
+												placeholder=" - " required value="${members.m_email}" readonly />
+										</div>
+										<div>
+											電話番号 <input style="font-size: 1.2rem;" type="number"
+												class="contact-input" name="phonenum"
+												placeholder=" - " required value="${members.m_phone}" readonly />
+										</div>
+								</div>
+							</c:when>
+							<c:otherwise>
             					<div class="contact-container">
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
@@ -164,7 +209,9 @@
 												class="contact-input" name="phonenum"
 												placeholder="000-0000-0000" required />
 										</div>
-								</div>
+								</div>							
+							</c:otherwise>
+						</c:choose>
 
 								<div class="address-container">
 									<fieldset>
@@ -194,53 +241,9 @@
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
 														<option value="">選択してください</option>
-														<option value="hokkaido">北海道</option>
-														<option value="aomori">青森県</option>
-														<option value="iwate">岩手県</option>
-														<option value="miyagi">宮城県</option>
-														<option value="akita">秋田県</option>
-														<option value="yamagata">山形県</option>
-														<option value="fukushima">福島県</option>
-														<option value="ibaraki">茨城県</option>
-														<option value="tochigi">栃木県</option>
-														<option value="gunma">群馬県</option>
-														<option value="saitama">埼玉県</option>
-														<option value="chiba">千葉県</option>
-														<option value="tokyo">東京都</option>
-														<option value="kanagawa">神奈川県</option>
-														<option value="niigata">新潟県</option>
-														<option value="toyama">富山県</option>
-														<option value="ishikawa">石川県</option>
-														<option value="fukui">福井県</option>
-														<option value="yamanashi">山梨県</option>
-														<option value="nagano">長野県</option>
-														<option value="gifu">岐阜県</option>
-														<option value="shizuoka">静岡県</option>
-														<option value="aichi">愛知県</option>
-														<option value="mie">三重県</option>
-														<option value="shiga">滋賀県</option>
-														<option value="kyoto">京都府</option>
-														<option value="osaka">大阪府</option>
-														<option value="hyogo">兵庫県</option>
-														<option value="nara">奈良県</option>
-														<option value="wakayama">和歌山県</option>
-														<option value="tottori">鳥取県</option>
-														<option value="shimane">島根県</option>
-														<option value="okayama">岡山県</option>
-														<option value="hiroshima">広島県</option>
-														<option value="yamaguchi">山口県</option>
-														<option value="tokushima">徳島県</option>
-														<option value="kagawa">香川県</option>
-														<option value="ehime">愛媛県</option>
-														<option value="kochi">高知県</option>
-														<option value="fukuoka">福岡県</option>
-														<option value="saga">佐賀県</option>
-														<option value="nagasaki">長崎県</option>
-														<option value="kumamoto">熊本県</option>
-														<option value="oita">大分県</option>
-														<option value="miyazaki">宮崎県</option>
-														<option value="kagoshima">鹿児島県</option>
-														<option value="okinawa">沖縄県</option>
+            												<c:forEach var="prefecture" items="${prefectures}">
+                											<option value="${prefecture}">${prefecture}</option>
+            												</c:forEach>
 													</select>
 												</div>
 											</div>
@@ -256,23 +259,12 @@
 
 											<div class="address-contents-container">
 												<div>
-													<span for="address-line1">町域・番地</span>
+													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<input style="font-size: 1.4rem" type="text"
-														id="address-line1" name="address" placeholder="西新宿2-8-1"
-														required />
-												</div>
-											</div>
-
-											<div class="address-contents-container">
-												<div>
-													<span for="address-line2">建物名・部屋番号</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text"
-														id="address-line2" name="address" placeholder="新宿ビル 101"
-														required />
+													<textarea style="font-size: 1.4rem; width: 20rem;"
+														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
+														required ></textarea>
 												</div>
 											</div>
 									</fieldset>
@@ -617,12 +609,11 @@ if (this.checked) {
             var postalcode = document.getElementById("postal-code").value.trim();
             var city = document.getElementById("city").value.trim();
             var addressline1 = document.getElementById("address-line1").value.trim();
-            var addressline2 = document.getElementById("address-line2").value.trim();
 
             // 필수 입력 필드 체크
             if (kanzinames === "" || katanames === "" || romanames === "" ||
                 phonenumber === "" || emails === "" ||
-                postalcode === "" || city === "" || addressline1 === "" || addressline2 === "") {
+                postalcode === "" || city === "" || addressline1 === "" ) {
                 
                 alert("모든 필드를 입력해주세요.");
                 return false; // 폼 제출 방지
