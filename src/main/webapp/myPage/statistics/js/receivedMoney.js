@@ -17,6 +17,7 @@ $.ajax({
 			console.log(element.e_no);
 			eventno = element.e_no;
 		let num =	element.p_price;
+		console.log(num);
 		let picNum = 3;
 		if(num >=70000){
 			picNum = 7
@@ -24,6 +25,7 @@ $.ajax({
 		else if(num >=50000){
 			picNum = 5
 		}		
+		console.log(picNum);
 			$(".kh-f-card-container").append(`
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.m_name}">

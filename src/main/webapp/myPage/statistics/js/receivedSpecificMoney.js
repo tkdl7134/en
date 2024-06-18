@@ -127,7 +127,7 @@ $('#byMoney').on('click', function() {
     $('#byMoney').removeClass('active'); // 다른 버튼에서 active 클래스 제거
     $('#byDate').removeClass('active'); // 다른 버튼에서 active 클래스 제거
     $.ajax({
-    	type: 'post',
+    	type: 'POST',
         url: 'receivedSpecificMoneyAjaxC?order=N&eno='+eno,
         dataType: 'json',
         success: function(response) {

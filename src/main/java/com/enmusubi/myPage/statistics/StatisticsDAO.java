@@ -390,6 +390,7 @@ public class StatisticsDAO {
 				sendlist.setM_name(rs.getString("m_name"));
 				sendlist.setG_relation(rs.getString("g_relation"));
 				sendlist.setE_no(eventNo);
+				sendlist.setP_price(rs.getInt("p_price"));
 				sendlists.add(sendlist);
 				
 				
@@ -442,12 +443,12 @@ public class StatisticsDAO {
 		}else if (order.equals("D")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? p_type='send' order by p_date desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_date desc";
 			
 		}else if (order.equals("N")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? p_type='send' order by m_name desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by m_name desc";
 		}
 		try {
 			con = dbManager.connect();
@@ -496,7 +497,7 @@ public class StatisticsDAO {
 		        System.out.println("7 days ago: " + formattedDateTime2);
 		        request.setAttribute("lastWeekDate", formattedDateTime2);
 					
-		        if (orderParam!=null&&orderParam.equals("M")||orderParam.equals("D")) {
+		        if (orderParam!=null&&orderParam.equals("M")||orderParam.equals("D")||orderParam.equals("N")) {
 		        	
 		        	Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 					String json = gson.toJson(fundedlists);
