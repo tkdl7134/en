@@ -10,8 +10,8 @@
 </head>
 <body>
 	<div class="recMain-container"> 
-		<div class="spaces" ><img id="mainbutton" alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-		<div class="spaces"><img id="navi" alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+		<div class="yj-main-s2-logo" ><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+		<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
 	<div id="recMain-title">心からのお伝え</div>
 	<div id="recMain-header"><img id="header-img" alt="" src="myPage/statistics/imgFolder/footer.png"></div>
 	<div id="recMain-content">

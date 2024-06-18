@@ -361,8 +361,8 @@ public class StatisticsDAO {
 	public static void getSentMoney(HttpServletRequest request, HttpServletResponse response) {
 
 		// event no 가져오기
-		
-		String eventNo = "1";
+		//request.get (eno);
+		int eventNo = 1;
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -378,7 +378,7 @@ public class StatisticsDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, eventNo);
+			pstmt.setInt(1, eventNo);
 			rs = pstmt.executeQuery();
 			
 			ArrayList<payDTO> sendlists = new ArrayList<payDTO>();
@@ -387,6 +387,8 @@ public class StatisticsDAO {
 				payDTO sendlist = new payDTO();
 				sendlist.setM_name(rs.getString("m_name"));
 				sendlist.setG_relation(rs.getString("g_relation"));
+				sendlist.setE_no(eventNo);
+				
 				sendlists.add(sendlist);
 				
 				
