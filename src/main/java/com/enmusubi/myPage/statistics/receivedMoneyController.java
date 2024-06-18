@@ -16,7 +16,9 @@ public class receivedMoneyController extends HttpServlet {
 	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("application/json; charset=UTF-8");
+		StatisticsDAO.getSentMoney(request , response);
 		
 	
 	}

@@ -12,10 +12,6 @@ public class receviedSpecificMoneyC extends HttpServlet {
 	
 			request.getRequestDispatcher("myPage/statistics/jsp/receivedMoneySpecific.jsp").forward(request, response);
 			
-			StatisticsDAO.getAjaxData(request, response);
-			StatisticsDAO.getFundData(request, response);
-			
-			
 	
 	
 	}
