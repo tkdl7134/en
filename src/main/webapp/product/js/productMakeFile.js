@@ -7,6 +7,7 @@ function addClickListener(boxId, photoId) {
 addClickListener("je_photobox1", "je_photoInput1");
 addClickListener("je_photobox2", "je_photoInput2");
 addClickListener("je_photobox3", "je_photoInput3");
+addClickListener("je_photobox4", "je_photoInput4");
 
 // 2개의 div에 띄우기
 function handleFileInputChange(event, outputId1, outputId2) {
@@ -46,4 +47,9 @@ document
   .getElementById("je_photoInput3")
   .addEventListener("change", function (event) {
     handleFileInputChange(event, "je_photoOut3", "je_photoPre3");
+  });
+document
+  .getElementById("je_photoInput4")
+  .addEventListener("change", function (event) {
+    handleFileInputChange(event, "je_photoOut4", "je_photoPre4");
   });

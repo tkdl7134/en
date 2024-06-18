@@ -2,64 +2,80 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<link rel="stylesheet" href="product/css/productMake.css" />
-<link rel="stylesheet" href="product/css/datepicker.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css"/>
-<link rel="stylesheet" href="/resources/demos/style.css" />
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
-<script src="product/js/productMake.js"></script>
-<script src="product/js/datepicker.js"></script>
-</head>
-<body>
-    <div class="je_page-deco">
-      <img src="product/imgFolder/product-up.png" alt="" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <link rel="stylesheet" href="product/css/productMake.css" />
+    <script src="product/js/timepicker.js"></script>
+    <script src="product/js/productMake.js"></script>
+    <script src="product/js/datepicker.js"></script>
+    <link rel="stylesheet" href="product/css/picker.css" />
+  </head>
+  <body>
+    <!-- 로고 / 네비 -->
+    <div id="yj-main-s2-logo">
+      <img src="product/imgFolder/Logo.png" alt="" />
     </div>
+    <div id="yj-main-s2-menu">
+      <img src="product/imgFolder/menu_btn_1.png" alt="" />
+    </div>
+    <!-- 템플릿 제작 page -->
     <div id="je_container-productMake">
-      <div class="je_product-make-page">
-        <div class="je_product-make-page-title">
-          <div class="je_page-title">テンプレート 制作</div>
-          <div class="je_page-title-line">
-            <img src="product/imgFolder/pageTop_line.png" alt="" />
-          </div>
+      <div class="je_pageDeco-top">
+        <img src="product/imgFolder/product-up.png" alt="" />
+      </div>
+      <!-- title -->
+      <div class="je_title-productMake">
+        <div class="je_title-txt">テンプレート 制作</div>
+        <div class="je_title-line">
+          <img src="product/imgFolder/page_title.png" alt="" />
         </div>
-        <!-- content -->
-        <div class="je_product-make-page-content">
-          <!-- 템플릿 -->
-          <div class="je_make-page-content je_template-output">
-            <div class="je_content-title">プレビュー</div>
+      </div>
+      <!-- content -->
+      <div class="je_content-productMake">
+        <!-- output -->
+        <div class="je_template-output je_template-container">
+          <div class="je_content-title">プレビュー</div>
+          <div class="je_content-boxes je_content-template">
             <div class="je_template">
-              <div class="je_template-content">
-                <div>
-                  신랑
+              <img
+                class="je_template-background"
+                src="product/imgFolder/make-template.png"
+                alt=""
+              />
+              <div style="width: 100%">
+                <div id="je_photoPre1"></div>
+                <div class="je_kanji-groom">
                   <div id="je_groom-kanjiL"></div>
+                  &ensp;
                   <div id="je_groom-kanjiF"></div>
-                  <div id="je_groom-kanaL"></div>
-                  <div id="je_groom-kanaF"></div>
-                  <div id="je_groom-romaL"></div>
-                  <div id="je_groom-romaF"></div>
                 </div>
-                <div>
-                  신부
+                <div class="je_kanji-bride">
                   <div id="je_bride-kanjiL"></div>
+                  &ensp;
                   <div id="je_bride-kanjiF"></div>
-                  <div id="je_bride-kanaL"></div>
-                  <div id="je_bride-kanaF"></div>
-                  <div id="je_bride-romaL"></div>
-                  <div id="je_bride-romaF"></div>
                 </div>
-                <div>
-                  날짜
-                  <div id="je_specialDay"></div>
-                </div>
+                <!-- 시간.날짜 -->
+                <div id="je_weddingDay"></div>
                 <div>
                   본식
                   <div id="je_mainEvent-time"></div>
@@ -79,15 +95,18 @@
                   <div id="je_invite-message"></div>
                   <div id="je_finish-message"></div>
                 </div>
-                <div>사진</div>
-                <div id="je_photoPre1"></div>
-                <div id="je_photoPre2"></div>
-                <div id="je_photoPre3"></div>
+                <div>
+                  <div id="je_photoPre2"></div>
+                  <div id="je_photoPre3"></div>
+                </div>
+                <div id="je_photoPre4"></div>
               </div>
             </div>
           </div>
-          <!-- input -->
-          <div class="je_make-page-content je_template-input">
+        </div>
+        <!-- input -->
+        <form action="">
+          <div class="je_template-input je_template-container">
             <div class="je_content-title">作成欄</div>
             <div class="je_content-boxes">
               <!-- box - 신랑신부 -->
@@ -109,23 +128,53 @@
                     <div class="je_info-content">
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
-                        <div class="je_inputbox-input">
-                          <input type="text" placeholder="姓" id="je_g-kanji1" oninput="printName()"/>
-                          <input type="text" placeholder="名" id="je_g-kanji2" oninput="printName()" />
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="姓"
+                            id="je_g-kanji1"
+                            oninput="printName()"
+                          />
+                          <input
+                            type="text"
+                            placeholder="名"
+                            id="je_g-kanji2"
+                            oninput="printName()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">カタカナ</div>
-                        <div class="je_inputbox-input">
-                          <input type="text"  placeholder="せい" id="je_g-kana1" onkeyup="printName()" />
-                          <input type="text" placeholder="めい" id="je_g-kana2"  onkeyup="printName()"/>
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="せい"
+                            id="je_g-kana1"
+                            onkeyup="printName()"
+                          />
+                          <input
+                            type="text"
+                            placeholder="めい"
+                            id="je_g-kana2"
+                            onkeyup="printName()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
-                        <div class="je_inputbox-input">
-                          <input type="text" placeholder="Last Name" id="je_g-roma1" onkeyup="printName()"/>
-                          <input type="text" placeholder="First Name" id="je_g-roma2" onkeyup="printName()"/>
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            id="je_g-roma1"
+                            onkeyup="printName()"
+                          />
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            id="je_g-roma2"
+                            onkeyup="printName()"
+                          />
                         </div>
                       </div>
                     </div>
@@ -140,23 +189,50 @@
                     <div class="je_info-content">
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
-                        <div class="je_inputbox-input">
-                          <input type="text" placeholder="姓" id="je_b-kanji1" oninput="printName()"/>
-                          <input type="text" placeholder="名" id="je_b-kanji2" oninput="printName()"/>
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="姓"
+                            id="je_b-kanji1"
+                            oninput="printName()"
+                          /><input
+                            type="text"
+                            placeholder="名"
+                            id="je_b-kanji2"
+                            oninput="printName()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">カタカナ</div>
-                        <div class="je_inputbox-input">
-                          <input type="text" placeholder="せい"  id="je_b-kana1" oninput="printName()"/>
-                          <input type="text" placeholder="めい" id="je_b-kana2" oninput="printName()"/>
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="せい"
+                            id="je_b-kana1"
+                            oninput="printName()"
+                          /><input
+                            type="text"
+                            placeholder="めい"
+                            id="je_b-kana2"
+                            oninput="printName()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
-                        <div class="je_inputbox-input">
-                          <input type="text" placeholder="Last Name" id="je_b-roma1" oninput="printName()"/>
-                          <input type="text" placeholder="First Name" id="je_b-roma2" oninput="printName()"/>
+                        <div class="je_inputbox-input je_inputBox-name">
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            id="je_b-roma1"
+                            oninput="printName()"
+                          /><input
+                            type="text"
+                            placeholder="First Name"
+                            id="je_b-roma2"
+                            oninput="printName()"
+                          />
                         </div>
                       </div>
                     </div>
@@ -173,8 +249,14 @@
                 </div>
                 <div class="je_box-title2">式の日程</div>
                 <div class="je_box-calendar">
-                  <input type="text" id="specialDate" placeholder="日付を選んでください"
-                    autocomplete="off" readonly oninput="printInput()"/>
+                  <input
+                    type="text"
+                    id="specialDate"
+                    placeholder="日付を選んでください"
+                    autocomplete="off"
+                    readonly
+                    oninput="printInput()"
+                  />
                 </div>
                 <div class="je_box-content">
                   <div class="je_host-info">
@@ -188,27 +270,45 @@
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">時間</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input type="text" placeholder="時" id="je_main-hourInput1" oninput="printTime()"/>
-                          <input type="text" placeholder="分" id="je_main-minInput1" oninput="printTime()"/>
+                          <input
+                            type="text"
+                            id="timepicker-m"
+                            class="timepicker"
+                            placeholder="時間選択"
+                            readonly
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">集合</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input type="text" placeholder="時" id="je_main-hourInput2" oninput="printTime()"/>
-                          <input type="text" placeholder="分" id="je_main-minInput2" oninput="printTime()"/>
+                          <input
+                            type="text"
+                            id="timepicker-ma"
+                            class="timepicker"
+                            placeholder="時間選択"
+                            readonly
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input type="text" id="je_main-building" oninput="printInfo()"/>
+                          <input
+                            type="text"
+                            id="je_main-building"
+                            oninput="printInfo()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input type="text" id="je_main-addr" oninput="printInfo()"/>
+                          <input
+                            type="text"
+                            id="je_main-addr"
+                            oninput="printInfo()"
+                          />
                         </div>
                       </div>
                     </div>
@@ -224,27 +324,47 @@
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">時間</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input type="text" placeholder="時" id="je_side-hourInput1" oninput="printTime()"/>
-                          <input type="text" placeholder="分" id="je_side-minInput1" oninput="printTime()"/>
+                          <input
+                            type="text"
+                            id="timepicker-r"
+                            class="timepicker"
+                            placeholder="時間選択"
+                            autocomplete="off"
+                            readonly
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">集合</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input type="text" placeholder="時" id="je_side-hourInput2" oninput="printTime()"/>
-                          <input type="text" placeholder="分" id="je_side-minInput2" oninput="printTime()"/>
+                          <input
+                            type="text"
+                            id="timepicker-ra"
+                            class="timepicker"
+                            placeholder="時間選択"
+                            autocomplete="off"
+                            readonly
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input type="text" id="je_side-building" oninput="printInfo()"/>
+                          <input
+                            type="text"
+                            id="je_side-building"
+                            oninput="printInfo()"
+                          />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input type="text" id="je_side-addr"  oninput="printInfo()"/>
+                          <input
+                            type="text"
+                            id="je_side-addr"
+                            oninput="printInfo()"
+                          />
                         </div>
                       </div>
                     </div>
@@ -266,14 +386,19 @@
                     <div class="je_info-title">
                       招待文句
                       <div class="je_info-title-line">
-                        <img src=".product/imgFolder/line_box-cnt.png" alt="" />
+                        <img src="product/imgFolder/line_box-cnt.png" alt="" />
                       </div>
                     </div>
                     <div class="je_info-content">
                       <div class="je_info-inputbox">
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
-                          <textarea name="" rows="10" id="je_invite-m" oninput="printInfo()"></textarea>
+                          <textarea
+                            name=""
+                            rows="10"
+                            id="je_invite-m"
+                            oninput="printInfo()"
+                          ></textarea>
                         </div>
                       </div>
                     </div>
@@ -289,7 +414,12 @@
                       <div class="je_info-inputbox">
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
-                          <textarea name="" id="je_finish-m" rows="10" oninput="printInfo()"></textarea>
+                          <textarea
+                            name=""
+                            id="je_finish-m"
+                            rows="10"
+                            oninput="printInfo()"
+                          ></textarea>
                         </div>
                       </div>
                     </div>
@@ -297,7 +427,7 @@
                 </div>
                 <!-- 사진 첨부 -->
                 <div class="je_box-title2">写真 添付</div>
-                <div class="je_box-content">
+                <div div class="je_box-content">
                   <div class="je_host-info je_photo-info">
                     <div class="je_info-content je_photo-content">
                       <div class="je_photo-inputbox">
@@ -322,8 +452,17 @@
                               id="je_photoInput3"
                               onchange="readURL(this);"
                             />
-                            <div id="je_photoOut3ß"></div>
+                            <div id="je_photoOut3"></div>
                             <span>写真３</span>
+                          </div>
+                          <div id="je_photobox4" class="je_photobox">
+                            <input
+                              type="file"
+                              id="je_photoInput4"
+                              onchange="readURL(this);"
+                            />
+                            <div id="je_photoOut4"></div>
+                            <span>写真4</span>
                           </div>
                         </div>
                       </div>
@@ -334,13 +473,12 @@
               <div class="je_finish-button"><button>作成完了</button></div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-    <div class="je_page-deco">
-      <img src="product/imgFolder/product-down.png" alt="" />
-    </div>
-
-    <script src="product/js/productMakeFile.js"></script>
+    <!-- timepicker -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="product/js/makeFile.js"></script>
   </body>
 </html>
+
