@@ -16,17 +16,9 @@
 <body>
 	<div class="survey-container">
 		<div class="survey-container-img">
-			<img src="imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
-					style="width: 100%; height: 100%;
-					position: absolute;
-					display: flex;
-					width: 100%;
-					flex-grow: 1;
-					flex-direction: column;
-					height: 100vh;
-					z-index: 1;
-					pointer-events: none;
-">
+			<img src="imgFolder/surveyBackground-img.png"
+				alt="surveyBackground-img"
+				style="width: 100%; height: 100%; position: absolute; display: flex; width: 100%; flex-grow: 1; flex-direction: column; height: 100vh; z-index: 1; pointer-events: none;">
 		</div>
 		<header class="tk_survey_header">
 			<div class="top-left">
@@ -49,6 +41,8 @@
 				<div class="main-content-words">
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
 					<div style="margin-top: 0.5rem">2024.06.09までにご返信をお願いいたします。</div>
+					<button id="submitBtn2" class="tg-survey-button"
+						onclick="openModal()">MODAL</button>
 					<div>
 						<img src="imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
@@ -89,7 +83,7 @@
 							<div>
 								<div class="tg-slide-page">
 
-                					<div class="name-container">
+									<div class="name-container">
 										<fieldset>
 											<legend>
 												<div>
@@ -148,17 +142,17 @@
 
 							<div class="tg-slide-second-page">
 
-            					<div class="contact-container">
-										<div>
-											メールアドレス<input style="font-size: 1.2rem;" type="email"
-												class="contact-input" name="email"
-												placeholder="enmusubi@gmail.com" required />
-										</div>
-										<div>
-											電話番号 <input style="font-size: 1.2rem;" type="number"
-												class="contact-input" name="phonenum"
-												placeholder="000-0000-0000" required />
-										</div>
+								<div class="contact-container">
+									<div>
+										メールアドレス<input style="font-size: 1.2rem;" type="email"
+											class="contact-input" name="email"
+											placeholder="enmusubi@gmail.com" required />
+									</div>
+									<div>
+										電話番号 <input style="font-size: 1.2rem;" type="number"
+											class="contact-input" name="phonenum"
+											placeholder="000-0000-0000" required />
+									</div>
 								</div>
 
 								<div class="address-container">
@@ -177,8 +171,9 @@
 													<span for="postal-code">郵便番号</span>
 												</div>
 												<div>
-													<input style="font-size: 1.4rem" type="text" id="postal-code"
-														name="postal-code" placeholder="123-4567" required />
+													<input style="font-size: 1.4rem" type="text"
+														id="postal-code" name="postal-code" placeholder="123-4567"
+														required />
 												</div>
 											</div>
 											<div class="address-contents-contaoner">
@@ -271,29 +266,29 @@
 												</div>
 											</div>
 									</fieldset>
-									</div>
+								</div>
 							</div>
 
 							<div class="tg-slide-third-page">
 
-                					<div class="together-container">
-										<div>同伴人数</div>
-										<div class="together-people">大人</div>
-										<input type="button" onclick='count("plus","adult")' value="+" />
-										<input style="width: 2rem; font-size: 1rem;" class="result"
-											value="0" id="adult" name="adult" /> <input type="button"
-											onclick='count("minus","adult")' value="-" />
-										<div value="子供" class="together-people">子供</div>
-										<input type="button" onclick='count("plus","child")' value="+" />
-										<input style="width: 2rem; font-size: 1rem" class="result"
-											value="0" id="child" name="child" /> <input type="button"
-											onclick='count("minus","child")' value="-" />
-										<div value="幼児" class="together-people">幼児</div>
-										<input type="button" onclick='count("plus","baby")' value="+" />
-										<input style="width: 2rem; font-size: 1rem;"
-											class="result baby" value="0" id="baby" name="baby" /> <input
-											type="button" onclick='count("minus","baby")' value="-" />
-									</div>
+								<div class="together-container">
+									<div>同伴人数</div>
+									<div class="together-people">大人</div>
+									<input type="button" onclick='count("plus","adult")' value="+" />
+									<input style="width: 2rem; font-size: 1rem;" class="result"
+										value="0" id="adult" name="adult" /> <input type="button"
+										onclick='count("minus","adult")' value="-" />
+									<div value="子供" class="together-people">子供</div>
+									<input type="button" onclick='count("plus","child")' value="+" />
+									<input style="width: 2rem; font-size: 1rem" class="result"
+										value="0" id="child" name="child" /> <input type="button"
+										onclick='count("minus","child")' value="-" />
+									<div value="幼児" class="together-people">幼児</div>
+									<input type="button" onclick='count("plus","baby")' value="+" />
+									<input style="width: 2rem; font-size: 1rem;"
+										class="result baby" value="0" id="baby" name="baby" /> <input
+										type="button" onclick='count("minus","baby")' value="-" />
+								</div>
 
 								<div class="allergy-container">
 									<fieldset>
@@ -307,28 +302,29 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-										<label>
-    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="no" checked /> いいえ
-										</label>
-										<label>
-    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="yes" /> はい
-										</label>
+											<label> <input style="font-size: 1.5rem;"
+												type="radio" name="allergy" value="no" checked /> いいえ
+											</label> <label> <input style="font-size: 1.5rem;"
+												type="radio" name="allergy" value="yes" /> はい
+											</label>
 										</div>
 
 										<div class="allergy-details" id="allergy-details"
 											style="display: none;">
 											<label for="allergy-type">アレルギーの種類:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-											<textarea class="allergy-type" id="allergy-type" name="allergy-type" placeholder="例：卵, 小麦, 乳製品"></textarea>
+											<textarea class="allergy-type" id="allergy-type"
+												name="allergy-type" placeholder="例：卵, 小麦, 乳製品"></textarea>
 										</div>
-								</fieldset>
-										</div>
+									</fieldset>
+								</div>
 
 								<div class="special-notes-container">
 									<div style="line-height: 3rem; font-size: 1.4rem;">
 										その他要求事項
-										<div><textarea style="font-size: 1.2rem" id="special-notes"
-											name="special-notes" placeholder="ご要望、ご質問などございましたらご記入ください。"></textarea>
-                    					</div>
+										<div>
+											<textarea style="font-size: 1.2rem" id="special-notes"
+												name="special-notes" placeholder="ご要望、ご質問などございましたらご記入ください。"></textarea>
+										</div>
 									</div>
 
 								</div>
@@ -341,29 +337,32 @@
 
 								</div>
 
-							</div> 
+							</div>
 
-            <div>
+							<div>
 
-            <div class="tg-slide-forth-page">
+								<div class="tg-slide-forth-page">
 
-                <div class="reject-notes-container">
-									<div style="line-height: 3rem; font-size: 1.5rem;">
-										お断り·お祝いメッセージ
-										<div><textarea style="font-size: 1.3rem" id="special-notes"
-											name="special-notes" placeholder="ご結婚、誠におめでとうございます。 残念ですが.."></textarea>
-                    					</div>
+									<div class="reject-notes-container">
+										<div style="line-height: 3rem; font-size: 1.5rem;">
+											お断り·お祝いメッセージ
+											<div>
+												<textarea style="font-size: 1.3rem" id="special-notes"
+													name="special-notes"
+													placeholder="ご結婚、誠におめでとうございます。 残念ですが.."></textarea>
+											</div>
+										</div>
+
+										<button id="submitBtn2" class="tg-survey-button"
+											onclick="openModal()">
+											<span>送信</span>
+										</button>
+
 									</div>
 
-        						 <button id="submitBtn2" class="tg-survey-button">
-									<span>送信</span>
-								</button>
+								</div>
 
-    			</div>
-
-						</div>
-
-            </div>
+							</div>
 
 						</div>
 
@@ -377,13 +376,53 @@
 			</form>
 
 
-				</main>
+		</main>
 
-			<footer class="tk_survey_footer"> </footer>
-			</div>
+		<footer class="tk_survey_footer"> </footer>
+	</div>
+
+
+
+	<dialog id="tg-modal" class="tg-modal">
+	<div class="tg-modal-container">
+		<div class="tg-modal-img-box" onclick="location.href='${pageContext.request.contextPath}/SendC'">
+			<h2>送金</h2>
+			<div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_money.png"></div>
+		</div>
+		<div class="tg-modal-img-box" onclick="location.href='${pageContext.request.contextPath}/FundC'">
+			<h2>ファンディング</h2>
+			<div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_funding.png"></div>
+		</div>
+		<div class="tg-modal-img-box" onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
+			<h2>ウィッシュリスト</h2>
+			<div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_present.png"></div>
+		</div>
+	</div>
+		<a href="${pageContext.request.contextPath}/ResultC" style="text-decoration: none;"><h3 style="color:#999999">i pay after</h3></a>
+	</dialog>
+
+
+
 </body>
 
 <script>
+
+function openModal() {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
+
 //slick 시작 함수
 let $slider;
 	function slickSlide() {
@@ -612,8 +651,4 @@ if (this.checked) {
 
 
     </script>
-
-	
-</script>
-
 </html>

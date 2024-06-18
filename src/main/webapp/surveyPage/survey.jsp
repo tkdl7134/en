@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
-<link rel="stylesheet" href="survey.css" />
-<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" href="surveyPage/survey.css" />
+<link rel="stylesheet" type="surveyPage/text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700;900&display=swap"

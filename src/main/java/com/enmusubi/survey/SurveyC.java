@@ -14,8 +14,8 @@ public class SurveyC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SurveyDAO.updateMember(request);
-		
+		//SurveyDAO.updateMember(request);
+		request.getRequestDispatcher("surveyPage/survey.jsp").forward(request, response);
 
 	}
 
