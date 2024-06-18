@@ -275,10 +275,17 @@ function goStatistic(wlno) {
 			warnspan.classList.add("kh-show");
 		}
 	} else {
-		$(".kh-f-statistic-conCon").html("");
-		closeModal();
-		jsoninfos.forEach((element, index) => {
-			let doms = `
+		let justnum = finput.value.replace(',', '');
+		$.ajax({
+			type: "post",
+			url: "InsertFundC",
+			data: { eno: eventno, paytype: 'fund', price: justnum, wlno: wlno },
+			dataType: "json",
+			success: function(response) {
+				$(".kh-f-statistic-conCon").html("");
+				closeModal();
+				jsoninfos.forEach((element, index) => {
+					let doms = `
 				<div class="kh-f-statistic-content">
 					<div class="kh-f-statistic-name">
 						<div class="kh-f-none"><span>私の選択</span><img alt="noImg" src="finance/img/flash.png"> </div>
@@ -296,26 +303,50 @@ function goStatistic(wlno) {
 				</div>
 			`;
 
-			if (element.wl_no == wlno) {
-				$(".kh-f-statistic-conCon").prepend(doms)
-			}
-			else {
-				$(".kh-f-statistic-conCon").append(doms);
-			}
-		});
+					if (element.wl_no == wlno) {
+						$(".kh-f-statistic-conCon").prepend(doms)
+					}
+					else {
+						$(".kh-f-statistic-conCon").append(doms);
+					}
+				});
 
-		openStatistic();
-		statisticModal.querySelector('.kh-f-statistic-name > div:nth-child(1)').classList.remove('kh-f-none');
-		let statisBars = statisticModal.querySelectorAll('.kh-f-statistic-abled-bar')
-		statisBars.forEach((element) => {
-			console.log(element.getAttribute("data-value"));
-			element.style.width = element.getAttribute("data-value") + "%";
-			console.log(element.style.width);
-		});
-		let statisNumber = statisticModal.querySelectorAll('.kh-f-statistic-percent > h1 > span')
-		statisNumber.forEach((element) => {
-			console.log(element.getAttribute("data-value"));
-			animateValue(element, 0, parseInt(element.getAttribute("data-value")), 1000);
+				openStatistic();
+				statisticModal.querySelector('.kh-f-statistic-name > div:nth-child(1)').classList.remove('kh-f-none');
+				let statisBars = statisticModal.querySelectorAll('.kh-f-statistic-abled-bar')
+				statisBars.forEach((element) => {
+					console.log(element.getAttribute("data-value"));
+					element.style.width = element.getAttribute("data-value") + "%";
+					console.log(element.style.width);
+				});
+				let statisNumber = statisticModal.querySelectorAll('.kh-f-statistic-percent > h1 > span')
+				statisNumber.forEach((element) => {
+					console.log(element.getAttribute("data-value"));
+					animateValue(element, 0, parseInt(element.getAttribute("data-value")), 1000);
+				});
+				//카운트다운
+				let countDown = document.getElementById('finalCount');
+				let count = 10;
+				let interval = setInterval(function() {
+					count--;
+					countDown.textContent = count;
+					if (count <= 0) {
+						clearInterval(interval);
+					}
+				}, 1000);
+
+				//페이지 이동
+				setTimeout(function() {
+					location.href = "ResultC";
+				}, 10000);
+
+
+			},
+			error: function(request, status, error) {
+				console.log("code: " + request.status)
+				console.log("message: " + request.responseText)
+				console.log("error: " + error);
+			}
 		});
 
 	}
