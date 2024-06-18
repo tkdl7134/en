@@ -21,6 +21,7 @@ public class SurveyDAO {
         
         // 다른 패키지에서 설정한 세션 값 가져오기 예시
         String loginType = (String) session.getAttribute("m_id");
+        System.out.println(loginType);
         //l_tg
         String type = loginType.substring(0,1);
         if (type.equals("l_")) {
@@ -89,7 +90,7 @@ public class SurveyDAO {
 	        pstmt = con.prepareStatement(sql);
 	        
 	        HttpSession session = request.getSession();
-	        String normalUserId = (String) session.getAttribute("normalUserId");
+	        String normalUserId = (String) session.getAttribute("m_id");
 	        System.out.println("일반 회원 로그인 세션입니다 아이디는: " + normalUserId);
 	        // 추가적인 처리를 수행하세요
 	    
@@ -97,18 +98,44 @@ public class SurveyDAO {
 	        pstmt.setString(1, normalUserId);
 	        rs = pstmt.executeQuery();
 	        
-	        ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+	        ArrayList<TMemberDTO> members = new ArrayList<TMemberDTO>();
 	        while (rs.next()) {
-	        	MemberDTO m = new MemberDTO();
-	        	m.setM_name(rs.getString(1));
-	        	m.setM_name_kana(rs.getString(2));
-	        	m.setM_name_rome(rs.getString(3));
-	        	m.setM_phone(rs.getString(4));
-	        	m.setM_email(rs.getString(5));
-	        	
-	        	members.add(m);
+	            TMemberDTO m = new TMemberDTO();
+	            
+	            String fullName = rs.getString(1);
+	            String[] nameParts = fullName.split(" ");
+	            if (nameParts.length == 2) {
+	                m.setM_first_name(nameParts[0]);
+	                m.setM_last_name(nameParts[1]);
+	            } else {
+	                m.setM_first_name(fullName); // fallback in case the split doesn't result in exactly 2 parts
+	            }
+	            
+	            String fullNameKana = rs.getString(2);
+	            String[] nameParts1 = fullName.split(" ");
+	            if (nameParts1.length == 2) {
+	                m.setM__first_name_kana(nameParts1[0]);
+	                m.setM__last_name_kana(nameParts1[1]);
+	            } else {
+	                m.setM__first_name_kana(fullNameKana); // fallback in case the split doesn't result in exactly 2 parts
+	            }
+	            
+	            String fullNameRome = rs.getString(2);
+	            String[] nameParts2 = fullName.split(" ");
+	            if (nameParts1.length == 2) {
+	                m.setM_first_name_rome(nameParts2[0]);
+	                m.setM_last_name_rome(nameParts2[1]);
+	            } else {
+	                m.setM__first_name_kana(fullNameRome); // fallback in case the split doesn't result in exactly 2 parts
+	            }
+	            
+
+	            m.setM_phone(rs.getString(4));
+	            m.setM_email(rs.getString(5));
+	            
+	            members.add(m);
 	        }
-	        System.out.println(members);
+	        
 	        request.setAttribute("members", members);
 	        
 	    } catch (Exception e) {

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
-<link rel="stylesheet" href="survey.css" />
+<link rel="stylesheet" href="surveyPage/survey.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
@@ -18,7 +18,7 @@
 <body>
 	<div class="survey-container">
 		<div class="survey-container-img">
-			<img src="imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
+			<img src="surveyPage/imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
 					style="width: 100%; height: 100%;
 					position: absolute;
 					display: flex;
@@ -32,7 +32,7 @@
 		</div>
 		<header class="tk_survey_header">
 			<div class="top-left">
-				<img src="imgFolder/logo.png" alt="logo"
+				<img src="surveyPage/imgFolder/logo.png" alt="logo"
 					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;
 " />
 			</div>
@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="top-menu">
-				<img src="imgFolder/menu-btn.png" alt="menu-button"
+				<img src="surveyPage/imgFolder/menu-btn.png" alt="menu-button"
 					style="width: 100%; height: 100%" />
 			</div>
 		</header>
@@ -53,7 +53,7 @@
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
 					<div style="margin-top: 0.5rem">2024.06.09までにご返信をお願いいたします。</div>
 					<div>
-						<img src="imgFolder/pointline.png" alt="menu-button"
+						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
 					</div>
 				</div>
@@ -75,14 +75,14 @@
 										<div class="texts">
 											<div>出席</div>
 										</div>
-										<img class="lines" alt="" src="imgFolder/yesline.png">
+										<img class="lines" alt="" src="surveyPage/imgFolder/yesline.png">
 										<input type="hidden" name="attendance" value="present">
 									</div>
 									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
 										<div class="texts">
 											<div>欠席</div>
 										</div>
-										<img class="lines" alt="" src="imgFolder/noline.png">
+										<img class="lines" alt="" src="surveyPage/imgFolder/noline.png">
 										<input type="hidden" name="attendance" value="absent">
 									</div>
 
@@ -98,7 +98,7 @@
 										<fieldset>
 											<legend>
 												<div>
-													<img src="imgFolder/flowersymbol.jpg" alt="flowersymbol"
+													<img src="surveyPage/imgFolder/flowersymbol.jpg" alt="flowersymbol"
 														style="width: 100%; height: 100%" />
 												</div>
 												&nbsp&nbsp&nbsp
@@ -170,7 +170,7 @@
 									<fieldset>
 										<legend>
 											<div>
-												<img src="imgFolder/homeicon.png" alt="flowersymbol"
+												<img src="surveyPage/imgFolder/homeicon.png" alt="flowersymbol"
 													style="width: 100%; height: 100%" />
 											</div>
 											&nbsp&nbsp&nbsp
@@ -305,7 +305,7 @@
 										<legend>
 											<div style="width: 3.8rem; height: 1.8rem;">
 												<img style="width: 100%; height: 100%"
-													src="imgFolder/foodicon.png" alt="アレルギーマーク" />
+													src="surveyPage/imgFolder/foodicon.png" alt="アレルギーマーク" />
 											</div>
 											<div>アレルギーについて</div>
 										</legend>
@@ -386,10 +386,30 @@
 
 			<footer class="tk_survey_footer"> </footer>
 			</div>
+			
+			<dialog id="tg-modal" class="tg-modal">
+   	 <div class="tg-modal-container">
+        <div class="tg-modal-img-box" onclick="location.href='SendC'">
+            <h2>送金</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_money.png"></div>
+        </div>
+        <div class="tg-modal-img-box" onclick="location.href='FundC'">
+            <h2>ファンディング</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_funding.png"></div>
+        </div>
+        <div class="tg-modal-img-box" onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
+            <h2>ウィッシュリスト</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_present.png"></div>
+        </div>
+    </div>
+        <a href="ResultC" style="text-decoration: none;"><h3 style="color:#999999">i pay after</h3></a>
+    </dialog>
+			
 </body>
 
 <script>
-console.log("${loginType } " )
+let logintype = '<%=request.getAttribute("loginType") %>';
+console.log(logintype);
 
 //slick 시작 함수
 let $slider;
@@ -635,11 +655,23 @@ function openModal(attemp) {
     }, 10);
 }
 
+function openModal() {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
 
 
     </script>
-
-	
-</script>
-
+    
 </html>
