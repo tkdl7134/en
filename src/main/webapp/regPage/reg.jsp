@@ -37,12 +37,14 @@
 <body class="hs_body">
 
 	<div class="hs_background">
-
-
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt=""
-				src="regPage/ImgFolder/Logo.png"> <img class="menu-btn-1"
-				alt="" src="regPage/ImgFolder/default_menu_1.png">
+	
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
+				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
 		<div class="hs_title">会員登録</div>
