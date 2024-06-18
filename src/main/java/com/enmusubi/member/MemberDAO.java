@@ -79,7 +79,7 @@ public class MemberDAO {
 //				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
-				session.setMaxInactiveInterval(600);
+				session.setMaxInactiveInterval(1800);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
@@ -529,6 +529,7 @@ public class MemberDAO {
 		MemberDAO dao = new MemberDAO();
 		try {
 			dao.updateMemberInfo(dto);
+			System.out.println("수정 성공");
 //			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 //			request.getRequestDispatcher("HSC").forward(request, response);
 		} catch (SQLException e) {
@@ -580,11 +581,12 @@ public class MemberDAO {
 				if (result == 1) {
 					// 탈퇴 성공 처리
 					session.invalidate(); // 세션 무효화
+					System.out.println("삭제 성공");
 					
 				} else {
 					// 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
 					System.out.println("アカウント削除失敗。アカウント情報が存在しません。");
-					response.sendRedirect("HSC"); 
+					response.sendRedirect("HSC");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

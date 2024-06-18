@@ -72,108 +72,98 @@
 				</div>
 			</div>
 
-				<div class="hs_container">
+			<div class="hs_container">
 
-					<div class="hs_content-title-account">
-						<div class="hs_content-title-text">アカウント情報</div>
-					</div>
+				<div class="hs_content-title-account">
+					<div class="hs_content-title-text">アカウント情報</div>
+				</div>
 
 
-					<div class="hs_container-input">
-						<div class="hs_content-input id">
-							<div class="hs_content-text id">ID</div>
-							<div>${dto.m_id}</div>
-						</div>
-
-						<div class="hs_content-input pw">
-							<div class="hs_content-text pw">パスワード</div>
-							<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-								placeholder="パスワード">
-						</div>
-						<div class="hs_content-input pw-confirm">
-							<div class="hs_content-text pwconfirm">パスワード(確認)</div>
-							<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-								class="hs_input pw" placeholder="パスワード(確認)">
-						</div>
-					</div>
-
-					<div class="hs_content-title-user">
-						<div class="hs_content-title-text">ユーザー情報</div>
-					</div>
-
-					<div class="hs_container-input">
-						<div class="hs_content-input name">
-							<div class="hs_content-text name">名前</div>
-							<div>${dto.m_name}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text kana">フリガナ</div>
-							<div>${dto.m_name_kana}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text rome">名前(ローマ字)</div>
-							<div>${dto.m_name_rome}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text gender">性別</div>
-							<div>${dto.m_gender}</div>
-						</div>
-
-						<fmt:parseDate value="${dto.m_birth}" pattern="yyyy-MM-dd"
-							var="parsedDate" />
-						<div class="hs_content-input">
-							<div class="hs_content-text birth">生年月日</div>
-							<fmt:formatDate value="${parsedDate}" pattern="yyyy年 MM月 dd日" />
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text email">メールアドレス</div>
-							<div>${dto.m_email}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text phone">電話番号</div>
-							<div>${dto.m_phone}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text post">郵便番号</div>
-							<div class="hs_content-text postmark">〒 ${dto.a_postcode}</div>
-
-						</div>
-
-						<c:set var="addressParts" value="${fn:split(dto.a_address, ', ')}" />
-						<div class="hs_content-input">
-							<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
-							<div>${addressParts[0]}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text city">住所</div>
-							<div>${addressParts[1]}</div>
-						</div>
-
-						<div class="hs_content-input">
-							<div class="hs_content-text street"></div>
-							<div>${addressParts[3]}</div>
-						</div>
-
-						<div class="hs_content-input building">
-							<div class="hs_content-text building"></div>
-							<div>${addressParts[3]}</div>
-						</div>
-
-						<a href="MemberUpdateC"><button>会員情報修正</button></a>
-						
-						<form onsubmit="return confirmDelete()" action="MemberDeleteC" method="post" >
-							<button>アカウント削除</button>
-						</form>
-
+				<div class="hs_container-input">
+					<div class="hs_content-input id">
+						<div class="hs_content-text id">ID</div>
+						<div class="hs_output">${dto.m_id}</div>
 					</div>
 				</div>
+
+				<div class="hs_content-title-user">
+					<div class="hs_content-title-text">ユーザー情報</div>
+				</div>
+
+				<div class="hs_container-input">
+					<div class="hs_content-input name">
+						<div class="hs_content-text name">名前</div>
+						<div class="hs_output">${dto.m_name}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text kana">フリガナ</div>
+						<div class="hs_output">${dto.m_name_kana}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text rome">名前(ローマ字)</div>
+						<div class="hs_output">${dto.m_name_rome}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text gender">性別</div>
+						<div class="hs_output">${dto.m_gender}</div>
+					</div>
+
+					<fmt:parseDate value="${dto.m_birth}" pattern="yyyy-MM-dd"
+						var="parsedDate" />
+					<div class="hs_content-input">
+						<div class="hs_content-text birth">生年月日</div>
+						<fmt:formatDate value="${parsedDate}" pattern="yyyy年 MM月 dd日" />
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text email">メールアドレス</div>
+						<div class="hs_output">${dto.m_email}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text phone">電話番号</div>
+						<div class="hs_output">${dto.m_phone}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text post">郵便番号</div>
+						<div class="hs_content-text postmark">〒 ${dto.a_postcode}</div>
+
+					</div>
+
+					<c:set var="addressParts" value="${fn:split(dto.a_address, ', ')}" />
+					<div class="hs_content-input">
+						<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
+						<div class="hs_output prefecture">${addressParts[0]}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text city">住所</div>
+						<div class="hs_output">${addressParts[1]}</div>
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text street"></div>
+						<div class="hs_output">${addressParts[3]}</div>
+					</div>
+
+					<div class="hs_content-input building">
+						<div class="hs_content-text building"></div>
+						<div class="hs_output">${addressParts[3]}</div>
+					</div>
+
+					<div class="btn-box">
+						<button type="button" class="btn update" onclick="redirectToUpdate()">会員情報修正</button>
+						<form id="deleteForm" action="MemberDeleteC" method="post">
+							<button type="button" onclick="confirmDelete()"
+								class="btn delete">アカウント削除</button>
+						</form>
+					</div>
+				</div>
+			</div>
 
 			<footer class="hs_footer">
 				<img alt="" src="regPage/ImgFolder/top_button.png"
@@ -184,27 +174,42 @@
 	</c:if>
 
 	<script>
-	function confirmDelete() {
-	    Swal.fire({
-	        icon: 'warning',
-	        title: '本当に削除しますか？',
-	        customClass: {
-	            popup: 'swal2-popup',
-	            confirmButton: 'swal2-confirm'
-	        },
-	        showCancelButton: true, // 취소 버튼을 추가합니다.
-	        confirmButtonText: '削除',
-	        cancelButtonText: 'キャンセル'
-	    }).then((result) => {
-	        if (result.isConfirmed) {
-	            // 확인 버튼이 클릭된 경우
-	            return true; // 폼 제출
-	        } else {
-	            // 취소 버튼이 클릭된 경우
-	            return false; // 폼 제출 방지
-	        }
-	    });
+	function redirectToUpdate() {
+	    window.location.href = "MemberUpdateC";
 	}
-	</script>
+	
+	function confirmDelete() {
+        Swal.fire({
+            icon: 'warning',
+            title: '本当に削除しますか？',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            },
+            showCancelButton: true,
+            confirmButtonText: '削除',
+            cancelButtonText: 'キャンセル'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // 확인 버튼이 클릭된 경우
+                document.getElementById('deleteForm').submit(); // 폼 제출
+            } else {
+                // 취소 버튼이 클릭된 경우
+                // 아무 작업 없음
+            }
+        });
+    }
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    const topButton = document.querySelector('.top-button');
+	    
+	    topButton.addEventListener('click', function() {
+	        window.scrollTo({
+	            top: 0,
+	            behavior: 'smooth' // 부드러운 스크롤
+	        });
+	    });
+	});
+    </script>
 </body>
 </html>

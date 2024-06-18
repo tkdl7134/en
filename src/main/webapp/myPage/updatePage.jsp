@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.enmusubi.member.MemberDTO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>会員情報</title>
+<title>会員情報修正</title>
+
 <link rel="stylesheet" type="text/css" href="myPage/update.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +30,7 @@
 }
 </style>
 </head>
+
 <body class="hs_body">
 
 	<div class="hs_background">
@@ -45,7 +44,7 @@
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">会員情報</div>
+		<div class="hs_title">会員情報修正</div>
 
 		<div class="hs_mypage-menus">
 			<div class="hs_btn-container">
@@ -81,8 +80,8 @@
 						<div class="hs_content-text id">ID</div>
 						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
 							placeholder="縁結びID" value="${sessionScope.m_id}">
-						<div class="hs_update-id">
-							<div>${sessionScope.m_id}</div>
+						<div class="hs_update-id">${sessionScope.m_id}
+							<%-- <div>${sessionScope.m_id}</div> --%>
 						</div>
 					</div>
 
@@ -106,53 +105,72 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎" value="${sessionScope.m_name}">
+							placeholder="山田 太郎">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ" value="${sessionScope.m_name_kana}">
+							placeholder="ヤマダ タロウ">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou" value="${sessionScope.m_name_rome}">
+							placeholder="Yamada Tarou">
+					</div>
+
+					<div class="hs_content-input">
+						<div class="hs_content-text gender">性別</div>
+						<div class="radio-gender">
+							<div class="radio-gender male">
+								<input type="radio" id="gender_male" name="m_gender"
+									class="hs_input gender" value="男性"> <label
+									for="gender_male">男性</label>
+							</div>
+							<div class="radio-gender male">
+								<input type="radio" id="gender_female" name="m_gender"
+									class="hs_input gender" value="女性"> <label
+									for="gender_female">女性</label>
+							</div>
+							<div class="radio-gender male">
+								<input type="radio" id="gender_other" name="m_gender"
+									class="hs_input gender" value="その他"> <label
+									for="gender_other">その他</label>
+							</div>
+						</div>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<div class="hs_content-text bd">
-							<span id="sessionYear">年</span>
-						</div>
-						<div class="hs_content-text bd">
-							<span id="sessionMonth">月</span>
-						</div>
-						<div class="hs_content-text bd">
-							<span id="sessionDay">日</span>
-						</div>
+						<input type="text" name="m_birthY" id="m_birthY"
+							class="hs_input birth" maxlength="4">
+						<div class="hs_content-text bd">年</div>
+						<input type="text" name="m_birthM" id="m_birthM"
+							class="hs_input birth" maxlength="2">
+						<div class="hs_content-text bd">月</div>
+						<input type="text" name="m_birthD" id="m_birthD"
+							class="hs_input birth" maxlength="2">
+						<div class="hs_content-text bd">日</div>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" value="${sessionScope.m_email}">
+							placeholder="example@example.com">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
 						<input type="text" name="m_phone" class="hs_input phone"
-							placeholder="ハイフン(-)なしでご入力ください" maxlength="15"
-							value="${sessionScope.m_phone}">
+							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text post">郵便番号</div>
 						<div class="hs_content-text postmark">〒</div>
 						<input type="text" name="a_postcode" id="a_postcode"
-							class="hs_input post" placeholder="郵便番号" maxlength="10"
-							value="${sessionScope.a_postcode}">
+							class="hs_input post" placeholder="郵便番号" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
@@ -214,19 +232,19 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text city">住所</div>
 						<input type="text" name="a_city" id="a_city" class="hs_input city"
-							placeholder="市区町村">
+							placeholder="市区町村" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text street"></div>
 						<input type="text" name="a_street" id="a_street"
-							class="hs_input street" placeholder="番地">
+							class="hs_input street" placeholder="番地" maxlength="50">
 					</div>
 
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名など">
+							class="hs_input building" placeholder="ビル・マンション名など" maxlength="50">
 					</div>
 
 					<button id="btnReg" class="btn-reg" type="button"
@@ -235,7 +253,7 @@
 				</div>
 			</div>
 		</form>
-
+		
 		<footer class="hs_footer">
 			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
 			<div class="hs_footer-background"></div>

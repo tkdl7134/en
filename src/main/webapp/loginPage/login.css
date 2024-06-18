@@ -13,6 +13,8 @@
 	align-items: center;
 	text-align: center;
 	background-color: #FFF5F4;
+	margin: auto;
+	max-width: 1920px;
 }
 
 .hs_background {
@@ -26,8 +28,9 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-	min-height: 1080px;
+min-height: 1080px;
 	min-width: 1920px;
+	max-width: 1920px;
 }
 
 .yj-main-s2-logo {
