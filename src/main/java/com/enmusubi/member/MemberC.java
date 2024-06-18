@@ -24,8 +24,5 @@ public class MemberC extends HttpServlet {
 
 		MemberDAO.memberC(request, response);
 		
-		response.sendRedirect("HSC");
-			
-
 	}
 }

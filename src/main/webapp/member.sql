@@ -31,7 +31,6 @@ INSERT INTO Member (
 -- Memberテーブルのデータを選択
 SELECT * FROM s_Member;
 
-
 -- Addressテーブルの作成
 CREATE TABLE Address (
     m_id VARCHAR2(40 char) PRIMARY KEY,
