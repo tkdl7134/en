@@ -79,7 +79,7 @@ public class MemberDAO {
 //				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
-				session.setMaxInactiveInterval(600);
+				session.setMaxInactiveInterval(1800);
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
@@ -299,21 +299,34 @@ public class MemberDAO {
 	public int deleteMember(String m_id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmtAddress = null;
+		PreparedStatement pstmtGuest = null;
+		PreparedStatement pstmtEvent = null;
 		PreparedStatement pstmtMember = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
+		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
+		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
 
 		try {
 			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
+			
 
-			// 1. 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
+			// 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
 			pstmtAddress = con.prepareStatement(sqlAddress);
 			pstmtAddress.setString(1, m_id);
 			pstmtAddress.executeUpdate();
+			
+			pstmtGuest = con.prepareStatement(sqlGuest);
+			pstmtGuest.setString(1, m_id);
+			pstmtGuest.executeUpdate();
+			
+			pstmtEvent = con.prepareStatement(sqlEvent);
+			pstmtEvent.setString(1, m_id);
+			pstmtEvent.executeUpdate();
 
-			// 2. 회원 정보 삭제
+			// 회원 정보 삭제
 			pstmtMember = con.prepareStatement(sqlMember);
 			pstmtMember.setString(1, m_id);
 			int result = pstmtMember.executeUpdate(); // 삭제된 행 수 반환
@@ -327,6 +340,8 @@ public class MemberDAO {
 			throw e;
 		} finally {
 			dbManager.close(con, pstmtAddress, null);
+			dbManager.close(con, pstmtGuest, null);
+			dbManager.close(con, pstmtEvent, null);
 			dbManager.close(con, pstmtMember, null);
 		}
 	}
@@ -488,7 +503,7 @@ public class MemberDAO {
 		String m_birthD = request.getParameter("m_birthD");
 
 		// 디버깅 로그 출력 (m_id 값 확인)
-		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
+//		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
 
 		// 현재 날짜 및 시간 가져오기
 		LocalDateTime now = LocalDateTime.now();
@@ -514,7 +529,9 @@ public class MemberDAO {
 		MemberDAO dao = new MemberDAO();
 		try {
 			dao.updateMemberInfo(dto);
+			System.out.println("수정 성공");
 //			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
+//			request.getRequestDispatcher("MemberDetailC").forward(request, response);
 //			request.getRequestDispatcher("HSC").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -565,11 +582,12 @@ public class MemberDAO {
 				if (result == 1) {
 					// 탈퇴 성공 처리
 					session.invalidate(); // 세션 무효화
-					response.sendRedirect("HSC"); // 메인 페이지로 이동
+					System.out.println("삭제 성공");
+					
 				} else {
 					// 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
 					System.out.println("アカウント削除失敗。アカウント情報が存在しません。");
-					response.sendRedirect("MemberDetailC"); // 마이 페이지로 이동 (오류 메시지 표시)
+					response.sendRedirect("HSC");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -652,6 +670,7 @@ public class MemberDAO {
 		MemberDAO dao = new MemberDAO();
 		try {
 			MemberDTO dto = dao.getMypage(m_id);
+			System.out.println(dto);
 			if (dto != null) {
 				// 디버깅 메시지 출력
 //                System.out.println("MemberDetailC - 회원 정보 조회 성공: " + dto);
@@ -664,14 +683,13 @@ public class MemberDAO {
 				// 디버깅 메시지 출력
 				System.out.println("MemberDetailC - 회원 정보 조회 실패: m_id = " + m_id);
 
-				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
+				response.sendRedirect("HSC"); // 메인 페이지로 이동
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// 디버깅 메시지 출력
 			System.out.println("MemberDetailC - 데이터베이스 오류: " + e.getMessage());
-
-			request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
+			response.sendRedirect("HSC"); // 메인 페이지로 이동
 		}
 
 	}
@@ -705,11 +723,11 @@ public class MemberDAO {
 			int result = dao.updateMypage(dto);
 			if (result == 1) {
 				// 수정 성공 처리
-				response.sendRedirect("HSC"); // 메인 페이지로
+//				request.getRequestDispatcher("MemberDetailC").forward(request, response);
 			} else {
 				// 수정 실패 처리
 				System.out.println("修正失敗");
-				request.getRequestDispatcher("MemberDetailC").forward(request, response);
+				response.sendRedirect("HSC");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
