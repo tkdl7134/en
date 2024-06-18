@@ -13,6 +13,10 @@
 	align-items: center;
 	text-align: center;
 	background-color: #FFF5F4;
+	min-width: 1920px;
+	max-width: 1920px;
+	min-height: 1080px;
+	max-height: 1080px;
 }
 
 .hs_background {
@@ -28,21 +32,44 @@
 	background-position: top center;
 }
 
-.horizontal-container-btn {
-	display: flex;
-	align-items: center; /* 수직 가운데 정렬 */
-	justify-content: space-between; /* 수평 가운데 정렬 */
-	padding-left: 5rem;
-	padding-right: 5rem;
-	margin-top: 3rem;
-}
-
-.hs_body .menu-btn-enmusubi {
+.yj-main-s2-logo {
+	z-index: 4;
 	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
 }
 
-.hs_body .menu-btn-1 {
+.yj-main-s2-logo img {
+	/* width: 150px; */
+	width: 100%;
+	height: 100%;
+	animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s2-menu {
+	z-index: 4;
 	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+}
+
+.yj-main-s2-menu img {
+	width: 100%;
+	height: 100%;
 }
 
 .horizontal-container-title {
@@ -54,21 +81,21 @@
 .hs_heading {
 	font-size: 2rem;
 	font-weight: bold;
-	margin-top: -5rem;
+	margin-top: 7rem;
 }
 
 .hs_container-login-border {
 	background-image: url(ImgFolder/BG.png);
-    /* background-position: center; */
-    margin: auto;
-    margin-top: 8rem;
-    background-size: 100% 100%;
-    width: 35%;
-    height: 28rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	/* background-position: center; */
+	margin: auto;
+	margin-top: 10rem;
+	background-size: 100% 100%;
+	width: 35%;
+	height: 28rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .hs_login {
@@ -80,7 +107,7 @@
 }
 
 .hs_input {
-	width: 33rem;
+	width: 30rem;
 	height: 4rem;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -167,4 +194,3 @@ a.hs_link:hover {
 	margin-top: 20px;
 	text-align: center;
 }
-
