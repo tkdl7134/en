@@ -503,7 +503,7 @@ public class MemberDAO {
 		String m_birthD = request.getParameter("m_birthD");
 
 		// 디버깅 로그 출력 (m_id 값 확인)
-		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
+//		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
 
 		// 현재 날짜 및 시간 가져오기
 		LocalDateTime now = LocalDateTime.now();
@@ -531,6 +531,7 @@ public class MemberDAO {
 			dao.updateMemberInfo(dto);
 			System.out.println("수정 성공");
 //			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
+//			request.getRequestDispatcher("MemberDetailC").forward(request, response);
 //			request.getRequestDispatcher("HSC").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -669,6 +670,7 @@ public class MemberDAO {
 		MemberDAO dao = new MemberDAO();
 		try {
 			MemberDTO dto = dao.getMypage(m_id);
+			System.out.println(dto);
 			if (dto != null) {
 				// 디버깅 메시지 출력
 //                System.out.println("MemberDetailC - 회원 정보 조회 성공: " + dto);
@@ -681,14 +683,13 @@ public class MemberDAO {
 				// 디버깅 메시지 출력
 				System.out.println("MemberDetailC - 회원 정보 조회 실패: m_id = " + m_id);
 
-				request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
+				response.sendRedirect("HSC"); // 메인 페이지로 이동
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// 디버깅 메시지 출력
 			System.out.println("MemberDetailC - 데이터베이스 오류: " + e.getMessage());
-
-			request.getRequestDispatcher("main.jsp").forward(request, response); // 메인 페이지로 이동
+			response.sendRedirect("HSC"); // 메인 페이지로 이동
 		}
 
 	}
@@ -722,11 +723,11 @@ public class MemberDAO {
 			int result = dao.updateMypage(dto);
 			if (result == 1) {
 				// 수정 성공 처리
-				response.sendRedirect("HSC"); // 메인 페이지로
+//				request.getRequestDispatcher("MemberDetailC").forward(request, response);
 			} else {
 				// 수정 실패 처리
 				System.out.println("修正失敗");
-				request.getRequestDispatcher("MemberDetailC").forward(request, response);
+				response.sendRedirect("HSC");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

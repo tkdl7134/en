@@ -147,7 +147,7 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text street"></div>
-						<div class="hs_output">${addressParts[3]}</div>
+						<div class="hs_output">${addressParts[2]}</div>
 					</div>
 
 					<div class="hs_content-input building">

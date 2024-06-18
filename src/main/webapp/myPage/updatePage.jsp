@@ -78,11 +78,9 @@
 				<div class="hs_container-input id">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" value="${sessionScope.m_id}">
-						<div class="hs_update-id">${sessionScope.m_id}
-							<%-- <div>${sessionScope.m_id}</div> --%>
-						</div>
+						<%-- <input type="hidden" name="m_id" id="m_id" class="hs_input id"
+							placeholder="縁結びID" value="${sessionScope.m_id}"> --%>
+						<div class="hs_update-id">${sessionScope.m_id}</div>
 					</div>
 
 					<div class="hs_content-input pw">
@@ -244,7 +242,8 @@
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名など" maxlength="50">
+							class="hs_input building" placeholder="ビル・マンション名など"
+							maxlength="50">
 					</div>
 
 					<button id="btnReg" class="btn-reg" type="button"
@@ -253,7 +252,7 @@
 				</div>
 			</div>
 		</form>
-		
+
 		<footer class="hs_footer">
 			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
 			<div class="hs_footer-background"></div>
@@ -274,7 +273,7 @@
 	});
 
 	document.addEventListener("DOMContentLoaded", function() {
-	  const registerButton = document.getElementById("registerButton");
+	  const registerButton = document.getElementById("btnReg");
 	  
 	  // 入力フィールドに数字のみ許可
 	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
@@ -294,6 +293,53 @@
 	  document.querySelector('input[name="m_name_rome"]').addEventListener("input", function() {
 	    this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); // 英字とスペースのみ許可
 	  });
+	});
+	
+	// input 요소를 선택합니다.
+	const inputElementd = document.querySelector('input[name="m_birthD"]');
+
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementd.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
+
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 31) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
+	});
+	// input 요소를 선택합니다.
+	const inputElementm = document.querySelector('input[name="m_birthM"]');
+
+	// input 요소에 input 이벤트 리스너를 추가합니다.
+	inputElementm.addEventListener('input', function() {
+	    // 현재 입력된 값(value)을 가져옵니다.
+	    let value = this.value;
+
+	    // 입력된 값이 숫자인지 체크합니다.
+	    if (/^\d*$/.test(value)) {
+	        // 숫자이면, 입력된 값을 정수로 변환합니다.
+	        let num = parseInt(value, 10);
+
+	        // 입력된 값이 1에서 31 사이의 범위에 있는지 확인합니다.
+	        if (num < 1 || num > 12) {
+	            // 범위를 벗어나면 입력값을 잘라냅니다.
+	            this.value = value.slice(0, value.length - 1);
+	        }
+	    } else {
+	        // 숫자가 아닌 경우, 입력값을 잘라냅니다.
+	        this.value = value.slice(0, value.length - 1);
+	    }
 	});
 	
 	function register() {
@@ -343,7 +389,6 @@
 	                    confirmButton: 'swal2-confirm'
 	                }
 	            });
-	            /* requiredFields[i].field.focus(); */
 	            return false;
 	        }
 	    }
@@ -384,25 +429,6 @@
 	// 입력란이 변경될 때마다 확인
 	$("input, select").on("change keyup", checkForm);
 	
-	// 세션 스토리지에서 값을 불러오는 함수
-	function loadFromSessionStorage() {
-	  const birthYear = sessionStorage.getItem('birthYear');
-	  const birthMonth = sessionStorage.getItem('birthMonth');
-	  const birthDay = sessionStorage.getItem('birthDay');
-
-	  if (birthYear) {
-	    document.getElementById('m_birthY').value = birthYear;
-	  }
-	  if (birthMonth) {
-	    document.getElementById('m_birthM').value = birthMonth;
-	  }
-	  if (birthDay) {
-	    document.getElementById('m_birthD').value = birthDay;
-	  }
-	}
-
-	// 페이지가 로드될 때 값을 불러옴
-	window.addEventListener('load', loadFromSessionStorage);
         
 	</script>
 </body>
