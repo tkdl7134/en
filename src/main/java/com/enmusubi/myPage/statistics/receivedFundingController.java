@@ -6,17 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.enmusubi.finance.funding.fundDAO;
+@WebServlet("/receivedFundingController")
 public class receivedFundingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		StatisticsDAO.showAllList(request);
+		
+	
 	request.getRequestDispatcher("myPage/statistics/jsp/receivedFunding.jsp").forward(request, response);
-	
-	
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		fundDAO.selectFundList(request, response);
 		
 	}
 

@@ -26,18 +26,22 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
-
 </style>
 
 </head>
 <body class="hs_body">
+
 	<div class="hs_background">
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt="asd"
-				src="loginPage/ImgFolder/Logo.png"> <img
-				class="menu-btn-1" alt="asd"
+	
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
+
 
 		<div class="horizontal-container-title">
 			<p class="hs_heading">ログイン</p>
@@ -78,7 +82,7 @@
 				// 입력값 유효성 검사
 				if (id.trim() === '') {
 					Swal.fire({
-						icon: 'warning',
+						icon : 'warning',
 						title : 'IDを入力してください。',
 						/*  text: 'IDを入力してください。', */
 						customClass : {
@@ -90,7 +94,7 @@
 				}
 				if (pw.trim() === '') {
 					Swal.fire({
-						icon: 'warning',
+						icon : 'warning',
 						title : 'パスワードを入力してください。',
 						/*  text: 'パスワードを入力してください。', */
 						customClass : {
@@ -115,9 +119,9 @@
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({
-								icon: 'warning',
+								icon : 'warning',
 								title : 'IDまたはPWが一致しません。',
-								text: '存在しないアカウントか、ID＆PWが一致しません。',
+								text : '存在しないアカウントか、ID＆PWが一致しません。',
 								customClass : {
 									confirmButton : 'swal2-confirm'
 								}
@@ -129,7 +133,7 @@
 					error : function() {
 						/* alert('サーバーエラーが発生しました。'); */
 						Swal.fire({
-							icon: 'error',
+							icon : 'error',
 							title : 'サーバーエラーが発生しました。',
 							/*  text: 'サーバーエラーが発生しました。', */
 							customClass : {

@@ -39,13 +39,16 @@
 	<div class="hs_background">
 
 
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt=""
-				src="regPage/ImgFolder/Logo.png"> <img class="menu-btn-1"
-				alt="" src="regPage/ImgFolder/default_menu_1.png">
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
+				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">アカウント情報修正</div>
+		<div class="hs_title">会員情報修正</div>
 
 		<form action="MemberUpdateC" method="post">
 
@@ -103,32 +106,24 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text gender">性別</div>
 						<div class="radio-gender">
-							<div class="radio-gender male">
-								<input type="radio" id="gender_male" name="m_gender"
-									class="hs_input gender" value="男性"> <label
-									for="gender_male">男性</label>
-							</div>
-							<div class="radio-gender male">
-								<input type="radio" id="gender_female" name="m_gender"
-									class="hs_input gender" value="女性"> <label
-									for="gender_female">女性</label>
-							</div>
-							<div class="radio-gender male">
-								<input type="radio" id="gender_other" name="m_gender"
-									class="hs_input gender" value="その他"> <label
-									for="gender_other">その他</label>
-							</div>
+							<div class="radio-gender male">${sessionScope.m_gender}</div>
 						</div>
 					</div>
-					
+
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						
-						<div class="hs_content-text bd"><span id="sessionYear">年</span></div>
-						
-						<div class="hs_content-text bd"><span id="sessionMonth">月</span></div>
-						
-						<div class="hs_content-text bd"><span id="sessionDay">日</span></div>
+
+						<div class="hs_content-text bd">
+							<span id="sessionYear">年</span>
+						</div>
+
+						<div class="hs_content-text bd">
+							<span id="sessionMonth">月</span>
+						</div>
+
+						<div class="hs_content-text bd">
+							<span id="sessionDay">日</span>
+						</div>
 					</div>
 
 					<div class="hs_content-input">
