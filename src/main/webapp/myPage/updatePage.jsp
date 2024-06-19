@@ -436,7 +436,6 @@ body {
 	// 입력란이 변경될 때마다 확인
 	$("input, select").on("change keyup", checkForm);
 	
-        
 	</script>
 </body>
 </html>
