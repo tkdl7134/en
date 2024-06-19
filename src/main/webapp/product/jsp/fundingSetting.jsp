@@ -17,11 +17,13 @@
     <script src="product/js/fundingSetting.js"></script>
   </head>
   <body>
-    <!-- 로고 / 네비 -->
-    <div id="enmusubi-logo"><img src="product/imgFolder/Logo.png" alt="" /></div>
-    <div id="enmusubi-nav">
-      <img src="product/imgFolder/menu_btn_1.png" alt="" />
-    </div>
+   <!-- 로고 / 네비 -->
+	<div id="yj-main-s2-logo">
+	  <img src="product/imgFolder/Logo.png" alt="" />
+	</div>
+	<div id="yj-main-s2-menu">
+	  <img src="product/imgFolder/menu_btn_1.png" alt="" />
+	</div>
     <!-- 펀딩설정 page -->
     <div id="je_container-fundingSet">
       <div class="je_pageDeco-top">
@@ -118,7 +120,7 @@
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
+              <div class="je_detail-img je_table-img">
                 <img src="product/imgFolder/funding-table.png" alt="" />
               </div>
               <div class="je_detail-title je_table-img">テーブル</div>

@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 public class InvitationC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO.regIvitation(request);
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		ProductDAO.regIvitation(request);
 	}
 
 }
