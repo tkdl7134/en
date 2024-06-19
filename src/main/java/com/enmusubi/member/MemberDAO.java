@@ -241,59 +241,7 @@ public class MemberDAO {
 
 	}
 
-	// 마이페이지 (정보 조회 및 수정)
-	public MemberDTO getMypage(String m_id) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		DBManager dbManager = DBManager.getInstance();
-		// LEFT OUTER JOIN 사용하여 Address 테이블에 데이터가 없어도 Member 정보 가져오기
-		String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
-
-		try {
-			con = dbManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, m_id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				return createMemberDTO(rs);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbManager.close(con, pstmt, rs);
-		}
-		return null; // 회원 정보가 없으면 null 반환
-	}
-
-	public int updateMypage(MemberDTO dto) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		DBManager dbManager = DBManager.getInstance();
-		String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
-				+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
-		try {
-			con = dbManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getM_pw());
-			pstmt.setString(2, dto.getM_name());
-			pstmt.setString(3, dto.getM_name_kana());
-			pstmt.setString(4, dto.getM_name_rome());
-			pstmt.setString(5, dto.getM_birth());
-			pstmt.setString(6, dto.getM_gender());
-			pstmt.setString(7, dto.getM_email());
-			pstmt.setString(8, dto.getM_img());
-			pstmt.setString(9, dto.getM_phone());
-			pstmt.setString(10, dto.getM_id());
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-
-		} finally {
-			dbManager.close(con, pstmt, null);
-		}
-		return 0;
-	}
+	
 
 	// 회원탈퇴
 	public int deleteMember(String m_id) throws SQLException {
@@ -420,35 +368,16 @@ public class MemberDAO {
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
-	// 회원 정보 업데이트 (이름, 이미지)
-	public void updateMember(MemberDTO dto) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		DBManager dbManager = DBManager.getInstance();
-		String sql = "UPDATE s_Member SET m_name = ?, m_img = ? WHERE m_id = ?";
-		try {
-			con = dbManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getM_name());
-			pstmt.setString(2, dto.getM_img());
-			pstmt.setString(3, dto.getM_id());
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-
-		} finally {
-			dbManager.close(con, pstmt, null);
-		}
-	}
 
 	// 회원 정보 업데이트 (전체 정보)
-	public void updateMemberInfo(MemberDTO dto) throws SQLException {
+	public static void updateMemberInfo(MemberDTO dto) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
 		String sql2 = "UPDATE s_Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
-
+		
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql1);
@@ -524,6 +453,7 @@ public class MemberDAO {
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
+		System.out.println("here>>>>>>:::"+combinedAddress);
 		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
 
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
@@ -532,9 +462,8 @@ public class MemberDAO {
 		session.setAttribute("a_postcode", dto.getA_postcode());
 		session.setAttribute("a_address", dto.getA_address());
 
-		MemberDAO dao = new MemberDAO();
 		try {
-			dao.updateMemberInfo(dto);
+			updateMemberInfo(dto);
 //			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 //			request.getRequestDispatcher("MemberDetailC").forward(request, response);
 //			request.getRequestDispatcher("HSC").forward(request, response);
@@ -660,6 +589,60 @@ public class MemberDAO {
 
 	}
 
+	// 마이페이지 (정보 조회 및 수정)
+		public MemberDTO getMypage(String m_id) throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			DBManager dbManager = DBManager.getInstance();
+			// LEFT OUTER JOIN 사용하여 Address 테이블에 데이터가 없어도 Member 정보 가져오기
+			String sql = "SELECT * FROM s_Member M LEFT OUTER JOIN s_Address A ON M.m_id = A.m_id WHERE M.m_id = ?";
+
+			try {
+				con = dbManager.connect();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, m_id);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					return createMemberDTO(rs);
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbManager.close(con, pstmt, rs);
+			}
+			return null; // 회원 정보가 없으면 null 반환
+		}
+
+		public int updateMypage(MemberDTO dto) throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			DBManager dbManager = DBManager.getInstance();
+			String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
+					+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
+			try {
+				con = dbManager.connect();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getM_pw());
+				pstmt.setString(2, dto.getM_name());
+				pstmt.setString(3, dto.getM_name_kana());
+				pstmt.setString(4, dto.getM_name_rome());
+				pstmt.setString(5, dto.getM_birth());
+				pstmt.setString(6, dto.getM_gender());
+				pstmt.setString(7, dto.getM_email());
+				pstmt.setString(8, dto.getM_img());
+				pstmt.setString(9, dto.getM_phone());
+				pstmt.setString(10, dto.getM_id());
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+
+			} finally {
+				dbManager.close(con, pstmt, null);
+			}
+			return 0;
+		}
+	
 	public static void memberDetailCDoGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		HttpSession session = request.getSession();
