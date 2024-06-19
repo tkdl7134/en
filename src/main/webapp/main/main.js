@@ -328,7 +328,8 @@ const s5Mouseicn = document.querySelector(".yj-main-s5-cursor");
 
 s5CardConAll.forEach((card) => {
   card.addEventListener("mouseenter", function (event) {
-    s5Mouseicn.querySelector("img").src = "imgFolder/yj-main-s5-scroll.png";
+    s5Mouseicn.querySelector("img").src =
+      "imgFolder/yj-main-default-scroll.png";
     card.style.cursor = "none";
     s5Mouseicn.classList.remove("yj-main-s5-cursor-none");
     s5Mouseicn.classList.add("yj-main-s5-cursor-block");
@@ -372,7 +373,8 @@ const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
 
 s6CardConAll.forEach((card) => {
   card.addEventListener("mouseenter", function (event) {
-    s6Mouseicn.querySelector("img").src = "imgFolder/yj-main-s5-scroll.png";
+    s6Mouseicn.querySelector("img").src =
+      "imgFolder/yj-main-default-scroll.png";
     card.style.cursor = "none";
     s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
     s6Mouseicn.classList.add("yj-main-s6-cursor-block");
