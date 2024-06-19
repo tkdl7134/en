@@ -32,6 +32,13 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
+
+body {
+      -webkit-user-select: none; /* Chrome, Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+      user-select: none;         /* 표준 */
+    }
 </style>
 </head>
 

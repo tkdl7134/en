@@ -21,7 +21,7 @@ public class MemberDetailC extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		MemberDAO.memberDetailCDoPost(request, response);
+//		MemberDAO.memberDetailCDoPost(request, response);
 
 	}
 }
