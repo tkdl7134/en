@@ -72,6 +72,7 @@ min-height: 1080px;
 	font-size: 2rem;
 	font-weight: bold;
 	margin-bottom: 5rem;
+	text-align: center;
 }
 
 .hs_mypage-menus {
@@ -338,6 +339,7 @@ min-height: 1080px;
 .top-button {
 	margin-top: 5rem;
 	width: 200px;
+	margin-left: 54rem;
 }
 
 .hs_content-input.id{
