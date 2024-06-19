@@ -24,7 +24,8 @@ body {
   font-family: "Noto Serif JP", serif;
 }
 
-/* .survey-container {
+/
+.survey-container {
   /* height: 100vh;
   background-repeat: no-repeat;
   background-image: url("imgFolder/surveyBackground-img.png");
@@ -494,14 +495,18 @@ legend div:nth-child(1) {
     box-shadow: none;
     flex-direction: column;
 }
-
+  
 *{
     -webkit-user-drag: none;  /*Chrome,Safari,Opera  */
+  
+  
     -moz-user-drag: none;     /* Firefox */
     -ms-user-drag: none;      /* Internet Explorer and Edge */
     user-drag: none;          /* Standard syntax */
     user-select: none;  
+  
 }
+  
 .tg-modal[open] {
     display: flex;
     justify-content: center;
