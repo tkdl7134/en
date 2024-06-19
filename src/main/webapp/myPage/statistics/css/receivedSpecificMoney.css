@@ -13,26 +13,16 @@ body {
     padding: 0;
 }
 
-.yellowLines {
-    width: 17.5rem;	
-	
-}
-.ToGoTexts{
-	font-size : 1.4rem;
-	
-	
-	
-}
+
 
 .recFundSpec-container{
-	background-image:url("../imgFolder/halfCircle2.png");
+	background-image:url("../imgFolder/fundSpecificBack.png");
 	display : flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height : 195rem;
+	height : 163rem;
 	 background-repeat : no-repeat;
-	 background-color : #FFF5F4
 }
  
  .yj-main-s2-logo {
@@ -59,16 +49,28 @@ body {
     transform: translate(0, 5%);
   }
 }
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
 #fundSpecProduct-img{
 	
-	margin-top: 7rem;
+	margin-top: 10rem;
 }
 #fundSpecPro-img {
 	
 	
 	width : 20rem;
 }
-
 #fundSpecProduct-name {
 	
     font-size: 4rem;
@@ -144,6 +146,16 @@ body {
     
     
 }
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
 #priceChart {
     width: 600px;
 }
@@ -192,6 +204,10 @@ body {
 #byMoney {
 	margin-right: 1rem;
 	
+	
+}
+#byName{
+	margin-right: 1rem;
 	
 }
 .recSpecMemberInfos{
@@ -246,9 +262,4 @@ body {
 	
 	
 	
-}
-.recFundSpecLastImg {
-	background-image:url("../imgFolder/bottomHalfCircle.png");
-	    height: 67rem;
-    margin-top: -62.8rem;
 }
