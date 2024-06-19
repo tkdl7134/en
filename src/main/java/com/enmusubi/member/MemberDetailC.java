@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		MemberDAO.memberDetailCDoGet(request, response);
 
 	}

@@ -13,6 +13,8 @@
 	align-items: center;
 	text-align: center;
 	background-color: #FFF5F4;
+	margin: auto;
+	max-width: 1920px;
 }
 
 .hs_background {
@@ -27,30 +29,84 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
+min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
 }
 
-.horizontal-container-btn {
-	display: flex;
-	align-items: center; /* 수직 가운데 정렬 */
-	justify-content: space-between; /* 수평 가운데 정렬 */
-	padding-left: 5rem;
-	padding-right: 5rem;
-	margin-top: 3rem;
-}
-
-.hs_body .menu-btn-enmusubi {
+.yj-main-s2-logo {
+	z-index: 4;
 	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
 }
 
-.hs_body .menu-btn-1 {
+.yj-main-s2-logo img {
+	width: 100%;
+	height: 100%;
+	animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s2-menu {
+	z-index: 4;
 	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+}
+
+.yj-main-s2-menu img {
+	width: 100%;
+	height: 100%;
 }
 
 .hs_title {
-	margin-top: -5rem;
+	padding-top: 6%;
 	font-size: 2rem;
 	font-weight: bold;
-	margin-bottom: 13rem;
+	margin-bottom: 5rem;
+}
+
+.hs_mypage-menus {
+	display: flex;
+    justify-content: center;
+    width: 55%;
+    font-size: 15pt;
+    text-align: center;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.hs_btn-container{
+	display: block;
+	
+}
+
+.hs_btn {
+  text-decoration: none;
+  color: #696969;
+}
+
+.hs_btn.me{
+	color: #ff2828;
+}
+
+.yellow_line{
+	width: 15rem;
+	margin-bottom: 100px;
 }
 
 .hs_content-title-account, .hs_content-title-user {
@@ -95,11 +151,15 @@
 }
 
 .hs_content-input.id {
-	margin-top: 1rem;
+	margin-top: 5rem;
 	display: flex;
 }
 
-.hs_content-input.pw, .hs_content-input.pw-confirm {
+.hs_content-input.pw{
+	margin-top: 3rem;
+}
+
+.hs_content-input.pw-confirm {
 	margin-top: 2rem;
 }
 
@@ -276,6 +336,9 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	margin-top: -55rem;
+	min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
 }
 
 .top-button {
@@ -283,9 +346,8 @@
 	width: 200px;
 }
 
-/* update page css */
 .hs_content-input.id{
-	margin-top: 2rem;
+	margin-top: 3rem;
 }
 
 .hs_update-id {
@@ -293,4 +355,5 @@
 	position: absolute;
     left: 17.5rem;
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }

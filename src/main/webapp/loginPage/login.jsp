@@ -26,18 +26,22 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
-
 </style>
 
 </head>
 <body class="hs_body">
+
 	<div class="hs_background">
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt="asd"
-				src="loginPage/ImgFolder/Logo.png"> <img
-				class="menu-btn-1" alt="asd"
+	
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
+
 
 		<div class="horizontal-container-title">
 			<p class="hs_heading">ログイン</p>
@@ -78,7 +82,7 @@
 				// 입력값 유효성 검사
 				if (id.trim() === '') {
 					Swal.fire({
-						icon: 'warning',
+						icon : 'warning',
 						title : 'IDを入力してください。',
 						/*  text: 'IDを入力してください。', */
 						customClass : {
@@ -90,7 +94,7 @@
 				}
 				if (pw.trim() === '') {
 					Swal.fire({
-						icon: 'warning',
+						icon : 'warning',
 						title : 'パスワードを入力してください。',
 						/*  text: 'パスワードを入力してください。', */
 						customClass : {
@@ -111,13 +115,13 @@
 					success : function(response) {
 						if (response.trim() === 'success') {
 							// 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
-							window.location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
+							location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({
-								icon: 'warning',
+								icon : 'warning',
 								title : 'IDまたはPWが一致しません。',
-								text: '存在しないアカウントか、ID＆PWが一致しません。',
+								text : '存在しないアカウントか、ID＆PWが一致しません。',
 								customClass : {
 									confirmButton : 'swal2-confirm'
 								}
@@ -129,7 +133,7 @@
 					error : function() {
 						/* alert('サーバーエラーが発生しました。'); */
 						Swal.fire({
-							icon: 'error',
+							icon : 'error',
 							title : 'サーバーエラーが発生しました。',
 							/*  text: 'サーバーエラーが発生しました。', */
 							customClass : {
@@ -140,6 +144,26 @@
 				});
 			});
 		});
+		
+		// 세션 스토리지에서 값을 불러오는 함수
+		function loadFromSessionStorage() {
+		  const birthYear = sessionStorage.getItem('birthYear');
+		  const birthMonth = sessionStorage.getItem('birthMonth');
+		  const birthDay = sessionStorage.getItem('birthDay');
+
+		  if (birthYear) {
+		    document.getElementById('m_birthY').value = birthYear;
+		  }
+		  if (birthMonth) {
+		    document.getElementById('m_birthM').value = birthMonth;
+		  }
+		  if (birthDay) {
+		    document.getElementById('m_birthD').value = birthDay;
+		  }
+		}
+
+		// 페이지가 로드될 때 값을 불러옴
+		window.addEventListener('load', loadFromSessionStorage);
 	</script>
 
 </body>

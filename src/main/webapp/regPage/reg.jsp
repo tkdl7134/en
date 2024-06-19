@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +16,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
-
-<link rel="stylesheet" type="text/css" href="regPage/reg.css">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -37,12 +34,14 @@
 <body class="hs_body">
 
 	<div class="hs_background">
-
-
-		<div class="horizontal-container-btn">
-			<img class="menu-btn-enmusubi" alt=""
-				src="regPage/ImgFolder/Logo.png"> <img class="menu-btn-1"
-				alt="" src="regPage/ImgFolder/default_menu_1.png">
+	
+		<div class="yj-main-s2-logo">
+			<img class="yj-main-s2-logo img" alt=""
+				src="loginPage/ImgFolder/Logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img class="yj-main-s2-menu img" alt=""
+				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
 		<div class="hs_title">会員登録</div>
@@ -252,7 +251,7 @@
 	});
 
 	document.addEventListener("DOMContentLoaded", function() {
-	  const registerButton = document.getElementById("registerButton");
+	  const registerButton = document.getElementById("btnReg");
 	  
 	  // 入力フィールドに数字のみ許可
 	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
@@ -517,23 +516,7 @@
                     }
                  });
             }
-			
-        function saveBirthDate() {
-            // 입력값을 가져옴
-            const birthYear = document.getElementById('m_birthY').value;
-            const birthMonth = document.getElementById('m_birthM').value;
-            const birthDay = document.getElementById('m_birthD').value;
 
-            // 세션 스토리지에 값 저장
-            sessionStorage.setItem('birthYear', birthYear);
-            sessionStorage.setItem('birthMonth', birthMonth);
-            sessionStorage.setItem('birthDay', birthDay);
-
-            // 저장된 값을 출력 (개발용으로 확인)
-            console.log('Saved Birth Date:', birthYear, birthMonth, birthDay);
-        }
-    
-    
 	</script>
 
 </body>
