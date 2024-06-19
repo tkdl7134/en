@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -112,27 +113,43 @@ public class ProductDAO {
 			//s_reception 테이블 삽입 
 			String weddingDay = mr.getParameter("weddingDay");
 			String m_time = mr.getParameter("marriageTime");
+			String wedding = weddingDay + " " + m_time;
+			
+			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:dd");
+			Date weddingDateTime = dateTimeFormat.parse(wedding);
+			System.out.println(weddingDateTime);
+			java.sql.Date weddingDT = new java.sql.Date(weddingDateTime.getTime());
+			
+			String m_timeA = mr.getParameter("marriageTime_a");
 			String r_time = mr.getParameter("receptionTime");
+			String r_timeA = mr.getParameter("receptionTime_a");
 			
-			String wedding = weddingDay + m_time;
-			String reception = weddingDay + r_time;
+			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+			Date weddingAssemble = timeFormat.parse(m_timeA);
+			Date receptionT = timeFormat.parse(r_time);
+			Date receptionAssemble = timeFormat.parse(r_timeA);
 			
-			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			java.sql.Timestamp weddingDateTime = new java.sql.Timestamp(dateTimeFormat.parse(wedding).getTime());
-			java.sql.Timestamp receptionDateTime = new java.sql.Timestamp(dateTimeFormat.parse(reception).getTime());
+			java.sql.Date weddingA = new java.sql.Date(weddingAssemble.getTime());
+			java.sql.Date receptionTime = new java.sql.Date(receptionT.getTime());
+			java.sql.Date receptionA = new java.sql.Date(receptionAssemble.getTime());
+//			
+//			SimpleDateFormat TimeFormat = new SimpleDateFormat("HH:mm");
+//			java.sql.Timestamp weddingTimeA = new java.sql.Timestamp(TimeFormat.parse(m_timeA).getTime());
+//			java.sql.Timestamp receptionTimeA = new java.sql.Timestamp(TimeFormat.parse(r_timeA).getTime());
+			
 			
 			// 본식
-			pstmtWedding.setTimestamp(1, weddingDateTime);   // weddingday+marriagetime
+			pstmtWedding.setDate(1, weddingDT);   // weddingday+marriagetime
 			pstmtWedding.setString(2, mr.getParameter("marriage_place"));
 			pstmtWedding.setString(3, mr.getParameter("marriage_addr"));
-			pstmtWedding.setString(4, mr.getParameter("marriageTime_a"));
+			pstmtWedding.setDate(4, weddingA);
 			pstmtWedding.setString(5, "wedding");
 			
 			// 본식
-			pstmtWedding.setTimestamp(1, receptionDateTime);   // weddingday+marriagetime
+			pstmtWedding.setDate(1, receptionTime);   // weddingday+marriagetime
 			pstmtWedding.setString(2, mr.getParameter("reception_place"));
 			pstmtWedding.setString(3, mr.getParameter("reception_addr"));
-			pstmtWedding.setString(4, mr.getParameter("receptionTime_a"));
+			pstmtWedding.setDate(4, receptionA);
 			pstmtWedding.setString(5, "reception");
 						
 			
