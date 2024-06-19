@@ -13,8 +13,11 @@ $.ajax({
 		console.log(response);
 		jsoninfos = response;
 		response.forEach((element, index) => {
+			
+			console.log(element.e_no);
 			eventno = element.e_no;
 		let num =	element.p_price;
+		console.log(num);
 		let picNum = 3;
 		if(num >=70000){
 			picNum = 7
@@ -22,6 +25,7 @@ $.ajax({
 		else if(num >=50000){
 			picNum = 5
 		}		
+		console.log(picNum);
 			$(".kh-f-card-container").append(`
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.m_name}">
@@ -29,7 +33,7 @@ $.ajax({
 							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.g_relation}.png" />
 						</div>
 						<div style = "display : flex;">
-							<div style="font-size: 2rem; width: 5rem;">${element.m_name}</div>
+							<div style="font-size: 2rem; width: 7rem;">${element.m_name}</div>
 							<div style= "font-size: 1rem; margin-top: 0.7rem;">さんからの</div>
 						</div>
 						<div style="margin-top: -2rem;">
@@ -111,7 +115,7 @@ $.ajax({
 				console.log(jsoninfos);
 				let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
-				location.href = `receviedSpecificMoneyC?&eno=`+eventno;
+				location.href = `receviedSpecificMoneyC?eno=`+eventno;
 				if (cardParent) {
 					let wlno = event.target.closest(".kh-fund-card").getAttribute("value");
 					let selectobj = jsoninfos.find(function(element) {

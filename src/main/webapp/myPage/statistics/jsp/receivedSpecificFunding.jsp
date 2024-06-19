@@ -15,7 +15,17 @@
 
 <div class="recFundSpec-container">
 			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-    <div id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
+ 	<div style="font-size: 1.6rem; margin-top: -30rem;" class="recFundSpecTitle">ファンディング の現状</div>
+  <div  style="display : flex;  margin-top: 10rem;   width: 80rem;" id="toGoTexts">
+	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+	</div>
+	<div style="display: flex; " id="toGoLines">
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	</div>
+    <div style="margin-top : 2rem;" id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
     <div id="fundSpecProduct-rank">現在第${rank }位！ </div>
     <div id="fundSpec-leftPrice">✿目標金額まで後${leftPrice }％です✿</div>
@@ -57,6 +67,7 @@
     </div>
     <div class="recSpecReturn-img"><img onclick="GoToTop()" style="width : 12rem;" alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
 </div>
+<div class="recFundSpecLastImg"></div>
 <script type="text/javascript" src="myPage/statistics/js/receivedSpecificFund.js"></script>
 </body>
 </html>
