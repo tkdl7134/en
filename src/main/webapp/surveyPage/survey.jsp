@@ -111,22 +111,22 @@
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">漢字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="kanzi-name" required value="${members.m_first_name}" readonly /> 
+												class="name-input" name="kanzi-name" required value="${members.m_first_name}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
-												class="name-input" name="kanzi-name" required value="${members.m_last_name}" readonly />
+												class="name-input" name="kanzi-name" required value="${members.m_last_name}" disabled="disabled" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="kata-name" required value="${members.m__first_name_kana}" readonly /> 
+												class="name-input" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
-												class="name-input" name="kata-name" required value="${members.m__last_name_kana}" readonly />
+												class="name-input" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="roma-name" required value="${members.m_first_name_rome}" readonly /> 
+												class="name-input" name="roma-name" required value="${members.m_first_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
 												placeholder=" - " class="name-input" name="roma-name"
-												required value="${members.m_last_name_rome}" readonly />
+												required value="${members.m_last_name_rome}" disabled="disabled" />
 											</label>
 										 </c:when>
 										 <c:otherwise>
@@ -188,12 +188,12 @@
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
 												class="contact-input" name="email"
-												placeholder=" - " required value="${members.m_email}" readonly />
+												placeholder=" - " required value="${members.m_email}" disabled="disabled" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
 												class="contact-input" name="phonenum"
-												placeholder=" - " required value="${members.m_phone}" readonly />
+												placeholder=" - " required value="${members.m_phone}" disabled="disabled" />
 										</div>
 								</div>
 							</c:when>
@@ -212,7 +212,70 @@
 								</div>							
 							</c:otherwise>
 						</c:choose>
+						
+						<c:choose>
+							<c:when test="${loginType == 'normal' }">
+								<c:set var="members" value="${members }" />
+								<div class="address-container">
+									<fieldset>
+										<legend>
+											<div>
+												<img src="surveyPage/imgFolder/homeicon.png" alt="flowersymbol"
+													style="width: 100%; height: 100%" />
+											</div>
+											&nbsp&nbsp&nbsp
+											<div style="font-size: 2rem;">住所入力フォーム</div>
+										</legend>
+										<div class="address-contents-container">
+											<div>
+												<div>
+													<span for="postal-code">郵便番号</span>
+												</div>
+												<div>
+													<input style="font-size: 1.4rem" type="text" id="postal-code"
+														name="postal-code" placeholder="123-4567" required value="${members.a_postcode}" disabled="disabled"/>
+												</div>
+											</div>
+											<div class="address-contents-contaoner">
+												<div>
+													<span for="prefecture">都道府県</span>
+												</div>
+												<div>
+													<select style="font-size: 1.4rem" id="prefecture"
+														name="prefecture" required>
+														<option value="">選択してください</option>
+            												<c:forEach var="prefecture" items="${prefectures}">
+																<option value="${prefecture }">	
+																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
+																${prefecture }
+	           												</c:forEach>
+													</select>
+												</div>
+											</div>
+											<div class="address-contents-container">
+												<div>
+													<span for="city">市区町村</span>
+												</div>
+												<div>
+													<input style="font-size: 1.4rem" type="text" id="city"
+														name="city" placeholder="新宿区" required value="${members.a_city }" disabled="disabled" />
+												</div>
+											</div>
 
+											<div class="address-contents-container">
+												<div>
+													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
+												</div>
+												<div>
+													<textarea style="font-size: 1.4rem; width: 20rem;"
+														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
+														required disabled="disabled">${members.a_address }</textarea>
+												</div>
+											</div>
+									</fieldset>
+									</div>
+							</c:when>		
+							<c:otherwise>
 								<div class="address-container">
 									<fieldset>
 										<legend>
@@ -239,7 +302,7 @@
 												</div>
 												<div>
 													<select style="font-size: 1.4rem" id="prefecture"
-														name="address" required>
+														name="prefecture" required>
 														<option value="">選択してください</option>
             												<c:forEach var="prefecture" items="${prefectures}">
                 											<option value="${prefecture}">${prefecture}</option>
@@ -253,7 +316,7 @@
 												</div>
 												<div>
 													<input style="font-size: 1.4rem" type="text" id="city"
-														name="address" placeholder="新宿区" required />
+														name="city" placeholder="新宿区" required />
 												</div>
 											</div>
 
@@ -269,8 +332,9 @@
 											</div>
 									</fieldset>
 									</div>
+							</c:otherwise>
+						</c:choose>
 							</div>
-
 							<div class="tg-slide-third-page">
 
                 					<div class="together-container">

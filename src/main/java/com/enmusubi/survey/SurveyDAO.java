@@ -81,8 +81,11 @@ public class SurveyDAO {
 	public static void getMemberNormal(HttpServletRequest request) {
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
+	    PreparedStatement pstmtAddress = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    ResultSet rs = null;
+	    ResultSet rsAddress = null;
+	    
 	    String sql = "SELECT m_name, m_name_kana, m_name_rome, m_email, m_phone FROM s_member WHERE m_id = ?";
 	    String sqlAddress = "SELECT a_address, a_postcode FROM s_address WHERE m_id = ?";
 	    
@@ -122,14 +125,14 @@ public class SurveyDAO {
 	            String fullNameKana = rs.getString(2);
 	            String[] nameParts1 = fullNameKana.split(" ");
 	            if (nameParts1.length >= 2) {
-	                m.setM__first_name_kana(normalUserId);
-	                m.setM__last_name_kana(nameParts1[1]);
+	                m.setM_first_name_kana(normalUserId);
+	                m.setM_last_name_kana(nameParts1[1]);
 	            } else if (nameParts1.length == 1) {
-	                m.setM__first_name_kana(nameParts1[0]);
-	                m.setM__last_name_kana(""); // 또는 적절한 기본값 설정
+	                m.setM_first_name_kana(nameParts1[0]);
+	                m.setM_last_name_kana(""); // 또는 적절한 기본값 설정
 	            } else {
-	                m.setM__first_name_kana(""); // 또는 적절한 기본값 설정
-	                m.setM__last_name_kana("");  // 또는 적절한 기본값 설정
+	                m.setM_first_name_kana(""); // 또는 적절한 기본값 설정
+	                m.setM_last_name_kana("");  // 또는 적절한 기본값 설정
 	            }
 	            
 	            // m_name_rome 처리
@@ -157,14 +160,40 @@ public class SurveyDAO {
 		        System.out.println(rs.getString(5));
 
 	        }
-	        System.out.println(m);
-	        request.setAttribute("members", m);
 	        
 	        // 주소 정보 입력
+	        pstmtAddress = con.prepareStatement(sqlAddress);
+	        pstmtAddress.setString(1, normalUserId);
+	        rsAddress = pstmtAddress.executeQuery();
+	        if (rsAddress.next()) {
+	            String fullAddress = rsAddress.getString(1);
+	            String postcode = rsAddress.getString(2);
+	            
+	            m.setA_postcode(postcode);
+	            
+	            // 주소를 나누는 로직
+	            String[] addressParts = fullAddress.split(" ", 3);
+	            if (addressParts.length >= 3) {
+	                m.setA_prefecture(addressParts[0]);
+	                m.setA_city(addressParts[1]);
+	                m.setA_address(addressParts[2]);
+	            } else {
+	                m.setA_prefecture("");
+	                m.setA_city("");
+	                m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
+	            }
+
+	            System.out.println(rsAddress.getString(1));
+	            System.out.println(rsAddress.getString(2));
+	        }
+	        
+	        System.out.println(m);
+	        request.setAttribute("members", m);
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
+	    	dbManager.close(con, pstmtAddress, rsAddress);
 	        dbManager.close(con, pstmt, rs);
 	    }
 	}
