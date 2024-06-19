@@ -115,7 +115,7 @@
 					success : function(response) {
 						if (response.trim() === 'success') {
 							// 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
-							window.location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
+							location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({
@@ -144,6 +144,26 @@
 				});
 			});
 		});
+		
+		// 세션 스토리지에서 값을 불러오는 함수
+		function loadFromSessionStorage() {
+		  const birthYear = sessionStorage.getItem('birthYear');
+		  const birthMonth = sessionStorage.getItem('birthMonth');
+		  const birthDay = sessionStorage.getItem('birthDay');
+
+		  if (birthYear) {
+		    document.getElementById('m_birthY').value = birthYear;
+		  }
+		  if (birthMonth) {
+		    document.getElementById('m_birthM').value = birthMonth;
+		  }
+		  if (birthDay) {
+		    document.getElementById('m_birthD').value = birthDay;
+		  }
+		}
+
+		// 페이지가 로드될 때 값을 불러옴
+		window.addEventListener('load', loadFromSessionStorage);
 	</script>
 
 </body>

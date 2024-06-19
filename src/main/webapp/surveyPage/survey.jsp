@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="surveyPage/survey.css" />
-<link rel="stylesheet" type="surveyPage/text/css"
+<link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700;900&display=swap"
@@ -18,7 +19,7 @@
 <body>
 	<div class="survey-container">
 		<div class="survey-container-img">
-			<img src="imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
+			<img src="surveyPage/imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
 					style="width: 100%; height: 100%;
 					position: absolute;
 					display: flex;
@@ -32,16 +33,17 @@
 		</div>
 		<header class="tk_survey_header">
 			<div class="top-left">
-				<img src="imgFolder/logo.png" alt="logo"
-					style="width: 100%; height: 100%" />
+				<img src="surveyPage/imgFolder/logo.png" alt="logo"
+					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;
+" />
 			</div>
 
 			<div class="middle-title">
 				<div>出席の方</div>
 			</div>
 
-			<div class="top-right">
-				<img src="imgFolder/menu-btn.png" alt="menu-button"
+			<div class="top-menu">
+				<img src="surveyPage/imgFolder/menu-btn.png" alt="menu-button"
 					style="width: 100%; height: 100%" />
 			</div>
 		</header>
@@ -52,12 +54,12 @@
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
 					<div style="margin-top: 0.5rem">2024.06.09までにご返信をお願いいたします。</div>
 					<div>
-						<img src="imgFolder/pointline.png" alt="menu-button"
+						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
 					</div>
 				</div>
 
-				<form action="SurveyC" method="post">
+				<form action="SurveyC" method="post" id="surveyForm">
 
 					<div class="tg-include-btu-page">
 
@@ -70,17 +72,19 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" data-selccted="yes">
+									<div class="entry-box-img" data-selccted="yes" onclick="selectAttendance('出席')">
 										<div class="texts">
-											<div class="objective">出席</div>
+											<div>出席</div>
 										</div>
-										<img class="lines" alt="" src="imgFolder/yesline.png">
+										<img class="lines" alt="" src="surveyPage/imgFolder/yesline.png">
+										<input type="hidden" name="attendance" value="present">
 									</div>
-									<div class="no-entry-box-img" data-selccted="no">
+									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
 										<div class="texts">
-											<div style="margin-left: 1rem;" class="objective">欠席</div>
+											<div>欠席</div>
 										</div>
-										<img class="lines" alt="" src="imgFolder/noline.png">
+										<img class="lines" alt="" src="surveyPage/imgFolder/noline.png">
+										<input type="hidden" name="attendance" value="absent">
 									</div>
 
 								</div>
@@ -95,32 +99,59 @@
 										<fieldset>
 											<legend>
 												<div>
-													<img src="imgFolder/flowersymbol.jpg" alt="flowersymbol"
+													<img src="surveyPage/imgFolder/flowersymbol.jpg" alt="flowersymbol"
 														style="width: 100%; height: 100%" />
 												</div>
 												&nbsp&nbsp&nbsp
 												<div style="font-size: 2rem;">お名前</div>
 											</legend>
+									<c:choose>
+										<c:when test="${loginType == 'normal' }">
+										    <c:set var="members" value="${members }" />
 											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">漢字</div> <input
-												style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" name="kanzi-name" required /> <input
-												style="font-size: 1.2rem;" type="text" placeholder="名"
+												<div style="font-size: 1.5rem;">漢字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="kanzi-name" required value="${members.m_first_name}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												class="name-input" name="kanzi-name" required value="${members.m_last_name}" readonly />
+											</label><br> <label class="kata-container">
+												<div style="font-size: 1.5rem;">カタカナ</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="kata-name" required value="${members.m__first_name_kana}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												class="name-input" name="kata-name" required value="${members.m__last_name_kana}" readonly />
+											</label><br> <label class="eng-container">
+												<div style="font-size: 1.5rem;">ローマ字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												class="name-input" name="roma-name" required value="${members.m_first_name_rome}" readonly /> 
+												<input style="font-size: 1.2rem;" type="text"
+												placeholder=" - " class="name-input" name="roma-name"
+												required value="${members.m_last_name_rome}" readonly />
+											</label>
+										 </c:when>
+										 <c:otherwise>
+											<label class="kanzi-container">
+												<div style="font-size: 1.5rem;">漢字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="姓"
+												class="name-input" name="kanzi-name" required /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder="名"
 												class="name-input" name="kanzi-name" required />
 											</label><br> <label class="kata-container">
-												<div style="font-size: 1.5rem;">カタカナ</div> <input
-												style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" name="kata-name" required /> <input
-												style="font-size: 1.2rem;" type="text" placeholder="めい"
+												<div style="font-size: 1.5rem;">カタカナ</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="せい"
+												class="name-input" name="kata-name" required /> 
+												<input style="font-size: 1.2rem;" type="text" placeholder="めい"
 												class="name-input" name="kata-name" required />
 											</label><br> <label class="eng-container">
-												<div style="font-size: 1.5rem;">ローマ字</div> <input
-												style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" name="roma-name" required /> <input
-												style="font-size: 1.2rem;" type="text"
+												<div style="font-size: 1.5rem;">ローマ字</div> 
+												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
+												class="name-input" name="roma-name" required/> 
+												<input style="font-size: 1.2rem;" type="text"
 												placeholder="First Name" class="name-input" name="roma-name"
-												required />
+												required/>
 											</label>
+										 </c:otherwise>
+										</c:choose>									 
 										</fieldset>
 									</div>
 
@@ -149,7 +180,24 @@
 							</div>
 
 							<div class="tg-slide-second-page">
-
+						
+						<c:choose>
+							<c:when test="${loginType == 'normal' }">
+								<c:set var="members" value="${members}" />
+            					<div class="contact-container">
+										<div>
+											メールアドレス<input style="font-size: 1.2rem;" type="email"
+												class="contact-input" name="email"
+												placeholder=" - " required value="${members.m_email}" readonly />
+										</div>
+										<div>
+											電話番号 <input style="font-size: 1.2rem;" type="number"
+												class="contact-input" name="phonenum"
+												placeholder=" - " required value="${members.m_phone}" readonly />
+										</div>
+								</div>
+							</c:when>
+							<c:otherwise>
             					<div class="contact-container">
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
@@ -161,13 +209,15 @@
 												class="contact-input" name="phonenum"
 												placeholder="000-0000-0000" required />
 										</div>
-								</div>
+								</div>							
+							</c:otherwise>
+						</c:choose>
 
 								<div class="address-container">
 									<fieldset>
 										<legend>
 											<div>
-												<img src="imgFolder/homeicon.png" alt="flowersymbol"
+												<img src="surveyPage/imgFolder/homeicon.png" alt="flowersymbol"
 													style="width: 100%; height: 100%" />
 											</div>
 											&nbsp&nbsp&nbsp
@@ -191,53 +241,9 @@
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
 														<option value="">選択してください</option>
-														<option value="hokkaido">北海道</option>
-														<option value="aomori">青森県</option>
-														<option value="iwate">岩手県</option>
-														<option value="miyagi">宮城県</option>
-														<option value="akita">秋田県</option>
-														<option value="yamagata">山形県</option>
-														<option value="fukushima">福島県</option>
-														<option value="ibaraki">茨城県</option>
-														<option value="tochigi">栃木県</option>
-														<option value="gunma">群馬県</option>
-														<option value="saitama">埼玉県</option>
-														<option value="chiba">千葉県</option>
-														<option value="tokyo">東京都</option>
-														<option value="kanagawa">神奈川県</option>
-														<option value="niigata">新潟県</option>
-														<option value="toyama">富山県</option>
-														<option value="ishikawa">石川県</option>
-														<option value="fukui">福井県</option>
-														<option value="yamanashi">山梨県</option>
-														<option value="nagano">長野県</option>
-														<option value="gifu">岐阜県</option>
-														<option value="shizuoka">静岡県</option>
-														<option value="aichi">愛知県</option>
-														<option value="mie">三重県</option>
-														<option value="shiga">滋賀県</option>
-														<option value="kyoto">京都府</option>
-														<option value="osaka">大阪府</option>
-														<option value="hyogo">兵庫県</option>
-														<option value="nara">奈良県</option>
-														<option value="wakayama">和歌山県</option>
-														<option value="tottori">鳥取県</option>
-														<option value="shimane">島根県</option>
-														<option value="okayama">岡山県</option>
-														<option value="hiroshima">広島県</option>
-														<option value="yamaguchi">山口県</option>
-														<option value="tokushima">徳島県</option>
-														<option value="kagawa">香川県</option>
-														<option value="ehime">愛媛県</option>
-														<option value="kochi">高知県</option>
-														<option value="fukuoka">福岡県</option>
-														<option value="saga">佐賀県</option>
-														<option value="nagasaki">長崎県</option>
-														<option value="kumamoto">熊本県</option>
-														<option value="oita">大分県</option>
-														<option value="miyazaki">宮崎県</option>
-														<option value="kagoshima">鹿児島県</option>
-														<option value="okinawa">沖縄県</option>
+            												<c:forEach var="prefecture" items="${prefectures}">
+                											<option value="${prefecture}">${prefecture}</option>
+            												</c:forEach>
 													</select>
 												</div>
 											</div>
@@ -253,23 +259,12 @@
 
 											<div class="address-contents-container">
 												<div>
-													<span for="address-line1">町域・番地</span>
+													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<input style="font-size: 1.4rem" type="text"
-														id="address-line1" name="address" placeholder="西新宿2-8-1"
-														required />
-												</div>
-											</div>
-
-											<div class="address-contents-container">
-												<div>
-													<span for="address-line2">建物名・部屋番号</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text"
-														id="address-line2" name="address" placeholder="新宿ビル 101"
-														required />
+													<textarea style="font-size: 1.4rem; width: 20rem;"
+														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
+														required ></textarea>
 												</div>
 											</div>
 									</fieldset>
@@ -302,7 +297,7 @@
 										<legend>
 											<div style="width: 3.8rem; height: 1.8rem;">
 												<img style="width: 100%; height: 100%"
-													src="imgFolder/foodicon.png" alt="アレルギーマーク" />
+													src="surveyPage/imgFolder/foodicon.png" alt="アレルギーマーク" />
 											</div>
 											<div>アレルギーについて</div>
 										</legend>
@@ -337,7 +332,7 @@
 
 								<div>
 
-									<button type="submit" class="tg-survey-button">
+									<button id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
 										<span>送信</span>
 									</button>
 
@@ -357,9 +352,9 @@
                     					</div>
 									</div>
 
-                <button type="submit" class="tg-survey-button">
-										<span>送信</span>
-									</button>
+        						 <button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
+									<span>送信</span>
+								</button>
 
     			</div>
 
@@ -383,9 +378,31 @@
 
 			<footer class="tk_survey_footer"> </footer>
 			</div>
+			
+			<dialog id="tg-modal" class="tg-modal">
+   	 <div class="tg-modal-container">
+        <div class="tg-modal-img-box" onclick="location.href='SendC'">
+            <h2>送金</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_money.png"></div>
+        </div>
+        <div class="tg-modal-img-box" onclick="location.href='FundC'">
+            <h2>ファンディング</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_funding.png"></div>
+        </div>
+        <div class="tg-modal-img-box" onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
+            <h2>ウィッシュリスト</h2>
+            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_present.png"></div>
+        </div>
+    </div>
+        <a href="ResultC" style="text-decoration: none;"><h3 style="color:#999999">i pay after</h3></a>
+    </dialog>
+			
 </body>
 
 <script>
+let logintype = '<%=request.getAttribute("loginType") %>';
+console.log(logintype);
+
 //slick 시작 함수
 let $slider;
 	function slickSlide() {
@@ -507,6 +524,8 @@ $('.entry-box-img, .no-entry-box-img').on('click', function(event) {
     }
 });
 
+
+
 $(document).on('click', function(event) {
     if ($activeBox !== null && !$activeBox.is(event.target) && $activeBox.has(event.target).length === 0) {
 
@@ -581,49 +600,69 @@ if (this.checked) {
     });
 });
 
-	function validateForm() {
-        var kanzinames = document.getElementById("kanzi-name").value.trim();
-        var katanames = document.getElementById("kata-name").value.trim();
-        var romanames = document.getElementById("roma-name").value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
-		var emails = document.getElementById("email") .value.trim();
-		var phonenumber = document.getElementById("postal-code") .value.trim();
-		var phonenumber = document.getElementById("city") .value.trim();
-		var phonenumber = document.getElementById("address-line1") .value.trim();
-		var phonenumber = document.getElementById("address-line2") .value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
-		var phonenumber = document.getElementById("phonenum") .value.trim();
+        function validateForm() {
+            var kanzinames = document.getElementById("kanzi-name").value.trim();
+            var katanames = document.getElementById("kata-name").value.trim();
+            var romanames = document.getElementById("roma-name").value.trim();
+            var phonenumber = document.getElementById("phonenum").value.trim();
+            var emails = document.getElementById("email").value.trim();
+            var postalcode = document.getElementById("postal-code").value.trim();
+            var city = document.getElementById("city").value.trim();
+            var addressline1 = document.getElementById("address-line1").value.trim();
 
-
-        // 체크 로직
-        if (kanzinames === "" || katanames === "" || romanames === "") {
-        alert("이름 항목을 입력해주세요.");
-            return false; // 폼 제출 방지
+            // 필수 입력 필드 체크
+            if (kanzinames === "" || katanames === "" || romanames === "" ||
+                phonenumber === "" || emails === "" ||
+                postalcode === "" || city === "" || addressline1 === "" ) {
+                
+                alert("모든 필드를 입력해주세요.");
+                return false; // 폼 제출 방지
             }
-            return true; // 폼 제출 허용
-        
-		if (phonenumber === "") {
-		alert("연락처 항목을 입력해주세요")	
-			return true;
-		}	
-		return false;
 
-		if (emails === "") {
-		alert("이메일을 입력해주세요")	
-			return true;
-		}	
-		return false;
+            return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
+        }
 
-		if (kanzinames === "" || katanames === "" || romanames === "") {
-        alert("주소 항목을 입력해주세요.");
-            return false; 
+        document.getElementById("submitBtn").addEventListener("click", function(event) {
+            if (!validateForm()) {
+                event.preventDefault();
+            } else {
+                document.getElementById("surveyForm").submit();
             }
-            return true; 
+        });
+
+function openModal(attemp) {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
+
+function openModal() {
+    const modal = document.getElementById("tg-modal");
+    const modalContent = document.querySelector(".tg-modal-container");
+    document.querySelector(".tk_survey_main").innerHTML="";
+    body = document.querySelector("body");
+    body.style.transition= "background-color 0.5s ease";
+    body.style.backgroundColor="#ffe0e0";
+    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+    setTimeout(() => {
+        modal.style.opacity = "1";
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+        modalContent.style.animation = "burstIn 0.5s forwards";
+    }, 10);
+}
 
 
-		}
-
-	
-</script>
-
+    </script>
+    
 </html>
