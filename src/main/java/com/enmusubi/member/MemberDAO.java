@@ -464,7 +464,7 @@ public class MemberDAO {
 
 		try {
 			updateMemberInfo(dto);
-//			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
+			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 //			request.getRequestDispatcher("MemberDetailC").forward(request, response);
 //			request.getRequestDispatcher("HSC").forward(request, response);
 		} catch (SQLException e) {
@@ -615,33 +615,33 @@ public class MemberDAO {
 			return null; // 회원 정보가 없으면 null 반환
 		}
 
-		public int updateMypage(MemberDTO dto) throws SQLException {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			DBManager dbManager = DBManager.getInstance();
-			String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
-					+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
-			try {
-				con = dbManager.connect();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, dto.getM_pw());
-				pstmt.setString(2, dto.getM_name());
-				pstmt.setString(3, dto.getM_name_kana());
-				pstmt.setString(4, dto.getM_name_rome());
-				pstmt.setString(5, dto.getM_birth());
-				pstmt.setString(6, dto.getM_gender());
-				pstmt.setString(7, dto.getM_email());
-				pstmt.setString(8, dto.getM_img());
-				pstmt.setString(9, dto.getM_phone());
-				pstmt.setString(10, dto.getM_id());
-				return pstmt.executeUpdate();
-			} catch (Exception e) {
-
-			} finally {
-				dbManager.close(con, pstmt, null);
-			}
-			return 0;
-		}
+//		public int updateMypage(MemberDTO dto) throws SQLException {
+//			Connection con = null;
+//			PreparedStatement pstmt = null;
+//			DBManager dbManager = DBManager.getInstance();
+//			String sql = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, "
+//					+ "m_gender = ?, m_email = ?, m_img = ?, m_phone = ? WHERE m_id = ?";
+//			try {
+//				con = dbManager.connect();
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setString(1, dto.getM_pw());
+//				pstmt.setString(2, dto.getM_name());
+//				pstmt.setString(3, dto.getM_name_kana());
+//				pstmt.setString(4, dto.getM_name_rome());
+//				pstmt.setString(5, dto.getM_birth());
+//				pstmt.setString(6, dto.getM_gender());
+//				pstmt.setString(7, dto.getM_email());
+//				pstmt.setString(8, dto.getM_img());
+//				pstmt.setString(9, dto.getM_phone());
+//				pstmt.setString(10, dto.getM_id());
+//				return pstmt.executeUpdate();
+//			} catch (Exception e) {
+//
+//			} finally {
+//				dbManager.close(con, pstmt, null);
+//			}
+//			return 0;
+//		}
 	
 	public static void memberDetailCDoGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -682,47 +682,47 @@ public class MemberDAO {
 
 	}
 
-	public static void memberDetailCDoPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		// request에서 수정된 정보 가져오기
-		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
-		String m_name = request.getParameter("m_name");
-		String m_name_kana = request.getParameter("m_name_kana");
-		String m_name_rome = request.getParameter("m_name_rome");
-		String m_birth = request.getParameter("m_birth");
-		String m_gender = request.getParameter("m_gender");
-		String m_email = request.getParameter("m_email");
-		String m_phone = request.getParameter("m_phone");
-		String a_address = request.getParameter("a_address");
-		String a_postcode = request.getParameter("a_postcode");
-
-		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
-		String m_img = "default.png"; // 기본 이미지 설정
-
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_email,
-				m_img, m_phone, a_address, a_postcode);
-		HttpSession session = request.getSession();
-		session.setAttribute("a_postcode", dto.getA_postcode());
-		session.setAttribute("a_address", dto.getA_address());
-
-		MemberDAO dao = new MemberDAO();
-		try {
-			int result = dao.updateMypage(dto);
-			if (result == 1) {
-				// 수정 성공 처리
-//				request.getRequestDispatcher("MemberDetailC").forward(request, response);
-			} else {
-				// 수정 실패 처리
-				System.out.println("修正失敗");
-				response.sendRedirect("HSC");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			// 에러 페이지로 이동 등 예외 처리
-		}
-
-	}
+//	public static void memberDetailCDoPost(HttpServletRequest request, HttpServletResponse response)
+//			throws IOException, ServletException {
+//		// request에서 수정된 정보 가져오기
+//		String m_id = request.getParameter("m_id");
+//		String m_pw = request.getParameter("m_pw");
+//		String m_name = request.getParameter("m_name");
+//		String m_name_kana = request.getParameter("m_name_kana");
+//		String m_name_rome = request.getParameter("m_name_rome");
+//		String m_birth = request.getParameter("m_birth");
+//		String m_gender = request.getParameter("m_gender");
+//		String m_email = request.getParameter("m_email");
+//		String m_phone = request.getParameter("m_phone");
+//		String a_address = request.getParameter("a_address");
+//		String a_postcode = request.getParameter("a_postcode");
+//
+//		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
+//		String m_img = "default.png"; // 기본 이미지 설정
+//
+//		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_email,
+//				m_img, m_phone, a_address, a_postcode);
+//		HttpSession session = request.getSession();
+//		session.setAttribute("a_postcode", dto.getA_postcode());
+//		session.setAttribute("a_address", dto.getA_address());
+//
+//		MemberDAO dao = new MemberDAO();
+//		try {
+//			int result = dao.updateMypage(dto);
+//			if (result == 1) {
+//				// 수정 성공 처리
+////				request.getRequestDispatcher("MemberDetailC").forward(request, response);
+//			} else {
+//				// 수정 실패 처리
+//				System.out.println("修正失敗");
+//				response.sendRedirect("HSC");
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			// 에러 페이지로 이동 등 예외 처리
+//		}
+//
+//	}
 
 	
 
