@@ -13,13 +13,11 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"/>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css" />
 <link rel="stylesheet" href="product/css/productMake.css" />
-<script src="product/js/timepicker.js"></script>
-<script src="product/js/productMake.js"></script>
-<script src="product/js/datepicker.js"></script>
 <link rel="stylesheet" href="product/css/picker.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="product/js/productMake.js"></script>
 </head>
 <body>
 <!-- 로고 / 네비 -->
@@ -48,46 +46,53 @@
           <div class="je_content-title">プレビュー</div>
           <div class="je_content-boxes je_content-template">
             <div class="je_template">
-              <img  class="je_template-background" src="product/imgFolder/make-template.png"/>
+              <img
+                style="width: 90%"
+                class="je_template-background"
+                src="product/imgFolder/make-template.png"
+                alt=""
+              />
               <div style="width: 100%">
                 <div id="je_photoPre1"></div>
                 <div class="je_kanji-groom">
-                  <div id="je_groom-kanjiL"></div> &ensp;<div id="je_groom-kanjiF"></div>
+                  <div id="je_groom-kanjiL"></div>
+                  &ensp;
+                  <div id="je_groom-kanjiF"></div>
                 </div>
                 <div class="je_kanji-bride">
-                  <div id="je_bride-kanjiL"></div>&ensp; <div id="je_bride-kanjiF"></div>
+                  <div id="je_bride-kanjiL"></div>
+                  &ensp;
+                  <div id="je_bride-kanjiF"></div>
                 </div>
-                <!-- 시간.날짜 -->
-                <div id="je_weddingDay"></div>
-                <div>
-                  본식
-                  <div id="je_mainEvent-time"></div>
-                  <div id="je_mainEvent-gatherTime"></div>
-                  <div id="je_mainEvent-building"></div>
-                  <div id="je_mainEvent-addr"></div>
-                </div>
-                
-                <div>
-                  피로연
-                  <div id="je_sideEvent-time"></div>
-                  <div id="je_sideEvent-gatherTime"></div>
-                  <div id="je_sideEvent-building"></div>
-                  <div id="je_sideEvent-addr"></div>
-                </div>
-                
-                <div>
-                  메세지
-                  <div id="je_invite-message"></div>
-                  <div id="je_finish-message"></div>
-                </div>
-                
-                <div>
+                <div id="je_invite-message"></div>
+
+                <div class="je_photos">
                   <div id="je_photoPre2"></div>
                   <div id="je_photoPre3"></div>
                 </div>
-                
+                <!-- 시간.날짜 -->
+                <div id="je_weddingDay"></div>
+
+                <div class="je_eventTime">
+                  <div id="je_mainEvent-time"></div>
+                  <div id="je_sideEvent-time"></div>
+                </div>
+                <div class="je_assemleTime">
+                  <div id="je_mainEvent-gatherTime"></div>
+                  <div id="je_sideEvent-gatherTime"></div>
+                </div>
+                <div class="je_place">
+                  <div class="je_mainPlace">
+                    <div id="je_mainEvent-building"></div>
+                    <div id="je_mainEvent-addr"></div>
+                  </div>
+                  <div class="je_sidePlace">
+                    <div id="je_sideEvent-building"></div>
+                    <div id="je_sideEvent-addr"></div>
+                  </div>
+                </div>
                 <div id="je_photoPre4"></div>
-                
+                <div id="je_finish-message"></div>
               </div>
             </div>
           </div>
@@ -203,14 +208,14 @@
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">時間</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input name="marriageTime" id="timepicker-m" class="timepicker"
+                          <input name="marriageTime" id="timepickerM" class="timepicker"
                              type="text" placeholder="時間選択"name="event_time" readonly/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">集合</div>
                         <div class="je_inputbox-input je_time_input">
-                          <input name="marriageTime_a" id="timepicker-ma"  class="timepicker"
+                          <input name="marriageTime_a"  id="timepickerMa"  class="timepicker"
                             type="text" placeholder="時間選択" readonly/>
                         </div>
                       </div>
@@ -320,25 +325,23 @@
                       <div class="je_photo-inputbox">
                         <div class="je_inputbox-input">
                           <div id="je_photobox1" class="je_photobox">
-                            <input type="file" name="photo1" id="je_photoInput1" />
+                            <input type="file" name="photo1" id="je_photoInput1" onchange="readURL(this);"/>
                             <div id="je_photoOut1"></div>
                             <span>写真１</span>
                           </div>
                           <div id="je_photobox2" class="je_photobox">
-                            <input type="file" name="photo2" id="je_photoInput2"
-                              onchange="readURL(this);"/>
+                            <input type="file" name="photo2" id="je_photoInput2" onchange="readURL(this);"/>
                             <div id="je_photoOut2"></div>
                             <span>写真２</span>
                           </div>
                           <div id="je_photobox3" class="je_photobox">
-                            <input type="file" name="photo3" id="je_photoInput3"
-                              onchange="readURL(this);"/>
+                            <input type="file" name="photo3" id="je_photoInput3" onchange="readURL(this);"/>
                             <div id="je_photoOut3"></div>
                             <span>写真３</span>
                           </div>
                           <div id="je_photobox4" class="je_photobox">
-                            <input type="file" name="photo4" id="je_photoInput4" 
-                            onchange="readURL(this);"/>
+                            <input
+                              type="file" name="photo4" id="je_photoInput4" onchange="readURL(this);"/>
                             <div id="je_photoOut4"></div>
                             <span>写真4</span>
                           </div>
@@ -348,15 +351,18 @@
                   </div>
                 </div>
               </div>
-              <div class="je_finish-button"><button>作成完了</button></div>
+              <div class="je_finish-button"><button name="templatePK" value="${je_template_pk }">作成完了</button></div>
             </div>
           </div>
         </form>
       </div>
     </div>
-    <!-- timepicker -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <script src="product/js/makeFile.js"></script>
+     <div class="je_pageDeco-bottom">
+      <img src="product/imgFolder/product-down.png" alt="" />
+    </div>
+<!--     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script> -->
+	<script src="product/js/datepicker.js"></script>
+    <script src="product/js/productMakeFile.js"></script>
   </body>
 </html>
 
