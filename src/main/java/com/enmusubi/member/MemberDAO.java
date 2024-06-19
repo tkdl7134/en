@@ -443,8 +443,7 @@ public class MemberDAO {
 	// 회원 정보 업데이트 (전체 정보)
 	public void updateMemberInfo(MemberDTO dto) throws SQLException {
 		Connection con = null;
-		PreparedStatement pstmt1 = null;
-		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
@@ -452,38 +451,46 @@ public class MemberDAO {
 
 		try {
 			con = dbManager.connect();
-			pstmt1 = con.prepareStatement(sql1);
-			pstmt2 = con.prepareStatement(sql2);
+			pstmt = con.prepareStatement(sql1);
 
 			// Member 테이블 업데이트
-			pstmt1.setString(1, dto.getM_pw());
-			pstmt1.setString(2, dto.getM_name());
-			pstmt1.setString(3, dto.getM_name_kana());
-			pstmt1.setString(4, dto.getM_name_rome());
-			pstmt1.setString(5, dto.getM_birth());
-			pstmt1.setString(6, dto.getM_gender());
-			pstmt1.setString(7, dto.getM_email());
-			pstmt1.setString(8, dto.getM_phone());
-			pstmt1.setString(9, dto.getM_id());
-			pstmt1.executeUpdate();
+			pstmt.setString(1, dto.getM_pw());
+			pstmt.setString(2, dto.getM_name());
+			pstmt.setString(3, dto.getM_name_kana());
+			pstmt.setString(4, dto.getM_name_rome());
+			pstmt.setString(5, dto.getM_birth());
+			pstmt.setString(6, dto.getM_gender());
+			pstmt.setString(7, dto.getM_email());
+			pstmt.setString(8, dto.getM_phone());
+			pstmt.setString(9, dto.getM_id());
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("멤버 수정 성공");
+			}
+			
 
+			pstmt = con.prepareStatement(sql2);
 			// Address 테이블 업데이트
-			pstmt2.setString(1, dto.getA_address());
-			pstmt2.setString(2, dto.getA_postcode());
-			pstmt2.setString(3, dto.getM_id());
-			pstmt2.executeUpdate();
+			pstmt.setString(1, dto.getA_address());
+			pstmt.setString(2, dto.getA_postcode());
+			pstmt.setString(3, dto.getM_id());
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("주소 수정 성공");
+			}
 		} catch (Exception e) {
 
 		} finally {
-			dbManager.close(con, pstmt1, rs);
-			dbManager.close(con, pstmt2, rs);
+			dbManager.close(con, pstmt, rs);
 		}
 	}
 
 	public static void memberUpdateC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		
+		HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
+		
 		// request에서 파라미터 가져오기
-		String m_id = request.getParameter("m_id");
+		String m_id = (String) session.getAttribute("m_id");
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
 		String m_name_kana = request.getParameter("m_name_kana");
@@ -522,14 +529,12 @@ public class MemberDAO {
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
 				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
-		HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
 		session.setAttribute("a_postcode", dto.getA_postcode());
 		session.setAttribute("a_address", dto.getA_address());
 
 		MemberDAO dao = new MemberDAO();
 		try {
 			dao.updateMemberInfo(dto);
-			System.out.println("수정 성공");
 //			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
 //			request.getRequestDispatcher("MemberDetailC").forward(request, response);
 //			request.getRequestDispatcher("HSC").forward(request, response);
