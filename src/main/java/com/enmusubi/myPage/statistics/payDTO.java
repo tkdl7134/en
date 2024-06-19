@@ -15,6 +15,8 @@ public class payDTO {
 	private Date p_date;
 	private String m_name;
 	private String g_relation;
+	private String e_alink;
+	
 	public payDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,8 +26,14 @@ public class payDTO {
 
 
 
+
+
+
+
+
+
 	public payDTO(int e_no, String m_id, String p_type, int p_price, int wl_no, Date p_date, String m_name,
-			String g_relation) {
+			String g_relation, String e_alink) {
 		super();
 		this.e_no = e_no;
 		this.m_id = m_id;
@@ -35,7 +43,14 @@ public class payDTO {
 		this.p_date = p_date;
 		this.m_name = m_name;
 		this.g_relation = g_relation;
+		this.e_alink = e_alink;
 	}
+
+
+
+
+
+
 
 
 
@@ -120,11 +135,50 @@ public class payDTO {
 
 
 
+	public String getE_alink() {
+		return e_alink;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setE_alink(String e_alink) {
+		this.e_alink = e_alink;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "payDTO [e_no=" + e_no + ", m_id=" + m_id + ", p_type=" + p_type + ", p_price=" + p_price + ", wl_no="
-				+ wl_no + ", p_date=" + p_date + ", m_name=" + m_name + ", g_relation=" + g_relation + "]";
+				+ wl_no + ", p_date=" + p_date + ", m_name=" + m_name + ", g_relation=" + g_relation + ", e_alink="
+				+ e_alink + "]";
 	}
+
+
+
+
+
+
+
+
 
 
 

@@ -27,10 +27,21 @@
 </head>
 <body>
 	<div class="recFund-container">
-		<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+		<div class="recFundSpecTitle">ファンディング の現状</div>
+		<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+		<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
 		<div class="jh-half-circle">
 		<div class="recFund-title">ファンディング の現状</div>
-		<div style="margin-top: 17rem; gap : 10rem;" class="kh-f-card-container">
+		<div  style="display : flex; margin-top : 10rem;  margin-left : 15rem;  width: 80rem;" id="toGoTexts">
+	<div style="margin-right: 6rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div onclick="location.href='ReceivedMainC'"   class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+	</div>
+	<div style="display: flex; margin-left: 21rem; " id="toGoLines">
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	</div>
+		<div style="margin-top: 8rem; gap : 10rem;" class="kh-f-card-container">
 			<div class="kh-f-mousemove kh-f-none">
 				<img alt="" src="finance/img/dragbtn.png">
 			</div>

@@ -26,6 +26,13 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
+
+body {
+      -webkit-user-select: none; /* Chrome, Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+      user-select: none;         /* 표준 */
+    }
 </style>
 
 </head>
@@ -52,10 +59,10 @@
 				<div class="hs_login">
 					<div class="hs_login id">ID</div>
 					<input type="text" id="m_id" name="m_id" placeholder="縁結びID"
-						class="hs_input">
+						class="hs_input" maxlength="20">
 					<div class="hs_login pw">パスワード</div>
 					<input type="password" id="m_pw" name="m_pw" placeholder="パスワード"
-						class="hs_input"><br>
+						class="hs_input" maxlength="20"><br>
 					<button type="submit" class="hs_btn-login">ログイン</button>
 				</div>
 			</div>

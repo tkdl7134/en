@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/receviedSpecificMoneyC")
 public class receviedSpecificMoneyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		StatisticsDAO.getAjaxData(request, response);	
+		StatisticsDAO.getSentMoneyData(request, response);
 			request.getRequestDispatcher("myPage/statistics/jsp/receivedMoneySpecific.jsp").forward(request, response);
 			
 	
