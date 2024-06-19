@@ -147,10 +147,15 @@ $('#byMoney').on('click', function() {
                   let data = [];
                   
                   response.forEach(item => {
-                      labels.push(item.date);
+                    
+                    
+                    let dateOnly = item.date.split(' ')[0];
+                labels.push(dateOnly);
+ //                     labels.push(item.date);
                       data.push(item.total_price);
                   });
-
+				console.log(labels);
+				
                   let ctx = document.getElementById('priceChart').getContext('2d');
                   priceChart = new Chart(ctx, {
                       type: 'bar',
