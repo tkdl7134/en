@@ -7,14 +7,13 @@
 	font-optical-sizing: auto;
 	font-weight: 400; /* 기본 폰트 두께를 지정 */
 	font-style: normal;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+	margin: 0;
+	padding: 0;
 	background-color: #FFF5F4;
-	margin: auto;
-	max-width: 1920px;
+	-webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 
 .hs_background {
@@ -29,7 +28,7 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-		min-height: 1080px;
+	min-height: 1080px;
 	min-width: 1920px;
 	max-width: 1920px;
 }
@@ -49,16 +48,21 @@
 	animation: logo-float 2s ease-in-out infinite;
 }
 
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translate(0, 0%);
-  }
-  50% {
-    transform: translate(0, 5%);
-  }
+@keyframes logo-float { 0%, 100% {
+	transform: translate(0, 0%);
 }
 
+50%
+{
+transform
+:
+translate(
+0
+,
+5%
+);
+}
+}
 .yj-main-s2-menu {
 	z-index: 4;
 	width: 80px;
@@ -303,7 +307,7 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	margin-top: -55rem;
-		min-height: 1080px;
+	min-height: 1080px;
 	min-width: 1920px;
 	max-width: 1920px;
 }
