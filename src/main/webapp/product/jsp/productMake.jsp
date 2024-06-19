@@ -351,7 +351,7 @@
                   </div>
                 </div>
               </div>
-              <div class="je_finish-button"><button name="templatePK" value="${je_template_pk }">作成完了</button></div>
+              <div class="je_finish-button"><button name="templatePK" value="78">作成完了</button></div>
             </div>
           </div>
         </form>

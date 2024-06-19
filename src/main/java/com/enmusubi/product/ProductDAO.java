@@ -146,19 +146,30 @@ public class ProductDAO {
 			pstmtWedding.setString(5, "wedding");
 			
 			// 본식
-			pstmtWedding.setDate(1, receptionTime);   // weddingday+marriagetime
-			pstmtWedding.setString(2, mr.getParameter("reception_place"));
-			pstmtWedding.setString(3, mr.getParameter("reception_addr"));
-			pstmtWedding.setDate(4, receptionA);
-			pstmtWedding.setString(5, "reception");
+			pstmtReception.setDate(1, receptionTime);   // weddingday+marriagetime
+			pstmtReception.setString(2, mr.getParameter("reception_place"));
+			pstmtReception.setString(3, mr.getParameter("reception_addr"));
+			pstmtReception.setDate(4, receptionA);
+			pstmtReception.setString(5, "reception");
 						
-			
+			if (pstmtWeddingInfo.executeUpdate() == 1) {
+				System.out.println("weddinginfo - 성공");
+			}
+			if (pstmtWedding.executeUpdate() == 1) {
+				System.out.println("wedding - 성공");
+			}
+			if (pstmtReception.executeUpdate() == 1) {
+				System.out.println("reception - 성공");
+			}
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    System.out.println("server err...");
 		} finally {
-		    dbManager.close(con, pstmtWeddingInfo, rs);
+		   dbManager.close(null, pstmtReception, null);
+		   dbManager.close(null, pstmtWedding, null);
+		   dbManager.close(con, pstmtWeddingInfo, rs);
+		   
 		}
 		
 	}
