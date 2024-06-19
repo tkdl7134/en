@@ -4,14 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.naming.java.javaURLContextFactory;
-
 import com.enmusubi.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -53,6 +50,34 @@ public class ProductDAO {
 		
 	}
 
+	public static void getTemplateForm(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		
+		String sql = "select t_template from s_template where t_pk = ?";
+		
+		try {
+		    con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("templatePK"));
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				System.out.println("템플릿 겟또!");
+				request.setAttribute("templateForm", rs.getString("t_template"));
+				request.setAttribute("t_pk", request.getParameter("templatePK"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("서버 에-러");
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
+	}
 	
 	public static void regIvitation(HttpServletRequest request) {
 		Connection con = null;
@@ -60,12 +85,12 @@ public class ProductDAO {
 		PreparedStatement pstmtWeddingInfo = null;
 		PreparedStatement pstmtWedding = null;
 		PreparedStatement pstmtReception = null;
-		ResultSet rs = null;
+//		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		
 //		create sequence e_no_seq;
 																//	e_no
-		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		
@@ -77,12 +102,23 @@ public class ProductDAO {
 			 pstmtReception = con.prepareStatement(sqlReception);
 			 
 			 
-			String path = request.getServletContext().getRealPath("product/imgFile");
+			String path = request.getServletContext().getRealPath("product/imgFolder");
 			MultipartRequest mr = new MultipartRequest(
 										request, path, 1024*1024*20,
 										"utf-8", new DefaultFileRenamePolicy());
 			
+			// 외래키 유효성 검사 
+			
+			int templatePK = Integer.parseInt(mr.getParameter("templatePK"));
+			if (!isTemplatePKValid(templatePK)) {
+				System.out.println("유효 PK 아님");
+				return;
+			}
+			
+			
 			// s_wedding_info table 삽입
+			
+//			System.out.println(mr.getParameter("templatePK"));
 			String groomName_kanji = mr.getParameter("groomKanjiL") + " " + mr.getParameter("groomKanjiF");
 			String groomName_kana = mr.getParameter("groomKanaL")+ " " + mr.getParameter("groomKanaF");
 			String groomName_roma = mr.getParameter("groomRomaL")+ " " + mr.getParameter("groomRomaF");
@@ -94,9 +130,10 @@ public class ProductDAO {
 			hello = hello.replaceAll("\r\n", "<br>");
 			bye = bye.replaceAll("\r\n", "<br>");
 			
-			pstmtWeddingInfo.setString(1, mr.getParameter("templatePK"));
-			pstmtWeddingInfo.setString(2,  groomName_kanji);
-			pstmtWeddingInfo.setString(3,  groomName_kana);
+			
+			pstmtWeddingInfo.setInt(1, templatePK);
+			pstmtWeddingInfo.setString(2, groomName_kanji);
+			pstmtWeddingInfo.setString(3, groomName_kana);
 			pstmtWeddingInfo.setString(4, groomName_roma);
 			pstmtWeddingInfo.setString(5, brideName_kanji);
 			pstmtWeddingInfo.setString(6, brideName_kana);
@@ -112,10 +149,17 @@ public class ProductDAO {
 			
 			//s_reception 테이블 삽입 
 			String weddingDay = mr.getParameter("weddingDay");
+			System.out.println(weddingDay);
+			System.out.println(weddingDay.charAt(11));
+			String day = weddingDay.charAt(11) + "";
+			String remove = weddingDay.replace(day, "").trim();
 			String m_time = mr.getParameter("marriageTime");
-			String wedding = weddingDay + " " + m_time;
+			System.out.println(m_time);
+			String wedding = remove + " " + m_time;
+			System.out.println(wedding);
 			
-			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:dd");
+			
+			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy.MM.dd HH:dd");
 			Date weddingDateTime = dateTimeFormat.parse(wedding);
 			System.out.println(weddingDateTime);
 			java.sql.Date weddingDT = new java.sql.Date(weddingDateTime.getTime());
@@ -168,11 +212,16 @@ public class ProductDAO {
 		} finally {
 		   dbManager.close(null, pstmtReception, null);
 		   dbManager.close(null, pstmtWedding, null);
-		   dbManager.close(con, pstmtWeddingInfo, rs);
+		   dbManager.close(con, pstmtWeddingInfo, null);
 		   
 		}
 		
 	}
+
+
+    private static boolean isTemplatePKValid(int templatePK) {
+        return true; // 예시: 항상 유효한 경우
+    }
 
 
 }

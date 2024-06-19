@@ -49,7 +49,7 @@
               <img
                 style="width: 90%"
                 class="je_template-background"
-                src="product/imgFolder/make-template.png"
+                src="product/imgFolder/${templateForm }"
                 alt=""
               />
               <div style="width: 100%">
@@ -98,7 +98,7 @@
           </div>
         </div>
         <!-- input -->
-        <form action="InvitationC">
+        <form action="InvitationC" method="post" enctype="multipart/form-data">
           <div class="je_template-input je_template-container">
             <div class="je_content-title">作成欄</div>
             <div class="je_content-boxes">
@@ -351,7 +351,7 @@
                   </div>
                 </div>
               </div>
-              <div class="je_finish-button"><button name="templatePK" value="78">作成完了</button></div>
+              <div class="je_finish-button"><button name="templatePK" value="${t_pk }">作成完了</button></div>
             </div>
           </div>
         </form>
