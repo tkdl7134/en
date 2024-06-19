@@ -138,8 +138,8 @@ form {
 .je_template-output {
   /* border: 1px solid red; */
   width: 40%;
-  height: 125.8rem;
-  overflow-y: scroll;
+  height: 146rem; /*125.8rem*/
+  /* overflow-y: scroll; */
   position: relative;
 }
 .je_template-output::-webkit-scrollbar {
@@ -162,7 +162,7 @@ form {
 #je_photoPre2,
 #je_photoPre3,
 #je_photoPre4 {
-  border: 1px solid;
+  /* border: 1px solid; */
   width: 10px;
   height: 10px;
 }
@@ -174,28 +174,100 @@ form {
   /* z-index: -100; */
   /* background-color: #c82626; */
 }
+
 #je_photoPre1 img {
   width: 100%;
 }
 .je_kanji-groom {
   display: flex;
   justify-content: center;
+  height: 3rem;
   margin-top: 30%;
   font-size: 2rem;
 }
 .je_kanji-bride {
   display: flex;
   justify-content: center;
-  margin-top: 1%;
   font-size: 2rem;
+  height: 3rem;
 }
 
-.je_specialDay {
-  font-size: 10rem;
+#je_invite-message {
+  margin-top: 10rem;
+  height: 8rem;
+  /* border: 1px solid; */
+  text-align: center;
+}
+
+.je_photos {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+#je_photoPre2,
+#je_photoPre3 {
+  width: 50%;
+  height: 13.5rem;
+}
+#je_photoPre2 img,
+#je_photoPre3 img {
+  width: 100%;
+}
+
+#je_weddingDay {
+  /* border: 1px solid red; */
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.je_eventTime {
+  /* border: 1px solid #ff7e81; */
+  height: 4rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  /* margin-right: 3rem; */
+  font-size: 1.5rem;
+}
+
+.je_assemleTime {
+  /* border: 1px solid #ff7e81; */
+  width: 90%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.je_place {
+  /* border: 1px solid #ff7e81; */
+  height: 4rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+
+#je_photoPre4 {
+  width: 100%;
+  margin-top: 3.2rem;
+  height: 18.9rem;
+}
+
+#je_finish-message {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
 }
 
 /* input */
-
 input {
   font-size: 0.8rem;
 }
@@ -403,16 +475,13 @@ input:-ms-input-placeholder {
   justify-content: center;
 }
 
+
 .je_photobox {
-  width: 30%;
-  height: 18rem;
+  width: 45%;
+  height: 14rem;
   border: 0.1rem solid #c8c8c8;
   background-color: #ffffff;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  position: relative;
+  margin: 0.5rem;
 }
 .je_photobox:hover {
   cursor: pointer;

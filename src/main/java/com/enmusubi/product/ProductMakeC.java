@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductMakeC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	request.getRequestDispatcher("product/jsp/productMake.jsp").forward(request, response);
+		ProductDAO.getTemplateForm(request);
+		request.getRequestDispatcher("product/jsp/productMake.jsp").forward(request, response);
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
