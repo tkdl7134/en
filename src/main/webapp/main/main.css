@@ -279,13 +279,13 @@ body {
   /* size */
   width: 5px;
   height: 5px;
-  /* location */
-  margin-left: -15px;
-  margin-bottom: 150px;
   /* style */
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid #dd2025;
+  /* location */
+  margin-left: -15px;
+  margin-bottom: 150px;
   /* animation */
   animation: scroll-down 2s ease-in-out infinite;
 }
@@ -355,15 +355,12 @@ body {
 .yj-main-s4-cover {
   z-index: 3;
   position: absolute;
+  pointer-events: none;
 }
 
 .yj-main-s4-cover img {
   width: 100vw;
   height: 100vh;
-}
-
-.clickable-image {
-  /* cursor: pointer; */
 }
 
 .yj-main-s4-flexContainer {
@@ -402,6 +399,65 @@ body {
 /* Section 5 */
 #yj-main-s5 {
   background-image: url("imgFolder/yj-main-default-bg.png ");
+  position: relative;
+}
+
+.yj-main-s5-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 4rem;
+  left: 5rem;
+}
+
+.yj-main-s5-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s5-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 6rem;
+  right: 5rem;
+}
+
+.yj-main-s5-menu img {
+  width: 100%;
+  height: 100%;
+}
+
+.yj-main-s5-container {
+  /* size */
+  width: 40rem;
+  height: 100vh;
+  /* style */
+  background-color: white;
+  box-shadow: #fd5356;
+  /* flexbox 설정 */
+  display: flex;
+  justify-content: center;
+  /* location */
+  margin-left: 52rem;
+}
+
+.yj-main-s5-invitation {
+  /* width: 90%; */
 }
 
 /* ////////// ////////// ////////// ////////// ////////// ////////// */

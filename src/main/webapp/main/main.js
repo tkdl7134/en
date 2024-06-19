@@ -173,3 +173,14 @@ s4menuBtn.addEventListener("click", function () {
     this.querySelector("img").src = s4menuBtn1;
   }
 });
+
+// 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
+const section4 = document.getElementById("yj-main-s4");
+const clickableImages = document.querySelectorAll(".clickable-image");
+
+clickableImages.forEach((image) => {
+  image.addEventListener("click", (event) => {
+    // console.log(event);
+    throttle(goToNextSection, 1000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
+  });
+});
