@@ -302,7 +302,7 @@
 												</div>
 												<div>
 													<select style="font-size: 1.4rem" id="prefecture"
-														name="prefecture" required>
+														name="address" required>
 														<option value="">選択してください</option>
             												<c:forEach var="prefecture" items="${prefectures}">
                 											<option value="${prefecture}">${prefecture}</option>
@@ -316,7 +316,7 @@
 												</div>
 												<div>
 													<input style="font-size: 1.4rem" type="text" id="city"
-														name="city" placeholder="新宿区" required />
+														name="address" placeholder="新宿区" required />
 												</div>
 											</div>
 

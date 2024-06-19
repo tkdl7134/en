@@ -22,58 +22,81 @@ public class SurveyDAO {
         // 다른 패키지에서 설정한 세션 값 가져오기 예시
         String loginType = (String) session.getAttribute("m_id");
         System.out.println(loginType);
-        //l_tg
-        String type = loginType.substring(0,1);
-        if (type.equals("l_")) {
-            // LINE 로그인 시
-        	request.setAttribute("loginType", "line");
+        if (loginType != null && loginType.startsWith("LINE_")) {
+            // "LINE_"으로 시작하는 경우, LINE 로그인 시
+            request.setAttribute("loginType", "line");
             getMemberLine(request);
         } else {
-            // 일반 회원 로그인 
-        	request.setAttribute("loginType", "normal");
+            // 일반 회원 로그인
+            request.setAttribute("loginType", "normal");
             getMemberNormal(request);
         }
+        
     }
-    
 
 	// LINE 로그인 시 정보 추가 입력
 	public static void getMemberLine(HttpServletRequest request) {
 	    Connection con = null;
-	    PreparedStatement pstmt = null;
+	    PreparedStatement pstmtLineAddressUpdate = null;
+	    PreparedStatement pstmtLineMemberUpdate = null;
 	    DBManager dbManager = DBManager.getInstance();
-	    String sqlmember = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";
+	    
+	    String sqlLineAddressUpdate = "UPDATE s_address SET a_address=?, a_postcode WHERE m_id?";	    
+	    String sqlLineMemberUpdate = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";	    
+
 	    
 	    try {
 	        con = dbManager.connect();
-	        pstmt = con.prepareStatement(sqlmember);
-	                    
+	        
 	        HttpSession session = request.getSession();
 	        String lineUserId = (String) session.getAttribute("m_id");
 	        System.out.println("LINE 회원 로그인 세션 아이디는: " + lineUserId);
 	        
-	        String[] kanziname = request.getParameterValues("kanzi-name");
-	        String[] kataname = request.getParameterValues("kata-name");
-	        String[] romaname = request.getParameterValues("roma-name");
+	        // 라인 회원 개인정보 입력
+	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
+
+            String[] kanziname = request.getParameterValues("kanzi-name");
+            String[] kataname = request.getParameterValues("kata-name");
+            String[] romaname = request.getParameterValues("roma-name");
+
+            String kanzinames = String.join(" ", kanziname != null ? kanziname : new String[0]);
+            String katanames = String.join(" ", kataname != null ? kataname : new String[0]);
+            String romanames = String.join(" ", romaname != null ? romaname : new String[0]);
+
+            pstmtLineMemberUpdate.setString(1, kanzinames);
+            pstmtLineMemberUpdate.setString(2, katanames);
+            pstmtLineMemberUpdate.setString(3, romanames);
+            pstmtLineMemberUpdate.setString(4, request.getParameter("email"));
+            pstmtLineMemberUpdate.setString(5, request.getParameter("phonenum"));
+            pstmtLineMemberUpdate.setString(6, lineUserId);
+
+            if (pstmtLineMemberUpdate.executeUpdate() == 1) {
+                System.out.println("개인정보 수정성공!!");
+            }
+	          
+	        // 라인 회원은 주소가 입력되어 있지 않아 주소 입력 update 기능 추가
+	        pstmtLineAddressUpdate = con.prepareStatement(sqlLineAddressUpdate);
 	        
-	        String kanzinames = String.join(" ", kanziname != null ? kanziname : new String[0]);
-	        String katanames = String.join(" ", kataname != null ? kataname : new String[0]);
-	        String romanames = String.join(" ", romaname != null ? romaname : new String[0]);
+	        String postcode = request.getParameter("postal-code");
+	        String[] address = request.getParameterValues("address");
 	        
-	        pstmt.setString(1, kanzinames);
-	        pstmt.setString(2, katanames);
-	        pstmt.setString(3, romanames);
-	        pstmt.setString(4, request.getParameter("email"));
-	        pstmt.setString(5, request.getParameter("phonenum"));
-	        pstmt.setString(6, lineUserId);
+	        String addresses = String.join(" ", address != null ? address : new String[0]);
 	        
-	        if (pstmt.executeUpdate() == 1) {
-	            System.out.println("개인정보 수정성공!!");
+	        pstmtLineAddressUpdate.setString(1, lineUserId);
+	        pstmtLineAddressUpdate.setString(2, addresses);
+	        pstmtLineAddressUpdate.setString(3, postcode);
+
+	        
+	        if (pstmtLineAddressUpdate.executeUpdate() == 1) {
+	            System.out.println("주소정보 수정성공!!");
 	        }
+	        
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
-	        dbManager.close(con, pstmt, null);
+	        dbManager.close(con, pstmtLineAddressUpdate, null);
+	        dbManager.close(con, pstmtLineMemberUpdate, null);
 	    }
 	}
 	
