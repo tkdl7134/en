@@ -37,6 +37,10 @@ public class SurveyC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		SurveyDAO.lineUpdate(request);
+		SurveyDAO.insertSurvey(request);
+		
+		
 	}
 
 }

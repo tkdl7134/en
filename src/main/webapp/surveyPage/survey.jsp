@@ -123,32 +123,32 @@
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="roma-name" required value="${members.m_first_name_rome}" disabled="disabled" /> 
+												class="name-input" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
 												placeholder=" - " class="name-input" name="roma-name"
-												required value="${members.m_last_name_rome}" disabled="disabled" />
+												required value="${members.m_first_name_rome}" disabled="disabled" />
 											</label>
 										 </c:when>
 										 <c:otherwise>
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">漢字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" name="kanzi-name" required /> 
+												class="name-input" name="kanzi-name" required value="${members.m_first_name}" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder="名"
-												class="name-input" name="kanzi-name" required />
+												class="name-input" name="kanzi-name" required value="${members.m_last_name}" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" name="kata-name" required /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder="めい"
-												class="name-input" name="kata-name" required />
+												class="name-input" name="kata-name" required value="${members.m_first_name_kana}" /> 
+												<input style="font-size: 1.2rem;" type="text"  placeholder="めい"
+												class="name-input" name="kata-name" required value="${members.m_last_name_kana}" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" name="roma-name" required/> 
+												class="name-input" name="roma-name" required value="${members.m_last_name_rome}"/> 
 												<input style="font-size: 1.2rem;" type="text"
 												placeholder="First Name" class="name-input" name="roma-name"
-												required/>
+												required value="${members.m_first_name_rome}" />
 											</label>
 										 </c:otherwise>
 										</c:choose>									 
@@ -202,12 +202,12 @@
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
 												class="contact-input" name="email"
-												placeholder="enmusubi@gmail.com" required />
+												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
 												class="contact-input" name="phonenum"
-												placeholder="000-0000-0000" required />
+												placeholder="000-0000-0000" required value="${members.m_phone}" />
 										</div>
 								</div>							
 							</c:otherwise>
@@ -293,7 +293,7 @@
 												</div>
 												<div>
 													<input style="font-size: 1.4rem" type="text" id="postal-code"
-														name="postal-code" placeholder="123-4567" required />
+														name="postal-code" placeholder="123-4567" required value="${members.a_city }"/>
 												</div>
 											</div>
 											<div class="address-contents-contaoner">
@@ -304,9 +304,11 @@
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
 														<option value="">選択してください</option>
-            												<c:forEach var="prefecture" items="${prefectures}">
-                											<option value="${prefecture}">${prefecture}</option>
-            												</c:forEach>
+           												<c:forEach var="prefecture" items="${prefectures}">
+																<option value="${prefecture }">	
+																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
+																${prefecture }
+	           												</c:forEach>
 													</select>
 												</div>
 											</div>
@@ -316,7 +318,7 @@
 												</div>
 												<div>
 													<input style="font-size: 1.4rem" type="text" id="city"
-														name="address" placeholder="新宿区" required />
+														name="address" placeholder="新宿区" required value="${members.a_city }"/>
 												</div>
 											</div>
 
@@ -327,7 +329,7 @@
 												<div>
 													<textarea style="font-size: 1.4rem; width: 20rem;"
 														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
-														required ></textarea>
+														required >${members.a_address }</textarea>
 												</div>
 											</div>
 									</fieldset>
@@ -561,6 +563,7 @@ $(document).ready(function () {
              return index === 0 || index === 1 || index === 2 || index === 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
         });
     });
+    
 });
 
 
@@ -586,6 +589,8 @@ $('.entry-box-img, .no-entry-box-img').on('click', function(event) {
          // 활성화된 상자를 추적합니다.
         $activeBox = $clickedBox;
     }
+
+     
 });
 
 
@@ -726,6 +731,40 @@ function openModal() {
     }, 10);
 }
 
+$(document).ready(function() {
+    $("#submitBtn").click(function() {
+        event.preventDefault(); // 기본 이벤트 제거
+
+        var formData = {
+                attendance: $('#attendance').val(),
+                couple: $('#couple').val(),
+                allergy: $('#allergy').val(),
+                specialNotes: $('#special-notes').val(),
+                relation: $('#relation').val(),
+                adult: $('#adult').val(),
+                child: $('#child').val(),
+                baby: $('#baby').val(),
+                gAttend: $('#g_attend').val(),
+                allergyType: $('#allergy-type').val()
+            };
+    
+        };
+
+        $.ajax({
+            url: "SurveyC", // 여기에 실제 서블릿 URL을 입력하세요
+            type: "POST",
+            data: data,
+            success: function(response) {
+                alert("회원 정보가 성공적으로 업데이트 되었습니다.");
+                // 추가적인 처리 로직
+            },
+            error: function(xhr, status, error) {
+                alert("회원 정보 업데이트에 실패하였습니다.");
+                console.error("에러:", error);
+            }
+        });
+    });
+});
 
     </script>
     
