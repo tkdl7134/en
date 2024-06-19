@@ -14,7 +14,10 @@
 <body>
 
 <div class="recFundSpec-container">
-
+	<div style="display : flex; margin-top : 8rem;" class="recSpecMoneyTitle">
+	<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
+	<div  style="margin-top: 0.3rem; smargin-left: 1rem;font-size: 25px; font-weight : bold;">の現状</div>
+	</div>
 	<div  style="display : flex; margin-top : 8rem;    width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
@@ -34,7 +37,7 @@
     
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
-    <div  style="height : 85rem; max-height : 60rem;" id="fundSpec-dataBoard-container">
+    <div  style="height : 100rem; max-height : 80rem;" id="fundSpec-dataBoard-container">
         <div id="fundSpec-arrBtn">
             <button class="arrButtons" id="byName">名前順</button>
             <button class="arrButtons" id="byMoney">金額順</button>
@@ -57,6 +60,8 @@
         </div>
     </div>
     <div class="recSpecReturn-img"><img onclick="GoToTop()" style="width : 12rem;" alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
+    <div class="recSpecMoney-bottomCircle"></div>
+    
 </div>
 <script type="text/javascript" src="myPage/statistics/js/receivedSpecificMoney.js"></script>
 </body>

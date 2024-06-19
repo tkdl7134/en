@@ -15,7 +15,7 @@
 
 <div class="recFundSpec-container">
 			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
- 	<div style="font-size: 30px; font-weight : bold; margin-top: -13rem;" class="recFundSpecTitle">ファンディング の現状</div>
+ 	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;   width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
@@ -35,7 +35,7 @@
     <div id="fundSpec-inputDate">
         <form id="dateForm" >
             <input id="startDate" name="startDate" value="${lastWeekDate }" type="date">
-            <span style="font-size: 2.5rem; margin-left: 1rem; margin-right: 1rem;">~</span>
+            <span style="font-size: 50px;font-weight: 900; margin-left: 1rem; margin-right: 1rem;">~</span>
             <input id="endDate"  name="endDate"  value="${todayDate }" type="date">
             <input  style="background-color : #FFDBDB; border-radius : 3px;font-weight:600; width : 8rem; height : 3.5rem; font-size : 20px; color: #828282; border-color : #C3C3C3; "  id="submit" type="submit" value="チェック">
             <input type="hidden" name="product" value="${product }">
@@ -56,8 +56,8 @@
         </div>
         <div id="fundSpec-dataBoard">
             <div id="fundSpec-dataBoard-navi">
-                <div style="border-right: 1px solid;" class="recSpecMemberInfos">恩人</div>
-                <div style="border-right: 1px solid;" class="recSpecMemberInfos">金額</div>
+                <div style="font-size : 22px; font-weight : bold;  border-right: 1px solid;" class="recSpecMemberInfos">恩人</div>
+                <div style="border-right: 1px solid #474747;" class="recSpecMemberInfos">金額</div>
                 <div class="recSpecMemberInfos">日付</div>
             </div>
             <c:forEach items="${fund }" var="f" varStatus="vs" begin="0">
