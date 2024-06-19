@@ -17,8 +17,8 @@
 	<div  style="display : flex; margin-top : 8rem;    width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
-	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+	<div onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.5rem;">✿ 心からのお伝え ✿</div>
+	<div  style="margin-left: 9rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
 	<div style="display: flex; " id="toGoLines">
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
@@ -35,7 +35,7 @@
 		<div onclick="location.href='${amazon}'" class="box-img">
 		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_yellow.png">
 		<div class="texts">
-		<div style="margin-left: 1.3rem;" class="objective">プレゼント</div>
+		<div style="margin-left: 4rem;" class="objective">プレゼント</div>
 		<div class="genjyou">の現状</div>
 		</div>
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_present.png">
@@ -43,8 +43,8 @@
 		<div onclick="location.href='receivedMoneyController?eno=1'" class="box-img">
 		<img class="boxes" alt="" src="myPage/statistics/imgFolder/opt_red_line.png">
 		<div class="texts">
-		<div style="margin-left: 2rem;" class="objective">ご祝儀</div>
-		<div style="margin-left: 2rem;" class="genjyou">の現状</div>
+		<div style="margin-left: 3rem;" class="objective">ご祝儀</div>
+		<div style="margin-left: 3rem;" class="genjyou">の現状</div>
 		</div>
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_money.png">
 		</div>

@@ -44,7 +44,7 @@ public class StatisticsDAO {
 	    JsonArray jsonArray = new JsonArray();
 	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
 	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? " +
+	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund'" +
 	             "GROUP BY p_date " +
 	             "ORDER BY p_date";		
 	    try {
@@ -156,9 +156,14 @@ public class StatisticsDAO {
 			System.out.println(price);
 			System.out.println(totalPrice);
 			int leftPrice = (int)(((double)(price - totalPrice) / price) * 100);
-			System.out.println(leftPrice);
+			System.out.println("leftprice = " + leftPrice);
+			String priceStatement = "✿目標金額まで後"+leftPrice+"％です✿";
+			if (leftPrice < 0) {
+				priceStatement = "✿目標金額に達成しました✿";
+			}
+			System.out.println(priceStatement);
 			request.setAttribute("rank", rank);
-			request.setAttribute("leftPrice", leftPrice);
+			request.setAttribute("priceStatement", priceStatement);
 			request.setAttribute("product", wl_product);
 			request.setAttribute("wlno", wl_no);
 			
@@ -224,7 +229,7 @@ public class StatisticsDAO {
 		}else if (order.equals("D")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? p_type='fund' order by p_date desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?　and p_type='fund' order by p_date desc";
 			
 		}
 		try {

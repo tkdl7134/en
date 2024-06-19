@@ -18,7 +18,9 @@ body {
 	
 }
 .ToGoTexts{
-	font-size : 1.4rem;
+	font-size : 20px;
+	font-weight: bold;
+	color : #696969;
 	
 	
 	
@@ -145,7 +147,7 @@ body {
     
 }
 #priceChart {
-    width: 600px;
+    width: 55rem;
 }
 #fundSpec-dataBoard-container {
 	    margin-top: 5rem;
@@ -251,4 +253,5 @@ body {
 	background-image:url("../imgFolder/bottomHalfCircle.png");
 	    height: 67rem;
     margin-top: -62.8rem;
+    background-repeat: no-repeat;
 }

@@ -150,11 +150,18 @@ $('#byMoney').on('click', function() {
                     
                     
                     let dateOnly = item.date.split(' ')[0];
-                labels.push(dateOnly);
+                    let dateParts = dateOnly.split('-');  // 연, 월, 일을 분리
+let monthAndDay = dateParts.slice(1).join('-');  // 월과 일만 결합
+                labels.push(monthAndDay);
  //                     labels.push(item.date);
-                      data.push(item.total_price);
+ 						let totalPrice = item.total_price;
+ 						let banPrice = totalPrice/ 10000;
+ 						
+ 						
+                      data.push(banPrice);
                   });
 				console.log(labels);
+ 						console.log(data);
 				
                   let ctx = document.getElementById('priceChart').getContext('2d');
                   priceChart = new Chart(ctx, {
@@ -162,22 +169,23 @@ $('#byMoney').on('click', function() {
                       data: {
                           labels: labels,
                           datasets: [{
-                              label: 'Total Price',
+                              label: '当日貰った金額',
                               data: data,
                               borderColor: 'rgba(75, 192, 192, 1)',
                               backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                              fill: true
+                              fill: false
                           }]
                       },
                       options: {
                           responsive: false,
                           barPercentage: '0.3',
+                          maintainAspectRatio : false,
                           scales: {
                               x: {
                                   type: 'category',
                                   title: {
                                       display: true,
-                                      text: 'Date'
+                                      text: '日付'
                                   },
                                   ticks: {
                                       autoSkip: false
@@ -187,13 +195,18 @@ $('#byMoney').on('click', function() {
                                   beginAtZero: true,
                                   title: {
                                       display: true,
-                                      text: 'Total Price'
-                                  }
+                                      text: '貰った金額'
+                                  },
+                                    ticks: {
+                                callback: function(value, index, values) {
+                                    return value + '万円';  // y축 값에 '万円' 추가
+                                }
+                            }
                               }
                           }
                       }
                   });
-                  $('#priceChart').css('height', '400px');
+                  $('#priceChart').css('height', '35rem');
               },
               error: function(error) {
                   console.log(error);

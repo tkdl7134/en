@@ -21,7 +21,7 @@ $.ajax({
 							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.wl_product}.png" />
 						</div>
 						<div>
-							<h3>${element.wl_product}</h3>
+							<h1>${element.wl_product}</h3>
 						</div>
 					</div>
 				</div>`);

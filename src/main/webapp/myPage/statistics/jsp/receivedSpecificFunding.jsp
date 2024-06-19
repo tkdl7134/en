@@ -15,7 +15,7 @@
 
 <div class="recFundSpec-container">
 			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
- 	<div style="font-size: 1.6rem; margin-top: -30rem;" class="recFundSpecTitle">ファンディング の現状</div>
+ 	<div style="font-size: 30px; font-weight : bold; margin-top: -13rem;" class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;   width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
@@ -28,7 +28,7 @@
     <div style="margin-top : 2rem;" id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
     <div id="fundSpecProduct-rank">現在第${rank }位！ </div>
-    <div id="fundSpec-leftPrice">✿目標金額まで後${leftPrice }％です✿</div>
+    <div id="fundSpec-leftPrice">${priceStatement }</div>
 		<div id="fundSpec-lineShort" ><img alt="" src="myPage/statistics/imgFolder/lineShort.png"></div>
 		<div id="fundSpec-chartAlert">統計を確認したい場合は、日付を入力してください</div>
 
@@ -37,13 +37,17 @@
             <input id="startDate" name="startDate" value="${lastWeekDate }" type="date">
             <span style="font-size: 2.5rem; margin-left: 1rem; margin-right: 1rem;">~</span>
             <input id="endDate"  name="endDate"  value="${todayDate }" type="date">
-            <input  id="submit" type="submit" value="確認する">
+            <input  style="background-color : #FFDBDB; border-radius : 3px;font-weight:600; width : 8rem; height : 3.5rem; font-size : 20px; color: #828282; border-color : #C3C3C3; "  id="submit" type="submit" value="チェック">
             <input type="hidden" name="product" value="${product }">
             <input id="fundSpecWlno" type="hidden" name="wlno" value="${wlno }">
             <input id="fundSpecEno" type="hidden" name="eno" value="${eno }">
         </form>
     </div>
-    <canvas style="margin-top: 3rem;" id="priceChart" width="400" height="400"></canvas>
+   <div style="margin-top : 3rem; border : 1px solid #F70000; border-radius : 20px">
+    <div style="margin : 2rem ;background-color : #FFFBF7; border : 1px solid #F7D766; width: 58rem; height : 40rem;border-radius : 20px;">
+    <canvas style="margin-top: 3rem;" id="priceChart" width="600vw" height="600vh"></canvas>
+	</div>
+	</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div id="fundSpec-dataBoard-container">
         <div id="fundSpec-arrBtn">
