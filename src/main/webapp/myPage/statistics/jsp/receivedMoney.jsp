@@ -43,7 +43,7 @@
 	<div style="display: flex;     margin-left: 22rem;" id="toGoLines">
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
-		<div style="margin-top: 10rem; gap : 10rem;" class="kh-f-card-container">
+		<div style="height : 43rem; gap : 10rem;" class="kh-f-card-container">
 			<div class="kh-f-mousemove kh-f-none">
 				<img alt="" src="finance/img/dragbtn.png">
 			</div>

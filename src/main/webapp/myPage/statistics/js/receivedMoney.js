@@ -33,7 +33,7 @@ $.ajax({
 							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.g_relation}.png" />
 						</div>
 						<div style = "display : flex;">
-							<div style="font-size: 2rem; width: 5rem;">${element.m_name}</div>
+							<div style="font-size: 2rem; width: 7rem;">${element.m_name}</div>
 							<div style= "font-size: 1rem; margin-top: 0.7rem;">さんからの</div>
 						</div>
 						<div style="margin-top: -2rem;">
