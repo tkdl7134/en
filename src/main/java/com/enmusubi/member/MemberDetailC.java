@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.enmusubi.main.Interceptor;
+
 
 @WebServlet("/MemberDetailC")
 public class MemberDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//		Interceptor.LoginInterceptor(request, response);
 		MemberDAO.memberDetailCDoGet(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
-//		MemberDAO.memberDetailCDoPost(request, response);
 
 	}
 }
