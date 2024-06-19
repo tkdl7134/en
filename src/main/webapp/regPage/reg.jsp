@@ -58,19 +58,19 @@
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID">
+							placeholder="縁結びID" maxlength="20">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 					</div>
 
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード">
+							placeholder="パスワード" maxlength="20">
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20">
 					</div>
 				</div>
 
@@ -82,19 +82,19 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎">
+							placeholder="山田 太郎" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ">
+							placeholder="ヤマダ タロウ" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou">
+							placeholder="Yamada Tarou" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
@@ -134,7 +134,7 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com">
+							placeholder="example@example.com" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -209,19 +209,19 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text city">住所</div>
 						<input type="text" name="a_city" id="a_city" class="hs_input city"
-							placeholder="市区町村">
+							placeholder="市区町村" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text street"></div>
 						<input type="text" name="a_street" id="a_street"
-							class="hs_input street" placeholder="番地">
+							class="hs_input street" placeholder="番地" maxlength="50">
 					</div>
 
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名など">
+							class="hs_input building" placeholder="ビル・マンション名など" maxlength="50">
 					</div>
 
 					<button id="btnReg" class="btn-reg" type="button"
