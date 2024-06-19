@@ -31,8 +31,8 @@ body {
 
 .yj-main-s1-logo img {
   /* size */
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   /* style */
   border-radius: 100%;
   box-shadow: 0 5px 5px 5px #fd5356;
@@ -100,8 +100,8 @@ body {
 
 .yj-main-s2-logo {
   z-index: 4;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   position: absolute;
   top: 4rem;
   left: 5rem;
@@ -126,8 +126,8 @@ body {
 
 .yj-main-s2-menu {
   z-index: 4;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 6rem;
   right: 5rem;
@@ -203,8 +203,8 @@ body {
 
 .yj-main-s3-logo {
   z-index: 4;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   position: absolute;
   top: 4rem;
   left: 5rem;
@@ -229,8 +229,8 @@ body {
 
 .yj-main-s3-menu {
   z-index: 4;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 6rem;
   right: 5rem;
@@ -272,7 +272,6 @@ body {
   width: 5px;
   height: 100%;
   background-color: #dd2025;
-  /* box-shadow: 0 0 0 1px #fffbf7; */
 }
 
 .s3-scroll-arrow {
@@ -314,8 +313,8 @@ body {
 
 .yj-main-s4-logo {
   z-index: 4;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   position: absolute;
   top: 4rem;
   left: 4rem;
@@ -340,8 +339,8 @@ body {
 
 .yj-main-s4-menu {
   z-index: 4;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 6rem;
   right: 5rem;
@@ -360,14 +359,14 @@ body {
 
 .yj-main-s4-cover img {
   width: 100vw;
-  height: 100vh;
+  height: 100.5vh;
 }
 
 .yj-main-s4-flexContainer {
   z-index: 2;
   display: flex;
   flex-wrap: nowrap; /* Ensures items stay in a single row */
-  overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+  overflow: hidden; /* Allows horizontal scrolling if content overflows */
   column-gap: 3rem;
   align-items: center;
 }
@@ -376,13 +375,21 @@ body {
   display: flex;
   flex-direction: column; /* Stack images vertically within each column */
   row-gap: 3rem;
+  /* animation */
+  animation: imgs-float 2s ease-in-out infinite;
 }
 
 .yj-main-s4-container img {
   max-width: 100%; /* Ensures images don't exceed their container width */
   height: auto; /* Maintains aspect ratio */
-  /* animation */
-  animation: imgs-float 2s ease-in-out infinite;
+  /* transition */
+  transform: scale(1);
+  transition: all 1s ease-out;
+}
+
+.yj-main-s4-container img:hover {
+  /* animation: none; */
+  transform: scale(1.1);
 }
 
 @keyframes imgs-float {
@@ -391,7 +398,7 @@ body {
     transform: translate(0, 0%);
   }
   50% {
-    transform: translate(0, 2%);
+    transform: translate(0, 1%);
   }
 }
 
@@ -400,12 +407,13 @@ body {
 #yj-main-s5 {
   background-image: url("imgFolder/yj-main-default-bg.png ");
   position: relative;
+  overflow: hidden;
 }
 
 .yj-main-s5-logo {
   z-index: 4;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   position: absolute;
   top: 4rem;
   left: 5rem;
@@ -430,8 +438,8 @@ body {
 
 .yj-main-s5-menu {
   z-index: 4;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 6rem;
   right: 5rem;
@@ -442,22 +450,28 @@ body {
   height: 100%;
 }
 
-.yj-main-s5-container {
-  /* size */
-  width: 40rem;
-  height: 100vh;
-  /* style */
-  background-color: white;
-  box-shadow: #fd5356;
-  /* flexbox 설정 */
+.yj-main-s5-bigCon {
   display: flex;
   justify-content: center;
-  /* location */
-  margin-left: 52rem;
+  transform: translate(20%, 0);
+}
+
+.yj-main-s5-container {
+  /* size */
+  width: 35rem;
+  height: 100vh;
+  background-color: #fff5f4;
+  box-shadow: 0 5px 15px 5px #fd5356;
+  overflow-y: scroll;
+  position: relative;
 }
 
 .yj-main-s5-invitation {
-  /* width: 90%; */
+  width: 90%;
+  margin: 0 auto;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
 }
 
 /* ////////// ////////// ////////// ////////// ////////// ////////// */

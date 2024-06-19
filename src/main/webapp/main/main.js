@@ -181,6 +181,7 @@ const clickableImages = document.querySelectorAll(".clickable-image");
 clickableImages.forEach((image) => {
   image.addEventListener("click", (event) => {
     // console.log(event);
-    throttle(goToNextSection, 1000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
+    event.preventDefault();
+    throttle(goToNextSection, 2000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
   });
 });
