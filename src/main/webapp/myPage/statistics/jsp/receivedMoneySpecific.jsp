@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="myPage/statistics/css/receivedSpecificFund.css" />
+<link rel="stylesheet" href="myPage/statistics/css/receivedSpecificMoney.css" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -14,30 +14,32 @@
 <body>
 
 <div class="recFundSpec-container">
-    <div id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
-    <div id="fundSpecProduct-name">${product }</div>
-    <div id="fundSpecProduct-rank">現在第${rank }位！ </div>
-    <div id="fundSpec-leftPrice">✿目標金額まで後${leftPrice }％です✿</div>
-		<div id="fundSpec-lineShort" ><img alt="" src="myPage/statistics/imgFolder/lineShort.png"></div>
-		<div id="fundSpec-chartAlert">統計を確認したい場合は、日付を入力してください</div>
 
-    <div id="fundSpec-inputDate">
-        <form id="dateForm" >
-            <input id="startDate" name="startDate" value="${lastWeekDate }" type="date">
-            <span style="font-size: 2.5rem; margin-left: 1rem; margin-right: 1rem;">~</span>
-            <input id="endDate"  name="endDate"  value="${todayDate }" type="date">
-            <input  id="submit" type="submit" value="確認する">
-            <input type="hidden" name="product" value="${product }">
-            <input id="fundSpecWlno" type="hidden" name="wlno" value="${wlno }">
-            <input id="fundSpecEno" type="hidden" name="eno" value="${eno }">
-        </form>
-    </div>
-    <canvas style="margin-top: 3rem;" id="priceChart" width="400" height="400"></canvas>
+	<div  style="display : flex; margin-top : 8rem;    width: 80rem;" id="toGoTexts">
+	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+	</div>
+	<div style="display: flex; " id="toGoLines">
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	</div>
+
+
+    <div  id="fundSpecProduct-img" style=""><img style="width: 37.5rem;" id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/bg_wedding_chapel.jpg"></div>
+  	<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+  	<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+    
+    
+    
+    <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
-    <div id="fundSpec-dataBoard-container">
+    <div  style="height : 85rem; max-height : 60rem;" id="fundSpec-dataBoard-container">
         <div id="fundSpec-arrBtn">
+            <button class="arrButtons" id="byName">名前順</button>
             <button class="arrButtons" id="byMoney">金額順</button>
             <button class="arrButtons" id="byDate" >日付順</button>
+            <input id="SpecMoneyEno" type="hidden" value="${eno }">
         </div>
         <div id="fundSpec-dataBoard">
             <div id="fundSpec-dataBoard-navi">
@@ -56,6 +58,6 @@
     </div>
     <div class="recSpecReturn-img"><img onclick="GoToTop()" style="width : 12rem;" alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
 </div>
-<script type="text/javascript" src="myPage/statistics/js/receivedSpecificFund.js"></script>
+<script type="text/javascript" src="myPage/statistics/js/receivedSpecificMoney.js"></script>
 </body>
 </html>
