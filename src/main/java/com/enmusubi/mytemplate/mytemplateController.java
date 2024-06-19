@@ -1,3 +1,4 @@
+// ProductController.java
 package com.enmusubi.mytemplate;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/mytemplateController")
-public class ProductController extends HttpServlet {
+public class mytemplateController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int page = 1;
@@ -17,9 +18,9 @@ public class ProductController extends HttpServlet {
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        ProductDAO.getAllTemplate(request);
-        //ProductDAO.getTemplates(request, page, itemsPerPage);
-        request.getRequestDispatcher("mytemplate/jsp/productMain.jsp").forward(request, response);
+        
+        mytemplateDAO.getTemplates(request, page, itemsPerPage);
+        request.getRequestDispatcher("mytemplate/jsp/mytemplate.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

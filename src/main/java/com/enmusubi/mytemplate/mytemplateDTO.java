@@ -1,6 +1,6 @@
 package com.enmusubi.mytemplate;
 
-public class ProductDTO {
+public class mytemplateDTO {
 
     private int e_no;
     private int t_pk;
@@ -11,11 +11,11 @@ public class ProductDTO {
     private String t_example;
     private String t_template;
 
-    public ProductDTO() {
+    public mytemplateDTO() {
         // Default constructor
     }
 
-    public ProductDTO(String m_id, int e_no, int t_pk, String t_title, String t_preview, String t_example, String t_template) {
+    public mytemplateDTO(String m_id, int e_no, int t_pk, String t_title, String t_preview, String t_example, String t_template) {
         super();
         this.m_id = m_id;
         this.e_no = e_no;
