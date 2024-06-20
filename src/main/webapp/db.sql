@@ -23,8 +23,19 @@ select * from S_GUEST;
 
 SELECT * FROM S_EVENT se LEFT OUTER JOIN S_TEMPLATE st ON se.E_NO = st.E_NO WHERE se.M_ID ='testuser';
 
-SELECT * FROM S_EVENT se LEFT OUTER JOIN s_wedding_info sw ON se.t_pk = sw.t_pk
-        		LEFT OUTER JOIN s_template st ON se.t_pk = st.t_pk
-        		WHERE se.t_pk = '1';
-                
-                
+SELECT * FROM s_wedding_info sw LEFT OUTER JOIN s_event se ON sw.e_no = se.e_no
+        		LEFT OUTER JOIN s_template st ON sw.t_pk = st.t_pk WHERE se.t_pk = '1';
+                 "SELECT * FROM S_EVENT se LEFT OUTER JOIN S_TEMPLATE st ON se.E_NO = st.E_NO WHERE se.M_ID = 'testuser'";     
+                 
+SELECT *
+FROM s_wedding_info sw
+LEFT OUTER JOIN s_event se ON se.e_no = sw.e_no
+LEFT OUTER JOIN s_template st ON st.t_pk = sw.t_pk
+WHERE sw.e_no = '1';
+
+SELECT * FROM s_wedding_info sw 
+                LEFT OUTER JOIN s_event se ON se.e_no = sw.e_no 
+                LEFT OUTER JOIN s_template st ON st.t_pk = sw.t_pk 
+                WHERE sw.e_no = '1';
+                 
+                 

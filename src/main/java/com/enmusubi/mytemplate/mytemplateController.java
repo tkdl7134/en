@@ -1,4 +1,3 @@
-// ProductController.java
 package com.enmusubi.mytemplate;
 
 import java.io.IOException;
