@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.log(canConHNum);
 
 		// 계산 수행
-		let calcRes = canConHNum - 1200;
+		let calcRes = canConHNum + 1200;
 		console.log(calcRes);
 
 		// 결과 적용

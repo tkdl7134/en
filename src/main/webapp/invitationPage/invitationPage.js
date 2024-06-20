@@ -51,78 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		form.submit();
 	};
 
-	// 마우스 이동 기능 추가
-	const mouseIcon = document.querySelector(".hw-f-mousemove img");
-	const cardCon = document.querySelector(".hw_invitation_main");
-	const body = document.querySelector('body');
-	const canvas = document.getElementById('canvas1');
-	const ctx = canvas.getContext('2d');
-	const radius = 100; // 반원의 반지름
-	const centerX = 170; // 반원의 중심 X 좌표
-	const centerYTop = 150; // 상단 반원의 중심 Y 좌표
-	const centerYBottom = 300; // 하단 반원의 중심 Y 좌표
-
-	// 캔버스 크기 설정
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-
-	// 상단 반원 그리기
-	const imgTop = new Image();
-	imgTop.src = 'invitationPage/imgFolder/up_page.png';
-	imgTop.onload = function() {
-		ctx.drawImage(imgTop, centerX - radius, centerYTop - radius, radius * 2, radius * 2);
-		ctx.beginPath();
-		ctx.arc(centerX, centerYTop, radius, 0, Math.PI, false);
-		ctx.closePath();
-		ctx.clip();
-	};
-
-	// 하단 반원 그리기
-	const imgBottom = new Image();
-	imgBottom.src = 'invitationPage/imgFolder/down_page.png';
-	imgBottom.onload = function() {
-		ctx.drawImage(imgBottom, centerX - radius, centerYBottom - radius, radius * 2, radius * 2);
-		ctx.beginPath();
-		ctx.arc(centerX, centerYBottom, radius, Math.PI, 2 * Math.PI, false);
-		ctx.closePath();
-		ctx.clip();
-	};
-
-	document.addEventListener("mousemove", (event) => {
-		const mouseX = event.clientX;
-		const mouseY = event.clientY;
-		mouseIcon.style.left = mouseX + "px";
-		mouseIcon.style.top = mouseY + "px";
-
-		checkMousePosition(event);
-	});
-
-	cardCon.addEventListener("mouseover", function(event) {
-		mouseIcon.classList.remove("hw-f-block");
-		mouseIcon.classList.add("hw-f-none");
-	});
-
-	cardCon.addEventListener("mouseout", function() {
-		mouseIcon.classList.remove("hw-f-none");
-		mouseIcon.classList.add("hw-f-block");
-	});
-
-	// 반원 영역에 있을 때만 마우스 아이콘 표시 및 반원 밖으로 나가면 커서 이미지 변경
-	function isInsideArc(x, y, cx, cy, radius, startAngle, endAngle) {
-		const dx = x - cx;
-		const dy = y - cy;
-		const distance = Math.sqrt(dx * dx + dy * dy);
-		const angle = Math.atan2(dy, dx);
-
-		// 각도를 0 ~ 2*PI 사이로 변환
-		const adjustedAngle = (angle + 2 * Math.PI) % (2 * Math.PI);
-
-		return (
-			distance <= radius &&
-			(adjustedAngle >= startAngle && adjustedAngle <= endAngle)
-		);
-	}
-
 	function checkMousePosition(event) {
 		const mouseX = event.clientX;
 		const mouseY = event.clientY;
@@ -141,3 +69,81 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 });
+   document.addEventListener("DOMContentLoaded", function () {
+        const canContainer = document.getElementById(
+          "canvas-content-container"
+        );
+        const canContent = document.querySelector(".canvas-content");
+        console.log(canContainer);
+        console.log(canContent);
+
+        let canConH = window.getComputedStyle(canContent).height;
+        console.log(canConH);
+        if (canConH > 1300) {
+          // 문자열에서 'px'를 제거하고 숫자로 변환
+          let canConHNum = parseFloat(canConH);
+          console.log(canConHNum);
+
+          // 계산 수행
+          let calcRes = canConHNum + 800;
+          console.log(calcRes);
+
+          // 결과 적용
+          canContent.style.height = calcRes + "px";
+          console.log(canContent.style.height);
+        }
+        // 첫 번째 배경 이미지와 관련된 요소들
+        let background1 = document.getElementById("background1");
+        let canvas1 = document.getElementById("canvas1");
+        let ctx1 = canvas1.getContext("2d");
+        let img1 = new Image();
+        img1.src = "/src/topnohalf.png"; // 첫 번째 배경 이미지 경로 설정
+
+        // 두 번째 배경 이미지와 관련된 요소들
+        let background2 = document.getElementById("background2");
+        let canvas2 = document.getElementById("canvas2");
+        let ctx2 = canvas2.getContext("2d");
+        let img2 = new Image();
+        img2.src = "/src/bottom.png"; // 두 번째 배경 이미지 경로 설정
+
+        // 캔버스 초기화 함수
+        function initCanvas(canvas, ctx, imageSrc) {
+          let img = new Image();
+          img.src = imageSrc;
+          img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+          };
+        }
+
+        // 첫 번째 배경 이미지 캔버스 초기화
+        initCanvas(canvas1, ctx1, img1.src);
+
+        // 두 번째 배경 이미지 캔버스 초기화
+        initCanvas(canvas2, ctx2, img2.src);
+
+        // 마우스 이벤트 처리 함수
+        function handleMouseMove(event, ctx, canvas) {
+          let rect = canvas.getBoundingClientRect();
+          let x = event.clientX - rect.left;
+          let y = event.clientY - rect.top;
+          let pixel = ctx.getImageData(x, y, 1, 1).data;
+
+          // 픽셀의 알파 값이 0이 아니면(투명하지 않으면) 이벤트 처리
+          if (pixel[3] !== 0) {
+            console.log("Mouse event on non-transparent area");
+            // 필요한 이벤트 처리 작성
+          }
+        }
+
+        // 첫 번째 배경 이미지의 마우스 이벤트 리스너 추가
+        background1.addEventListener("mousemove", function (event) {
+          handleMouseMove(event, ctx1, canvas1);
+        });
+
+        // 두 번째 배경 이미지의 마우스 이벤트 리스너 추가
+        background2.addEventListener("mousemove", function (event) {
+          handleMouseMove(event, ctx2, canvas2);
+        });
+      });

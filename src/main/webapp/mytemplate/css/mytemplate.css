@@ -16,54 +16,39 @@ body {
 	flex-direction: column;
 }
 
-body.background-image {
-}
-
-.hw_container {
-	border-radius: 1rem;
-	max-width: 90%;
-	margin: auto;
-	position: relative;
-	z-index: 1;
-	padding: 0 1rem;
-}
-
 header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 3.5rem 3rem;
-	width: 90%;
-}
-
-.hw_header_title {
-	display: contents;
-	padding: 3rem;
-	margin-top: 10rem;
 }
 
 .hw_logo {
-	z-index: 4;
-	width: 150px;
-	height: 150px;
-	position: absolute;
-	top: 3rem;
-	left: 4rem;
+	 z-index: 4;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
 }
 
 .hw_logo img {
-	width: 100%;
-	height: 100%;
-	animation: logo-float 2s ease-in-out infinite;
+	 width: 100%;
+    height: 100%;
+    animation: logo-float 2s ease-in-out infinite;
+}
+
+.hw_page_title {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 70px;
 }
 
 @keyframes logo-float {
-
-	0%,
-	100% {
+	0%, 100% {
 		transform: translate(0, 0%);
 	}
-
 	50% {
 		transform: translate(0, 5%);
 	}
@@ -82,12 +67,12 @@ header {
 }
 
 .hw_menu {
-	z-index: 4;
-	width: 80px;
-	height: 80px;
-	position: absolute;
-	top: 3rem;
-	right: 5rem;
+	  z-index: 4;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 3rem;
+    right: 5rem;
 }
 
 .hw_menu img {
@@ -112,17 +97,23 @@ header {
 }
 
 .hw_menubar_menu {
-	font-size: 20px;
-	text-decoration-line: none;
-	color: #696969;
+    font-size: 1.25rem;
+    text-decoration-line: none;
+    color: #696969;
+    transition: color 0.3s ease; /* 부드러운 색상 전환을 위해 transition 추가 */
 }
 
 .hw_menubar_menu:hover {
-	color: #ff2828;
+    color: #ff2828; /* 호버 시 글씨 색상을 붉게 변경 */
 }
 
+.hw_menubar_menu.active {
+    color: #ff2828; /* 평상시에도 붉은색으로 표시 */
+}
+
+
 .hw_yellow_line {
-	width: 14rem;
+	width: 9rem;
 	height: 1rem;
 }
 
@@ -146,14 +137,6 @@ main {
 	max-width: 100%;
 	height: auto;
 	border-radius: 5%;
-}
-
-.hw_tab_header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 0.65rem;
-	width: 100%;
 }
 
 .styled-table-wrapper {
@@ -236,15 +219,12 @@ main {
 	header {
 		padding: 4rem 2rem;
 	}
-
 	.hw_logo {
 		width: 12%;
 	}
-
 	.hw_pagetitle img {
 		height: 1.2rem;
 	}
-
 	.hw_menu {
 		width: 6rem;
 		height: 6rem;
@@ -255,15 +235,12 @@ main {
 	header {
 		padding: 3rem 1rem;
 	}
-
 	.hw_logo {
 		width: 15%;
 	}
-
 	.hw_pagetitle img {
 		height: 1rem;
 	}
-
 	.hw_menu {
 		width: 5rem;
 		height: 5rem;
@@ -276,21 +253,17 @@ main {
 		align-items: center;
 		padding: 1.5rem 1rem;
 	}
-
 	.hw_logo {
 		width: 20%;
 		margin-bottom: 1rem;
 	}
-
 	.hw_menu {
 		width: 4rem;
 		height: 4rem;
 	}
-
 	.hw_pagetitle {
 		margin-bottom: 1rem;
 	}
-
 	.hw_pagetitle img {
 		height: 0.8rem;
 	}
@@ -315,14 +288,37 @@ main {
 	border-radius: 0.5rem;
 	position: relative;
 	overflow: hidden;
-	/* 추가: 버튼이 부모 요소를 넘어가지 않도록 함 */
 }
 
-.hw_page-content-template:hover .hw_share_btn {
-	/* 마우스 호버 시 버튼이 보이게 */
+.hw_template-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+	gap: 2rem;
+	z-index: 2;
+	flex-direction: column;
+	opacity: 0;
+	padding: 11rem;
+	border-radius: 80%;
+}
+.hw_template-button:hover{
 	opacity: 1;
-	pointer-events: auto;
-	/* 호버 시 클릭 활성화 */
+}
+.hw_template-button>button {
+	width: 7rem;
+	height: 1.8rem;
+	font-size: 1rem;
+	font-weight: bold;
+	border: 0.1rem solid #c82626;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+	z-index: 100;
+	background-color: #fff4f4;
+	color: #5c5c5c;
 }
 
 .hw_template-img {
@@ -333,27 +329,7 @@ main {
 }
 
 .hw_template-img>img {
-	width: 93%;
-}
-
-.hw_template-img-line-red-big {
 	width: 100%;
-	height: 102%;
-	position: absolute;
-	top: -0.3rem;
-	left: 0;
-	border: 0.1rem solid #ec0000;
-	border-radius: 45% / 35%;
-	box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
-}
-
-.hw_template-img-line-red-small {
-	width: 95%;
-	height: 100%;
-	position: absolute;
-	left: 0.5rem;
-	border: 0.1rem solid #ec0000;
-	border-radius: 45% / 35%;
 }
 
 .hw_template-title {
@@ -366,51 +342,9 @@ main {
 .hw_share_btn {
 	background: none;
 	border: none;
-	padding: 1rem;
-	/* 클릭 가능한 영역을 넓히기 위해 패딩 추가 */
-	margin: 0;
+	margin: 0.5rem auto;
 	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	/* 이미지 위에 나타나도록 설정 */
-	/*opacity: 0;  평소에는 투명하게 */
-	pointer-events: none;
-	/* 기본적으로 클릭 비활성화 */
-	transition: opacity 0.5s;
-	/* 부드러운 전환 효과 */
-	width: 28rem;
-	/* 클릭 가능한 영역을 넓히기 위해 너비 추가 */
-	height: 37rem;
-	/* 클릭 가능한 영역을 넓히기 위해 높이 추가 */
-	display: flex;
-	/* Flexbox 사용 */
-	justify-content: center;
-	/* 수평 중앙 정렬 */
-	align-items: center;
-	/* 수직 중앙 정렬 */
-}
-
-.hw_share_btn img {
 	display: block;
-	width: 5rem;
-	height: 5rem;
-	margin-top: 33rem;
-
-}
-
-.hw_template-button {
-	display: flex;
-	justify-content: center;
-	margin-top: 1.25rem;
-	padding: 0.5rem;
-	gap: 1rem;
-	/* 버튼 사이의 거리 설정 */
-}
-
-.hw_template-button>button {
 	width: 7rem;
 	height: 1.8rem;
 	font-size: 1rem;
@@ -418,19 +352,14 @@ main {
 	border: 0.1rem solid #c82626;
 	border-radius: 0.5rem;
 	box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
-	z-index: 100;
 	background-color: #fff4f4;
-	/* 기본 색상 */
 	color: #5c5c5c;
-	/* 기본 글자 색상 */
+	transition: background-color 0.5s, color 0.5s;
 }
 
-.hw_template-button>button:hover {
+.hw_share_btn:hover {
 	background-color: #ff3b3f;
-	/* 호버 색상 */
 	color: #fff4f4;
-	/* 호버 글자 색상 */
-	transition: 0.5s;
 }
 
 .pagination {
@@ -513,10 +442,8 @@ main {
 
 #canvas-content-container {
 	z-index: 2;
-	/* 컨텐츠가 캔버스 위에 오도록 설정 */
 	position: relative;
 	display: flex;
-
 }
 
 .canvas-container {
@@ -527,7 +454,6 @@ main {
 	width: 100%;
 	height: 100%;
 	z-index: 1;
-	/* 캔버스가 배경 이미지 위에 오도록 설정 */
 }
 
 .canvas {
@@ -538,7 +464,6 @@ main {
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
-	/* 마우스 이벤트를 캔버스에만 허용하도록 설정 */
 }
 
 .canvas-content {
@@ -546,4 +471,9 @@ main {
 	top: -670px;
 	left: 50%;
 	transform: translate(-50%, 0);
+	height: 70%;
+	width: 70%;
+}
+.cursor-custom {
+	cursor: url('mytemplate/imgFolder/back_btn.png'), auto;
 }
