@@ -1,5 +1,6 @@
 package com.enmusubi.member;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -422,37 +423,46 @@ public class MemberDAO {
 			throws IOException, ServletException {
 		
 		HttpSession session = request.getSession(); // 세션 얻기 (없으면 생성)
+	
+		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		MultipartRequest mr;
+		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 		
 		// request에서 파라미터 가져오기
 		String m_id = (String) session.getAttribute("m_id");
-		String m_pw = request.getParameter("m_pw");
-		String m_name = request.getParameter("m_name");
-		String m_name_kana = request.getParameter("m_name_kana");
-		String m_name_rome = request.getParameter("m_name_rome");
+		String m_pw = mr.getParameter("m_pw");
+		String m_name = mr.getParameter("m_name");
+		String m_name_kana = mr.getParameter("m_name_kana");
+		String m_name_rome = mr.getParameter("m_name_rome");
 //		String m_birth = request.getParameter("m_birth");
-		String m_gender = request.getParameter("m_gender");
-		String m_email = request.getParameter("m_email");
-		String m_phone = request.getParameter("m_phone");
+		String m_gender = mr.getParameter("m_gender");
+		String m_email = mr.getParameter("m_email");
+		String m_phone = mr.getParameter("m_phone");
 //        String a_address = request.getParameter("a_address");
-		String a_prefecture = request.getParameter("a_prefecture");
-		String a_city = request.getParameter("a_city");
-		String a_street = request.getParameter("a_street");
-		String a_building = request.getParameter("a_building");
-		String a_postcode = request.getParameter("a_postcode");
-		String m_birthY = request.getParameter("m_birthY");
-		String m_birthM = request.getParameter("m_birthM");
-		String m_birthD = request.getParameter("m_birthD");
-
+		String a_prefecture = mr.getParameter("a_prefecture");
+		String a_city = mr.getParameter("a_city");
+		String a_street = mr.getParameter("a_street");
+		String a_building = mr.getParameter("a_building");
+		String a_postcode = mr.getParameter("a_postcode");
+		String m_birthY = mr.getParameter("m_birthY");
+		String m_birthM = mr.getParameter("m_birthM");
+		String m_birthD = mr.getParameter("m_birthD");
+		String oldImg = mr.getParameter("oldImg");
+		String newImg = mr.getFilesystemName("newImg");
+		
+		String m_img = oldImg;
+		if (newImg != null) {
+			m_img = newImg;
+		}
+		
 		// 디버깅 로그 출력 (m_id 값 확인)
 //		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
 
 		// 현재 날짜 및 시간 가져오기
-		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String m_regdate = now.format(formatter);
+//		LocalDateTime now = LocalDateTime.now();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		String m_regdate = now.format(formatter);
 
-		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
-		String m_img = "default.png"; // 기본 이미지 설정
 
 //         5. 주소 정보 합치기 (구분자 사용)
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
@@ -461,17 +471,17 @@ public class MemberDAO {
 //		System.out.println("here>>>>>>:::"+combinedAddress);
 		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
 
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
-				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
-
-		session.setAttribute("a_postcode", dto.getA_postcode());
-		session.setAttribute("a_address", dto.getA_address());
+		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birthD, m_gender, m_email, combinedBirth, m_img, m_phone, combinedAddress, a_postcode);
 
 		try {
 			updateMemberInfo(dto);
 			response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
-//			request.getRequestDispatcher("MemberDetailC").forward(request, response);
-//			request.getRequestDispatcher("HSC").forward(request, response);
+			
+			// 사진 교체 기존파일 삭제
+			if (newImg != null) {
+				File f = new File(path + "/" + oldImg);
+				f.delete();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("アカウント情報修正エラー");

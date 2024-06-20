@@ -234,7 +234,8 @@ body {
 					</div>
 					<div class="hs_content-input img">
 						<div class="hs_content-text img">プロフィール画像</div>
-						<input type="file" name="m_img" id="m_img" class="hs_input img">
+						<input type="file" name="newImg" id="m_img" class="hs_input img">
+						<input type="hidden" name="oldImg">
 					</div>
 
 					<div class="btn-box">

@@ -74,7 +74,7 @@ body {
 			</div>
 		</div>
 
-		<form action="MemberUpdateC" method="post">
+		<form action="MemberUpdateC" method="post" enctype="multipart/form-data">
 
 			<div class="hs_container">
 
@@ -251,6 +251,10 @@ body {
 						<input type="text" name="a_building" id="a_building"
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
+					</div>
+					<div class="hs_content-input img">
+						<div class="hs_content-text img">プロフィール画像</div>
+						<input type="file" name="newImg" id="m_img" class="hs_input img">
 					</div>
 					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
