@@ -367,6 +367,8 @@ function register() {
 	            return false;
 	        }
 	    }
+	    
+	 // 아이디 중복 확인이 안 되었을 경우 경고 메시지 표시
 
 		const pw = document.getElementById('m_pw').value;
 		const pwConfirm = document.getElementById('m_pw_confirm').value;
@@ -374,6 +376,18 @@ function register() {
 		const emailInput = document.getElementById('emailInput');
         const emailValue = emailInput.value;
 
+	    if (!isIdChecked || !isIdAvailable) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'IDチェックを行ってください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false; // 폼 제출 방지
+	    }
+	    
 		if (pw !== pwConfirm) {
 			Swal.fire({
 				icon: 'warning',
