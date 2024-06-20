@@ -147,6 +147,11 @@ public class LineDAO {
 		    	pstmt.setString(5, "no data");
 		    	pstmt.setString(6, "no data");
 		    	pstmt.executeUpdate();
+		    	
+		    	String insertLineAddress = "INSERT INTO s_Address (m_id) VALUES (?)";
+		    	pstmt = con.prepareStatement(insertLineAddress);
+		    	pstmt.setString(1, sessionId);
+		    	pstmt.executeUpdate();
 		    }
 		}
 		catch (SQLException e) {

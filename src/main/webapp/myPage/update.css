@@ -2,13 +2,14 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
 	;
 
-.hs_body {
+body {
 	font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* 기본 폰트 두께를 지정 */
-  font-style: normal;
-  margin: 0;
-  padding: 0;
+ 	font-optical-sizing: auto;
+ 	font-weight: 400; /* 기본 폰트 두께를 지정 */
+ 	font-style: normal;
+ 	margin: 0;
+ 	padding: 0;
+ 	background-color: #FFF5F4;
 }
 
 .hs_background {
@@ -23,7 +24,7 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-min-height: 1080px;
+	min-height: 1080px;
 	min-width: 1920px;
 	max-width: 1920px;
 }
@@ -185,6 +186,13 @@ min-height: 1080px;
 	margin-top: 2rem;
 }
 
+.hs_content-text.img{
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+	margin-top: -2rem;
+}
+
 .hs_content-text.bd {
 	margin-top: 2rem;
 	margin-right: 1rem;
@@ -224,6 +232,12 @@ min-height: 1080px;
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone, .hs_input.birth {
 	margin-top: 2rem;
+}
+
+.hs_input.img{
+	width: 22rem;
+	border: none;
+	margin-top: -1rem;
 }
 
 .hs_input.post {
@@ -290,7 +304,7 @@ min-height: 1080px;
 	margin-left: 0.5rem;
 }
 
-.btn-reg {
+.btn-reg, .btn-back  {
 	background-color: #FFEEEE;
 	color: black;
 	height: 3rem;
@@ -319,6 +333,23 @@ min-height: 1080px;
 	transition: background-color 0.3s ease;
 }
 
+.btn-back:hover {
+	background-color: #FF4C50;
+	color: #fff;
+}
+
+.btn-box {
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
+	width: 25rem;
+	margin-top: 5rem;
+}
+
+.hs_footer{
+	text-align: center;
+}
+
 .hs_footer-background {
 	background-image: url('ImgFolder/background-2.png');
 	background-size: cover;
@@ -339,7 +370,6 @@ min-height: 1080px;
 .top-button {
 	margin-top: 5rem;
 	width: 200px;
-	margin-left: 54rem;
 }
 
 .hs_content-input.id{
@@ -347,9 +377,8 @@ min-height: 1080px;
 }
 
 .hs_update-id {
-	justify-content: center;
-	position: absolute;
-    left: 17.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    justify-content: center;
+    position: absolute;
+    left: 18rem;
+    font-size: 1.4rem;
 }
