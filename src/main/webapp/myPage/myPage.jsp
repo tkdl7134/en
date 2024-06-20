@@ -68,11 +68,11 @@ body {
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
-				<div class="hs_btn-container">
+				<!-- <div class="hs_btn-container">
 					<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
-				</div>
+				</div> -->
 				<div class="hs_btn-container">
 					<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
@@ -172,11 +172,11 @@ body {
 				</div>
 			</div>
 
-			<footer class="hs_footer">
+			<div class="hs_footer">
 				<img alt="" src="regPage/ImgFolder/top_button.png"
 					class="top-button">
 				<div class="hs_footer-background"></div>
-			</footer>
+			</div>
 		</div>
 	</c:if>
 

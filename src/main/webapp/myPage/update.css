@@ -291,7 +291,7 @@ body {
 	margin-left: 0.5rem;
 }
 
-.btn-reg {
+.btn-reg, .btn-back  {
 	background-color: #FFEEEE;
 	color: black;
 	height: 3rem;
@@ -320,6 +320,23 @@ body {
 	transition: background-color 0.3s ease;
 }
 
+.btn-back:hover {
+	background-color: #FF4C50;
+	color: #fff;
+}
+
+.btn-box {
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
+	width: 25rem;
+	margin-top: 5rem;
+}
+
+.hs_footer{
+	text-align: center;
+}
+
 .hs_footer-background {
 	background-image: url('ImgFolder/background-2.png');
 	background-size: cover;
@@ -340,7 +357,6 @@ body {
 .top-button {
 	margin-top: 5rem;
 	width: 200px;
-	margin-left: 54rem;
 }
 
 .hs_content-input.id{
@@ -348,9 +364,8 @@ body {
 }
 
 .hs_update-id {
-	justify-content: center;
-	position: absolute;
-    left: 17.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    justify-content: center;
+    position: absolute;
+    left: 18rem;
+    font-size: 1.4rem;
 }
