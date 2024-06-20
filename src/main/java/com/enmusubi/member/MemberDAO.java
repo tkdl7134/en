@@ -392,7 +392,7 @@ public class MemberDAO {
 			pstmt.setString(7, dto.getM_email());
 			pstmt.setString(8, dto.getM_phone());
 			pstmt.setString(9, dto.getM_id());
-			
+
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("멤버 수정 성공");
 			}
@@ -403,6 +403,7 @@ public class MemberDAO {
 			pstmt.setString(1, dto.getA_address());
 			pstmt.setString(2, dto.getA_postcode());
 			pstmt.setString(3, dto.getM_id());
+			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("주소 수정 성공");
 			}
