@@ -74,6 +74,7 @@ public class MemberDAO {
 				 session.setAttribute("m_email", dto.getM_email());
 				 session.setAttribute("m_regdate", dto.getM_regdate());
 				 session.setAttribute("m_phone", dto.getM_phone());
+				 session.setAttribute("m_img", dto.getM_img());
 				 
 
 //				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)

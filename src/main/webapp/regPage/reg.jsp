@@ -53,7 +53,8 @@ body {
 
 		<div class="hs_title">会員登録</div>
 
-		<form action="MemberRegC" method="post">
+		<!-- <form action="MemberRegC" method="post"> -->
+		<form action="MemberRegC" method="post" enctype="multipart/form-data">
 
 			<div class="hs_container">
 
@@ -231,12 +232,17 @@ body {
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
 					</div>
+					<!-- <div class="hs_content-input img">
+						<div class="hs_content-text img">プロフィール画像</div>
+						<input type="file" name="m_img" id="m_img" class="hs_input img">
+					</div> -->
+
 					<div class="btn-box">
-					<button id="btnReg" class="btn-reg" type="button"
-						onclick="register()">登録</button>
+						<button id="btnReg" class="btn-reg" type="button"
+							onclick="register()">登録</button>
 						<button id="btnReg" class="btn-back" type="button"
-						onclick="goBack()">取消</button>
-						</div>
+							onclick="goBack()">取消</button>
+					</div>
 				</div>
 			</div>
 			<div class="hs_footer">
