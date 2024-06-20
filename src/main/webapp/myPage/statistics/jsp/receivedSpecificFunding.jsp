@@ -90,8 +90,7 @@
  	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;   width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='ReceivedMainC'"  class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
 	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
 	<div style="display: flex; " id="toGoLines">

@@ -39,8 +39,7 @@
 		</div>
 		<div  style=" display : flex; margin-top : 8rem;    margin-left: 17rem;    width: 80rem;" id="toGoTexts">
 	<div style="color : #696969;font-weight : bold; margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div style="color : #696969;font-weight : bold;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div onclick="location.href='ReceivedMainC'"   class="ToGoTexts" style="font-weight : bold;color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
+	<div style="color : #ff2828;font-weight : bold;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
 	<div  style="color : #696969; font-weight : bold; margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
 	<div style="display: flex;     margin-left: 22rem;" id="toGoLines">
