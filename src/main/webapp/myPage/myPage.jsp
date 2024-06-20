@@ -89,7 +89,7 @@ body {
 				<div class="hs_container-input">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<div class="hs_output">${dto.m_id}</div>
+						<div class="hs_output" id="display_id">${dto.m_id}</div>
 					</div>
 				</div>
 
@@ -181,6 +181,14 @@ body {
 	</c:if>
 
 	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${dto.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
+	
 	function redirectToUpdate() {
 	    window.location.href = "MemberUpdateC";
 	}

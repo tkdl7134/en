@@ -85,9 +85,9 @@ body {
 				<div class="hs_container-input id">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<%-- <input type="hidden" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" value="${sessionScope.m_id}"> --%>
-						<div class="hs_update-id">${sessionScope.m_id}</div>
+						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
+							placeholder="縁結びID" value="${sessionScope.m_id}">
+						<div class="hs_update-id" id="display_id">${sessionScope.m_id}</div>
 					</div>
 
 					<div class="hs_content-input pw">
@@ -267,6 +267,14 @@ body {
 	</div>
 
 	<script>
+	
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${sessionScope.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	    const topButton = document.querySelector('.top-button');

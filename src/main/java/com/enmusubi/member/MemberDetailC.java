@@ -15,13 +15,13 @@ import com.enmusubi.main.Interceptor;
 public class MemberDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		Interceptor.LoginInterceptor(request, response);
+		request.setCharacterEncoding("utf-8");
 		MemberDAO.memberDetailCDoGet(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 	}
 }
