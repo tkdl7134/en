@@ -345,7 +345,7 @@ body {
 			return false; // 폼 제출 방지
 		}
 		
-		if (!(emailValue.includes('@') && emailValue.includes('.'))) {
+		if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
 			Swal.fire({
 				icon: 'warning',
 				title : 'メールアドレスの形式が正しくありません。',
