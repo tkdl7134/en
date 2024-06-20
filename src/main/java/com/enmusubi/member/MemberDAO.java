@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
 import com.google.gson.Gson;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberDAO {
 
@@ -122,18 +124,18 @@ public class MemberDAO {
 	}
 
 	// 회원가입
-	public int registerMemberWithAddress(MemberDTO dto) throws SQLException {
+	public int registerMemberWithAddress(MemberDTO dto, HttpServletRequest request) throws SQLException, IOException {
 		Connection con = null;
 		PreparedStatement pstmtMember = null; // Member 테이블용 PreparedStatement
 		PreparedStatement pstmtAddress = null; // Address 테이블용 PreparedStatement
 		DBManager dbManager = DBManager.getInstance();
-		String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlMember = "INSERT INTO s_Member (m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 		String sqlAddress = "INSERT INTO s_Address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 
 		try {
 			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
-
+			
 			// 디버깅 로그 출력 (m_id 값 확인)
 //            System.out.println("MemberDAO - registerMemberWithAddress - m_id: " + dto.getM_id()); // 콘솔에 m_id 값 출력
 
@@ -147,9 +149,9 @@ public class MemberDAO {
 			pstmtMember.setString(6, dto.getM_birth());
 			pstmtMember.setString(7, dto.getM_gender());
 			pstmtMember.setString(8, dto.getM_email());
-			pstmtMember.setString(9, dto.getM_regdate());
-			pstmtMember.setString(10, dto.getM_img());
-			pstmtMember.setString(11, dto.getM_phone());
+//			pstmtMember.setString(9, dto.getM_regdate());
+			pstmtMember.setString(9, dto.getM_img());
+			pstmtMember.setString(10, dto.getM_phone());
 			pstmtMember.executeUpdate();
 
 			// 2. 주소 정보 등록
@@ -176,24 +178,29 @@ public class MemberDAO {
 	public static void MemberRegC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// request에서 파라미터 가져오기
-		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
-		String m_name = request.getParameter("m_name");
-		String m_name_kana = request.getParameter("m_name_kana");
-		String m_name_rome = request.getParameter("m_name_rome");
+		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		MultipartRequest mr;
+		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
+		
+		String m_id = mr.getParameter("m_id");
+		String m_pw = mr.getParameter("m_pw");
+		String m_name = mr.getParameter("m_name");
+		String m_name_kana = mr.getParameter("m_name_kana");
+		String m_name_rome = mr.getParameter("m_name_rome");
 //		String m_birth = request.getParameter("m_birth");
-		String m_gender = request.getParameter("m_gender");
-		String m_email = request.getParameter("m_email");
-		String m_phone = request.getParameter("m_phone");
+		String m_gender = mr.getParameter("m_gender");
+		String m_email = mr.getParameter("m_email");
+		String m_phone = mr.getParameter("m_phone");
 //        String a_address = request.getParameter("a_address");
-		String a_prefecture = request.getParameter("a_prefecture");
-		String a_city = request.getParameter("a_city");
-		String a_street = request.getParameter("a_street");
-		String a_building = request.getParameter("a_building");
-		String a_postcode = request.getParameter("a_postcode");
-		String m_birthY = request.getParameter("m_birthY");
-		String m_birthM = request.getParameter("m_birthM");
-		String m_birthD = request.getParameter("m_birthD");
+		String a_prefecture = mr.getParameter("a_prefecture");
+		String a_city = mr.getParameter("a_city");
+		String a_street = mr.getParameter("a_street");
+		String a_building = mr.getParameter("a_building");
+		String a_postcode = mr.getParameter("a_postcode");
+		String m_birthY = mr.getParameter("m_birthY");
+		String m_birthM = mr.getParameter("m_birthM");
+		String m_birthD = mr.getParameter("m_birthD");
+		String m_img = mr.getFilesystemName("m_img");
 
 		// 디버깅 로그 출력 (m_id 값 확인)
 //		System.out.println("MemberRegC - m_id: " + m_id); // 콘솔에 m_id 값 출력
@@ -203,8 +210,6 @@ public class MemberDAO {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String m_regdate = now.format(formatter);
 
-		// 이미지 처리 (파일 업로드 등 별도 처리 필요)
-		String m_img = "default.png"; // 기본 이미지 설정
 		
 //      정보 합치기 (구분자 사용)
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
@@ -221,11 +226,12 @@ public class MemberDAO {
 		MemberDAO dao = new MemberDAO();
 		try {
 			// 7. 회원 정보 및 주소 정보 등록 (트랜잭션 처리)
-			int result = dao.registerMemberWithAddress(dto);
+//			int result = dao.registerMemberWithAddress(dto);
+			int result = dao.registerMemberWithAddress(dto, request);
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
 				System.out.println("회원가입 성공");
-//				request.getRequestDispatcher("MemberC").forward(request, response);
+
 			} else {
 				// 회원가입 실패 처리
 				System.out.println("アカウント登録失敗");
@@ -373,7 +379,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? WHERE m_id = ?";
+		String sql1 = "UPDATE s_Member SET m_pw = ?, m_name = ?, m_name_kana = ?, m_name_rome = ?, m_birth = ?, m_gender = ?, m_email = ?, m_phone = ? m_img = ? WHERE m_id = ?";
 		String sql2 = "UPDATE s_Address SET a_address = ?, a_postcode = ? WHERE m_id = ?";
 		
 		try {
@@ -390,12 +396,12 @@ public class MemberDAO {
 			pstmt.setString(7, dto.getM_email());
 			pstmt.setString(8, dto.getM_phone());
 			pstmt.setString(9, dto.getM_id());
+			pstmt.setString(10, dto.getM_img());
 
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("멤버 수정 성공");
 			}
 			
-
 			pstmt = con.prepareStatement(sql2);
 			// Address 테이블 업데이트
 			pstmt.setString(1, dto.getA_address());
@@ -452,7 +458,7 @@ public class MemberDAO {
 		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
-		System.out.println("here>>>>>>:::"+combinedAddress);
+//		System.out.println("here>>>>>>:::"+combinedAddress);
 		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
 
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,

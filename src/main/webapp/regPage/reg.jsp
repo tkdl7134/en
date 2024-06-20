@@ -232,10 +232,10 @@ body {
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
 					</div>
-					<!-- <div class="hs_content-input img">
+					<div class="hs_content-input img">
 						<div class="hs_content-text img">プロフィール画像</div>
 						<input type="file" name="m_img" id="m_img" class="hs_input img">
-					</div> -->
+					</div>
 
 					<div class="btn-box">
 						<button id="btnReg" class="btn-reg" type="button"
@@ -527,7 +527,7 @@ function register() {
                         } else {
                             /* alert("このIDは使用可能です。"); // 사용 가능한 ID일 때 alert 창 표시 */
                             Swal.fire({
-            					icon: 'warning',
+            					icon: 'success',
             					title : 'このIDは使用可能です。',
             					customClass : {
             						popup : 'swal2-popup',
