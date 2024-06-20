@@ -53,7 +53,8 @@ body {
 
 		<div class="hs_title">会員登録</div>
 
-		<form action="MemberRegC" method="post">
+		<!-- <form action="MemberRegC" method="post"> -->
+		<form action="MemberRegC" method="post" enctype="multipart/form-data">
 
 			<div class="hs_container">
 
@@ -231,12 +232,18 @@ body {
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
 					</div>
+					<div class="hs_content-input img">
+						<div class="hs_content-text img">プロフィール画像</div>
+						<input type="file" name="newImg" id="m_img" class="hs_input img">
+						<input type="hidden" name="oldImg">
+					</div>
+
 					<div class="btn-box">
-					<button id="btnReg" class="btn-reg" type="button"
-						onclick="register()">登録</button>
+						<button id="btnReg" class="btn-reg" type="button"
+							onclick="register()">登録</button>
 						<button id="btnReg" class="btn-back" type="button"
-						onclick="goBack()">取消</button>
-						</div>
+							onclick="goBack()">取消</button>
+					</div>
 				</div>
 			</div>
 			<div class="hs_footer">
@@ -367,6 +374,8 @@ function register() {
 	            return false;
 	        }
 	    }
+	    
+	 // 아이디 중복 확인이 안 되었을 경우 경고 메시지 표시
 
 		const pw = document.getElementById('m_pw').value;
 		const pwConfirm = document.getElementById('m_pw_confirm').value;
@@ -374,6 +383,18 @@ function register() {
 		const emailInput = document.getElementById('emailInput');
         const emailValue = emailInput.value;
 
+	    if (!isIdChecked || !isIdAvailable) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'IDチェックを行ってください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false; // 폼 제출 방지
+	    }
+	    
 		if (pw !== pwConfirm) {
 			Swal.fire({
 				icon: 'warning',
@@ -507,7 +528,7 @@ function register() {
                         } else {
                             /* alert("このIDは使用可能です。"); // 사용 가능한 ID일 때 alert 창 표시 */
                             Swal.fire({
-            					icon: 'warning',
+            					icon: 'success',
             					title : 'このIDは使用可能です。',
             					customClass : {
             						popup : 'swal2-popup',
