@@ -6,7 +6,7 @@ public class invitaitonDTO {
 	private int t_pk;
 	private String w_groom;
 	private String w_bride;
-	private String w_message_info;
+	private String w_message_invite;
 	private String w_message_bye;
 	private String w_img1;
 	private String w_img2;
@@ -25,7 +25,7 @@ public class invitaitonDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public invitaitonDTO(int e_no, int t_pk, String w_groom, String w_bride, String w_message_info,
+	public invitaitonDTO(int e_no, int t_pk, String w_groom, String w_bride, String w_message_invite,
 			String w_message_bye, String w_img1, String w_img2, String w_img3, String w_img4, String weddingDay,
 			String w_time, String w_time_assemble, String r_time, String r_time_assemble) {
 		super();
@@ -33,7 +33,7 @@ public class invitaitonDTO {
 		this.t_pk = t_pk;
 		this.w_groom = w_groom;
 		this.w_bride = w_bride;
-		this.w_message_info = w_message_info;
+		this.w_message_invite = w_message_invite;
 		this.w_message_bye = w_message_bye;
 		this.w_img1 = w_img1;
 		this.w_img2 = w_img2;
@@ -78,12 +78,12 @@ public class invitaitonDTO {
 		this.w_bride = w_bride;
 	}
 
-	public String getW_message_info() {
-		return w_message_info;
+	public String getW_message_invite() {
+		return w_message_invite;
 	}
 
-	public void setW_message_info(String w_message_info) {
-		this.w_message_info = w_message_info;
+	public void setW_message_invite(String w_message_invite) {
+		this.w_message_invite = w_message_invite;
 	}
 
 	public String getW_message_bye() {
@@ -166,15 +166,6 @@ public class invitaitonDTO {
 		this.r_time_assemble = r_time_assemble;
 	}
 
-	@Override
-	public String toString() {
-		return "invitaitonDTO [e_no=" + e_no + ", t_pk=" + t_pk + ", w_groom=" + w_groom + ", w_bride=" + w_bride
-				+ ", w_message_info=" + w_message_info + ", w_message_bye=" + w_message_bye + ", w_img1=" + w_img1
-				+ ", w_img2=" + w_img2 + ", w_img3=" + w_img3 + ", w_img4=" + w_img4 + ", weddingDay=" + weddingDay
-				+ ", w_time=" + w_time + ", w_time_assemble=" + w_time_assemble + ", r_time=" + r_time
-				+ ", r_time_assemble=" + r_time_assemble + "]";
-	}
-	
 	
 	
 }

@@ -82,6 +82,7 @@ public class ProductDAO {
 	public static void regIvitation(HttpServletRequest request) {
 		Connection con = null;
 //		PreparedStatement pstmtEventNo = null;
+		PreparedStatement pstmtEvent = null;
 		PreparedStatement pstmtWeddingInfo = null;
 		PreparedStatement pstmtWedding = null;
 		PreparedStatement pstmtReception = null;
@@ -89,14 +90,16 @@ public class ProductDAO {
 		DBManager dbManager = DBManager.getInstance();
 		
 //		create sequence e_no_seq;
-																//	e_no
-		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String sqlEvent = "insert into s_event values(e_no_seq.nextval, ?, ?)";
+		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		
 		try {
 			 con = dbManager.connect();
 			 
+			 pstmtEvent = con.prepareStatement(sqlEvent);
 			 pstmtWeddingInfo = con.prepareStatement(sqlWeddingInfo);
 			 pstmtWedding = con.prepareStatement(sqlWedding);
 			 pstmtReception = con.prepareStatement(sqlReception);
@@ -115,6 +118,10 @@ public class ProductDAO {
 				return;
 			}
 			
+			
+			// s_event 삽입
+			pstmtEvent.setString(1, "testuser");
+			pstmtEvent.setString(2, "");
 			
 			// s_wedding_info table 삽입
 			
@@ -210,6 +217,10 @@ public class ProductDAO {
 			pstmtReception.setTimestamp(4, reception_assemble_time);
 			pstmtReception.setString(5, "reception");
 						
+			if (pstmtEvent.executeUpdate() == 1) {
+				System.out.println("Event - 성공");
+			}
+			
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
 				System.out.println("weddinginfo - 성공");
 			}
@@ -232,10 +243,32 @@ public class ProductDAO {
 		
 	}
 
-
     private static boolean isTemplatePKValid(int templatePK) {
     	return true; // 항상 유효
     }
+
+	public static void getInvitation(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		
+		String sql = "select e.e_no, w.t_pk, w.w_groom, w.w_bride, w.w_msg_invite, w.w_msg_bye, w.w_img1, w.w_img2, w.w_img3, w.w_img4,t.t_template\n"
+					+ "from s_event e"
+					+ "join s_wedding_info w on e.e_no = w.e_no"
+					+ "join s_template t on w.t_pk = t.t_pk"
+					+ "where e.e_no = ?;";
+		
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sql);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
 
 
 }
