@@ -77,14 +77,14 @@
 											<div>出席</div>
 										</div>
 										<img class="lines" alt="" src="surveyPage/imgFolder/yesline.png">
-										<input type="hidden" name="attendance" value="present">
+										<input type="hidden" name="attendance" value="出席">
 									</div>
 									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
 										<div class="texts">
 											<div>欠席</div>
 										</div>
 										<img class="lines" alt="" src="surveyPage/imgFolder/noline.png">
-										<input type="hidden" name="attendance" value="absent">
+										<input type="hidden" name="attendance" value="欠席">
 									</div>
 
 								</div>
@@ -109,7 +109,7 @@
 										<c:when test="${loginType == 'normal' }">
 										    <c:set var="members" value="${members }" />
 											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">漢字</div> 
+												<div style="font-size: 1.5rem;">名前</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
 												class="name-input" id="name" name="name" required value="${members.m_first_name}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder=" - "

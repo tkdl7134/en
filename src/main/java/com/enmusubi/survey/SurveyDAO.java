@@ -44,7 +44,7 @@ public class SurveyDAO {
 	    PreparedStatement pstmtLineMemberUpdate = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    
-	    String sqlLineAddressUpdate = "UPDATE s_address SET a_address=?, a_postcode WHERE m_id?";	    
+	    String sqlLineAddressUpdate = "UPDATE s_address SET a_address=?, a_postcode=? WHERE m_id=?";	    
 	    String sqlLineMemberUpdate = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";	    
 
 	    
@@ -64,8 +64,10 @@ public class SurveyDAO {
             System.out.println("로마값은: " + request.getParameter("roma-name"));
             System.out.println("이메일: " + request.getParameter("email"));
             System.out.println("폰번: " + request.getParameter("phonenum"));
+            System.out.println("주소번호: " + request.getParameter("postal-code"));
+            System.out.println("주소: " + request.getParameter("address"));
             System.out.println("참석: " + request.getParameter("attendance"));
-            System.out.println("어디 측" + request.getParameter("couple"));
+            System.out.println("어디 측: " + request.getParameter("couple"));
             System.out.println("알레르기 여부: " + request.getParameter("allergy"));
             System.out.println("메세지: " + request.getParameter("special-notes"));
             System.out.println("관계: " + request.getParameter("relation"));
@@ -115,9 +117,9 @@ public class SurveyDAO {
 	        
 	        String addresses = String.join(" ", address != null ? address : new String[0]);
 	        
-	        pstmtLineAddressUpdate.setString(1, lineUserId);
-	        pstmtLineAddressUpdate.setString(2, addresses);
-	        pstmtLineAddressUpdate.setString(3, postcode);
+	        pstmtLineAddressUpdate.setString(1, addresses);
+	        pstmtLineAddressUpdate.setString(2, postcode);
+	        pstmtLineAddressUpdate.setString(3, lineUserId);
 
 	        
 	        if (pstmtLineAddressUpdate.executeUpdate() == 1) {
@@ -385,11 +387,14 @@ public class SurveyDAO {
 	PreparedStatement pstmtMember = null; 
 	PreparedStatement pstmtAllergy = null;
 	PreparedStatement pstmtParty = null;
+	PreparedStatement pstmtAddress = null;
+
 	DBManager dbManager = DBManager.getInstance();
 	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
 	String sqlParty = "INSERT INTO s_Party (e_no, m_id, p_adult, p_child, p_baby) VALUES (?, ?, ?, ?, ?)";
+	String sqlAddress = "INSERT INTO s_address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 	
 	try {
 		
@@ -432,7 +437,6 @@ public class SurveyDAO {
 		}
 		
 		// 알러지 상세사항 입력
-		
         String gAttend = request.getParameter("g_attend");
         if ("yes".equals(gAttend)) { // 참일때만 알러지 정보 입력
             String allergytype = request.getParameter("allergy-type");
@@ -447,6 +451,23 @@ public class SurveyDAO {
                 System.out.println("알러지 등록성공!!");
             }
         }
+        
+        // 주소 입력
+        String postcode = request.getParameter("postal-code");
+        String[] address = request.getParameterValues("address");
+
+        String addresses = String.join(" ", address != null ? address : new String[0]);
+
+            
+        	pstmtAddress = con.prepareStatement(sqlAddress);
+        	pstmtAddress.setString(1, id);
+        	pstmtAddress.setString(2, postcode);
+        	pstmtAddress.setString(3, addresses);
+
+            if (pstmtAllergy.executeUpdate() == 1) {
+                System.out.println("주소 등록성공!!");
+            }
+        
 		
 		
 	} catch (Exception e) {
