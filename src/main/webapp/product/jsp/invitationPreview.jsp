@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-eventnumber parameter
+eventnumber parameter : ${inviteInfo.e_no } <br>
+<img alt="" src="product/imgFolder/${inviteInfo.w_img3 }">
 </body>
 </html>

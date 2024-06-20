@@ -3,6 +3,7 @@ package com.enmusubi.product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 //import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -224,11 +225,13 @@ public class ProductDAO {
 				String sql = "select e_no_seq.currval from dual";
 				pstmtEventNo = con.prepareCall(sql);
 				rs = pstmtEventNo.executeQuery();
+				int eventNo = 0;
 				if (rs.next()) {
 					System.out.println("이벤트번호 겟또");
-					System.out.println(rs.getString("e_no_seq.currval"));
-					request.setAttribute("eventNo", rs.getString("e_no_seq.currval"));
+					eventNo = rs.getInt(1);
+					System.out.println(eventNo);					
 				}
+				request.setAttribute("je_eventNo", eventNo);
 			}
 			
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
@@ -250,7 +253,7 @@ public class ProductDAO {
 		} finally {
 		   dbManager.close(null, pstmtReception, null);
 		   dbManager.close(null, pstmtWedding, null);
-		   dbManager.close(con, pstmtWeddingInfo, null);
+		   dbManager.close(con, pstmtWeddingInfo, rs);
 		   
 		}
 		
@@ -266,20 +269,64 @@ public class ProductDAO {
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		
-		String sql = "select e.e_no, w.t_pk, w.w_groom, w.w_bride, w.w_msg_invite, w.w_msg_bye, w.w_img1, w.w_img2, w.w_img3, w.w_img4,t.t_template\n"
-					+ "from s_event e"
-					+ "join s_wedding_info w on e.e_no = w.e_no"
-					+ "join s_template t on w.t_pk = t.t_pk"
-					+ "where e.e_no = ?;";
+		String sql = "SELECT e.e_no, w.t_pk,"
+						+ " w.w_groom, w.w_bride, w.w_msg_invite, w.w_msg_bye, w.w_img1, w.w_img2, w.w_img3, w.w_img4,"
+						+ " t.t_template,"
+						+ " rw.r_time AS wedding_time,"
+						+ " rw.r_time_assemble AS wedding_assemble_time,"
+						+ " rr.r_time AS reception_time,"
+						+ " rr.r_time_assemble AS reception_assemble_time"
+					+ " FROM s_event e"
+					+ " JOIN s_wedding_info w ON e.e_no = w.e_no" 
+					+ " JOIN s_template t ON w.t_pk = t.t_pk"
+					+ " JOIN s_reception rw ON e.e_no = rw.e_no AND rw.r_type = 'wedding'"
+					+ " JOIN s_reception rr ON e.e_no = rr.e_no AND rr.r_type = 'reception'"
+					+ " WHERE e.e_no = ? ";
 		
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, sql);
+			pstmt.setInt(1, (int)request.getAttribute("je_eventNo"));
+			System.out.println(request.getAttribute("je_eventNo"));
+			rs = pstmt.executeQuery();
+			
+			invitaitonDTO inviteInfo = null;
+			if (rs.next()) {
+				Timestamp weddingDT = rs.getTimestamp("wedding_time");
+				Timestamp weddingADT = rs.getTimestamp("wedding_assemble_time");
+				Timestamp receptionDT = rs.getTimestamp("reception_time");
+				Timestamp receptionADT = rs.getTimestamp("reception_assemble_time");
+//				if (weddingDT != null || ) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+				SimpleDateFormat timeFormat = new SimpleDateFormat("HH : mm");
+					
+				String weddingDay = dateFormat.format(weddingDT);
+				String weddingTime = timeFormat.format(weddingDT);
+				String weddingA_Time = timeFormat.format(weddingDT);
+				String receptionTime = timeFormat.format(receptionDT);
+				String receptionA_Time = timeFormat.format(receptionADT);
+				
+				
+				inviteInfo
+				= new invitaitonDTO(
+						(int)request.getAttribute("je_eventNo"), 
+						rs.getInt("t_pk"), rs.getString("t_template"),
+						rs.getString("w_groom"), rs.getString("w_bride"),
+						rs.getString("w_msg_invite"),rs.getString("w_msg_bye"),
+						rs.getString("w_img1"),rs.getString("w_img2"),rs.getString("w_img3"),rs.getString("w_img4"),
+						weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time);
+				
+			}
+			request.setAttribute("inviteInfo", inviteInfo);
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+		    e.printStackTrace();
+		    System.out.println("invitation 정보뽑아오기 쪽 error");
+		} finally {
+		    dbManager.close(con, pstmt, rs);
 		}
+	
+
 		
 	}
 

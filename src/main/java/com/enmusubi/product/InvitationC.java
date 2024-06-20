@@ -16,7 +16,11 @@ public class InvitationC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO.regIvitation(request);
+		System.out.println("헷");
 		ProductDAO.getInvitation(request);
+		System.out.println("하");
+		request.getRequestDispatcher("product/jsp/invitationPreview.jsp").forward(request, response);
+		
 	}
 
 }
