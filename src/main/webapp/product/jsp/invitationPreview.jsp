@@ -8,6 +8,8 @@
 </head>
 <body>
 eventnumber parameter : ${inviteInfo.e_no } <br>
+${inviteInfo.weddingDay }
+${inviteInfo.w_time }
 <img alt="" src="product/imgFolder/${inviteInfo.w_img3 }">
 </body>
 </html>

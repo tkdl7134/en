@@ -71,7 +71,10 @@
                   <div id="je_photoPre3"></div>
                 </div>
                 <!-- 시간.날짜 -->
-                <div id="je_weddingDay"></div>
+                <div class="je_days">
+	                <div id="je_weddingDay"></div>
+	                <div id="je_receptionDay"></div>
+                </div>
 
                 <div class="je_eventTime">
                   <div id="je_mainEvent-time"></div>
