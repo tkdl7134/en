@@ -14,9 +14,9 @@ import com.enmusubi.main.Interceptor;
 public class MemberUpdateC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		Interceptor.LoginInterceptor(request, response);
+		if(Interceptor.LoginInterceptor(request, response)) {
 		request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
-
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

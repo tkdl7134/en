@@ -94,10 +94,12 @@ public class LineDAO {
 				JSONObject jsonResponse = new JSONObject(response.toString());
 				String m_id = jsonResponse.getString("userId");
 				String m_name = jsonResponse.getString("displayName");
+				String m_img = jsonResponse.getString("pictureUrl");
 
 				HttpSession session = request.getSession();
 				session.setAttribute("m_id", "LINE_" + m_id);
 				session.setAttribute("m_name", m_name);
+				session.setAttribute("m_img", m_img);
 
 				// 디버깅 코드 출력
 //		            System.out.println("Session userId set to: " + m_id);

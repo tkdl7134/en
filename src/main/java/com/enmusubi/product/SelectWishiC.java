@@ -14,6 +14,7 @@ public class SelectWishiC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SelectWishiDAO.insertWishiLink(request,response);
 	}
 
 }

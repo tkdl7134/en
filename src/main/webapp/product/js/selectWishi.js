@@ -34,4 +34,69 @@ document.addEventListener("DOMContentLoaded", function() {
 	background1.addEventListener("mousemove", function(event) {
 		handleMouseMove(event, ctx1, canvas1);
 	});
+	const amazonmodal = document.getElementById("AmazonModal");
+	const jpop = document.querySelector(".jw-w-popup");
+	amazonmodal.addEventListener("click", function(event) {
+		if (!jpop.contains(event.target)) {
+			closeAmazonModal();
+		}
+	});
+	const sendmodal = document.getElementById("SendModal");
+	sendmodal.addEventListener("click", function(event) {
+		if (!jpop.contains(event.target)) {
+			closeSendModal();
+		}
+	});
+
+
+
 });
+
+function openAmazonModal() {
+	const modal = document.getElementById("AmazonModal");
+	modal.showModal();
+}
+
+function closeAmazonModal() {
+	const modal = document.getElementById("AmazonModal");
+	modal.close();
+}
+function openSendModal() {
+	const modal = document.getElementById("SendModal");
+	modal.showModal();
+}
+
+function closeSendModal() {
+	const modal = document.getElementById("SendModal");
+	modal.close();
+}
+
+function amazonSubmit(eno) {
+	const alink = document.querySelector(".jw-w-popup-input").value;
+	$.ajax({
+		type: "post",
+		url: "SelectWishiC",
+		data: { "alink": alink, "eno":eno },
+		dataType: "json",
+		success: function(response) {
+			
+		}
+		});
+	alert("submit complete!");
+
+	closeAmazonModal();
+}
+function sendSubmit() {
+	const alink = document.querySelector(".jw-w-popup-input").value;
+	$.ajax({
+		type: "post",
+		url: "SelectWishiC?a=aa",
+		data: { "alink": alink, "eno":eno },
+		dataType: "json",
+		success: function(response) {
+			
+		}
+		});
+	alert("submit complete!");
+	closeSendModal();
+}
