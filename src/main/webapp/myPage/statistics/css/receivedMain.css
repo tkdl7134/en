@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  src:url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+}
+body {
+  font-family:"Noto Serif JP", serif;
+  margin: 0;
+  padding: 0;
+  height : 100%;
+}
+.recMain-container {
+	 height: 100vh;
+    background-image: url(../imgFolder/surveyBackground-img.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat : no-repeat;
+}
+
+
+.yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
+#recMain-title {
+        font-size: 2.5rem;
+    width: 20rem;
+    margin-top: 7rem;
+    margin-left: 2rem;
+}
+#recMain-header {
+}
+#header-img{
+        width: 24rem;
+      
+
+}
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
+#recMain-content{
+	   display: flex;
+    margin-top: 7rem;
+    width: 90rem;
+    justify-content: space-evenly;
+    margin-right : 3rem;
+}
+.box-img{
+	
+}	
+.boxes{
+    width: 17rem;
+    position: absolute;
+}
+	
+	
+
+.box-img:hover .boxes, .box-img:hover .lines {
+  transform: rotate(6deg);
+}
+
+.lines{
+    width: 10rem;
+    margin-left: 3.5rem;
+	
+}
+.spaces {
+	height : 0;
+	
+}
+.texts {
+        text-align: center;
+        margin-top: 6rem;
+    margin-left: 1.5rem;
+}
+.objective{
+	font-size : 2.4rem;
+	}
+
+.genjyou{
+	font-size : 1.3rem;
+	margin-top : 1.5rem;
+	color : darkslategrey;
+	}

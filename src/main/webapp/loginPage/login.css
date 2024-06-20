@@ -1,0 +1,191 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
+	;
+
+body {
+	font-family: "Noto Serif JP", serif;
+  	font-optical-sizing: auto;
+  	font-weight: 400; /* 기본 폰트 두께를 지정 */
+  	font-style: normal;
+  	margin: 0;
+  	padding: 0;
+}
+
+.hs_background {
+	background-image: url('ImgFolder/background.png');
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: top center;
+min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
+}
+
+.yj-main-s2-logo {
+	z-index: 4;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
+}
+
+.yj-main-s2-logo img {
+	/* width: 150px; */
+	width: 100%;
+	height: 100%;
+	animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+.yj-main-s2-menu {
+	z-index: 4;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+}
+
+.yj-main-s2-menu img {
+	width: 100%;
+	height: 100%;
+}
+
+.horizontal-container-title {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 배치 */
+	align-items: center; /* 중앙 정렬 */
+}
+
+.hs_heading {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-top: 7rem;
+}
+
+.hs_container-login-border {
+	background-image: url(ImgFolder/BG.png);
+	/* background-position: center; */
+	margin: auto;
+	margin-top: 10rem;
+	background-size: 100% 100%;
+	width: 35%;
+	height: 28rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.hs_login {
+	margin-top: 2rem;
+	text-align: left;
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.hs_input {
+	width: 30rem;
+	height: 4rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	font-family: 'Noto Serif JP', serif;
+	padding-left: 1rem;
+}
+
+.hs_btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+}
+
+.hs_btn.line-login {
+	color: black;
+	font-size: 1.2rem;
+}
+
+.hs_btn.line-login:hover {
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hs_btn.reg {
+	color: #FF4C50;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.hs_btn.reg:hover {
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.yellow_line {
+	width: 16rem;
+}
+
+.hs_btn-login {
+	background-color: #FFFBF7;
+	color: black;
+	height: 3rem;
+	width: 7rem;
+	border: 2px solid #C82626;
+	padding: 5px 15px;
+	border-radius: 13px;
+	cursor: pointer;
+	box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	font-family: 'Noto Serif JP', serif;
+	font-weight: bolder;
+	font-size: 1.1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 1.5rem;
+	margin-bottom: 2rem;
+	display: flex;
+}
+
+.hs_btn-login:hover {
+	background-color: #FF4C50;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+}
+
+a.hs_link {
+	color: #e60012;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.hs_link:hover {
+	text-decoration: underline;
+}
+
+#additional-links {
+	margin-top: 20px;
+	text-align: center;
+}

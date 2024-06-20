@@ -1,0 +1,265 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
+	;
+
+body {
+	font-family: "Noto Serif JP", serif;
+	font-optical-sizing: auto;
+	font-weight: 400; /* 기본 폰트 두께를 지정 */
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	background-color: #FFF5F4;
+}
+
+.hs_background {
+	background-image: url('ImgFolder/background-1.png'),
+		url('ImgFolder/background-1-1.png');
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: top center;
+	min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
+}
+
+.yj-main-s2-logo {
+	z-index: 4;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
+}
+
+.yj-main-s2-logo img {
+	width: 100%;
+	height: 100%;
+	animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float { 0%, 100% {
+	transform: translate(0, 0%);
+}
+
+50%
+{
+transform
+:
+translate(
+0
+,
+5%
+);
+}
+}
+.yj-main-s2-menu {
+	z-index: 4;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+}
+
+.yj-main-s2-menu img {
+	width: 100%;
+	height: 100%;
+}
+
+.hs_title {
+	padding-top: 6%;
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 5rem;
+	text-align: center;
+}
+
+.hs_mypage-menus {
+	display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin: auto;
+	margin-top: 5rem;
+}
+
+.hs_btn-container {
+	display: block;
+}
+
+.hs_btn {
+	text-decoration: none;
+	color: #696969;
+}
+
+.hs_btn.me {
+	color: #ff2828;
+}
+
+.yellow_line {
+	width: 15rem;
+	margin-bottom: 100px;
+}
+
+.hs_content-title-account, .hs_content-title-user {
+	font-size: 1.5rem;
+	border: 3px solid #FF7E81;
+	text-align: left;
+	flex-direction: column;
+	margin: auto;
+	width: 43rem;
+	padding: 1.3rem;
+	font-weight: bold;
+	border-radius: 20px;
+	background-color: #FFDBDB;
+	position: relative;
+	z-index: 3;
+}
+
+.hs_content-title-user {
+	margin-top: 3rem;
+}
+
+.hs_container-input {
+	position: relative;
+	top: -1rem;
+	border: 2px solid #FF7E81;
+	border-radius: 20px;
+	flex-direction: column;
+	text-align: left;
+	margin: auto;
+	width: 43rem;
+	background-color: #FFEEEE;
+	padding-top: 1.5rem;
+}
+
+.hs_content-input {
+	font-size: 1.4rem;
+	display: flex;
+	margin-left: 18rem;
+	justify-content: start;
+	align-items: center;
+	margin-right: 2rem;
+	margin-top: 2rem;
+}
+
+.hs_content-input.id {
+	margin-bottom: 3rem;
+}
+
+.hs_content-text {
+	margin-right: 3rem;
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+.hs_content-text.id, .hs_content-text.pw, .hs_content-text.pwconfirm {
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+}
+
+.hs_content-text.name, .hs_content-text.kana, .hs_content-text.rome,
+	.hs_content-text.gender, .hs_content-text.post, .hs_content-text.prefecture,
+	.hs_content-text.city, .hs_content-text.street, .hs_content-text.building,
+	.hs_content-text.email, .hs_content-text.phone, .hs_content-text.birth
+	{
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+}
+
+.hs_content-text.post {
+	margin-top: 2rem;
+}
+
+.hs_content-text.prefecture {
+	margin-top: 2rem;
+}
+
+.hs_content-text.bd {
+	margin-top: 2rem;
+	margin-right: 1rem;
+}
+
+.hs_content-text.postmark {
+	position: absolute;
+	left: 0;
+	margin-left: 18rem;
+	margin-top: 1.7rem;
+}
+
+.hs_output {
+	font-size: 1.4rem;
+}
+
+.hs_output.prefecture {
+	margin-top: 2rem;
+}
+
+.btn-box {
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
+	width: 25rem;
+	margin-top: 5rem;
+}
+
+.btn {
+	background-color: #FFEEEE;
+	color: black;
+	height: 3rem;
+	width: 10rem;
+	border: 2px solid #C82626;
+	border-radius: 13px;
+	box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	font-family: 'Noto Serif JP', serif;
+	font-weight: bolder;
+	font-size: 1.1rem;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 4rem;
+	display: flex;
+	cursor: pointer; /* 커서를 손가락 모양으로 변경 */
+}
+
+.btn:hover {
+	background-color: #FF4C50;
+	color: #fff;
+}
+
+.hs_footer{
+	text-align: center;
+}
+
+.hs_footer-background {
+	background-image: url('ImgFolder/background-2.png');
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: top center;
+	margin-top: -55rem;
+	min-height: 1080px;
+	min-width: 1920px;
+	max-width: 1920px;
+}
+
+.top-button {
+	margin-top: 5rem;
+	width: 200px;
+}

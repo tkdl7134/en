@@ -1,0 +1,98 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap');
+}
+
+body {
+    font-family: "Noto Serif JP", serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.recFund-container {
+	height:100vh;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color :#FFF5F4;
+	background-image : url(../imgFolder/halfCircle2.png);
+	 background-repeat : no-repeat;
+	 
+	
+}
+.yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
+.jh-half-circle{
+	 width: 116rem;
+    height: 90vh; /* 높이는 반원이 되도록 합니다 */
+    border-top-left-radius: 60rem;
+    border-top-right-radius: 60rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+	top: 5rem;
+}
+
+.recFund-title {
+	font-size: 1.7rem;
+    margin-left: 48.9rem;
+    margin-top: 3rem;
+	
+}
+.fundProduct-img {
+	width: 15rem;
+	
+}

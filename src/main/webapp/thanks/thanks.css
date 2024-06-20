@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+body {
+	width: 120rem;
+	height: 68rem;
+	background-color:#FFC1B8;
+}
+
+.tk_container {
+	width: 100%; 
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.tk_letter {
+	background-image: url('imgFolder/backgroundSakura.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 60rem;
+	height: 38rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.tk_letterWords{
+	display: flex;
+	flex-direction:column; 
+	justify-content: center;
+	align-items:center;
+	gap: 3rem;
+}
+.tk_letterWords > div:nth-child(1){
+	font-size: 3rem;
+
+}
+	
+.tk_letterWords > div:nth-child(2){
+	margin-bottom: 5rem;
+	font: 2rem;
+}
+
+.tk_thanks_button{
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	gap: 10rem;
+}
+
+.tk_thanks_button > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    height: 10rem;
+}
+
+.tk_thanks_button img {
+  width: 6rem;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.button_templet:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/loveicon2.png') 5 5, pointer;
+}
+
+.button_login:hover {
+  animation: rotate 5s linear infinite;
+  cursor: url('imgFolder/lineicon.png') 5 5, pointer;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

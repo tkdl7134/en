@@ -1,0 +1,274 @@
+@charset "UTF-8";
+* {
+  font-family: "Noto Serif JP", serif;
+}
+body {
+  background-color: #fffbf7;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+form{
+	display: contents;
+}
+
+/* LOGO & Nav */
+#yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+#yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+#yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+#yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* product page */
+
+#je_container-product {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* page Deco */
+.je_pageDeco-top {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+.je_pageDeco-top > img {
+  width: 100%;
+  height: 100vh;
+}
+
+/* title */
+.je_title-product {
+}
+.je_title-txt {
+  display: flex;
+  justify-content: center;
+  margin-top: 7.3rem; /* 118px */
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+
+.je_title-line {
+  display: flex;
+  justify-content: center;
+}
+
+/* page content */
+
+.je_content-product {
+  margin-top: 4.3rem;
+  margin-left: 15.3rem; /*245px*/
+  margin-right: 15.3rem;
+}
+.je_products {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.je_productBox {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5.8rem;
+  /* height: 39.1rem; 626px */
+}
+
+.je_productBox-details {
+  width: 85%;
+}
+
+.je_detail-img {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* 21.9rem 351px */
+  /* height: 32rem; 513px */
+}
+.je_detail-img > img {
+  width: 100%;
+}
+
+.je_detail-title {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.je_detail-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.je_detail-buttons > button {
+  width: 4.4rem;
+  height: 1.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 0.1rem solid #c82626;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+  z-index: 100;
+}
+
+.je_preview-button {
+  margin-right: 1.8rem;
+  background-color: #fff4f4;
+  color: #5c5c5c;
+  z-index: 200;
+}
+.je_preview-button:hover {
+  background-color: #c8c8c8;
+  color: #fff4f4;
+  transition: 0.5s;
+}
+
+.je_make-button {
+  background-color: #ff3b3f;
+  color: #ffffff;
+  z-index: 300;
+}
+.je_make-button:hover {
+  background-color: #fff4f4;
+  color: #ff3b3f;
+  transition: 0.5s;
+}
+
+/* 팝업 */
+.je_pop-layer .je_pop-container {
+  padding: 20px 25px;
+  z-index: 300;
+  height: 40rem;
+  overflow: auto;
+  z-index: 300;
+}
+
+.je_pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+  z-index: 300;
+}
+
+.je_pop-layer .je_btn-r {
+  width: 100%;
+  margin: 0.6rem 0 1.2rem;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+  z-index: 300;
+}
+
+.je_pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30rem;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid #c82626;
+  z-index: 300;
+}
+
+.je_dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+}
+
+.je_dim-layer .je_dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.je_dim-layer .je_pop-layer {
+  display: block;
+}
+
+.je_btn-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.je_btn-layerClose {
+  display: inline-block;
+  width: 3rem;
+  height: 2rem;
+  padding: 0.4rem 0.8rem 0;
+  border: 0.1rem solid #c82626;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px #c82626;
+  background-color: #c82626;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.je_btn-layerClose:hover {
+  border: 1px solid #c82626;
+  background-color: #fff;
+  color: #c82626;
+  transition: 0.5s;
+}
+
+.je_pop-image {
+  /* 템플릿샘플 길이만큼 변경 */
+  height: 100rem;
+  width: 90%;
+}
+.je_pop-image > img {
+  width: 100%;
+}

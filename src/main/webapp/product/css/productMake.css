@@ -1,0 +1,556 @@
+@charset "UTF-8";
+* {
+  font-family: "Noto Serif JP", serif;
+}
+body {
+background-color: #fffbf7;
+/*   background-color: royalblue; */
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  display: contents;
+}
+
+/* LOGO & NAV */
+/* #enmusubi-logo {
+  position: absolute;
+  width: 9.3rem; 
+  top: 3.1rem;
+  left: 5rem; 
+}
+#enmusubi-logo > img {
+  width: 100%;
+} */
+/* #enmusubi-nav {
+  position: absolute;
+  width: 4.8rem;
+  top: 5.25rem; 
+  right: 6.25rem; 
+}
+#enmusubi-nav > img {
+  width: 100%;
+} */
+
+#yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+#yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+#yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+#yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
+
+/* product page */
+
+#je_container-productMake {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* page Deco */
+.je_pageDeco-top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  top: 0;
+}
+.je_pageDeco-top > img {
+  width: 100%;
+}
+
+/* title */
+.je_title-productMake {
+}
+.je_title-txt {
+  display: flex;
+  justify-content: center;
+  /* 118px */
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+
+.je_title-line {
+  display: flex;
+  justify-content: center;
+}
+
+/* page content */
+.je_content-productMake {
+  /* background-color: antiquewhite; */
+  margin-left: 17rem;
+  margin-right: 17rem;
+  margin-top: 5rem;
+  display: flex;
+}
+
+.je_template-container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0rem 0.4rem 0.6rem #696969;
+  border-radius: 1rem;
+  height: max-content;
+}
+
+.je_content-title {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1.5rem;
+}
+
+/* output */
+.je_template-output {
+  /* border: 1px solid red; */
+  width: 40%;
+  height: 146rem; /*125.8rem*/
+  /* overflow-y: scroll; */
+  position: relative;
+}
+.je_template-output::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.je_template {
+  width: 100%;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+}
+.je_template-background {
+  width: 90%;
+  position: absolute;
+  z-index: -1;
+}
+
+#je_photoPre1,
+#je_photoPre2,
+#je_photoPre3,
+#je_photoPre4 {
+  /* border: 1px solid; */
+  width: 10px;
+  height: 10px;
+}
+
+#je_photoPre1 {
+  width: 100%;
+  margin-top: 38%;
+  height: 22rem;
+  /* z-index: -100; */
+  /* background-color: #c82626; */
+}
+
+#je_photoPre1 img {
+  width: 100%;
+}
+.je_kanji-groom {
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+  margin-top: 30%;
+  font-size: 2rem;
+}
+.je_kanji-bride {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  height: 3rem;
+}
+
+#je_invite-message {
+  margin-top: 10rem;
+  height: 8rem;
+  /* border: 1px solid; */
+  text-align: center;
+}
+
+.je_photos {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+#je_photoPre2,
+#je_photoPre3 {
+  width: 50%;
+  height: 13.5rem;
+}
+#je_photoPre2 img,
+#je_photoPre3 img {
+  width: 100%;
+}
+
+#je_weddingDay {
+  /* border: 1px solid red; */
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.je_eventTime {
+  /* border: 1px solid #ff7e81; */
+  height: 4rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  /* margin-right: 3rem; */
+  font-size: 1.5rem;
+}
+
+.je_assemleTime {
+  /* border: 1px solid #ff7e81; */
+  width: 90%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.je_place {
+  /* border: 1px solid #ff7e81; */
+  height: 4rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+
+#je_photoPre4 {
+  width: 100%;
+  margin-top: 3.2rem;
+  height: 18.9rem;
+}
+
+#je_finish-message {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* input */
+input {
+  font-size: 0.8rem;
+}
+input::placeholder {
+  color: #c8c8c8;
+}
+input::-webkit-input-placeholder {
+  /*크롬, 사파리*/
+  color: #c8c8c8;
+}
+input:-ms-input-placeholder {
+  /*엣지*/
+  color: #c8c8c8;
+  color: #c8c8c8;
+}
+
+.je_template-input {
+  /* border: 1px solid blue; */
+  width: 60%;
+  height: fit-content;
+}
+
+.je_content-boxes {
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+}
+
+.je_content-box {
+  border: 0.15rem solid #696969;
+  border-radius: 1rem;
+  padding: 0.3rem;
+}
+
+.je_box-title {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.je_box-bottom-line {
+  position: absolute;
+  bottom: -0.7rem;
+  left: 0;
+  width: 100%;
+}
+.je_box-bottom-line > img {
+  width: 100%;
+}
+
+.je_box-content {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.je_host-info {
+  background-color: #fff4f4;
+  border: 0.1rem solid #ffdbdb;
+  border-radius: 1rem;
+  width: 50%;
+  padding-bottom: 0.5rem;
+  height: max-content;
+}
+.je_host-info:nth-child(1) {
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+.je_host-info:nth-child(2) {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.je_info-title {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.3rem;
+  /* border-bottom: 0.1rem solid #e60112; */
+}
+.je_info-title-line {
+  position: absolute;
+  width: 90%;
+  bottom: -0.5rem;
+}
+.je_info-title-line > img {
+  width: 100%;
+}
+
+.je_info-content {
+  margin-top: 0.5rem;
+}
+
+.je_info-inputbox {
+  display: flex;
+  /* padding: 0.5rem; */
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.je_inputbox-title {
+  width: 40%;
+  margin-left: 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.je_inputbox-input {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin-right: 1rem;
+}
+.je_inputbox-input > input {
+  width: 85%;
+  border: 0.1rem solid #c8c8c8;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  height: 1.5rem;
+}
+.je_inputBox-name input {
+  width: 43%;
+}
+.je_inputbox-input > input:nth-child(2) {
+  margin-left: 0.5rem;
+}
+
+.je_time_input > input {
+  text-align: center;
+}
+.je_time_input > input::placeholder {
+  text-align: center;
+}
+
+/* 일정정보 */
+.je_content-box:nth-child(2) {
+  margin-top: 1.5rem;
+}
+.je_box-title2 {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.je_box-calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.je_box-calendar > input {
+  width: 10rem;
+  height: 2rem;
+  border: 0.15rem solid #ffdbdb;
+  border-radius: 0.4rem;
+  background-color: #fff4f4;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.je_box-calendar > input:focus {
+  outline: 0.15rem solid #ff7e81;
+}
+
+.je_time_input > input {
+  text-align: center;
+}
+.je_building-input > input {
+  width: 87%;
+}
+.je_address-input > input {
+  width: 87%;
+  height: 5rem;
+}
+
+/* 메세지 및 사진 */
+.je_content-box:nth-child(3) {
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.je_inputbox-input > textarea {
+  resize: none;
+  border: 0.1rem solid #c8c8c8;
+}
+
+/* 사진 */
+.je_box-content:nth-last-child(1) {
+  margin-right: 0rem;
+}
+.je_photo-info {
+  margin-left: 1rem;
+  width: 100%;
+}
+.je_inputbox-input:nth-last-child(1) {
+  width: 100%;
+  justify-content: center;
+}
+
+
+.je_photobox {
+  width: 45%;
+  height: 14rem;
+  border: 0.1rem solid #c8c8c8;
+  background-color: #ffffff;
+  margin: 0.5rem;
+}
+.je_photobox:hover {
+  cursor: pointer;
+}
+
+.je_photobox > input {
+  display: none;
+}
+.je_photobox > span {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  border: 0.1rem solid #989898;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  color: #6a6a6a;
+  font-size: 0.8rem;
+}
+.je_photo1-pre {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* 제작버튼 */
+.je_finish-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.je_finish-button > button {
+  width: 8rem;
+  font-size: 1.4rem;
+  font-weight: bolder;
+  padding: 0.5rem;
+  border: 0.2rem solid #c82626;
+  border-radius: 2rem;
+  background-color: #ff3b3f;
+  color: #ffffff;
+  box-shadow: 0.1rem 0.1rem 0.6rem #c82626;
+}
+
+.je_finish-button > button:hover {
+  background-color: #ffffff;
+  color: #ff3b3f;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+/* test */
+.je_photobox {
+  position: relative;
+  z-index: 2;
+}
+#je_photoOut1,
+#je_photoOut2,
+#je_photoOut3 {
+  /* display: none; */
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+#je_photoOut1 img,
+#je_photoOut2 img,
+#je_photoOut3 img,
+#je_photoOut4 img {
+  width: 100%;
+}

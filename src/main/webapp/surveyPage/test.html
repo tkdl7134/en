@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="survey.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="survey-container">
+      <header class="tk_survey_header">
+        <div class="top-left">
+          <img
+            src="imgFolder/logo.png"
+            alt="logo"
+            style="width: 100%; height: 100%"
+          />
+        </div>
+
+        <div class="middle-title">
+          <div>出席の方</div>
+        </div>
+
+        <div class="top-right">
+          <img
+            src="imgFolder/menu-btn.png"
+            alt="menu-button"
+            style="width: 100%; height: 100%"
+          />
+        </div>
+      </header>
+
+      <main class="tk_survey_main">
+        <div class="main-content">
+          <div class="main-content-words">
+            <div>
+              お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。
+            </div>
+            <div style="margin-top: 0.5rem">
+              2024.06.09までにご返信をお願いいたします。
+            </div>
+            <div>
+              <img
+                src="imgFolder/pointline.png"
+                alt="menu-button"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+          </div>
+
+          <form action="SurveyC" method="post">
+            <div class="tg-include-btu-page">
+              <div class="slider-navigation">
+                <button type="button" class="prev-slide">&lt;</button>
+              </div>
+
+              <div class="survey-input">
+                <div>
+                  <div class="recMain-container">
+                    <div class="entry-box-img" data-selected="no">
+                      <div class="texts">
+                        <div class="objective">出席</div>
+                      </div>
+                      <img class="lines" alt="" src="imgFolder/yesline.png" />
+                    </div>
+                    <div class="no-entry-box-img" data-selected="no">
+                      <div class="texts">
+                        <div style="margin-left: 1rem" class="objective">
+                          欠席
+                        </div>
+                      </div>
+                      <img class="lines" alt="" src="imgFolder/noline.png" />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="tg-slide-page">
+                    <!-- 추가 슬라이드 내용 -->
+                  </div>
+                </div>
+
+                <div>
+                  <div class="tg-slide-second-page">
+                    <!-- 추가 슬라이드 내용 -->
+                  </div>
+                </div>
+
+                <div>
+                  <div class="tg-slide-third-page">
+                    <!-- 추가 슬라이드 내용 -->
+                  </div>
+                </div>
+
+                <div>
+                  <div class="tg-slide-forth-page">
+                    <!-- 추가 슬라이드 내용 -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-navigation">
+                <button type="button" class="next-slide">&gt;</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <script>
+        // slick 시작 함수
+        let $slider;
+        function slickSlide() {
+          var selected = false;
+          $slider = $(".survey-input").slick({
+            infinite: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            adaptiveHeight: false,
+            prevArrow: $(".prev-slide"),
+            nextArrow: $(".next-slide"),
+          });
+
+          // 선택하면 selected를 true로 설정
+          $(".entry-box-img, .no-entry-box-img").click(function () {
+            selected = true;
+            $(".next-slide").prop("disabled", false); // '다음' 버튼 활성화
+          });
+
+          // 초기 슬라이드 상태 확인
+          $slider.on("init", function (event, slick) {
+            if (!selected) {
+              $(".next-slide").prop("disabled", true); // '다음' 버튼 비활성화
+            }
+          });
+
+          // 슬라이드 변경 후 상태 확인
+          $slider.on("afterChange", function (event, slick, currentSlide) {
+            if (currentSlide === 0 && !selected) {
+              $(".next-slide").prop("disabled", true); // '다음' 버튼 비활성화
+            } else {
+              $(".next-slide").prop("disabled", false); // '다음' 버튼 활성화
+            }
+          });
+
+          // 이전 및 다음 버튼 클릭 핸들러
+          $(".prev-slide").on("click", function () {
+            $slider.slick("slickPrev");
+          });
+
+          $(".next-slide").on("click", function () {
+            if (!selected && $slider.slick("slickCurrentSlide") === 0) {
+              alert("出席または欠席を選択してください。");
+              return false;
+            }
+            $slider.slick("slickNext");
+          });
+        }
+
+        // HTML 문서 로드 후 실행되는 자바스크립트 코드
+        $(document).ready(function () {
+          slickSlide();
+
+          $(".survey-input").on(
+            "afterChange",
+            function (event, slick, currentSlide) {
+              if (currentSlide === 0) {
+                $(".prev-slide").hide();
+              } else {
+                $(".prev-slide").show();
+              }
+
+              if (currentSlide === slick.slideCount - 2) {
+                $(".next-slide").hide();
+              } else {
+                $(".next-slide").show();
+              }
+            }
+          );
+
+          $(".entry-box-img").on("click", function () {
+            $(".survey-input").slick("slickUnfilter");
+            $(".survey-input").slick("slickFilter", function (index) {
+              return index < 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
+            });
+          });
+
+          $(".no-entry-box-img").on("click", function () {
+            $(".survey-input").slick("slickUnfilter");
+            $(".survey-input").slick("slickFilter", function (index) {
+              return index == 0 || index == 1 || index == 2 || index == 4; // 0, 1, 2, 3 => 슬라이드 1, 2, 3, 4
+            });
+          });
+        });
+      </script>
+      <
+      <footer class="tk_survey_footer"></footer>
+    </div>
+  </body>
+</html>

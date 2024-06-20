@@ -1,0 +1,265 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap');
+}
+
+body {
+    font-family: "Noto Serif JP", serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.recFundSpec-container{
+	background-image:url("../imgFolder/fundSpecificBack.png");
+	display : flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height : 163rem;
+	 background-repeat : no-repeat;
+}
+ 
+ .yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+
+.yj-main-s2-logo img {
+  width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+.yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+.yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
+}
+#fundSpecProduct-img{
+	
+	margin-top: 10rem;
+}
+#fundSpecPro-img {
+	
+	
+	width : 20rem;
+}
+#fundSpecProduct-name {
+	
+    font-size: 4rem;
+    height: 5rem;
+}
+#fundSpecProduct-rank {
+    font-size: 2rem;
+    color: red;
+    height: 3rem;
+	margin-top: 2rem;
+	
+	
+}
+
+#fundSpec-leftPrice{
+	font-size: 1.5rem;
+	
+}
+#fundSpec-lineShort{
+	
+	margin-top : 3rem;
+	
+}
+
+#fundSpec-chartAlert{
+	
+	    margin-top: 3rem;
+    font-size: 1.5rem;
+	
+}
+#fundSpec-inputDate{
+		
+		margin-top: 3rem;
+    border: 1px solid red;
+    border-radius: 2rem;
+    width: 40rem;
+    height: 7rem;
+    align-content: center;
+	
+	
+}
+#startDate {
+	    width: 10rem;
+    height: 5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-left: 2.5rem;
+}
+#endDate {
+	     width: 10rem;
+    height: 5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#submit{
+	background-color: white;
+    height: 3rem;
+    margin-left: 3rem;
+    font-family: "Noto Serif JP", serif;
+    font-size : 1rem;
+    
+    padding: 0.625rem 1.25rem;
+    background-color: #ffefef;
+    border: 0.1875rem solid #c82626;
+    text-align: center;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+    
+    
+    
+}
+.yellowLines {
+    width: 17.5rem;	
+	
+}
+.ToGoTexts{
+	font-size : 1.4rem;
+	
+	
+	
+}
+#priceChart {
+    width: 600px;
+}
+#fundSpec-dataBoard-container {
+	    margin-top: 5rem;
+    width: 50rem;
+    height: 35rem;
+	 border: 0.0625rem solid #ff7e81;
+  border-radius: 1.875rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background-color: #ffdede;
+   max-height: 30rem; /* 필요한 높이로 조절 */
+        overflow-y: scroll; /* 스크롤바 항상 표시 */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+#fundSpec-dataBoard-container::-webkit-scrollbar {
+        width: 8px; /* 스크롤바 너비 설정 */
+        background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 배경 색상 설정 */
+    }
+
+    #fundSpec-dataBoard-container::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5); 
+        border-radius: 4px;
+    }
+#fundSpec-arrBtn{
+	margin-bottom: 1rem;
+    margin-top: 1rem;
+    display : flex;
+    justify-content: end;
+    margin-right: 3rem;
+	
+}
+.arrButtons {
+    padding: 0.625rem 1.25rem;
+    background-color: #ffefef;
+    border: 0.1875rem solid #c82626;
+    text-align: center;
+    margin-left: -0.0625rem;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+#byMoney {
+	margin-right: 1rem;
+	
+	
+}
+#byName{
+	margin-right: 1rem;
+	
+}
+.recSpecMemberInfos{
+	
+    width: 14rem;
+    text-align: center;
+	
+	
+}
+.arrButtons:hover{
+    background-color: #ff3b3f;
+    color: white;
+    border: 0.1875rem solid #c82626;
+}
+.arrButtons.active{
+    background-color: #ff3b3f;
+    color: white;
+    border: 0.1875rem solid #c82626;
+}
+#fundSpec-dataBoard{
+   
+    font-size: 2rem;
+	margin-left: 5rem;
+}
+#fundSpec-dataBoard-navi{
+	
+	 display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    background-color: white;
+    height: 3rem;
+    align-items: center;
+    width: 40rem;
+}
+
+#recSpecPriceAndDate{
+    display: flex;
+    justify-content: space-evenly;
+   width: 40rem;
+    border: 1px solid;
+    border-radius: 15px;
+        margin-top: 1rem;
+            background-color: white;
+            font-size: 1.3rem;
+    height: 3rem;
+    align-items: center;
+}
+
+.recSpecReturn-img{
+	
+	
+	
+}
