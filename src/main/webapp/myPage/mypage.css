@@ -145,7 +145,7 @@ translate(
 }
 
 .hs_content-input {
-	font-size: 1.3rem;
+	font-size: 1.4rem;
     display: flex;
     margin-left: 18rem;
     justify-content: start;
@@ -199,11 +199,11 @@ translate(
 	position: absolute;
 	left: 0;
 	margin-left: 18rem;
-	    margin-top: 1.5rem;
+	margin-top: 1.5rem;
 }
 
 .hs_output{
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 }
 
 .hs_output.prefecture{
