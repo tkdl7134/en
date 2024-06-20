@@ -141,7 +141,7 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" maxlength="50">
+							placeholder="example@example.com" id="emailInput" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -344,6 +344,18 @@ body {
 			});
 			return false; // 폼 제출 방지
 		}
+		
+		if (!(emailValue.includes('@') && emailValue.includes('.'))) {
+			Swal.fire({
+				icon: 'warning',
+				title : 'メールアドレスの形式が正しくありません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+		return false; // 폼 제출 방지
+	}
 		
 	    // 필수 입력 항목들을 확인
 	    let requiredFields = [
