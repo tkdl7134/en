@@ -2,17 +2,14 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
 	;
 
-.hs_body {
+body {
 	font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* 기본 폰트 두께를 지정 */
-  font-style: normal;
-  margin: 0;
-  padding: 0;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none
+	font-optical-sizing: auto;
+	font-weight: 400; /* 기본 폰트 두께를 지정 */
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	background-color: #FFF5F4;
 }
 
 .hs_background {
@@ -81,6 +78,7 @@ translate(
 	font-size: 2rem;
 	font-weight: bold;
 	margin-bottom: 5rem;
+	text-align: center;
 }
 
 .hs_mypage-menus {
@@ -144,16 +142,16 @@ translate(
 }
 
 .hs_content-input {
-	font-size: 1.3rem;
-    display: flex;
-    margin-left: 18rem;
-    justify-content: start;
-    align-items: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
+	font-size: 1.4rem;
+	display: flex;
+	margin-left: 18rem;
+	justify-content: start;
+	align-items: center;
+	margin-right: 2rem;
+	margin-top: 2rem;
 }
 
-.hs_content-input.id{
+.hs_content-input.id {
 	margin-bottom: 3rem;
 }
 
@@ -177,15 +175,13 @@ translate(
 	position: absolute;
 	left: 0;
 	margin-left: 3rem;
-
 }
 
 .hs_content-text.post {
 	margin-top: 2rem;
-	
 }
 
-.hs_content-text.prefecture{
+.hs_content-text.prefecture {
 	margin-top: 2rem;
 }
 
@@ -198,14 +194,14 @@ translate(
 	position: absolute;
 	left: 0;
 	margin-left: 18rem;
-	    margin-top: 1.5rem;
+	margin-top: 1.7rem;
 }
 
-.hs_output{
-	font-size: 1.5rem;
+.hs_output {
+	font-size: 1.4rem;
 }
 
-.hs_output.prefecture{
+.hs_output.prefecture {
 	margin-top: 2rem;
 }
 
@@ -218,28 +214,32 @@ translate(
 }
 
 .btn {
-    background-color: #FFEEEE;
-    color: black;
-    height: 3rem;
-    width: 10rem;
-    border: 2px solid #C82626;
-    border-radius: 13px;
-    box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-    font-family: 'Noto Serif JP', serif;
-    font-weight: bolder;
-    font-size: 1.1rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 4rem;
-    display: flex;
-    cursor: pointer; /* 커서를 손가락 모양으로 변경 */
+	background-color: #FFEEEE;
+	color: black;
+	height: 3rem;
+	width: 10rem;
+	border: 2px solid #C82626;
+	border-radius: 13px;
+	box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	font-family: 'Noto Serif JP', serif;
+	font-weight: bolder;
+	font-size: 1.1rem;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 4rem;
+	display: flex;
+	cursor: pointer; /* 커서를 손가락 모양으로 변경 */
 }
 
 .btn:hover {
 	background-color: #FF4C50;
 	color: #fff;
+}
+
+.hs_footer{
+	text-align: center;
 }
 
 .hs_footer-background {

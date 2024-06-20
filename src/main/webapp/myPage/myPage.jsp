@@ -68,11 +68,11 @@ body {
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
-				<div class="hs_btn-container">
+				<!-- <div class="hs_btn-container">
 					<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
-				</div>
+				</div> -->
 				<div class="hs_btn-container">
 					<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
@@ -89,7 +89,7 @@ body {
 				<div class="hs_container-input">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<div class="hs_output">${dto.m_id}</div>
+						<div class="hs_output" id="display_id">${dto.m_id}</div>
 					</div>
 				</div>
 
@@ -172,15 +172,23 @@ body {
 				</div>
 			</div>
 
-			<footer class="hs_footer">
+			<div class="hs_footer">
 				<img alt="" src="regPage/ImgFolder/top_button.png"
 					class="top-button">
 				<div class="hs_footer-background"></div>
-			</footer>
+			</div>
 		</div>
 	</c:if>
 
 	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${dto.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
+	
 	function redirectToUpdate() {
 	    window.location.href = "MemberUpdateC";
 	}
@@ -217,6 +225,7 @@ body {
 	        });
 	    });
 	});
+	
     </script>
 </body>
 </html>
