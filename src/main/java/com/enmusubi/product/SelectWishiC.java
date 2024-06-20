@@ -7,15 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InvitationC")
-public class InvitationC extends HttpServlet {
-
+@WebServlet("/SelectWishiC")
+public class SelectWishiC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		request.getRequestDispatcher("product/jsp/selectWishi.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO.regIvitation(request);
 	}
 
 }

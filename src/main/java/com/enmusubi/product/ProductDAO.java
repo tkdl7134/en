@@ -3,10 +3,12 @@ package com.enmusubi.product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-
 import com.enmusubi.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -48,91 +50,178 @@ public class ProductDAO {
 		
 	}
 
-	
-	public static void regIvitation(HttpServletRequest request) {
+	public static void getTemplateForm(HttpServletRequest request) {
 		Connection con = null;
-		PreparedStatement pstmtWeddingInfo = null;
-		PreparedStatement pstmtReception1 = null;
-		PreparedStatement pstmtReception2 = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		
-
+		String sql = "select t_template from s_template where t_pk = ?";
+		
+		try {
+		    con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("templatePK"));
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				System.out.println("템플릿 겟또!");
+				request.setAttribute("templateForm", rs.getString("t_template"));
+				request.setAttribute("t_pk", request.getParameter("templatePK"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("서버 에-러");
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
+	}
+	
+	public static void regIvitation(HttpServletRequest request) {
+		Connection con = null;
+//		PreparedStatement pstmtEventNo = null;
+		PreparedStatement pstmtWeddingInfo = null;
+		PreparedStatement pstmtWedding = null;
+		PreparedStatement pstmtReception = null;
+//		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		
+//		create sequence e_no_seq;
+																//	e_no
+		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
+		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		
 		try {
 			 con = dbManager.connect();
-//			 pstmt = con.prepareStatement(sql);
 			 
-			String path = request.getServletContext().getRealPath("product/imgFile");
+			 pstmtWeddingInfo = con.prepareStatement(sqlWeddingInfo);
+			 pstmtWedding = con.prepareStatement(sqlWedding);
+			 pstmtReception = con.prepareStatement(sqlReception);
+			 
+			 
+			String path = request.getServletContext().getRealPath("product/imgFolder");
 			MultipartRequest mr = new MultipartRequest(
 										request, path, 1024*1024*20,
 										"utf-8", new DefaultFileRenamePolicy());
 			
-			String template = mr.getParameter("t_pk");
+			// 외래키 유효성 검사 
 			
+			int templatePK = Integer.parseInt(mr.getParameter("templatePK"));
+			if (!isTemplatePKValid(templatePK)) {
+				System.out.println("유효 PK 아님");
+				return;
+			}
+			
+			
+			// s_wedding_info table 삽입
+			
+//			System.out.println(mr.getParameter("templatePK"));
 			String groomName_kanji = mr.getParameter("groomKanjiL") + " " + mr.getParameter("groomKanjiF");
 			String groomName_kana = mr.getParameter("groomKanaL")+ " " + mr.getParameter("groomKanaF");
 			String groomName_roma = mr.getParameter("groomRomaL")+ " " + mr.getParameter("groomRomaF");
 			String brideName_kanji = mr.getParameter("brideKanjiL") + " " + mr.getParameter("brideKanjiF");
 			String brideName_kana = mr.getParameter("brideKanaL")+ " " + mr.getParameter("brideKanaF");
 			String brideName_roma = mr.getParameter("brideRomaL")+ " " + mr.getParameter("brideRomaF");
-			
-			String weddingDay = mr.getParameter("weddingDay");
-			
-			String m_time = mr.getParameter("marriageTime");
-			String m_timeA = mr.getParameter("marriageTime_a");
-			String m_place = mr.getParameter("marriage_place");
-			String m_addr = mr.getParameter("marriage_addr");
-			
-			String r_time = mr.getParameter("receptionTime");
-			String r_timeA = mr.getParameter("receptionTime_a");
-			String r_place = mr.getParameter("reception_place");
-			String r_addr = mr.getParameter("reception_addr");
-			
 			String hello = mr.getParameter("helloMessage");
 			String bye = mr.getParameter("byeMessage");
-			
 			hello = hello.replaceAll("\r\n", "<br>");
 			bye = bye.replaceAll("\r\n", "<br>");
 			
-			String photo1 = mr.getFilesystemName("photo1");
-			String photo2 = mr.getFilesystemName("photo2");
-			String photo3 = mr.getFilesystemName("photo3");
-			String photo4 = mr.getFilesystemName("photo4");
+			
+			pstmtWeddingInfo.setInt(1, templatePK);
+			pstmtWeddingInfo.setString(2, groomName_kanji);
+			pstmtWeddingInfo.setString(3, groomName_kana);
+			pstmtWeddingInfo.setString(4, groomName_roma);
+			pstmtWeddingInfo.setString(5, brideName_kanji);
+			pstmtWeddingInfo.setString(6, brideName_kana);
+			pstmtWeddingInfo.setString(7, brideName_roma);
+			pstmtWeddingInfo.setString(8, hello);
+			pstmtWeddingInfo.setString(9, bye);
+			pstmtWeddingInfo.setString(10, mr.getFilesystemName("photo1"));
+			pstmtWeddingInfo.setString(11, mr.getFilesystemName("photo2"));
+			pstmtWeddingInfo.setString(12, mr.getFilesystemName("photo3"));
+			pstmtWeddingInfo.setString(13, mr.getFilesystemName("photo4"));
 			
 			
 			
-			pstmt.setString(2, template);
-			pstmt.setString(3, groomName_kanji);
-			pstmt.setString(4, groomName_kana);
-			pstmt.setString(5, groomName_roma);
-			pstmt.setString(6, brideName_kanji);
-			pstmt.setString(7, brideName_kana);
-			pstmt.setString(8, brideName_roma);
-			pstmt.setString(9, hello);
-			pstmt.setString(10, bye);
-			pstmt.setString(11, photo1);
-			pstmt.setString(12, photo2);
-			pstmt.setString(13, photo3);
-//			pstmt.setString(14, photo4);
-			
-			pstmt.setString(2, e_no);
-			pstmt.setString(3, m_time);
-			pstmt.setString(4, m_timeA);
-			pstmt.setString(5, m_place);
-			pstmt.setString(6, m_addr);
+			//s_reception 테이블 삽입 
+			String weddingDay = mr.getParameter("weddingDay");
+			System.out.println(weddingDay);
+			System.out.println(weddingDay.charAt(11));
+			String day = weddingDay.charAt(11) + "";
+			String remove = weddingDay.replace(day, "").trim();
+			String m_time = mr.getParameter("marriageTime");
+			System.out.println(m_time);
+			String wedding = remove + " " + m_time;
+			System.out.println(wedding);
 			
 			
+			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy.MM.dd HH:dd");
+			Date weddingDateTime = dateTimeFormat.parse(wedding);
+			System.out.println(weddingDateTime);
+			java.sql.Date weddingDT = new java.sql.Date(weddingDateTime.getTime());
 			
+			String m_timeA = mr.getParameter("marriageTime_a");
+			String r_time = mr.getParameter("receptionTime");
+			String r_timeA = mr.getParameter("receptionTime_a");
+			
+			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+			Date weddingAssemble = timeFormat.parse(m_timeA);
+			Date receptionT = timeFormat.parse(r_time);
+			Date receptionAssemble = timeFormat.parse(r_timeA);
+			
+			java.sql.Date weddingA = new java.sql.Date(weddingAssemble.getTime());
+			java.sql.Date receptionTime = new java.sql.Date(receptionT.getTime());
+			java.sql.Date receptionA = new java.sql.Date(receptionAssemble.getTime());
+//			
+//			SimpleDateFormat TimeFormat = new SimpleDateFormat("HH:mm");
+//			java.sql.Timestamp weddingTimeA = new java.sql.Timestamp(TimeFormat.parse(m_timeA).getTime());
+//			java.sql.Timestamp receptionTimeA = new java.sql.Timestamp(TimeFormat.parse(r_timeA).getTime());
+			
+			
+			// 본식
+			pstmtWedding.setDate(1, weddingDT);   // weddingday+marriagetime
+			pstmtWedding.setString(2, mr.getParameter("marriage_place"));
+			pstmtWedding.setString(3, mr.getParameter("marriage_addr"));
+			pstmtWedding.setDate(4, weddingA);
+			pstmtWedding.setString(5, "wedding");
+			
+			// 본식
+			pstmtReception.setDate(1, receptionTime);   // weddingday+marriagetime
+			pstmtReception.setString(2, mr.getParameter("reception_place"));
+			pstmtReception.setString(3, mr.getParameter("reception_addr"));
+			pstmtReception.setDate(4, receptionA);
+			pstmtReception.setString(5, "reception");
+						
+			if (pstmtWeddingInfo.executeUpdate() == 1) {
+				System.out.println("weddinginfo - 성공");
+			}
+			if (pstmtWedding.executeUpdate() == 1) {
+				System.out.println("wedding - 성공");
+			}
+			if (pstmtReception.executeUpdate() == 1) {
+				System.out.println("reception - 성공");
+			}
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    System.out.println("server err...");
 		} finally {
-		    dbManager.close(con, pstmt, rs);
+		   dbManager.close(null, pstmtReception, null);
+		   dbManager.close(null, pstmtWedding, null);
+		   dbManager.close(con, pstmtWeddingInfo, null);
+		   
 		}
 		
 	}
+
+
+    private static boolean isTemplatePKValid(int templatePK) {
+        return true; // 예시: 항상 유효한 경우
+    }
 
 
 }

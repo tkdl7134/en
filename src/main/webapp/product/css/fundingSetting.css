@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   font-family: "Noto Serif JP", serif;
 }
@@ -10,24 +9,43 @@ body {
 }
 
 /* LOGO & NAV */
-#enmusubi-logo {
+#yj-main-s2-logo {
+  z-index: 4;
+  width: 150px;
+  height: 150px;
   position: absolute;
-  width: 9.3rem; /*150px*/
-  top: 3.1rem; /*50px*/
-  left: 5rem; /*80px*/
-}
-#enmusubi-logo > img {
-  width: 100%;
+  top: 3rem;
+  left: 4rem;
 }
 
-#enmusubi-nav {
-  position: absolute;
-  width: 4.8rem; /*78px*/
-  top: 5.25rem; /*84px*/
-  right: 6.25rem; /*100px*/
-}
-#enmusubi-nav > img {
+#yj-main-s2-logo img {
   width: 100%;
+  height: 100%;
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+#yj-main-s2-menu {
+  z-index: 4;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+}
+
+#yj-main-s2-menu img {
+  width: 100%;
+  height: 100%;
 }
 
 /* Funding-Setting page */
@@ -124,24 +142,8 @@ body {
   margin-top: 2rem;
   /* padding: 1rem; */
 }
-.je_washing-img{
-	margin-top: 1.6rem;
-}
-
-.je_tv-img{
-	margin-top: 3.7rem;
-}
-
 .je_detail-img > img {
   width: 50%;
-}
-
-.je_bed-img > img{
-	width: 43%;
-    margin-bottom: -.9rem;
-}
-.je_table-img{
-	margin-bottom: -0.3rem;
 }
 
 .je_detail-title {
@@ -186,8 +188,8 @@ body {
 }
 .je_detail-button > button {
   /* width: 4.3rem; 70px */
-  width: 20%;
-  font-size: 0.9rem;
+  width: 22%;
+  font-size: 1rem;
   color: #5c5c5c;
   font-weight: bold;
   border: 0.1rem solid #c82626;
@@ -245,36 +247,27 @@ body {
 
 .je_pageDeco-bottom > img {
   width: 100%;
-  z-index: -1;
 }
 
 .je_top-button {
   display: flex;
   justify-content: center;
-  z-index: 10;
 }
-
-
 .je_top-button-img {
   width: 12.5rem;
-}
-
-.je_top-button-img:hover{
-cursor: pointer;
-	
 }
 .je_top-button-img > img {
   width: 100%;
 }
 
-/* .je_back-button {
+.je_back-button {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   right: 3%;
-  width: 5rem; 80px
-  height: 4.3rem; 70px
+  width: 5rem; /* 80px */
+  height: 4.3rem; /* 70px */
   border: 0.2rem solid #696969;
   border-radius: 50%;
   background-color: #fffbf7;
@@ -284,4 +277,27 @@ cursor: pointer;
   font-size: 1.1rem;
   text-decoration: none;
 }
- */
+
+
+/* 추가 조절 */
+.je_washing-img > img{
+	width: 46%;
+	
+}
+.je_tv-img > img{
+	margin-top: 1.5rem;
+	
+}
+.je_bed-img > img{
+	width: 40%;
+	margin-bottom: -0.4rem;
+}
+
+.je_table-img > img{
+	width: 48%;
+}
+
+.je_input-price{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
