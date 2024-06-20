@@ -46,7 +46,7 @@ body {
     z-index: 1;
   }
 
-  /* 왼쪽 위 모서리에 위치할 이미지 */
+  /* �쇊履� �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
   .top-left {
     z-index: 4;
     width: 150px;
@@ -56,7 +56,7 @@ body {
     left: 4rem;
   }
 
-  /* 오른쪽 위 모서리에 위치할 이미지 */
+  /* �삤瑜몄そ �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
   .top-menu {
     z-index: 4;
     width: 80px;
@@ -286,11 +286,11 @@ body {
     justify-content: flex-start !important;
   }
 
-  /* 슬라이드 버튼 스타일 */
+  /* �뒳�씪�씠�뱶 踰꾪듉 �뒪���씪 */
   .slider-navigation button {
     font-size: 1.5rem;
     font-weight: bolder;
-    background-color: #cd0000; /* 배경색 */
+    background-color: #cd0000; /* 諛곌꼍�깋 */
     color: white;
     border: transparent;
     width: 2rem;
@@ -303,7 +303,7 @@ body {
   }
 
   .slider-navigation button:hover {
-    transform: scale(1); /* 호버 시 약간 확대 */
+    transform: scale(1); /* �샇踰� �떆 �빟媛� �솗�� */
   }
 
   .slick-arrow {
@@ -367,11 +367,11 @@ body {
 
   .special-notes-container textarea {
     width: 62rem;
-    height: 10rem; /* textarea 높이 조절 */
+    height: 10rem; /* textarea �넂�씠 議곗젅 */
     padding: 4px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    resize: vertical; /* 세로 크기 조절만 허용 */
+    resize: vertical; /* �꽭濡� �겕湲� 議곗젅留� �뿀�슜 */
   }
 
   .tg-survey-button {
@@ -388,7 +388,7 @@ body {
   }
 
   .tg-survey-button:hover {
-    transform: scale(1); /* 호버 시 약간 확대 */
+    transform: scale(1); /* �샇踰� �떆 �빟媛� �솗�� */
   }
 
   .recMain-container {
@@ -460,11 +460,11 @@ body {
   }
   .reject-notes-container textarea {
     width: 50rem;
-    height: 25rem; /* textarea 높이 조절 */
+    height: 25rem; /* textarea �넂�씠 議곗젅 */
     padding: 4px;
     border: 2px solid black;
     box-sizing: border-box;
-    resize: vertical; /* 세로 크기 조절만 허용 */
+    resize: vertical; /* �꽭濡� �겕湲� 議곗젅留� �뿀�슜 */
   }
 
   .congra-img-container {
@@ -568,4 +568,3 @@ body {
       transform: scale(1);
     }
   }
-}

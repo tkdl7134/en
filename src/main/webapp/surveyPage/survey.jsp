@@ -111,21 +111,21 @@
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">漢字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="kanzi-name" required value="${members.m_first_name}" disabled="disabled" /> 
+												class="name-input" id="name" name="name" required value="${members.m_first_name}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
-												class="name-input" name="kanzi-name" required value="${members.m_last_name}" disabled="disabled" />
+												class="name-input" id="name" name="name" required value="${members.m_last_name}" disabled="disabled" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
+												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
-												class="name-input" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
+												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder=" - "
-												class="name-input" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
+												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
-												placeholder=" - " class="name-input" name="roma-name"
+												placeholder=" - " class="name-input" id="romaName" name="roma-name"
 												required value="${members.m_first_name_rome}" disabled="disabled" />
 											</label>
 										 </c:when>
@@ -133,21 +133,21 @@
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">漢字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" name="kanzi-name" required value="${members.m_first_name}" /> 
+												class="name-input" id="name" name="name" required value="${members.m_first_name}" /> 
 												<input style="font-size: 1.2rem;" type="text" placeholder="名"
-												class="name-input" name="kanzi-name" required value="${members.m_last_name}" />
+												class="name-input" id="name" name="name" required value="${members.m_last_name}" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" name="kata-name" required value="${members.m_first_name_kana}" /> 
+												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" /> 
 												<input style="font-size: 1.2rem;" type="text"  placeholder="めい"
-												class="name-input" name="kata-name" required value="${members.m_last_name_kana}" />
+												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
 												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" name="roma-name" required value="${members.m_last_name_rome}"/> 
+												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}"/> 
 												<input style="font-size: 1.2rem;" type="text"
-												placeholder="First Name" class="name-input" name="roma-name"
+												placeholder="First Name" id="romaName" class="name-input" name="roma-name"
 												required value="${members.m_first_name_rome}" />
 											</label>
 										 </c:otherwise>
@@ -156,7 +156,7 @@
 									</div>
 
 									<div class="couple-container">
-										<div>ゲストカテゴリー</div>
+										<div>カテゴリー</div>
 										<label> <input name="couple" type="checkbox"
 											value="groom" /> 新郎側ゲスト
 										</label> <label> <input name="couple" type="checkbox"
@@ -187,12 +187,12 @@
             					<div class="contact-container">
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
-												class="contact-input" name="email"
+												class="contact-input" id="email" name="email"
 												placeholder=" - " required value="${members.m_email}" disabled="disabled" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
-												class="contact-input" name="phonenum"
+												class="contact-input" id="phonenum" name="phonenum"
 												placeholder=" - " required value="${members.m_phone}" disabled="disabled" />
 										</div>
 								</div>
@@ -201,12 +201,12 @@
             					<div class="contact-container">
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
-												class="contact-input" name="email"
+												class="contact-input" id="email" name="email"
 												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
-												class="contact-input" name="phonenum"
+												class="contact-input" id="phonenum" name="phonenum"
 												placeholder="000-0000-0000" required value="${members.m_phone}" />
 										</div>
 								</div>							
@@ -398,7 +398,7 @@
 
 								<div>
 
-									<button id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
+									<button type="button" id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
 										<span>送信</span>
 									</button>
 
@@ -418,7 +418,7 @@
                     					</div>
 									</div>
 
-        						<button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
+        						<button type="button" id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
 									<span>送信</span>
 								</button>
 
@@ -670,7 +670,7 @@ if (this.checked) {
 });
 
         // function validateForm() {
-        //     var kanzinames = document.getElementById("kanzi-name").value.trim();
+        //     var Names = document.getElementById("name").value.trim();
         //     var katanames = document.getElementById("kata-name").value.trim();
         //     var romanames = document.getElementById("roma-name").value.trim();
         //     var phonenumber = document.getElementById("phonenum").value.trim();
@@ -680,7 +680,7 @@ if (this.checked) {
         //     var addressline1 = document.getElementById("address-line1").value.trim();
 
         //     // 필수 입력 필드 체크
-        //     if (kanzinames === "" || katanames === "" || romanames === "" ||
+        //     if (Names === "" || katanames === "" || romanames === "" ||
         //         phonenumber === "" || emails === "" ||
         //         postalcode === "" || city === "" || addressline1 === "" ) {
                 
@@ -716,11 +716,12 @@ function openModal(attemp) {
 }
 
 function openModal() {
+	console.log("1");
     const modal = document.getElementById("tg-modal");
     const modalContent = document.querySelector(".tg-modal-container");
-    document.querySelector(".tk_survey_main").innerHTML="";
+    document.querySelector(".tk_survey_main").style.opacity="0";
     body = document.querySelector("body");
-    body.style.transition= "background-color 0.5s ease";
+    body.style.transition= "background-color 0.5s eas	e";
     body.style.backgroundColor="#ffe0e0";
     modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
     setTimeout(() => {
@@ -731,29 +732,20 @@ function openModal() {
     }, 10);
 }
 
+let formArray = $("#surveyForm").serializeArray();
+console.log(formArray);
+
 $(document).ready(function() {
     $("#submitBtn").click(function() {
+    	console.log("2");
         event.preventDefault(); // 기본 이벤트 제거
-
-        var formData = {
-                attendance: $('#attendance').val(),
-                couple: $('#couple').val(),
-                allergy: $('#allergy').val(),
-                specialNotes: $('#special-notes').val(),
-                relation: $('#relation').val(),
-                adult: $('#adult').val(),
-                child: $('#child').val(),
-                baby: $('#baby').val(),
-                gAttend: $('#g_attend').val(),
-                allergyType: $('#allergy-type').val()
-            };
     
-        
-
+        let formArray = $("#surveyForm").serializeArray();
+        console.log(formArray);
         $.ajax({
             url: "SurveyC", // 여기에 실제 서블릿 URL을 입력하세요
             type: "POST",
-            data: formData,
+            data: formArray,
             success: function(response) {
                 alert("회원 정보가 성공적으로 업데이트 되었습니다.");
                 // 추가적인 처리 로직

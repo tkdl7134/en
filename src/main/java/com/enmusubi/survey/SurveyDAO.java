@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +38,7 @@ public class SurveyDAO {
 
 	// LINE 로그인 시 정보 추가 입력
 	public static void lineUpdate(HttpServletRequest request) {
+		System.out.println("라인없데이트 메소드");
 	    Connection con = null;
 	    PreparedStatement pstmtLineAddressUpdate = null;
 	    PreparedStatement pstmtLineMemberUpdate = null;
@@ -56,29 +58,47 @@ public class SurveyDAO {
 	        // 라인 회원 개인정보 입력
 	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
 
-            String[] kanziname = request.getParameterValues("kanzi-name");
-            String[] kataname = request.getParameterValues("kata-name");
-            String[] romaname = request.getParameterValues("roma-name");
-
-            for (String s : romaname) {
-				System.out.println(s);
+            
+            System.out.println("한자값은: " + request.getParameter("name"));
+            System.out.println("카타값은: " + request.getParameter("kata-name"));
+            System.out.println("로마값은: " + request.getParameter("roma-name"));
+            System.out.println("이메일: " + request.getParameter("email"));
+            System.out.println("폰번: " + request.getParameter("phonenum"));
+            System.out.println("참석: " + request.getParameter("attendance"));
+            System.out.println("어디 측" + request.getParameter("couple"));
+            System.out.println("알레르기 여부: " + request.getParameter("allergy"));
+            System.out.println("메세지: " + request.getParameter("special-notes"));
+            System.out.println("관계: " + request.getParameter("relation"));
+            System.out.println("어른: " + request.getParameter("adult"));
+            System.out.println("꼬마: " + request.getParameter("child"));
+            System.out.println("애기: " + request.getParameter("baby"));
+            System.out.println("알레르기 타입: " + request.getParameter("allergy-type"));
+            
+            String[] normalName = request.getParameterValues("name");
+            String[] kataName = request.getParameterValues("kata-name");
+            String[] romaName = request.getParameterValues("roma-name");
+            
+            for (String s : romaName) {
+			System.out.println(s);
 			}
-            System.out.println(kanziname);
-            System.out.println(kataname);
-            System.out.println(romaname);
             
-            kanziname = kanziname != null ? kanziname : new String[0];
-            kataname = kataname != null ? kataname : new String[0];
-            romaname = romaname != null ? romaname : new String[0];
-            
-            
-            String kanzinames = String.join(" ", kanziname);
-            String katanames = String.join(" ", kataname);
-            String romanames = String.join(" ", romaname);
+            normalName = normalName != null ? normalName : new String[0];
+            kataName = kataName != null ? kataName : new String[0];
+            romaName = romaName != null ? romaName : new String[0];
 
-            pstmtLineMemberUpdate.setString(1, kanzinames);
-            pstmtLineMemberUpdate.setString(2, katanames);
-            pstmtLineMemberUpdate.setString(3, romanames);
+            
+            System.out.println(normalName);
+            System.out.println(kataName);
+            System.out.println(romaName);
+            
+            
+            String normalNames = String.join(" ", normalName);
+            String kataNames = String.join(" ", kataName);
+            String romaNames = String.join(" ", romaName);
+
+            pstmtLineMemberUpdate.setString(1, normalNames);
+            pstmtLineMemberUpdate.setString(2, kataNames);
+            pstmtLineMemberUpdate.setString(3, romaNames);
             pstmtLineMemberUpdate.setString(4, request.getParameter("email"));
             pstmtLineMemberUpdate.setString(5, request.getParameter("phonenum"));
             pstmtLineMemberUpdate.setString(6, lineUserId);
@@ -115,6 +135,7 @@ public class SurveyDAO {
 		
 	// 일반 회원 가입시 조건
 	public static void getMemberNormal(HttpServletRequest request) {
+		System.out.println("일반맴버 메소드");
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    PreparedStatement pstmtAddress = null;
@@ -236,7 +257,7 @@ public class SurveyDAO {
 	
 	// 일반 회원 가입시 조건
 	public static void getMemberLine(HttpServletRequest request) {
-		
+		System.out.println("맴버 정보 받아오는 메소드");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmtAddress = null;
