@@ -221,7 +221,7 @@
             // 필요한 이벤트 처리 작성
             
             background1.style.cursor = 'url("myPage/statistics/imgFolder/backbtn.png"), auto';
-            background2.style.cursor = 'url("myPage/statistics/imgFolder/backbtn.png"), auto';
+            background2.style.cursor = 'url("yPage/statistics/imgFolder/backbtn.png"), auto';
           }
         }
 
@@ -233,6 +233,13 @@
         // 두 번째 배경 이미지의 마우스 이벤트 리스너 추가
         background2.addEventListener("mousemove", function (event) {
           handleMouseMove(event, ctx2, canvas2);
+        });
+        background1.addEventListener("click", function () {
+            location.href = 'ReceivedMainC';
+        });
+
+        background2.addEventListener("click", function () {
+            location.href = 'ReceivedMainC';
         });
       });
     </script>

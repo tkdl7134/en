@@ -89,16 +89,31 @@ body {
 	
 	
 }
+.ToGoTexts:hover {
+	color : #ff2828;
+	
+	
+}
 #recMain-content{
 	   display: flex;
     margin-top: 2rem;
-    width: 90rem;
+    width: 80rem;
     justify-content: space-evenly;
     margin-right : 3rem;
 }
 .box-img{
-	
+	    background-image: url(../imgFolder/opt_pink.png);
+	        width: 20rem;
+    height: 20.7rem;
+    background-size: cover;
+    background-repeat: no-repeat;
 }	
+.box-img:hover{
+	
+	    background-image: url(../imgFolder/opt_yellow.png);
+	
+	
+}
 .boxes{
     width: 21rem;
     position: absolute;
@@ -107,7 +122,6 @@ body {
 	
 
 .box-img:hover .boxes, .box-img:hover .lines {
-  transform: rotate(6deg);
 }
 
 .lines{
@@ -139,5 +153,4 @@ body {
 	font-size : 22px;
 	margin-top : 1.5rem;
 	color : #696969;
-	margin-left: 3rem;
 	}

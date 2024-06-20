@@ -227,6 +227,13 @@
         background2.addEventListener("mousemove", function (event) {
           handleMouseMove(event, ctx2, canvas2);
         });
+        background1.addEventListener("click", function () {
+            location.href = 'ReceivedMainC';
+        });
+
+        background2.addEventListener("click", function () {
+            location.href = 'ReceivedMainC';
+        });
       });
     </script>
 </html>
