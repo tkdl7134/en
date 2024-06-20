@@ -390,8 +390,7 @@ public class SurveyDAO {
 	PreparedStatement pstmtAddress = null;
 
 	DBManager dbManager = DBManager.getInstance();
-	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
-			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
+	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
 	String sqlParty = "INSERT INTO s_Party (e_no, m_id, p_adult, p_child, p_baby) VALUES (?, ?, ?, ?, ?)";
 	String sqlAddress = "INSERT INTO s_address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
@@ -410,11 +409,13 @@ public class SurveyDAO {
 		String note = request.getParameter("special-notes");
 		note = note.replace("\r\n", "<br>");
 		
+        String gAttend = request.getParameter("attendance");
+		
 		// 회원 개인정보 입력
 		pstmtGuest = con.prepareStatement(sqlGuest);
 		pstmtGuest.setString(1, "1");
 		pstmtGuest.setString(2, id);
-		pstmtGuest.setString(3, request.getParameter("attendance"));
+		pstmtGuest.setString(3, gAttend);
 		pstmtGuest.setString(4, request.getParameter("couple"));
 		pstmtGuest.setString(5, request.getParameter("allergy"));
 		pstmtGuest.setString(6, note);
@@ -437,8 +438,7 @@ public class SurveyDAO {
 		}
 		
 		// 알러지 상세사항 입력
-        String gAttend = request.getParameter("g_attend");
-        if ("yes".equals(gAttend)) { // 참일때만 알러지 정보 입력
+        if ("出席".equals(gAttend)) { // 참일때만 알러지 정보 입력
             String allergytype = request.getParameter("allergy-type");
             allergytype = allergytype.replace("\r\n", "<br>");
             
@@ -468,10 +468,21 @@ public class SurveyDAO {
                 System.out.println("주소 등록성공!!");
             }
         
+            // 모든 INSERT문 (트랜잭션) 커밋
+            con.commit();
+
 		
 		
-	} catch (Exception e) {
-		e.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
+        if (con != null) {
+            try {
+                // 오류 발생 시 롤백
+                con.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
 	} finally {
 		dbManager.close(null, pstmtAllergy, null);
 		dbManager.close(null, pstmtParty, null);
