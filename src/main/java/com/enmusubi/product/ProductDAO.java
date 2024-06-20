@@ -81,12 +81,13 @@ public class ProductDAO {
 	
 	public static void regIvitation(HttpServletRequest request) {
 		Connection con = null;
-//		PreparedStatement pstmtEventNo = null;
 		PreparedStatement pstmtEvent = null;
 		PreparedStatement pstmtWeddingInfo = null;
 		PreparedStatement pstmtWedding = null;
 		PreparedStatement pstmtReception = null;
-//		ResultSet rs = null;
+		
+		PreparedStatement pstmtEventNo = null;
+		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		
 //		create sequence e_no_seq;
@@ -219,6 +220,15 @@ public class ProductDAO {
 						
 			if (pstmtEvent.executeUpdate() == 1) {
 				System.out.println("Event - 성공");
+				
+				String sql = "select e_no_seq.currval from dual";
+				pstmtEventNo = con.prepareCall(sql);
+				rs = pstmtEventNo.executeQuery();
+				if (rs.next()) {
+					System.out.println("이벤트번호 겟또");
+					System.out.println(rs.getString("e_no_seq.currval"));
+					request.setAttribute("eventNo", rs.getString("e_no_seq.currval"));
+				}
 			}
 			
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
@@ -230,6 +240,9 @@ public class ProductDAO {
 			if (pstmtReception.executeUpdate() == 1) {
 				System.out.println("reception - 성공");
 			}
+			
+			
+			
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -243,7 +256,7 @@ public class ProductDAO {
 		
 	}
 
-    private static boolean isTemplatePKValid(int templatePK) {
+	private static boolean isTemplatePKValid(int templatePK) {
     	return true; // 항상 유효
     }
 
