@@ -17,7 +17,7 @@ public class SurveyDAO {
 	
 
     // 세션에서 로그인 방식을 기준으로 처리하는 메소드
-    public static void processLogin(HttpServletRequest request, HttpServletResponse response) {
+    public static void processLogin(HttpServletRequest request) {
         HttpSession session = request.getSession();
         
         // 다른 패키지에서 설정한 세션 값 가져오기 예시
@@ -36,7 +36,7 @@ public class SurveyDAO {
     }
 
 	// LINE 로그인 시 정보 추가 입력
-	public static void lineUpdate(HttpServletRequest request, HttpServletResponse response) {
+	public static void lineUpdate(HttpServletRequest request) {
 	    Connection con = null;
 	    PreparedStatement pstmtLineAddressUpdate = null;
 	    PreparedStatement pstmtLineMemberUpdate = null;
@@ -60,6 +60,9 @@ public class SurveyDAO {
             String[] kataname = request.getParameterValues("kata-name");
             String[] romaname = request.getParameterValues("roma-name");
 
+            for (String s : romaname) {
+				System.out.println(s);
+			}
             System.out.println(kanziname);
             System.out.println(kataname);
             System.out.println(romaname);
@@ -111,7 +114,7 @@ public class SurveyDAO {
 	}
 		
 	// 일반 회원 가입시 조건
-	public static void getMemberNormal(HttpServletRequest request, HttpServletResponse response) {
+	public static void getMemberNormal(HttpServletRequest request) {
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    PreparedStatement pstmtAddress = null;
@@ -232,7 +235,7 @@ public class SurveyDAO {
 	}
 	
 	// 일반 회원 가입시 조건
-	public static void getMemberLine(HttpServletRequest request, HttpServletResponse response) {
+	public static void getMemberLine(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -354,7 +357,7 @@ public class SurveyDAO {
 	}
 
 	// 그 외 설문조사지 입력
-	public static void insertSurvey(HttpServletRequest request, HttpServletResponse response) {
+	public static void insertSurvey(HttpServletRequest request) {
 	
 	Connection con = null;
 	PreparedStatement pstmtGuest = null; 

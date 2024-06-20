@@ -304,11 +304,11 @@
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
 														<option value="">選択してください</option>
-           												<c:forEach var="prefecture" items="${prefectures}">
+														<c:forEach var="prefecture" items="${prefectures}">
 																<option value="${prefecture }">	
 																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
 																${prefecture }
-	           												</c:forEach>
+														</c:forEach>
 													</select>
 												</div>
 											</div>
@@ -418,7 +418,7 @@
                     					</div>
 									</div>
 
-        						 <button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
+        						<button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
 									<span>送信</span>
 								</button>
 
@@ -669,35 +669,35 @@ if (this.checked) {
     });
 });
 
-        function validateForm() {
-            var kanzinames = document.getElementById("kanzi-name").value.trim();
-            var katanames = document.getElementById("kata-name").value.trim();
-            var romanames = document.getElementById("roma-name").value.trim();
-            var phonenumber = document.getElementById("phonenum").value.trim();
-            var emails = document.getElementById("email").value.trim();
-            var postalcode = document.getElementById("postal-code").value.trim();
-            var city = document.getElementById("city").value.trim();
-            var addressline1 = document.getElementById("address-line1").value.trim();
+        // function validateForm() {
+        //     var kanzinames = document.getElementById("kanzi-name").value.trim();
+        //     var katanames = document.getElementById("kata-name").value.trim();
+        //     var romanames = document.getElementById("roma-name").value.trim();
+        //     var phonenumber = document.getElementById("phonenum").value.trim();
+        //     var emails = document.getElementById("email").value.trim();
+        //     var postalcode = document.getElementById("postal-code").value.trim();
+        //     var city = document.getElementById("city").value.trim();
+        //     var addressline1 = document.getElementById("address-line1").value.trim();
 
-            // 필수 입력 필드 체크
-            if (kanzinames === "" || katanames === "" || romanames === "" ||
-                phonenumber === "" || emails === "" ||
-                postalcode === "" || city === "" || addressline1 === "" ) {
+        //     // 필수 입력 필드 체크
+        //     if (kanzinames === "" || katanames === "" || romanames === "" ||
+        //         phonenumber === "" || emails === "" ||
+        //         postalcode === "" || city === "" || addressline1 === "" ) {
                 
-                alert("모든 필드를 입력해주세요.");
-                return false; // 폼 제출 방지
-            }
+        //         alert("모든 필드를 입력해주세요.");
+        //         return false; // 폼 제출 방지
+        //     }
 
-            return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
-        }
+        //     return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
+        // }
 
-        document.getElementById("submitBtn").addEventListener("click", function(event) {
-            if (!validateForm()) {
-                event.preventDefault();
-            } else {
-                document.getElementById("surveyForm").submit();
-            }
-        });
+        // document.getElementById("submitBtn").addEventListener("click", function(event) {
+        //     if (!validateForm()) {
+        //         event.preventDefault();
+        //     } else {
+        //         document.getElementById("surveyForm").submit();
+        //     }
+        // });
 
 function openModal(attemp) {
     const modal = document.getElementById("tg-modal");
@@ -748,12 +748,12 @@ $(document).ready(function() {
                 allergyType: $('#allergy-type').val()
             };
     
-        };
+        
 
         $.ajax({
             url: "SurveyC", // 여기에 실제 서블릿 URL을 입력하세요
             type: "POST",
-            data: data,
+            data: formData,
             success: function(response) {
                 alert("회원 정보가 성공적으로 업데이트 되었습니다.");
                 // 추가적인 처리 로직
@@ -764,7 +764,7 @@ $(document).ready(function() {
             }
         });
     });
-});
+})
 
     </script>
     
