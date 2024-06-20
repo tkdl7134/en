@@ -241,8 +241,6 @@ public class MemberDAO {
 
 	}
 
-	
-
 	// 회원탈퇴
 	public int deleteMember(String m_id) throws SQLException {
 		Connection con = null;
@@ -368,7 +366,6 @@ public class MemberDAO {
 		return null; // 회원 정보가 없으면 null 반환
 	}
 
-
 	// 회원 정보 업데이트 (전체 정보)
 	public static void updateMemberInfo(MemberDTO dto) throws SQLException {
 		Connection con = null;
@@ -392,7 +389,7 @@ public class MemberDAO {
 			pstmt.setString(7, dto.getM_email());
 			pstmt.setString(8, dto.getM_phone());
 			pstmt.setString(9, dto.getM_id());
-			
+
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("멤버 수정 성공");
 			}
@@ -403,6 +400,7 @@ public class MemberDAO {
 			pstmt.setString(1, dto.getA_address());
 			pstmt.setString(2, dto.getA_postcode());
 			pstmt.setString(3, dto.getM_id());
+			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("주소 수정 성공");
 			}
@@ -579,7 +577,6 @@ public class MemberDAO {
 		}
 	}
 
-	
 	public static void MemberLogoutC(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false); // 기존 세션 가져오기 (없으면 null 반환)
 		if (session != null) {
@@ -590,7 +587,7 @@ public class MemberDAO {
 	}
 
 	// 마이페이지 (정보 조회 및 수정)
-		public MemberDTO getMypage(String m_id) throws SQLException {
+	public MemberDTO getMypage(String m_id) throws SQLException {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;

@@ -30,11 +30,11 @@
 }
 
 body {
-      -webkit-user-select: none; /* Chrome, Safari */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* Internet Explorer/Edge */
-      user-select: none;         /* 표준 */
-    }
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* 표준 */
+}
 </style>
 </head>
 
@@ -64,10 +64,10 @@ body {
 					class="yellow_line" alt=""
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
-			<div class="hs_btn-container">
+			<!-- <div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
-			</div>
+			</div> -->
 			<div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
@@ -85,9 +85,9 @@ body {
 				<div class="hs_container-input id">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<%-- <input type="hidden" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" value="${sessionScope.m_id}"> --%>
-						<div class="hs_update-id">${sessionScope.m_id}</div>
+						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
+							placeholder="縁結びID" value="${sessionScope.m_id}">
+						<div class="hs_update-id" id="display_id">${sessionScope.m_id}</div>
 					</div>
 
 					<div class="hs_content-input pw">
@@ -162,7 +162,7 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" maxlength="50">
+							placeholder="example@example.com" id="emailInput" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -252,21 +252,36 @@ body {
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
 					</div>
-
+					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
 						onclick="register()">修正</button>
+						<button id="btnReg" class="btn-back" type="button"
+						onclick="goBack()">取消</button>
+						</div>
 
 				</div>
 			</div>
+			<div class="hs_footer">
+				<img alt="" src="regPage/ImgFolder/top_button.png"
+					class="top-button">
+				<div class="hs_footer-background"></div>
+			</div>
 		</form>
-
-		<footer class="hs_footer">
-			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
-			<div class="hs_footer-background"></div>
-		</footer>
 	</div>
 
 	<script>
+	
+	function goBack() {
+        window.history.back();
+    }
+	
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${sessionScope.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	    const topButton = document.querySelector('.top-button');
@@ -351,23 +366,7 @@ body {
 	
 	function register() {
 		
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-		if (pw !== pwConfirm) {
-			/* alert("パスワードが一致しません。"); */
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-	    // 필수 입력 항목들을 확인
+		// 필수 입력 항목들을 확인
 	    let requiredFields = [
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
@@ -400,7 +399,37 @@ body {
 	        }
 	    }
 
-	    document.querySelector('form').submit();
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+		
+		const emailInput = document.getElementById('emailInput');
+        const emailValue = emailInput.value;
+
+		if (pw !== pwConfirm) {
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
+			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+				Swal.fire({
+					icon: 'warning',
+					title : 'メールアドレスの形式が正しくありません。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
+			return false; // 폼 제출 방지
+		}
+		
+			document.querySelector('form').submit();
 	}
 	
 	function checkForm() {

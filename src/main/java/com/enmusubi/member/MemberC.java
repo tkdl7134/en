@@ -7,18 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.enmusubi.main.Interceptor;
-
 @WebServlet("/MemberC")
 public class MemberC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("loginPage/login.jsp").forward(request, response);
+
+			request.getRequestDispatcher("loginPage/login.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberDAO.memberC(request, response);
-		
+
 	}
 }
