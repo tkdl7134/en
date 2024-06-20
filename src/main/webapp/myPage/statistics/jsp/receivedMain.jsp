@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,7 @@
 <script type="text/javascript" src="myPage/statistics/js/receivedMain.js"></script>
 </head>
 <body>
+
 	<div class="recMain-container"> 
 		<div class="yj-main-s2-logo" ><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
 		<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
@@ -49,6 +50,6 @@
 	
 	
 	</div>
-	
+
 </body>
 </html>

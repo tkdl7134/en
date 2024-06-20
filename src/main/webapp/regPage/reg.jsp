@@ -28,13 +28,20 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
+
+body {
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* 표준 */
+}
 </style>
 </head>
 
 <body class="hs_body">
 
 	<div class="hs_background">
-	
+
 		<div class="yj-main-s2-logo">
 			<img class="yj-main-s2-logo img" alt=""
 				src="loginPage/ImgFolder/Logo.png">
@@ -58,19 +65,19 @@
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID">
+							placeholder="縁結びID" maxlength="20">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 					</div>
 
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード">
+							placeholder="パスワード" maxlength="20">
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20">
 					</div>
 				</div>
 
@@ -82,19 +89,19 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎">
+							placeholder="山田 太郎" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ">
+							placeholder="ヤマダ タロウ" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou">
+							placeholder="Yamada Tarou" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
@@ -120,21 +127,21 @@
 
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
-						<input type="text" name="m_birthY" id="m_birthY" class="hs_input birth"
-							maxlength="4">
+						<input type="text" name="m_birthY" id="m_birthY"
+							class="hs_input birth" maxlength="4">
 						<div class="hs_content-text bd">年</div>
-						<input type="text" name="m_birthM" id="m_birthM" class="hs_input birth"
-							maxlength="2">
+						<input type="text" name="m_birthM" id="m_birthM"
+							class="hs_input birth" maxlength="2">
 						<div class="hs_content-text bd">月</div>
-						<input type="text" name="m_birthD" id="m_birthD" class="hs_input birth"
-							maxlength="2">
+						<input type="text" name="m_birthD" id="m_birthD"
+							class="hs_input birth" maxlength="2">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com">
+							placeholder="example@example.com" id="emailInput" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -209,35 +216,41 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text city">住所</div>
 						<input type="text" name="a_city" id="a_city" class="hs_input city"
-							placeholder="市区町村">
+							placeholder="市区町村" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text street"></div>
 						<input type="text" name="a_street" id="a_street"
-							class="hs_input street" placeholder="番地">
+							class="hs_input street" placeholder="番地" maxlength="50">
 					</div>
 
 					<div class="hs_content-input building">
 						<div class="hs_content-text building"></div>
 						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名など">
+							class="hs_input building" placeholder="ビル・マンション名など"
+							maxlength="50">
 					</div>
-
+					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
 						onclick="register()">登録</button>
-
+						<button id="btnReg" class="btn-back" type="button"
+						onclick="goBack()">取消</button>
+						</div>
 				</div>
 			</div>
+			<div class="hs_footer">
+				<img alt="" src="regPage/ImgFolder/top_button.png"
+					class="top-button">
+				<div class="hs_footer-background"></div>
+			</div>
 		</form>
-
-		<footer class="hs_footer">
-			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
-			<div class="hs_footer-background"></div>
-		</footer>
 	</div>
-
 	<script>
+	
+	function goBack() {
+        window.history.back();
+    }
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	    const topButton = document.querySelector('.top-button');
@@ -320,27 +333,10 @@
 	    }
 	});
 	
-	function register() {
+function register() {
 		
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-		if (pw !== pwConfirm) {
-			/* alert("パスワードが一致しません。"); */
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-	    // 필수 입력 항목들을 확인
+		// 필수 입력 항목들을 확인
 	    let requiredFields = [
-	        { field: $("#m_id"), name: 'ID' },
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
 	        { field: $("input[name='m_name']"), name: '名前' },
@@ -368,24 +364,41 @@
 	                    confirmButton: 'swal2-confirm'
 	                }
 	            });
-	            /* requiredFields[i].field.focus(); */
 	            return false;
 	        }
 	    }
 
-	    if (!isIdChecked || !isIdAvailable) {
-	        Swal.fire({
-	            icon: 'warning',
-	            title: 'IDのチェックを行ってください。',
-	            customClass: {
-	                popup: 'swal2-popup',
-	                confirmButton: 'swal2-confirm'
-	            }
-	        });
-	        /* $("#m_id").focus(); */
-	        return false;
-	    }
-	    document.querySelector('form').submit();
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+		
+		const emailInput = document.getElementById('emailInput');
+        const emailValue = emailInput.value;
+
+		if (pw !== pwConfirm) {
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
+			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+				Swal.fire({
+					icon: 'warning',
+					title : 'メールアドレスの形式が正しくありません。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
+			return false; // 폼 제출 방지
+		}
+		
+			document.querySelector('form').submit();
 	}
 	
 	function checkForm() {

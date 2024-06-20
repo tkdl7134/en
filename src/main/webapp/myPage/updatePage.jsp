@@ -28,6 +28,13 @@
 	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
 	color: white !important; /* 텍스트 색상 */
 }
+
+body {
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* 표준 */
+}
 </style>
 </head>
 
@@ -57,10 +64,10 @@
 					class="yellow_line" alt=""
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
-			<div class="hs_btn-container">
+			<!-- <div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
-			</div>
+			</div> -->
 			<div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
@@ -78,20 +85,20 @@
 				<div class="hs_container-input id">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<%-- <input type="hidden" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" value="${sessionScope.m_id}"> --%>
-						<div class="hs_update-id">${sessionScope.m_id}</div>
+						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
+							placeholder="縁結びID" value="${sessionScope.m_id}">
+						<div class="hs_update-id" id="display_id">${sessionScope.m_id}</div>
 					</div>
 
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード">
+							placeholder="パスワード" maxlength="20">
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20">
 					</div>
 				</div>
 
@@ -103,19 +110,19 @@
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎">
+							placeholder="山田 太郎" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ">
+							placeholder="ヤマダ タロウ" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou">
+							placeholder="Yamada Tarou" maxlength="20">
 					</div>
 
 					<div class="hs_content-input">
@@ -155,7 +162,7 @@
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com">
+							placeholder="example@example.com" id="emailInput" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -245,21 +252,36 @@
 							class="hs_input building" placeholder="ビル・マンション名など"
 							maxlength="50">
 					</div>
-
+					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
 						onclick="register()">修正</button>
+						<button id="btnReg" class="btn-back" type="button"
+						onclick="goBack()">取消</button>
+						</div>
 
 				</div>
 			</div>
+			<div class="hs_footer">
+				<img alt="" src="regPage/ImgFolder/top_button.png"
+					class="top-button">
+				<div class="hs_footer-background"></div>
+			</div>
 		</form>
-
-		<footer class="hs_footer">
-			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
-			<div class="hs_footer-background"></div>
-		</footer>
 	</div>
 
 	<script>
+	
+	function goBack() {
+        window.history.back();
+    }
+	
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${sessionScope.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	    const topButton = document.querySelector('.top-button');
@@ -344,23 +366,7 @@
 	
 	function register() {
 		
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-		if (pw !== pwConfirm) {
-			/* alert("パスワードが一致しません。"); */
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-	    // 필수 입력 항목들을 확인
+		// 필수 입력 항목들을 확인
 	    let requiredFields = [
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
@@ -393,7 +399,37 @@
 	        }
 	    }
 
-	    document.querySelector('form').submit();
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+		
+		const emailInput = document.getElementById('emailInput');
+        const emailValue = emailInput.value;
+
+		if (pw !== pwConfirm) {
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
+			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+				Swal.fire({
+					icon: 'warning',
+					title : 'メールアドレスの形式が正しくありません。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
+			return false; // 폼 제출 방지
+		}
+		
+			document.querySelector('form').submit();
 	}
 	
 	function checkForm() {
@@ -429,7 +465,6 @@
 	// 입력란이 변경될 때마다 확인
 	$("input, select").on("change keyup", checkForm);
 	
-        
 	</script>
 </body>
 </html>
