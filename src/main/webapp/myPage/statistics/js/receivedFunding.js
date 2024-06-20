@@ -152,6 +152,7 @@ $.ajax({
 				document.querySelector(".kh-f-mousemove > img").src =
 					"myPage/statistics/imgFolder/dragbtn.png";
 			}
+			cardCon.style.cursor="none";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 			event.stopPropagation();
@@ -292,3 +293,4 @@ function closeModal() {
 	const modal = document.getElementById("modal");
 	modal.close();
 }*/
+

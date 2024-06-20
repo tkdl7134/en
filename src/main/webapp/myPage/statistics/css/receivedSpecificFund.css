@@ -27,7 +27,6 @@ body {
 }
 
 .recFundSpec-container{
-	background-image:url("../imgFolder/halfCircle2.png");
 	display : flex;
 	flex-direction: column;
 	justify-content: center;
@@ -266,7 +265,6 @@ body {
 	
 }
 .recFundSpecLastImg {
-	background-image:url("../imgFolder/bottomHalfCircle.png");
 	    height: 67rem;
     margin-top: -62.8rem;
     background-repeat: no-repeat;
