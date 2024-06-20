@@ -119,6 +119,7 @@ public class ProductDAO {
 			// s_wedding_info table 삽입
 			
 //			System.out.println(mr.getParameter("templatePK"));
+			System.out.println(mr.getParameter("groomRomaL"));
 			String groomName_kanji = mr.getParameter("groomKanjiL") + " " + mr.getParameter("groomKanjiF");
 			String groomName_kana = mr.getParameter("groomKanaL")+ " " + mr.getParameter("groomKanaF");
 			String groomName_roma = mr.getParameter("groomRomaL")+ " " + mr.getParameter("groomRomaF");
@@ -129,6 +130,9 @@ public class ProductDAO {
 			String bye = mr.getParameter("byeMessage");
 			hello = hello.replaceAll("\r\n", "<br>");
 			bye = bye.replaceAll("\r\n", "<br>");
+			
+			System.out.println(templatePK + " " + groomName_kanji+ " " + groomName_kana + " " + groomName_roma + " " +
+					brideName_kanji + " " + brideName_kana + " " + brideName_roma + " " + " " + hello + " "+ bye);
 			
 			
 			pstmtWeddingInfo.setInt(1, templatePK);
@@ -146,54 +150,64 @@ public class ProductDAO {
 			pstmtWeddingInfo.setString(13, mr.getFilesystemName("photo4"));
 			
 			
-			
 			//s_reception 테이블 삽입 
 			String weddingDay = mr.getParameter("weddingDay");
 			System.out.println(weddingDay);
 			System.out.println(weddingDay.charAt(11));
-			String day = weddingDay.charAt(11) + "";
-			String remove = weddingDay.replace(day, "").trim();
+			
+			String day = weddingDay.charAt(11) + ""; // 요일
+			String remove = weddingDay.replace(day, "").trim(); // 요일 제거버전
+			
 			String m_time = mr.getParameter("marriageTime");
-			System.out.println(m_time);
-			String wedding = remove + " " + m_time;
-			System.out.println(wedding);
-			
-			
-			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy.MM.dd HH:dd");
-			Date weddingDateTime = dateTimeFormat.parse(wedding);
-			System.out.println(weddingDateTime);
-			java.sql.Date weddingDT = new java.sql.Date(weddingDateTime.getTime());
-			
 			String m_timeA = mr.getParameter("marriageTime_a");
 			String r_time = mr.getParameter("receptionTime");
 			String r_timeA = mr.getParameter("receptionTime_a");
+//			System.out.println(m_time);
+			String weddingTime = remove + " " + m_time;
+			String receptionTime = remove + " " + r_time;
+			String weddingAssemleTime = remove + " " + m_timeA;
+			String receptionAssembleTime = remove + " " + r_timeA;
+			System.out.println(weddingTime);
 			
-			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-			Date weddingAssemble = timeFormat.parse(m_timeA);
-			Date receptionT = timeFormat.parse(r_time);
-			Date receptionAssemble = timeFormat.parse(r_timeA);
 			
-			java.sql.Date weddingA = new java.sql.Date(weddingAssemble.getTime());
-			java.sql.Date receptionTime = new java.sql.Date(receptionT.getTime());
-			java.sql.Date receptionA = new java.sql.Date(receptionAssemble.getTime());
+			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+			Date weddingT = dateTimeFormat.parse(weddingTime);
+			Date receptionT = dateTimeFormat.parse(receptionTime);
+			Date weddingAT = dateTimeFormat.parse(weddingAssemleTime);
+			Date receptionAT = dateTimeFormat.parse(receptionAssembleTime);
+			java.sql.Timestamp wedding_time = new java.sql.Timestamp(weddingT.getTime());
+			java.sql.Timestamp reception_time = new java.sql.Timestamp(receptionT.getTime());
+			java.sql.Timestamp wedding_assemble_time = new java.sql.Timestamp(weddingAT.getTime());
+			java.sql.Timestamp reception_assemble_time = new java.sql.Timestamp(receptionAT.getTime());
+			System.out.println(wedding_time);
+			
+			
+//			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+//			Date weddingAT = timeFormat.parse(m_timeA);
+//			Date receptionAT = timeFormat.parse(r_timeA);
+			System.out.println(wedding_assemble_time);
+
+			
+					
+//			System.out.println("m_time : " + m_timeA);
 //			
-//			SimpleDateFormat TimeFormat = new SimpleDateFormat("HH:mm");
-//			java.sql.Timestamp weddingTimeA = new java.sql.Timestamp(TimeFormat.parse(m_timeA).getTime());
-//			java.sql.Timestamp receptionTimeA = new java.sql.Timestamp(TimeFormat.parse(r_timeA).getTime());
+//			Date weddingAssemble = timeFormat.parse(m_timeA);
+//			java.sql.Date weddingA = new java.sql.Date(weddingAssemble.getTime());
+
 			
 			
 			// 본식
-			pstmtWedding.setDate(1, weddingDT);   // weddingday+marriagetime
+			pstmtWedding.setTimestamp(1, wedding_time);   // weddingday+marriagetime
 			pstmtWedding.setString(2, mr.getParameter("marriage_place"));
 			pstmtWedding.setString(3, mr.getParameter("marriage_addr"));
-			pstmtWedding.setDate(4, weddingA);
+			pstmtWedding.setTimestamp(4, wedding_assemble_time);
 			pstmtWedding.setString(5, "wedding");
 			
 			// 본식
-			pstmtReception.setDate(1, receptionTime);   // weddingday+marriagetime
+			pstmtReception.setTimestamp(1, reception_time);   // weddingday+marriagetime
 			pstmtReception.setString(2, mr.getParameter("reception_place"));
 			pstmtReception.setString(3, mr.getParameter("reception_addr"));
-			pstmtReception.setDate(4, receptionA);
+			pstmtReception.setTimestamp(4, reception_assemble_time);
 			pstmtReception.setString(5, "reception");
 						
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
@@ -220,7 +234,7 @@ public class ProductDAO {
 
 
     private static boolean isTemplatePKValid(int templatePK) {
-        return true; // 예시: 항상 유효한 경우
+    	return true; // 항상 유효
     }
 
 
