@@ -13,7 +13,7 @@ function throttle(callback, time) {
     }, time);
   }
 }
-
+const textElement = document.getElementById("verticalText1");
 function goToNextSection() {
   if (currentSectionIndex < sections.length - 1) {
     currentSectionIndex++;
@@ -27,8 +27,7 @@ function goToPrevSection() {
     sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
   }
 }
-
-document.addEventListener("wheel", function (event) {
+const wheelHandler = (event) => {
   if (event.deltaY > 0) {
     // 스크롤 다운
     throttle(goToNextSection, 1000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
@@ -36,7 +35,23 @@ document.addEventListener("wheel", function (event) {
     // 스크롤 업
     throttle(goToPrevSection, 1000);
   }
-});
+
+  console.log(currentSectionIndex);
+  if (currentSectionIndex == 1) {
+    document.addEventListener("mousemove", mouseMoveHandler);
+  } else {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+  }
+
+  if (currentSectionIndex == 2) {
+    textElement.textContent = "";
+    textAni();
+  } else if (currentSectionIndex == 4) {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.querySelector(".yj-main-s4-flexContainer").style.overflow = "";
+  }
+};
+document.addEventListener("wheel", wheelHandler);
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 2
@@ -59,29 +74,49 @@ s2menuBtn.addEventListener("click", function () {
 });
 
 // mouse cursor (drag)
-const s2CardConAll = document.querySelectorAll(".yj-main-s2-section");
+const s2CardConAll = document.querySelectorAll(".yj-main-section");
 const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
 
-s2CardConAll.forEach((card) => {
-  card.addEventListener("mouseenter", function (event) {
-    s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
-    card.style.cursor = "none";
-    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
-    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
-  });
+// s2CardConAll.forEach((card) => {
+//   card.addEventListener("mouseenter", function (event) {
+//     console.log(111);
+//     s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+//     card.style.cursor = "none";
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+//   });
 
-  card.addEventListener("mouseleave", function () {
-    s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
-    s2Mouseicn.classList.add("yj-main-s2-cursor-none");
-  });
-});
-
-document.addEventListener("mousemove", (event) => {
+//   card.addEventListener("mouseleave", function () {
+//     console.log(222);
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+//   });
+// });
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
+const radiusX = 560;
+const radiusY = 330;
+const mouseMoveHandler = (event) => {
   const mouseX = event.clientX;
   const mouseY = event.clientY;
-  s2Mouseicn.style.left = mouseX + "px";
-  s2Mouseicn.style.top = mouseY + "px";
-});
+  const dx = mouseX - centerX;
+  const dy = mouseY - centerY;
+
+  if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
+    s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+    s2CardConAll[1].style.cursor = "none";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+
+    s2Mouseicn.style.left = mouseX + "px";
+    s2Mouseicn.style.top = mouseY + "px";
+    console.log("in");
+  } else {
+    s2CardConAll[1].style.cursor = "auto";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+  }
+};
 
 // 배경 이미지  슬라이드
 function slickStart() {
@@ -177,90 +212,27 @@ s3menuBtn.addEventListener("click", function () {
   }
 });
 
+let wow;
 // 체크체크테스트
-// document.addEventListener("DOMContentLoaded", () => {
-//   const textElement = document.getElementById("verticalText");
-//   const text = textElement.textContent;
-//   textElement.textContent = "";
-
-//   for (let i = 0; i < text.length; i++) {
-//     const span = document.createElement("span");
-//     span.textContent = text[i];
-//     span.style.display = "inline-block";
-//     span.style.transform = "translateY(-100%)";
-//     span.style.opacity = "0";
-//     span.style.transition = `transform 0.5s ease, opacity 0.5s ease`;
-//     span.style.transitionDelay = `${i * 0.1}s`;
-//     textElement.appendChild(span);
-//   }
-
-//   setTimeout(() => {
-//     const spans = textElement.querySelectorAll("span");
-//     spans.forEach((span) => {
-//       span.style.transform = "translateY(0)";
-//       span.style.opacity = "1";
-//     });
-//   }, 100);
-// });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const textElement = document.getElementById("verticalText1");
-//   const text = textElement.textContent;
-//   textElement.textContent = "";
-
-//   for (let i = 0; i < text.length; i++) {
-//     const span = document.createElement("span");
-//     span.textContent = text[i];
-//     textElement.appendChild(span);
-//     if (i < text.length - 1) {
-//       textElement.appendChild(document.createElement("br"));
-//     }
-//   }
-// });
-// document.addEventListener("DOMContentLoaded", () => {
-//   const textElement = document.getElementById("verticalText2");
-//   const text = textElement.textContent;
-//   textElement.textContent = "";
-
-//   for (let i = 0; i < text.length; i++) {
-//     const span = document.createElement("span");
-//     span.textContent = text[i];
-//     textElement.appendChild(span);
-//     if (i < text.length - 1) {
-//       textElement.appendChild(document.createElement("br"));
-//     }
-//   }
-// });
-
-// 이 때 스타일은 잘 적용되나 애니는 적용 x
-// document.addEventListener("DOMContentLoaded", () => {
-//   const textElement = document.getElementById("verticalText");
-//   const text = textElement.textContent;
-//   textElement.textContent = "";
-
-//   for (let i = 0; i < text.length; i++) {
-//     const span = document.createElement("span");
-//     span.textContent = text[i];
-//     textElement.appendChild(span);
-//   }
-// });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const textElement = document.getElementById("verticalText");
-  const text = textElement.textContent;
+function textAni() {
+  const text = textElement.dataset.text;
+  console.log(text);
+  clearInterval(wow);
   textElement.textContent = "";
 
-  for (let i = 0; i < text.length; i++) {
-    const span = document.createElement("span");
-    span.textContent = text[i];
-    span.style.display = "inline-block";
-    span.style.transform = "translateY(-100%)";
-    span.style.opacity = "0";
-    span.style.animation = `slideDown 0.5s ease forwards`;
-    span.style.animationDelay = `${i * 0.1}s`;
-    textElement.appendChild(span);
-  }
-});
+  let i = 0;
+  wow = setInterval(() => {
+    if (i < text.length) {
+      const span = document.createElement("span");
+      span.textContent = text[i];
+      console.log(text[i]);
+      i++;
+      textElement.appendChild(span);
+    } else {
+      clearInterval(wow);
+    }
+  }, 150);
+}
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
@@ -304,6 +276,7 @@ cardConAll.forEach((card) => {
     card.style.cursor = "none";
     mouseicn.classList.remove("yj-main-s4-cursor-none");
     mouseicn.classList.add("yj-main-s4-cursor-block");
+    console.log(123123);
   });
 
   card.addEventListener("mouseleave", function () {
@@ -323,30 +296,32 @@ document.addEventListener("mousemove", (event) => {
 // Section 5
 
 // mouse cursor (scroll)
-const s5CardConAll = document.querySelectorAll(".yj-main-s5-bigCon");
+const s5CardConAll = document.querySelector(".yj-main-s5-container");
 const s5Mouseicn = document.querySelector(".yj-main-s5-cursor");
-
-s5CardConAll.forEach((card) => {
-  card.addEventListener("mouseenter", function (event) {
-    s5Mouseicn.querySelector("img").src =
-      "imgFolder/yj-main-default-scroll.png";
-    card.style.cursor = "none";
-    s5Mouseicn.classList.remove("yj-main-s5-cursor-none");
-    s5Mouseicn.classList.add("yj-main-s5-cursor-block");
-  });
-
-  card.addEventListener("mouseleave", function () {
-    s5Mouseicn.classList.remove("yj-main-s5-cursor-block");
-    s5Mouseicn.classList.add("yj-main-s5-cursor-none");
-  });
+s5CardConAll.addEventListener("mouseenter", function () {
+  console.log("in");
+  s5Mouseicn.style.display = "block";
+  s5CardConAll.style.cursor = "none";
+  // document.removeEventListener("wheel", wheelHandler);
+  document.addEventListener("mousemove", s5MouseHandler);
 });
 
-document.addEventListener("mousemove", (event) => {
+s5CardConAll.addEventListener("mouseleave", () => {
+  console.log("---out----");
+  s5Mouseicn.style.display = "none";
+});
+//   console.log("out");
+//   s5Mouseicn.style.display = "none";
+//   document.addEventListener("wheel", wheelHandler);
+//   document.removeEventListener("mousemove", s5MouseHandler);
+// });
+
+const s5MouseHandler = (event) => {
   const mouseX = event.clientX;
   const mouseY = event.clientY;
   s5Mouseicn.style.left = mouseX + "px";
   s5Mouseicn.style.top = mouseY + "px";
-});
+};
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 6
@@ -386,9 +361,9 @@ s6CardConAll.forEach((card) => {
   });
 });
 
-document.addEventListener("mousemove", (event) => {
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
-  s6Mouseicn.style.left = mouseX + "px";
-  s6Mouseicn.style.top = mouseY + "px";
-});
+// document.addEventListener("mousemove", (event) => {
+//   const mouseX = event.clientX;
+//   const mouseY = event.clientY;
+//   s6Mouseicn.style.left = mouseX + "px";
+//   s6Mouseicn.style.top = mouseY + "px";
+// });

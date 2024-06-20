@@ -529,33 +529,31 @@ body {
 }
 
 .yj-main-s5-cursor {
-  z-index: 100;
-  pointer-events: none;
-}
-
-.yj-main-s5-cursor-none {
+  /* z-index: 100; */
+  /* pointer-events: none; */
   display: none;
-}
-
-.yj-main-s5-cursor-block {
-  display: block;
   position: absolute;
-  pointer-events: none;
+  width: 50px;
+  border: 1px solid blue;
 }
 
 .yj-main-s5-cursor img {
   width: 80px;
   height: 80px;
+  z-index: 999;
+  position: absolute;
+  left: 5px;
 }
 
 .yj-main-s5-container {
   /* size */
   width: 35rem;
   height: 100vh;
-  background-color: #fff5f4;
+  background-color: white;
   box-shadow: 0 5px 15px 5px #fd5356;
-  overflow-y: scroll;
-  position: relative;
+  overflow-y: overlay;
+  position: absolute;
+  right: 15rem;
 }
 
 .yj-main-s5-invitation {
@@ -715,6 +713,7 @@ body {
 #yj-main-s7 {
   z-index: 1;
   background-image: url("imgFolder/yj-main-default-bg.png ");
+  position: relative;
 }
 
 .yj-main-s7-cover {
