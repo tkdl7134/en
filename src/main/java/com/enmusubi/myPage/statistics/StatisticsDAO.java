@@ -550,6 +550,49 @@ public class StatisticsDAO {
 		
 		
 	}
+
+	public static void getTemplatePrev(HttpServletRequest request) {
+
+		// id 받기
+		
+		String id = "testuser";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "SELECT st.t_preview\r\n"
+				+ "FROM s_template st\r\n"
+				+ "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk\r\n"
+				+ "JOIN s_event se ON swi.e_no = se.e_no\r\n"
+				+ "JOIN s_guest sg ON se.e_no = sg.e_no\r\n"
+				+ "WHERE sg.m_id ='testuser'";
+		
+		try {
+		con = dbManager.connect();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		
+		ArrayList<payDTO> previews = new ArrayList<payDTO>();
+		payDTO preview = new payDTO();
+		while (rs.next()) {
+			System.out.println(rs.getString("t_preview"));
+			preview.setT_preview(rs.getString("t_preview"));
+			previews.add(preview);
+			
+		}
+		request.setAttribute("previews",previews );
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
+		
+		
+		
+	}
 	
 	
 }
