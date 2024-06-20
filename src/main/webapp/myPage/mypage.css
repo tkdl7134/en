@@ -194,7 +194,7 @@ translate(
 	position: absolute;
 	left: 0;
 	margin-left: 18rem;
-	margin-top: 1.5rem;
+	margin-top: 1.7rem;
 }
 
 .hs_output {
@@ -238,6 +238,10 @@ translate(
 	color: #fff;
 }
 
+.hs_footer{
+	text-align: center;
+}
+
 .hs_footer-background {
 	background-image: url('ImgFolder/background-2.png');
 	background-size: cover;
@@ -258,5 +262,4 @@ translate(
 .top-button {
 	margin-top: 5rem;
 	width: 200px;
-	margin-left: 54rem;
 }
