@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
         <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
       </div>
 
-      <%@ include file="mainNavBF.jsp" %>
+      <jsp:include page="${mainNav }" />
 
       <div class="yj-main-s2-cover">
         <img src="main/imgFolder/yj-main-s2-cover.png" alt="섹션2 커버" />
@@ -113,7 +113,7 @@ pageEncoding="UTF-8"%>
         <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고" /></a>
       </div>
 
-      <%@ include file="mainNavBF.jsp" %>
+      <jsp:include page="${mainNav }" />
 
       <div
         class="vertical-text"
@@ -141,7 +141,7 @@ pageEncoding="UTF-8"%>
         <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션4 로고" /></a>
       </div>
 
-      <%@ include file="mainNavBF.jsp" %>
+      <jsp:include page="${mainNav }" />
 
       <div class="yj-main-s4-cover">
         <img src="main/imgFolder/yj-main-s4-cover.png" alt="섹션4 커버" />
@@ -289,7 +289,7 @@ pageEncoding="UTF-8"%>
         <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션5 로고" /></a>
       </div>
 
-      <%@ include file="mainNavBF.jsp" %>
+      <jsp:include page="${mainNav }" />
 
       <div class="yj-main-s5-cursor yj-main-s5-cursor-none">
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
@@ -315,7 +315,7 @@ pageEncoding="UTF-8"%>
         <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션6 로고" /></a>
       </div>
 
-      <%@ include file="mainNavBF.jsp" %>
+      <jsp:include page="${mainNav }" />
 
       <div class="yj-main-s6-cover">
         <img src="main/imgFolder/yj-main-s6-cover.png" alt="섹션6 커버" />
