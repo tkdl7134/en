@@ -54,7 +54,7 @@ body {
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">会員登録</div>
+		<h1 class="hs_title">会員登録</h1>
 
 		<!-- <form action="MemberRegC" method="post"> -->
 		<form action="MemberRegC" method="post" enctype="multipart/form-data">

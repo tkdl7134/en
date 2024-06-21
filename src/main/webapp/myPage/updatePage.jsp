@@ -54,7 +54,7 @@ body {
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">会員情報修正</div>
+		<h1 class="hs_title">会員情報修正</h1>
 
 		<div class="hs_mypage-menus">
 			<div class="hs_btn-container">
