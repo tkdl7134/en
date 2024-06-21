@@ -90,6 +90,7 @@ public class MemberDAO {
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
+//				response.sendRedirect("HSC");
 				response.getWriter().println("success"); // 성공 메시지를 클라이언트에 보냄
 
 			} else {
@@ -182,7 +183,7 @@ public class MemberDAO {
 	public static void MemberRegC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// request에서 파라미터 가져오기
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 
@@ -215,10 +216,10 @@ public class MemberDAO {
 		String m_regdate = now.format(formatter);
 
 //      정보 합치기 (구분자 사용)
-		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
+		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
-		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
+		String combinedBirth = m_birthY + " " + m_birthM + " " + m_birthD;
 
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
 				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
@@ -231,6 +232,7 @@ public class MemberDAO {
 			// 7. 회원 정보 및 주소 정보 등록 (트랜잭션 처리)
 //			int result = dao.registerMemberWithAddress(dto);
 			int result = dao.registerMemberWithAddress(dto, request);
+			
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
 				System.out.println("회원가입 성공");
@@ -426,7 +428,7 @@ public class MemberDAO {
 
 		HttpSession session = request.getSession();
 
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 
@@ -471,11 +473,11 @@ public class MemberDAO {
 		String m_regdate = request.getParameter("m_regdate");
 
 //      5. 주소 정보 합치기 (구분자 사용)
-		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
+		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
 //		System.out.println("here>>>>>>:::"+combinedAddress);
-		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
+		String combinedBirth = m_birthY + " " + m_birthM + " " + m_birthD;
 
 		// DTO 객체 생성
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,

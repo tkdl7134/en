@@ -179,6 +179,6 @@ $('#byMoney').on('click', function() {
     
 });
 function GoToTop() {
-    var location = document.querySelector(".recFundSpec-container").offsetTop;
+    var location = document.querySelector("#background1").offsetTop;
     window.scrollTo({top:location, behavior:'smooth'});
 }

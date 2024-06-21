@@ -87,14 +87,15 @@
       <div class="canvas-content">
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
 			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+ 					<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
  	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
-  <div  style="display : flex;  margin-top: 10rem;   width: 80rem;" id="toGoTexts">
-	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+  <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
+	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div onclick="location.href='mytemplateController'" style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='MyMeetingC'"  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
 	<div style="display: flex; " id="toGoLines">
-	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
     <div style="margin-top : 2rem;" id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
