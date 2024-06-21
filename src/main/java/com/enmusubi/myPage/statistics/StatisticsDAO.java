@@ -14,6 +14,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Response;
 
@@ -530,6 +531,10 @@ public class StatisticsDAO {
 		// request.getParameter ("eno")
 		int eno = 1;
 		
+		
+		
+		
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -562,8 +567,9 @@ public class StatisticsDAO {
 		// id 받기
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 		// session.getAttribute("m_id")
+		HttpSession session = request.getSession();
+	String id = 	(String) session.getAttribute("m_id");
 		int offset = (page - 1) * itemsPerPage;
-		String id = "testuser";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
