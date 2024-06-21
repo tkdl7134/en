@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="product/css/fundingSetting.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="product/js/fundingSetting.js"></script>
+    <script src="product/js/fundingSetting_db.js"></script>
   </head>
   <body>
    <!-- 로고 / 네비 -->
@@ -40,10 +41,12 @@
                 <img src="product/imgFolder/funding-sofa.png" alt="" />
               </div>
               <div class="je_detail-title">ソファー</div>
+              
               <div class="je_detail-input">
-                <input type="text" placeholder="円" />
+                ${fundings[0].wl_price }
+                <input id="wl_price" name="wl_price" type="text" placeholder="円" />
               </div>
-              <div class="je_detail-button"><button>登録</button></div>
+              <div class="je_detail-button"><button id="wl_name" value="sofa" onclick="settingWish()">登録</button></div>
             </div>
           </div>
           <div class="je_fundingBox">
@@ -55,6 +58,7 @@
               </div>
               <div class="je_detail-title">冷蔵庫</div>
               <div class="je_detail-input">
+              ${fundings[1].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
@@ -69,6 +73,7 @@
               </div>
               <div class="je_detail-title">洗濯機</div>
               <div class="je_detail-input">
+              ${fundings[2].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
@@ -83,6 +88,7 @@
               </div>
               <div class="je_detail-title">テレビジョン</div>
               <div class="je_detail-input">
+              ${fundings[3].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
@@ -97,6 +103,7 @@
               </div>
               <div class="je_detail-title">机</div>
               <div class="je_detail-input">
+              ${fundings[4].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
@@ -111,6 +118,7 @@
               </div>
               <div class="je_detail-title">ベット</div>
               <div class="je_detail-input">
+              ${fundings[5].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
@@ -125,6 +133,7 @@
               </div>
               <div class="je_detail-title je_table-img">テーブル</div>
               <div class="je_detail-input">
+              ${fundings[6].wl_price }
                 <input type="text" placeholder="円" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>

@@ -7,23 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/FundingSettingC")
-public class FundingSettingC extends HttpServlet {
+@WebServlet("/InvitationUpdateC")
+public class InvitationUpDelC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 
-		FundingSettingDAO.getfundingInfo(request);
-		request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
+	// delete 보내기
+		// 
+		ProductDAO.deleteInvitation(request);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (true ) { //no가 기존에 없을 때
-			FundingSettingDAO.regFundingInfo(request);
-		} else {
-			FundingSettingDAO.updateFundingInfo(request);
-		}
-		
-		
+	// update 보내기
+		ProductDAO.updateInvitaion(request);
 	}
 
 }

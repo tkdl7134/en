@@ -19,7 +19,7 @@
     <div id="je_container-invitionPreview">
       <div class="je_content-invitationPreview">
         <!-- 버튼 -->
-        <div class="je_wishlistSet-btn">위시리스트 설정</div>
+        <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
         <!-- 초대장 -->
         <div class="je_invitation">
           <img style="width: 90%" src="product/imgFolder/${inviteInfo.t_template }" alt="" />
