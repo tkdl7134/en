@@ -22,7 +22,6 @@ public class MemberRegC extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		MemberDAO.MemberRegC(request, response);
-		
 		response.sendRedirect("MemberC");
 		
 	}

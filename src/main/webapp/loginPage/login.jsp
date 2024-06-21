@@ -111,6 +111,9 @@ body {
 					});
 					return;
 				}
+				
+				// 모든 버튼과 입력 필드를 비활성화
+		        $('button, input, a').prop('disabled', true);
 
 				// 서버로 로그인 요청
 				$.ajax({
@@ -136,6 +139,9 @@ body {
 							});
 							$("#m_id").val("");
 							$("#m_pw").val("");
+							
+							 // 모든 버튼과 입력 필드를 다시 활성화
+		                    $('button, input, a').prop('disabled', false);
 						}
 					},
 					error : function() {
@@ -148,6 +154,8 @@ body {
 								confirmButton : 'swal2-confirm'
 							}
 						});
+						// 모든 버튼과 입력 필드를 다시 활성화
+		                $('button, input, a').prop('disabled', false);
 					}
 				});
 			});
