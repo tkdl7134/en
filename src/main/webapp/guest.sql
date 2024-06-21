@@ -2,11 +2,19 @@ SELECT * FROM s_guest;
 
 DELETE from s_guest where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
 
+DELETE from s_address where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
+DELETE from s_allergy where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
+DELETE from s_party where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
 SELECT * FROM s_Member;
 
 SELECT * FROM s_address;
 
 SELECT * FROM s_allergy;
+
+SELECT * FROM s_party;
 
 INSERT INTO s_guest (g_guest_type, )
 
