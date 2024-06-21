@@ -410,6 +410,7 @@ body {
 .yj-main-s4-cursor {
   z-index: 100;
   pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
 .yj-main-s4-cursor-none {
@@ -494,11 +495,11 @@ body {
   /* size */
   width: 35rem;
   height: 100vh;
-  background-color: white;
+  background-color: #fff5f4;
   box-shadow: 0 5px 15px 5px #fd5356;
   overflow-y: overlay;
-  position: absolute;
-  right: 15rem;
+  position: relative;
+  right: 5vw;
 }
 
 .yj-main-s5-invitation {
@@ -566,6 +567,9 @@ body {
 .yj-main-s6-cursor {
   z-index: 100;
   pointer-events: none;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
 }
 
 .yj-main-s6-cursor-none {
@@ -579,8 +583,8 @@ body {
 }
 
 .yj-main-s6-cursor img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
 }
 
 .yj-main-s6-container {

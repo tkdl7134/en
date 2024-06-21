@@ -10,16 +10,17 @@
 	<div class="yj-main-nav nav-hidden">
 		<div class="nav-fakeDiv"></div>
 		<div class="nav-info">
-			<img alt="" src="regPage/imgFolder/${sessionScope.m_img }"> 
 			<div class="nav-welcome">
 			${sessionScope.m_name }様<br>✿ ようこそ ✿
 			</div>
 		</div>
 		<div class="nav-myPage">
-			<a href="MemberC"><h3>マイページ</h3></a>
+			<a href="MemberDetailC"><h3>マイページ</h3></a>
 		</div>
 		<div class="nav-myPageList">
-			<a href=""><h3>1</h3></a> <a href=""><h3>2</h3></a> <a href=""><h3>3</h3></a>
+			<a href="MemberDetailC"><h3>会員情報</h3></a>
+			<a href="mytemplateController"><my3>テンプレート</h3></a>
+			<a href="MyMeetingC"><h3>会リスト</h3></a>
 		</div>
 		<div class="nav-invitation">
 			<a href="ProductController"><h3>商品紹介</h3></a>

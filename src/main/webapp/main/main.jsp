@@ -308,6 +308,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Section 6 -->
     <div class="yj-main-section" id="yj-main-s6">
+    
       <div class="yj-main-s6-cursor yj-main-s6-cursor-none">
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
       </div>
