@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Template Management</title>
-<link rel="stylesheet" href="mytemplate/css/mytemplate.css">
-<script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
+<link rel="stylesheet" href="myPage/statistics/css/sendMain.css">
+<script type="text/javascript" src="myPage/statistics/js/sendMain.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
@@ -37,7 +37,16 @@ $(document).ready(function() {
 width: 1rem;
 
 }
-
+  #background1 {
+        background-image: url("myPage/statistics/imgFolder/halfCircle2.png");
+        background-position: top center;
+        top: 0;
+      }
+       #background2 {
+        background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: bottom center;
+        bottom: 940px;
+      }
 </style>
 </head>
 <body id="page_top">
@@ -55,7 +64,7 @@ width: 1rem;
 	<div id="canvas-content-container">
 		<div class="canvas-content">
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-			<h1 style="position : static;margin-left: 53.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
+			<h1 style="position : static;margin-left: 55.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
@@ -80,8 +89,7 @@ width: 1rem;
     </div>
 </nav>
 
-				<main class="hw_invitation_main">
-					<div class="hw_product-page-content">
+				<main><div style="    display: flex; flex-direction: column; align-items: center; justify-content: center;" class="hw_invitation_main" class="hw_product-page-content">
 						<div style="height : 140rem;" class="hw_page-content">
 							<c:forEach var="previews" items="${previews}" varStatus="status">
 								<div class="hw_page-content-template">
