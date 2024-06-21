@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Template Management</title>
-<link rel="stylesheet" href="mytemplate/css/mytemplate.css">
-<script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
+<link rel="stylesheet" href="myPage/statistics/css/sendMain.css">
+<script type="text/javascript" src="myPage/statistics/js/sendMain.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
@@ -37,7 +37,16 @@ $(document).ready(function() {
 width: 1rem;
 
 }
-
+  #background1 {
+        background-image: url("myPage/statistics/imgFolder/halfCircle2.png");
+        background-position: top center;
+        top: 0;
+      }
+       #background2 {
+        background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: bottom center;
+        bottom: 940px;
+      }
 </style>
 </head>
 <body id="page_top">
@@ -46,7 +55,7 @@ width: 1rem;
 		src="mytemplate/imgFolder/logo.png" alt="logo"></a>
 	<a class="hw_menu" href="main.jsp"><img
 		src="mytemplate/imgFolder/menu_btn.png" alt="menu"></a>
-	<h1 class="hw_page_title">会リスト</h1>
+	
 	<div id="background1">
 		<div class="canvas-container">
 			<canvas class="canvas" id="canvas1"></canvas>
@@ -55,10 +64,12 @@ width: 1rem;
 	<div id="canvas-content-container">
 		<div class="canvas-content">
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
+			<h1 style="position : static;margin-left: 55.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
-				<nav style="margin-top : -7rem; margin-bottom : 10rem;" class="hw_menubar">
+				<nav style="    margin-top: 7rem;
+				 margin-bottom : 10rem;" class="hw_menubar">
     <div class="hw_menubar_item">
         <a  href="MemberDetailC" class="hw_menubar_menu" href="">✿ 会員情報 ✿</a> <img
             class="hw_yellow_line" alt=""
@@ -66,6 +77,7 @@ width: 1rem;
     </div>
     <div class="hw_menubar_item">
         <a style="color : #696969;" class="hw_menubar_menu active" href="mytemplateController">✿ テンプレート管理 ✿</a> <img
+            style="width: 13rem;"
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
@@ -77,8 +89,7 @@ width: 1rem;
     </div>
 </nav>
 
-				<main class="hw_invitation_main">
-					<div class="hw_product-page-content">
+				<main><div style="    display: flex; flex-direction: column; align-items: center; justify-content: center;" class="hw_invitation_main" class="hw_product-page-content">
 						<div style="height : 140rem;" class="hw_page-content">
 							<c:forEach var="previews" items="${previews}" varStatus="status">
 								<div class="hw_page-content-template">
