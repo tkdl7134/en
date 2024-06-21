@@ -17,7 +17,7 @@ public class LineLoginC extends HttpServlet {
 
 		LineDAO.LineCheck(request);
 		
-		response.sendRedirect("HSC");
+		response.sendRedirect("MainC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
