@@ -49,6 +49,7 @@ public class SurveyDAO {
 
 	    
 	    try {
+	    	
 	        con = dbManager.connect();
 	        
 	        HttpSession session = request.getSession();
@@ -114,10 +115,14 @@ public class SurveyDAO {
 	        
 	        String postcode = request.getParameter("postal-code");
 	        String[] address = request.getParameterValues("address");
+	        String fulladdr = null;
 	        
-	        String addresses = String.join(" ", address != null ? address : new String[0]);
-	        
-	        pstmtLineAddressUpdate.setString(1, addresses);
+	        for (String s : address) {
+	        	System.out.println(s);
+	        	fulladdr += s + " ";
+	        }
+	        	        
+	        pstmtLineAddressUpdate.setString(1, fulladdr);
 	        pstmtLineAddressUpdate.setString(2, postcode);
 	        pstmtLineAddressUpdate.setString(3, lineUserId);
 
@@ -130,7 +135,7 @@ public class SurveyDAO {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
-	        dbManager.close(con, pstmtLineAddressUpdate, null);
+	        dbManager.close(null, pstmtLineAddressUpdate, null);
 	        dbManager.close(con, pstmtLineMemberUpdate, null);
 	    }
 	}
@@ -384,42 +389,54 @@ public class SurveyDAO {
 	
 	Connection con = null;
 	PreparedStatement pstmtGuest = null; 
-	PreparedStatement pstmtMember = null; 
 	PreparedStatement pstmtAllergy = null;
 	PreparedStatement pstmtParty = null;
 	PreparedStatement pstmtAddress = null;
+	PreparedStatement pstmtSelect = null;
+	ResultSet rs = null; 
 
 	DBManager dbManager = DBManager.getInstance();
-	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String sqlSelect = "SELECT e_no FROM s_event WHERE m_id = ?";
+	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
+			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
 	String sqlParty = "INSERT INTO s_Party (e_no, m_id, p_adult, p_child, p_baby) VALUES (?, ?, ?, ?, ?)";
 	String sqlAddress = "INSERT INTO s_address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 	
 	try {
 		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("m_id");
-		
+        HttpSession session = request.getSession();
+        String lineUserId = (String) session.getAttribute("m_id");
+        System.out.println("LINE 회원 로그인 세션 아이디는: " + lineUserId);
+
 		con = dbManager.connect();
-        if (con == null) {
-            throw new SQLException("Failed to establish a database connection.");
+
+        // e_no 가져오기
+        pstmtSelect = con.prepareStatement(sqlSelect);
+        pstmtSelect.setString(1, lineUserId);
+        rs = pstmtSelect.executeQuery();
+        String eventNumber = null;
+        if (rs.next()) {
+        	eventNumber = rs.getString("e_no");
         }
-        con.setAutoCommit(false); // 트랜잭션 시작
+        
+        if (eventNumber == null) {
+            throw new SQLException("No e_no found for m_id: " + lineUserId);
+        }
+		
+       System.out.println("이벤트 넘버는: " + eventNumber);
+		
 		
 		// 일반 정보 입력
-		
-		
 		// 택스쳐 추가조정 (띄어쓰기)
 		String note = request.getParameter("special-notes");
 		note = note.replace("\r\n", "<br>");
 		
-        String gAttend = request.getParameter("attendance");
-		
 		// 회원 개인정보 입력
 		pstmtGuest = con.prepareStatement(sqlGuest);
-		pstmtGuest.setString(1, "1");
-		pstmtGuest.setString(2, id);
-		pstmtGuest.setString(3, gAttend);
+		pstmtGuest.setString(1, eventNumber);
+		pstmtGuest.setString(2, lineUserId);
+		pstmtGuest.setString(3, request.getParameter("attendance"));
 		pstmtGuest.setString(4, request.getParameter("couple"));
 		pstmtGuest.setString(5, request.getParameter("allergy"));
 		pstmtGuest.setString(6, note);
@@ -431,8 +448,8 @@ public class SurveyDAO {
 		
 		// 동반자 정보 입력
 		pstmtParty = con.prepareStatement(sqlParty);
-		pstmtParty.setString(1, "1");
-		pstmtParty.setString(2, id);
+		pstmtParty.setString(1, eventNumber);
+		pstmtParty.setString(2, lineUserId);
 		pstmtParty.setString(3, request.getParameter("adult"));
 		pstmtParty.setString(4, request.getParameter("child"));
 		pstmtParty.setString(5, request.getParameter("baby"));
@@ -442,13 +459,14 @@ public class SurveyDAO {
 		}
 		
 		// 알러지 상세사항 입력
+        String gAttend = request.getParameter("attendance");
         if ("出席".equals(gAttend)) { // 참일때만 알러지 정보 입력
             String allergytype = request.getParameter("allergy-type");
             allergytype = allergytype.replace("\r\n", "<br>");
             
             pstmtAllergy = con.prepareStatement(sqlAllergy);
-            pstmtAllergy.setString(1, "1");
-            pstmtAllergy.setString(2, id);
+            pstmtAllergy.setString(1, eventNumber);
+            pstmtAllergy.setString(2, lineUserId);
             pstmtAllergy.setString(3, allergytype);
 
             if (pstmtAllergy.executeUpdate() == 1) {
@@ -459,39 +477,32 @@ public class SurveyDAO {
         // 주소 입력
         String postcode = request.getParameter("postal-code");
         String[] address = request.getParameterValues("address");
+        String fulladdr = "";
+        
         
         for (String s : address) {
-		System.out.println(s);
+        	System.out.println(s);
+			fulladdr += s + " ";
 		}
-
-        String addresses = String.join(" ", address != null ? address : new String[0]);
+        
+        System.out.println("전" + fulladdr + "후");
+        System.out.println(postcode);
 
             
         	pstmtAddress = con.prepareStatement(sqlAddress);
-        	pstmtAddress.setString(1, id);
+        	pstmtAddress.setString(1, lineUserId);
         	pstmtAddress.setString(2, postcode);
-        	pstmtAddress.setString(3, addresses);
+        	pstmtAddress.setString(3, fulladdr);
 
             if (pstmtAllergy.executeUpdate() == 1) {
                 System.out.println("주소 등록성공!!");
             }
-        
-            // 모든 INSERT문 (트랜잭션) 커밋
-            con.commit();
-
 		
 		
-    } catch (Exception e) {
-        e.printStackTrace();
-        if (con != null) {
-            try {
-                // 오류 발생 시 롤백
-                con.rollback();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
+	} catch (Exception e) {
+		e.printStackTrace();
 	} finally {
+        dbManager.close(null, pstmtSelect, rs);
         dbManager.close(null, pstmtAllergy, null);
         dbManager.close(null, pstmtParty, null);
         dbManager.close(null, pstmtAddress, null);
