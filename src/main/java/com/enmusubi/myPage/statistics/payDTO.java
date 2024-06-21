@@ -17,7 +17,7 @@ public class payDTO {
 	private String g_relation;
 	private String e_alink;
 	private String t_preview;
-	private Date r_time;
+	private String r_time;
 	private String r_addr;
 	public payDTO() {
 		// TODO Auto-generated constructor stub
@@ -27,7 +27,7 @@ public class payDTO {
 
 
 	public payDTO(int e_no, String m_id, String p_type, int p_price, int wl_no, Date p_date, String m_name,
-			String g_relation, String e_alink, String t_preview, Date r_time, String r_addr) {
+			String g_relation, String e_alink, String t_preview, String r_time, String r_addr) {
 		super();
 		this.e_no = e_no;
 		this.m_id = m_id;
@@ -199,7 +199,7 @@ public class payDTO {
 
 
 
-	public Date getR_time() {
+	public String getR_time() {
 		return r_time;
 	}
 
@@ -212,7 +212,7 @@ public class payDTO {
 
 
 
-	public void setR_time(Date r_time) {
+	public void setR_time(String r_time) {
 		this.r_time = r_time;
 	}
 

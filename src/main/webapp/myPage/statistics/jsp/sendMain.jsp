@@ -8,6 +8,34 @@
 <title>Template Management</title>
 <link rel="stylesheet" href="mytemplate/css/mytemplate.css">
 <script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    // Smooth scroll to top button
+    $('#scrollToTop').on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: $('#page_top').offset().top}, 'slow');
+    });
+});
+
+
+
+</script>
+<style type="text/css">
+
+/* 방문한 링크 */
+a:visited {
+    color: black; /* 클릭 후 방문한 링크의 색상 */
+}
+
+/* 클릭될 때 스타일 */
+a:active {
+    color: black; /* 클릭된 순간의 색상 */
+}
+
+
+</style>
 </head>
 <body id="page_top">
 
@@ -34,13 +62,13 @@
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
     <div class="hw_menubar_item">
-        <a class="hw_menubar_menu active" href="">✿ テンプレート管理 ✿</a> <img
+        <a href='mytemplateController' class="hw_menubar_menu active" href="">✿ テンプレート管理 ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
     
     <div class="hw_menubar_item">
-        <a class="hw_menubar_menu" href="">✿ 会リスト ✿</a> <img
+        <a href='MyMeetingC' class="hw_menubar_menu" href="">✿ 会リスト ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
@@ -54,9 +82,9 @@
 									<div class="hw_template-img">
 										<img src="myPage/statistics/imgFolder/${previews.t_preview}" alt="" />
 										<div class="hw_template-button">
-											<button class="hw_content_btn" data-target="#layer2">${preview.m_name }</button>
-											<button class="hw_content_btn" onclick="InvitationController">${preview.r_time }</button>
-											<button class="hw_content_btn" >${preview.r_addr}</button>
+											<button class="hw_content_btn" data-target="#layer2">${previews.m_name }</button>
+											<button class="hw_content_btn" onclick="InvitationController">${previews.r_time }</button>
+											<button class="hw_content_btn" >${previews.r_addr}</button>
 										</div>
 									</div>
 								</div>
@@ -74,17 +102,16 @@
 									<span>[${i}]</span>
 								</c:when>
 								<c:otherwise>
-									<a href="mytemplateController?page=${i}">[${i}]</a>
+									<a style="text-decoration: none;" href="MyMeetingC?page=${i}">[${i}]</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${currentPage < totalPages}">
-							<a href="mytemplateController?page=${currentPage + 1}">></a>
+							<a style="text-decoration: none;" href="MyMeetingC?page=${currentPage + 1}">></a>
 						</c:if>
 					</div>
-					<input type="hidden" id="currentPage" value="${currentPage}" /> <a
-						href="#page_top"><img
-						src="mytemplate/imgFolder/top_button.png" class="top_button"></a>
+					<input type="hidden" id="currentPage" value="${currentPage}" /> 
+					<div id="scrollToTop"><img src="mytemplate/imgFolder/top_button.png" class="top_button"></div>
 				</div>
 				</main>
 

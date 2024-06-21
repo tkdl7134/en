@@ -564,22 +564,23 @@ public class StatisticsDAO {
 		DBManager dbManager = DBManager.getInstance();
 
 		// SQL 쿼리: 총 항목 수를 계산
-		String countSql = "SELECT COUNT(*) AS total FROM s_template st "
-		                + "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk "
-		                + "JOIN s_event se ON swi.e_no = se.e_no "
-		                + "JOIN s_guest sg ON se.e_no = sg.e_no "
-		                + "WHERE sg.m_id = ?";
+		String countSql = "SELECT COUNT(*) AS total FROM s_member sm \r\n"
+				+ "                 JOIN s_event se ON sm.m_id = se.m_id \r\n"
+				+ "                 JOIN s_wedding_info swi ON se.e_no = swi.e_no \r\n"
+				+ "                 JOIN s_reception sr ON swi.e_no = sr.e_no \r\n"
+				+ "                 JOIN s_template st ON swi.t_pk = st.t_pk \r\n"
+				+ "                 WHERE sm.m_id = ?";
 
 		// SQL 쿼리: 페이징 처리된 항목 가져오기
-		String sql = "SELECT st.t_preview, s_member.m_name, s_reception.r_time , s_reception.r_addr "
-		           + "FROM s_template st "
-		           + "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk "
-		           + "JOIN s_event se ON swi.e_no = se.e_no "
-		           + "JOIN s_guest sg ON se.e_no = sg.e_no "
-		           + "JOIN s_reception sr ON sr.e_no = swi.e_no "
-		           + "JOIN s_member sm ON sm.m_id = se.m_id "
-		           + "WHERE sg.m_id = ? "
-		           + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+		String sql = "SELECT st.t_preview, sm.m_name, sr.r_time, sr.r_addr, se.e_no\r\n"
+				+ "FROM s_member sm\r\n"
+				+ "JOIN s_event se ON sm.m_id = se.m_id\r\n"
+				+ "JOIN s_wedding_info swi ON se.e_no = swi.e_no\r\n"
+				+ "JOIN s_reception sr ON swi.e_no = sr.e_no\r\n"
+				+ "JOIN s_template st ON swi.t_pk = st.t_pk\r\n"
+				+ "WHERE sm.m_id = ?\r\n"
+				+ "order by sr.r_time desc\r\n"
+				+ "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
 
 		try {
 		    con = dbManager.connect();
@@ -608,16 +609,19 @@ public class StatisticsDAO {
 		        payDTO preview = new payDTO();
 		        System.out.println(rs.getString("t_preview"));
 		        preview.setT_preview(rs.getString("t_preview"));
-                Date sqlDate = rs.getDate("r_time");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
-                String formattedDateStr = dateFormat.format(sqlDate);
-                
-                // 포맷된 문자열을 java.util.Date로 변환
-                java.util.Date utilDate = dateFormat.parse(formattedDateStr);
-                
-                // java.util.Date를 java.sql.Date로 변환
-                Date formattedDate = new Date(utilDate.getTime());
-		        preview.setR_time(formattedDate);
+		        Date sqlDate = rs.getDate("r_time"); // Assuming rs is your ResultSet
+
+		     // 포맷할 형식 지정
+		     SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+
+		     // java.sql.Date를 java.util.Date로 변환 (형식 변환은 여기서 하지 않음)
+		     java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+
+		     // 포맷팅된 문자열 얻기
+		     String formattedDateStr = dateFormat.format(utilDate);
+		       
+		     
+		     preview.setR_time(formattedDateStr);
 		        preview.setR_addr(rs.getString("r_addr"));
 		        preview.setM_name(rs.getString("m_name"));
 		        previews.add(preview);
@@ -630,7 +634,7 @@ public class StatisticsDAO {
 		    
 		    request.setAttribute("totalPages", totalPages);
 		    request.setAttribute("currentPage", page);
-		    
+		    System.out.println(totalPages);
 		} catch (Exception e) {
 		    e.printStackTrace();
 		} finally {
