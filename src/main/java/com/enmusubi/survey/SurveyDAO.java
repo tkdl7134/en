@@ -502,10 +502,10 @@ public class SurveyDAO {
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-        dbManager.close(null, pstmtSelect, rs);
-        dbManager.close(null, pstmtAllergy, null);
-        dbManager.close(null, pstmtParty, null);
-        dbManager.close(null, pstmtAddress, null);
+        dbManager.close(con, pstmtSelect, rs);
+        dbManager.close(con, pstmtAllergy, null);
+        dbManager.close(con, pstmtParty, null);
+        dbManager.close(con, pstmtAddress, null);
         dbManager.close(con, pstmtGuest, null);
 	}
 
