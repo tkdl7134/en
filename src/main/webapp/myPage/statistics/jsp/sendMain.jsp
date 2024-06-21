@@ -25,15 +25,18 @@ $(document).ready(function() {
 <style type="text/css">
 
 /* 방문한 링크 */
-a:visited {
+.bottomUi a:visited {
     color: black; /* 클릭 후 방문한 링크의 색상 */
 }
 
 /* 클릭될 때 스타일 */
-a:active {
+.bottomUi a:active {
     color: black; /* 클릭된 순간의 색상 */
 }
+.SendMainPages {
+width: 1rem;
 
+}
 
 </style>
 </head>
@@ -55,20 +58,20 @@ a:active {
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
-				<nav class="hw_menubar">
+				<nav style="margin-top : -7rem; margin-bottom : 10rem;" class="hw_menubar">
     <div class="hw_menubar_item">
-        <a class="hw_menubar_menu" href="">✿ 会員情報 ✿</a> <img
+        <a  href="MemberDetailC" class="hw_menubar_menu" href="">✿ 会員情報 ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
     <div class="hw_menubar_item">
-        <a class="hw_menubar_menu active" href="">✿ テンプレート管理 ✿</a> <img
+        <a style="color : #696969;" class="hw_menubar_menu active" href="mytemplateController">✿ テンプレート管理 ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
     
     <div class="hw_menubar_item">
-        <a href='MyMeetingC' class="hw_menubar_menu" href="">✿ 会リスト ✿</a> <img
+        <a style="color : #ff2828;"  href='MyMeetingC' class="hw_menubar_menu" href="">✿ 会リスト ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
@@ -94,20 +97,20 @@ a:active {
 					<div class="bottomUi" style="align-items: center; display: flex; flex-direction: column;">
 					<div class="pagination">
 						<c:if test="${currentPage > 1}">
-							<a href="mytemplateController?page=${currentPage - 1}"></a>
+							<a style="text-decoration: none;" class="SendMainPages" href="MyMeetingC?page=${currentPage - 1}">[Prev]</a>
 						</c:if>
 						<c:forEach begin="1" end="${totalPages}" var="i">
 							<c:choose>
 								<c:when test="${i == currentPage}">
-									<span>[${i}]</span>
+									<span class="SendMainPages">[${i}]</span>
 								</c:when>
 								<c:otherwise>
-									<a style="text-decoration: none;" href="MyMeetingC?page=${i}">[${i}]</a>
+									<a class="SendMainPages" style="text-decoration: none;" href="MyMeetingC?page=${i}">[${i}]</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${currentPage < totalPages}">
-							<a style="text-decoration: none;" href="MyMeetingC?page=${currentPage + 1}">></a>
+							<a style="text-decoration: none;" href="MyMeetingC?page=${currentPage + 1}">[Next]</a>
 						</c:if>
 					</div>
 					<input type="hidden" id="currentPage" value="${currentPage}" /> 
