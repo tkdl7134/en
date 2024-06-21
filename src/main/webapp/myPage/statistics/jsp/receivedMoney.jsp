@@ -37,13 +37,13 @@
 		<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 		<div style="font-size: 25px; font-weight : bold;margin-left: 1rem; margin-top: 0.3rem;">の現状</div>
 		</div>
-		<div  style=" display : flex; margin-top : 8rem;    margin-left: 17rem;    width: 80rem;" id="toGoTexts">
-	<div style="color : #696969;font-weight : bold; margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div style="color : #ff2828;font-weight : bold;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  style="color : #696969; font-weight : bold; margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+		<div  style=" display : flex; margin-top : 8rem;    margin-left: 37rem;  ;" id="toGoTexts">
+	<div  onclick="location.href='MemberDetailC'" style="color : #696969;font-weight : bold; margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div onclick="location.href='mytemplateController'" style="color : #ff2828;font-weight : bold;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='MyMeetingC'"  style="color : #696969; font-weight : bold; margin-left: 5.6rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
-	<div style="display: flex;     margin-left: 22rem;" id="toGoLines">
-	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	<div style="display: flex;     margin-left: 32.5rem;" id="toGoLines">
+	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
 		<div style="height : 43rem; gap : 10rem;" class="kh-f-card-container">
 			
