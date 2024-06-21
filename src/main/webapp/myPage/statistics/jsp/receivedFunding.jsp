@@ -30,6 +30,7 @@
 		<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
 		<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
 		<div class="jh-half-circle">
+		<input id="myParam" type="hidden" value="${param.eno }">
 		<div class="recFund-title">ファンディング の現状</div>
 		<div  style="display : flex; margin-top : 10rem;  margin-left : 15rem;  width: 80rem;" id="toGoTexts">
 	<div style="margin-right: 6rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>

@@ -24,7 +24,7 @@
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
 	<div id="recMain-content">
-		<div onclick="location.href='receivedFundingController'" class="box-img">
+		<div onclick="location.href='receivedFundingController?eno=${eno}'" class="box-img">
 		<div class="texts">
 		<div class="objective">フンディンぐ</div>
 		<div class="genjyou">の現状</div>

@@ -524,6 +524,10 @@ public class StatisticsDAO {
 	public static void getAmazonLink(HttpServletRequest request) {
 		
 		// eno 든 id든 받기
+		// m_id를 session으로 가져오나? Https Session session = request.getSession()
+				
+		// session.getAttribute("m_id")
+		// request.getParameter ("eno")
 		int eno = 1;
 		
 		Connection con = null;
@@ -542,6 +546,7 @@ public class StatisticsDAO {
 			System.out.println(rs.getString("e_alink"));
 		}
 		request.setAttribute("amazon",rs.getString("e_alink") );
+		request.setAttribute("eno", eno);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -555,7 +560,8 @@ public class StatisticsDAO {
 	public static void getTemplatePrev(HttpServletRequest request, int page, int itemsPerPage) {
 
 		// id 받기
-		// m_id를 session으로 가져오나? String id = request.getSession()
+		// m_id를 session으로 가져오나? Https Session session = request.getSession()
+		// session.getAttribute("m_id")
 		int offset = (page - 1) * itemsPerPage;
 		String id = "testuser";
 		Connection con = null;
