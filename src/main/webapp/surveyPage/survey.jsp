@@ -241,15 +241,8 @@
 													<span for="prefecture">都道府県</span>
 												</div>
 												<div>
-													<select style="font-size: 1.4rem" id="prefecture"
-														name="prefecture" required>
-														<option value="">選択してください</option>
-            												<c:forEach var="prefecture" items="${prefectures}">
-																<option value="${prefecture }">	
-																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
-																${prefecture }
-	           												</c:forEach>
-													</select>
+													<input style="font-size: 1.4rem" id="prefecture"
+														name="prefecture" required value="${members.a_prefecture}" disabled="disabled">
 												</div>
 											</div>
 											<div class="address-contents-container">
