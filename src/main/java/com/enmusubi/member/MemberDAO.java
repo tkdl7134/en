@@ -90,6 +90,7 @@ public class MemberDAO {
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
+//				response.sendRedirect("HSC");
 				response.getWriter().println("success"); // 성공 메시지를 클라이언트에 보냄
 
 			} else {
