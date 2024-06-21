@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 //import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import com.enmusubi.main.DBManager;
@@ -125,7 +126,7 @@ public class ProductDAO {
 			
 			
 			// s_event 삽입
-			pstmtEvent.setString(1, "LINE_Ub273e3d23d1e8158e1af5e02e73fed2e");
+			pstmtEvent.setString(1, "testuser11");
 			pstmtEvent.setString(2, "");
 			
 			// s_event_func 삽입
@@ -285,7 +286,11 @@ public class ProductDAO {
 						+ " rw.r_time AS wedding_time,"
 						+ " rw.r_time_assemble AS wedding_assemble_time,"
 						+ " rr.r_time AS reception_time,"
-						+ " rr.r_time_assemble AS reception_assemble_time"
+						+ " rr.r_time_assemble AS reception_assemble_time,"
+						+ " rw.r_place AS wedding_place,"
+						+ " rw.r_addr AS wedding_addr,"
+						+ " rr.r_place AS reception_place,"
+						+ " rr.r_addr AS reception_addr "
 					+ " FROM s_event e"
 					+ " JOIN s_wedding_info w ON e.e_no = w.e_no" 
 					+ " JOIN s_template t ON w.t_pk = t.t_pk"
@@ -307,25 +312,28 @@ public class ProductDAO {
 				Timestamp receptionDT = rs.getTimestamp("reception_time");
 				Timestamp receptionADT = rs.getTimestamp("reception_assemble_time");
 //				if (weddingDT != null || ) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd E", Locale.JAPANESE);
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+				SimpleDateFormat timeFormat2 = new SimpleDateFormat("集合  " + "HH:mm");
 					
 				String weddingDay = dateFormat.format(weddingDT);
 				String weddingTime = timeFormat.format(weddingDT);
-				String weddingA_Time = timeFormat.format(weddingDT);
+				String weddingA_Time = timeFormat2.format(weddingADT);
 				String receptionTime = timeFormat.format(receptionDT);
-				String receptionA_Time = timeFormat.format(receptionADT);
+				String receptionA_Time = timeFormat2.format(receptionADT);
 				
+				String inviteMSG = rs.getString("w_msg_invite").replace("<br>", "\r\n");
+				String byeMSG = rs.getString("w_msg_bye").replace("<br>", "\r\n");
 				
 				inviteInfo
 				= new invitaitonDTO(
 						(int)request.getAttribute("je_eventNo"), 
 						rs.getInt("t_pk"), rs.getString("t_template"),
 						rs.getString("w_groom"), rs.getString("w_bride"),
-						rs.getString("w_msg_invite"),rs.getString("w_msg_bye"),
+						inviteMSG, byeMSG,
 						rs.getString("w_img1"),rs.getString("w_img2"),rs.getString("w_img3"),rs.getString("w_img4"),
-						weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time);
-				
+						weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time,
+						rs.getString("wedding_place"), rs.getString("wedding_addr"),rs.getString("reception_place"),rs.getString("reception_addr"));
 			}
 			request.setAttribute("inviteInfo", inviteInfo);
 			
