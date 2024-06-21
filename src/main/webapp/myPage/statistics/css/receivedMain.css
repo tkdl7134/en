@@ -62,10 +62,12 @@ body {
   height: 100%;
 }
 #recMain-title {
-        font-size: 2.5rem;
-    width: 20rem;
+        font-size: 30px;
+    width: 16rem;
     margin-top: 7rem;
     margin-left: 2rem;
+    font-weight : bold;
+    color : #474747;
 }
 #recMain-header {
 }
@@ -79,35 +81,54 @@ body {
 	
 }
 .ToGoTexts{
-	font-size : 1.4rem;
+	font-size : 20px;
+	font-weight: bold;
+	color : #696969;
 	
+	
+	
+	
+}
+.ToGoTexts:hover {
+	color : #ff2828;
 	
 	
 }
 #recMain-content{
 	   display: flex;
-    margin-top: 7rem;
-    width: 90rem;
+    margin-top: 2rem;
+    width: 80rem;
     justify-content: space-evenly;
     margin-right : 3rem;
 }
 .box-img{
-	
+	    background-image: url(../imgFolder/opt_pink.png);
+	        width: 20rem;
+    height: 20.7rem;
+    background-size: cover;
+    background-repeat: no-repeat;
 }	
+.box-img:hover{
+	
+	    background-image: url(../imgFolder/opt_yellow.png);
+	
+	
+}
 .boxes{
-    width: 17rem;
+    width: 21rem;
     position: absolute;
 }
 	
 	
 
 .box-img:hover .boxes, .box-img:hover .lines {
-  transform: rotate(6deg);
 }
 
 .lines{
     width: 10rem;
-    margin-left: 3.5rem;
+   
+	    margin-left: 5.5rem;
+    margin-top: 4rem;
 	
 }
 .spaces {
@@ -120,11 +141,16 @@ body {
     margin-left: 1.5rem;
 }
 .objective{
-	font-size : 2.4rem;
+	font-size: 25px;
+    width: 11rem;
+    font-weight: bold;
+    margin-left: 3rem;
+    color : #474747;
+    
 	}
 
 .genjyou{
-	font-size : 1.3rem;
+	font-size : 22px;
 	margin-top : 1.5rem;
-	color : darkslategrey;
+	color : #696969;
 	}
