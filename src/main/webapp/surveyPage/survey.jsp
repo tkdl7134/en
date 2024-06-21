@@ -260,7 +260,7 @@
 													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<textarea style="font-size: 1.4rem; width: 20rem;"
+													<textarea style="font-size: 1.4rem;"
 														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
 														required disabled="disabled">${members.a_address }</textarea>
 												</div>
@@ -320,7 +320,7 @@
 													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<textarea style="font-size: 1.4rem; width: 20rem;"
+													<textarea style="font-size: 1.4rem;"
 														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
 														required >${members.a_address }</textarea>
 												</div>
