@@ -298,7 +298,7 @@ public class ProductDAO {
 				Timestamp receptionADT = rs.getTimestamp("reception_assemble_time");
 //				if (weddingDT != null || ) {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
-				SimpleDateFormat timeFormat = new SimpleDateFormat("HH : mm");
+				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 					
 				String weddingDay = dateFormat.format(weddingDT);
 				String weddingTime = timeFormat.format(weddingDT);

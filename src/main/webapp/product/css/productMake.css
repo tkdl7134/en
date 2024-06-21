@@ -4,7 +4,7 @@
 }
 body {
 background-color: #fffbf7;
-/*   background-color: royalblue; */
+/* background-color: royalblue; */
   margin: 0;
   padding: 0;
 }
@@ -14,24 +14,6 @@ form {
 }
 
 /* LOGO & NAV */
-/* #enmusubi-logo {
-  position: absolute;
-  width: 9.3rem; 
-  top: 3.1rem;
-  left: 5rem; 
-}
-#enmusubi-logo > img {
-  width: 100%;
-} */
-/* #enmusubi-nav {
-  position: absolute;
-  width: 4.8rem;
-  top: 5.25rem; 
-  right: 6.25rem; 
-}
-#enmusubi-nav > img {
-  width: 100%;
-} */
 
 #yj-main-s2-logo {
   z-index: 4;
@@ -82,7 +64,7 @@ form {
 
 /* page Deco */
 .je_pageDeco-top {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   z-index: 1;
@@ -90,6 +72,14 @@ form {
 }
 .je_pageDeco-top > img {
   width: 100%;
+}
+
+.je_pageDeco-bottom{
+	width: 100vw;
+}
+
+.je_pageDeco-bottom > img{
+	width: 100%;
 }
 
 /* title */
@@ -111,10 +101,9 @@ form {
 /* page content */
 .je_content-productMake {
   /* background-color: antiquewhite; */
-  margin-left: 17rem;
-  margin-right: 17rem;
   margin-top: 5rem;
   display: flex;
+  justify-content: center;
 }
 
 .je_template-container {
@@ -136,11 +125,10 @@ form {
 
 /* output */
 .je_template-output {
-  /* border: 1px solid red; */
-  width: 40%;
-  height: 146rem; /*125.8rem*/
-  /* overflow-y: scroll; */
-  position: relative;
+     width: 33.3rem;
+    height: 123rem;
+    overflow-y: scroll;
+    position: relative;
 }
 .je_template-output::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
@@ -168,103 +156,167 @@ form {
 }
 
 #je_photoPre1 {
-  width: 100%;
-  margin-top: 38%;
-  height: 22rem;
-  /* z-index: -100; */
-  /* background-color: #c82626; */
+    width: 89%;
+    margin-top: 38%;
+    height: 22rem;
+    position: absolute;
+    z-index: -10;
+/*     background-color: #c82626; */
 }
 
 #je_photoPre1 img {
   width: 100%;
 }
 .je_kanji-groom {
-  display: flex;
-  justify-content: center;
-  height: 3rem;
-  margin-top: 30%;
-  font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    margin-top: 43rem;
+    font-size: 1.8rem;
 }
 .je_kanji-bride {
-  display: flex;
-  justify-content: center;
-  font-size: 2rem;
-  height: 3rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    height: 3rem;
 }
 
 #je_invite-message {
-  margin-top: 10rem;
-  height: 8rem;
-  /* border: 1px solid; */
-  text-align: center;
+   margin-top: 9rem;
+    height: 8rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .je_photos {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.4rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    width: 90%;
 }
+
+
 #je_photoPre2,
 #je_photoPre3 {
-  width: 50%;
-  height: 13.5rem;
+	position: absolute;
+	width: 45%;
+    height: 13.5rem;
+    z-index: -10;
 }
+#je_photoPre2{
+    left: 0;
+    margin-left: 2rem;
+}
+#je_photoPre3{
+	right: 0;
+	margin-right: 2rem;
+}
+
 #je_photoPre2 img,
 #je_photoPre3 img {
   width: 100%;
 }
 
-#je_weddingDay {
-  /* border: 1px solid red; */
-  margin-top: 4rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+.je_days{
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 19rem;
+    margin-left: 3.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    height: 2rem;
 }
 
+#je_weddingDay {
+  /* border: 1px solid red; */
+
+
+}
+#je_receptionDay{
+
+	
+}
 .je_eventTime {
-  /* border: 1px solid #ff7e81; */
-  height: 4rem;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  margin-left: 1.5rem;
-  /* margin-right: 3rem; */
-  font-size: 1.5rem;
+   width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+    margin-left: 3.5rem;
+    font-size: 1.3rem;
+    font-weight: 200;
+    height: 2rem;
 }
 
 .je_assemleTime {
-  /* border: 1px solid #ff7e81; */
-  width: 90%;
-  height: 3rem;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  margin-left: 1.5rem;
-  font-size: 1.2rem;
+  width: 76%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 3.5rem;
+    font-size: 1.1rem;
+    height: 3rem;
 }
 
 .je_place {
-  /* border: 1px solid #ff7e81; */
-  height: 4rem;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  margin-left: 1.5rem;
+   /*  border: 1px solid #ff7e81; */
+    height: 4rem;
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-left: 3.5rem;
+}
+
+#je_mainEvent-building,
+#je_sideEvent-building{
+	margin-bottom: 1rem;
+    font-weight: 200;
+}
+#je_mainEvent-addr,
+#je_sideEvent-addr{
+	width: 7rem;
+    font-size: .9rem;
+    font-weight: 100;
+}
+
+#je_mainEvent-building,
+#je_mainEvent-addr {
+	text-align: left;
+}
+
+#je_sideEvent-building,
+#je_sideEvent-addr {
+	text-align: right;
 }
 
 #je_photoPre4 {
-  width: 100%;
-  margin-top: 3.2rem;
-  height: 18.9rem;
+    width: 89%;
+    border: 1px solid;
+    position: absolute;
+    bottom: -6.3rem;
+    /* margin-top: 3.2rem; */
+    height: 21rem;
+    z-index: -10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#je_photoPre4 > img {
+	width: 100%
 }
 
 #je_finish-message {
-  width: 100%;
-  margin-top: 3rem;
-  text-align: center;
+    width: 100%;
+    margin-top: 25rem;
+    text-align: center;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* input */
@@ -286,7 +338,7 @@ input:-ms-input-placeholder {
 
 .je_template-input {
   /* border: 1px solid blue; */
-  width: 60%;
+  width: 50rem; /*60%*/
   height: fit-content;
 }
 
@@ -458,8 +510,10 @@ input:-ms-input-placeholder {
 }
 
 .je_inputbox-input > textarea {
-  resize: none;
-  border: 0.1rem solid #c8c8c8;
+    resize: none;
+    border: 0.1rem solid #c8c8c8;
+    height: 14rem;
+    width: 14rem;
 }
 
 /* 사진 */
