@@ -28,19 +28,19 @@
 }
 
 body {
-      -webkit-user-select: none; /* Chrome, Safari */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* Internet Explorer/Edge */
-      user-select: none;         /* 표준 */
-      background-color: #FFF5F4;
-    }
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* 표준 */
+	background-color: #FFF5F4;
+}
 </style>
 
 </head>
 <body class="hs_body">
 
 	<div class="hs_background">
-	
+
 		<div class="yj-main-s2-logo">
 			<img class="yj-main-s2-logo img" alt=""
 				src="loginPage/ImgFolder/Logo.png">
@@ -111,9 +111,9 @@ body {
 					});
 					return;
 				}
-				
-				// 모든 버튼과 입력 필드를 비활성화
-		        $('button, input, a').prop('disabled', true);
+
+				// 모든 버튼과 입력 필드를 
+				$('button, input').prop('disabled', true);
 
 				// 서버로 로그인 요청
 				$.ajax({
@@ -130,7 +130,7 @@ body {
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({
-								icon : 'warning',
+								icon : 'error',
 								title : 'IDまたはPWが一致しません。',
 								text : '存在しないアカウントか、ID＆PWが一致しません。',
 								customClass : {
@@ -139,9 +139,9 @@ body {
 							});
 							$("#m_id").val("");
 							$("#m_pw").val("");
-							
-							 // 모든 버튼과 입력 필드를 다시 활성화
-		                    $('button, input, a').prop('disabled', false);
+
+							// 모든 버튼과 입력 필드를 다시 활성화
+							$('button, input').prop('disabled', false);
 						}
 					},
 					error : function() {
@@ -155,27 +155,27 @@ body {
 							}
 						});
 						// 모든 버튼과 입력 필드를 다시 활성화
-		                $('button, input, a').prop('disabled', false);
+						$('button, input').prop('disabled', false);
 					}
 				});
 			});
 		});
-		
+
 		// 세션 스토리지에서 값을 불러오는 함수
 		function loadFromSessionStorage() {
-		  const birthYear = sessionStorage.getItem('birthYear');
-		  const birthMonth = sessionStorage.getItem('birthMonth');
-		  const birthDay = sessionStorage.getItem('birthDay');
+			const birthYear = sessionStorage.getItem('birthYear');
+			const birthMonth = sessionStorage.getItem('birthMonth');
+			const birthDay = sessionStorage.getItem('birthDay');
 
-		  if (birthYear) {
-		    document.getElementById('m_birthY').value = birthYear;
-		  }
-		  if (birthMonth) {
-		    document.getElementById('m_birthM').value = birthMonth;
-		  }
-		  if (birthDay) {
-		    document.getElementById('m_birthD').value = birthDay;
-		  }
+			if (birthYear) {
+				document.getElementById('m_birthY').value = birthYear;
+			}
+			if (birthMonth) {
+				document.getElementById('m_birthM').value = birthMonth;
+			}
+			if (birthDay) {
+				document.getElementById('m_birthD').value = birthDay;
+			}
 		}
 
 		// 페이지가 로드될 때 값을 불러옴

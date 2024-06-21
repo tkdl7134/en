@@ -93,13 +93,13 @@ body {
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎" maxlength="20">
+							placeholder="山田 太郎" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ" maxlength="20">
+							placeholder="ヤマダ タロウ" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
@@ -224,22 +224,21 @@ body {
 						<div class="hs_content-input">
 							<div class="hs_content-text city">住所</div>
 							<input type="text" name="a_city" id="a_city"
-								class="hs_input city p-locality p-street-address p-extended-address" placeholder="市区町村"
-								maxlength="50">
+								class="hs_input city p-locality p-street-address p-extended-address"
+								placeholder="市区町村" maxlength="20">
 						</div>
 
 						<div class="hs_content-input">
 							<div class="hs_content-text street"></div>
 							<input type="text" name="a_street" id="a_street"
-								class="hs_input street" placeholder="番地"
-								maxlength="50">
+								class="hs_input street" placeholder="番地" maxlength="20">
 						</div>
 
 						<div class="hs_content-input building">
 							<div class="hs_content-text building"></div>
 							<input type="text" name="a_building" id="a_building"
-								class="hs_input building"
-								placeholder="建物名 ・ 部屋番号" maxlength="50">
+								class="hs_input building" placeholder="建物名 ・ 部屋番号"
+								maxlength="20">
 						</div>
 					</div>
 
@@ -494,8 +493,8 @@ function register() {
             if (specialCharPattern.test(id)) { // id에 특수문자가 포함되어 있는 경우
                 Swal.fire({
                     icon: 'error',
-                    title: '使用できない文字が含まれています。',
-                    text: '英語と数字のみ入力お願いします。',
+                    title: '使用できない文字があります。',
+                    text: '英語と数字のみ入力可能です。',
                     customClass: {
                         popup: 'swal2-popup',
                         confirmButton: 'swal2-confirm'
