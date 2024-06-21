@@ -480,4 +480,29 @@ public class SurveyDAO {
 	}
 
 }
+	
+	//  d-day날짜 표기 및 제한날짜 표기
+
+	public static void ddaywedding(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmtDday = null; 
+		ResultSet rs = null; 
+		
+		try {
+			
+		    DBManager dbManager = DBManager.getInstance();
+		    String sqlSelect = "SELECT e_no FROM s_event WHERE m_id = ?";
+
+
+	        con = dbManager.connect();
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+		
+	}
 }
