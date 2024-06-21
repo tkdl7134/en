@@ -63,14 +63,14 @@
 							<div>
 
 								<div class="recMain-container">
-									<div class="entry-box-img" data-selccted="yes" onclick="selectAttendance('出席')">
+									<div class="entry-box-img" data-selccted="yes" >
 										<div class="texts">
 											<div>出席</div>
 										</div>
 										<img class="lines" alt="" src="imgFolder/yesline.png">
 										<input type="hidden" name="attendance" value="present">
 									</div>
-									<div class="no-entry-box-img" data-selccted="no" onclick="selectAttendance('欠席')">
+									<div class="no-entry-box-img" data-selccted="no" > 
 										<div class="texts">
 											<div>欠席</div>
 										</div>
@@ -97,23 +97,23 @@
 												<div style="font-size: 2rem;">お名前</div>
 											</legend>
 											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">漢字</div> <input
+												<div style="font-size: 1.5rem;">名前</div> <input
 												style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" name="kanzi-name" required /> <input
+												class="name-input" id="kanziName" name="kanzi-name" required /> <input
 												style="font-size: 1.2rem;" type="text" placeholder="名"
-												class="name-input" name="kanzi-name" required />
+												class="name-input" id="kanziName" name="kanzi-name" required />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> <input
 												style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" name="kata-name" required /> <input
+												class="name-input" id="kataName" name="kata-name" required /> <input
 												style="font-size: 1.2rem;" type="text" placeholder="めい"
-												class="name-input" name="kata-name" required />
+												class="name-input" id="kataName" name="kata-name" required />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> <input
 												style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" name="roma-name" required /> <input
+												class="name-input" id="romaName" name="roma-name" required /> <input
 												style="font-size: 1.2rem;" type="text"
-												placeholder="First Name" class="name-input" name="roma-name"
+												placeholder="First Name" id="romaName" class="name-input" name="roma-name"
 												required />
 											</label>
 										</fieldset>
@@ -121,21 +121,21 @@
 
 									<div class="couple-container">
 										<div>ゲストカテゴリー</div>
-										<label> <input name="couple" type="checkbox"
+										<label> <input id="groomCheckbox" name="couple" type="checkbox"
 											value="groom" /> 新郎側ゲスト
-										</label> <label> <input name="couple" type="checkbox"
+										</label> <label> <input id="brideCheckbox" name="couple" type="checkbox"
 											value="bride" /> 新婦側ゲスト
 										</label>
 									</div>
 									<div class="relationship-container">
 										<div>作成者との関係</div>
-										<span> <input name="relation" type="checkbox"
+										<span> <input id="relation" name="relation" type="checkbox"
 											value="家族" /> 家族
-										</span> <span> <input name="relation" type="checkbox"
+										</span> <span> <input id="relation" name="relation" type="checkbox"
 											value="親友" /> 親友
-										</span> <span> <input name="relation" type="checkbox"
+										</span> <span> <input id="relation" name="relation" type="checkbox"
 											value="職場の同僚" /> 職場の同僚
-										</span> <label> <input name="relation" type="checkbox"
+										</span> <label> <input id="relation" name="relation" type="checkbox"
 											value="その他" /> その他
 										</label>
 									</div>
@@ -148,12 +148,12 @@
 								<div class="contact-container">
 									<div>
 										メールアドレス<input style="font-size: 1.2rem;" type="email"
-											class="contact-input" name="email"
+											class="contact-input" id="email" name="email"
 											placeholder="enmusubi@gmail.com" required />
 									</div>
 									<div>
 										電話番号 <input style="font-size: 1.2rem;" type="number"
-											class="contact-input" name="phonenum"
+											class="contact-input" id="phonenum" name="phonenum"
 											placeholder="000-0000-0000" required />
 									</div>
 								</div>
@@ -306,9 +306,9 @@
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
 											<label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="no" checked /> いいえ
+												type="radio" id="allergy" name="allergy" value="no" checked /> いいえ
 											</label> <label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="yes" /> はい
+												type="radio" id="allergy" name="allergy" value="yes" /> はい
 											</label>
 										</div>
 
@@ -334,7 +334,7 @@
 
 								<div>
 
-									<button id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
+									<button id="submitBtn" class="tg-survey-button" onclick="handleFormSubmit(event)">
 										<span>送信</span>
 									</button>
 
@@ -356,7 +356,7 @@
 											</div>
 										</div>
 
-        						 <button id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
+        						 <button id="submitBtn2" class="tg-survey-button" onclick="handleFormSubmit(event)">
 									<span>送信</span>
 								</button>
 									</div>
@@ -621,37 +621,6 @@ if (this.checked) {
     });
 });
 
-        function validateForm() {
-            var kanzinames = document.getElementById("kanzi-name").value.trim();
-            var katanames = document.getElementById("kata-name").value.trim();
-            var romanames = document.getElementById("roma-name").value.trim();
-            var phonenumber = document.getElementById("phonenum").value.trim();
-            var emails = document.getElementById("email").value.trim();
-            var postalcode = document.getElementById("postal-code").value.trim();
-            var city = document.getElementById("city").value.trim();
-            var addressline1 = document.getElementById("address-line1").value.trim();
-            var addressline2 = document.getElementById("address-line2").value.trim();
-
-            // 필수 입력 필드 체크
-            if (kanzinames === "" || katanames === "" || romanames === "" ||
-                phonenumber === "" || emails === "" ||
-                postalcode === "" || city === "" || addressline1 === "" || addressline2 === "") {
-                
-                alert("모든 필드를 입력해주세요.");
-                return false; // 폼 제출 방지
-            }
-
-            return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
-        }
-
-        document.getElementById("submitBtn").addEventListener("click", function(event) {
-            if (!validateForm()) {
-                event.preventDefault();
-            } else {
-                document.getElementById("surveyForm").submit();
-            }
-        });
-
 function openModal(attemp) {
     const modal = document.getElementById("tg-modal");
     const modalContent = document.querySelector(".tg-modal-container");
@@ -667,6 +636,42 @@ function openModal(attemp) {
         modalContent.style.animation = "burstIn 0.5s forwards";
     }, 10);
 }
+
+function handleFormSubmit(event) {
+    let invalidField = null;
+    if (document.getElementById('kanziName').value.trim() === '') {
+        alert('한자 이름을 입력하세요');
+        invalidField = document.getElementById('kanziName');
+    } else if (document.getElementById('kataName').value.trim() === '') {
+        alert('카타카나 이름을 입력하세요');
+        invalidField = document.getElementById('kataName');
+    }  else if (document.getElementById('romaName').value.trim() === '') {
+        alert('로마자 이름을 입력하세요');
+        invalidField = document.getElementById('romaName');
+    }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
+        alert('신랑 또는 신부를 선택하세요');
+        invalidField = document.getElementById('groomCheckbox');
+    } else if (document.getElementById('adult').value.trim() === '0' && 
+            document.getElementById('child').value.trim() === '0' && 
+            document.getElementById('baby').value.trim() === '0') {
+        alert('동반 인원을 입력하세요');
+        invalidField = document.getElementById('adult');
+    } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
+        alert('아레르기 종류를 입력하세요');
+        invalidField = document.getElementById('allergy-type');
+    }
+
+    if (invalidField) {
+        event.preventDefault(); // 폼 제출 방지
+        setTimeout(function() {
+            invalidField.focus(); // 포커스 설정
+        }, 0); // 비동기 처리로 포커스 설정
+    } else {
+        openModal(true); // 폼 검증 통과 시 모달 열기
+    }
+}
+
+
 
 
 

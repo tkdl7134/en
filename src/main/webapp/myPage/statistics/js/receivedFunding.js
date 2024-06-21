@@ -21,7 +21,7 @@ $.ajax({
 							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.wl_product}.png" />
 						</div>
 						<div>
-							<h3>${element.wl_product}</h3>
+							<h1>${element.wl_product}</h3>
 						</div>
 					</div>
 				</div>`);
@@ -152,6 +152,7 @@ $.ajax({
 				document.querySelector(".kh-f-mousemove > img").src =
 					"myPage/statistics/imgFolder/dragbtn.png";
 			}
+			cardCon.style.cursor="none";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 			event.stopPropagation();
@@ -292,3 +293,4 @@ function closeModal() {
 	const modal = document.getElementById("modal");
 	modal.close();
 }*/
+

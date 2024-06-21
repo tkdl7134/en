@@ -13,7 +13,7 @@ function throttle(callback, time) {
     }, time);
   }
 }
-
+const textElement = document.getElementById("verticalText1");
 function goToNextSection() {
   if (currentSectionIndex < sections.length - 1) {
     currentSectionIndex++;
@@ -27,8 +27,7 @@ function goToPrevSection() {
     sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
   }
 }
-
-document.addEventListener("wheel", function (event) {
+const wheelHandler = (event) => {
   if (event.deltaY > 0) {
     // 스크롤 다운
     throttle(goToNextSection, 1000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
@@ -36,7 +35,23 @@ document.addEventListener("wheel", function (event) {
     // 스크롤 업
     throttle(goToPrevSection, 1000);
   }
-});
+
+  console.log(currentSectionIndex);
+  if (currentSectionIndex == 1) {
+    document.addEventListener("mousemove", mouseMoveHandler);
+  } else {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+  }
+
+  if (currentSectionIndex == 2) {
+    textElement.textContent = "";
+    textAni();
+  } else if (currentSectionIndex == 4) {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.querySelector(".yj-main-s4-flexContainer").style.overflow = "";
+  }
+};
+document.addEventListener("wheel", wheelHandler);
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 2
@@ -58,7 +73,51 @@ s2menuBtn.addEventListener("click", function () {
   }
 });
 
-// Section 2
+// mouse cursor (drag)
+const s2CardConAll = document.querySelectorAll(".yj-main-section");
+const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
+
+// s2CardConAll.forEach((card) => {
+//   card.addEventListener("mouseenter", function (event) {
+//     console.log(111);
+//     s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+//     card.style.cursor = "none";
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+//   });
+
+//   card.addEventListener("mouseleave", function () {
+//     console.log(222);
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+//   });
+// });
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
+const radiusX = 560;
+const radiusY = 330;
+const mouseMoveHandler = (event) => {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  const dx = mouseX - centerX;
+  const dy = mouseY - centerY;
+
+  if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
+    s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+    s2CardConAll[1].style.cursor = "none";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+
+    s2Mouseicn.style.left = mouseX + "px";
+    s2Mouseicn.style.top = mouseY + "px";
+    console.log("in");
+  } else {
+    s2CardConAll[1].style.cursor = "auto";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+  }
+};
+
 // 배경 이미지  슬라이드
 function slickStart() {
   $(".yj-main-s2-bg").css(
@@ -94,7 +153,6 @@ function slickStart() {
   );
 }
 
-// Section 2
 // Single Item Slide
 $(document).ready(function () {
   $(".yj-main-s2-list")
@@ -154,6 +212,28 @@ s3menuBtn.addEventListener("click", function () {
   }
 });
 
+let wow;
+// 체크체크테스트
+function textAni() {
+  const text = textElement.dataset.text;
+  console.log(text);
+  clearInterval(wow);
+  textElement.textContent = "";
+
+  let i = 0;
+  wow = setInterval(() => {
+    if (i < text.length) {
+      const span = document.createElement("span");
+      span.textContent = text[i];
+      console.log(text[i]);
+      i++;
+      textElement.appendChild(span);
+    } else {
+      clearInterval(wow);
+    }
+  }, 150);
+}
+
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
 // 메뉴 버튼 클릭 이벤트
@@ -173,3 +253,117 @@ s4menuBtn.addEventListener("click", function () {
     this.querySelector("img").src = s4menuBtn1;
   }
 });
+
+// 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
+const section4 = document.getElementById("yj-main-s4");
+const clickableImages = document.querySelectorAll(".clickable-image");
+
+clickableImages.forEach((image) => {
+  image.addEventListener("click", (event) => {
+    // console.log(event);
+    event.preventDefault();
+    throttle(goToNextSection, 2000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
+  });
+});
+
+// mouse cursor (click)
+const cardConAll = document.querySelectorAll(".yj-main-s4-container");
+const mouseicn = document.querySelector(".yj-main-s4-cursor");
+
+cardConAll.forEach((card) => {
+  card.addEventListener("mouseenter", function (event) {
+    mouseicn.querySelector("img").src = "imgFolder/yj-main-s4-click.png";
+    card.style.cursor = "none";
+    mouseicn.classList.remove("yj-main-s4-cursor-none");
+    mouseicn.classList.add("yj-main-s4-cursor-block");
+    console.log(123123);
+  });
+
+  card.addEventListener("mouseleave", function () {
+    mouseicn.classList.remove("yj-main-s4-cursor-block");
+    mouseicn.classList.add("yj-main-s4-cursor-none");
+  });
+});
+
+document.addEventListener("mousemove", (event) => {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  mouseicn.style.left = mouseX + "px";
+  mouseicn.style.top = mouseY + "px";
+});
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// Section 5
+
+// mouse cursor (scroll)
+const s5CardConAll = document.querySelector(".yj-main-s5-container");
+const s5Mouseicn = document.querySelector(".yj-main-s5-cursor");
+s5CardConAll.addEventListener("mouseenter", function () {
+  console.log("in");
+  s5Mouseicn.style.display = "block";
+  s5CardConAll.style.cursor = "none";
+  // document.removeEventListener("wheel", wheelHandler);
+  document.addEventListener("mousemove", s5MouseHandler);
+});
+
+s5CardConAll.addEventListener("mouseleave", () => {
+  console.log("---out----");
+  s5Mouseicn.style.display = "none";
+});
+//   console.log("out");
+//   s5Mouseicn.style.display = "none";
+//   document.addEventListener("wheel", wheelHandler);
+//   document.removeEventListener("mousemove", s5MouseHandler);
+// });
+
+const s5MouseHandler = (event) => {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  s5Mouseicn.style.left = mouseX + "px";
+  s5Mouseicn.style.top = mouseY + "px";
+};
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// Section 6
+const s6menuBtn = document.getElementById("yj-main-s6-menuBtn");
+const s6menuBtn1 = "imgFolder/yj-main-default-menu1.png";
+const s6menuBtn2 = "imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s6menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s6menuBtn1)) {
+    this.querySelector("img").src = s6menuBtn2;
+  } else {
+    this.querySelector("img").src = s6menuBtn1;
+  }
+});
+
+// mouse cursor (scroll)
+const s6CardConAll = document.querySelectorAll("#yj-main-s6");
+const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
+
+s6CardConAll.forEach((card) => {
+  card.addEventListener("mouseenter", function (event) {
+    s6Mouseicn.querySelector("img").src =
+      "imgFolder/yj-main-default-scroll.png";
+    card.style.cursor = "none";
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-block");
+  });
+
+  card.addEventListener("mouseleave", function () {
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-block");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-none");
+  });
+});
+
+// document.addEventListener("mousemove", (event) => {
+//   const mouseX = event.clientX;
+//   const mouseY = event.clientY;
+//   s6Mouseicn.style.left = mouseX + "px";
+//   s6Mouseicn.style.top = mouseY + "px";
+// });
