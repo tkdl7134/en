@@ -322,8 +322,12 @@ public class ProductDAO {
 				String receptionTime = timeFormat.format(receptionDT);
 				String receptionA_Time = timeFormat2.format(receptionADT);
 				
-				String inviteMSG = rs.getString("w_msg_invite").replace("<br>", "\r\n");
-				String byeMSG = rs.getString("w_msg_bye").replace("<br>", "\r\n");
+				String inviteMSG = rs.getString("w_msg_invite");
+				String byeMSG = rs.getString("w_msg_bye");
+				inviteMSG = inviteMSG.replaceAll("<br>","\r\n");
+				byeMSG = byeMSG.replaceAll("<br>","\r\n");
+				
+				System.out.println(inviteMSG);
 				
 				inviteInfo
 				= new invitaitonDTO(
