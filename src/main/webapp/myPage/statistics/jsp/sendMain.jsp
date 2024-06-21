@@ -46,7 +46,7 @@ width: 1rem;
 		src="mytemplate/imgFolder/logo.png" alt="logo"></a>
 	<a class="hw_menu" href="main.jsp"><img
 		src="mytemplate/imgFolder/menu_btn.png" alt="menu"></a>
-	<h1 style="top : 85px" class="hw_page_title">会リスト</h1>
+	
 	<div id="background1">
 		<div class="canvas-container">
 			<canvas class="canvas" id="canvas1"></canvas>
@@ -55,10 +55,12 @@ width: 1rem;
 	<div id="canvas-content-container">
 		<div class="canvas-content">
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
+			<h1 style="position : static;margin-left: 53.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
-				<nav style=" margin-bottom : 10rem;" class="hw_menubar">
+				<nav style="    margin-top: 7rem;
+				 margin-bottom : 10rem;" class="hw_menubar">
     <div class="hw_menubar_item">
         <a  href="MemberDetailC" class="hw_menubar_menu" href="">✿ 会員情報 ✿</a> <img
             class="hw_yellow_line" alt=""
