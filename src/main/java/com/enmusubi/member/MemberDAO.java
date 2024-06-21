@@ -604,7 +604,7 @@ public class MemberDAO {
 		if (session != null) {
 			session.invalidate(); // 세션 무효화 (로그아웃)
 		}
-		response.sendRedirect("HSC"); // 메인 페이지로 리다이렉트
+		response.sendRedirect("MainC"); // 메인 페이지로 리다이렉트
 
 	}
 

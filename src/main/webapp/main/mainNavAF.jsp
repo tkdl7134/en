@@ -10,7 +10,10 @@
 	<div class="yj-main-nav nav-hidden">
 		<div class="nav-fakeDiv"></div>
 		<div class="nav-info">
-			${sessionScope.m_img } ${sessionScope.m_name }様<br>✿ ようこそ ✿
+			<img alt="" src="regPage/imgFolder/${sessionScope.m_img }"> 
+			<div class="nav-welcome">
+			${sessionScope.m_name }様<br>✿ ようこそ ✿
+			</div>
 		</div>
 		<div class="nav-myPage">
 			<a href="MemberC"><h3>マイページ</h3></a>
@@ -21,10 +24,11 @@
 		<div class="nav-invitation">
 			<a href="ProductController"><h3>商品紹介</h3></a>
 		</div>
-		<div class="nav-logout">
-			<h3>Logout</h3>
-			</a>
-		</div>
+		<form action="MemberLogoutC" method="post">
+			<div class="nav-logout">
+				<button>Logout</button>
+			</div>
+		</form>
 		<div class="nav-topBtn">
 			<a href="#"><img
 				src="main/imgFolder/yj-main-topBtn.png" alt="nav-topBtn" /></a>
