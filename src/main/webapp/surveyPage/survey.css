@@ -367,7 +367,7 @@ body {
 
   .special-notes-container textarea {
     width: 62rem;
-    height: 10rem; /* textarea �넂�씠 議곗젅 */
+    height: 8rem; /* textarea �넂�씠 議곗젅 */
     padding: 4px;
     border: 1px solid #ccc;
     box-sizing: border-box;

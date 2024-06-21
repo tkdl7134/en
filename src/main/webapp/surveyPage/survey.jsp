@@ -296,7 +296,7 @@
 												<div>
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
-														<option value="">選択してください</option>
+														<option value="">${members.a_prefecture}</option>
 														<c:forEach var="prefecture" items="${prefectures}">
 																<option value="${prefecture }">	
 																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>

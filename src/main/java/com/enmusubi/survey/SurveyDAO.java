@@ -138,7 +138,7 @@ public class SurveyDAO {
 		
 	// 일반 회원 가입시 조건
 	public static void getMemberNormal(HttpServletRequest request) {
-		System.out.println("일반맴버 메소드");
+		System.out.println("일반 회원 정보 받아오는 메소드");
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    PreparedStatement pstmtAddress = null;
@@ -258,9 +258,9 @@ public class SurveyDAO {
 	    }
 	}
 	
-	// 일반 회원 가입시 조건
+	// 라인 회원 가입시 조건
 	public static void getMemberLine(HttpServletRequest request) {
-		System.out.println("맴버 정보 받아오는 메소드");
+		System.out.println("라인 회원 정보 받아오는 메소드");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmtAddress = null;
@@ -307,7 +307,7 @@ public class SurveyDAO {
 				String fullNameKana = rs.getString(2);
 				String[] nameParts1 = fullNameKana.split(" ");
 				if (nameParts1.length >= 2) {
-					m.setM_first_name_kana(nameParts[0]);
+					m.setM_first_name_kana(nameParts1[0]);
 					m.setM_last_name_kana(nameParts1[1]);
 				} else if (nameParts1.length == 1) {
 					m.setM_first_name_kana(nameParts1[0]);
