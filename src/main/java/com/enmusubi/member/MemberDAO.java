@@ -90,6 +90,7 @@ public class MemberDAO {
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
+//				response.sendRedirect("HSC");
 				response.getWriter().println("success"); // 성공 메시지를 클라이언트에 보냄
 
 			} else {
@@ -182,7 +183,7 @@ public class MemberDAO {
 	public static void MemberRegC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// request에서 파라미터 가져오기
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 
@@ -426,7 +427,7 @@ public class MemberDAO {
 
 		HttpSession session = request.getSession();
 
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 

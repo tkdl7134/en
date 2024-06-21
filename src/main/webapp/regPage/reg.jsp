@@ -493,7 +493,7 @@ function register() {
             
             if (specialCharPattern.test(id)) { // id에 특수문자가 포함되어 있는 경우
                 Swal.fire({
-                    icon: 'warning',
+                    icon: 'error',
                     title: '使用できない文字が含まれています。',
                     text: '英語と数字のみ入力お願いします。',
                     customClass: {
@@ -525,7 +525,7 @@ function register() {
                         if (!isIdAvailable) {
                         	/* alert("このIDは使用中です。別のIDを入力してください。"); // alert 창 표시 */
                         	Swal.fire({
-            					icon: 'warning',
+            					icon: 'error',
             					title : 'このIDは使用中です。',
             					text : '別のIDを入力してください。',
             					customClass : {
