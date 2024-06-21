@@ -10,6 +10,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #FFF5F4;
+	text-align: center;
 }
 
 .hs_background {
@@ -24,9 +25,9 @@ body {
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
+	min-height: 1080px;
+	margin: auto;
 }
 
 .yj-main-s2-logo {
@@ -74,11 +75,7 @@ translate(
 }
 
 .hs_title {
-	padding-top: 6%;
-	font-size: 2rem;
-	font-weight: bold;
-	margin-bottom: 5rem;
-	text-align: center;
+	margin-top: 110px;
 }
 
 .hs_mypage-menus {
@@ -88,7 +85,7 @@ translate(
 	font-size: 15pt;
 	text-align: center;
 	margin: auto;
-	margin-top: 5rem;
+	margin-top: 10rem;
 }
 
 .hs_btn-container {
@@ -255,7 +252,6 @@ translate(
 	background-position: top center;
 	margin-top: -55rem;
 	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
 }
 

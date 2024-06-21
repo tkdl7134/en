@@ -52,7 +52,7 @@ body {
 
 
 		<div class="horizontal-container-title">
-			<p class="hs_heading">ログイン</p>
+			<h1 class="hs_heading">ログイン</h1>
 		</div>
 
 		<form id="loginForm" action="MemberC" method="post">
@@ -123,7 +123,7 @@ body {
 					success : function(response) {
 						if (response.trim() === 'success') {
 							// 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
-							location.href = 'HSC'; // 로그인 성공 후 이동할 페이지
+							location.href = 'MainC'; // 로그인 성공 후 이동할 페이지
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({

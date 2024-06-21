@@ -23,6 +23,6 @@ public class mytemplateController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Do something in POST request if needed
+        doGet(request, response); // POST 요청도 GET 요청과 동일하게 처리
     }
 }
