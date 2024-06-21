@@ -3,11 +3,12 @@ $(function () {
   $("#specialDate").datepicker({
     onSelect: function () {
       var date = $.datepicker.formatDate(
-        "yy年 mm月 dd日　DD曜日",
+        "yy.mm.dd DD",
         $("#specialDate").datepicker("getDate")
       );
       // alert(date);
       $("#je_weddingDay").text(date);
+      $("#je_receptionDay").text(date);
     },
   });
 });
