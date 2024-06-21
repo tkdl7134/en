@@ -62,7 +62,7 @@ a:active {
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
     <div class="hw_menubar_item">
-        <a href='mytemplateController' class="hw_menubar_menu active" href="">✿ テンプレート管理 ✿</a> <img
+        <a class="hw_menubar_menu active" href="">✿ テンプレート管理 ✿</a> <img
             class="hw_yellow_line" alt=""
             src="invitationPage/imgFolder/yellow_line.png">
     </div>
