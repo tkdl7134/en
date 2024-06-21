@@ -149,7 +149,7 @@ body {
 
 					</div>
 
-					<c:set var="addressParts" value="${fn:split(dto.a_address, ', ')}" />
+					<c:set var="addressParts" value="${fn:split(dto.a_address, ' ')}" />
 					<div class="hs_content-input">
 						<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
 						<div class="hs_output prefecture" id="displayPrefecture">${addressParts[0]}</div>

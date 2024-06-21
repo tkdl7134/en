@@ -216,10 +216,10 @@ public class MemberDAO {
 		String m_regdate = now.format(formatter);
 
 //      정보 합치기 (구분자 사용)
-		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
+		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
-		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
+		String combinedBirth = m_birthY + " " + m_birthM + " " + m_birthD;
 
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
 				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
@@ -472,11 +472,11 @@ public class MemberDAO {
 		String m_regdate = request.getParameter("m_regdate");
 
 //      5. 주소 정보 합치기 (구분자 사용)
-		String delimiter = ", "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
+		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
 
 //		System.out.println("here>>>>>>:::"+combinedAddress);
-		String combinedBirth = m_birthY + "-" + m_birthM + "-" + m_birthD;
+		String combinedBirth = m_birthY + " " + m_birthM + " " + m_birthD;
 
 		// DTO 객체 생성
 		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
