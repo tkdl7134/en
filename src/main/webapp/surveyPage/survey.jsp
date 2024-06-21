@@ -110,23 +110,23 @@
 										    <c:set var="members" value="${members }" />
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">名前</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="First Name"
 												class="name-input" id="name" name="name" required value="${members.m_first_name}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
 												class="name-input" id="name" name="name" required value="${members.m_last_name}" disabled="disabled" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="First Name"
 												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
 												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
 												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
-												placeholder=" - " class="name-input" id="romaName" name="roma-name"
-												required value="${members.m_first_name_rome}" disabled="disabled" />
+												placeholder="First Name" class="name-input" id="romaName" name="roma-name"
+												required value="${members.m_first_name_rome}" />
 											</label>
 										 </c:when>
 										 <c:otherwise>
@@ -188,12 +188,12 @@
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
 												class="contact-input" id="email" name="email"
-												placeholder=" - " required value="${members.m_email}" disabled="disabled" />
+												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
 												class="contact-input" id="phonenum" name="phonenum"
-												placeholder=" - " required value="${members.m_phone}" disabled="disabled" />
+												placeholder="000-0000-0000" required value="${members.m_phone}" />
 										</div>
 								</div>
 							</c:when>
