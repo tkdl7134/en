@@ -54,24 +54,43 @@ const wheelHandler = (event) => {
 document.addEventListener("wheel", wheelHandler);
 
 // ////////// ////////// ////////// ////////// ////////// //////////
-// Section 2
-// 메뉴 버튼 클릭 이벤트
-const menu = document.querySelector(".yj-main-menu>img");
-const navi = document.querySelector(".yj-main-nav");
-menu.addEventListener("click", function () {
-  console.log(menu);
-  console.log(navi);
-  if (navi.classList.contains("nav-hidden")) {
-    this.src = "main/imgFolder/yj-main-menu2.png";
-    navi.classList.remove("nav-hidden");
-    navi.classList.add("nav-show");
-  } else {
-    this.src = "main/imgFolder/yj-main-menu1.png";
-    navi.classList.remove("nav-show");
-    navi.classList.add("nav-hidden");
+// 로고 버튼 클릭 이벤트
+document.addEventListener('DOMContentLoaded', (event) => {
+  const mainLogo = document.getElementsByClassName('mainLogo');
+
+  if (mainLogo) {
+    mainLogo.addEventListener('click', (event) => {
+      event.preventDefault(); // 기본 동작을 막습니다 (페이지 새로고침 방지)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // 부드럽게 스크롤됩니다
+      });
+    });
   }
 });
 
+// ////////// ////////// ////////// ////////// ////////// //////////
+// 메뉴 버튼 클릭 이벤트
+const menus = document.querySelectorAll(".yj-main-menu");
+menus.forEach((menu) => {
+  const navi = menu.parentElement.querySelector(".yj-main-nav");
+  menu.addEventListener("click", function () {
+    console.log(menu);
+    console.log(navi);
+    const menuBtn = menu.querySelector("img");
+    if (navi.classList.contains("nav-hidden")) {
+      menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+      navi.classList.remove("nav-hidden");
+      navi.classList.add("nav-show");
+    } else {
+      menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+      navi.classList.remove("nav-show");
+      navi.classList.add("nav-hidden");
+    }
+  });
+});
+
+// Section 2
 // mouse cursor (drag)
 const s2CardConAll = document.querySelectorAll(".yj-main-section");
 const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
@@ -193,26 +212,8 @@ $(document).ready(function () {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 3
-// 메뉴 버튼 클릭 이벤트
-const s3menuBtn = document.getElementById("yj-main-s3-menuBtn");
-const s3menuBtn1 = "imgFolder/yj-main-default-menu1.png";
-const s3menuBtn2 = "imgFolder/yj-main-default-menu2.png";
-
-// 메뉴 이미지 클릭 이벤트 리스너 등록
-s3menuBtn.addEventListener("click", function () {
-  // 현재 이미지 src 확인
-  const currentSrc = this.querySelector("img").src;
-
-  // 이미지 변경
-  if (currentSrc.includes(s3menuBtn1)) {
-    this.querySelector("img").src = s3menuBtn2;
-  } else {
-    this.querySelector("img").src = s3menuBtn1;
-  }
-});
-
 let wow;
-// 체크체크테스트
+
 function textAni() {
   const text = textElement.dataset.text;
   //  console.log(text);
@@ -235,24 +236,6 @@ function textAni() {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
-// 메뉴 버튼 클릭 이벤트
-const s4menuBtn = document.getElementById("yj-main-s4-menuBtn");
-const s4menuBtn1 = "imgFolder/yj-main-default-menu1.png";
-const s4menuBtn2 = "imgFolder/yj-main-default-menu2.png";
-
-// 메뉴 이미지 클릭 이벤트 리스너 등록
-s4menuBtn.addEventListener("click", function () {
-  // 현재 이미지 src 확인
-  const currentSrc = this.querySelector("img").src;
-
-  // 이미지 변경
-  if (currentSrc.includes(s4menuBtn1)) {
-    this.querySelector("img").src = s4menuBtn2;
-  } else {
-    this.querySelector("img").src = s4menuBtn1;
-  }
-});
-
 // 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
 const section4 = document.getElementById("yj-main-s4");
 const clickableImages = document.querySelectorAll(".clickable-image");
@@ -271,7 +254,7 @@ const mouseicn = document.querySelector(".yj-main-s4-cursor");
 
 cardConAll.forEach((card) => {
   card.addEventListener("mouseenter", function (event) {
-    mouseicn.querySelector("img").src = "imgFolder/yj-main-s4-click.png";
+    mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s4-click.png";
     card.style.cursor = "none";
     mouseicn.classList.remove("yj-main-s4-cursor-none");
     mouseicn.classList.add("yj-main-s4-cursor-block");
@@ -324,23 +307,6 @@ const s5MouseHandler = (event) => {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 6
-const s6menuBtn = document.getElementById("yj-main-s6-menuBtn");
-const s6menuBtn1 = "imgFolder/yj-main-default-menu1.png";
-const s6menuBtn2 = "imgFolder/yj-main-default-menu2.png";
-
-// 메뉴 이미지 클릭 이벤트 리스너 등록
-s6menuBtn.addEventListener("click", function () {
-  // 현재 이미지 src 확인
-  const currentSrc = this.querySelector("img").src;
-
-  // 이미지 변경
-  if (currentSrc.includes(s6menuBtn1)) {
-    this.querySelector("img").src = s6menuBtn2;
-  } else {
-    this.querySelector("img").src = s6menuBtn1;
-  }
-});
-
 // mouse cursor (scroll)
 const s6CardConAll = document.querySelectorAll("#yj-main-s6");
 const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
@@ -348,7 +314,7 @@ const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
 s6CardConAll.forEach((card) => {
   card.addEventListener("mouseenter", function (event) {
     s6Mouseicn.querySelector("img").src =
-      "imgFolder/yj-main-default-scroll.png";
+      "main/imgFolder/yj-main-default-scroll.png";
     card.style.cursor = "none";
     s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
     s6Mouseicn.classList.add("yj-main-s6-cursor-block");

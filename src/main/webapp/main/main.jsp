@@ -42,9 +42,9 @@ pageEncoding="UTF-8"%>
     <!-- Section 2 -->
     <div class="yj-main-section" id="yj-main-s2">
       <div class="yj-main-logo">
-        <img src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" />
+        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
       </div>
-      
+
       <%@ include file="mainNavBF.jsp" %>
 
       <div class="yj-main-s2-cover">
@@ -110,16 +110,10 @@ pageEncoding="UTF-8"%>
     <!-- Section 3 -->
     <div class="yj-main-section" id="yj-main-s3">
       <div class="yj-main-logo">
-        <img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고" />
+        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고" /></a>
       </div>
-      <div class="yj-main-menubox">
-        <div class="yj-main-menu" id="yj-main-s3-menuBtn">
-          <img
-            src="main/imgFolder/yj-main-default-menu1.png"
-            alt="섹션3 menu1"
-          />
-        </div>
-      </div>
+
+      <%@ include file="mainNavBF.jsp" %>
 
       <div
         class="vertical-text"
@@ -144,16 +138,10 @@ pageEncoding="UTF-8"%>
     <!-- Section 4 -->
     <div class="yj-main-section" id="yj-main-s4">
       <div class="yj-main-logo">
-        <img src="main/imgFolder/yj-main-logo.png" alt="섹션4 로고" />
+        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션4 로고" /></a>
       </div>
-      <div class="yj-main-menubox">
-        <div class="yj-main-menu" id="yj-main-s4-menuBtn">
-          <img
-            src="main/imgFolder/yj-main-default-menu1.png"
-            alt="섹션4 menu1"
-          />
-        </div>
-      </div>
+
+      <%@ include file="mainNavBF.jsp" %>
 
       <div class="yj-main-s4-cover">
         <img src="main/imgFolder/yj-main-s4-cover.png" alt="섹션4 커버" />
@@ -298,12 +286,11 @@ pageEncoding="UTF-8"%>
     <!-- Section 5 -->
     <div class="yj-main-section" id="yj-main-s5">
       <div class="yj-main-logo">
-        <img src="main/imgFolder/yj-main-logo.png" alt="섹션5 로고" />
+        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션5 로고" /></a>
       </div>
 
-      <div class="yj-main-s5-menu" id="yj-main-s5-menuBtn">
-        <img src="main/imgFolder/yj-main-default-menu1.png" alt="섹션5 menu1" />
-      </div>
+      <%@ include file="mainNavBF.jsp" %>
+
       <div class="yj-main-s5-cursor yj-main-s5-cursor-none">
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
       </div>
@@ -325,12 +312,10 @@ pageEncoding="UTF-8"%>
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
       </div>
       <div class="yj-main-logo">
-        <img src="main/imgFolder/yj-main-logo.png" alt="섹션6 로고" />
+        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션6 로고" /></a>
       </div>
 
-      <div class="yj-main-s6-menu" id="yj-main-s6-menuBtn">
-        <img src="main/imgFolder/yj-main-default-menu1.png" alt="섹션6 menu1" />
-      </div>
+      <%@ include file="mainNavBF.jsp" %>
 
       <div class="yj-main-s6-cover">
         <img src="main/imgFolder/yj-main-s6-cover.png" alt="섹션6 커버" />
