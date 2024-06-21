@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -551,48 +552,90 @@ public class StatisticsDAO {
 		
 	}
 
-	public static void getTemplatePrev(HttpServletRequest request) {
+	public static void getTemplatePrev(HttpServletRequest request, int page, int itemsPerPage) {
 
 		// id 받기
-		
+		// m_id를 session으로 가져오나? String id = request.getSession()
+		int offset = (page - 1) * itemsPerPage;
 		String id = "testuser";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "SELECT st.t_preview\r\n"
-				+ "FROM s_template st\r\n"
-				+ "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk\r\n"
-				+ "JOIN s_event se ON swi.e_no = se.e_no\r\n"
-				+ "JOIN s_guest sg ON se.e_no = sg.e_no\r\n"
-				+ "WHERE sg.m_id ='testuser'";
-		
+
+		// SQL 쿼리: 총 항목 수를 계산
+		String countSql = "SELECT COUNT(*) AS total FROM s_template st "
+		                + "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk "
+		                + "JOIN s_event se ON swi.e_no = se.e_no "
+		                + "JOIN s_guest sg ON se.e_no = sg.e_no "
+		                + "WHERE sg.m_id = ?";
+
+		// SQL 쿼리: 페이징 처리된 항목 가져오기
+		String sql = "SELECT st.t_preview, s_member.m_name, s_reception.r_time , s_reception.r_addr "
+		           + "FROM s_template st "
+		           + "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk "
+		           + "JOIN s_event se ON swi.e_no = se.e_no "
+		           + "JOIN s_guest sg ON se.e_no = sg.e_no "
+		           + "JOIN s_reception sr ON sr.e_no = swi.e_no "
+		           + "JOIN s_member sm ON sm.m_id = se.m_id "
+		           + "WHERE sg.m_id = ? "
+		           + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+
 		try {
-		con = dbManager.connect();
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, id);
-		rs = pstmt.executeQuery();
-		
-		ArrayList<payDTO> previews = new ArrayList<payDTO>();
-		payDTO preview = new payDTO();
-		while (rs.next()) {
-			System.out.println(rs.getString("t_preview"));
-			preview.setT_preview(rs.getString("t_preview"));
-			previews.add(preview);
-			
-		}
-		request.setAttribute("previews",previews );
-			
+		    con = dbManager.connect();
+
+		    // 총 항목 수 계산
+		    pstmt = con.prepareStatement(countSql);
+		    pstmt.setString(1, id);
+		    rs = pstmt.executeQuery();
+		    
+		    int totalItems = 0;
+		    if (rs.next()) {
+		        totalItems = rs.getInt("total");
+		    }
+		    int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+		    request.setAttribute("totalPage", totalPages);
+
+		    // 페이징 처리된 항목 가져오기
+		    pstmt = con.prepareStatement(sql);
+		    pstmt.setString(1, id);
+		    pstmt.setInt(2, offset);
+		    pstmt.setInt(3, itemsPerPage);
+		    rs = pstmt.executeQuery();
+		    
+		    ArrayList<payDTO> previews = new ArrayList<payDTO>();
+		    while (rs.next()) {
+		        payDTO preview = new payDTO();
+		        System.out.println(rs.getString("t_preview"));
+		        preview.setT_preview(rs.getString("t_preview"));
+                Date sqlDate = rs.getDate("r_time");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+                String formattedDateStr = dateFormat.format(sqlDate);
+                
+                // 포맷된 문자열을 java.util.Date로 변환
+                java.util.Date utilDate = dateFormat.parse(formattedDateStr);
+                
+                // java.util.Date를 java.sql.Date로 변환
+                Date formattedDate = new Date(utilDate.getTime());
+		        preview.setR_time(formattedDate);
+		        preview.setR_addr(rs.getString("r_addr"));
+		        preview.setM_name(rs.getString("m_name"));
+		        previews.add(preview);
+		    }
+		    System.out.println(previews);
+		    System.out.println(totalPages);
+		    System.out.println(page);
+		    
+		    request.setAttribute("previews", previews);
+		    
+		    request.setAttribute("totalPages", totalPages);
+		    request.setAttribute("currentPage", page);
+		    
 		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			dbManager.close(con, pstmt, rs);
+		    e.printStackTrace();
+		} finally {
+		    dbManager.close(con, pstmt, rs);
 		}
-		
-		
-		
-		
-	}
 	
-	
+}
 }
