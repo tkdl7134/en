@@ -183,7 +183,7 @@ public class MemberDAO {
 	public static void MemberRegC(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// request에서 파라미터 가져오기
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 
@@ -427,7 +427,7 @@ public class MemberDAO {
 
 		HttpSession session = request.getSession();
 
-		String path = request.getServletContext().getRealPath("regPage/profileImg");
+		String path = request.getServletContext().getRealPath("regPage/profileImages");
 		MultipartRequest mr;
 		mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
 
