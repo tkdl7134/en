@@ -52,7 +52,7 @@ body {
 
 
 		<div class="horizontal-container-title">
-			<p class="hs_heading">ログイン</p>
+			<h1 class="hs_heading">ログイン</h1>
 		</div>
 
 		<form id="loginForm" action="MemberC" method="post">
