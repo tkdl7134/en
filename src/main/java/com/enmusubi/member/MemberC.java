@@ -18,6 +18,5 @@ public class MemberC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberDAO.memberC(request, response);
-
 	}
 }
