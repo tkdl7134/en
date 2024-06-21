@@ -302,8 +302,8 @@ main {
 	z-index: 2;
 	flex-direction: column;
 	opacity: 0;
-	padding: 11rem;
-	border-radius: 80%;
+	padding: 15rem;
+	border-radius: 30%;
 }
 .hw_template-button:hover{
 	opacity: 1;
@@ -364,6 +364,7 @@ main {
 
 .pagination {
 	text-decoration-line: none;
+	margin-top: 8%;
 }
 
 /* 팝업 창 스타일 */
@@ -444,6 +445,9 @@ main {
 	z-index: 2;
 	position: relative;
 	display: flex;
+	
+	
+	
 }
 
 .canvas-container {
@@ -468,7 +472,7 @@ main {
 
 .canvas-content {
 	position: absolute;
-	top: -670px;
+	top: -870px;
 	left: 50%;
 	transform: translate(-50%, 0);
 	height: 70%;

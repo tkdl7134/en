@@ -69,23 +69,24 @@
 						</div>
 					</div>
 					<div class="pagination">
-						<c:if test="${currentPage > 1}">
-							<a href="mytemplateController?page=${currentPage - 1}"><</a>
+    <c:if test="${currentPage > 1}">
+							<a href="mytemplateController?page=${currentPage - 1}">&lt;</a>
 						</c:if>
-						<c:forEach begin="1" end="${totalPages}" var="i">
-							<c:choose>
-								<c:when test="${i == currentPage}">
-									<span>${i}</span>
-								</c:when>
-								<c:otherwise>
-									<a href="mytemplateController?page=${i}">${i}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${currentPage < totalPages}">
-							<a href="mytemplateController?page=${currentPage + 1}">></a>
-						</c:if>
-					</div>
+    <c:forEach begin="1" end="${totalPages}" var="i">
+        <c:choose>
+            <c:when test="${i == currentPage}">
+                <span>${i}</span>
+            </c:when>
+            <c:otherwise>
+                <a href="mytemplateController?page=${i}">${i}</a>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
+    <c:if test="${currentPage < totalPages}">
+        <a href="mytemplateController?page=${currentPage + 1}">&gt;</a>
+    </c:if>
+</div>
+
 					<input type="hidden" id="currentPage" value="${currentPage}" /> <a
 						href="#page_top"><img
 						src="mytemplate/imgFolder/top_button.png" class="top_button"></a>
