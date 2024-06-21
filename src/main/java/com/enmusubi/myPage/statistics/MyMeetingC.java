@@ -12,6 +12,12 @@ public class MyMeetingC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	
+		
+		StatisticsDAO.getTemplatePrev(request);
+		
+		request.getRequestDispatcher("myPage/statistics/jsp/sendMain.jsp").forward(request, response);	
+		
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

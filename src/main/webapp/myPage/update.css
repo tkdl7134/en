@@ -186,6 +186,13 @@ body {
 	margin-top: 2rem;
 }
 
+.hs_content-text.img{
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+	margin-top: -2rem;
+}
+
 .hs_content-text.bd {
 	margin-top: 2rem;
 	margin-right: 1rem;
@@ -225,6 +232,12 @@ body {
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone, .hs_input.birth {
 	margin-top: 2rem;
+}
+
+.hs_input.img{
+	width: 22rem;
+	border: none;
+	margin-top: -1rem;
 }
 
 .hs_input.post {

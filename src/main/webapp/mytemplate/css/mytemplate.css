@@ -1,0 +1,479 @@
+/* Google Fonts에서 폰트 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+
+/* 공통 스타일 */
+body {
+	background-attachment: scroll;
+	background-color: #FFF5F4;
+	font-family: "Noto Serif JP", serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3.5rem 3rem;
+}
+
+.hw_logo {
+	 z-index: 4;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+}
+
+.hw_logo img {
+	 width: 100%;
+    height: 100%;
+    animation: logo-float 2s ease-in-out infinite;
+}
+
+.hw_page_title {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 70px;
+}
+
+@keyframes logo-float {
+	0%, 100% {
+		transform: translate(0, 0%);
+	}
+	50% {
+		transform: translate(0, 5%);
+	}
+}
+
+.hw_pagetitle {
+	text-align: center;
+	flex-grow: 1;
+	padding: 3rem;
+	margin-top: 1rem;
+	margin-left: 5.2rem;
+}
+
+.hw_pagetitle img {
+	height: 1.5rem;
+}
+
+.hw_menu {
+	  z-index: 4;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 3rem;
+    right: 5rem;
+}
+
+.hw_menu img {
+	width: 100%;
+	height: 100%;
+}
+
+.hw_menubar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+	padding: 3rem;
+}
+
+.hw_menubar_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+}
+
+.hw_menubar_menu {
+    font-size: 1.25rem;
+    text-decoration-line: none;
+    color: #696969;
+    transition: color 0.3s ease; /* 부드러운 색상 전환을 위해 transition 추가 */
+}
+
+.hw_menubar_menu:hover {
+    color: #ff2828; /* 호버 시 글씨 색상을 붉게 변경 */
+}
+
+.hw_menubar_menu.active {
+    color: #ff2828; /* 평상시에도 붉은색으로 표시 */
+}
+
+
+.hw_yellow_line {
+	width: 9rem;
+	height: 1rem;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.hw_card {
+	text-align: center;
+	margin: 1.25rem 0;
+	padding: 1.25rem;
+	border-radius: 1rem;
+	width: 100%;
+}
+
+.hw_card img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5%;
+}
+
+.styled-table-wrapper {
+	height: 18.5rem;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+.styled-table-wrapper::-webkit-scrollbar {
+	display: none;
+}
+
+.hw_invitation_title,
+.hw_invitation_content {
+	display: flex;
+	justify-content: space-between;
+	background-color: white;
+	border: 0.0625rem solid #ddd;
+	border-radius: 0.9375rem;
+	padding: 0.75rem 0.9375rem;
+	margin-bottom: 0.625rem;
+}
+
+.hw_invitation_title {
+	font-weight: bold;
+}
+
+.hw_invitation_content {
+	background-color: #fff;
+}
+
+.hw_invitation_title span,
+.hw_invitation_content span {
+	flex: 1;
+	text-align: center;
+}
+
+.hw_invitation_small {
+	border-right: 0.1rem solid black;
+}
+
+.hw_invitation_big {
+	border-left: 0.1rem solid black;
+}
+
+.top_button {
+	display: block;
+	margin: 0 auto 10rem auto;
+	width: 8.7rem;
+	height: 8.7rem;
+	cursor: pointer;
+	padding: 1rem;
+}
+
+/* 커서 이미지 스타일 */
+.cursor-custom {
+	cursor: url('invitationPage/imgFolder/back_btn.png'), auto;
+}
+
+/* 마우스 아이콘 스타일 */
+.hw-f-mousemove {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	pointer-events: none;
+}
+
+.hw-f-block {
+	display: block;
+}
+
+.hw-f-none {
+	display: none;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 1200px) {
+	header {
+		padding: 4rem 2rem;
+	}
+	.hw_logo {
+		width: 12%;
+	}
+	.hw_pagetitle img {
+		height: 1.2rem;
+	}
+	.hw_menu {
+		width: 6rem;
+		height: 6rem;
+	}
+}
+
+@media (max-width: 768px) {
+	header {
+		padding: 3rem 1rem;
+	}
+	.hw_logo {
+		width: 15%;
+	}
+	.hw_pagetitle img {
+		height: 1rem;
+	}
+	.hw_menu {
+		width: 5rem;
+		height: 5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	header {
+		flex-direction: column;
+		align-items: center;
+		padding: 1.5rem 1rem;
+	}
+	.hw_logo {
+		width: 20%;
+		margin-bottom: 1rem;
+	}
+	.hw_menu {
+		width: 4rem;
+		height: 4rem;
+	}
+	.hw_pagetitle {
+		margin-bottom: 1rem;
+	}
+	.hw_pagetitle img {
+		height: 0.8rem;
+	}
+}
+
+#canvas1 {
+	display: none;
+}
+
+.hw_product-page-content {
+	margin-top: 4.3rem;
+}
+
+.hw_page-content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.hw_page-content-template {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.hw_template-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+	gap: 2rem;
+	z-index: 2;
+	flex-direction: column;
+	opacity: 0;
+	padding: 11rem;
+	border-radius: 80%;
+}
+.hw_template-button:hover{
+	opacity: 1;
+}
+.hw_template-button>button {
+	width: 7rem;
+	height: 1.8rem;
+	font-size: 1rem;
+	font-weight: bold;
+	border: 0.1rem solid #c82626;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+	z-index: 100;
+	background-color: #fff4f4;
+	color: #5c5c5c;
+}
+
+.hw_template-img {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+}
+
+.hw_template-img>img {
+	width: 100%;
+}
+
+.hw_template-title {
+	text-align: center;
+	margin-top: 1.5rem;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.hw_share_btn {
+	background: none;
+	border: none;
+	margin: 0.5rem auto;
+	cursor: pointer;
+	display: block;
+	width: 7rem;
+	height: 1.8rem;
+	font-size: 1rem;
+	font-weight: bold;
+	border: 0.1rem solid #c82626;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+	background-color: #fff4f4;
+	color: #5c5c5c;
+	transition: background-color 0.5s, color 0.5s;
+}
+
+.hw_share_btn:hover {
+	background-color: #ff3b3f;
+	color: #fff4f4;
+}
+
+.pagination {
+	text-decoration-line: none;
+}
+
+/* 팝업 창 스타일 */
+.popup {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	padding: 20px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	background-color: white;
+	border-radius: 10px;
+}
+
+.popup-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.popup-content input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.popup-content button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.popup-content button:hover {
+	background-color: #0056b3;
+}
+
+.close-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#background1,
+#background2 {
+	width: 100%;
+	height: 100vh;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#background1 {
+	background-image: url("../imgFolder/up_line.png");
+	background-position: top center;
+	top: 0;
+}
+
+#background2 {
+	background-image: url("../imgFolder/down_page.png");
+	background-position: bottom center;
+	bottom: 940px;
+}
+
+#canvas-content-container {
+	z-index: 2;
+	position: relative;
+	display: flex;
+}
+
+.canvas-container {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.canvas {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.canvas-content {
+	position: absolute;
+	top: -670px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	height: 70%;
+	width: 70%;
+}
+.cursor-custom {
+	cursor: url('mytemplate/imgFolder/back_btn.png'), auto;
+}

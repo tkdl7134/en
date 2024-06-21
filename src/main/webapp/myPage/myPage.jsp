@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>会員情報</title>
 
@@ -25,20 +26,27 @@
 
 <style type="text/css">
 .swal2-popup {
-	background-color: #FFF5F4 !important; /* 배경색 설정 */
+	background-color: #FFF5F4 !important;
+	/* 배경색 설정 */
 }
 
 .swal2-confirm {
-	background-color: #FF4C50 !important; /* 원하는 색상 코드로 변경 */
-	color: white !important; /* 텍스트 색상 */
+	background-color: #FF4C50 !important;
+	/* 원하는 색상 코드로 변경 */
+	color: white !important;
+	/* 텍스트 색상 */
 }
 
 body {
-      -webkit-user-select: none; /* Chrome, Safari */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* Internet Explorer/Edge */
-      user-select: none;         /* 표준 */
-    }
+	-webkit-user-select: none;
+	/* Chrome, Safari */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* Internet Explorer/Edge */
+	user-select: none;
+	/* 표준 */
+}
 </style>
 </head>
 
@@ -144,7 +152,7 @@ body {
 					<c:set var="addressParts" value="${fn:split(dto.a_address, ', ')}" />
 					<div class="hs_content-input">
 						<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
-						<div class="hs_output prefecture">${addressParts[0]}</div>
+						<div class="hs_output prefecture" id="displayPrefecture">${addressParts[0]}</div>
 					</div>
 
 					<div class="hs_content-input">
@@ -163,7 +171,8 @@ body {
 					</div>
 
 					<div class="btn-box">
-						<button type="button" class="btn update" onclick="redirectToUpdate()">会員情報修正</button>
+						<button type="button" class="btn update"
+							onclick="redirectToUpdate()">会員情報修正</button>
 						<form id="deleteForm" action="MemberDeleteC" method="post">
 							<button type="button" onclick="confirmDelete()"
 								class="btn delete">アカウント削除</button>
@@ -181,51 +190,211 @@ body {
 	</c:if>
 
 	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-        var sessionId = "${dto.m_id}";
-        if (sessionId.startsWith("LINE_")) {
-            sessionId = "LINE_USER";
-        }
-        document.getElementById("display_id").textContent = sessionId;
-    });
 	
-	function redirectToUpdate() {
-	    window.location.href = "MemberUpdateC";
-	}
-	
-	function confirmDelete() {
-        Swal.fire({
-            icon: 'warning',
-            title: '本当に削除しますか？',
-            customClass: {
-                popup: 'swal2-popup',
-                confirmButton: 'swal2-confirm'
-            },
-            showCancelButton: true,
-            confirmButtonText: '削除',
-            cancelButtonText: 'キャンセル'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // 확인 버튼이 클릭된 경우
-                document.getElementById('deleteForm').submit(); // 폼 제출
-            } else {
-                // 취소 버튼이 클릭된 경우
-                // 아무 작업 없음
-            }
-        });
-    }
-	
-	document.addEventListener("DOMContentLoaded", function() {
-	    const topButton = document.querySelector('.top-button');
-	    
-	    topButton.addEventListener('click', function() {
-	        window.scrollTo({
-	            top: 0,
-	            behavior: 'smooth' // 부드러운 스크롤
-	        });
+	 document.addEventListener("DOMContentLoaded", function () {
+	        var sessionAddress = "${addressParts[0]}";
+	        var prefectureName = "";
+
+	        switch (sessionAddress) {
+	            case "1":
+	                prefectureName = "北海道";
+	                break;
+	            case "2":
+	                prefectureName = "青森県";
+	                break;
+	            case "3":
+	                prefectureName = "岩手県";
+	                break;
+	            case "4":
+	                prefectureName = "宮城県";
+	                break;
+	            case "5":
+	                prefectureName = "秋田県";
+	                break;
+	            case "6":
+	                prefectureName = "山形県";
+	                break;
+	            case "7":
+	                prefectureName = "福島県";
+	                break;
+	            case "8":
+	                prefectureName = "茨城県";
+	                break;
+	            case "9":
+	                prefectureName = "栃木県";
+	                break;
+	            case "10":
+	                prefectureName = "群馬県";
+	                break;
+	            case "11":
+	                prefectureName = "埼玉県";
+	                break;
+	            case "12":
+	                prefectureName = "千葉県";
+	                break;
+	            case "13":
+	                prefectureName = "東京都";
+	                break;
+	            case "14":
+	                prefectureName = "神奈川県";
+	                break;
+	            case "15":
+	                prefectureName = "新潟県";
+	                break;
+	            case "16":
+	                prefectureName = "富山県";
+	                break;
+	            case "17":
+	                prefectureName = "石川県";
+	                break;
+	            case "18":
+	                prefectureName = "福井県";
+	                break;
+	            case "19":
+	                prefectureName = "山梨県";
+	                break;
+	            case "20":
+	                prefectureName = "長野県";
+	                break;
+	            case "21":
+	                prefectureName = "岐阜県";
+	                break;
+	            case "22":
+	                prefectureName = "静岡県";
+	                break;
+	            case "23":
+	                prefectureName = "愛知県";
+	                break;
+	            case "24":
+	                prefectureName = "三重県";
+	                break;
+	            case "25":
+	                prefectureName = "滋賀県";
+	                break;
+	            case "26":
+	                prefectureName = "京都府";
+	                break;
+	            case "27":
+	                prefectureName = "大阪府";
+	                break;
+	            case "28":
+	                prefectureName = "兵庫県";
+	                break;
+	            case "29":
+	                prefectureName = "奈良県";
+	                break;
+	            case "30":
+	                prefectureName = "和歌山県";
+	                break;
+	            case "31":
+	                prefectureName = "鳥取県";
+	                break;
+	            case "32":
+	                prefectureName = "島根県";
+	                break;
+	            case "33":
+	                prefectureName = "岡山県";
+	                break;
+	            case "34":
+	                prefectureName = "広島県";
+	                break;
+	            case "35":
+	                prefectureName = "山口県";
+	                break;
+	            case "36":
+	                prefectureName = "徳島県";
+	                break;
+	            case "37":
+	                prefectureName = "香川県";
+	                break;
+	            case "38":
+	                prefectureName = "愛媛県";
+	                break;
+	            case "39":
+	                prefectureName = "高知県";
+	                break;
+	            case "40":
+	                prefectureName = "福岡県";
+	                break;
+	            case "41":
+	                prefectureName = "佐賀県";
+	                break;
+	            case "42":
+	                prefectureName = "長崎県";
+	                break;
+	            case "43":
+	                prefectureName = "熊本県";
+	                break;
+	            case "44":
+	                prefectureName = "大分県";
+	                break;
+	            case "45":
+	                prefectureName = "宮崎県";
+	                break;
+	            case "46":
+	                prefectureName = "鹿児島県";
+	                break;
+	            case "47":
+	                prefectureName = "沖縄県";
+	                break;
+	            case "48":
+	                prefectureName = "海外";
+	                break;
+	            default:
+	                prefectureName = "選択してください";
+	        }
+
+	        // 結果を表示する
+	        document.getElementById("displayPrefecture").textContent = prefectureName;
 	    });
-	});
 	
-    </script>
+	
+							document.addEventListener("DOMContentLoaded", function () {
+								var sessionId = "${dto.m_id}";
+								if (sessionId.startsWith("LINE_")) {
+									sessionId = "LINE_USER";
+								}
+								document.getElementById("display_id").textContent = sessionId;
+							});
+
+							function redirectToUpdate() {
+								window.location.href = "MemberUpdateC";
+							}
+
+							function confirmDelete() {
+								Swal.fire({
+									icon: 'warning',
+									title: '本当に削除しますか？',
+									customClass: {
+										popup: 'swal2-popup',
+										confirmButton: 'swal2-confirm'
+									},
+									showCancelButton: true,
+									confirmButtonText: '削除',
+									cancelButtonText: 'キャンセル'
+								}).then((result) => {
+									if (result.isConfirmed) {
+										// 확인 버튼이 클릭된 경우
+										document.getElementById('deleteForm').submit(); // 폼 제출
+									} else {
+										// 취소 버튼이 클릭된 경우
+										// 아무 작업 없음
+									}
+								});
+							}
+
+							document.addEventListener("DOMContentLoaded", function () {
+								const topButton = document.querySelector('.top-button');
+
+								topButton.addEventListener('click', function () {
+									window.scrollTo({
+										top: 0,
+										behavior: 'smooth' // 부드러운 스크롤
+									});
+								});
+							});
+
+						</script>
 </body>
+
 </html>

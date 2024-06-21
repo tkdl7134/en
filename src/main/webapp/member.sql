@@ -40,3 +40,5 @@ CREATE TABLE Address (
 
 -- Addressテーブルのデータを選択
 SELECT * FROM s_Address;
+
+SELECT m_name, m_name_kana, m_name_rome, m_email, m_phone FROM s_member WHERE m_id = 'vbn';
