@@ -56,42 +56,11 @@ document.addEventListener("wheel", wheelHandler);
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 2
 // 메뉴 버튼 클릭 이벤트
-/*const s2menuBtn = document.getElementById("yj-main-s2-menuBtn");
-const s2menuBtn1 = "imgFolder/yj-main-default-menu1.png";
-const s2menuBtn2 = "imgFolder/yj-main-default-menu2.png";
-
-// 메뉴 이미지 클릭 이벤트 리스너 등록
-s2menuBtn.addEventListener("click", function () {
-  // 현재 이미지 src 확인
-  const currentSrc = this.querySelector("img").src;
-
-  // 이미지 변경
-  if (currentSrc.includes(s2menuBtn1)) {
-    this.querySelector("img").src = s2menuBtn2;
-  } else {
-    this.querySelector("img").src = s2menuBtn1;
-  }
-});*/
-
-// const logo = document.querySelector(".yj-main-s2-menu>img");
-// const navi = document.querySelector(".navi");
-// logo.addEventListener("click", function () {
-//   if (navi.classList.contains("nonnon")) {
-//     this.src = "img/yj-main-default-menu2.png";
-//     navi.classList.remove("nonnon");
-//     navi.classList.add("onon");
-//   } else {
-//     this.src = "img/default_menu.png";
-//     navi.classList.remove("onon");
-//     navi.classList.add("nonnon");
-//   }
-// });
-
 const menu = document.querySelector(".yj-main-menu>img");
 const navi = document.querySelector(".yj-main-nav");
 menu.addEventListener("click", function () {
-	console.log(menu);
-	console.log(navi);
+  console.log(menu);
+  console.log(navi);
   if (navi.classList.contains("nav-hidden")) {
     this.src = "main/imgFolder/yj-main-menu2.png";
     navi.classList.remove("nav-hidden");
@@ -246,7 +215,7 @@ let wow;
 // 체크체크테스트
 function textAni() {
   const text = textElement.dataset.text;
-//  console.log(text);
+  //  console.log(text);
   clearInterval(wow);
   textElement.textContent = "";
 
@@ -255,7 +224,7 @@ function textAni() {
     if (i < text.length) {
       const span = document.createElement("span");
       span.textContent = text[i];
-  //    console.log(text[i]);
+      //    console.log(text[i]);
       i++;
       textElement.appendChild(span);
     } else {
