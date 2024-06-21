@@ -58,24 +58,29 @@
 
 
 	<dialog id="AmazonModal" class="modal">
-	<div class="jw-w-popup">
+	<div class="jw-w-popup" id="amazonpop">
 		<div><h2>プレゼント</h2></div>
 		<div><h3>Amazon「ほしい物リスト」</h3></div>
-		<div><input class="jw-w-popup-input" placeholder="Amazon「ほしい物リスト」のURL"></div>
-		<div><button class="jw-w-popup-btn" onclick="amazonSubmit(1)"><h4>登録</h4></button></div>
+		<div><input class="jw-w-popup-input" placeholder="Amazon「ほしい物リスト」のURL" value="${sdto.link }"></div>
+		<div><button class="jw-w-popup-btn" onclick="amazonSubmit('${sdto.eno}')"><h4>登録</h4></button></div>
 	</div>
 	</dialog>
 	
-	<dialog id="SendModal" class="modal">
-	<div class="jw-w-popup" style="background-image: url('product/imgFolder/empty-pop.png')">
+	<dialog id="SendModal" class="modal" data-value="${sdto.ef_send}">
+	<form id=	"sendModalForm">
+	<div class="jw-w-popup" style="background-image: url('product/imgFolder/empty-pop.png')" id="sendpop">
 		<div><h2>ご祝儀</h2></div>
 		<div><h3>招待客からサイトを通じてご祝儀を受け取られますか?</h3></div>
 		<div style="gap:5rem">
-			<label><input type="radio" name="jw-w-radio">はい</label>
-			<label><input type="radio" name="jw-w-radio">いいえ</label>
+			<label><input type="radio" name="jw-w-radio" value="yes">はい</label>
+			<label><input type="radio" name="jw-w-radio" value="no">いいえ</label>
+			<input name="type" type="hidden" value="send">
+			<input name="eno" type="hidden" value="1">
 		</div>
-		<div><button class="jw-w-popup-btn" onclick="sendSubmit()"><h4>登録</h4></button></div>
+		<div><span id="kh-warn-text" style="color:red" class="jw-none">チェクしてください。</span></div>
+		<div><button type="button" class="jw-w-popup-btn" onclick="sendSubmit()"><h4>登録</h4></button></div>
 	</div>
+	</form>
 	</dialog>
 
 

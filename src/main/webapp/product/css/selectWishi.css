@@ -241,3 +241,29 @@ dialog {
 .jw-w-popup-btn:active{
 	box-shadow: none;
 }
+.jw-none{
+	display:none;
+}
+.jw-show{
+	display:block;
+}
+@keyframes vibration {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5 );
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.vibration {
+  animation: vibration 0.1s infinite;
+}
