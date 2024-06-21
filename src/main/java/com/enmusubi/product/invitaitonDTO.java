@@ -8,6 +8,7 @@ public class invitaitonDTO {
 	
 	private String w_groom;
 	private String w_bride;
+	
 	private String w_msg_invite;
 	private String w_msg_bye;
 	private String w_img1;
@@ -16,10 +17,14 @@ public class invitaitonDTO {
 	private String w_img4;
 	
 	private String weddingDay; //r_type wedding > r_time 중 날짜만
-	private String w_time;
-	private String w_time_assemble;
-	private String r_time;
-	private String r_time_assemble;
+	private String r_weddingTime;
+	private String r_weddingTime_assemble;
+	private String r_receptionTime;
+	private String r_receptionTime_assemble;
+	private String r_weddingPlace;
+	private String r_weddingAddr;
+	private String r_receptionPlace;
+	private String r_receptionAddr;
 	
 	
 	public invitaitonDTO() {
@@ -29,7 +34,9 @@ public class invitaitonDTO {
 
 	public invitaitonDTO(int e_no, int t_pk, String t_template, String w_groom, String w_bride, String w_msg_invite,
 			String w_msg_bye, String w_img1, String w_img2, String w_img3, String w_img4, String weddingDay,
-			String w_time, String w_time_assemble, String r_time, String r_time_assemble) {
+			String r_weddingTime, String r_weddingTime_assemble, String r_receptionTime,
+			String r_receptionTime_assemble, String r_weddingPlace, String r_weddingAddr, String r_receptionPlace,
+			String r_receptionAddr) {
 		super();
 		this.e_no = e_no;
 		this.t_pk = t_pk;
@@ -43,10 +50,14 @@ public class invitaitonDTO {
 		this.w_img3 = w_img3;
 		this.w_img4 = w_img4;
 		this.weddingDay = weddingDay;
-		this.w_time = w_time;
-		this.w_time_assemble = w_time_assemble;
-		this.r_time = r_time;
-		this.r_time_assemble = r_time_assemble;
+		this.r_weddingTime = r_weddingTime;
+		this.r_weddingTime_assemble = r_weddingTime_assemble;
+		this.r_receptionTime = r_receptionTime;
+		this.r_receptionTime_assemble = r_receptionTime_assemble;
+		this.r_weddingPlace = r_weddingPlace;
+		this.r_weddingAddr = r_weddingAddr;
+		this.r_receptionPlace = r_receptionPlace;
+		this.r_receptionAddr = r_receptionAddr;
 	}
 
 
@@ -170,54 +181,85 @@ public class invitaitonDTO {
 	}
 
 
-	public String getW_time() {
-		return w_time;
+	public String getR_weddingTime() {
+		return r_weddingTime;
 	}
 
 
-	public void setW_time(String w_time) {
-		this.w_time = w_time;
+	public void setR_weddingTime(String r_weddingTime) {
+		this.r_weddingTime = r_weddingTime;
 	}
 
 
-	public String getW_time_assemble() {
-		return w_time_assemble;
+	public String getR_weddingTime_assemble() {
+		return r_weddingTime_assemble;
 	}
 
 
-	public void setW_time_assemble(String w_time_assemble) {
-		this.w_time_assemble = w_time_assemble;
+	public void setR_weddingTime_assemble(String r_weddingTime_assemble) {
+		this.r_weddingTime_assemble = r_weddingTime_assemble;
 	}
 
 
-	public String getR_time() {
-		return r_time;
+	public String getR_receptionTime() {
+		return r_receptionTime;
 	}
 
 
-	public void setR_time(String r_time) {
-		this.r_time = r_time;
+	public void setR_receptionTime(String r_receptionTime) {
+		this.r_receptionTime = r_receptionTime;
 	}
 
 
-	public String getR_time_assemble() {
-		return r_time_assemble;
+	public String getR_receptionTime_assemble() {
+		return r_receptionTime_assemble;
 	}
 
 
-	public void setR_time_assemble(String r_time_assemble) {
-		this.r_time_assemble = r_time_assemble;
+	public void setR_receptionTime_assemble(String r_receptionTime_assemble) {
+		this.r_receptionTime_assemble = r_receptionTime_assemble;
 	}
 
 
-	@Override
-	public String toString() {
-		return "invitaitonDTO [e_no=" + e_no + ", t_pk=" + t_pk + ", t_template=" + t_template + ", w_groom=" + w_groom
-				+ ", w_bride=" + w_bride + ", w_msg_invite=" + w_msg_invite + ", w_msg_bye=" + w_msg_bye + ", w_img1="
-				+ w_img1 + ", w_img2=" + w_img2 + ", w_img3=" + w_img3 + ", w_img4=" + w_img4 + ", weddingDay="
-				+ weddingDay + ", w_time=" + w_time + ", w_time_assemble=" + w_time_assemble + ", r_time=" + r_time
-				+ ", r_time_assemble=" + r_time_assemble + "]";
+	public String getR_weddingPlace() {
+		return r_weddingPlace;
 	}
+
+
+	public void setR_weddingPlace(String r_weddingPlace) {
+		this.r_weddingPlace = r_weddingPlace;
+	}
+
+
+	public String getR_weddingAddr() {
+		return r_weddingAddr;
+	}
+
+
+	public void setR_weddingAddr(String r_weddingAddr) {
+		this.r_weddingAddr = r_weddingAddr;
+	}
+
+
+	public String getR_receptionPlace() {
+		return r_receptionPlace;
+	}
+
+
+	public void setR_receptionPlace(String r_receptionPlace) {
+		this.r_receptionPlace = r_receptionPlace;
+	}
+
+
+	public String getR_receptionAddr() {
+		return r_receptionAddr;
+	}
+
+
+	public void setR_receptionAddr(String r_receptionAddr) {
+		this.r_receptionAddr = r_receptionAddr;
+	}
+
 
 	
 	
