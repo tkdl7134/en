@@ -295,11 +295,18 @@ form {
 
 #je_photoPre4 {
     width: 89%;
+    border: 1px solid;
     position: absolute;
-    bottom: 17.7rem;
+    bottom: -6.3rem;
     /* margin-top: 3.2rem; */
-    height: 19rem;
+    height: 21rem;
     z-index: -10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#je_photoPre4 > img {
+	width: 100%
 }
 
 #je_finish-message {

@@ -297,7 +297,7 @@
                       <div class="je_info-inputbox">
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
-                          <textarea name="helloMessage" rows="10" id="je_invite-m"
+                          <textarea name="helloMessage" rows="6" cols="40" id="je_invite-m"
                             oninput="printInfo()"></textarea>
                         </div>
                       </div>
