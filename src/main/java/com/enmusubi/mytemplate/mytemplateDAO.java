@@ -16,6 +16,7 @@ public class mytemplateDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        DBManager dbManager = DBManager.getInstance();
 
         String sql = "SELECT * "
                 + "FROM s_wedding_info sw "
@@ -25,7 +26,7 @@ public class mytemplateDAO {
 
         try {
             // 데이터베이스 연결
-            con = DBManager.connect();
+            con = dbManager.connect();
             System.out.println("Database connected");
 
             // SQL 쿼리 준비
@@ -45,7 +46,7 @@ public class mytemplateDAO {
                 String t_preview = rs.getString("t_preview");
                 String t_example = rs.getString("t_example");
                 String t_template = rs.getString("t_template");
-                
+
                 String w_groom = rs.getString("w_groom");
                 String w_bride = rs.getString("w_bride");
                 String w_img1 = rs.getString("w_img1");
@@ -73,7 +74,8 @@ public class mytemplateDAO {
             System.out.println("SERVER ERROR - get all template");
         } finally {
             // 데이터베이스 자원 닫기
-            DBManager.close(con, pstmt, rs);
+            dbManager.close(con, pstmt, rs);
+          
         }
     }
 
@@ -82,9 +84,9 @@ public class mytemplateDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        DBManager dbManager = DBManager.getInstance();
 
         int offset = (page - 1) * itemsPerPage;
-        int end = page * itemsPerPage;
 
         String sql = "SELECT * FROM ( "
                 + "SELECT sw.e_no, st.t_pk, st.t_title, st.t_preview, st.t_example, st.t_template, se.m_id, "
@@ -97,11 +99,11 @@ public class mytemplateDAO {
                 + ") WHERE rnum BETWEEN ? AND ?";
 
         try {
-            con = DBManager.connect();
+            con = dbManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, offset + 1); // 1-based offset
-            pstmt.setInt(2, end);
-            System.out.println("Executing SQL query with params: " + (offset + 1) + ", " + end);
+            pstmt.setInt(2, offset + itemsPerPage); // End range
+            System.out.println("Executing SQL query with params: " + (offset + 1) + ", " + (offset + itemsPerPage));
             rs = pstmt.executeQuery();
 
             templates = new ArrayList<mytemplateDTO>();
@@ -113,27 +115,28 @@ public class mytemplateDAO {
                 String t_preview = rs.getString("t_preview");
                 String t_example = rs.getString("t_example");
                 String t_template = rs.getString("t_template");
-                
+
                 String w_groom = rs.getString("w_groom");
                 String w_bride = rs.getString("w_bride");
                 String w_img1 = rs.getString("w_img1");
                 String w_img2 = rs.getString("w_img2");
                 String w_img3 = rs.getString("w_img3");
-                
+
                 System.out.println("Preview URL: " + t_preview);
 
                 mytemplateDTO t = new mytemplateDTO(e_no, t_pk, m_id, t_title, t_preview, t_example, t_template, w_groom, w_bride, w_img1, w_img2, w_img3);
                 templates.add(t);
             }
-            
+
             request.setAttribute("templates", templates);
 
+            // Calculate total pages
             sql = "SELECT COUNT(*) "
                     + "FROM s_template st "
                     + "JOIN s_wedding_info sw ON sw.t_pk = st.t_pk "
                     + "JOIN s_event se ON se.e_no = sw.e_no "
                     + "WHERE se.m_id = 'testuser'";
-            
+
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -147,8 +150,7 @@ public class mytemplateDAO {
             e.printStackTrace();
             System.out.println("SERVER ERROR - get templates with pagination");
         } finally {
-            DBManager.close(con, pstmt, rs);
+            dbManager.close(con, pstmt, rs);
         }
     }
-
 }
