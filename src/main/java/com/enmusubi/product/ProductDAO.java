@@ -83,6 +83,7 @@ public class ProductDAO {
 	public static void regIvitation(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmtEvent = null;
+		PreparedStatement pstmtEventFunc = null;
 		PreparedStatement pstmtWeddingInfo = null;
 		PreparedStatement pstmtWedding = null;
 		PreparedStatement pstmtReception = null;
@@ -94,6 +95,7 @@ public class ProductDAO {
 //		create sequence e_no_seq;
 		
 		String sqlEvent = "insert into s_event values(e_no_seq.nextval, ?, ?)";
+		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?)";
 		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
@@ -102,6 +104,7 @@ public class ProductDAO {
 			 con = dbManager.connect();
 			 
 			 pstmtEvent = con.prepareStatement(sqlEvent);
+			 pstmtEventFunc = con.prepareStatement(sqlEventFunc);
 			 pstmtWeddingInfo = con.prepareStatement(sqlWeddingInfo);
 			 pstmtWedding = con.prepareStatement(sqlWedding);
 			 pstmtReception = con.prepareStatement(sqlReception);
@@ -122,8 +125,12 @@ public class ProductDAO {
 			
 			
 			// s_event 삽입
-			pstmtEvent.setString(1, "testuser");
+			pstmtEvent.setString(1, "LINE_Ub273e3d23d1e8158e1af5e02e73fed2e");
 			pstmtEvent.setString(2, "");
+			
+			// s_event_func 삽입
+			pstmtEventFunc.setString(1, "yes");
+			pstmtEventFunc.setString(2, "yes");
 			
 			// s_wedding_info table 삽입
 			
@@ -234,6 +241,9 @@ public class ProductDAO {
 				request.setAttribute("je_eventNo", eventNo);
 			}
 			
+			if (pstmtEventFunc.executeUpdate() == 1) {
+				System.out.println("eventfunc - 성공");
+			}
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
 				System.out.println("weddinginfo - 성공");
 			}
