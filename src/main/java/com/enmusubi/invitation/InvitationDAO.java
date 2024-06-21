@@ -30,7 +30,7 @@ public class InvitationDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
+        DBManager dbManager = DBManager.getInstance();
         String sql = "SELECT se.e_no, sm.m_id, sm.m_name, sm.m_phone, sm.m_email, "
                 + "sg.g_attend, sg.g_guest_type, sg.g_message, sg.g_relation, "
                 + "sa.allergy, sp.p_adult, sp.p_child, sp.p_baby "
@@ -42,7 +42,7 @@ public class InvitationDAO {
                 + "WHERE se.m_id = 'testuser' AND sg.e_no = '1'";
 
         try {
-            con = DBManager.connect();
+            con = dbManager.connect();
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
@@ -107,7 +107,7 @@ public class InvitationDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, pstmt, rs);
+        	dbManager.close(con, pstmt, rs);
         }
     }
 }
