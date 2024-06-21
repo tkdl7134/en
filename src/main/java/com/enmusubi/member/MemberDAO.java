@@ -232,6 +232,7 @@ public class MemberDAO {
 			// 7. 회원 정보 및 주소 정보 등록 (트랜잭션 처리)
 //			int result = dao.registerMemberWithAddress(dto);
 			int result = dao.registerMemberWithAddress(dto, request);
+			
 			if (result == 1) {
 				// 회원가입 및 주소 등록 성공 처리
 				System.out.println("회원가입 성공");
