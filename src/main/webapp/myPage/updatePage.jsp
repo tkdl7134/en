@@ -175,7 +175,7 @@ body {
 						<div class="hs_content-text post">郵便番号</div>
 						<div class="hs_content-text postmark">〒</div>
 						<input type="text" name="a_postcode" id="a_postcode"
-							class="hs_input post" placeholder="郵便番号" maxlength="10">
+							class="hs_input post" placeholder="郵便番号" maxlength="7">
 					</div>
 
 					<div class="hs_content-input">
@@ -255,6 +255,7 @@ body {
 					<div class="hs_content-input img">
 						<div class="hs_content-text img">プロフィール画像</div>
 						<input type="file" name="newImg" id="m_img" class="hs_input img">
+						<input type="hidden" name="oldImg">
 					</div>
 					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
