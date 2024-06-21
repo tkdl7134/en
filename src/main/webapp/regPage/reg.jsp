@@ -224,22 +224,22 @@ body {
 						<div class="hs_content-input">
 							<div class="hs_content-text city">住所</div>
 							<input type="text" name="a_city" id="a_city"
-								class="hs_input city p-locality" placeholder="市区町村"
+								class="hs_input city p-locality p-street-address p-extended-address" placeholder="市区町村"
 								maxlength="50">
 						</div>
 
 						<div class="hs_content-input">
 							<div class="hs_content-text street"></div>
 							<input type="text" name="a_street" id="a_street"
-								class="hs_input street p-street-address" placeholder="番地"
+								class="hs_input street" placeholder="番地"
 								maxlength="50">
 						</div>
 
 						<div class="hs_content-input building">
 							<div class="hs_content-text building"></div>
 							<input type="text" name="a_building" id="a_building"
-								class="hs_input building p-extended-address"
-								placeholder="ビル・マンション名など" maxlength="50">
+								class="hs_input building"
+								placeholder="建物名 ・ 部屋番号" maxlength="50">
 						</div>
 					</div>
 
