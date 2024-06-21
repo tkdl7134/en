@@ -56,7 +56,7 @@ document.addEventListener("wheel", wheelHandler);
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 2
 // 메뉴 버튼 클릭 이벤트
-const s2menuBtn = document.getElementById("yj-main-s2-menuBtn");
+/*const s2menuBtn = document.getElementById("yj-main-s2-menuBtn");
 const s2menuBtn1 = "imgFolder/yj-main-default-menu1.png";
 const s2menuBtn2 = "imgFolder/yj-main-default-menu2.png";
 
@@ -70,6 +70,36 @@ s2menuBtn.addEventListener("click", function () {
     this.querySelector("img").src = s2menuBtn2;
   } else {
     this.querySelector("img").src = s2menuBtn1;
+  }
+});*/
+
+// const logo = document.querySelector(".yj-main-s2-menu>img");
+// const navi = document.querySelector(".navi");
+// logo.addEventListener("click", function () {
+//   if (navi.classList.contains("nonnon")) {
+//     this.src = "img/yj-main-default-menu2.png";
+//     navi.classList.remove("nonnon");
+//     navi.classList.add("onon");
+//   } else {
+//     this.src = "img/default_menu.png";
+//     navi.classList.remove("onon");
+//     navi.classList.add("nonnon");
+//   }
+// });
+
+const menu = document.querySelector(".yj-main-menu>img");
+const navi = document.querySelector(".yj-main-nav");
+menu.addEventListener("click", function () {
+	console.log(menu);
+	console.log(navi);
+  if (navi.classList.contains("nav-hidden")) {
+    this.src = "main/imgFolder/yj-main-menu2.png";
+    navi.classList.remove("nav-hidden");
+    navi.classList.add("nav-show");
+  } else {
+    this.src = "main/imgFolder/yj-main-menu1.png";
+    navi.classList.remove("nav-show");
+    navi.classList.add("nav-hidden");
   }
 });
 
@@ -103,7 +133,7 @@ const mouseMoveHandler = (event) => {
   const dy = mouseY - centerY;
 
   if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
-    s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+    s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
     s2CardConAll[1].style.cursor = "none";
     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
@@ -216,7 +246,7 @@ let wow;
 // 체크체크테스트
 function textAni() {
   const text = textElement.dataset.text;
-  console.log(text);
+//  console.log(text);
   clearInterval(wow);
   textElement.textContent = "";
 
@@ -225,7 +255,7 @@ function textAni() {
     if (i < text.length) {
       const span = document.createElement("span");
       span.textContent = text[i];
-      console.log(text[i]);
+  //    console.log(text[i]);
       i++;
       textElement.appendChild(span);
     } else {
@@ -361,9 +391,9 @@ s6CardConAll.forEach((card) => {
   });
 });
 
-// document.addEventListener("mousemove", (event) => {
-//   const mouseX = event.clientX;
-//   const mouseY = event.clientY;
-//   s6Mouseicn.style.left = mouseX + "px";
-//   s6Mouseicn.style.top = mouseY + "px";
-// });
+document.addEventListener("mousemove", (event) => {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  s6Mouseicn.style.left = mouseX + "px";
+  s6Mouseicn.style.top = mouseY + "px";
+});
