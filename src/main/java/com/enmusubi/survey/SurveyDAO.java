@@ -401,6 +401,10 @@ public class SurveyDAO {
 		String id = (String) session.getAttribute("m_id");
 		
 		con = dbManager.connect();
+        if (con == null) {
+            throw new SQLException("Failed to establish a database connection.");
+        }
+        con.setAutoCommit(false); // 트랜잭션 시작
 		
 		// 일반 정보 입력
 		
@@ -455,6 +459,10 @@ public class SurveyDAO {
         // 주소 입력
         String postcode = request.getParameter("postal-code");
         String[] address = request.getParameterValues("address");
+        
+        for (String s : address) {
+		System.out.println(s);
+		}
 
         String addresses = String.join(" ", address != null ? address : new String[0]);
 
@@ -484,10 +492,10 @@ public class SurveyDAO {
             }
         }
 	} finally {
-		dbManager.close(null, pstmtAllergy, null);
-		dbManager.close(null, pstmtParty, null);
+        dbManager.close(null, pstmtAllergy, null);
+        dbManager.close(null, pstmtParty, null);
+        dbManager.close(null, pstmtAddress, null);
         dbManager.close(con, pstmtGuest, null);
-        dbManager.close(null, pstmtMember, null);
 	}
 
 }

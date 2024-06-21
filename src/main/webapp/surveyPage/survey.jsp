@@ -158,9 +158,9 @@
 									<div class="couple-container">
 										<div>カテゴリー</div>
 										<label> <input name="couple" type="checkbox"
-											value="groom" /> 新郎側ゲスト
+											value="新郎" /> 新郎側ゲスト
 										</label> <label> <input name="couple" type="checkbox"
-											value="bride" /> 新婦側ゲスト
+											value="新婦" /> 新婦側ゲスト
 										</label>
 									</div>
 									<div class="relationship-container">
