@@ -30,7 +30,9 @@ body {
 	
 }
 .ToGoTexts{
-	font-size : 1.4rem;
+	font-size : 20px;
+	font-weight: bold;
+	color : #696969;
 	
 	
 	
@@ -87,9 +89,10 @@ body {
 }
 
 .recFund-title {
-	font-size: 1.7rem;
-    margin-left: 48.9rem;
+	font-size: 20px;
+    margin-left: 51rem;
     margin-top: 3rem;
+    font-weight : bold;
 	
 }
 .fundProduct-img {

@@ -44,7 +44,7 @@ public class StatisticsDAO {
 	    JsonArray jsonArray = new JsonArray();
 	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
 	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? " +
+	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund'" +
 	             "GROUP BY p_date " +
 	             "ORDER BY p_date";		
 	    try {
@@ -156,9 +156,14 @@ public class StatisticsDAO {
 			System.out.println(price);
 			System.out.println(totalPrice);
 			int leftPrice = (int)(((double)(price - totalPrice) / price) * 100);
-			System.out.println(leftPrice);
+			System.out.println("leftprice = " + leftPrice);
+			String priceStatement = "✿目標金額まで後"+leftPrice+"％です✿";
+			if (leftPrice < 0) {
+				priceStatement = "✿目標金額に達成しました✿";
+			}
+			System.out.println(priceStatement);
 			request.setAttribute("rank", rank);
-			request.setAttribute("leftPrice", leftPrice);
+			request.setAttribute("priceStatement", priceStatement);
 			request.setAttribute("product", wl_product);
 			request.setAttribute("wlno", wl_no);
 			
@@ -224,7 +229,7 @@ public class StatisticsDAO {
 		}else if (order.equals("D")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? p_type='fund' order by p_date desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?　and p_type='fund' order by p_date desc";
 			
 		}
 		try {
@@ -542,6 +547,49 @@ public class StatisticsDAO {
 		}finally {
 			dbManager.close(con, pstmt, rs);
 		}
+		
+		
+	}
+
+	public static void getTemplatePrev(HttpServletRequest request) {
+
+		// id 받기
+		
+		String id = "testuser";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "SELECT st.t_preview\r\n"
+				+ "FROM s_template st\r\n"
+				+ "JOIN s_wedding_info swi ON st.t_pk = swi.t_pk\r\n"
+				+ "JOIN s_event se ON swi.e_no = se.e_no\r\n"
+				+ "JOIN s_guest sg ON se.e_no = sg.e_no\r\n"
+				+ "WHERE sg.m_id ='testuser'";
+		
+		try {
+		con = dbManager.connect();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		
+		ArrayList<payDTO> previews = new ArrayList<payDTO>();
+		payDTO preview = new payDTO();
+		while (rs.next()) {
+			System.out.println(rs.getString("t_preview"));
+			preview.setT_preview(rs.getString("t_preview"));
+			previews.add(preview);
+			
+		}
+		request.setAttribute("previews",previews );
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
+		
 		
 		
 	}

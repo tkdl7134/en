@@ -33,24 +33,27 @@
 		
 		
 		
-		<div style="margin-left : 52rem;" class="recFund-title">ご祝儀の現状</div>
-		<div  style="display : flex; margin-top : 8rem;    margin-left: 17rem;    width: 80rem;" id="toGoTexts">
-	<div style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div style="margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div onclick="location.href='ReceivedMainC'"   class="ToGoTexts" style="color : #ff2828;margin-left: 4.2rem;">✿ 心からのお伝え ✿</div>
-	<div  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+		<div style="margin-left : 52rem; display : flex;" class="recFund-title">
+		<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
+		<div style="font-size: 25px; font-weight : bold;margin-left: 1rem; margin-top: 0.3rem;">の現状</div>
+		</div>
+		<div  style=" display : flex; margin-top : 8rem;    margin-left: 17rem;    width: 80rem;" id="toGoTexts">
+	<div style="color : #696969;font-weight : bold; margin-right: 4rem;width: 10rem;margin-top: 0.3rem; margin-left: 9.5rem;" class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div style="color : #ff2828;font-weight : bold;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  style="color : #696969; font-weight : bold; margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
 	<div style="display: flex;     margin-left: 22rem;" id="toGoLines">
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
 		<div style="height : 43rem; gap : 10rem;" class="kh-f-card-container">
-			<div class="kh-f-mousemove kh-f-none">
-				<img alt="" src="finance/img/dragbtn.png">
-			</div>
+			
 			<div class="kh-f-card-fake"></div>
 		
 		</div>
 		</div>
+		<div class="kh-f-mousemove kh-f-none">
+				<img alt="" src="finance/img/dragbtn.png">
+			</div>
 	</div>
 </body>
 </html>

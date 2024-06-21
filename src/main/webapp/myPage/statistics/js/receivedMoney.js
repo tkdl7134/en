@@ -30,17 +30,17 @@ $.ajax({
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.m_name}">
 						<div style="height: 18rem">
-							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.g_relation}.png" />
+							<img style="height: 100%; width: 11rem;" alt="noImg" src="myPage/statistics/imgFolder/${element.g_relation}.png" />
 						</div>
 						<div style = "display : flex;">
-							<div style="font-size: 2rem; width: 7rem;">${element.m_name}</div>
-							<div style= "font-size: 1rem; margin-top: 0.7rem;">さんからの</div>
+							<div style="margin-right:0.5rem;margin-top: 0.3rem; font-size: 22px; font-weight : bold; ">${element.m_name}</div>
+							<div style= "font-size: 1rem;font-weight : 600; margin-top: 0.7rem;">さんからの</div>
 						</div>
-						<div style="margin-top: -2rem;">
+						<div style="font-size:20px; font-weight : 600;margin-top: -2rem;">
 							✿心のお伝え✿
 						</div>
 						<div>
-							<img style="height: 100%;width: 7rem;" alt="noImg" src="myPage/statistics/imgFolder/${picNum}.png" />
+							<img style="height: 100%;width: 7rem; margin-top: 2rem;" alt="noImg" src="myPage/statistics/imgFolder/${picNum}.png" />
 						</div>
 						
 					</div>
@@ -172,6 +172,7 @@ $.ajax({
 				document.querySelector(".kh-f-mousemove > img").src =
 					"myPage/statistics/imgFolder/dragbtn.png";
 			}
+			cardCon.style.cursor="none";
 			mouseicn.classList.remove("kh-f-none");
 			mouseicn.classList.add("kh-f-block");
 			event.stopPropagation();
