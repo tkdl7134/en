@@ -413,6 +413,7 @@ public class SurveyDAO {
         String eventNumber = null;
         if (rs.next()) {
         	eventNumber = rs.getString("e_no");
+        	request.setAttribute("e_no", eventNumber);
         }
         
         if (eventNumber == null) {
@@ -492,11 +493,12 @@ public class SurveyDAO {
 		try {
 			
 		    DBManager dbManager = DBManager.getInstance();
-		    String sqlSelect = "SELECT e_no FROM s_event WHERE m_id = ?";
-
+		    String eventNumber = (String) request.getAttribute("e_no");
+		    String sqlSelect = "SELECT r_no FROM s_reception WHERE m_id = ?";
 
 	        con = dbManager.connect();
-
+	        
+	        
 			
 		} catch (Exception e) {
 			e.printStackTrace();
