@@ -26,7 +26,7 @@ public class ProductDAO {
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 
-		String sql = "select * from s_template";
+		String sql = "select * from s_template order by t_pk desc";
 
 		try {
 			con = dbManager.connect();
@@ -362,27 +362,53 @@ public class ProductDAO {
 	public static void deleteInvitation(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		PreparedStatement pstmt4 = null;
+		PreparedStatement pstmt5 = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "DELETE FROM s_reception WHERE e_no = ?; "
-					+ "DELETE FROM s_wedding_info WHERE e_no = ?; "
-					+ "DELETE FROM s_event_func WHERE e_no = ?; "
-					+ "DELETE FROM s_wishlist WHERE e_no = ?; "
-					+ "DELETE FROM s_event WHERE e_no = ?";
-		
+		  String sql = "delete from s_reception where e_no = ?";
+		  String sql2 = "delete from s_wedding_info where e_no = ?";
+		  String sql3 = "delete from s_event_func where e_no = ?";
+		  String sql4 = "delete from s_wishlist where e_no = ?";
+		  String sql5 = "delete from s_event where e_no = ?";
+		  
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter(""));
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("eno")));
+			pstmt.executeUpdate();
 			
-			if (pstmt.executeUpdate() == 1) {
-				System.out.println("삭제 완-료");
+			pstmt2 = con.prepareStatement(sql2);
+			pstmt2.setInt(1, Integer.parseInt(request.getParameter("eno")));
+			pstmt2.executeUpdate();
+			
+			pstmt3 = con.prepareStatement(sql3);
+			pstmt3.setInt(1, Integer.parseInt(request.getParameter("eno")));
+			pstmt3.executeUpdate();
+			
+			pstmt4 = con.prepareStatement(sql4);
+			pstmt4.setInt(1, Integer.parseInt(request.getParameter("eno")));
+			pstmt4.executeUpdate();
+			
+			pstmt5 = con.prepareStatement(sql5);
+			pstmt5.setInt(1, Integer.parseInt(request.getParameter("eno")));
+//			pstmt5.executeUpdate();
+			
+			if (pstmt5.executeUpdate() ==1) {
+				System.out.println("삭제성공");
 			}
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("초대장 수정 쪽 오류");
+			System.out.println("초대장 삭제 쪽 오류");
 		} finally {
 			dbManager.close(con, pstmt, null);
+			dbManager.close(null, pstmt2, null);
+			dbManager.close(null, pstmt3, null);
+			dbManager.close(null, pstmt4, null);
+			dbManager.close(null, pstmt5, null);
 		}
 		
 	}
