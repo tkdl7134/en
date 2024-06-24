@@ -662,36 +662,6 @@ if (this.checked) {
     });
 });
 
-        // function validateForm() {
-        //     var Names = document.getElementById("name").value.trim();
-        //     var katanames = document.getElementById("kata-name").value.trim();
-        //     var romanames = document.getElementById("roma-name").value.trim();
-        //     var phonenumber = document.getElementById("phonenum").value.trim();
-        //     var emails = document.getElementById("email").value.trim();
-        //     var postalcode = document.getElementById("postal-code").value.trim();
-        //     var city = document.getElementById("city").value.trim();
-        //     var addressline1 = document.getElementById("address-line1").value.trim();
-
-        //     // 필수 입력 필드 체크
-        //     if (Names === "" || katanames === "" || romanames === "" ||
-        //         phonenumber === "" || emails === "" ||
-        //         postalcode === "" || city === "" || addressline1 === "" ) {
-                
-        //         alert("모든 필드를 입력해주세요.");
-        //         return false; // 폼 제출 방지
-        //     }
-
-        //     return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
-        // }
-
-        // document.getElementById("submitBtn").addEventListener("click", function(event) {
-        //     if (!validateForm()) {
-        //         event.preventDefault();
-        //     } else {
-        //         document.getElementById("surveyForm").submit();
-        //     }
-        // });
-
 function openModal(attemp) {
     const modal = document.getElementById("tg-modal");
     const modalContent = document.querySelector(".tg-modal-container");
