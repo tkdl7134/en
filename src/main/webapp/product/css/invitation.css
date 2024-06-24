@@ -1,18 +1,122 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.i-container {
+	display: flex;
+	align-items: center;
+}
+
 .yj-main-s5-container {
-  /* size */
-  width: 35rem;
-  height: 100vh;
-  background-color: white;
-  box-shadow: 0 5px 15px 5px #fd5356;
-  overflow-y: overlay;
-  position: absolute;
-  right: 15rem;
+	/* size */
+	width: 35rem;
+	height: 100vh;
+	background-color: white;
+	box-shadow: 0 5px 15px 5px #fd5356;
+	overflow-y: overlay;
+	right: 15rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
 }
 
 .yj-main-s5-invitation {
-  width: 90%;
-  margin: 0 auto;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, 0);
+	width: 90%;
+	margin: 0 auto;
+}
+
+.yj-main-s2-logo {
+	z-index: 4;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
+}
+
+.yj-main-s2-logo img {
+	width: 100%;
+	height: 100%;
+	animation: logo-float 2s ease-in-out infinite;
+}
+
+@
+keyframes logo-float { 0%, 100% {
+	transform: translate(0, 0%);
+}
+
+50
+%
+{
+transform
+:
+translate(
+0
+,
+5%
+);
+}
+}
+.yj-main-s2-menu {
+	z-index: 4;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+}
+
+.yj-main-s2-menu img {
+	width: 100%;
+	height: 100%;
+}
+
+.i-btn {
+	width: 3rem;
+	height: 30vh;
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.5rem;
+	background-color: #FFF4F4;
+	border: 2px solid #C82626;
+	box-shadow: 2px 2px 3px 0 #FF7E81, -2px -2px 3px 0 #ff7e81;
+}
+.i-btn:hover{
+	cursor:pointer;
+	background-color:#c82626;
+}
+.i-btn:active{
+	box-shadow: none;
+}
+.i-btn-line {
+	width: 3rem;
+	height: 30vh;
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.5rem;
+	background-color: #ffffff;
+	border: 2px solid #4cc764;
+	box-shadow: 2px 2px 3px 0 #06c755, -2px -2px 3px 0 #06c755;
+}
+.i-btn-line:hover{
+	cursor:pointer;
+	background-color:#4cc764;
+}
+.i-btn-line:active{
+	box-shadow: none;	
+}
+.i-left-box {
+	width: 50vw;
+	display: flex;
+	writing-mode: vertical-rl;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap:3rem;
 }
