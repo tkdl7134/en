@@ -53,7 +53,7 @@
 				<div class="main-content-words">
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
 					<form action="DdayC">
-					<div style="margin-top: 0.5rem">2024.06.09までにご返信をお願いいたします。</div>
+					<div style="margin-top: 0.5rem"> ${minus40Days}までにご返信をお願いいたします。</div>
 					</form>
 					<div>
 						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"

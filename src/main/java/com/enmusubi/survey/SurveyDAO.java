@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
+import com.enmusubi.product.invitaitonDTO;
 
 public class SurveyDAO {
 	
@@ -489,21 +493,46 @@ public class SurveyDAO {
 		Connection con = null;
 		PreparedStatement pstmtDday = null; 
 		ResultSet rs = null; 
-		
+	    DBManager dbManager = DBManager.getInstance();
+
 		try {
-			
-		    DBManager dbManager = DBManager.getInstance();
-		    String eventNumber = (String) request.getAttribute("e_no");
+			String eventNumber = (String) request.getAttribute("e_no");
 		    String sqlSelect = "SELECT r_no FROM s_reception WHERE m_id = ?";
 
 	        con = dbManager.connect();
+	        pstmtDday = con.prepareStatement(sqlSelect);
+	        pstmtDday.setString(1, eventNumber);
+	        rs = pstmtDday.executeQuery();
+	        
+			invitaitonDTO inviteInfo = new invitaitonDTO();
+
+	        if (rs.next()) {
+				Timestamp weddingDT = rs.getTimestamp("wedding_time");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+				String weddingDay = dateFormat.format(weddingDT);
+				inviteInfo.setWeddingDay(weddingDay);
+	        	request.setAttribute("weddingDay", weddingDay);
+				
+				// 40일 전 날짜 계산	
+				Calendar calender = Calendar.getInstance();
+				calender.setTime(weddingDT);
+				calender.add(Calendar.DAY_OF_YEAR, -40);
+				Timestamp minus40DaysDT = new Timestamp(calender.getTime().getTime());
+				String minus40days = dateFormat.format(minus40DaysDT);
+				request.setAttribute("minus40Days", minus40days);
+
+		        System.out.println("웨딩 날짜는: " + weddingDay);
+                System.out.println("40일 전 날짜는: " + minus40days);
+
+	        }	
+
 	        
 	        
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+			dbManager.close(con, pstmtDday, rs);
 		}
 		
 	}

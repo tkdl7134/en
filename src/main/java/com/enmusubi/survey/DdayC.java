@@ -12,8 +12,9 @@ public class DdayC extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("DdayC 서블릿 호출됨");
 		SurveyDAO.ddaywedding(request);
+		request.getRequestDispatcher("surveyPage/survey.jsp").forward(request, response);
 		
 	}
 
