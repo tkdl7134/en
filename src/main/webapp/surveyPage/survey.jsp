@@ -751,6 +751,40 @@ $(document).ready(function() {
     });
 })
 
+function handleFormSubmit(event) {
+    let invalidField = null;
+    if (document.getElementById('kanziName').value.trim() === '') {
+        alert('한자 이름을 입력하세요');
+        invalidField = document.getElementById('kanziName');
+    } else if (document.getElementById('kataName').value.trim() === '') {
+        alert('카타카나 이름을 입력하세요');
+        invalidField = document.getElementById('kataName');
+    }  else if (document.getElementById('romaName').value.trim() === '') {
+        alert('로마자 이름을 입력하세요');
+        invalidField = document.getElementById('romaName');
+    }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
+        alert('신랑 또는 신부를 선택하세요');
+        invalidField = document.getElementById('groomCheckbox');
+    } else if (document.getElementById('adult').value.trim() === '0' && 
+            document.getElementById('child').value.trim() === '0' && 
+            document.getElementById('baby').value.trim() === '0') {
+        alert('동반 인원을 입력하세요');
+        invalidField = document.getElementById('adult');
+    } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
+        alert('아레르기 종류를 입력하세요');
+        invalidField = document.getElementById('allergy-type');
+    }
+
+    if (invalidField) {
+        event.preventDefault(); // 폼 제출 방지
+        setTimeout(function() {
+            invalidField.focus(); // 포커스 설정
+        }, 0); // 비동기 처리로 포커스 설정
+    } else {
+        openModal(true); // 폼 검증 통과 시 모달 열기
+    }
+}
+
     </script>
     
 </html>
