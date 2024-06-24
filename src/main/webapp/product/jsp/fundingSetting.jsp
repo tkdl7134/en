@@ -30,7 +30,9 @@
       <div class="je_pageDeco-top">
         <img src="product/imgFolder/fundingSet-top.png" alt="" />
       </div>
-      <div class="je_title-fundingSet">ファンディング 管理</div>
+      <div class="horizontal-container-title">
+			<h1 class="hs_heading">ファンディング管理</h1>
+		</div>
       <div class="je_content-fundingSet">
         <div class="je_default-funding">
      
