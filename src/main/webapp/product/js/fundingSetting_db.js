@@ -1,3 +1,28 @@
+window.onload = function(){
+	const imgMapping = {
+	  'ソファー': 'product/imgFolder/funding-sofa.png',
+      '冷蔵庫': 'product/imgFolder/funding-refrigerator.png',
+      '洗濯機': 'product/imgFolder/funding-washing.png',
+      'テレビジョン': 'product/imgFolder/funding-televison.png',
+      '机': 'product/imgFolder/funding-desk.png',
+      'ベット': 'product/imgFolder/funding-bed.png',
+      'テーブル': 'product/imgFolder/funding-table.png'
+	};
+	
+	const images = document.querySelectorAll('.je_fundingSetImg');
+	images.forEach(img => {
+	const productName = img.getAttribute('data-product-name');
+	if(imgMapping[productName]){
+		img.src = imgMapping[productName];
+	}else {
+		img.src = 'product/imgFolder/funding-more.png';
+	}		
+	});
+};
+
+
+
+
 $(document).ready(function() {
 	$('.fundignRegForm').submit(function(event) {
 		event.preventDefault(); // 기본제출동작방지

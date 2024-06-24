@@ -43,7 +43,7 @@
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
               <div class="je_detail-img">
-                <img src="product/imgFolder/funding-sofa.png" alt="" />
+                <img src="" alt="" />
               </div>
               <div class="je_detail-title" id="wl_name" value="ソファー">ソファー</div>
               <div class="je_detail-input">
@@ -159,7 +159,7 @@
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
               <div class="je_detail-img je_table-img">
-                <img src="product/imgFolder/funding-table.png" alt="" />
+                <img class="je_fundingSetImg" data-product-name="${f.wl_product }" src="product/imgFolder/funding-table.png" alt="" />
               </div>
               <div class="je_detail-title je_table-img">${f.wl_product }</div>
               <div class="je_detail-input">
@@ -183,7 +183,7 @@
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
               <div class="je_detail-img je_table-img">
-                <img src="product/imgFolder/funding-table.png" alt="" />
+                <img class="je_fundingSetImg" data-product-name="${b}" src="product/imgFolder/funding-more.png" alt="" />
               </div>
               <div class="je_detail-title je_table-img">${b }</div>
               <input type="hidden" name="product_name" value="${b }">
