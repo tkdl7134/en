@@ -334,7 +334,7 @@ body {
 	  });
 
 	// 入力フィールドに英字のみ許可
-	  document.querySelector('input[name="m_name_rome_sei"], input[name="m_name_rome_sei"]').addEventListener("input", function() {
+	  document.querySelector('input[name="m_name_rome_mei"], input[name="m_name_rome_sei"]').addEventListener("input", function() {
 	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
 	  });
 	});
