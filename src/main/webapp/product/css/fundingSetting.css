@@ -243,20 +243,24 @@ form {
 }
 
 .je_pageDeco-bottom {
-  width: 100%;
-  margin-top: -45%;
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    margin-top: -47%;
+    display: flex;
+    justify-content: center;
+
 }
 
 .je_pageDeco-bottom > img {
   width: 100%;
+  z-index: -1;
 }
 
 .je_top-button {
   display: flex;
-  justify-content: center;
+    justify-content: center;
+    margin-top: 13rem;
 }
+
 .je_top-button-img {
   width: 12.5rem;
 }
