@@ -497,17 +497,24 @@ public class SurveyDAO {
 
 		try {
 			String eventNumber = (String) request.getAttribute("e_no");
-		    String sqlSelect = "SELECT r_no FROM s_reception WHERE m_id = ?";
+	           if (eventNumber == null) {
+	                System.out.println("eventNumber is null");
+	            }		    
+	        
+	        String toEventNumber = "74";
 
+	        String sqlSelect = "SELECT r_time FROM s_reception WHERE e_no = ? AND r_type= 'wedding'";
+	            	            
 	        con = dbManager.connect();
+	        System.out.println(toEventNumber);
 	        pstmtDday = con.prepareStatement(sqlSelect);
-	        pstmtDday.setString(1, eventNumber);
+	        pstmtDday.setString(1, toEventNumber);
 	        rs = pstmtDday.executeQuery();
 	        
 			invitaitonDTO inviteInfo = new invitaitonDTO();
 
 	        if (rs.next()) {
-				Timestamp weddingDT = rs.getTimestamp("wedding_time");
+				Timestamp weddingDT = rs.getTimestamp("r_time");
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
 				String weddingDay = dateFormat.format(weddingDT);
 				inviteInfo.setWeddingDay(weddingDay);
@@ -525,9 +532,6 @@ public class SurveyDAO {
                 System.out.println("40일 전 날짜는: " + minus40days);
 
 	        }	
-
-	        
-	        
 			
 		} catch (Exception e) {
 			e.printStackTrace();
