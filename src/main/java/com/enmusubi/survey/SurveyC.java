@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.enmusubi.main.Interceptor;
+
 @WebServlet("/SurveyC")
 public class SurveyC extends HttpServlet {
 
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+       if(Interceptor.LoginInterceptor(request, response)) {
 		List<String> prefectures = Arrays.asList("北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", 
                 "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", 
                 "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", 
@@ -31,6 +33,7 @@ public class SurveyC extends HttpServlet {
         // 결과를 JSP 페이지로 포워딩
         request.setAttribute("prefectures", prefectures);
         request.getRequestDispatcher("surveyPage/survey.jsp").forward(request, response);
+       }
     }		
 
 

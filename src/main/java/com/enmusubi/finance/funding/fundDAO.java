@@ -26,9 +26,9 @@ public class fundDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			// 이벤트 파라미터 받게되면 활성화
-			// pstmt.setString(1, request.getParameter("eno"));
-			pstmt.setString(1, "1");
+			HttpSession session = request.getSession();
+			String eno = (String)session.getAttribute("eno");
+			pstmt.setString(1, eno);
 			rs = pstmt.executeQuery();
 			ArrayList<FundListDTO> flists = new ArrayList<FundListDTO>();
 			while (rs.next()) {
