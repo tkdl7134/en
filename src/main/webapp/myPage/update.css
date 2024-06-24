@@ -218,15 +218,21 @@ body {
 	padding-left: 1rem;
 }
 
-.hs_input.pw, .hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
+.hs_input.pw, .hs_input.prefecture,
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone {
 	width: 22rem;
 }
 
-.hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
+.hs_input.prefecture,
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone, .hs_input.birth {
+	margin-top: 2rem;
+}
+
+.hs_input.name_sei, .hs_input.name_mei, .hs_input.kana_sei, .hs_input.kana_mei,
+	.hs_input.rome_mei, .hs_input.rome_sei {
+	width: 10.1rem;
 	margin-top: 2rem;
 }
 
