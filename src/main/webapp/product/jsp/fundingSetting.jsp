@@ -33,6 +33,8 @@
       <div class="je_title-fundingSet">ファンディング 管理</div>
       <div class="je_content-fundingSet">
         <div class="je_default-funding">
+     
+       <form id="funding_sofa" action="">
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -40,15 +42,16 @@
               <div class="je_detail-img">
                 <img src="product/imgFolder/funding-sofa.png" alt="" />
               </div>
-              <div class="je_detail-title">ソファー</div>
-              
+              <div class="je_detail-title" id="wl_name" value="ソファー">ソファー</div>
               <div class="je_detail-input">
                 ${fundings[0].wl_price }
-                <input id="wl_price" name="wl_price" type="text" placeholder="円" />
+                <input id="wl_price" name="wl_price " type="text" placeholder="円" />
               </div>
-              <div class="je_detail-button"><button id="wl_name" value="sofa" onclick="settingWish()">登録</button></div>
+              <div class="je_detail-button"><button id="eno" value="${fundings[0].e_no}">登録</button></div>
             </div>
           </div>
+       </form> 
+         
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -64,6 +67,7 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -79,11 +83,12 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
               <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img je_tv-img"">
+              <div class="je_detail-img je_tv-img">
                 <img src="product/imgFolder/funding-televison.png" alt="" />
               </div>
               <div class="je_detail-title">テレビジョン</div>
@@ -94,6 +99,7 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -109,6 +115,7 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -124,6 +131,7 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -139,6 +147,7 @@
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+          
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -147,15 +156,17 @@
                 <img src="product/imgFolder/funding-more.png" alt="" />
               </div>
               <div class="je_detail-inputName">
-                <input type="text" placeholder="アイテム" />
+                <input type="text" placeholder="アイテム" name="item"/>
               </div>
               <div class="je_detail-input je_input-price">
-                <input type="text" placeholder="円" />
+                <input type="text" placeholder="円" name="item_price" />
               </div>
               <div class="je_detail-button"><button>登録</button></div>
             </div>
           </div>
+   
         </div>
+        
         <div class="je_addition-funding">
           <div id="je_copyBox" class="je_fundingBox">
             <div class="je_copyBox-default je_fundingBox-details">
@@ -168,6 +179,7 @@
             </div>
           </div>
         </div>
+        
       </div>
       <div class="je_top-button">
         <div class="je_top-button-img" id="topBtn" >
