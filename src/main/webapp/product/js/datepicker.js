@@ -81,7 +81,7 @@ $(document).ready(function () {
         time.getHours().toString().padStart(2, "0") + //TIME 객체에서 시각 가져오기
         ":" +
         time.getMinutes().toString().padStart(2, "0"); //TIME 객체에서 분 가져오기
-      $("#je_mainEvent-gatherTime").text("集合 " + formattedTime); // 선택된 시간을 출력할 div에 반영
+      $("#je_mainEvent-gatherTime").text("集合 " + " " + formattedTime); // 선택된 시간을 출력할 div에 반영
     },
   });
   // 피로연 시작시간
@@ -118,7 +118,7 @@ $(document).ready(function () {
         time.getHours().toString().padStart(2, "0") + //TIME 객체에서 시각 가져오기
         ":" +
         time.getMinutes().toString().padStart(2, "0"); //TIME 객체에서 분 가져오기
-      $("#je_sideEvent-gatherTime").text("集合 " + formattedTime); // 선택된 시간을 출력할 div에 반영
+      $("#je_sideEvent-gatherTime").text("集合 " + " " + formattedTime); // 선택된 시간을 출력할 div에 반영
     },
   });
 });

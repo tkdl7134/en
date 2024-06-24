@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -13,6 +14,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Response;
 
@@ -44,7 +46,7 @@ public class StatisticsDAO {
 	    JsonArray jsonArray = new JsonArray();
 	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
 	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? " +
+	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund'" +
 	             "GROUP BY p_date " +
 	             "ORDER BY p_date";		
 	    try {
@@ -156,9 +158,14 @@ public class StatisticsDAO {
 			System.out.println(price);
 			System.out.println(totalPrice);
 			int leftPrice = (int)(((double)(price - totalPrice) / price) * 100);
-			System.out.println(leftPrice);
+			System.out.println("leftprice = " + leftPrice);
+			String priceStatement = "✿目標金額まで後"+leftPrice+"％です✿";
+			if (leftPrice < 0) {
+				priceStatement = "✿目標金額に達成しました✿";
+			}
+			System.out.println(priceStatement);
 			request.setAttribute("rank", rank);
-			request.setAttribute("leftPrice", leftPrice);
+			request.setAttribute("priceStatement", priceStatement);
 			request.setAttribute("product", wl_product);
 			request.setAttribute("wlno", wl_no);
 			
@@ -224,7 +231,7 @@ public class StatisticsDAO {
 		}else if (order.equals("D")) {
 			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
 					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=? p_type='fund' order by p_date desc";
+					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where wl_no=? and e_no=?　and p_type='fund' order by p_date desc";
 			
 		}
 		try {
@@ -518,7 +525,15 @@ public class StatisticsDAO {
 	public static void getAmazonLink(HttpServletRequest request) {
 		
 		// eno 든 id든 받기
+		// m_id를 session으로 가져오나? Https Session session = request.getSession()
+				
+		// session.getAttribute("m_id")
+		// request.getParameter ("eno")
 		int eno = 1;
+		
+		
+		
+		
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -536,6 +551,7 @@ public class StatisticsDAO {
 			System.out.println(rs.getString("e_alink"));
 		}
 		request.setAttribute("amazon",rs.getString("e_alink") );
+		request.setAttribute("eno", eno);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -545,6 +561,97 @@ public class StatisticsDAO {
 		
 		
 	}
+
+	public static void getTemplatePrev(HttpServletRequest request, int page, int itemsPerPage) {
+
+		// id 받기
+		// m_id를 session으로 가져오나? Https Session session = request.getSession()
+		// session.getAttribute("m_id")
+		HttpSession session = request.getSession();
+	String id = 	(String) session.getAttribute("m_id");
+		int offset = (page - 1) * itemsPerPage;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+
+		// SQL 쿼리: 총 항목 수를 계산
+		String countSql = "SELECT COUNT(*) AS total FROM s_member sm \r\n"
+				+ "                 JOIN s_event se ON sm.m_id = se.m_id \r\n"
+				+ "                 JOIN s_wedding_info swi ON se.e_no = swi.e_no \r\n"
+				+ "                 JOIN s_reception sr ON swi.e_no = sr.e_no \r\n"
+				+ "                 JOIN s_template st ON swi.t_pk = st.t_pk \r\n"
+				+ "                 WHERE sm.m_id = ?";
+
+		// SQL 쿼리: 페이징 처리된 항목 가져오기
+		String sql = "SELECT st.t_preview, sm.m_name, sr.r_time, sr.r_addr, se.e_no\r\n"
+				+ "FROM s_member sm\r\n"
+				+ "JOIN s_event se ON sm.m_id = se.m_id\r\n"
+				+ "JOIN s_wedding_info swi ON se.e_no = swi.e_no\r\n"
+				+ "JOIN s_reception sr ON swi.e_no = sr.e_no\r\n"
+				+ "JOIN s_template st ON swi.t_pk = st.t_pk\r\n"
+				+ "WHERE sm.m_id = ?\r\n"
+				+ "order by sr.r_time desc\r\n"
+				+ "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+
+		try {
+		    con = dbManager.connect();
+
+		    // 총 항목 수 계산
+		    pstmt = con.prepareStatement(countSql);
+		    pstmt.setString(1, id);
+		    rs = pstmt.executeQuery();
+		    
+		    int totalItems = 0;
+		    if (rs.next()) {
+		        totalItems = rs.getInt("total");
+		    }
+		    int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+		    request.setAttribute("totalPage", totalPages);
+
+		    // 페이징 처리된 항목 가져오기
+		    pstmt = con.prepareStatement(sql);
+		    pstmt.setString(1, id);
+		    pstmt.setInt(2, offset);
+		    pstmt.setInt(3, itemsPerPage);
+		    rs = pstmt.executeQuery();
+		    
+		    ArrayList<payDTO> previews = new ArrayList<payDTO>();
+		    while (rs.next()) {
+		        payDTO preview = new payDTO();
+		        System.out.println(rs.getString("t_preview"));
+		        preview.setT_preview(rs.getString("t_preview"));
+		        Date sqlDate = rs.getDate("r_time"); // Assuming rs is your ResultSet
+
+		     // 포맷할 형식 지정
+		     SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+
+		     // java.sql.Date를 java.util.Date로 변환 (형식 변환은 여기서 하지 않음)
+		     java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+
+		     // 포맷팅된 문자열 얻기
+		     String formattedDateStr = dateFormat.format(utilDate);
+		       
+		     
+		     preview.setR_time(formattedDateStr);
+		        preview.setR_addr(rs.getString("r_addr"));
+		        preview.setM_name(rs.getString("m_name"));
+		        previews.add(preview);
+		    }
+		    System.out.println(previews);
+		    System.out.println(totalPages);
+		    System.out.println(page);
+		    
+		    request.setAttribute("previews", previews);
+		    
+		    request.setAttribute("totalPages", totalPages);
+		    request.setAttribute("currentPage", page);
+		    System.out.println(totalPages);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		} finally {
+		    dbManager.close(con, pstmt, rs);
+		}
 	
-	
+}
 }

@@ -2,13 +2,13 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
 	;
 
-.hs_body {
+body {
 	font-family: "Noto Serif JP", serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* 기본 폰트 두께를 지정 */
-  font-style: normal;
-  margin: 0;
-  padding: 0;
+  	font-optical-sizing: auto;
+  	font-weight: 400; /* 기본 폰트 두께를 지정 */
+  	font-style: normal;
+  	margin: 0;
+  	padding: 0;
 }
 
 .hs_background {
@@ -22,9 +22,9 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
+	min-height: 1080px;
+	margin: auto;
 }
 
 .yj-main-s2-logo {
@@ -70,13 +70,11 @@ min-height: 1080px;
 .horizontal-container-title {
 	display: flex;
 	flex-direction: column; /* 세로 방향으로 배치 */
-	align-items: center; /* 수평 중앙 정렬 */
+	align-items: center; /* 중앙 정렬 */
 }
 
 .hs_heading {
-	font-size: 2rem;
-	font-weight: bold;
-	margin-top: 7rem;
+	margin-top: 110px;
 }
 
 .hs_container-login-border {
@@ -85,7 +83,7 @@ min-height: 1080px;
 	margin: auto;
 	margin-top: 10rem;
 	background-size: 100% 100%;
-	width: 35%;
+	width: 42rem;
 	height: 28rem;
 	display: flex;
 	justify-content: center;

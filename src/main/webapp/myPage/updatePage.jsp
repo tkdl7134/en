@@ -5,6 +5,9 @@
 <head>
 <title>会員情報修正</title>
 
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js"
+	charset="UTF-8"></script>
+
 <link rel="stylesheet" type="text/css" href="myPage/update.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,11 +33,11 @@
 }
 
 body {
-      -webkit-user-select: none; /* Chrome, Safari */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* Internet Explorer/Edge */
-      user-select: none;         /* 표준 */
-    }
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* 표준 */
+}
 </style>
 </head>
 
@@ -51,7 +54,7 @@ body {
 				src="loginPage/ImgFolder/default_menu_1.png">
 		</div>
 
-		<div class="hs_title">会員情報修正</div>
+		<h1 class="hs_title">会員情報修正</h1>
 
 		<div class="hs_mypage-menus">
 			<div class="hs_btn-container">
@@ -64,17 +67,17 @@ body {
 					class="yellow_line" alt=""
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
-			<div class="hs_btn-container">
+			<!-- <div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
-			</div>
+			</div> -->
 			<div class="hs_btn-container">
 				<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
 			</div>
 		</div>
 
-		<form action="MemberUpdateC" method="post">
+		<form action="MemberUpdateC" method="post" enctype="multipart/form-data">
 
 			<div class="hs_container">
 
@@ -85,9 +88,9 @@ body {
 				<div class="hs_container-input id">
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
-						<%-- <input type="hidden" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" value="${sessionScope.m_id}"> --%>
-						<div class="hs_update-id">${sessionScope.m_id}</div>
+						<input type="hidden" name="m_id" id="m_id" class="hs_input id"
+							placeholder="縁結びID" value="${sessionScope.m_id}">
+						<div class="hs_update-id" id="display_id">${sessionScope.m_id}</div>
 					</div>
 
 					<div class="hs_content-input pw">
@@ -162,7 +165,7 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" maxlength="50">
+							placeholder="example@example.com" id="emailInput" maxlength="50">
 					</div>
 
 					<div class="hs_content-input">
@@ -171,102 +174,130 @@ body {
 							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
 					</div>
 
-					<div class="hs_content-input">
-						<div class="hs_content-text post">郵便番号</div>
-						<div class="hs_content-text postmark">〒</div>
-						<input type="text" name="a_postcode" id="a_postcode"
-							class="hs_input post" placeholder="郵便番号" maxlength="10">
-					</div>
+					<div class="h-adr">
+						<span class="p-country-name" style="display: none;">Japan</span>
 
-					<div class="hs_content-input">
-						<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
-						<select id="a_prefecture" name="a_prefecture"
-							class="hs_input prefecture">
-							<option value="" disabled selected>選択してください</option>
-							<option value="北海道">北海道</option>
-							<option value="青森県">青森県</option>
-							<option value="岩手県">岩手県</option>
-							<option value="宮城県">宮城県</option>
-							<option value="秋田県">秋田県</option>
-							<option value="山形県">山形県</option>
-							<option value="福島県">福島県</option>
-							<option value="茨城県">茨城県</option>
-							<option value="栃木県">栃木県</option>
-							<option value="群馬県">群馬県</option>
-							<option value="埼玉県">埼玉県</option>
-							<option value="千葉県">千葉県</option>
-							<option value="東京都">東京都</option>
-							<option value="神奈川県">神奈川県</option>
-							<option value="新潟県">新潟県</option>
-							<option value="富山県">富山県</option>
-							<option value="石川県">石川県</option>
-							<option value="福井県">福井県</option>
-							<option value="山梨県">山梨県</option>
-							<option value="長野県">長野県</option>
-							<option value="岐阜県">岐阜県</option>
-							<option value="静岡県">静岡県</option>
-							<option value="愛知県">愛知県</option>
-							<option value="三重県">三重県</option>
-							<option value="滋賀県">滋賀県</option>
-							<option value="京都府">京都府</option>
-							<option value="大阪府">大阪府</option>
-							<option value="兵庫県">兵庫県</option>
-							<option value="奈良県">奈良県</option>
-							<option value="和歌山県">和歌山県</option>
-							<option value="鳥取県">鳥取県</option>
-							<option value="島根県">島根県</option>
-							<option value="岡山県">岡山県</option>
-							<option value="広島県">広島県</option>
-							<option value="山口県">山口県</option>
-							<option value="徳島県">徳島県</option>
-							<option value="香川県">香川県</option>
-							<option value="愛媛県">愛媛県</option>
-							<option value="高知県">高知県</option>
-							<option value="福岡県">福岡県</option>
-							<option value="佐賀県">佐賀県</option>
-							<option value="長崎県">長崎県</option>
-							<option value="熊本県">熊本県</option>
-							<option value="大分県">大分県</option>
-							<option value="宮崎県">宮崎県</option>
-							<option value="鹿児島県">鹿児島県</option>
-							<option value="沖縄県">沖縄県</option>
-							<option value="海外">海外</option>
-						</select>
-					</div>
+						<div class="hs_content-input">
+							<div class="hs_content-text post">郵便番号</div>
+							<div class="hs_content-text postmark">〒</div>
+							<input type="text" name="a_postcode" id="a_postcode"
+								class="hs_input post p-postal-code" placeholder="郵便番号"
+								maxlength="8">
+						</div>
 
-					<div class="hs_content-input">
-						<div class="hs_content-text city">住所</div>
-						<input type="text" name="a_city" id="a_city" class="hs_input city"
-							placeholder="市区町村" maxlength="50">
-					</div>
+						<div class="hs_content-input">
+							<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
+							<select id="a_prefecture" name="a_prefecture"
+								class="hs_input prefecture p-region-id">
+								<option value="" disabled selected>選択してください</option>
+								<option value="1">北海道</option>
+								<option value="2">青森県</option>
+								<option value="3">岩手県</option>
+								<option value="4">宮城県</option>
+								<option value="5">秋田県</option>
+								<option value="6">山形県</option>
+								<option value="7">福島県</option>
+								<option value="8">茨城県</option>
+								<option value="9">栃木県</option>
+								<option value="10">群馬県</option>
+								<option value="11">埼玉県</option>
+								<option value="12">千葉県</option>
+								<option value="13">東京都</option>
+								<option value="14">神奈川県</option>
+								<option value="15">新潟県</option>
+								<option value="16">富山県</option>
+								<option value="17">石川県</option>
+								<option value="18">福井県</option>
+								<option value="19">山梨県</option>
+								<option value="20">長野県</option>
+								<option value="21">岐阜県</option>
+								<option value="22">静岡県</option>
+								<option value="23">愛知県</option>
+								<option value="24">三重県</option>
+								<option value="25">滋賀県</option>
+								<option value="26">京都府</option>
+								<option value="27">大阪府</option>
+								<option value="28">兵庫県</option>
+								<option value="29">奈良県</option>
+								<option value="30">和歌山県</option>
+								<option value="31">鳥取県</option>
+								<option value="32">島根県</option>
+								<option value="33">岡山県</option>
+								<option value="34">広島県</option>
+								<option value="35">山口県</option>
+								<option value="36">徳島県</option>
+								<option value="37">香川県</option>
+								<option value="38">愛媛県</option>
+								<option value="39">高知県</option>
+								<option value="40">福岡県</option>
+								<option value="41">佐賀県</option>
+								<option value="42">長崎県</option>
+								<option value="43">熊本県</option>
+								<option value="44">大分県</option>
+								<option value="45">宮崎県</option>
+								<option value="46">鹿児島県</option>
+								<option value="47">沖縄県</option>
+								<option value="48">海外</option>
+							</select>
+						</div>
 
-					<div class="hs_content-input">
-						<div class="hs_content-text street"></div>
-						<input type="text" name="a_street" id="a_street"
-							class="hs_input street" placeholder="番地" maxlength="50">
-					</div>
+						<div class="hs_content-input">
+							<div class="hs_content-text city">住所</div>
+							<input type="text" name="a_city" id="a_city"
+								class="hs_input city p-locality p-street-address p-extended-address" placeholder="市区町村"
+								maxlength="50">
+						</div>
 
-					<div class="hs_content-input building">
-						<div class="hs_content-text building"></div>
-						<input type="text" name="a_building" id="a_building"
-							class="hs_input building" placeholder="ビル・マンション名など"
-							maxlength="50">
-					</div>
+						<div class="hs_content-input">
+							<div class="hs_content-text street"></div>
+							<input type="text" name="a_street" id="a_street"
+								class="hs_input street" placeholder="番地"
+								maxlength="50">
+						</div>
 
+						<div class="hs_content-input building">
+							<div class="hs_content-text building"></div>
+							<input type="text" name="a_building" id="a_building"
+								class="hs_input building"
+								placeholder="建物名 ・ 部屋番号" maxlength="50">
+						</div>
+					</div>
+					
+					<div class="hs_content-input img">
+						<div class="hs_content-text img">プロフィール画像</div>
+						<input type="file" name="newImg" id="m_img" class="hs_input img">
+						<input type="hidden" name="oldImg">
+					</div>
+					<div class="btn-box">
 					<button id="btnReg" class="btn-reg" type="button"
 						onclick="register()">修正</button>
+						<button id="btnReg" class="btn-back" type="button"
+						onclick="goBack()">取消</button>
+						</div>
 
 				</div>
 			</div>
+			<div class="hs_footer">
+				<img alt="" src="regPage/ImgFolder/top_button.png"
+					class="top-button">
+				<div class="hs_footer-background"></div>
+			</div>
 		</form>
-
-		<footer class="hs_footer">
-			<img alt="" src="regPage/ImgFolder/top_button.png" class="top-button">
-			<div class="hs_footer-background"></div>
-		</footer>
 	</div>
 
 	<script>
+	
+	function goBack() {
+        window.history.back();
+    }
+	
+	document.addEventListener("DOMContentLoaded", function() {
+        var sessionId = "${sessionScope.m_id}";
+        if (sessionId.startsWith("LINE_")) {
+            sessionId = "LINE_USER";
+        }
+        document.getElementById("display_id").textContent = sessionId;
+    });
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	    const topButton = document.querySelector('.top-button');
@@ -351,23 +382,7 @@ body {
 	
 	function register() {
 		
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-
-		if (pw !== pwConfirm) {
-			/* alert("パスワードが一致しません。"); */
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-	    // 필수 입력 항목들을 확인
+		// 필수 입력 항목들을 확인
 	    let requiredFields = [
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
@@ -400,7 +415,37 @@ body {
 	        }
 	    }
 
-	    document.querySelector('form').submit();
+		const pw = document.getElementById('m_pw').value;
+		const pwConfirm = document.getElementById('m_pw_confirm').value;
+		
+		const emailInput = document.getElementById('emailInput');
+        const emailValue = emailInput.value;
+
+		if (pw !== pwConfirm) {
+			Swal.fire({
+				icon: 'warning',
+				title : 'パスワードが一致しません。',
+				customClass : {
+					popup : 'swal2-popup',
+					confirmButton : 'swal2-confirm'
+				}
+			});
+			return false; // 폼 제출 방지
+		}
+		
+			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+				Swal.fire({
+					icon: 'warning',
+					title : 'メールアドレスの形式が正しくありません。',
+					customClass : {
+						popup : 'swal2-popup',
+						confirmButton : 'swal2-confirm'
+					}
+				});
+			return false; // 폼 제출 방지
+		}
+		
+			document.querySelector('form').submit();
 	}
 	
 	function checkForm() {

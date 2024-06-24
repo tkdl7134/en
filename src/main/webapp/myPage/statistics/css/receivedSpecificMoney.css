@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+
 @font-face {
     font-family: "Noto Serif JP", serif;
     font-optical-sizing: auto;
@@ -16,13 +18,15 @@ body {
 
 
 .recFundSpec-container{
-	background-image:url("../imgFolder/fundSpecificBack.png");
+	background-image:url("../imgFolder/halfCircle2.png");
 	display : flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height : 163rem;
+	height : 195rem;
 	 background-repeat : no-repeat;
+	 background-color : #FFF5F4;
+	 
 }
  
  .yj-main-s2-logo {
@@ -62,6 +66,13 @@ body {
   width: 100%;
   height: 100%;
 }
+.ToGoTexts {
+	font-size : 20px;
+	font-weight: bold;
+	color : #696969;
+	
+}
+
 #fundSpecProduct-img{
 	
 	margin-top: 10rem;
@@ -168,7 +179,7 @@ body {
   padding: 1rem;
   margin-bottom: 1.25rem;
   background-color: #ffdede;
-   max-height: 30rem; /* 필요한 높이로 조절 */
+   max-height: 80rem; /* 필요한 높이로 조절 */
         overflow-y: scroll; /* 스크롤바 항상 표시 */
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -259,7 +270,18 @@ body {
 }
 
 .recSpecReturn-img{
-	
+	margin-top : 10rem;
 	
 	
 }
+.recSpecMoney-bottomCircle{
+		background-image:url("../imgFolder/bottomHalfCircle.png");
+		height : 67rem;
+		width : 100%;
+		margin-top: -50rem;
+		background-repeat : no-repeat;
+		 background-color : #FFF5F4;
+}
+
+
+

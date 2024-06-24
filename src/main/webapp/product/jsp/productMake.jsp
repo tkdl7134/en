@@ -71,7 +71,10 @@
                   <div id="je_photoPre3"></div>
                 </div>
                 <!-- 시간.날짜 -->
-                <div id="je_weddingDay"></div>
+                <div class="je_days">
+	                <div id="je_weddingDay"></div>
+	                <div id="je_receptionDay"></div>
+                </div>
 
                 <div class="je_eventTime">
                   <div id="je_mainEvent-time"></div>
@@ -129,7 +132,7 @@
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="groomKananL" id="je_g-kana1" 
+                          <input name="groomKanaL" id="je_g-kana1" 
                           type="text" placeholder="せい" onkeyup="printName()"/>
                           <input name="groomKanaF" id="je_g-kana2"
                            type="text" placeholder="めい" onkeyup="printName()"/>
@@ -294,7 +297,7 @@
                       <div class="je_info-inputbox">
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
-                          <textarea name="helloMessage" rows="10" id="je_invite-m"
+                          <textarea name="helloMessage" rows="6" cols="40" id="je_invite-m"
                             oninput="printInfo()"></textarea>
                         </div>
                       </div>
