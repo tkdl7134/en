@@ -2,7 +2,7 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap')
 	;
 
-.hs_body {
+body {
 	font-family: "Noto Serif JP", serif;
 	font-optical-sizing: auto;
 	font-weight: 400; /* 기본 폰트 두께를 지정 */
@@ -10,6 +10,7 @@
 	margin: 0;
 	padding: 0;
 	background-color: #FFF5F4;
+	text-align: center;
 }
 
 .hs_background {
@@ -24,9 +25,9 @@
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
+	min-height: 1080px;
+	margin: auto;
 }
 
 .yj-main-s2-logo {
@@ -44,21 +45,16 @@
 	animation: logo-float 2s ease-in-out infinite;
 }
 
-@keyframes logo-float { 0%, 100% {
-	transform: translate(0, 0%);
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
 }
 
-50%
-{
-transform
-:
-translate(
-0
-,
-5%
-);
-}
-}
 .yj-main-s2-menu {
 	z-index: 4;
 	width: 80px;
@@ -74,11 +70,7 @@ translate(
 }
 
 .hs_title {
-	margin-top: 7rem;
-	font-size: 2rem;
-	font-weight: bold;
-	margin-bottom: 13rem;
-	text-align: center;
+	margin-top: 110px;
 }
 
 .hs_content-title-account, .hs_content-title-user {
@@ -94,6 +86,7 @@ translate(
 	background-color: #FFDBDB;
 	position: relative;
 	z-index: 3;
+	margin-top: 10rem;
 }
 
 .hs_content-title-user {
@@ -123,7 +116,7 @@ translate(
 }
 
 .hs_content-input.id {
-	margin-top: 1rem;
+	margin-top: 2rem;
 	display: flex;
 }
 
@@ -158,6 +151,13 @@ translate(
 	margin-top: 2rem;
 }
 
+.hs_content-text.img {
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+	margin-top: -2rem;
+}
+
 .hs_content-text.bd {
 	margin-top: 2rem;
 	margin-right: 1rem;
@@ -187,16 +187,27 @@ translate(
 	padding-left: 1rem;
 }
 
-.hs_input.pw, .hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
-	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
-	.hs_input.phone {
+.hs_input.pw, .hs_input.prefecture, .hs_input.city, .hs_input.street,
+	.hs_input.building, .hs_input.email, .hs_input.phone {
 	width: 22rem;
 }
 
-.hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
-	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
-	.hs_input.phone, .hs_input.birth {
+
+.hs_input.prefecture, .hs_input.city, .hs_input.street, .hs_input.building,
+	.hs_input.email, .hs_input.phone, .hs_input.birth {
 	margin-top: 2rem;
+}
+
+.hs_input.name_sei, .hs_input.name_mei, .hs_input.kana_sei, .hs_input.kana_mei,
+	.hs_input.rome_mei, .hs_input.rome_sei {
+	width: 10.1rem;
+	margin-top: 2rem;
+}
+
+.hs_input.img {
+	width: 22rem;
+	border: none;
+	margin-top: -1rem;
 }
 
 .hs_input.post {
@@ -305,7 +316,7 @@ translate(
 	margin-top: 5rem;
 }
 
-.hs_footer{
+.hs_footer {
 	text-align: center;
 }
 
@@ -322,7 +333,6 @@ translate(
 	background-position: top center;
 	margin-top: -55rem;
 	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
 }
 

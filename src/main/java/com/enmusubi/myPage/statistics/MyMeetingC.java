@@ -11,7 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 public class MyMeetingC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	
+		int page = 1;
+        int itemsPerPage = 9;
+        
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+		
+		StatisticsDAO.getTemplatePrev(request, page , itemsPerPage);
+		
+		request.getRequestDispatcher("myPage/statistics/jsp/sendMain.jsp").forward(request, response);	
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

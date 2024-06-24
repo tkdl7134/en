@@ -16,7 +16,9 @@ public class payDTO {
 	private String m_name;
 	private String g_relation;
 	private String e_alink;
-	
+	private String t_preview;
+	private String r_time;
+	private String r_addr;
 	public payDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,16 +26,8 @@ public class payDTO {
 	
 
 
-
-
-
-
-
-
-
-
 	public payDTO(int e_no, String m_id, String p_type, int p_price, int wl_no, Date p_date, String m_name,
-			String g_relation, String e_alink) {
+			String g_relation, String e_alink, String t_preview, String r_time, String r_addr) {
 		super();
 		this.e_no = e_no;
 		this.m_id = m_id;
@@ -44,7 +38,19 @@ public class payDTO {
 		this.m_name = m_name;
 		this.g_relation = g_relation;
 		this.e_alink = e_alink;
+		this.t_preview = t_preview;
+		this.r_time = r_time;
+		this.r_addr = r_addr;
 	}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -165,12 +171,154 @@ public class payDTO {
 
 
 
+	public String getT_preview() {
+		return t_preview;
+	}
+
+
+
+
+
+
+
+
+
+	public void setT_preview(String t_preview) {
+		this.t_preview = t_preview;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getR_time() {
+		return r_time;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setR_time(String r_time) {
+		this.r_time = r_time;
+	}
+
+
+
+
+
+
+
+
+
+
+	public String getR_addr() {
+		return r_addr;
+	}
+
+
+
+
+	public void setR_addr(String r_addr) {
+		this.r_addr = r_addr;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "payDTO [e_no=" + e_no + ", m_id=" + m_id + ", p_type=" + p_type + ", p_price=" + p_price + ", wl_no="
 				+ wl_no + ", p_date=" + p_date + ", m_name=" + m_name + ", g_relation=" + g_relation + ", e_alink="
-				+ e_alink + "]";
+				+ e_alink + ", t_preview=" + t_preview + ", r_time=" + r_time + ", r_addr=" + r_addr + "]";
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

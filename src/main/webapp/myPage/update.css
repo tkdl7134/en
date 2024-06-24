@@ -10,6 +10,7 @@ body {
  	margin: 0;
  	padding: 0;
  	background-color: #FFF5F4;
+ 	text-align: center;
 }
 
 .hs_background {
@@ -24,9 +25,9 @@ body {
 	flex-direction: column;
 	background-repeat: no-repeat;
 	background-position: top center;
-	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
+	min-height: 1080px;
+	margin: auto;
 }
 
 .yj-main-s2-logo {
@@ -69,11 +70,7 @@ body {
 }
 
 .hs_title {
-	padding-top: 6%;
-	font-size: 2rem;
-	font-weight: bold;
-	margin-bottom: 5rem;
-	text-align: center;
+	margin-top: 110px;
 }
 
 .hs_mypage-menus {
@@ -83,12 +80,11 @@ body {
     font-size: 15pt;
     text-align: center;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
 
 .hs_btn-container{
 	display: block;
-	
 }
 
 .hs_btn {
@@ -186,6 +182,13 @@ body {
 	margin-top: 2rem;
 }
 
+.hs_content-text.img{
+	position: absolute;
+	left: 0;
+	margin-left: 3rem;
+	margin-top: -2rem;
+}
+
 .hs_content-text.bd {
 	margin-top: 2rem;
 	margin-right: 1rem;
@@ -215,16 +218,28 @@ body {
 	padding-left: 1rem;
 }
 
-.hs_input.pw, .hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
+.hs_input.pw, .hs_input.prefecture,
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone {
 	width: 22rem;
 }
 
-.hs_input.name, .hs_input.kana, .hs_input.rome, .hs_input.prefecture,
+.hs_input.prefecture,
 	.hs_input.city, .hs_input.street, .hs_input.building, .hs_input.email,
 	.hs_input.phone, .hs_input.birth {
 	margin-top: 2rem;
+}
+
+.hs_input.name_sei, .hs_input.name_mei, .hs_input.kana_sei, .hs_input.kana_mei,
+	.hs_input.rome_mei, .hs_input.rome_sei {
+	width: 10.1rem;
+	margin-top: 2rem;
+}
+
+.hs_input.img{
+	width: 22rem;
+	border: none;
+	margin-top: -1rem;
 }
 
 .hs_input.post {
@@ -350,7 +365,6 @@ body {
 	background-position: top center;
 	margin-top: -55rem;
 	min-height: 1080px;
-	min-width: 1920px;
 	max-width: 1920px;
 }
 

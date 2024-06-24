@@ -1,6 +1,22 @@
 SELECT * FROM s_guest;
 
+DELETE from s_guest where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
+DELETE from s_address where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
+DELETE from s_allergy where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
+DELETE from s_party where m_id = 'LINE_Ub273e3d23d1e8158e1af5e02e73fed2e';
+
 SELECT * FROM s_Member;
+
+SELECT * FROM s_address;
+
+SELECT * FROM s_allergy;
+
+SELECT * FROM s_party;
+
+SELECT * FROM s_reception;
 
 INSERT INTO s_guest (g_guest_type, )
 
@@ -48,25 +64,25 @@ CREATE TABLE S_address {
 	s_postcode VARCHAR2(20 char) not null
 };
 	
--- 1. ╣╔юлем ╩Пют: s_guest евюл╨М©║ ╣╔юлем ╩Пют
+-- 1. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: s_guest О©╫О©╫О©╫л╨О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 INSERT INTO s_guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)
-VALUES (1, 'user123', 'бЭ╪╝', '╫е╤Ш', 'N', 'Congratulations!', 'дё╠╦');
+VALUES (1, 'user123', 'О©╫О©╫О©╫О©╫', 'О©╫е╤О©╫', 'N', 'Congratulations!', 'дёО©╫О©╫');
 
--- 2. ╣╔юлем ╩Пют: s_party евюл╨М©║ ╣╔юлем ╩Пют
+-- 2. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: s_party О©╫О©╫О©╫л╨О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 INSERT INTO s_party (e_no, m_id, p_age_type, p_numberof)
-VALUES (1, 'user123', '╪╨юн', 2);
+VALUES (1, 'user123', 'О©╫О©╫О©╫О©╫', 2);
 
--- 3. ╣╔юлем ╩Пют: s_allergy евюл╨М©║ ╣╔юлем ╩Пют
+-- 3. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: s_allergy О©╫О©╫О©╫л╨О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 INSERT INTO s_allergy (e_no, m_id, allergy)
-VALUES (1, 'user123', '╬Ью╫');
+VALUES (1, 'user123', 'О©╫О©╫О©╫О©╫');
 
--- 4. ╣╔юлем ╩Пют: s_member евюл╨М©║ ╣╔юлем ╩Пют
+-- 4. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: s_member О©╫О©╫О©╫л╨О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 INSERT INTO s_member (m_id, m_pw, m_name, m_name_kana, m_name_rome, m_birth, m_gender, m_email, m_regdate, m_img, m_phone)
-VALUES ('user123', 'encrypted_password', 'х╚╠Ф╣©', '╚ш╚С ╚╝╚К╚и╚С', 'Hong Gildong', '2000-01-01', 'Ё╡╪╨', 'user123@example.com', '2024-06-12', 'profile.jpg', '010-1234-5678');
+VALUES ('user123', 'encrypted_password', 'х╚О©╫Ф╣©', 'О©╫ш╚О©╫ О©╫О©╫О©╫О©╫и╚О©╫', 'Hong Gildong', '2000-01-01', 'О©╫О©╫О©╫О©╫', 'user123@example.com', '2024-06-12', 'profile.jpg', '010-1234-5678');
 
--- 5. ╣╔юлем ╩Пют: s_address евюл╨М©║ ╣╔юлем ╩Пют
+-- 5. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: s_address О©╫О©╫О©╫л╨О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 INSERT INTO s_address (m_id, a_address, a_postcode)
-VALUES ('user123', '╪╜©Оф╞╨╟╫ц ╟╜Ё╡╠╦', '06000');
+VALUES ('user123', 'О©╫О©╫О©╫О©╫ф╞О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫', '06000');
 
 SELECT 
     g.g_attend,

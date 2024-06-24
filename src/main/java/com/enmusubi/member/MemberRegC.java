@@ -13,15 +13,15 @@ import com.enmusubi.main.Interceptor;
 public class MemberRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		request.getRequestDispatcher("regPage/reg.jsp").forward(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 		MemberDAO.MemberRegC(request, response);
-		
 		response.sendRedirect("MemberC");
 		
 	}

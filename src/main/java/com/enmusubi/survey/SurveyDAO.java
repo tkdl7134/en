@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
-import com.enmusubi.member.MemberDTO;
+import com.enmusubi.product.invitaitonDTO;
 
 public class SurveyDAO {
 	
@@ -22,67 +24,132 @@ public class SurveyDAO {
         // 다른 패키지에서 설정한 세션 값 가져오기 예시
         String loginType = (String) session.getAttribute("m_id");
         System.out.println(loginType);
-        //l_tg
-        String type = loginType.substring(0,1);
-        if (type.equals("l_")) {
-            // LINE 로그인 시
-        	request.setAttribute("loginType", "line");
+        if (loginType != null && loginType.startsWith("LINE_")) {
+            // "LINE_"으로 시작하는 경우, LINE 로그인 시
+            request.setAttribute("loginType", "line");
             getMemberLine(request);
         } else {
-            // 일반 회원 로그인 
-        	request.setAttribute("loginType", "normal");
+            // 일반 회원 로그인
+            request.setAttribute("loginType", "normal");
             getMemberNormal(request);
         }
+        
     }
-    
 
 	// LINE 로그인 시 정보 추가 입력
-	public static void getMemberLine(HttpServletRequest request) {
+	public static void lineUpdate(HttpServletRequest request) {
+		System.out.println("라인없데이트 메소드");
 	    Connection con = null;
-	    PreparedStatement pstmt = null;
+	    PreparedStatement pstmtLineAddressUpdate = null;
+	    PreparedStatement pstmtLineMemberUpdate = null;
 	    DBManager dbManager = DBManager.getInstance();
-	    String sqlmember = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";
+	    
+	    String sqlLineAddressUpdate = "UPDATE s_address SET a_address=?, a_postcode=? WHERE m_id=?";	    
+	    String sqlLineMemberUpdate = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";	    
+
 	    
 	    try {
+	    	
 	        con = dbManager.connect();
-	        pstmt = con.prepareStatement(sqlmember);
-	                    
+	        
 	        HttpSession session = request.getSession();
 	        String lineUserId = (String) session.getAttribute("m_id");
 	        System.out.println("LINE 회원 로그인 세션 아이디는: " + lineUserId);
 	        
-	        String[] kanziname = request.getParameterValues("kanzi-name");
-	        String[] kataname = request.getParameterValues("kata-name");
-	        String[] romaname = request.getParameterValues("roma-name");
+	        // 라인 회원 개인정보 입력
+	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
+
+            
+            System.out.println("한자값은: " + request.getParameter("name"));
+            System.out.println("카타값은: " + request.getParameter("kata-name"));
+            System.out.println("로마값은: " + request.getParameter("roma-name"));
+            System.out.println("이메일: " + request.getParameter("email"));
+            System.out.println("폰번: " + request.getParameter("phonenum"));
+            System.out.println("주소번호: " + request.getParameter("postal-code"));
+            System.out.println("주소: " + request.getParameter("address"));
+            System.out.println("참석: " + request.getParameter("attendance"));
+            System.out.println("어디 측: " + request.getParameter("couple"));
+            System.out.println("알레르기 여부: " + request.getParameter("allergy"));
+            System.out.println("메세지: " + request.getParameter("special-notes"));
+            System.out.println("관계: " + request.getParameter("relation"));
+            System.out.println("어른: " + request.getParameter("adult"));
+            System.out.println("꼬마: " + request.getParameter("child"));
+            System.out.println("애기: " + request.getParameter("baby"));
+            System.out.println("알레르기 타입: " + request.getParameter("allergy-type"));
+            
+            String[] normalName = request.getParameterValues("name");
+            String[] kataName = request.getParameterValues("kata-name");
+            String[] romaName = request.getParameterValues("roma-name");
+            
+            for (String s : romaName) {
+			System.out.println(s);
+			}
+            
+            normalName = normalName != null ? normalName : new String[0];
+            kataName = kataName != null ? kataName : new String[0];
+            romaName = romaName != null ? romaName : new String[0];
+
+            
+            System.out.println(normalName);
+            System.out.println(kataName);
+            System.out.println(romaName);
+            
+            
+            String normalNames = String.join(" ", normalName);
+            String kataNames = String.join(" ", kataName);
+            String romaNames = String.join(" ", romaName);
+
+            pstmtLineMemberUpdate.setString(1, normalNames);
+            pstmtLineMemberUpdate.setString(2, kataNames);
+            pstmtLineMemberUpdate.setString(3, romaNames);
+            pstmtLineMemberUpdate.setString(4, request.getParameter("email"));
+            pstmtLineMemberUpdate.setString(5, request.getParameter("phonenum"));
+            pstmtLineMemberUpdate.setString(6, lineUserId);
+
+            if (pstmtLineMemberUpdate.executeUpdate() == 1) {
+                System.out.println("개인정보 수정성공!!");
+            }
+	          
+	        // 라인 회원은 주소가 입력되어 있지 않아 주소 입력 update 기능 추가
+	        pstmtLineAddressUpdate = con.prepareStatement(sqlLineAddressUpdate);
 	        
-	        String kanzinames = String.join(" ", kanziname != null ? kanziname : new String[0]);
-	        String katanames = String.join(" ", kataname != null ? kataname : new String[0]);
-	        String romanames = String.join(" ", romaname != null ? romaname : new String[0]);
+	        String postcode = request.getParameter("postal-code");
+	        String[] address = request.getParameterValues("address");
+	        String fulladdr = null;
 	        
-	        pstmt.setString(1, kanzinames);
-	        pstmt.setString(2, katanames);
-	        pstmt.setString(3, romanames);
-	        pstmt.setString(4, request.getParameter("email"));
-	        pstmt.setString(5, request.getParameter("phonenum"));
-	        pstmt.setString(6, lineUserId);
-	        
-	        if (pstmt.executeUpdate() == 1) {
-	            System.out.println("개인정보 수정성공!!");
+	        for (String s : address) {
+	        	System.out.println(s);
+	        	fulladdr += s + " ";
 	        }
+	        	        
+	        pstmtLineAddressUpdate.setString(1, fulladdr);
+	        pstmtLineAddressUpdate.setString(2, postcode);
+	        pstmtLineAddressUpdate.setString(3, lineUserId);
+
+	        
+	        if (pstmtLineAddressUpdate.executeUpdate() == 1) {
+	            System.out.println("주소정보 수정성공!!");
+	        }
+	        
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
-	        dbManager.close(con, pstmt, null);
+	        dbManager.close(null, pstmtLineAddressUpdate, null);
+	        dbManager.close(con, pstmtLineMemberUpdate, null);
 	    }
 	}
-	
-	
+		
+	// 일반 회원 가입시 조건
 	public static void getMemberNormal(HttpServletRequest request) {
+		System.out.println("일반 회원 정보 받아오는 메소드");
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
+	    PreparedStatement pstmtAddress = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    ResultSet rs = null;
+	    ResultSet rsAddress = null;
+	    
 	    String sql = "SELECT m_name, m_name_kana, m_name_rome, m_email, m_phone FROM s_member WHERE m_id = ?";
 	    String sqlAddress = "SELECT a_address, a_postcode FROM s_address WHERE m_id = ?";
 	    
@@ -122,14 +189,14 @@ public class SurveyDAO {
 	            String fullNameKana = rs.getString(2);
 	            String[] nameParts1 = fullNameKana.split(" ");
 	            if (nameParts1.length >= 2) {
-	                m.setM__first_name_kana(normalUserId);
-	                m.setM__last_name_kana(nameParts1[1]);
+	                m.setM_first_name_kana(nameParts1[0]);
+	                m.setM_last_name_kana(nameParts1[1]);
 	            } else if (nameParts1.length == 1) {
-	                m.setM__first_name_kana(nameParts1[0]);
-	                m.setM__last_name_kana(""); // 또는 적절한 기본값 설정
+	                m.setM_first_name_kana(nameParts1[0]);
+	                m.setM_last_name_kana(""); // 또는 적절한 기본값 설정
 	            } else {
-	                m.setM__first_name_kana(""); // 또는 적절한 기본값 설정
-	                m.setM__last_name_kana("");  // 또는 적절한 기본값 설정
+	                m.setM_first_name_kana(""); // 또는 적절한 기본값 설정
+	                m.setM_last_name_kana("");  // 또는 적절한 기본값 설정
 	            }
 	            
 	            // m_name_rome 처리
@@ -157,28 +224,179 @@ public class SurveyDAO {
 		        System.out.println(rs.getString(5));
 
 	        }
-	        System.out.println(m);
-	        request.setAttribute("members", m);
 	        
 	        // 주소 정보 입력
+	        pstmtAddress = con.prepareStatement(sqlAddress);
+	        pstmtAddress.setString(1, normalUserId);
+	        rsAddress = pstmtAddress.executeQuery();
+	        if (rsAddress.next()) {
+	            String fullAddress = rsAddress.getString(1);
+	            String postcode = rsAddress.getString(2);
+	            
+	            m.setA_postcode(postcode);
+	            
+	            // 주소를 나누는 로직
+	            String[] addressParts = fullAddress.split(" ", 3);
+	            if (addressParts.length >= 3) {
+	                m.setA_prefecture(addressParts[0]);
+	                m.setA_city(addressParts[1]);
+	                m.setA_address(addressParts[2]);
+	            } else {
+	                m.setA_prefecture("");
+	                m.setA_city("");
+	                m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
+	            }
+
+	            System.out.println(rsAddress.getString(1));
+	            System.out.println(rsAddress.getString(2));
+	        }
+	        
+	        System.out.println(m);
+	        request.setAttribute("members", m);
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
+	    	dbManager.close(con, pstmtAddress, rsAddress);
 	        dbManager.close(con, pstmt, rs);
 	    }
 	}
-
+	
+	// 라인 회원 가입시 조건
+	public static void getMemberLine(HttpServletRequest request) {
+		System.out.println("라인 회원 정보 받아오는 메소드");
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmtAddress = null;
+		DBManager dbManager = DBManager.getInstance();
+		ResultSet rs = null;
+		ResultSet rsAddress = null;
+		
+		String sql = "SELECT m_name, m_name_kana, m_name_rome, m_email, m_phone FROM s_member WHERE m_id = ?";
+		String sqlAddress = "SELECT a_address, a_postcode FROM s_address WHERE m_id = ?";
+		
+		try {
+			con = dbManager.connect();
+			
+			HttpSession session = request.getSession();
+			String normalUserId = (String) session.getAttribute("m_id");
+			System.out.println("라인 회원 로그인 세션입니다 아이디는: " + normalUserId);
+			// 추가적인 처리를 수행하세요
+			
+			
+			
+			// 일반회원 개인정보
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, normalUserId);
+			rs = pstmt.executeQuery();
+			TMemberDTO m = new TMemberDTO();
+			
+			
+			if (rs.next()) {
+				
+				String fullName = rs.getString(1);
+				String[] nameParts = fullName.split(" ");
+				if (nameParts.length >= 2) {
+					m.setM_first_name(nameParts[0]);
+					m.setM_last_name(nameParts[1]);
+				} else if (nameParts.length == 1) {
+					m.setM_first_name(nameParts[0]);
+					m.setM_last_name(""); // 또는 적절한 기본값 설정
+				} else {
+					m.setM_first_name(""); // 또는 적절한 기본값 설정
+					m.setM_last_name("");  // 또는 적절한 기본값 설정
+				}
+				
+				// m_name_kana 처리
+				String fullNameKana = rs.getString(2);
+				String[] nameParts1 = fullNameKana.split(" ");
+				if (nameParts1.length >= 2) {
+					m.setM_first_name_kana(nameParts1[0]);
+					m.setM_last_name_kana(nameParts1[1]);
+				} else if (nameParts1.length == 1) {
+					m.setM_first_name_kana(nameParts1[0]);
+					m.setM_last_name_kana(""); // 또는 적절한 기본값 설정
+				} else {
+					m.setM_first_name_kana(""); // 또는 적절한 기본값 설정
+					m.setM_last_name_kana("");  // 또는 적절한 기본값 설정
+				}
+				
+				// m_name_rome 처리
+				String fullNameRome = rs.getString(3);
+				String[] nameParts2 = fullNameRome.split(" ");
+				if (nameParts2.length >= 2) {
+					m.setM_first_name_rome(nameParts2[0]);
+					m.setM_last_name_rome(nameParts2[1]);
+				} else if (nameParts2.length == 1) {
+					m.setM_first_name_rome(nameParts2[0]);
+					m.setM_last_name_rome(""); // 또는 적절한 기본값 설정
+				} else {
+					m.setM_first_name_rome(""); // 또는 적절한 기본값 설정
+					m.setM_last_name_rome(""); // 또는 적절한 기본값 설정
+				}
+				
+				m.setM_email(rs.getString(4));
+				m.setM_phone(rs.getString(5));
+				
+				
+				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(2));
+				System.out.println(rs.getString(3));
+				System.out.println(rs.getString(4));
+				System.out.println(rs.getString(5));
+				
+			}
+			
+			// 주소 정보 입력
+			pstmtAddress = con.prepareStatement(sqlAddress);
+			pstmtAddress.setString(1, normalUserId);
+			rsAddress = pstmtAddress.executeQuery();
+			if (rsAddress.next()) {
+				String fullAddress = rsAddress.getString(1);
+				String postcode = rsAddress.getString(2);
+				
+				m.setA_postcode(postcode);
+				
+				// 주소를 나누는 로직
+				String[] addressParts = fullAddress.split(" ", 3);
+				if (addressParts.length >= 3) {
+					m.setA_prefecture(addressParts[0]);
+					m.setA_city(addressParts[1]);
+					m.setA_address(addressParts[2]);
+				} else {
+					m.setA_prefecture("");
+					m.setA_city("");
+					m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
+				}
+				
+				System.out.println(rsAddress.getString(1));
+				System.out.println(rsAddress.getString(2));
+			}
+			
+			System.out.println(m);
+			request.setAttribute("members", m);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmtAddress, rsAddress);
+			dbManager.close(con, pstmt, rs);
+		}
+	}
 
 	// 그 외 설문조사지 입력
-	public static void insertSurvey(HttpServletRequest request) throws SQLException {
+	public static void insertSurvey(HttpServletRequest request) {
 	
 	Connection con = null;
 	PreparedStatement pstmtGuest = null; 
-	PreparedStatement pstmtMember = null; 
 	PreparedStatement pstmtAllergy = null;
 	PreparedStatement pstmtParty = null;
+	PreparedStatement pstmtAddress = null;
+	PreparedStatement pstmtSelect = null;
+	ResultSet rs = null; 
+
 	DBManager dbManager = DBManager.getInstance();
+    String sqlSelect = "SELECT e_no FROM s_event WHERE m_id = ?";
 	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
@@ -186,22 +404,38 @@ public class SurveyDAO {
 	
 	try {
 		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("m_id");
-		
+        HttpSession session = request.getSession();
+        String Id = (String) session.getAttribute("m_id");
+        System.out.println("현재 아이디는: " + Id);
+
 		con = dbManager.connect();
+
+        // e_no 가져오기
+        pstmtSelect = con.prepareStatement(sqlSelect);
+        pstmtSelect.setString(1, Id);
+        rs = pstmtSelect.executeQuery();
+        String eventNumber = null;
+        if (rs.next()) {
+        	eventNumber = rs.getString("e_no");
+        	request.setAttribute("e_no", eventNumber);
+        }
+        
+        if (eventNumber == null) {
+            throw new SQLException("No e_no found for m_id: " + Id);
+        }
+		
+       System.out.println("이벤트 넘버는: " + eventNumber);
+		
 		
 		// 일반 정보 입력
-		
-		
 		// 택스쳐 추가조정 (띄어쓰기)
 		String note = request.getParameter("special-notes");
 		note = note.replace("\r\n", "<br>");
 		
 		// 회원 개인정보 입력
 		pstmtGuest = con.prepareStatement(sqlGuest);
-		pstmtGuest.setString(1, "1");
-		pstmtGuest.setString(2, id);
+		pstmtGuest.setString(1, eventNumber);
+		pstmtGuest.setString(2, Id);
 		pstmtGuest.setString(3, request.getParameter("attendance"));
 		pstmtGuest.setString(4, request.getParameter("couple"));
 		pstmtGuest.setString(5, request.getParameter("allergy"));
@@ -214,8 +448,8 @@ public class SurveyDAO {
 		
 		// 동반자 정보 입력
 		pstmtParty = con.prepareStatement(sqlParty);
-		pstmtParty.setString(1, "1");
-		pstmtParty.setString(2, id);
+		pstmtParty.setString(1, eventNumber);
+		pstmtParty.setString(2, Id);
 		pstmtParty.setString(3, request.getParameter("adult"));
 		pstmtParty.setString(4, request.getParameter("child"));
 		pstmtParty.setString(5, request.getParameter("baby"));
@@ -225,31 +459,85 @@ public class SurveyDAO {
 		}
 		
 		// 알러지 상세사항 입력
-		
-        String gAttend = request.getParameter("g_attend");
-        if ("yes".equals(gAttend)) { // 참일때만 알러지 정보 입력
+        String gAttend = request.getParameter("attendance");
+        if ("出席".equals(gAttend)) { // 참일때만 알러지 정보 입력
             String allergytype = request.getParameter("allergy-type");
             allergytype = allergytype.replace("\r\n", "<br>");
             
             pstmtAllergy = con.prepareStatement(sqlAllergy);
-            pstmtAllergy.setString(1, request.getParameter("e_no"));
-            pstmtAllergy.setString(2, id);
+            pstmtAllergy.setString(1, eventNumber);
+            pstmtAllergy.setString(2, Id);
             pstmtAllergy.setString(3, allergytype);
 
             if (pstmtAllergy.executeUpdate() == 1) {
                 System.out.println("알러지 등록성공!!");
             }
         }
-		
+        
 		
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-		dbManager.close(null, pstmtAllergy, null);
-		dbManager.close(null, pstmtParty, null);
-        dbManager.close(con, pstmtGuest, null);
-        dbManager.close(null, pstmtMember, null);
+        dbManager.close(con, pstmtSelect, rs);
+        dbManager.close(con, pstmtAllergy, null);
+        dbManager.close(con, pstmtParty, null);
+        dbManager.close(con, pstmtAddress, null);
 	}
 
 }
+	
+	//  d-day날짜 표기 및 제한날짜 표기
+
+	public static void ddaywedding(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmtDday = null; 
+		ResultSet rs = null; 
+	    DBManager dbManager = DBManager.getInstance();
+
+		try {
+			String eventNumber = (String) request.getAttribute("e_no");
+	           if (eventNumber == null) {
+	                System.out.println("eventNumber is null");
+	            }		    
+	        
+	        String toEventNumber = "74";
+
+	        String sqlSelect = "SELECT r_time FROM s_reception WHERE e_no = ? AND r_type= 'wedding'";
+	            	            
+	        con = dbManager.connect();
+	        System.out.println(toEventNumber);
+	        pstmtDday = con.prepareStatement(sqlSelect);
+	        pstmtDday.setString(1, toEventNumber);
+	        rs = pstmtDday.executeQuery();
+	        
+			invitaitonDTO inviteInfo = new invitaitonDTO();
+
+	        if (rs.next()) {
+				Timestamp weddingDT = rs.getTimestamp("r_time");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+				String weddingDay = dateFormat.format(weddingDT);
+				inviteInfo.setWeddingDay(weddingDay);
+	        	request.setAttribute("weddingDay", weddingDay);
+				
+				// 40일 전 날짜 계산	
+				Calendar calender = Calendar.getInstance();
+				calender.setTime(weddingDT);
+				calender.add(Calendar.DAY_OF_YEAR, -40);
+				Timestamp minus40DaysDT = new Timestamp(calender.getTime().getTime());
+				String minus40days = dateFormat.format(minus40DaysDT);
+				request.setAttribute("minus40Days", minus40days);
+
+		        System.out.println("웨딩 날짜는: " + weddingDay);
+                System.out.println("40일 전 날짜는: " + minus40days);
+
+	        }	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmtDday, rs);
+		}
+		
+	}
 }
