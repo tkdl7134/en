@@ -443,9 +443,15 @@ public class MemberDAO {
 		// request에서 파라미터 가져오기
 		String m_id = (String) session.getAttribute("m_id");
 		String m_pw = mr.getParameter("m_pw");
-		String m_name = mr.getParameter("m_name");
-		String m_name_kana = mr.getParameter("m_name_kana");
-		String m_name_rome = mr.getParameter("m_name_rome");
+//		String m_name = mr.getParameter("m_name");
+		String m_name_sei = mr.getParameter("m_name_sei");
+		String m_name_mei = mr.getParameter("m_name_mei");
+//		String m_name_kana = mr.getParameter("m_name_kana");
+		String m_name_kana_sei = mr.getParameter("m_name_kana_sei");
+		String m_name_kana_mei = mr.getParameter("m_name_kana_mei");
+//		String m_name_rome = mr.getParameter("m_name_rome");
+		String m_name_rome_mei = mr.getParameter("m_name_rome_mei");
+		String m_name_rome_sei = mr.getParameter("m_name_rome_sei");
 //		String m_birth = request.getParameter("m_birth");
 		String m_gender = mr.getParameter("m_gender");
 		String m_email = mr.getParameter("m_email");
@@ -480,15 +486,16 @@ public class MemberDAO {
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String m_regdate = request.getParameter("m_regdate");
 
-//      5. 주소 정보 합치기 (구분자 사용)
+//      정보 합치기 (구분자 사용)
 		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
-
+		String combinedBirth = m_birthY + delimiter + m_birthM + delimiter + m_birthD;
+		String combinedName = m_name_sei + delimiter + m_name_mei;
+		String combinedKana = m_name_kana_sei + delimiter + m_name_kana_mei;
+		String combinedRome = m_name_rome_mei + delimiter + m_name_rome_sei;
 //		System.out.println("here>>>>>>:::"+combinedAddress);
-		String combinedBirth = m_birthY + " " + m_birthM + " " + m_birthD;
-
-		// DTO 객체 생성
-		MemberDTO dto = new MemberDTO(m_id, m_pw, m_name, m_name_kana, m_name_rome, combinedBirth, m_gender, m_email,
+		
+		MemberDTO dto = new MemberDTO(m_id, m_pw, combinedName, combinedKana, combinedRome, combinedBirth, m_gender, m_email,
 				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
 		try {
