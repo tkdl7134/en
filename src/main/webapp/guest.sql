@@ -16,6 +16,8 @@ SELECT * FROM s_allergy;
 
 SELECT * FROM s_party;
 
+SELECT * FROM s_reception;
+
 INSERT INTO s_guest (g_guest_type, )
 
 CREATE TABLE s_Member (
