@@ -138,13 +138,12 @@ form {
 /*  */
 
 .je_detail-img {
-  width: 100%; /* 9.6rem 154px */
-  /* height: 7.1rem; 115px */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  /* padding: 1rem; */
+      width: 18rem;
+    height: 6.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
 }
 .je_detail-img > img {
   width: 50%;
@@ -158,9 +157,10 @@ form {
   text-align: center;
 }
 .je_detail-inputName {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
 .je_detail-input {
   width: 100%;
@@ -207,6 +207,19 @@ form {
   transition: 0.5s;
 }
 
+.je_detail-buttons{
+	display: flex;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.je_detail-buttons > .je_detail-button{
+	width: 50%
+}
+
+.je_detail-buttons > .je_detail-button > button{
+	width: 70%;
+}
 /* clone - 추가 박스들 */
 
 .je_copyDefault-button {
