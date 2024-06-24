@@ -20,6 +20,28 @@ $(document).ready(function() {
 
 
 	});
+	
+	$('.fundingUpdateForm').submit(function(event) {
+		event.preventDefault(); // 기본제출동작방지
+
+		var formData = $(this).serialize(); // 폼 데이터 직렬화
+
+		$.ajax({
+			type: "POST",
+			url: "FundingSettingUpDelC",
+			data: formData,
+			success: function(response) {
+				console.log('등록 성공!');
+				window.location.reload();
+			},
+			error: function(xhr, status, error) {
+				console.error('등록 실패: ' + error);
+			}
+		});
+
+
+
+	});
 
 });
 

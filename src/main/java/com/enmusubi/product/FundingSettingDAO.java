@@ -100,6 +100,12 @@ public class FundingSettingDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("wl_up_price")));
+			pstmt.setInt(2, Integer.parseInt(request.getParameter("wl_no")));
+			
+			if (pstmt.executeUpdate() > 0) {
+				System.out.println("수정 성공!!");
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

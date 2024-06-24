@@ -153,6 +153,7 @@
 
           <!-- update / delete -->
           <c:forEach items="${fundings }" var="f">
+          <form class="fundingUpdateForm">
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -162,14 +163,16 @@
               </div>
               <div class="je_detail-title je_table-img">${f.wl_product }</div>
               <div class="je_detail-input">
-                <input type="text" placeholder="${f.wl_price } 円" />
+                <input type="text" name ="wl_up_price" placeholder="${f.wl_price } 円" />
+                <input type="hidden" name ="wl_no" value="${f.wl_no }" />
               </div>
               <div class="je_detail-buttons">
-              <div class="je_detail-button"><button >修正</button></div>
+              <div class="je_detail-button"><button type="submit">修正</button></div>
               <div class="je_detail-button"><button onclick="deleteFunding('${f.wl_no }')" type="button" name="wl_no"  value="${f.wl_no })">削除</button></div>
               </div>
             </div>
           </div>
+         </form>
          </c:forEach>
          
          <!-- insert -->
