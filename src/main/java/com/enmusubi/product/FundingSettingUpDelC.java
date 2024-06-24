@@ -7,18 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/FundingSettingC")
-public class FundingSettingC extends HttpServlet {
+@WebServlet("/FundingSettingUpDelC")
+public class FundingSettingUpDelC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 
-		FundingSettingDAO.getfundingInfo(request);
-		request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
+		FundingSettingDAO.deleteFundingInfo(request);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FundingSettingDAO.regFundingInfo(request);
-		
+		FundingSettingDAO.updateFundingInfo(request);
 	}
 
 }
