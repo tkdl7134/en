@@ -56,7 +56,8 @@
 		</div>
 		<div style="display: flex; justify-content: center;">
 			<div class="kh-f-btn"
-				onclick="goStatistic(this.getAttribute('value'))" value="">ファンディング</div>
+				onclick="goStatistic(this.getAttribute('value'))" value="">ファンディング
+			</div>
 		</div>
 	</div>
 </div>
@@ -92,9 +93,9 @@
 			</div> -->
 		</div>
 		<div class="kh-f-statistic-timer">
-			<img alt="" src="">
-			<span><span id="finalCount" style="color:#C82626">10</span>秒後に画面が移動します。</span>
-			
+			<img alt="" src=""> <span><span id="finalCount"
+				style="color: #C82626">10</span>秒後に画面が移動します。</span>
+
 		</div>
 	</div>
 </div>

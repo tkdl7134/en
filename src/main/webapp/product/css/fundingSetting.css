@@ -301,3 +301,11 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+.horizontal-container-title {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 배치 */
+	align-items: center; /* 중앙 정렬 */
+}
+.hs_heading{
+	margin-top:110px;
+}
