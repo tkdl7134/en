@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
-import com.enmusubi.member.MemberDTO;
+import com.enmusubi.product.invitaitonDTO;
 
 public class SurveyDAO {
 	
@@ -142,7 +142,7 @@ public class SurveyDAO {
 		
 	// 일반 회원 가입시 조건
 	public static void getMemberNormal(HttpServletRequest request) {
-		System.out.println("일반맴버 메소드");
+		System.out.println("일반 회원 정보 받아오는 메소드");
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    PreparedStatement pstmtAddress = null;
@@ -189,7 +189,7 @@ public class SurveyDAO {
 	            String fullNameKana = rs.getString(2);
 	            String[] nameParts1 = fullNameKana.split(" ");
 	            if (nameParts1.length >= 2) {
-	                m.setM_first_name_kana(nameParts[0]);
+	                m.setM_first_name_kana(nameParts1[0]);
 	                m.setM_last_name_kana(nameParts1[1]);
 	            } else if (nameParts1.length == 1) {
 	                m.setM_first_name_kana(nameParts1[0]);
@@ -262,9 +262,9 @@ public class SurveyDAO {
 	    }
 	}
 	
-	// 일반 회원 가입시 조건
+	// 라인 회원 가입시 조건
 	public static void getMemberLine(HttpServletRequest request) {
-		System.out.println("맴버 정보 받아오는 메소드");
+		System.out.println("라인 회원 정보 받아오는 메소드");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmtAddress = null;
@@ -311,7 +311,7 @@ public class SurveyDAO {
 				String fullNameKana = rs.getString(2);
 				String[] nameParts1 = fullNameKana.split(" ");
 				if (nameParts1.length >= 2) {
-					m.setM_first_name_kana(nameParts[0]);
+					m.setM_first_name_kana(nameParts1[0]);
 					m.setM_last_name_kana(nameParts1[1]);
 				} else if (nameParts1.length == 1) {
 					m.setM_first_name_kana(nameParts1[0]);
@@ -401,27 +401,27 @@ public class SurveyDAO {
 			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
 	String sqlParty = "INSERT INTO s_Party (e_no, m_id, p_adult, p_child, p_baby) VALUES (?, ?, ?, ?, ?)";
-	String sqlAddress = "INSERT INTO s_address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";
 	
 	try {
 		
         HttpSession session = request.getSession();
-        String lineUserId = (String) session.getAttribute("m_id");
-        System.out.println("LINE 회원 로그인 세션 아이디는: " + lineUserId);
+        String Id = (String) session.getAttribute("m_id");
+        System.out.println("현재 아이디는: " + Id);
 
 		con = dbManager.connect();
 
         // e_no 가져오기
         pstmtSelect = con.prepareStatement(sqlSelect);
-        pstmtSelect.setString(1, lineUserId);
+        pstmtSelect.setString(1, Id);
         rs = pstmtSelect.executeQuery();
         String eventNumber = null;
         if (rs.next()) {
         	eventNumber = rs.getString("e_no");
+        	request.setAttribute("e_no", eventNumber);
         }
         
         if (eventNumber == null) {
-            throw new SQLException("No e_no found for m_id: " + lineUserId);
+            throw new SQLException("No e_no found for m_id: " + Id);
         }
 		
        System.out.println("이벤트 넘버는: " + eventNumber);
@@ -435,7 +435,7 @@ public class SurveyDAO {
 		// 회원 개인정보 입력
 		pstmtGuest = con.prepareStatement(sqlGuest);
 		pstmtGuest.setString(1, eventNumber);
-		pstmtGuest.setString(2, lineUserId);
+		pstmtGuest.setString(2, Id);
 		pstmtGuest.setString(3, request.getParameter("attendance"));
 		pstmtGuest.setString(4, request.getParameter("couple"));
 		pstmtGuest.setString(5, request.getParameter("allergy"));
@@ -449,7 +449,7 @@ public class SurveyDAO {
 		// 동반자 정보 입력
 		pstmtParty = con.prepareStatement(sqlParty);
 		pstmtParty.setString(1, eventNumber);
-		pstmtParty.setString(2, lineUserId);
+		pstmtParty.setString(2, Id);
 		pstmtParty.setString(3, request.getParameter("adult"));
 		pstmtParty.setString(4, request.getParameter("child"));
 		pstmtParty.setString(5, request.getParameter("baby"));
@@ -466,7 +466,7 @@ public class SurveyDAO {
             
             pstmtAllergy = con.prepareStatement(sqlAllergy);
             pstmtAllergy.setString(1, eventNumber);
-            pstmtAllergy.setString(2, lineUserId);
+            pstmtAllergy.setString(2, Id);
             pstmtAllergy.setString(3, allergytype);
 
             if (pstmtAllergy.executeUpdate() == 1) {
@@ -474,30 +474,6 @@ public class SurveyDAO {
             }
         }
         
-        // 주소 입력
-        String postcode = request.getParameter("postal-code");
-        String[] address = request.getParameterValues("address");
-        String fulladdr = "";
-        
-        
-        for (String s : address) {
-        	System.out.println(s);
-			fulladdr += s + " ";
-		}
-        
-        System.out.println("전" + fulladdr + "후");
-        System.out.println(postcode);
-
-            
-        	pstmtAddress = con.prepareStatement(sqlAddress);
-        	pstmtAddress.setString(1, lineUserId);
-        	pstmtAddress.setString(2, postcode);
-        	pstmtAddress.setString(3, fulladdr);
-
-            if (pstmtAllergy.executeUpdate() == 1) {
-                System.out.println("주소 등록성공!!");
-            }
-		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -506,8 +482,62 @@ public class SurveyDAO {
         dbManager.close(con, pstmtAllergy, null);
         dbManager.close(con, pstmtParty, null);
         dbManager.close(con, pstmtAddress, null);
-        dbManager.close(con, pstmtGuest, null);
 	}
 
 }
+	
+	//  d-day날짜 표기 및 제한날짜 표기
+
+	public static void ddaywedding(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmtDday = null; 
+		ResultSet rs = null; 
+	    DBManager dbManager = DBManager.getInstance();
+
+		try {
+			String eventNumber = (String) request.getAttribute("e_no");
+	           if (eventNumber == null) {
+	                System.out.println("eventNumber is null");
+	            }		    
+	        
+	        String toEventNumber = "74";
+
+	        String sqlSelect = "SELECT r_time FROM s_reception WHERE e_no = ? AND r_type= 'wedding'";
+	            	            
+	        con = dbManager.connect();
+	        System.out.println(toEventNumber);
+	        pstmtDday = con.prepareStatement(sqlSelect);
+	        pstmtDday.setString(1, toEventNumber);
+	        rs = pstmtDday.executeQuery();
+	        
+			invitaitonDTO inviteInfo = new invitaitonDTO();
+
+	        if (rs.next()) {
+				Timestamp weddingDT = rs.getTimestamp("r_time");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+				String weddingDay = dateFormat.format(weddingDT);
+				inviteInfo.setWeddingDay(weddingDay);
+	        	request.setAttribute("weddingDay", weddingDay);
+				
+				// 40일 전 날짜 계산	
+				Calendar calender = Calendar.getInstance();
+				calender.setTime(weddingDT);
+				calender.add(Calendar.DAY_OF_YEAR, -40);
+				Timestamp minus40DaysDT = new Timestamp(calender.getTime().getTime());
+				String minus40days = dateFormat.format(minus40DaysDT);
+				request.setAttribute("minus40Days", minus40days);
+
+		        System.out.println("웨딩 날짜는: " + weddingDay);
+                System.out.println("40일 전 날짜는: " + minus40days);
+
+	        }	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmtDday, rs);
+		}
+		
+	}
 }

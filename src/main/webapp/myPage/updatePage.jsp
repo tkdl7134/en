@@ -339,6 +339,23 @@ body {
 	  });
 	});
 	
+	// 入力フィールドに空白除外
+	document.addEventListener('DOMContentLoaded', (event) => {
+        const m_name_sei = document.querySelector('input[name="m_name_sei"]');
+        const m_name_mei = document.querySelector('input[name="m_name_mei"]');
+        const m_name_kana_sei = document.querySelector('input[name="m_name_kana_sei"]');
+        const m_name_kana_mei = document.querySelector('input[name="m_name_kana_mei"]');
+
+        const removeWhitespace = (e) => {
+            e.target.value = e.target.value.replace(/\s/g, '');
+        };
+
+        m_name_sei.addEventListener('input', removeWhitespace);
+        m_name_mei.addEventListener('input', removeWhitespace);
+        m_name_kana_sei.addEventListener('input', removeWhitespace);
+        m_name_kana_mei.addEventListener('input', removeWhitespace);
+    });
+	
 	// input 요소를 선택합니다.
 	const inputElementd = document.querySelector('input[name="m_birthD"]');
 

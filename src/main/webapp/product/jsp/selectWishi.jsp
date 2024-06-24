@@ -13,61 +13,65 @@
 <script type="text/javascript" src="product/js/selectWishi.js"></script>
 </head>
 <body>
-	<div class="yj-main-s2-logo">
-		<img alt="" src="finance/img/logo.png">
-	</div>
-	<div class="yj-main-s2-menu">
-		<img alt="" src="finance/img/default_menu.png">
-	</div>
-	<div id="background1"></div>
-	<div id="canvas-content-container">
+
+	<div id="background1">
+		<div class="yj-main-s2-logo">
+			<img alt="" src="finance/img/logo.png">
+		</div>
+		<div class="yj-main-s2-menu">
+			<img alt="" src="finance/img/default_menu.png">
+		</div>
 		<div class="horizontal-container-title">
-			<div class="back-btn"><a href="InvitationC" style="color:black;text-decoration: none;">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-					viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-					class="size-6">
-  					<path stroke-linecap="round" stroke-linejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+			<div class="back-btn">
+				<a href="InvitationC" style="color: black; text-decoration: none;">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+						viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+						class="size-6">
+  					<path stroke-linecap="round" stroke-linejoin="round"
+							d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 				</svg>
 				</a>
 			</div>
 			<h1 class="hs_heading">ログイン</h1>
 		</div>
 
-		<div class="jw-w-big-container">
-			<div class="jw-w-container">
-				<div class="jw-w-img-box" onclick="location.href='FundingSettingC'">
-					<div class="jw-w-tex">
-						<h3>ファンディング</h3>
-						<h4>の現状</h4>
+
+		<div id="canvas-content-container">
+			<div class="jw-w-big-container">
+				<div class="jw-w-container">
+					<div class="jw-w-img-box" onclick="location.href='FundingSettingC'">
+						<div class="jw-w-tex">
+							<h3>ファンディング</h3>
+							<h4>の現状</h4>
+						</div>
+						<div class="jw-w-ribbon">
+							<img alt="noImg"
+								src="myPage/statistics/imgFolder/line_funding.png">
+						</div>
 					</div>
-					<div class="jw-w-ribbon">
-						<img alt="noImg"
-							src="myPage/statistics/imgFolder/line_funding.png">
+					<div class="jw-w-img-box" onclick="openAmazonModal()">
+						<div class="jw-w-tex">
+							<h3>プレゼント</h3>
+							<h4>の現状</h4>
+						</div>
+						<div class="jw-w-ribbon">
+							<img alt="noImg"
+								src="myPage/statistics/imgFolder/line_present.png">
+						</div>
 					</div>
-				</div>
-				<div class="jw-w-img-box" onclick="openAmazonModal()">
-					<div class="jw-w-tex">
-						<h3>プレゼント</h3>
-						<h4>の現状</h4>
-					</div>
-					<div class="jw-w-ribbon">
-						<img alt="noImg"
-							src="myPage/statistics/imgFolder/line_present.png">
-					</div>
-				</div>
-				<div class="jw-w-img-box" onclick="openSendModal()">
-					<div class="jw-w-tex">
-						<h3>ご祝儀</h3>
-						<h4>の現状</h4>
-					</div>
-					<div class="jw-w-ribbon">
-						<img alt="noImg" src="myPage/statistics/imgFolder/line_money.png">
+					<div class="jw-w-img-box" onclick="openSendModal()">
+						<div class="jw-w-tex">
+							<h3>ご祝儀</h3>
+							<h4>の現状</h4>
+						</div>
+						<div class="jw-w-ribbon">
+							<img alt="noImg" src="myPage/statistics/imgFolder/line_money.png">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<dialog id="AmazonModal" class="modal">
 	<div class="jw-w-popup" id="amazonpop">
