@@ -27,6 +27,7 @@ function copyDiv(button) {
   let input1 = document.createElement("input");
   input1.type = "text";
   input1.placeholder = "アイテム";
+  input1.name = "item";
   inputDiv1.appendChild(input1);
   clonedBox.querySelector(".je_copyBox-default").appendChild(inputDiv1);
 
@@ -35,6 +36,7 @@ function copyDiv(button) {
   let input2 = document.createElement("input");
   input2.type = "text";
   input2.placeholder = "円";
+  input2.name = "item_price";
   inputDiv2.appendChild(input2);
   clonedBox.querySelector(".je_copyBox-default").appendChild(inputDiv2);
 

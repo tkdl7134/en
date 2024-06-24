@@ -52,8 +52,8 @@
 			<div class="main-content">
 				<div class="main-content-words">
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
-					<div style="margin-top: 0.5rem">2024.06.09までにご返信をお願いいたします。</div>
-					<div>
+               		 	<div style="margin-top: 0.5rem">${minus40Days }までにご返信をお願いいたします。</div>
+            		<div>
 						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
 					</div>
@@ -110,23 +110,23 @@
 										    <c:set var="members" value="${members }" />
 											<label class="kanzi-container">
 												<div style="font-size: 1.5rem;">名前</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="First Name"
 												class="name-input" id="name" name="name" required value="${members.m_first_name}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
 												class="name-input" id="name" name="name" required value="${members.m_last_name}" disabled="disabled" />
 											</label><br> <label class="kata-container">
 												<div style="font-size: 1.5rem;">カタカナ</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="First Name"
 												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder=" - "
+												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
 												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
 											</label><br> <label class="eng-container">
 												<div style="font-size: 1.5rem;">ローマ字</div> 
-												<input style="font-size: 1rem;" type="text" placeholder=" - "
+												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
 												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
-												placeholder=" - " class="name-input" id="romaName" name="roma-name"
-												required value="${members.m_first_name_rome}" disabled="disabled" />
+												placeholder="First Name" class="name-input" id="romaName" name="roma-name"
+												required value="${members.m_first_name_rome}" />
 											</label>
 										 </c:when>
 										 <c:otherwise>
@@ -188,12 +188,12 @@
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
 												class="contact-input" id="email" name="email"
-												placeholder=" - " required value="${members.m_email}" disabled="disabled" />
+												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
 												class="contact-input" id="phonenum" name="phonenum"
-												placeholder=" - " required value="${members.m_phone}" disabled="disabled" />
+												placeholder="000-0000-0000" required value="${members.m_phone}" />
 										</div>
 								</div>
 							</c:when>
@@ -241,15 +241,8 @@
 													<span for="prefecture">都道府県</span>
 												</div>
 												<div>
-													<select style="font-size: 1.4rem" id="prefecture"
-														name="prefecture" required>
-														<option value="">選択してください</option>
-            												<c:forEach var="prefecture" items="${prefectures}">
-																<option value="${prefecture }">	
-																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
-																${prefecture }
-	           												</c:forEach>
-													</select>
+													<input style="font-size: 1.4rem" id="prefecture"
+														name="prefecture" required value="${members.a_prefecture}" disabled="disabled">
 												</div>
 											</div>
 											<div class="address-contents-container">
@@ -267,7 +260,7 @@
 													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<textarea style="font-size: 1.4rem; width: 20rem;"
+													<textarea style="font-size: 1.4rem;"
 														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
 														required disabled="disabled">${members.a_address }</textarea>
 												</div>
@@ -303,7 +296,7 @@
 												<div>
 													<select style="font-size: 1.4rem" id="prefecture"
 														name="address" required>
-														<option value="">選択してください</option>
+														<option value="">${members.a_prefecture}</option>
 														<c:forEach var="prefecture" items="${prefectures}">
 																<option value="${prefecture }">	
 																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
@@ -327,7 +320,7 @@
 													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
 												</div>
 												<div>
-													<textarea style="font-size: 1.4rem; width: 20rem;"
+													<textarea style="font-size: 1.4rem;"
 														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
 														required >${members.a_address }</textarea>
 												</div>

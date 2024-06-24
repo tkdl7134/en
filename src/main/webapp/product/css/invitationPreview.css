@@ -143,6 +143,11 @@ form {
  height: 100%;
 }
 
+.je_invitation-photo1 img,
+.je_invitation-photo4 img {
+	width: 100%
+}
+
 /* info */
 
 .je_names {

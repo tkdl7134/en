@@ -266,8 +266,11 @@ a.je_btn-layerClose:hover {
 
 .je_pop-image {
   /* 템플릿샘플 길이만큼 변경 */
-  height: 100rem;
-  width: 90%;
+    height: 125rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
 }
 .je_pop-image > img {
   width: 100%;

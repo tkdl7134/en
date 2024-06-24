@@ -1,5 +1,7 @@
 package com.enmusubi.product;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import com.enmusubi.main.DBManager;
+import com.google.gson.Gson;
 
 public class FundingSettingDAO {
 	public static void getfundingInfo(HttpServletRequest request) {
@@ -45,14 +48,25 @@ public class FundingSettingDAO {
 
 	}
 
-	public static void regFundingInfo(HttpServletRequest request) {
+	public static void regFundingInfo(HttpServletRequest request) throws IOException {
+
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		DBManager dbManager = DBManager.getInstance();
-		String sql = "insert into s_wishlist values(wl_no_seq.nextval, ?, ?)";
+		String sql = "insert into s_wishlist values(s_wishlist_seq.nextval, ?, ?, ?)";
+		
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,);
+			pstmt.setInt(2, );
+			pstmt.setString(3, request.getParameter("eno"));
+
+			
+			if (pstmt.executeUpdate() > 0) {
+				System.out.println("성공?");
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,59 +1,59 @@
-.kh-f-res-container {
-  display: flex;
-  align-self: center;
-  align-items: center;
-  height: 100%;
-  flex-grow: 1;
+.kh-f-res-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:100vh;
+	flex-direction: column;
+	gap:2rem;
 }
-.kh-f-res-box {
-  padding: 0 10rem;
-  height: 90%;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-self: center;
-  justify-content: center;
-  gap: 3rem;
-  text-align: center;
-  border-radius: 0.5rem;
-  background-image: url("../img/fundPopBackGround2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 2px 2px 2px 0 #cccccc;
+.kh-f-res-img-box{
+	width:716px;
+	height:455px;
 }
-.kh-f-res-text {
-  margin-bottom: 6rem;
+.kh-f-res-img-box > img{
+	width:100%
 }
-.kh-f-res-text > h1 {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+.kh-f-res-btn-box{
+	display:flex;
+	flex-direction: column;
+	gap:2rem;
+	justify-content: center;
+	align-items: center;
 }
-.kh-f-res-btn {
-  height: 3rem;
-  font-size: 2rem;
-  padding: 0 1rem;
-  border-radius: 1rem;
-  border: none;
-  box-shadow: 2px 2px 2px 0px #cccccc;
-  background-color: #fff7f5;
+.kh-f-btn {
+	width: 10rem;
+	height: 3rem;
+	padding: 0 10px;
+	border-radius: 20%/70%;
+	background-color: #fff4f4;
+	box-shadow: 2px 2px 2px 0px #bbbbbb;
+	border: 2px solid #c82626;
+	color: #ff7e81;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 1.2rem;
+	margin-top: 1rem;
 }
-.kh-f-res-btn:hover {
-  background-color: #fff0ec;
+
+.kh-f-btn:hover {
+	cursor: pointer;
+	background-color: #FF3B3F;
+	color: white;
 }
-.kh-f-res-btn:active {
-  box-shadow: none;
+
+.kh-f-btn:active {
+	box-shadow: none;
 }
-.kh-f-res-box > div > a {
-  color: black;
-  text-decoration: none;
-  font-size: 1.5rem;
-  text-shadow: 2px 2px 1px #cccccc;
+.kh-f-tex{
+	
 }
-.kh-f-res-box > div > a:hover {
-  color: #555555;
+.kh-f-tex>a{
+	color:black;
+	text-decoration: none;
+	font-size:1.2rem;
 }
-.kh-f-res-box > div > a:active {
-  text-shadow: none;
+.kh-f-tex:hover{
+	color:#555555;
 }
