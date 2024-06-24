@@ -8,6 +8,10 @@ body {
   padding: 0;
 }
 
+form {
+  display: contents;
+}
+
 /* LOGO & NAV */
 #yj-main-s2-logo {
   z-index: 4;
