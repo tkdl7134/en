@@ -255,8 +255,6 @@ public class ProductDAO {
 
 	}
 
-	
-
 	private static boolean isTemplatePKValid(int templatePK) {
 		return true; // 항상 유효
 	}
@@ -327,38 +325,6 @@ public class ProductDAO {
 
 	}
 
-
-
-	
-	public static void updateInvitaion(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		DBManager dbManager = DBManager.getInstance();
-		String sql = "";
-		
-		try {
-			con = dbManager.connect();
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, request.getParameter("title"));
-			pstmt.setString(2, request.getParameter("txt"));
-			pstmt.setString(3, request.getParameter("pk"));
-			
-			if (pstmt.executeUpdate() == 1) {
-				System.out.println("수정 완료");
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("SERVER ERROR");
-		} finally {
-			dbManager.close(con, pstmt, rs);
-		}
-		
-	}
-
-	
 	public static void deleteInvitation(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -409,6 +375,34 @@ public class ProductDAO {
 			dbManager.close(null, pstmt3, null);
 			dbManager.close(null, pstmt4, null);
 			dbManager.close(null, pstmt5, null);
+		}
+		
+	}
+
+	public static void updateInvitaion(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "";
+		
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, request.getParameter("title"));
+			pstmt.setString(2, request.getParameter("txt"));
+			pstmt.setString(3, request.getParameter("pk"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 완료");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("SERVER ERROR");
+		} finally {
+			dbManager.close(con, pstmt, rs);
 		}
 		
 	}
