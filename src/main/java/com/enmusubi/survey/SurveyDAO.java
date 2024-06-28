@@ -496,19 +496,19 @@ public class SurveyDAO {
 	    DBManager dbManager = DBManager.getInstance();
 
 		try {
-			String eventNumber = (String) request.getAttribute("e_no");
+			String eventNumber = (String) request.getSession().getAttribute("eno");
 	           if (eventNumber == null) {
 	                System.out.println("eventNumber is null");
 	            }		    
 	        
-	        String toEventNumber = "74";
+	        //String toEventNumber = "74";
 
 	        String sqlSelect = "SELECT r_time FROM s_reception WHERE e_no = ? AND r_type= 'wedding'";
 	            	            
 	        con = dbManager.connect();
-	        System.out.println(toEventNumber);
+	        System.out.println(eventNumber);
 	        pstmtDday = con.prepareStatement(sqlSelect);
-	        pstmtDday.setString(1, toEventNumber);
+	        pstmtDday.setString(1, eventNumber);
 	        rs = pstmtDday.executeQuery();
 	        
 			invitaitonDTO inviteInfo = new invitaitonDTO();

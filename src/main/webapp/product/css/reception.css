@@ -42,22 +42,13 @@ body {
 	animation: logo-float 2s ease-in-out infinite;
 }
 
-@
-keyframes logo-float { 0%, 100% {
+@keyframes logo-float { 
+	0%, 100% {
 	transform: translate(0, 0%);
-}
-
-50
-%
-{
-transform
-:
-translate(
-0
-,
-5%
-);
-}
+	}
+	50%{
+	transform:translate(0,5%);
+	}
 }
 .yj-main-s2-menu {
 	z-index: 4;
