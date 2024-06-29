@@ -23,7 +23,8 @@ function handleFileInputChange(event, outputId1, outputId2) {
 
       const imageDisplay1 = document.getElementById(outputId1);
       const imageDisplay2 = document.getElementById(outputId2);
-
+	
+	// 기존이미지 제거
       imageDisplay1.innerHTML = "";
       imageDisplay2.innerHTML = "";
 
