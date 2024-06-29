@@ -23,6 +23,7 @@
         <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
       
         <div ><a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()">삭제하기</a></div>
+        <div ><a href="InvitationUpdateC?eno=${inviteInfo.e_no}">수정하기</a></div>
         
         <div></div>
         <!-- 초대장 -->
