@@ -139,7 +139,7 @@ form {
 .je_invitation-photo2 img,
 .je_invitation-photo3 img,
 .je_invitation-photo4 img {
- /*  width: 100%; */
+ width: 100%;
  height: 100%;
 }
 

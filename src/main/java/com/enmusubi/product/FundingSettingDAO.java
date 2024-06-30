@@ -22,12 +22,11 @@ public class FundingSettingDAO {
 		String sql = "select sw.wl_no, sw.wl_product, sw.wl_price from s_wishlist sw, s_event se"
 				+ " where sw.e_no = se.e_no and se.e_no = ?";
 		try {
-			int eno = 1;
+			int eno = Integer.parseInt(request.getParameter("eno"));
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, eno);
 			rs = pstmt.executeQuery();
-			
 			
 			ArrayList<WishListDTO> fundings = new ArrayList<WishListDTO>();
 			ArrayList<String> basicNames = new ArrayList<>();
@@ -54,6 +53,7 @@ public class FundingSettingDAO {
 			System.out.println(basicNames);
 			request.setAttribute("fundings", fundings);
 			request.setAttribute("basicNames", basicNames);
+			request.setAttribute("je_eventNo", eno);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +65,9 @@ public class FundingSettingDAO {
 
 	public static void regFundingInfo(HttpServletRequest request) throws IOException {
 
-		int eno = 1;
+//		int eno = 1;
+		System.out.println(request.getParameter("eno"));
+		int eno = Integer.parseInt((request.getParameter("eno")));
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		DBManager dbManager = DBManager.getInstance();
