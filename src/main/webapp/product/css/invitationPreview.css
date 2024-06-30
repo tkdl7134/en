@@ -120,13 +120,14 @@ form {
 }
 
 .je_photos {
-  /* background-color: red; */
+/* background-color: red; */
+/* top: 82.5rem;
+   height: 17rem;*/
   display: flex;
   position: absolute;
-  /* border: 1px solid; */
   width: 89%;
-  top: 82.5rem;
-  height: 17rem;
+  top: 80.5rem;
+  height: 19rem;
   z-index: -1;
 }
 .je_invitation-photo2,
@@ -135,11 +136,13 @@ form {
 }
 .je_invitation-photo4 {
   /* background-color: red; */
-  position: absolute;
-  width: 89%;
-  top: 126.5rem;
-  height: 23.5rem;
-  z-index: -1;
+    position: absolute;
+    width: 89%;
+    top: 122.5rem;
+    height: 24.5rem;
+    z-index: -1;
+/*	top: 126.5rem;
+ 	height: 23.5rem; */ 
 }
 .je_invitation-photo1 img,
 .je_invitation-photo2 img,

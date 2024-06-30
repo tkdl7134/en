@@ -22,7 +22,7 @@
         <!-- 버튼 -->
         <%-- <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div> --%>
        <div class="je_previewBtns">
-       		<div class="je_previewBtn je_wishlistSet-btn" onclick="location.href='selectWishiC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
+       		<div class="je_previewBtn je_wishlistSet-btn" onclick="location.href='SelectWishiC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
 	        <div class="je_previewBtn je_delete-btn"><a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()">삭제하기</a></div>
 	        <div class="je_previewBtn je_update-btn"><a href="InvitationUpdateC?eno=${inviteInfo.e_no}">수정하기</a></div>
        </div> 
