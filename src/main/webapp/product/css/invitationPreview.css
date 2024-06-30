@@ -72,12 +72,18 @@ form {
   z-index: -1;
 }
 
-/* wish이동 버튼 */
-.je_wishlistSet-btn {
+/* 버튼 */
+.je_previewBtns{
+	position: absolute;
+	top: 50%;
+	left: 25%;
+}
+
+/* .je_wishlistSet-btn {
   position: absolute;
   top: 50%;
   left: 25%;
-}
+} */
 
 /* 초대장 */
 .je_invitation {
@@ -143,16 +149,7 @@ form {
  height: 100%;
 }
 
-.je_invitation-photo1 img,
-.je_invitation-photo4 img {
-	width: 100%
-}
 
-.je_invitation-photo2 img,
-.je_invitation-photo3 img {
-  display: flex;
-  justify-content: center;
-}
 /* info */
 
 .je_names {

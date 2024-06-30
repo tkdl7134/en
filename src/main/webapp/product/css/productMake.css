@@ -146,27 +146,18 @@ form {
   z-index: -1;
 }
 
-#je_photoPre1,
-#je_photoPre2,
-#je_photoPre3,
-#je_photoPre4 {
-  /* border: 1px solid; */
-  width: 10px;
-  height: 10px;
-}
-
 #je_photoPre1 {
     width: 89%;
     margin-top: 38%;
     height: 22rem;
     position: absolute;
     z-index: -10;
-/*     background-color: #c82626; */
+    /* background-color: #c82626; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#je_photoPre1 img {
-  width: 100%;
-}
 .je_kanji-groom {
     display: flex;
     justify-content: center;
@@ -191,20 +182,21 @@ form {
 }
 
 .je_photos {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.2rem;
-    width: 90%;
+   display: flex;
+   justify-content: center;
+   margin-top: 1.2rem;
+   width: 90%;
 }
 
 
 #je_photoPre2,
 #je_photoPre3 {
 	position: absolute;
-	width: 45%;
-    height: 13.5rem;
+    width: 45%;
+    height: 14rem;
     z-index: -10;
 }
+
 #je_photoPre2{
     left: 0;
     margin-left: 2rem;
@@ -214,10 +206,7 @@ form {
 	margin-right: 2rem;
 }
 
-#je_photoPre2 img,
-#je_photoPre3 img {
-  width: 100%;
-}
+
 
 .je_days{
     width: 76%;
@@ -297,16 +286,13 @@ form {
     width: 89%;
     border: 1px solid;
     position: absolute;
-    bottom: -6.3rem;
+    bottom: -5.5rem;
     /* margin-top: 3.2rem; */
-    height: 21rem;
+    height: 20rem;
     z-index: -10;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#je_photoPre4 > img {
-	width: 100%
 }
 
 #je_finish-message {
@@ -317,6 +303,14 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#je_photoPre1 img,
+#je_photoPre2 img,
+#je_photoPre3 img,
+#je_photoPre4 img{
+  width: 100%;
+  height: 100%;
 }
 
 /* input */
@@ -594,13 +588,17 @@ input:-ms-input-placeholder {
 }
 #je_photoOut1,
 #je_photoOut2,
-#je_photoOut3 {
-  /* display: none; */
-  position: absolute;
-  top: 1rem;
-  left: 0;
-  z-index: 10;
-  width: 100%;
+#je_photoOut3,
+#je_photoOut4 {
+    position: absolute;
+    /* top: 1rem; */
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 #je_photoOut1 img,
 #je_photoOut2 img,
