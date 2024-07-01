@@ -153,7 +153,8 @@ yj-main-nav a:visited {
   height: 100%;
   object-fit: contain;
 }
-*/ .nav-yellowDeco {
+
+.nav-yellowDeco {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -423,10 +424,36 @@ yj-main-nav a:visited {
   position: relative;
 }
 
-.vertical-text {
+#verticalText1 {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 10;
+  text-align: center;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+}
+
+#verticalText2 {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 10; 
+  text-align: center;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+}
+
+#verticalText3 {
+  position: absolute;
+  top: 50%;
+  right: 30%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
