@@ -22,7 +22,6 @@ public class MyMeetingC extends HttpServlet {
 		
 		request.getRequestDispatcher("myPage/statistics/jsp/sendMain.jsp").forward(request, response);	
 		
-		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

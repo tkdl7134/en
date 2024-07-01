@@ -54,6 +54,7 @@ const wheelHandler = (event) => {
 document.addEventListener("wheel", wheelHandler);
 
 // ////////// ////////// ////////// ////////// ////////// //////////
+<<<<<<< HEAD
 // 로고 버튼 클릭 이벤트
 document.addEventListener('DOMContentLoaded', (event) => {
 	const mainLogo = document.querySelectorAll(".mainLogo");
@@ -77,6 +78,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			});
 		});
 	})
+=======
+// Section 2
+// 메뉴 버튼 클릭 이벤트
+const s2menuBtn = document.getElementById("yj-main-s2-menuBtn");
+const s2menuBtn1 = "main/main/imgFolder/yj-main-default-menu1.png";
+const s2menuBtn2 = "main/main/imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s2menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s2menuBtn1)) {
+    this.querySelector("img").src = s2menuBtn2;
+  } else {
+    this.querySelector("img").src = s2menuBtn1;
+  }
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 });
 
 // ////////// ////////// ////////// ////////// ////////// //////////
@@ -120,7 +140,7 @@ const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
 // s2CardConAll.forEach((card) => {
 //   card.addEventListener("mouseenter", function (event) {
 //     console.log(111);
-//     s2Mouseicn.querySelector("img").src = "imgFolder/yj-main-s2-drag.png";
+//     s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
 //     card.style.cursor = "none";
 //     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
 //     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
@@ -142,11 +162,19 @@ const mouseMoveHandler = (event) => {
 	const dx = mouseX - centerX;
 	const dy = mouseY - centerY;
 
+<<<<<<< HEAD
 	if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
 		s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
 		s2CardConAll[1].style.cursor = "none";
 		s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
 		s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+=======
+  if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
+    s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
+    s2CardConAll[1].style.cursor = "none";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 
 		s2Mouseicn.style.left = mouseX + "px";
 		s2Mouseicn.style.top = mouseY + "px";
@@ -160,6 +188,7 @@ const mouseMoveHandler = (event) => {
 
 // 배경 이미지  슬라이드
 function slickStart() {
+<<<<<<< HEAD
 	$(".yj-main-s2-bg").css(
 		"background-image",
 		"url('imgFolder/yj-main-s2-img1.png')"
@@ -183,6 +212,31 @@ function slickStart() {
 			// 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
 			var nextBackgroundImage = bgImageUrls[nextSlide];
 			console.log(nextBackgroundImage);
+=======
+  $(".yj-main-s2-bg").css(
+    "background-image",
+    "url('main/imgFolder/yj-main-s2-img1.png')"
+  );
+  // 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
+  $(".yj-main-s2-list").on(
+    "beforeChange",
+    function (event, slick, currentSlide, nextSlide) {
+      console.log(currentSlide);
+      // 각 슬라이드의 배경 이미지 URL을 설정할 배열
+      var bgImageUrls = [
+        "main/main/imgFolder/yj-main-s2-img1.png",
+        "main/main/imgFolder/yj-main-s2-img2.png",
+        "main/main/imgFolder/yj-main-s2-img3.png",
+        "main/imgFolder/yj-main-s2-img4.png",
+        "main/imgFolder/yj-main-s2-img5.png",
+        "main/imgFolder/yj-main-s2-img6.png",
+        "main/imgFolder/yj-main-s2-img7.png",
+        // 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
+      ];
+      // 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
+      var nextBackgroundImage = bgImageUrls[nextSlide];
+      console.log(nextBackgroundImage);
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 
 			// 배경 이미지 변경
 			$(".yj-main-s2-bg").css(
@@ -234,6 +288,27 @@ $(document).ready(function() {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 3
+<<<<<<< HEAD
+=======
+// 메뉴 버튼 클릭 이벤트
+const s3menuBtn = document.getElementById("yj-main-s3-menuBtn");
+const s3menuBtn1 = "main/imgFolder/yj-main-default-menu1.png";
+const s3menuBtn2 = "main/imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s3menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s3menuBtn1)) {
+    this.querySelector("img").src = s3menuBtn2;
+  } else {
+    this.querySelector("img").src = s3menuBtn1;
+  }
+});
+
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 let wow;
 
 function textAni() {
@@ -258,6 +333,27 @@ function textAni() {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
+<<<<<<< HEAD
+=======
+// 메뉴 버튼 클릭 이벤트
+const s4menuBtn = document.getElementById("yj-main-s4-menuBtn");
+const s4menuBtn1 = "main/imgFolder/yj-main-default-menu1.png";
+const s4menuBtn2 = "main/imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s4menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s4menuBtn1)) {
+    this.querySelector("img").src = s4menuBtn2;
+  } else {
+    this.querySelector("img").src = s4menuBtn1;
+  }
+});
+
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 // 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
 const section4 = document.getElementById("yj-main-s4");
 const clickableImages = document.querySelectorAll(".clickable-image");
@@ -275,6 +371,7 @@ const cardConAll = document.querySelectorAll(".yj-main-s4-container");
 const mouseicn = document.querySelector(".yj-main-s4-cursor");
 
 cardConAll.forEach((card) => {
+<<<<<<< HEAD
 	card.addEventListener("mouseenter", function(event) {
 		mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s4-click.png";
 		card.style.cursor = "none";
@@ -282,6 +379,15 @@ cardConAll.forEach((card) => {
 		mouseicn.classList.add("yj-main-s4-cursor-block");
 		console.log(123123);
 	});
+=======
+  card.addEventListener("mouseenter", function (event) {
+    mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s4-click.png";
+    card.style.cursor = "none";
+    mouseicn.classList.remove("yj-main-s4-cursor-none");
+    mouseicn.classList.add("yj-main-s4-cursor-block");
+    console.log(123123);
+  });
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 
 	card.addEventListener("mouseleave", function() {
 		mouseicn.classList.remove("yj-main-s4-cursor-block");
@@ -329,11 +435,32 @@ const s5MouseHandler = (event) => {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 6
+<<<<<<< HEAD
+=======
+const s6menuBtn = document.getElementById("yj-main-s6-menuBtn");
+const s6menuBtn1 = "main/imgFolder/yj-main-default-menu1.png";
+const s6menuBtn2 = "main/imgFolder/yj-main-default-menu2.png";
+
+// 메뉴 이미지 클릭 이벤트 리스너 등록
+s6menuBtn.addEventListener("click", function () {
+  // 현재 이미지 src 확인
+  const currentSrc = this.querySelector("img").src;
+
+  // 이미지 변경
+  if (currentSrc.includes(s6menuBtn1)) {
+    this.querySelector("img").src = s6menuBtn2;
+  } else {
+    this.querySelector("img").src = s6menuBtn1;
+  }
+});
+
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 // mouse cursor (scroll)
 const s6CardConAll = document.querySelectorAll("#yj-main-s6");
 const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
 
 s6CardConAll.forEach((card) => {
+<<<<<<< HEAD
 	card.addEventListener("mouseenter", function(event) {
 		s6Mouseicn.querySelector("img").src =
 			"main/imgFolder/yj-main-default-scroll.png";
@@ -341,6 +468,15 @@ s6CardConAll.forEach((card) => {
 		s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
 		s6Mouseicn.classList.add("yj-main-s6-cursor-block");
 	});
+=======
+  card.addEventListener("mouseenter", function (event) {
+    s6Mouseicn.querySelector("img").src =
+      "main/imgFolder/yj-main-default-scroll.png";
+    card.style.cursor = "none";
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-block");
+  });
+>>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
 
 	card.addEventListener("mouseleave", function() {
 		s6Mouseicn.classList.remove("yj-main-s6-cursor-block");

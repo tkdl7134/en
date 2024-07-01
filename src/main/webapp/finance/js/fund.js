@@ -140,7 +140,7 @@ $.ajax({
 		const statisticModal = document.getElementById("statisticModal");
 		statisticModal.addEventListener("click", function(event) {
 			if (!statispop.contains(event.target)) {
-				closeStatistic()
+				//closeStatistic()
 			}
 		});
 

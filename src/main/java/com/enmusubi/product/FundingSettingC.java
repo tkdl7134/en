@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 public class FundingSettingC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
+	 
+		FundingSettingDAO.getfundingInfo(request);
+		request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		FundingSettingDAO.regFundingInfo(request);
 		
 	}
 

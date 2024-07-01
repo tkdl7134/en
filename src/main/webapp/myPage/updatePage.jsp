@@ -112,20 +112,26 @@ body {
 				<div class="hs_container-input">
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
-						<input type="text" name="m_name" class="hs_input name"
-							placeholder="山田 太郎" maxlength="20">
+						<input type="text" name="m_name_sei" class="hs_input name_sei"
+							placeholder="姓" maxlength="10">
+						<input type="text" name="m_name_mei" class="hs_input name_mei"
+							placeholder="名" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
-						<input type="text" name="m_name_kana" class="hs_input kana"
-							placeholder="ヤマダ タロウ" maxlength="20">
+						<input type="text" name="m_name_kana_sei" class="hs_input kana_sei"
+							placeholder="セイ" maxlength="10">
+						<input type="text" name="m_name_kana_mei" class="hs_input kana_mei"
+							placeholder="メイ" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
-						<input type="text" name="m_name_rome" class="hs_input rome"
-							placeholder="Yamada Tarou" maxlength="20">
+						<input type="text" name="m_name_rome_mei" class="hs_input rome_mei"
+							placeholder="Given name" maxlength="10">
+						<input type="text" name="m_name_rome_sei" class="hs_input rome_sei"
+							placeholder="Last name" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
@@ -327,11 +333,28 @@ body {
 	    });
 	  });
 
-	  // 入力フィールドに英字とスペースのみ許可
-	  document.querySelector('input[name="m_name_rome"]').addEventListener("input", function() {
-	    this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); // 英字とスペースのみ許可
+	// 入力フィールドに英字のみ許可
+	  document.querySelector('input[name="m_name_rome_mei"], input[name="m_name_rome_sei"]').addEventListener("input", function() {
+	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
 	  });
 	});
+	
+	// 入力フィールドに空白除外
+	document.addEventListener('DOMContentLoaded', (event) => {
+        const m_name_sei = document.querySelector('input[name="m_name_sei"]');
+        const m_name_mei = document.querySelector('input[name="m_name_mei"]');
+        const m_name_kana_sei = document.querySelector('input[name="m_name_kana_sei"]');
+        const m_name_kana_mei = document.querySelector('input[name="m_name_kana_mei"]');
+
+        const removeWhitespace = (e) => {
+            e.target.value = e.target.value.replace(/\s/g, '');
+        };
+
+        m_name_sei.addEventListener('input', removeWhitespace);
+        m_name_mei.addEventListener('input', removeWhitespace);
+        m_name_kana_sei.addEventListener('input', removeWhitespace);
+        m_name_kana_mei.addEventListener('input', removeWhitespace);
+    });
 	
 	// input 요소를 선택합니다.
 	const inputElementd = document.querySelector('input[name="m_birthD"]');
@@ -386,9 +409,12 @@ body {
 	    let requiredFields = [
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
-	        { field: $("input[name='m_name']"), name: '名前' },
-	        { field: $("input[name='m_name_kana']"), name: 'フリガナ' },
-	        { field: $("input[name='m_name_rome']"), name: '名前(ローマ字)' },
+	        { field: $("input[name='m_name_sei']"), name: '名前' },
+	        { field: $("input[name='m_name_mei']"), name: '名前' },
+	        { field: $("input[name='m_name_kana_sei']"), name: 'フリガナ' },
+	        { field: $("input[name='m_name_kana_mei']"), name: 'フリガナ' },
+	        { field: $("input[name='m_name_rome_mei']"), name: '名前(ローマ字)' },
+	        { field: $("input[name='m_name_rome_sei']"), name: '名前(ローマ字)' },
 	        { field: $("input[name='m_gender']:checked"), name: '性別' },
 	        { field: $("input[name='m_birthY']"), name: '生年月日' },
 	        { field: $("input[name='m_birthM']"), name: '生年月日' },
@@ -451,9 +477,12 @@ body {
 	function checkForm() {
 	    let m_pw = $("#m_pw").val().trim();
 	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
-	    let m_name = $("input[name='m_name']").val().trim();
-	    let m_name_kana = $("input[name='m_name_kana']").val().trim();
-	    let m_name_rome = $("input[name='m_name_rome']").val().trim();
+	    let m_name_sei = $("input[name='m_name_sei']").val().trim();
+	    let m_name_mei = $("input[name='m_name_mei']").val().trim();
+	    let m_name_kana_sei = $("input[name='m_name_kana_sei']").val().trim();
+	    let m_name_kana_mei = $("input[name='m_name_kana_mei']").val().trim();
+	    let m_name_rome_mei = $("input[name='m_name_rome_mei']").val().trim();
+	    let m_name_rome_sei = $("input[name='m_name_rome_sei']").val().trim();
 	    let m_gender = $("input[name='m_gender']:checked").val();
 	    let m_birthY = $("input[name='m_birthY']").val().trim();
 	    let m_birthM = $("input[name='m_birthM']").val().trim();
@@ -466,8 +495,8 @@ body {
 	    let a_street = $("#a_street").val().trim();
 
 	    // 필수 입력란 체크
-	    if (m_pw === '' || m_pw_confirm === '' || m_name === '' || m_name_kana === '' || 
-	        m_name_rome === '' || !m_gender || m_birthY === '' || m_birthM === '' || m_birthD === '' || 
+	     if (m_id === '' || m_pw === '' || m_pw_confirm === '' || m_name_sei === '' || m_name_mei === '' || m_name_kana_sei === '' || 
+	    	m_name_kana_mei === '' || m_name_rome_mei === '' ||  m_name_rome_sei === '' ||!m_gender || m_birthY === '' || m_birthM === '' || m_birthD === '' || 
 	        m_email === '' || m_phone === '' || a_postcode === '' || a_prefecture === '' || a_city === '' || 
 	        a_street === '') {
 	        // 하나라도 비어 있는 경우
