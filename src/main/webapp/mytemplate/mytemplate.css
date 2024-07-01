@@ -3,26 +3,22 @@
 
 /* 공통 스타일 */
 body {
-    font-family: "Noto Serif JP", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #FFF5F4;
-   background-image: url('imgFolder/upimg.png'), url('imgFolder/downimg.png');
+   background-attachment: scroll;
+	background-color: #FFF5F4;
+	font-family: "Noto Serif JP", serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-image: url('imgFolder/up_page.png'), url('imgFolder/down_page.png');
+	background-position: top center, bottom center;
+	background-repeat: no-repeat;
 }
 
-/* 헤더 스타일 */
-.hw_head {
-    background-position: top center;
-    background-attachment: scroll;
-    background-repeat: no-repeat;
-    padding: 2rem;
-}
 
 .hw_logo {
     z-index: 4;

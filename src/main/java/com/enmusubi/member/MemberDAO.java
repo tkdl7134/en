@@ -86,7 +86,8 @@ public class MemberDAO {
 //				System.out.println("Session m_id: " + session.getAttribute("m_id")); // 로그 출력 (디버깅용)
 
 				// 세션 유효 시간 10분 (600초) 설정
-				session.setMaxInactiveInterval(1800);
+				session.setMaxInactiveInterval(600);
+			System.out.println(session.getMaxInactiveInterval());
 
 				// 로그인 성공 메시지 설정 (선택 사항)
 				System.out.println("로그인 성공");
@@ -619,7 +620,7 @@ public class MemberDAO {
 		if (session != null) {
 			session.invalidate(); // 세션 무효화 (로그아웃)
 		}
-		response.sendRedirect("HSC"); // 메인 페이지로 리다이렉트
+		response.sendRedirect("MainC"); // 메인 페이지로 리다이렉트
 
 	}
 

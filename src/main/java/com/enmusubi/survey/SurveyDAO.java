@@ -391,12 +391,8 @@ public class SurveyDAO {
 	PreparedStatement pstmtGuest = null; 
 	PreparedStatement pstmtAllergy = null;
 	PreparedStatement pstmtParty = null;
-	PreparedStatement pstmtAddress = null;
-	PreparedStatement pstmtSelect = null;
-	ResultSet rs = null; 
 
 	DBManager dbManager = DBManager.getInstance();
-    String sqlSelect = "SELECT e_no FROM s_event WHERE m_id = ?";
 	String sqlGuest = "INSERT INTO s_Guest (e_no, m_id, g_attend, g_guest_type, g_allergy_or, g_message, g_relation)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,?)";
 	String sqlAllergy = "INSERT INTO s_Allergy (e_no, m_id, allergy) VALUES (?, ?, ?)";
@@ -406,21 +402,20 @@ public class SurveyDAO {
 		
         HttpSession session = request.getSession();
         String Id = (String) session.getAttribute("m_id");
+        String eno = (String) session.getAttribute("eno");
         System.out.println("현재 아이디는: " + Id);
-
+        System.out.println("현재 아이디는: " + eno);
+        String eventNumber = "";
 		con = dbManager.connect();
 
         // e_no 가져오기
-        pstmtSelect = con.prepareStatement(sqlSelect);
-        pstmtSelect.setString(1, Id);
-        rs = pstmtSelect.executeQuery();
-        String eventNumber = null;
-        if (rs.next()) {
-        	eventNumber = rs.getString("e_no");
+
+        if (!eno.equals(null)) {
+        	eventNumber = eno;
         	request.setAttribute("e_no", eventNumber);
         }
         
-        if (eventNumber == null) {
+        else {
             throw new SQLException("No e_no found for m_id: " + Id);
         }
 		
@@ -478,10 +473,8 @@ public class SurveyDAO {
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-        dbManager.close(con, pstmtSelect, rs);
         dbManager.close(con, pstmtAllergy, null);
         dbManager.close(con, pstmtParty, null);
-        dbManager.close(con, pstmtAddress, null);
 	}
 
 }
