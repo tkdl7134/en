@@ -20,12 +20,12 @@
   </head>
   <body>
    <!-- 로고 / 네비 -->
-	<div id="yj-main-s2-logo">
+<!-- 	<div id="yj-main-s2-logo">
 	  <img src="product/imgFolder/Logo.png" alt="" />
 	</div>
 	<div id="yj-main-s2-menu">
 	  <img src="product/imgFolder/menu_btn_1.png" alt="" />
-	</div>
+	</div> -->
     <!-- 펀딩설정 page -->
     <div id="je_container-fundingSet">
       <div class="je_pageDeco-top">
@@ -36,120 +36,6 @@
 		</div>
       <div class="je_content-fundingSet">
         <div class="je_default-funding">
-     <%-- 
-       <form id="funding_sofa" action="">
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
-                <img src="" alt="" />
-              </div>
-              <div class="je_detail-title" id="wl_name" value="ソファー">ソファー</div>
-              <div class="je_detail-input">
-                ${fundings[0].wl_price }
-                <input id="wl_price" name="wl_price " type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button id="eno" value="${fundings[0].e_no}">登録</button></div>
-            </div>
-          </div>
-       </form> 
-         
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
-                <img src="product/imgFolder/funding-refrigerator.png" alt="" />
-              </div>
-              <div class="je_detail-title">冷蔵庫</div>
-              <div class="je_detail-input">
-              ${fundings[1].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div>
-          
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img  je_washing-img">
-                <img src="product/imgFolder/funding-washing.png" alt="" />
-              </div>
-              <div class="je_detail-title">洗濯機</div>
-              <div class="je_detail-input">
-              ${fundings[2].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div>
-          
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img je_tv-img">
-                <img src="product/imgFolder/funding-televison.png" alt="" />
-              </div>
-              <div class="je_detail-title">テレビジョン</div>
-              <div class="je_detail-input">
-              ${fundings[3].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div>
-          
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img">
-                <img src="product/imgFolder/funding-desk.png" alt="" />
-              </div>
-              <div class="je_detail-title">机</div>
-              <div class="je_detail-input">
-              ${fundings[4].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div>
-          
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img je_bed-img">
-                <img src="product/imgFolder/funding-bed.png" alt="" />
-              </div>
-              <div class="je_detail-title">ベット</div>
-              <div class="je_detail-input">
-              ${fundings[5].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div>
-          
-          <div class="je_fundingBox">
-            <div class="je_fundingBox-details">
-              <div class="je_fundingBox-redlineL"></div>
-              <div class="je_fundingBox-redlineS"></div>
-              <div class="je_detail-img je_table-img">
-                <img src="product/imgFolder/funding-table.png" alt="" />
-              </div>
-              <div class="je_detail-title je_table-img">テーブル</div>
-              <div class="je_detail-input">
-              ${fundings[6].wl_price }
-                <input type="text" placeholder="円" />
-              </div>
-              <div class="je_detail-button"><button>登録</button></div>
-            </div>
-          </div> --%>
 
           <!-- update / delete -->
           <c:forEach items="${fundings }" var="f">
@@ -177,7 +63,8 @@
          
          <!-- insert -->
           <c:forEach items="${basicNames }" var="b">
-         <form class="fundignRegForm">
+         <form class="fundingRegForm">
+     <input type="hidden" name="eno" value="${je_eventNo }">
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -197,7 +84,8 @@
          </c:forEach>
          
          <!-- insert -->
-         <form class="fundignRegForm">
+         <form class="fundingRegForm">
+      <input type="hidden" name="eno" value="${je_eventNo }">
           <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>

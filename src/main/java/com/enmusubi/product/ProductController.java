@@ -13,7 +13,8 @@ public class ProductController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO.getAllTemplate(request);
-		request.getRequestDispatcher("product/jsp/productMain.jsp").forward(request, response);
+		request.setAttribute("settingPage", "jsp/productMain.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 	}
 
 	

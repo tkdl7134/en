@@ -14,7 +14,7 @@ form {
 }
 
 /* LOGO & NAV */
-
+/* 
 #yj-main-s2-logo {
   z-index: 4;
   width: 150px;
@@ -52,7 +52,7 @@ form {
 #yj-main-s2-menu img {
   width: 100%;
   height: 100%;
-}
+} */
 
 /* invitation page */
 
@@ -63,7 +63,7 @@ form {
   padding: 0;
 }
 .je_content-invitationPreview {
-  /* background-color: aqua; */
+/*   background-color: aqua; */
   width: 85vw;
   height: 100%;
   display: flex;
@@ -72,12 +72,18 @@ form {
   z-index: -1;
 }
 
-/* wish이동 버튼 */
-.je_wishlistSet-btn {
+/* 버튼 */
+.je_previewBtns{
+	position: absolute;
+	top: 50%;
+	left: 25%;
+}
+
+/* .je_wishlistSet-btn {
   position: absolute;
   top: 50%;
   left: 25%;
-}
+} */
 
 /* 초대장 */
 .je_invitation {
@@ -90,6 +96,10 @@ form {
   box-shadow: 0rem 0rem 2rem #696969;
   margin-right: 0.7rem;
   z-index: 0;
+}
+
+.je_invitation:-webkit-scrollbar{	/* 스크롤바숨기기 크롬,사파리, 오페라, 엣지 */
+	display: none;
 }
 
 .je_invitation > img {
@@ -114,13 +124,14 @@ form {
 }
 
 .je_photos {
-  /* background-color: red; */
+/* background-color: red; */
+/* top: 82.5rem;
+   height: 17rem;*/
   display: flex;
   position: absolute;
-  /* border: 1px solid; */
   width: 89%;
-  top: 82.5rem;
-  height: 17rem;
+  top: 80.5rem;
+  height: 19rem;
   z-index: -1;
 }
 .je_invitation-photo2,
@@ -129,30 +140,23 @@ form {
 }
 .je_invitation-photo4 {
   /* background-color: red; */
-  position: absolute;
-  width: 89%;
-  top: 126.5rem;
-  height: 23.5rem;
-  z-index: -1;
+    position: absolute;
+    width: 89%;
+    top: 122.5rem;
+    height: 24.5rem;
+    z-index: -1;
+/*	top: 126.5rem;
+ 	height: 23.5rem; */ 
 }
 .je_invitation-photo1 img,
 .je_invitation-photo2 img,
 .je_invitation-photo3 img,
 .je_invitation-photo4 img {
- /*  width: 100%; */
+ width: 100%;
  height: 100%;
 }
 
-.je_invitation-photo1 img,
-.je_invitation-photo4 img {
-	width: 100%
-}
 
-.je_invitation-photo2 img,
-.je_invitation-photo3 img {
-  display: flex;
-  justify-content: center;
-}
 /* info */
 
 .je_names {

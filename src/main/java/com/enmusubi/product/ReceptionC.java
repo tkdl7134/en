@@ -14,6 +14,7 @@ import com.enmusubi.member.MemberDAO;
 public class ReceptionC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ProductDAO.getInvitation(request);
 		request.getRequestDispatcher("product/jsp/reception.jsp").forward(request, response);
 
 	}

@@ -77,6 +77,8 @@ body {
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
 							placeholder="パスワード" maxlength="20">
+							<button type="button" id="show_pw" class="hs_pwcheck show"></button>
+
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
@@ -93,25 +95,25 @@ body {
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name_sei" class="hs_input name_sei"
-							placeholder="姓" maxlength="10">
-						<input type="text" name="m_name_mei" class="hs_input name_mei"
-							placeholder="名" maxlength="10">
+							placeholder="姓" maxlength="10"> <input type="text"
+							name="m_name_mei" class="hs_input name_mei" placeholder="名"
+							maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
-						<input type="text" name="m_name_kana_sei" class="hs_input kana_sei"
-							placeholder="セイ" maxlength="10">
-						<input type="text" name="m_name_kana_mei" class="hs_input kana_mei"
-							placeholder="メイ" maxlength="10">
+						<input type="text" name="m_name_kana_sei"
+							class="hs_input kana_sei" placeholder="セイ" maxlength="10">
+						<input type="text" name="m_name_kana_mei"
+							class="hs_input kana_mei" placeholder="メイ" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
-						<input type="text" name="m_name_rome_mei" class="hs_input rome_mei"
-							placeholder="Given name" maxlength="10">
-						<input type="text" name="m_name_rome_sei" class="hs_input rome_sei"
-							placeholder="Last name" maxlength="10">
+						<input type="text" name="m_name_rome_mei"
+							class="hs_input rome_mei" placeholder="Given name" maxlength="10">
+						<input type="text" name="m_name_rome_sei"
+							class="hs_input rome_sei" placeholder="Last name" maxlength="10">
 					</div>
 
 					<div class="hs_content-input">
@@ -270,6 +272,7 @@ body {
 	</div>
 	<script>
 	
+	
 	function goBack() {
         window.history.back();
     }
@@ -288,6 +291,10 @@ body {
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("btnReg");
 	  
+	// ID 필드에 대한 입력 제한
+	    document.querySelector('input[name="m_id"]').addEventListener("input", function() {
+	        this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); // 영문자와 숫자만 허용
+	    });
 	  
 	  // 入力フィールドに数字のみ許可
 	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
@@ -304,10 +311,43 @@ body {
 	  });
 
 	  // 入力フィールドに英字のみ許可
-	  document.querySelector('input[name="m_name_rome_mei"], input[name="m_name_rome_sei"]').addEventListener("input", function() {
+	  document.querySelector('input[name="m_name_rome_mei"]').addEventListener("input", function() {
+	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
+	  });
+	  
+	  document.querySelector('input[name="m_name_rome_sei"]').addEventListener("input", function() {
 	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
 	  });
 	});
+	
+	// 비밀번호 입력 필드들
+    var passwordField = document.getElementById('m_pw');
+    var confirmPasswordField = document.getElementById('m_pw_confirm');
+    var showPasswordButton = document.getElementById('show_pw');
+
+    // 유효한 문자 정규식 (알파벳 대소문자, 숫자, 특수기호)
+    var validChars = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+
+    // 입력 필터 함수
+    function filterInput(event) {
+        var input = event.target.value;
+        if (!validChars.test(input)) {
+            event.target.value = input.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+        }
+    }
+
+    // 입력 필드에 이벤트 리스너 추가
+    passwordField.addEventListener('input', filterInput);
+    confirmPasswordField.addEventListener('input', filterInput);
+
+    // 비밀번호 표시/숨기기 기능
+    showPasswordButton.addEventListener('click', function() {
+            var type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+            this.classList.toggle('show', type === 'password');
+            this.classList.toggle('hide', type === 'text');
+        });
 	
 	// 入力フィールドに空白除外
 	document.addEventListener('DOMContentLoaded', (event) => {
@@ -315,6 +355,10 @@ body {
         const m_name_mei = document.querySelector('input[name="m_name_mei"]');
         const m_name_kana_sei = document.querySelector('input[name="m_name_kana_sei"]');
         const m_name_kana_mei = document.querySelector('input[name="m_name_kana_mei"]');
+        const m_email = document.querySelector('input[name="m_email"]');
+        const m_pw = document.querySelector('input[name="m_pw"]');
+        const m_pw_confirm = document.querySelector('input[name="m_pw_confirm"]');
+        const m_id = document.querySelector('input[name="m_id"]');
 
         const removeWhitespace = (e) => {
             e.target.value = e.target.value.replace(/\s/g, '');
@@ -324,6 +368,10 @@ body {
         m_name_mei.addEventListener('input', removeWhitespace);
         m_name_kana_sei.addEventListener('input', removeWhitespace);
         m_name_kana_mei.addEventListener('input', removeWhitespace);
+        m_email.addEventListener('input', removeWhitespace);
+        m_pw.addEventListener('input', removeWhitespace);
+        m_pw_confirm.addEventListener('input', removeWhitespace);
+        m_id.addEventListener('input', removeWhitespace);
     });
 	
 	// input 요소를 선택합니다.
@@ -412,7 +460,6 @@ function register() {
 	    }
 	    
 	 // 아이디 중복 확인이 안 되었을 경우 경고 메시지 표시
-
 		const pw = document.getElementById('m_pw').value;
 		const pwConfirm = document.getElementById('m_pw_confirm').value;
 		
