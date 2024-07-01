@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@
         <div class="hw_container">
             <nav class="hw_menubar">
                 <div class="hw_menubar_item">
-                    <a class="hw_menubar_menu" href="">✿ 会員情報 ✿</a>
+                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMemberUpdate()">✿ 会員情報 ✿</a>
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
                 <div class="hw_menubar_item">
@@ -34,7 +34,7 @@
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
                 <div class="hw_menubar_item">
-                    <a class="hw_menubar_menu" href="">✿ 会リスト ✿</a>
+                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMyMeeting()">✿ 会リスト ✿</a>
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
             </nav>
@@ -47,12 +47,12 @@
                                 <div class="hw_template-img">
                                     <img src="mytemplate/imgFolder/${template.w_img1}" alt="" />
                                     <div class="hw_template-button">
-                                        <button class="hw_content_btn" data-target="#layer2">テンプレート</button>
-                                        <button class="hw_content_btn" onclick="InvitationController">アンケート</button>
-                                        <button class="hw_content_btn">通計</button>
+                                        <button class="hw_content_btn" type="button" onclick="submitToInvitationC('${template.e_no}')">テンプレート</button>
+                                        <button class="hw_content_btn" type="button" onclick="sendToInvitation('${template.e_no}')">アンケート</button>
+                                        <button class="hw_content_btn" type="button" onclick="sendENo('${template.e_no}')">通計</button>
                                     </div>
                                 </div>
-                                <button type="button" class="hw_share_btn" onclick="showPopup('${template.w_img1}')">共有</button>
+                                <button type="button" class="hw_share_btn" onclick="showPopup('${template.e_no}')">共有</button>
                             </div>
                         </c:forEach>
                     </div>
@@ -95,5 +95,6 @@
             <button onclick="copyToClipboard()">URL 복사</button>
         </div>
     </div>
+    <script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
 </body>
 </html>
