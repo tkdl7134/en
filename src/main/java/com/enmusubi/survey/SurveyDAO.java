@@ -411,6 +411,7 @@ public class SurveyDAO {
 		con = dbManager.connect();
 
         // e_no 가져오기
+
         if (eno!=null) {
         	eventNumber = eno;
         	request.setAttribute("e_no", eventNumber);

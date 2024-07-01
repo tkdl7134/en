@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InvitationUpDelC")
-public class InvitationUpDelC extends HttpServlet {
+@WebServlet("/InvitationDelC")
+public class InvitationDelC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// delete 보내기
@@ -18,8 +18,7 @@ public class InvitationUpDelC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// update 보내기
-		ProductDAO.updateInvitaion(request);
+		
 	}
 
 }
