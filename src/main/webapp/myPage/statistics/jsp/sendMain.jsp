@@ -17,6 +17,19 @@ $(document).ready(function() {
         e.preventDefault();
         $('html, body').animate({scrollTop: $('#page_top').offset().top}, 'slow');
     });
+ 
+    $('.hw_template-img').hover(function() {
+        // 현재 호버된 이미지와 가장 가까운 .hw_template-button에 스타일 적용
+        $(this).css('opacity', '1');
+        $(this).siblings('.hw_template-button').css('opacity', '1');
+    }, function() {
+        // 마우스가 이미지에서 벗어났을 때 원래 상태로 돌아가도록 추가
+        $(this).css('opacity', '');
+        $(this).siblings('.hw_template-button').css('opacity', '');
+    });
+    
+    
+    
 });
 
 
@@ -47,6 +60,24 @@ width: 1rem;
         background-position: bottom center;
         bottom: 940px;
       }
+ .hw_content_btn{
+ 
+ font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fff4f4;
+    height: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .hw_template-button{
+ width : 20rem;
+ text-align : center;
+ 
+ }
 </style>
 </head>
 <body id="page_top">
@@ -61,10 +92,10 @@ width: 1rem;
 			<canvas class="canvas" id="canvas1"></canvas>
 		</div>
 	</div>
-	<div id="canvas-content-container">
+	<div style="height : 70rem;" id="canvas-content-container">
 		<div class="canvas-content">
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-			<h1 style="position : static;margin-left: 55.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
+			<h1 style="position : static;margin-left: 53.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
@@ -95,10 +126,10 @@ width: 1rem;
 								<div class="hw_page-content-template">
 									<div class="hw_template-img">
 										<img src="myPage/statistics/imgFolder/${previews.t_preview}" alt="" />
-										<div class="hw_template-button">
-											<button class="hw_content_btn" data-target="#layer2">${previews.m_name }</button>
-											<button class="hw_content_btn" onclick="InvitationController">${previews.r_time }</button>
-											<button class="hw_content_btn" >${previews.r_addr}</button>
+										<div style="display : flex; flex-direction : column;" class="hw_template-button">
+											<div class="hw_content_btn" data-target="#layer2">${previews.m_name }</div>
+											<div class="hw_content_btn" onclick="InvitationController">${previews.r_time }</div>
+											<div class="hw_content_btn" >${previews.r_addr}</div>
 										</div>
 									</div>
 								</div>
