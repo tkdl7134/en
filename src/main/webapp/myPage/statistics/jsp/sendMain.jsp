@@ -65,7 +65,7 @@ width: 1rem;
  font-family: 'Noto Serif JP', serif;
     font-size: 17px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: #fff4f4;
     height: 3rem;
     text-align: center;
@@ -74,7 +74,7 @@ width: 1rem;
     align-items: center;
  }
  .hw_template-button{
- width : 20rem;
+ width : 22.6rem;
  text-align : center;
  
  }
@@ -93,9 +93,10 @@ width: 1rem;
 		</div>
 	</div>
 	<div style="height : 70rem;" id="canvas-content-container">
-		<div class="canvas-content">
+		<div style="display: flex; flex-direction: column; justify-content : center;
+		align-items: center;" class="canvas-content">
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-			<h1 style="position : static;margin-left: 53.5rem; margin-top: -7rem;" class="hw_page_title">会リスト</h1>
+			<div style="position : static; margin-top: 60rem; width: 20rem;text-align : center; font-size : 30px; font-" class="hw_page_title">会リスト</div>
 			<form id="templateForm" action="mytemplateController" method="post">
 				<canvas id="canvas1"></canvas>
 
@@ -127,9 +128,9 @@ width: 1rem;
 									<div class="hw_template-img">
 										<img src="myPage/statistics/imgFolder/${previews.t_preview}" alt="" />
 										<div style="display : flex; flex-direction : column;" class="hw_template-button">
-											<div class="hw_content_btn" data-target="#layer2">${previews.m_name }</div>
-											<div class="hw_content_btn" onclick="InvitationController">${previews.r_time }</div>
-											<div class="hw_content_btn" >${previews.r_addr}</div>
+											<div class="hw_content_btn" data-target="#layer2">主催者：${previews.m_name }</div>
+											<div class="hw_content_btn" onclick="InvitationController">開催日：${previews.r_time }</div>
+											<div class="hw_content_btn" >開催場所：${previews.r_addr}</div>
 										</div>
 									</div>
 								</div>
