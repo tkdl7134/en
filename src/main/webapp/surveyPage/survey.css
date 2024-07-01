@@ -583,3 +583,8 @@ dialog::backdrop {
 	font-size: 1rem !important;
 	color: red;
 }
+
+
+.tg-slide-page, .tg-slide-second-page, .tg-slide-third-page, .tg-slide-forth-page {
+    transition: transform 0.5s ease-in-out;
+}

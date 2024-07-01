@@ -84,7 +84,7 @@
 								</div>
 							</div>
 							<div>
-								<div class="tg-slide-page">
+								<div class="tg-slide-page" id="slide-0">
 									<div class="name-container">
 										<fieldset>
 											<legend>
@@ -182,28 +182,28 @@
 
 									<div class="couple-container">
 										<div>カテゴリー</div>
-										<label> <input name="couple" type="checkbox"
+										<label> <input name="couple" type="checkbox" id="groomCheckbox"
 											value="新郎" /> 新郎側ゲスト
-										</label> <label> <input name="couple" type="checkbox"
+										</label> <label> <input name="couple" type="checkbox" id="brideCheckbox"
 											value="新婦" /> 新婦側ゲスト
 										</label>
 									</div>
 									<div class="relationship-container">
 										<div>作成者との関係</div>
 										<span> <input name="relation" type="checkbox"
-											value="家族" /> 家族
+											value="家族" id="familyCheckbox"/> 家族
 										</span> <span> <input name="relation" type="checkbox"
-											value="親友" /> 親友
+											value="親友" id="friendCheckbox"/> 親友
 										</span> <span> <input name="relation" type="checkbox"
-											value="職場の同僚" /> 職場の同僚
+											value="職場の同僚" id="colleaguesCheckbox"/> 職場の同僚
 										</span> <label> <input name="relation" type="checkbox"
-											value="その他" /> その他
+											value="その他" id="othersCheckbox"/> その他
 										</label>
 									</div>
 								</div>
 							</div>
 
-							<div class="tg-slide-second-page">
+							<div class="tg-slide-second-page" id="slide-1">
 
 								<c:choose>
 									<c:when test="${loginType == 'normal' }">
@@ -382,7 +382,7 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
-							<div class="tg-slide-third-page">
+							<div class="tg-slide-third-page" id="slide-2" >
 
 								<div class="together-container">
 									<div>同伴人数</div>
@@ -455,7 +455,7 @@
 
 							<div>
 
-								<div class="tg-slide-forth-page">
+								<div class="tg-slide-forth-page" id="slide-3">
 
 									<div class="reject-notes-container">
 										<div style="line-height: 3rem; font-size: 1.5rem;">
@@ -724,6 +724,7 @@ if (this.checked) {
     });
 });
 
+
 function openModal() {
 	console.log("activatge");
 	if(handleFormSubmit()=='yes'){
@@ -742,7 +743,6 @@ function openModal() {
 	    }, 10);
 	}
 	else{
-		alert("ddddddddddd");
 	}
 }
 	let formArray = $("#surveyForm").serializeArray();
@@ -755,7 +755,7 @@ function ajaxThing(){
 	    type: "POST",
 	    data: formArray,
 	    success: function(response) {
-	        alert("회원 정보가 성공적으로 업데이트 되었습니다.");
+	        alert("会員情報が正常に更新されました。");
 	        // 추가적인 처리 로직
 	    },
 	    error: function(xhr, status, error) {
@@ -768,33 +768,60 @@ function ajaxThing(){
 
 function handleFormSubmit() {
     let invalidField = null;
-    if (document.getElementById('kanziName').value.trim() === '') {
-        alert('한자 이름을 입력하세요');
-        invalidField = document.getElementById('kanziName');
+    let slideIndex = 0; // slideIndex 변수 선언
+
+    if (document.getElementById('name').value.trim() === '') {
+        alert('名前を入力します');
+        invalidField = document.getElementById('name');
+        $('.survey-input').slick('slickGoTo', 1);
     } else if (document.getElementById('kataName').value.trim() === '') {
-        alert('카타카나 이름을 입력하세요');
+        alert('カタカナ名を入力します');
         invalidField = document.getElementById('kataName');
+        $('.survey-input').slick('slickGoTo', 1);
     }  else if (document.getElementById('romaName').value.trim() === '') {
-        alert('로마자 이름을 입력하세요');
+        alert('ローマ字の名前を入力します');
         invalidField = document.getElementById('romaName');
     }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
-        alert('신랑 또는 신부를 선택하세요');
+        alert('新郎または新婦を選択します');
         invalidField = document.getElementById('groomCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
+    		!document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
+        alert('作成者との関係を選択します');
+        invalidField = document.getElementById('familyCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (document.getElementById('email').value.trim() === '') {
+        alert('メールを入力します');
+        invalidField = document.getElementById('email');
+        $('.survey-input').slick('slickGoTo', 2);
+    }  else if (document.getElementById('phonenum').value.trim() === '') {
+        alert('連絡先を入力します');
+        invalidField = document.getElementById('phonenum');
+        $('.survey-input').slick('slickGoTo', 2);
+    } else if (document.getElementById('postal-code').value.trim() === '' && 
+    		document.getElementById('prefecture').value.trim() === '' && 
+            document.getElementById('city').value.trim() === '' && 
+            document.getElementById('address').value.trim() === '') {
+        alert('住所を入力します');
+        invalidField = document.getElementById('adult');
+        $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('adult').value.trim() === '0' && 
             document.getElementById('child').value.trim() === '0' && 
             document.getElementById('baby').value.trim() === '0') {
-        alert('동반 인원을 입력하세요');
+        alert('同伴人数を入力します');
         invalidField = document.getElementById('adult');
+        $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
-        alert('아레르기 종류를 입력하세요');
+        alert('アレルギーの種類を入力します');
         invalidField = document.getElementById('allergy-type');
+        $('.survey-input').slick('slickGoTo', 3);
     } 
 
     if (invalidField != null) {
-    	console.log('ㅎㅇ')
+        goToSlide(slideIndex); // 해당 슬라이드로 이동
         setTimeout(function() {
             invalidField.focus(); // 포커스 설정
-        }, 0); // 비동기 처리로 포커스 설정
+        }, 500); // 비동기 처리로 포커스 설정
         return 'no';
     } else {
     	return 'yes';
