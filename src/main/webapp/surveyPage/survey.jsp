@@ -662,36 +662,6 @@ if (this.checked) {
     });
 });
 
-        // function validateForm() {
-        //     var Names = document.getElementById("name").value.trim();
-        //     var katanames = document.getElementById("kata-name").value.trim();
-        //     var romanames = document.getElementById("roma-name").value.trim();
-        //     var phonenumber = document.getElementById("phonenum").value.trim();
-        //     var emails = document.getElementById("email").value.trim();
-        //     var postalcode = document.getElementById("postal-code").value.trim();
-        //     var city = document.getElementById("city").value.trim();
-        //     var addressline1 = document.getElementById("address-line1").value.trim();
-
-        //     // 필수 입력 필드 체크
-        //     if (Names === "" || katanames === "" || romanames === "" ||
-        //         phonenumber === "" || emails === "" ||
-        //         postalcode === "" || city === "" || addressline1 === "" ) {
-                
-        //         alert("모든 필드를 입력해주세요.");
-        //         return false; // 폼 제출 방지
-        //     }
-
-        //     return true; // 모든 필드가 채워져 있을 때 폼 제출 허용
-        // }
-
-        // document.getElementById("submitBtn").addEventListener("click", function(event) {
-        //     if (!validateForm()) {
-        //         event.preventDefault();
-        //     } else {
-        //         document.getElementById("surveyForm").submit();
-        //     }
-        // });
-
 function openModal(attemp) {
     const modal = document.getElementById("tg-modal");
     const modalContent = document.querySelector(".tg-modal-container");
@@ -750,6 +720,40 @@ $(document).ready(function() {
         });
     });
 })
+
+function handleFormSubmit(event) {
+    let invalidField = null;
+    if (document.getElementById('kanziName').value.trim() === '') {
+        alert('한자 이름을 입력하세요');
+        invalidField = document.getElementById('kanziName');
+    } else if (document.getElementById('kataName').value.trim() === '') {
+        alert('카타카나 이름을 입력하세요');
+        invalidField = document.getElementById('kataName');
+    }  else if (document.getElementById('romaName').value.trim() === '') {
+        alert('로마자 이름을 입력하세요');
+        invalidField = document.getElementById('romaName');
+    }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
+        alert('신랑 또는 신부를 선택하세요');
+        invalidField = document.getElementById('groomCheckbox');
+    } else if (document.getElementById('adult').value.trim() === '0' && 
+            document.getElementById('child').value.trim() === '0' && 
+            document.getElementById('baby').value.trim() === '0') {
+        alert('동반 인원을 입력하세요');
+        invalidField = document.getElementById('adult');
+    } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
+        alert('아레르기 종류를 입력하세요');
+        invalidField = document.getElementById('allergy-type');
+    }
+
+    if (invalidField) {
+        event.preventDefault(); // 폼 제출 방지
+        setTimeout(function() {
+            invalidField.focus(); // 포커스 설정
+        }, 0); // 비동기 처리로 포커스 설정
+    } else {
+        openModal(true); // 폼 검증 통과 시 모달 열기
+    }
+}
 
     </script>
     
