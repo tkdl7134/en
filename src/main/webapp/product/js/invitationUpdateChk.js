@@ -25,6 +25,11 @@ function call(){
 
 	const helloMessage = document.querySelector("textarea[name='new_helloMessage']");
 	const byeMessage = document.querySelector("textarea[name='new_byeMessage']");
+	
+	const oldphoto1 = document.querySelector("input[name='oldPhoto1']");
+	const oldphoto2 = document.querySelector("input[name='oldPhoto2']");
+	const oldphoto3 = document.querySelector("input[name='oldPhoto3']");
+	const oldphoto4 = document.querySelector("input[name='oldPhoto4']");
 	const photo1 = document.querySelector("input[name='new_photo1']");
 	const photo2 = document.querySelector("input[name='new_photo2']");
 	const photo3 = document.querySelector("input[name='new_photo3']");
@@ -194,36 +199,27 @@ function call(){
 			 return false;
 	}
 // 사진
-	if(isEmpty(photo1) || isEmpty(photo2)|| isEmpty(photo3)|| isEmpty(photo4)){
-		alert("写真を添付してください。");
-			 if (isEmpty(photo1)) {
-			        photo1.focus();
-			 } else if (isEmpty(photo2)){
-				 photo2.focus();
-			 } else if (isEmpty(photo3)){
-				 photo2.focus();
-			 } else {
-			        photo3.focus();
-			 }
-			 return false;
-	}
 	
-	if (isNotType(photo1, "jpg") && isNotType(photo1, "png") && isNotType(photo1, "jpeg")) {
+	if (isNotType(photo1, "jpg") && isNotType(photo1, "png") && isNotType(photo1, "jpeg")
+		&& isNotType(oldphoto1, "jpg") && isNotType(oldphoto1, "png") && isNotType(oldphoto1, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");
 	    photo1.value = "";
 	    return false;
   }
-	if (isNotType(photo2, "jpg") && isNotType(photo2, "png") && isNotType(photo2, "jpeg")) {
+	if (isNotType(photo2, "jpg") && isNotType(photo2, "png") && isNotType(photo2, "jpeg")
+		&& isNotType(oldphoto2, "jpg") && isNotType(oldphoto2, "png") && isNotType(oldphoto2, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");
 	    photo2.value = "";
 	    return false;
   }
-	if (isNotType(photo3, "jpg") && isNotType(photo3, "png") && isNotType(photo3, "jpeg")) {
+	if (isNotType(photo3, "jpg") && isNotType(photo3, "png") && isNotType(photo3, "jpeg")
+		&& isNotType(oldphoto3, "jpg") && isNotType(oldphoto3, "png") && isNotType(oldphoto3, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");
 	    photo3.value = "";
 	    return false;
   }
-	if (isNotType(photo4, "jpg") && isNotType(photo4, "png") && isNotType(photo4, "jpeg")) {
+	if (isNotType(photo4, "jpg") && isNotType(photo4, "png") && isNotType(photo4, "jpeg")
+		&& isNotType(oldphoto4, "jpg") && isNotType(oldphoto4, "png") && isNotType(oldphoto4, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");
 	    photo4.value = "";
 	    return false;

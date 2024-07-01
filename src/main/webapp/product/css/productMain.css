@@ -12,47 +12,6 @@ form{
 	display: contents;
 }
 
-/* LOGO & Nav */
-/* #yj-main-s2-logo {
-  z-index: 4;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 3rem;
-  left: 4rem;
-}
-
-#yj-main-s2-logo img {
-  width: 100%;
-  height: 100%;
-  animation: logo-float 2s ease-in-out infinite;
-}
-
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translate(0, 0%);
-  }
-  50% {
-    transform: translate(0, 5%);
-  }
-}
-
-#yj-main-s2-menu {
-  z-index: 4;
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
-}
-
-#yj-main-s2-menu img {
-  width: 100%;
-  height: 100%;
-}
- */
-
 /* product page */
 
 #je_container-product {
@@ -161,6 +120,9 @@ form{
   color: #fff4f4;
   transition: 0.5s;
 }
+.je_preview-button:not(hover){
+  transition: 0.5s;
+}
 
 .je_make-button {
   background-color: #ff3b3f;
@@ -171,6 +133,9 @@ form{
   background-color: #fff4f4;
   color: #ff3b3f;
   transition: 0.5s;
+}
+.je_make-button:not(hover){
+  transition: 0.5s;	
 }
 
 /* 팝업 */
@@ -261,6 +226,9 @@ a.je_btn-layerClose:hover {
   border: 1px solid #c82626;
   background-color: #fff;
   color: #c82626;
+  transition: 0.5s;
+}
+a.je_btn-layerClose:not(hover){
   transition: 0.5s;
 }
 
