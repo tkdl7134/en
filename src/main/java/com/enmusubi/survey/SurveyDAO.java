@@ -135,7 +135,7 @@ public class SurveyDAO {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
-	        dbManager.close(null, pstmtLineAddressUpdate, null);
+	        dbManager.close(con, pstmtLineAddressUpdate, null);
 	        dbManager.close(con, pstmtLineMemberUpdate, null);
 	    }
 	}
@@ -482,55 +482,59 @@ public class SurveyDAO {
 	//  d-day날짜 표기 및 제한날짜 표기
 
 	public static void ddaywedding(HttpServletRequest request) {
-		
-		Connection con = null;
-		PreparedStatement pstmtDday = null; 
-		ResultSet rs = null; 
+	    Connection con = null;
+	    PreparedStatement pstmtDday = null;
+	    ResultSet rs = null;
 	    DBManager dbManager = DBManager.getInstance();
 
-		try {
-			String eventNumber = (String) request.getSession().getAttribute("eno");
-	           if (eventNumber == null) {
-	                System.out.println("eventNumber is null");
-	            }		    
-	        
-	        //String toEventNumber = "74";
+	    try {
+	        String eventNumber = (String) request.getSession().getAttribute("eno");
+
 
 	        String sqlSelect = "SELECT r_time FROM s_reception WHERE e_no = ? AND r_type= 'wedding'";
-	            	            
+
 	        con = dbManager.connect();
 	        System.out.println(eventNumber);
 	        pstmtDday = con.prepareStatement(sqlSelect);
 	        pstmtDday.setString(1, eventNumber);
 	        rs = pstmtDday.executeQuery();
-	        
-			invitaitonDTO inviteInfo = new invitaitonDTO();
 
 	        if (rs.next()) {
-				Timestamp weddingDT = rs.getTimestamp("r_time");
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
-				String weddingDay = dateFormat.format(weddingDT);
-				inviteInfo.setWeddingDay(weddingDay);
-	        	request.setAttribute("weddingDay", weddingDay);
-				
-				// 40일 전 날짜 계산	
-				Calendar calender = Calendar.getInstance();
-				calender.setTime(weddingDT);
-				calender.add(Calendar.DAY_OF_YEAR, -40);
-				Timestamp minus40DaysDT = new Timestamp(calender.getTime().getTime());
-				String minus40days = dateFormat.format(minus40DaysDT);
-				request.setAttribute("minus40Days", minus40days);
+	            Timestamp weddingDT = rs.getTimestamp("r_time");
+	            if (weddingDT == null) {
+	                request.setAttribute("minus40Days", "日付 未定");
+	                System.out.println("웨딩 날짜는: 날짜 미정");
+	            } else {
+	                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日");
+	                String weddingDay = dateFormat.format(weddingDT);
+	                request.setAttribute("weddingDay", weddingDay);
 
-		        System.out.println("웨딩 날짜는: " + weddingDay);
-                System.out.println("40일 전 날짜는: " + minus40days);
+	                // 40일 전 날짜 계산    
+	                Calendar calendar = Calendar.getInstance();
+	                calendar.setTime(weddingDT);
+	                calendar.add(Calendar.DAY_OF_YEAR, -40);
+	                Timestamp minus40DaysDT = new Timestamp(calendar.getTime().getTime());
+	                String minus40days = dateFormat.format(minus40DaysDT);
+	                request.setAttribute("minus40Days", minus40days);
 
-	        }	
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbManager.close(con, pstmtDday, rs);
-		}
-		
+	                System.out.println("웨딩 날짜는: " + weddingDay);
+	                System.out.println("40일 전 날짜는: " + minus40days);
+	            }
+	        } else {
+	            request.setAttribute("minus40Days", "日付 未定");
+	            System.out.println("ResultSet is empty, 웨딩 날짜는: 날짜 미정");
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (pstmtDday != null) pstmtDday.close();
+	            if (con != null) con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 }
