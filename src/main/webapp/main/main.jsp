@@ -59,59 +59,37 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="yj-main-s2-list">
+      
         <div class="yj-main-s2-img">
-<<<<<<< HEAD
           <img
             src="main/imgFolder/yj-main-s2-img1.png"
             alt="섹션2 슬라이드img1"
           />
         </div>
-
         <div class="yj-main-s2-img">
           <img
             src="main/imgFolder/yj-main-s2-img2.png"
             alt="섹션2 슬라이드img2"
           />
         </div>
-
         <div class="yj-main-s2-img">
           <img
             src="main/imgFolder/yj-main-s2-img3.png"
             alt="섹션2 슬라이드img3"
           />
         </div>
-
         <div class="yj-main-s2-img">
           <img
             src="main/imgFolder/yj-main-s2-img4.png"
             alt="섹션2 슬라이드img4"
           />
-=======
-          <img src="main/imgFolder/yj-main-s2-img1.png" alt="섹션2 슬라이드img1" />
         </div>
-
         <div class="yj-main-s2-img">
-          <img src="main/imgFolder/yj-main-s2-img2.png" alt="섹션2 슬라이드img2" />
-        </div>
-
-        <div class="yj-main-s2-img">
-          <img src="main/imgFolder/yj-main-s2-img3.png" alt="섹션2 슬라이드img3" />
-        </div>
-
-        <div class="yj-main-s2-img">
-          <img src="main/imgFolder/yj-main-s2-img4.png" alt="섹션2 슬라이드img4" />
->>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
-        </div>
-
-        <div class="yj-main-s2-img">
-          ii
-<<<<<<< HEAD
           <img
             src="main/imgFolder/yj-main-s2-img5.png"
             alt="섹션2 슬라이드img5"
           />
         </div>
-
         <div class="yj-main-s2-img">
           <img
             src="main/imgFolder/yj-main-s2-img6.png"
@@ -123,24 +101,15 @@ pageEncoding="UTF-8"%>
             src="main/imgFolder/yj-main-s2-img7.png"
             alt="섹션2 슬라이드img7"
           />
-=======
-          <img src="main/imgFolder/yj-main-s2-img5.png" alt="섹션2 슬라이드img5" />
-        </div>
-
-        <div class="yj-main-s2-img">
-          <img src="main/imgFolder/yj-main-s2-img6.png" alt="섹션2 슬라이드img6" />
-        </div>
-        <div class="yj-main-s2-img">
-          <img src="main/imgFolder/yj-main-s2-img7.png" alt="섹션2 슬라이드img7" />
->>>>>>> 8678b9ce1a9f8ba0e6815baa180a066f19725957
         </div>
       </div>
     </div>
 
-    <!-- Section 3 -->
+<!-- Section 3 -->
     <div class="yj-main-section" id="yj-main-s3">
 
       <div class="yj-main-logo">
+ 
         <a href="#" class="mainLogo"
           ><img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고"
         /></a>
@@ -187,6 +156,7 @@ pageEncoding="UTF-8"%>
         <div class="yj-main-s4-cursor yj-main-s4-cursor-none">
           <img alt="" src="main/imgFolder/yj-main-s4-click.png" />
         </div>
+
         <div class="yj-main-s4-container" id="item10to4">
           <img
             src="main/imgFolder/yj-main-s4-img10.png"
