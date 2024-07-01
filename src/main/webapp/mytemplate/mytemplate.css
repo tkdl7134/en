@@ -171,7 +171,7 @@ main {
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 15rem;
+    padding: 9rem;
     border-radius: 30%;
 }
 
@@ -191,7 +191,10 @@ main {
     background-color: #fff4f4;
     color: #5c5c5c;
 }
-
+.hw_content_btn:hover {
+    background-color: #ff3b3f;
+    color: white; /* 텍스트 색상도 변경하고 싶다면 추가 */
+}
 .hw_template-img {
     display: flex;
     position: relative;
@@ -241,16 +244,17 @@ main {
 
 /* 팝업 창 스타일 */
 .popup {
-    display: none;
+      display: none;
     position: fixed;
     z-index: 3;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
+    height: 130px;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    background-color: white;
+    background-color: #FFF5F4;
     border-radius: 10px;
 }
 
@@ -266,19 +270,28 @@ main {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin-top: 12%;
 }
 
 .popup-content button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+     background: none;
     border: none;
-    border-radius: 5px;
+    margin: 0.5rem auto;
     cursor: pointer;
+    display: block;
+    width: 7rem;
+    height: 1.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 0.1rem solid #c82626;
+    border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .popup-content button:hover {
-    background-color: #0056b3;
+  background-color: #ff3b3f;
+    color: #fff4f4;
 }
 
 .close-btn {

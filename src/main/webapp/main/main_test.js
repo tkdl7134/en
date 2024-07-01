@@ -4,11 +4,6 @@ const sections = document.querySelectorAll(".yj-main-section");
 let currentSectionIndex = 0;
 let isThrottled = false;
 
-sections.forEach((e) => {
-	console.log(e);
-	console.log(sections.length);
-})
-
 function throttle(callback, time) {
 	if (!isThrottled) {
 		callback();
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			});
 		});
 	})
-});
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // 메뉴 버튼 클릭 이벤트
@@ -122,6 +116,21 @@ menus.forEach((menu) => {
 const s2CardConAll = document.querySelectorAll(".yj-main-section");
 const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
 
+// s2CardConAll.forEach((card) => {
+//   card.addEventListener("mouseenter", function (event) {
+//     console.log(111);
+//     s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
+//     card.style.cursor = "none";
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+//   });
+
+//   card.addEventListener("mouseleave", function () {
+//     console.log(222);
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+//   });
+// });
 const centerX = window.innerWidth / 2;
 const centerY = window.innerHeight / 2;
 const radiusX = 560;
@@ -133,11 +142,11 @@ const mouseMoveHandler = (event) => {
 	const dy = mouseY - centerY;
 
 
-	if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
-		s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
-		s2CardConAll[1].style.cursor = "none";
-		s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
-		s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+  if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
+    s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
+    s2CardConAll[1].style.cursor = "none";
+    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
 
 		s2Mouseicn.style.left = mouseX + "px";
 		s2Mouseicn.style.top = mouseY + "px";
@@ -152,29 +161,29 @@ const mouseMoveHandler = (event) => {
 // 배경 이미지  슬라이드
 function slickStart() {
 
-	$(".yj-main-s2-bg").css(
-		"background-image",
-		"url('main/imgFolder/yj-main-s2-img1.png')"
-	);
-	// 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
-	$(".yj-main-s2-list").on(
-		"beforeChange",
-		function(event, slick, currentSlide, nextSlide) {
-			console.log(currentSlide);
-			// 각 슬라이드의 배경 이미지 URL을 설정할 배열
-			var bgImageUrls = [
-				"main/main/imgFolder/yj-main-s2-img1.png",
-				"main/main/imgFolder/yj-main-s2-img2.png",
-				"main/main/imgFolder/yj-main-s2-img3.png",
-				"main/imgFolder/yj-main-s2-img4.png",
-				"main/imgFolder/yj-main-s2-img5.png",
-				"main/imgFolder/yj-main-s2-img6.png",
-				"main/imgFolder/yj-main-s2-img7.png",
-				// 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
-			];
-			// 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
-			var nextBackgroundImage = bgImageUrls[nextSlide];
-			console.log(nextBackgroundImage);
+  $(".yj-main-s2-bg").css(
+    "background-image",
+    "url('main/imgFolder/yj-main-s2-img1.png')"
+  );
+  // 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
+  $(".yj-main-s2-list").on(
+    "beforeChange",
+    function (event, slick, currentSlide, nextSlide) {
+      console.log(currentSlide);
+      // 각 슬라이드의 배경 이미지 URL을 설정할 배열
+      var bgImageUrls = [
+        "main/main/imgFolder/yj-main-s2-img1.png",
+        "main/main/imgFolder/yj-main-s2-img2.png",
+        "main/main/imgFolder/yj-main-s2-img3.png",
+        "main/imgFolder/yj-main-s2-img4.png",
+        "main/imgFolder/yj-main-s2-img5.png",
+        "main/imgFolder/yj-main-s2-img6.png",
+        "main/imgFolder/yj-main-s2-img7.png",
+        // 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
+      ];
+      // 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
+      var nextBackgroundImage = bgImageUrls[nextSlide];
+      console.log(nextBackgroundImage);
 
 			// 배경 이미지 변경
 			$(".yj-main-s2-bg").css(
@@ -227,8 +236,7 @@ $(document).ready(function() {
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 3
 
-/*let wow;
-
+let wow;
 
 function textAni() {
 	const text = textElement.dataset.text;
@@ -248,40 +256,11 @@ function textAni() {
 			clearInterval(wow);
 		}
 	}, 150);
-}
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const textElements = document.querySelectorAll('.vertical-text');
-  
-  let delay = 0;
-
-  textElements.forEach((textElement, index) => {
-    setTimeout(() => {
-      textAni(textElement);
-    }, delay);
-    delay += textElement.dataset.text.length * 200 + 500; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
-  });
-});
-
-function textAni(textElement) {
-  const text = textElement.dataset.text;
-  let i = 0;
-
-  const wow = setInterval(() => {
-    if (i < text.length) {
-      const span = document.createElement("span");
-      span.textContent = text[i];
-      i++;
-      textElement.appendChild(span);
-    } else {
-      clearInterval(wow);
-    }
-  }, 200);
-}
+};
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
+
 // 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
 const section4 = document.getElementById("yj-main-s4");
 const clickableImages = document.querySelectorAll(".clickable-image");
@@ -358,23 +337,23 @@ const s6CardConAll = document.querySelectorAll("#yj-main-s6");
 const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
 
 s6CardConAll.forEach((card) => {
-	card.addEventListener("mouseenter", function(event) {
-		s6Mouseicn.querySelector("img").src =
-			"main/imgFolder/yj-main-default-scroll.png";
-		card.style.cursor = "none";
-		s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
-		s6Mouseicn.classList.add("yj-main-s6-cursor-block");
-	});
+  card.addEventListener("mouseenter", function(event) {
+    s6Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-default-scroll.png";
+    card.style.cursor = "none";
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-block");
+  });
 
-	card.addEventListener("mouseleave", function() {
-		s6Mouseicn.classList.remove("yj-main-s6-cursor-block");
-		s6Mouseicn.classList.add("yj-main-s6-cursor-none");
-	});
+  card.addEventListener("mouseleave", function() {
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-block");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-none");
+  });
 });
 
 document.addEventListener("mousemove", (event) => {
-	const mouseX = event.clientX;
-	const mouseY = event.clientY;
-	s6Mouseicn.style.left = mouseX + "px";
-	s6Mouseicn.style.top = mouseY + "px";
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  s6Mouseicn.style.left = mouseX + "px";
+  s6Mouseicn.style.top = mouseY + "px";
+});
 });

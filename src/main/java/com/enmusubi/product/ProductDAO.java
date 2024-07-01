@@ -282,7 +282,8 @@ public class ProductDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, (int) request.getAttribute("je_eventNo"));
+			int intEno=Integer.parseInt(request.getParameter("eno"));
+			pstmt.setInt(1, intEno);
 			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
 
@@ -311,7 +312,7 @@ public class ProductDAO {
 
 				System.out.println(inviteMSG);
 
-				inviteInfo = new invitaitonDTO((int) request.getAttribute("je_eventNo"), rs.getInt("t_pk"),
+				inviteInfo = new invitaitonDTO((int) intEno, rs.getInt("t_pk"),
 						rs.getString("t_template"), rs.getString("w_groom"), rs.getString("w_bride"), inviteMSG, byeMSG,
 						rs.getString("w_img1"), rs.getString("w_img2"), rs.getString("w_img3"), rs.getString("w_img4"),
 						weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time,

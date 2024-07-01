@@ -63,7 +63,8 @@ body {
 						class="hs_input" maxlength="20">
 					<div class="hs_login pw">パスワード</div>
 					<input type="password" id="m_pw" name="m_pw" placeholder="パスワード"
-						class="hs_input" maxlength="20"><br>
+						class="hs_input" maxlength="20">
+						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					<button type="submit" class="hs_btn-login">ログイン</button>
 				</div>
 			</div>
@@ -78,8 +79,42 @@ body {
 		</div>
 	</div>
 
-
 	<script>
+	
+	document.addEventListener('DOMContentLoaded', function() {
+	    // ID 필드에 대한 입력 제한
+	    document.querySelector('input[name="m_id"]').addEventListener("input", function() {
+	        this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); // 영문자와 숫자만 허용
+	    });
+	
+	 // 비밀번호 입력 필드들
+        var passwordField = document.getElementById('m_pw');
+        var showPasswordButton = document.getElementById('show_pw');
+
+        // 유효한 문자 정규식 (알파벳 대소문자, 숫자, 특수기호)
+        var validChars = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+
+        // 입력 필터 함수
+        function filterInput(event) {
+            var input = event.target.value;
+            if (!validChars.test(input)) {
+                event.target.value = input.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+            }
+        }
+
+        // 입력 필드에 이벤트 리스너 추가
+        passwordField.addEventListener('input', filterInput);
+
+        // 비밀번호 표시/숨기기 기능
+        showPasswordButton.addEventListener('click', function() {
+            var type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            this.classList.toggle('show', type === 'password');
+            this.classList.toggle('hide', type === 'text');
+        });
+    });
+	
+	
 		$(document).ready(function() {
 			$('#loginForm').submit(function(event) {
 				event.preventDefault(); // 기본 폼 제출 방지
@@ -189,6 +224,8 @@ body {
 
 		// 페이지가 로드될 때 값을 불러옴
 		window.addEventListener('load', loadFromSessionStorage);
+		
+		
 	</script>
 
 </body>
