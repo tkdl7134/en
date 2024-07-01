@@ -24,7 +24,7 @@ window.onload = function(){
 
 
 $(document).ready(function() {
-	$('.fundignRegForm').submit(function(event) {
+	$('.fundingRegForm').submit(function(event) {
 		event.preventDefault(); // 기본제출동작방지
 
 		var formData = $(this).serialize(); // 폼 데이터 직렬화

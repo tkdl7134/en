@@ -39,7 +39,7 @@
 		<div id="canvas-content-container">
 			<div class="jw-w-big-container">
 				<div class="jw-w-container">
-					<div class="jw-w-img-box" onclick="location.href='FundingSettingC'">
+					<div class="jw-w-img-box" onclick="location.href='FundingSettingC?eno=${sdto.eno}'">
 						<div class="jw-w-tex">
 							<h3>ファンディング</h3>
 							<h4>の現状</h4>

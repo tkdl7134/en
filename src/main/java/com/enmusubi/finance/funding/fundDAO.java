@@ -132,4 +132,17 @@ public class fundDAO {
 		return false;
 
 	}
+
+	public static String IDTypeCheck(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String SessionID = (String)session.getAttribute("m_id");
+		String judgeString = SessionID.substring(0,5);
+		if(judgeString.equals("LINE_")) {
+			return "line";
+		}
+		else {
+			return "normal";
+		}
+		
+	}
 }

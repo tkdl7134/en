@@ -13,7 +13,8 @@ public class InvitationUpdateC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO.getOneInvitation(request);
-		request.getRequestDispatcher("product/jsp/invitationUpdate.jsp").forward(request, response);
+		request.setAttribute("settingPage", "jsp/invitationUpdate.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 	}
 
 	
@@ -21,7 +22,8 @@ public class InvitationUpdateC extends HttpServlet {
 		ProductDAO.updateInvitaion(request);
 		
 		ProductDAO.getInvitation(request); // eno넘겨주기
-		request.getRequestDispatcher("product/jsp/invitationPreview.jsp").forward(request, response);
+		request.setAttribute("settingPage", "jsp/invitationPreview.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 	}
 
 }

@@ -13,7 +13,8 @@ public class FundingSettingC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	 
 		FundingSettingDAO.getfundingInfo(request);
-		request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
+		request.setAttribute("settingPage", "jsp/fundingSetting.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

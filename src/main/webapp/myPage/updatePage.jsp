@@ -97,6 +97,7 @@ body {
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
 							placeholder="パスワード" maxlength="20">
+							<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
@@ -319,6 +320,11 @@ body {
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("btnReg");
 	  
+	// ID 필드에 대한 입력 제한
+	    document.querySelector('input[name="m_id"]').addEventListener("input", function() {
+	        this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); // 영문자와 숫자만 허용
+	    });
+	  
 	  // 入力フィールドに数字のみ許可
 	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
 	    input.addEventListener("input", function() {
@@ -342,6 +348,35 @@ body {
 		    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
 		  });
 		});
+	
+	// 비밀번호 입력 필드들
+    var passwordField = document.getElementById('m_pw');
+    var confirmPasswordField = document.getElementById('m_pw_confirm');
+    var showPasswordButton = document.getElementById('show_pw');
+
+    // 유효한 문자 정규식 (알파벳 대소문자, 숫자, 특수기호)
+    var validChars = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+
+    // 입력 필터 함수
+    function filterInput(event) {
+        var input = event.target.value;
+        if (!validChars.test(input)) {
+            event.target.value = input.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+        }
+    }
+
+    // 입력 필드에 이벤트 리스너 추가
+    passwordField.addEventListener('input', filterInput);
+    confirmPasswordField.addEventListener('input', filterInput);
+
+    // 비밀번호 표시/숨기기 기능
+    showPasswordButton.addEventListener('click', function() {
+            var type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+            this.classList.toggle('show', type === 'password');
+            this.classList.toggle('hide', type === 'text');
+        });
 	
 	// 入力フィールドに空白除外
 	document.addEventListener('DOMContentLoaded', (event) => {
