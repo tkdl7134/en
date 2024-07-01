@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,23 +19,14 @@
 <body>
 	<div class="survey-container">
 		<div class="survey-container-img">
-			<img src="surveyPage/imgFolder/surveyBackground-img.png" alt="surveyBackground-img"
-					style="width: 100%; height: 100%;
-					position: absolute;
-					display: flex;
-					width: 100%;
-					flex-grow: 1;
-					flex-direction: column;
-					height: 100vh;
-					z-index: 1;
-					pointer-events: none;
-">
+			<img src="surveyPage/imgFolder/surveyBackground-img.png"
+				alt="surveyBackground-img"
+				style="width: 100%; height: 100%; position: absolute; display: flex; width: 100%; flex-grow: 1; flex-direction: column; height: 100vh; z-index: 1; pointer-events: none;">
 		</div>
 		<header class="tk_survey_header">
 			<div class="top-left">
 				<img src="surveyPage/imgFolder/logo.png" alt="logo"
-					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;
-" />
+					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;" />
 			</div>
 
 			<div class="middle-title">
@@ -52,113 +43,140 @@
 			<div class="main-content">
 				<div class="main-content-words">
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
-            		<c:choose>
-               			<c:when test="${minus40Days == '日付 未定'}">
-                    		<div style="margin-top: 0.5rem">結婚式の日付はまだ未確定です。</div>
-                		</c:when>
-                		<c:otherwise>
-                    		<div style="margin-top: 0.5rem">${minus40Days}までにご返信をお願いいたします。</div>
-                		</c:otherwise>
-            		</c:choose>            		
-            		<div>
+					<c:choose>
+						<c:when test="${minus40Days == '日付 未定'}">
+							<div style="margin-top: 0.5rem; font-weight: bold">結婚式の日付はまだ未確定です。</div>
+						</c:when>
+						<c:otherwise>
+							<div style="margin-top: 0.5rem; font-weight: bold">${minus40Days}までにご返信をお願いいたします。</div>
+						</c:otherwise>
+					</c:choose>
+					<div>
 						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
 					</div>
 				</div>
 
 				<form action="SurveyC" method="post" id="surveyForm">
-
 					<div class="tg-include-btu-page">
-
 						<div class="slider-navigation">
 							<button type="button" class="prev-slide"><</button>
 						</div>
-
 						<div class="survey-input">
-
 							<div>
-
 								<div class="recMain-container">
 									<div class="entry-box-img" data-selccted="yes">
 										<div class="texts">
 											<div>出席</div>
 										</div>
-										<img class="lines" alt="" src="surveyPage/imgFolder/yesline.png">
-										<input type="hidden" name="attendance" value="出席">
+										<img class="lines" alt=""
+											src="surveyPage/imgFolder/yesline.png"> <input
+											type="hidden" name="attendance" value="出席">
 									</div>
 									<div class="no-entry-box-img" data-selccted="no">
 										<div class="texts">
 											<div>欠席</div>
 										</div>
-										<img class="lines" alt="" src="surveyPage/imgFolder/noline.png">
-										<input type="hidden" name="attendance" value="欠席">
+										<img class="lines" alt=""
+											src="surveyPage/imgFolder/noline.png"> <input
+											type="hidden" name="attendance" value="欠席">
 									</div>
-
 								</div>
-
-
 							</div>
-
 							<div>
 								<div class="tg-slide-page">
-
-                					<div class="name-container">
+									<div class="name-container">
 										<fieldset>
 											<legend>
 												<div>
-													<img src="surveyPage/imgFolder/flowersymbol.jpg" alt="flowersymbol"
-														style="width: 100%; height: 100%" />
+													<img src="surveyPage/imgFolder/flowersymbol.jpg"
+														alt="flowersymbol" style="width: 100%; height: 100%" />
 												</div>
 												&nbsp&nbsp&nbsp
 												<div style="font-size: 2rem;">お名前</div>
 											</legend>
-									<c:choose>
-										<c:when test="${loginType == 'normal' }">
-										    <c:set var="members" value="${members }" />
-											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">名前</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="First Name"
-												class="name-input" id="name" name="name" required value="${members.m_first_name}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
-												class="name-input" id="name" name="name" required value="${members.m_last_name}" disabled="disabled" />
-											</label><br> <label class="kata-container">
-												<div style="font-size: 1.5rem;">カタカナ</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="First Name"
-												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder="Last Name"
-												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" disabled="disabled" />
-											</label><br> <label class="eng-container">
-												<div style="font-size: 1.5rem;">ローマ字</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
-												<input style="font-size: 1.2rem;" type="text"
-												placeholder="First Name" class="name-input" id="romaName" name="roma-name"
-												required disabled="disabled" value="${members.m_first_name_rome}" />
-											</label>
-										 </c:when>
-										 <c:otherwise>
-											<label class="kanzi-container">
-												<div style="font-size: 1.5rem;">名前</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="姓"
-												class="name-input" id="name" name="name" required value="${members.m_first_name}" /> 
-												<input style="font-size: 1.2rem;" type="text" placeholder="名"
-												class="name-input" id="name" name="name" required value="${members.m_last_name}" />
-											</label><br> <label class="kata-container">
-												<div style="font-size: 1.5rem;">カタカナ</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="せい"
-												class="name-input" id="kataName" name="kata-name" required value="${members.m_first_name_kana}" /> 
-												<input style="font-size: 1.2rem;" type="text"  placeholder="めい"
-												class="name-input" id="kataName" name="kata-name" required value="${members.m_last_name_kana}" />
-											</label><br> <label class="eng-container">
-												<div style="font-size: 1.5rem;">ローマ字</div> 
-												<input style="font-size: 1rem;" type="text" placeholder="Last Name"
-												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}"/> 
-												<input style="font-size: 1.2rem;" type="text"
-												placeholder="First Name" id="romaName" class="name-input" name="roma-name"
-												required value="${members.m_first_name_rome}" />
-											</label>
-										 </c:otherwise>
-										</c:choose>									 
+											<c:choose>
+												<c:when test="${loginType == 'normal' }">
+													<c:set var="members" value="${members }" />
+													<label class="kanzi-container">
+														<div style="font-size: 1.5rem;">名前</div> <input
+														style="font-size: 1rem;" type="text"
+														placeholder="First Name" class="name-input" id="name"
+														name="name" required value="${members.m_first_name}"
+														disabled="disabled" /> <input style="font-size: 1.2rem;"
+														type="text" placeholder="Last Name" class="name-input"
+														id="name" name="name" required
+														value="${members.m_last_name}" disabled="disabled" />
+													</label>
+													<br>
+													<label class="kata-container">
+														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														style="font-size: 1rem;" type="text"
+														placeholder="First Name" class="name-input" id="kataName"
+														name="kata-name" required
+														value="${members.m_first_name_kana}" disabled="disabled" />
+														<input style="font-size: 1.2rem;" type="text"
+														placeholder="Last Name" class="name-input" id="kataName"
+														name="kata-name" required
+														value="${members.m_last_name_kana}" disabled="disabled" />
+													</label>
+													<br>
+													<label class="eng-container">
+														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														style="font-size: 1rem;" type="text"
+														placeholder="Last Name" class="name-input" id="romaName"
+														name="roma-name" required
+														value="${members.m_last_name_rome}" disabled="disabled" />
+														<input style="font-size: 1.2rem;" type="text"
+														placeholder="First Name" class="name-input" id="romaName"
+														name="roma-name" required disabled="disabled"
+														value="${members.m_first_name_rome}" />
+													</label>
+													<c:if test="${not empty members.m_first_name}">
+														<div class="emergency-words">❂
+															情報の修正が必要な場合は、マイページにてお願いします</div>
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													<label class="kanzi-container">
+														<div style="font-size: 1.5rem;">名前</div> <input
+														style="font-size: 1rem;" type="text" placeholder="姓"
+														class="name-input" id="name" name="name" required
+														value="${members.m_first_name}" disabled="disabled" /> <input
+														style="font-size: 1.2rem;" type="text" placeholder="名"
+														class="name-input" id="name" name="name" required
+														value="${members.m_last_name}" disabled="disabled" />
+													</label>
+													<br>
+													<label class="kata-container">
+														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														style="font-size: 1rem;" type="text" placeholder="せい"
+														class="name-input" id="kataName" name="kata-name" required
+														value="${members.m_first_name_kana}" disabled="disabled" />
+														<input style="font-size: 1.2rem;" type="text"
+														placeholder="めい" class="name-input" id="kataName"
+														name="kata-name" required
+														value="${members.m_last_name_kana}" disabled="disabled" />
+													</label>
+													<br>
+													<label class="eng-container">
+														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														style="font-size: 1rem;" type="text"
+														placeholder="Last Name" class="name-input" id="romaName"
+														name="roma-name" required
+														value="${members.m_last_name_rome}" disabled="disabled" />
+														<input style="font-size: 1.2rem;" type="text"
+														placeholder="First Name" id="romaName" class="name-input"
+														name="roma-name" required
+														value="${members.m_first_name_rome}" disabled="disabled" />
+													</label>
+													</br>
+													<c:if test="${not empty members.m_first_name}">
+														<div class="emergency-words">❂
+															情報の修正が必要な場合は、マイページにてお願いします</div>
+													</c:if>
+												</c:otherwise>
+											</c:choose>
 										</fieldset>
 									</div>
 
@@ -182,181 +200,208 @@
 											value="その他" /> その他
 										</label>
 									</div>
-
 								</div>
 							</div>
 
 							<div class="tg-slide-second-page">
-						
-						<c:choose>
-							<c:when test="${loginType == 'normal' }">
-								<c:set var="members" value="${members}" />
-            					<div class="contact-container">
-										<div>
-											メールアドレス<input style="font-size: 1.2rem;" type="email"
-												class="contact-input" id="email" name="email"
-												placeholder="enmusubi@gmail.com" required disabled="disabled" value="${members.m_email}" />
-										</div>
-										<div>
-											電話番号 <input style="font-size: 1.2rem;" type="number"
-												class="contact-input" id="phonenum" name="phonenum"
-												placeholder="000-0000-0000" required disabled="disabled" value="${members.m_phone}" />
-										</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-            					<div class="contact-container">
-										<div>
-											メールアドレス<input style="font-size: 1.2rem;" type="email"
-												class="contact-input" id="email" name="email"
-												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
-										</div>
-										<div>
-											電話番号 <input style="font-size: 1.2rem;" type="number"
-												class="contact-input" id="phonenum" name="phonenum"
-												placeholder="000-0000-0000" required value="${members.m_phone}" />
-										</div>
-								</div>							
-							</c:otherwise>
-						</c:choose>
-						
-						<c:choose>
-							<c:when test="${loginType == 'normal' }">
-								<c:set var="members" value="${members }" />
-								<div class="address-container">
-									<fieldset>
-										<legend>
-											<div>
-												<img src="surveyPage/imgFolder/homeicon.png" alt="flowersymbol"
-													style="width: 100%; height: 100%" />
-											</div>
-											&nbsp&nbsp&nbsp
-											<div style="font-size: 2rem;">住所入力フォーム</div>
-										</legend>
-										<div class="address-contents-container">
-											<div>
-												<div>
-													<span for="postal-code">郵便番号</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text" id="postal-code"
-														name="postal-code" placeholder="123-4567" required value="${members.a_postcode}" disabled="disabled"/>
-												</div>
-											</div>
-											<div class="address-contents-contaoner">
-												<div>
-													<span for="prefecture">都道府県</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" id="prefecture"
-														name="prefecture" required value="${members.a_prefecture}" disabled="disabled">
-												</div>
-											</div>
-											<div class="address-contents-container">
-												<div>
-													<span for="city">市区町村</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text" id="city"
-														name="city" placeholder="新宿区" required value="${members.a_city }" disabled="disabled" />
-												</div>
-											</div>
 
-											<div class="address-contents-container">
-												<div>
-													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
-												</div>
-												<div>
-													<textarea style="font-size: 1.4rem;"
-														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
-														required disabled="disabled">${members.a_address }</textarea>
-												</div>
-											</div>
-									</fieldset>
-									</div>
-							</c:when>		
-							<c:otherwise>
-								<div class="address-container">
-									<fieldset>
-										<legend>
+								<c:choose>
+									<c:when test="${loginType == 'normal' }">
+										<c:set var="members" value="${members}" />
+										<div class="contact-container">
 											<div>
-												<img src="surveyPage/imgFolder/homeicon.png" alt="flowersymbol"
-													style="width: 100%; height: 100%" />
+												メールアドレス<input style="font-size: 1.2rem;" type="email"
+													class="contact-input" id="email" name="email"
+													placeholder="enmusubi@gmail.com" required
+													disabled="disabled" value="${members.m_email}" />
 											</div>
-											&nbsp&nbsp&nbsp
-											<div style="font-size: 2rem;">住所入力フォーム</div>
-										</legend>
-										<div class="address-contents-container">
 											<div>
-												<div>
-													<span for="postal-code">郵便番号</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text" id="postal-code"
-														name="postal-code" placeholder="123-4567" required value="${members.a_city }"/>
-												</div>
+												電話番号 <input style="font-size: 1.2rem;" type="number"
+													class="contact-input" id="phonenum" name="phonenum"
+													placeholder="000-0000-0000" required disabled="disabled"
+													value="${members.m_phone}" />
 											</div>
-											<div class="address-contents-contaoner">
-												<div>
-													<span for="prefecture">都道府県</span>
-												</div>
-												<div>
-													<select style="font-size: 1.4rem" id="prefecture"
-														name="address" required>
-														<option value="">${members.a_prefecture}</option>
-														<c:forEach var="prefecture" items="${prefectures}">
-																<option value="${prefecture }">	
-																<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
-																${prefecture }
-														</c:forEach>
-													</select>
-												</div>
+										</div>
+										<c:if test="${not empty members.m_first_name}">
+											<div class="emergency-words">❂
+												情報の修正が必要な場合は、マイページにてお願いします</div>
+										</c:if>
+									</c:when>
+									<c:otherwise>
+										<div class="contact-container">
+											<div>
+												メールアドレス<input style="font-size: 1.2rem;" type="email"
+													class="contact-input" id="email" name="email"
+													placeholder="enmusubi@gmail.com" required
+													value="${members.m_email}" />
 											</div>
-											<div class="address-contents-container">
-												<div>
-													<span for="city">市区町村</span>
-												</div>
-												<div>
-													<input style="font-size: 1.4rem" type="text" id="city"
-														name="address" placeholder="新宿区" required value="${members.a_city }"/>
-												</div>
+											<div>
+												電話番号 <input style="font-size: 1.2rem;" type="number"
+													class="contact-input" id="phonenum" name="phonenum"
+													placeholder="000-0000-0000" required
+													value="${members.m_phone}" />
 											</div>
+										</div>
+										<c:if test="${not empty members.m_first_name}">
+											<div class="emergency-words">❂
+												情報の修正が必要な場合は、マイページにてお願いします</div>
+										</c:if>
+									</c:otherwise>
+								</c:choose>
 
-											<div class="address-contents-container">
-												<div>
-													<span for="address-line1">町域・番地</br>建物名・部屋番号</span>
-												</div>
-												<div>
-													<textarea style="font-size: 1.4rem;"
-														id="address-line1" name="address" placeholder="西新宿2-8-1 新宿ビル 101"
-														required >${members.a_address }</textarea>
-												</div>
-											</div>
-									</fieldset>
-									</div>
-							</c:otherwise>
-						</c:choose>
+								<c:choose>
+									<c:when test="${loginType == 'normal' }">
+										<c:set var="members" value="${members }" />
+										<div class="address-container">
+											<fieldset>
+												<legend>
+													<div>
+														<img src="surveyPage/imgFolder/homeicon.png"
+															alt="flowersymbol" style="width: 100%; height: 100%" />
+													</div>
+													&nbsp&nbsp&nbsp
+													<div style="font-size: 2rem;">住所入力フォーム</div>
+												</legend>
+												<div class="address-contents-container">
+													<div>
+														<div>
+															<span for="postal-code">郵便番号</span>
+														</div>
+														<div>
+															<input style="font-size: 1.4rem" type="text"
+																id="postal-code" name="postal-code"
+																placeholder="123-4567" required
+																value="${members.a_postcode}" disabled="disabled" />
+														</div>
+													</div>
+													<div class="address-contents-contaoner">
+														<div>
+															<span for="prefecture">都道府県</span>
+														</div>
+														<div>
+															<input style="font-size: 1.4rem" id="prefecture"
+																name="prefecture" required
+																value="${members.a_prefecture}" disabled="disabled">
+														</div>
+													</div>
+													<div class="address-contents-container">
+														<div>
+															<span for="city">市区町村</span>
+														</div>
+														<div>
+															<input style="font-size: 1.4rem" type="text" id="city"
+																name="city" placeholder="新宿区" required
+																value="${members.a_city }" disabled="disabled" />
+														</div>
+													</div>
+
+													<div class="address-contents-container">
+														<div>
+															<span for="address-line1">町域・番地</br>建物名・部屋番号
+															</span>
+														</div>
+														<div>
+															<textarea style="font-size: 1.4rem;" id="address-line1"
+																name="address" placeholder="西新宿2-8-1 新宿ビル 101" required
+																disabled="disabled">${members.a_address }</textarea>
+														</div>
+													</div>
+											</fieldset>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="address-container">
+											<fieldset>
+												<legend>
+													<div>
+														<img src="surveyPage/imgFolder/homeicon.png"
+															alt="flowersymbol" style="width: 100%; height: 100%" />
+													</div>
+													&nbsp&nbsp&nbsp
+													<div style="font-size: 2rem;">住所入力フォーム</div>
+												</legend>
+												<div class="address-contents-container">
+													<div>
+														<div>
+															<span for="postal-code">郵便番号</span>
+														</div>
+														<div>
+															<input style="font-size: 1.4rem" type="text"
+																id="postal-code" name="postal-code"
+																placeholder="123-4567" required
+																value="${members.a_postcode }"
+																<c:if test="${not empty members.a_postcode}">disabled="disabled"</c:if> />
+														</div>
+													</div>
+													<div class="address-contents-container">
+														<div>
+															<span for="prefecture">都道府県</span>
+														</div>
+														<div>
+															<select style="font-size: 1.4rem" id="prefecture"
+																name="address" required
+																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
+																<option value="">${members.a_prefecture}</option>
+																<c:forEach var="prefecture" items="${prefectures}">
+																	<option value="${prefecture }">
+																		<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
+																		${prefecture }
+																</c:forEach>
+															</select>
+														</div>
+													</div>
+													<div class="address-contents-container">
+														<div>
+															<span for="city">市区町村</span>
+														</div>
+														<div>
+															<input style="font-size: 1.4rem" type="text" id="city"
+																name="address" placeholder="新宿区" required
+																value="${members.a_city }"
+																<c:if test="${not empty members.a_city}">disabled="disabled"</c:if> />
+														</div>
+													</div>
+
+													<div class="address-contents-container">
+														<div>
+															<span for="address-line1">町域・番地 </br> 建物名・部屋番号
+															</span>
+														</div>
+														<div>
+															<textarea style="font-size: 1.4rem;" id="address-line1"
+																name="address" placeholder="西新宿2-8-1 新宿ビル 101" required
+																<c:if test="${not empty members.a_address}">disabled="disabled"</c:if>>${members.a_address }</textarea>
+														</div>
+													</div>
+													<c:if test="${not empty members.a_address}">
+														<div class="emergency-words">❂
+															情報の修正が必要な場合は、マイページにてお願いします</div>
+													</c:if>
+											</fieldset>
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="tg-slide-third-page">
 
-                					<div class="together-container">
-										<div>同伴人数</div>
-										<div class="together-people">大人</div>
-										<input type="button" onclick='count("plus","adult")' value="+" />
-										<input style="width: 2rem; font-size: 1rem;" class="result"
-											value="0" id="adult" name="adult" /> <input type="button"
-											onclick='count("minus","adult")' value="-" />
-										<div value="子供" class="together-people">子供</div>
-										<input type="button" onclick='count("plus","child")' value="+" />
-										<input style="width: 2rem; font-size: 1rem" class="result"
-											value="0" id="child" name="child" /> <input type="button"
-											onclick='count("minus","child")' value="-" />
-										<div value="幼児" class="together-people">幼児</div>
-										<input type="button" onclick='count("plus","baby")' value="+" />
-										<input style="width: 2rem; font-size: 1rem;"
-											class="result baby" value="0" id="baby" name="baby" /> <input
-											type="button" onclick='count("minus","baby")' value="-" />
-									</div>
+								<div class="together-container">
+									<div>同伴人数</div>
+									<div class="together-people">大人</div>
+									<input type="button" onclick='count("plus","adult")' value="+" />
+									<input style="width: 2rem; font-size: 1rem;" class="result"
+										value="0" id="adult" name="adult" /> <input type="button"
+										onclick='count("minus","adult")' value="-" />
+									<div value="子供" class="together-people">子供</div>
+									<input type="button" onclick='count("plus","child")' value="+" />
+									<input style="width: 2rem; font-size: 1rem" class="result"
+										value="0" id="child" name="child" /> <input type="button"
+										onclick='count("minus","child")' value="-" />
+									<div value="幼児" class="together-people">幼児</div>
+									<input type="button" onclick='count("plus","baby")' value="+" />
+									<input style="width: 2rem; font-size: 1rem;"
+										class="result baby" value="0" id="baby" name="baby" /> <input
+										type="button" onclick='count("minus","baby")' value="-" />
+								</div>
 
 								<div class="allergy-container">
 									<fieldset>
@@ -370,103 +415,113 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-										<label>
-    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="no" checked /> いいえ
-										</label>
-										<label>
-    										<input style="font-size: 1.5rem;" type="radio" name="allergy" value="yes" /> はい
-										</label>
+											<label> <input style="font-size: 1.5rem;"
+												type="radio" name="allergy" value="no" checked /> いいえ
+											</label> <label> <input style="font-size: 1.5rem;"
+												type="radio" name="allergy" value="yes" /> はい
+											</label>
 										</div>
 
 										<div class="allergy-details" id="allergy-details"
 											style="display: none;">
 											<label for="allergy-type">アレルギーの種類:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-											<textarea class="allergy-type" id="allergy-type" name="allergy-type" placeholder="例：卵, 小麦, 乳製品"></textarea>
+											<textarea class="allergy-type" id="allergy-type"
+												name="allergy-type" placeholder="例：卵, 小麦, 乳製品"></textarea>
 										</div>
-								</fieldset>
-										</div>
+									</fieldset>
+								</div>
 
 								<div class="special-notes-container">
 									<div style="line-height: 3rem; font-size: 1.4rem;">
 										その他要求事項
-										<div><textarea style="font-size: 1.2rem" id="special-notes"
-											name="special-notes" placeholder="ご要望、ご質問などございましたらご記入ください。"></textarea>
-                    					</div>
+										<div>
+											<textarea style="font-size: 1.2rem" id="special-notes"
+												name="special-notes" placeholder="ご要望、ご質問などございましたらご記入ください。"></textarea>
+										</div>
 									</div>
 
 								</div>
 
 								<div>
 
-									<button type="button" id="submitBtn" class="tg-survey-button" onclick="openModal(true)">
+									<button type="button" id="submitBtn" class="tg-survey-button"
+										onclick="openModal()">
 										<span>送信</span>
 									</button>
 
 								</div>
 
-							</div> 
+							</div>
 
-            <div>
+							<div>
 
-            <div class="tg-slide-forth-page">
+								<div class="tg-slide-forth-page">
 
-                <div class="reject-notes-container">
-									<div style="line-height: 3rem; font-size: 1.5rem;">
-										お断り·お祝いメッセージ
-										<div><textarea style="font-size: 1.3rem" id="special-notes"
-											name="special-notes" placeholder="ご結婚、誠におめでとうございます。 残念ですが.."></textarea>
-                    					</div>
+									<div class="reject-notes-container">
+										<div style="line-height: 3rem; font-size: 1.5rem;">
+											お断り·お祝いメッセージ
+											<div>
+												<textarea style="font-size: 1.3rem" id="special-notes"
+													name="special-notes"
+													placeholder="ご結婚、誠におめでとうございます。 残念ですが.."></textarea>
+											</div>
+										</div>
+
+										<button type="button" id="submitBtn" class="tg-survey-button"
+											onclick="openModal()">
+											<span>送信</span>
+										</button>
+
 									</div>
 
-        						<button type="button" id="submitBtn2" class="tg-survey-button" onclick="openModal(false)">
-									<span>送信</span>
-								</button>
+								</div>
 
-    			</div>
-
-						</div>
-
-            </div>
+							</div>
 
 						</div>
 
 						<div class="slider-navigation">
 							<button type="button" class="next-slide">></button>
 						</div>
-
 					</div>
 			</div>
-
 			</form>
 
 
-				</main>
+		</main>
 
-			<footer class="tk_survey_footer"> </footer>
+		<footer class="tk_survey_footer"> </footer>
+	</div>
+
+	<dialog id="tg-modal" class="tg-modal">
+	<div class="tg-modal-container">
+		<div class="tg-modal-img-box" onclick="location.href='SendC'">
+			<h2>送金</h2>
+			<div class="tg-modal-ribbon">
+				<img alt="noImg" src="myPage/statistics/imgFolder/line_money.png">
 			</div>
-			
-			<dialog id="tg-modal" class="tg-modal">
-   	 <div class="tg-modal-container">
-        <div class="tg-modal-img-box" onclick="location.href='SendC'">
-            <h2>送金</h2>
-            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_money.png"></div>
-        </div>
-        <div class="tg-modal-img-box" onclick="location.href='FundC'">
-            <h2>ファンディング</h2>
-            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_funding.png"></div>
-        </div>
-        <div class="tg-modal-img-box" onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
-            <h2>ウィッシュリスト</h2>
-            <div class="tg-modal-ribbon"><img alt="noImg" src="myPage/statistics/imgFolder/line_present.png"></div>
-        </div>
-    </div>
-        <a href="ResultC" style="text-decoration: none;"><h3 style="color:#999999">i pay after</h3></a>
-    </dialog>
-			
+		</div>
+		<div class="tg-modal-img-box" onclick="location.href='FundC'">
+			<h2>ファンディング</h2>
+			<div class="tg-modal-ribbon">
+				<img alt="noImg" src="myPage/statistics/imgFolder/line_funding.png">
+			</div>
+		</div>
+		<div class="tg-modal-img-box"
+			onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
+			<h2>ウィッシュリスト</h2>
+			<div class="tg-modal-ribbon">
+				<img alt="noImg" src="myPage/statistics/imgFolder/line_present.png">
+			</div>
+		</div>
+	</div>
+	<a href="ResultC" style="text-decoration: none;"><h3
+			style="color: #999999">i pay after</h3></a> </dialog>
+
 </body>
 
 <script>
-let logintype = '<%=request.getAttribute("loginType") %>';
+let logintype = '<%=request.getAttribute("loginType")%>';
 console.log(logintype);
 
 //slick 시작 함수
@@ -669,66 +724,49 @@ if (this.checked) {
     });
 });
 
-function openModal(attemp) {
-    const modal = document.getElementById("tg-modal");
-    const modalContent = document.querySelector(".tg-modal-container");
-    document.querySelector(".tk_survey_main").innerHTML="";
-    body = document.querySelector("body");
-    body.style.transition= "background-color 0.5s ease";
-    body.style.backgroundColor="#ffe0e0";
-    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
-    setTimeout(() => {
-        modal.style.opacity = "1";
-        modalContent.style.transform = "scale(1)";
-        modalContent.style.opacity = "1";
-        modalContent.style.animation = "burstIn 0.5s forwards";
-    }, 10);
-}
-
 function openModal() {
-	console.log("1");
-    const modal = document.getElementById("tg-modal");
-    const modalContent = document.querySelector(".tg-modal-container");
-    document.querySelector(".tk_survey_main").style.opacity="0";
-    body = document.querySelector("body");
-    body.style.transition= "background-color 0.5s eas	e";
-    body.style.backgroundColor="#ffe0e0";
-    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
-    setTimeout(() => {
-        modal.style.opacity = "1";
-        modalContent.style.transform = "scale(1)";
-        modalContent.style.opacity = "1";
-        modalContent.style.animation = "burstIn 0.5s forwards";
-    }, 10);
+	console.log("activatge");
+	if(handleFormSubmit()=='yes'){
+	    const modal = document.getElementById("tg-modal");
+	    const modalContent = document.querySelector(".tg-modal-container");
+	    document.querySelector(".tk_survey_main").style.opacity="0";
+	    body = document.querySelector("body");
+	    body.style.transition= "background-color 0.5s ease";
+	    body.style.backgroundColor="#ffe0e0";
+	    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+	    setTimeout(() => {
+	        modal.style.opacity = "1";
+	        modalContent.style.transform = "scale(1)";
+	        modalContent.style.opacity = "1";
+	        modalContent.style.animation = "burstIn 0.5s forwards";
+	    }, 10);
+	}
+	else{
+		alert("ddddddddddd");
+	}
+}
+	let formArray = $("#surveyForm").serializeArray();
+	console.log(formArray);
+function ajaxThing(){
+	let formArray = $("#surveyForm").serializeArray();
+	console.log(formArray);
+	$.ajax({
+	    url: "SurveyC", // 여기에 실제 서블릿 URL을 입력하세요
+	    type: "POST",
+	    data: formArray,
+	    success: function(response) {
+	        alert("회원 정보가 성공적으로 업데이트 되었습니다.");
+	        // 추가적인 처리 로직
+	    },
+	    error: function(xhr, status, error) {
+	        alert("회원 정보 업데이트에 실패하였습니다.");
+	        console.error("에러:", error);
+	    }
+	});
 }
 
-let formArray = $("#surveyForm").serializeArray();
-console.log(formArray);
 
-$(document).ready(function() {
-    $("#submitBtn").click(function() {
-    	console.log("2");
-        event.preventDefault(); // 기본 이벤트 제거
-    
-        let formArray = $("#surveyForm").serializeArray();
-        console.log(formArray);
-        $.ajax({
-            url: "SurveyC", // 여기에 실제 서블릿 URL을 입력하세요
-            type: "POST",
-            data: formArray,
-            success: function(response) {
-                alert("회원 정보가 성공적으로 업데이트 되었습니다.");
-                // 추가적인 처리 로직
-            },
-            error: function(xhr, status, error) {
-                alert("회원 정보 업데이트에 실패하였습니다.");
-                console.error("에러:", error);
-            }
-        });
-    });
-})
-
-function handleFormSubmit(event) {
+function handleFormSubmit() {
     let invalidField = null;
     if (document.getElementById('kanziName').value.trim() === '') {
         alert('한자 이름을 입력하세요');
@@ -750,18 +788,19 @@ function handleFormSubmit(event) {
     } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
         alert('아레르기 종류를 입력하세요');
         invalidField = document.getElementById('allergy-type');
-    }
+    } 
 
-    if (invalidField) {
-        event.preventDefault(); // 폼 제출 방지
+    if (invalidField != null) {
+    	console.log('ㅎㅇ')
         setTimeout(function() {
             invalidField.focus(); // 포커스 설정
         }, 0); // 비동기 처리로 포커스 설정
+        return 'no';
     } else {
-        openModal(true); // 폼 검증 통과 시 모달 열기
+    	return 'yes';
     }
 }
 
     </script>
-    
+
 </html>

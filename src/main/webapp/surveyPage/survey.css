@@ -116,7 +116,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 .couple-container {
   display: flex;
@@ -249,7 +249,7 @@ legend div:nth-child(1) {
 .tg-slide-second-page {
   display: flex !important;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.2rem;
 }
 
 .address-container {
@@ -577,4 +577,9 @@ dialog::backdrop {
   100% {
     transform: scale(1);
   }
+}
+
+.emergency-words{
+	font-size: 1rem !important;
+	color: red;
 }
