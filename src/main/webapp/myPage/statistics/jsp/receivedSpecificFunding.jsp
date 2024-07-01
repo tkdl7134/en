@@ -86,7 +86,7 @@
     <div id="canvas-content-container">
       <div class="canvas-content">
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-			<div class="yj-main-s2-logo"><img alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+			
  					<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
  	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">

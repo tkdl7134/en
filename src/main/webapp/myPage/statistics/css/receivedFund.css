@@ -88,12 +88,14 @@ body {
     left: 50%;
     transform: translateX(-50%);
 	top: 5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items : center;
 }
 
 .recFund-title {
 	font-size: 20px;
-    margin-left: 51rem;
-    margin-top: 3rem;
     font-weight : bold;
 	
 }

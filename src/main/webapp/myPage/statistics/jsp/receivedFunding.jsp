@@ -32,13 +32,13 @@
 		<div class="jh-half-circle">
 		<input id="myParam" type="hidden" value="${param.eno}">
 		<div class="recFund-title">ファンディング の現状</div>
-		<div  style="display : flex; margin-top : 10rem;  margin-left : 35rem;  " id="toGoTexts">
-	<div  onclick="location.href='MemberDetailC'" style="margin-right: 6rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div  onclick="location.href='mytemplateController'"  style="color : #ff2828; margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='MyMeetingC'" style="margin-left: 5rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+		<div  style="display : flex; margin-top : 10rem;text-align: center;    justify-content: space-evenly;    width: 60rem;" id="toGoTexts">
+	<div  onclick="location.href='MemberDetailC'" style="width: 10rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div  onclick="location.href='mytemplateController'"  style="color : #ff2828; 	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='MyMeetingC'" style="" class="ToGoTexts">✿ 会リスト ✿</div>
 	</div>
-	<div style="display: flex; margin-left: 21rem; " id="toGoLines">
- <div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	<div style="display: flex; 	 " id="toGoLines">
+ <div style="margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="margin-left: 2rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="    margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
 		<div style="margin-top: 8rem; gap : 10rem;" class="kh-f-card-container">
 			

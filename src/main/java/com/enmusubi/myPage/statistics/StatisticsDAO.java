@@ -12,6 +12,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -529,8 +530,9 @@ public class StatisticsDAO {
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 				
 		// session.getAttribute("m_id")
-	int eno =Integer.parseInt (request.getParameter ("eno"));
-	
+//	int eno =Integer.parseInt (request.getParameter ("eno"));
+		int eno = 1;
+		
 		
 		
 		
@@ -568,9 +570,10 @@ public class StatisticsDAO {
 		// id 받기
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 		// session.getAttribute("m_id")
-	HttpSession session = request.getSession();
-		String id = 	(String) session.getAttribute("m_id");
-	//	String id = "testuser";
+//	HttpSession session = request.getSession();
+//		String id = (String) session.getAttribute("m_id");
+		String id = "testuser";
+		System.out.println(id);
 		int offset = (page - 1) * itemsPerPage;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -607,6 +610,7 @@ public class StatisticsDAO {
 		    int totalItems = 0;
 		    if (rs.next()) {
 		        totalItems = rs.getInt("total");
+		        
 		    }
 		    int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
 		    request.setAttribute("totalPage", totalPages);
