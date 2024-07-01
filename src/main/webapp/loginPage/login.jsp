@@ -126,7 +126,16 @@ body {
 					success : function(response) {
 						if (response.trim() === 'success') {
 							// 로그인 성공 후 필요한 작업 수행 (예: 페이지 리다이렉트)
+							if(${param.reception=='yes'}){
+								const receptionForm = document.createElement('form');
+								receptionForm.setAttribute('method', 'post');
+								receptionForm.setAttribute('action', 'ReceptionC');
+							    document.body.appendChild(receptionForm);
+								receptionForm.submit();
+							}
+							else{
 							location.href = 'MainC'; // 로그인 성공 후 이동할 페이지
+							}
 						} else {
 							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({

@@ -7,18 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/FundingSettingC")
-public class FundingSettingC extends HttpServlet {
+
+@WebServlet("/InvitationUpdateC")
+public class InvitationUpdateC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 
-		FundingSettingDAO.getfundingInfo(request);
-		request.getRequestDispatcher("product/jsp/fundingSetting.jsp").forward(request, response);
+		ProductDAO.getOneInvitation(request);
+		request.getRequestDispatcher("product/jsp/invitationUpdate.jsp").forward(request, response);
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FundingSettingDAO.regFundingInfo(request);
+		ProductDAO.updateInvitaion(request);
 		
+		ProductDAO.getInvitation(request); // eno넘겨주기
+		request.getRequestDispatcher("product/jsp/invitationPreview.jsp").forward(request, response);
 	}
 
 }

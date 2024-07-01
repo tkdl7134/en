@@ -148,6 +148,11 @@ form {
 	width: 100%
 }
 
+.je_invitation-photo2 img,
+.je_invitation-photo3 img {
+  display: flex;
+  justify-content: center;
+}
 /* info */
 
 .je_names {
