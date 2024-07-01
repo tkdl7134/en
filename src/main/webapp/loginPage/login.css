@@ -109,6 +109,30 @@ body {
 	padding-left: 1rem;
 }
 
+.hs_pwcheck {
+	position: absolute;
+	margin-left: -4rem;
+	top: 38rem;
+	width: 3rem;
+	height: 3rem;
+	border: none;
+	background-color: white;
+}
+
+.show {
+   background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+   background-size: contain;
+   background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hide {
+  	background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+  	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .hs_btn {
 	display: flex;
 	flex-direction: column;

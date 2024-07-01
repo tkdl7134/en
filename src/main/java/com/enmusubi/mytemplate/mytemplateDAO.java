@@ -22,15 +22,21 @@ public class mytemplateDAO {
                 + "FROM s_wedding_info sw "
                 + "LEFT OUTER JOIN s_event se ON se.e_no = sw.e_no "
                 + "LEFT OUTER JOIN s_template st ON st.t_pk = sw.t_pk "
-                + "WHERE sw.e_no = ?";
+                + "WHERE se.m_id = ? and sw.e_no = ?";
 
         try {
             // 데이터베이스 연결
             con = dbManager.connect();
             System.out.println("Database connected");
-
-            // SQL 쿼리 준비
             pstmt = con.prepareStatement(sql);
+
+            // 세션에서 m_id 가져오기
+            String m_id = (String) request.getSession().getAttribute("m_id");
+            int e_no = Integer.parseInt(request.getParameter("e_no"));
+
+            // SQL 쿼리 파라미터 설정
+            pstmt.setString(1, m_id);
+            pstmt.setInt(2, e_no);
 
             // 쿼리 실행
             rs = pstmt.executeQuery();
@@ -39,8 +45,8 @@ public class mytemplateDAO {
             templates = new ArrayList<mytemplateDTO>();
             while (rs.next()) {
                 // 결과에서 각 필드를 가져와서 mytemplateDTO 객체를 생성
-                String m_id = rs.getString("m_id");
-                int e_no = rs.getInt("e_no");
+                String t_m_id = rs.getString("m_id");
+                int t_e_no = rs.getInt("e_no");
                 int t_pk = rs.getInt("t_pk");
                 String t_title = rs.getString("t_title");
                 String t_preview = rs.getString("t_preview");
@@ -57,7 +63,7 @@ public class mytemplateDAO {
                 System.out.println("Preview URL: " + t_preview);
 
                 // mytemplateDTO 객체를 생성하여 리스트에 추가
-                mytemplateDTO t = new mytemplateDTO(e_no, t_pk, m_id, t_title, t_preview, t_example, t_template, w_groom, w_bride, w_img1, w_img2, w_img3);
+                mytemplateDTO t = new mytemplateDTO(t_e_no, t_pk, t_m_id, t_title, t_preview, t_example, t_template, w_groom, w_bride, w_img1, w_img2, w_img3);
                 templates.add(t);
             }
 
@@ -75,7 +81,6 @@ public class mytemplateDAO {
         } finally {
             // 데이터베이스 자원 닫기
             dbManager.close(con, pstmt, rs);
-          
         }
     }
 
@@ -95,21 +100,28 @@ public class mytemplateDAO {
                 + "FROM s_template st "
                 + "JOIN s_wedding_info sw ON sw.t_pk = st.t_pk "
                 + "JOIN s_event se ON se.e_no = sw.e_no "
-                + "WHERE se.m_id = 'testuser' "
+                + "WHERE se.m_id = ? "
                 + ") WHERE rnum BETWEEN ? AND ?";
 
         try {
             con = dbManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, offset + 1); // 1-based offset
-            pstmt.setInt(2, offset + itemsPerPage); // End range
+
+            // 세션에서 m_id 가져오기
+            String m_id = (String) request.getSession().getAttribute("m_id");
+
+            // SQL 쿼리 파라미터 설정
+            pstmt.setString(1, m_id);
+            pstmt.setInt(2, offset + 1); // 1-based offset
+            pstmt.setInt(3, offset + itemsPerPage); // End range
+
             System.out.println("Executing SQL query with params: " + (offset + 1) + ", " + (offset + itemsPerPage));
             rs = pstmt.executeQuery();
 
             templates = new ArrayList<mytemplateDTO>();
             while (rs.next()) {
-                String m_id = rs.getString("m_id");
-                int e_no = rs.getInt("e_no");
+                String t_m_id = rs.getString("m_id");
+                int t_e_no = rs.getInt("e_no");
                 int t_pk = rs.getInt("t_pk");
                 String t_title = rs.getString("t_title");
                 String t_preview = rs.getString("t_preview");
@@ -124,7 +136,7 @@ public class mytemplateDAO {
 
                 System.out.println("Preview URL: " + t_preview);
 
-                mytemplateDTO t = new mytemplateDTO(e_no, t_pk, m_id, t_title, t_preview, t_example, t_template, w_groom, w_bride, w_img1, w_img2, w_img3);
+                mytemplateDTO t = new mytemplateDTO(t_e_no, t_pk, t_m_id, t_title, t_preview, t_example, t_template, w_groom, w_bride, w_img1, w_img2, w_img3);
                 templates.add(t);
             }
 
@@ -135,9 +147,10 @@ public class mytemplateDAO {
                     + "FROM s_template st "
                     + "JOIN s_wedding_info sw ON sw.t_pk = st.t_pk "
                     + "JOIN s_event se ON se.e_no = sw.e_no "
-                    + "WHERE se.m_id = 'testuser'";
+                    + "WHERE se.m_id = ?";
 
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, m_id);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 int totalItems = rs.getInt(1);

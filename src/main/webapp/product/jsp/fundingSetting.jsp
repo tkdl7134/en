@@ -17,15 +17,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="product/js/fundingSetting.js"></script>
     <script src="product/js/fundingSetting_db.js"></script>
+    <script src="product/js/fundingSettingChk.js" defer></script>
+    <script src="product/js/validChk.js" defer></script>
   </head>
   <body>
-   <!-- 로고 / 네비 -->
-<!-- 	<div id="yj-main-s2-logo">
-	  <img src="product/imgFolder/Logo.png" alt="" />
-	</div>
-	<div id="yj-main-s2-menu">
-	  <img src="product/imgFolder/menu_btn_1.png" alt="" />
-	</div> -->
     <!-- 펀딩설정 page -->
     <div id="je_container-fundingSet">
       <div class="je_pageDeco-top">
@@ -39,7 +34,7 @@
 
           <!-- update / delete -->
           <c:forEach items="${fundings }" var="f">
-          <form class="fundingUpdateForm">
+          <form class="fundingUpdateForm" onsubmit="return call()">
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -63,7 +58,7 @@
          
          <!-- insert -->
           <c:forEach items="${basicNames }" var="b">
-         <form class="fundingRegForm">
+         <form class="fundingRegForm" onsubmit="return call()">
      <input type="hidden" name="eno" value="${je_eventNo }">
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">

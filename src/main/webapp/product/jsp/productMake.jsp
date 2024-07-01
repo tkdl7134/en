@@ -18,15 +18,10 @@
 <link rel="stylesheet" href="product/css/picker.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="product/js/productMake.js"></script>
+<script src="product/js/productMakeChk.js" defer></script>
+<script src="product/js/validChk.js" defer></script>
 </head>
 <body>
-<!-- 로고 / 네비 -->
-	<!-- <div id="yj-main-s2-logo">
-	  <img src="product/imgFolder/Logo.png" alt="" />
-	</div>
-	<div id="yj-main-s2-menu">
-	  <img src="product/imgFolder/menu_btn_1.png" alt="" />
-	</div> -->
     <!-- 템플릿 제작 page -->
     <div id="je_container-productMake">
       <div class="je_pageDeco-top">
@@ -101,7 +96,7 @@
           </div>
         </div>
         <!-- input -->
-        <form action="InvitationC" method="post" enctype="multipart/form-data">
+        <form action="InvitationC" method="post" enctype="multipart/form-data" onsubmit="return call()">
           <div class="je_template-input je_template-container">
             <div class="je_content-title">作成欄</div>
             <div class="je_content-boxes">
@@ -133,9 +128,9 @@
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="groomKanaL" id="je_g-kana1" 
-                          type="text" placeholder="せい" onkeyup="printName()"/>
+                          type="text" placeholder="セイ" onkeyup="printName()"/>
                           <input name="groomKanaF" id="je_g-kana2"
-                           type="text" placeholder="めい" onkeyup="printName()"/>
+                           type="text" placeholder="メイ" onkeyup="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
@@ -169,9 +164,9 @@
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="brideKanaL" id="je_b-kana1"
-                          type="text" placeholder="せい" oninput="printName()"/>
+                          type="text" placeholder="セイ" oninput="printName()"/>
                           <input name="brideKanaF"  id="je_b-kana2"
-                          type="text" placeholder="めい" oninput="printName()"/>
+                          type="text" placeholder="メイ" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">

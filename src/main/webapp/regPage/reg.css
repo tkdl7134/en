@@ -187,6 +187,20 @@ body {
 	padding-left: 1rem;
 }
 
+.show {
+   background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+   background-size: contain;
+   background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hide {
+  	background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+  	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .hs_input.pw, .hs_input.prefecture, .hs_input.city, .hs_input.street,
 	.hs_input.building, .hs_input.email, .hs_input.phone {
 	width: 22rem;
@@ -263,6 +277,15 @@ body {
 .hs_idcheck:active {
 	transform: scale(0.95);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hs_pwcheck {
+	position: absolute;
+	right: 3rem;
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	background-color: white;
 }
 
 .hs_content-input.building {

@@ -528,7 +528,7 @@ public class StatisticsDAO {
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 				
 		// session.getAttribute("m_id")
-		// request.getParameter ("eno")
+		//int eno =Integer.parseInt (request.getParameter ("eno"));
 		int eno = 1;
 		
 		
@@ -567,8 +567,9 @@ public class StatisticsDAO {
 		// id 받기
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 		// session.getAttribute("m_id")
-		HttpSession session = request.getSession();
-	String id = 	(String) session.getAttribute("m_id");
+//		HttpSession session = request.getSession();
+//	String id = 	(String) session.getAttribute("m_id");
+		String id = "testuser";
 		int offset = (page - 1) * itemsPerPage;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -624,7 +625,7 @@ public class StatisticsDAO {
 		        Date sqlDate = rs.getDate("r_time"); // Assuming rs is your ResultSet
 
 		     // 포맷할 형식 지정
-		     SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+		     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
 
 		     // java.sql.Date를 java.util.Date로 변환 (형식 변환은 여기서 하지 않음)
 		     java.util.Date utilDate = new java.util.Date(sqlDate.getTime());

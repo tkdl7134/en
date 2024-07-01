@@ -4,7 +4,7 @@ const sections = document.querySelectorAll(".yj-main-section");
 let currentSectionIndex = 0;
 let isThrottled = false;
 
-sections.forEach((e)=> {
+sections.forEach((e) => {
 	console.log(e);
 	console.log(sections.length);
 })
@@ -18,7 +18,6 @@ function throttle(callback, time) {
 		}, time);
 	}
 }
-const textElement = document.getElementById("verticalText1");
 function goToNextSection() {
 	if (currentSectionIndex < sections.length - 1) {
 		currentSectionIndex++;
@@ -32,6 +31,10 @@ function goToPrevSection() {
 		sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
 	}
 }
+const textElements = document.querySelectorAll('.vertical-text');
+let aniTimeout;
+let aniTimeouts = [];
+let wow;
 const wheelHandler = (event) => {
 	if (event.deltaY > 0) {
 		// 스크롤 다운
@@ -41,7 +44,18 @@ const wheelHandler = (event) => {
 		throttle(goToPrevSection, 1000);
 	}
 
-	console.log(currentSectionIndex);
+	if (currentSectionIndex == 1 || currentSectionIndex == 3) {
+		console.log('testing : ' + currentSectionIndex)
+		aniTimeouts.forEach(timeout => clearTimeout(timeout));
+		aniTimeouts = [];		
+		wows.forEach(interval => clearInterval(interval));
+		wows = [];
+		textElements[0].innerHTML = "";
+		textElements[1].innerHTML = "";
+		textElements[2].innerHTML = "";
+	}
+
+
 	if (currentSectionIndex == 1) {
 		document.addEventListener("mousemove", mouseMoveHandler);
 	} else {
@@ -49,8 +63,18 @@ const wheelHandler = (event) => {
 	}
 
 	if (currentSectionIndex == 2) {
-		textElement.textContent = "";
-		textAni();
+
+		let delay = 0;
+		textElements.forEach((textElement, index) => {
+			aniTimeout = setTimeout(() => {
+				textElement.style.opacity = 1; // 배경을 나타나게 함
+				  setTimeout(() => { // 텍스트 애니메이션 시작을 약간 지연시킴
+					textAni(textElement);
+				}, 100); // 100ms 지연 후 텍스트 애니메이션 시작
+			}, delay);
+			aniTimeouts.push(aniTimeout)
+			delay += textElement.dataset.text.length * 100 + 200; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
+		});
 	} else if (currentSectionIndex == 4) {
 		document.removeEventListener("mousemove", mouseMoveHandler);
 		document.querySelector(".yj-main-s4-flexContainer").style.overflow = "";
@@ -133,11 +157,11 @@ const mouseMoveHandler = (event) => {
 	const dy = mouseY - centerY;
 
 
-  if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
-    s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
-    s2CardConAll[1].style.cursor = "none";
-    s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
-    s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+	if ((dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1) {
+		s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
+		s2CardConAll[1].style.cursor = "none";
+		s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+		s2Mouseicn.classList.add("yj-main-s2-cursor-block");
 
 		s2Mouseicn.style.left = mouseX + "px";
 		s2Mouseicn.style.top = mouseY + "px";
@@ -152,29 +176,29 @@ const mouseMoveHandler = (event) => {
 // 배경 이미지  슬라이드
 function slickStart() {
 
-  $(".yj-main-s2-bg").css(
-    "background-image",
-    "url('main/imgFolder/yj-main-s2-img1.png')"
-  );
-  // 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
-  $(".yj-main-s2-list").on(
-    "beforeChange",
-    function (event, slick, currentSlide, nextSlide) {
-      console.log(currentSlide);
-      // 각 슬라이드의 배경 이미지 URL을 설정할 배열
-      var bgImageUrls = [
-        "main/main/imgFolder/yj-main-s2-img1.png",
-        "main/main/imgFolder/yj-main-s2-img2.png",
-        "main/main/imgFolder/yj-main-s2-img3.png",
-        "main/imgFolder/yj-main-s2-img4.png",
-        "main/imgFolder/yj-main-s2-img5.png",
-        "main/imgFolder/yj-main-s2-img6.png",
-        "main/imgFolder/yj-main-s2-img7.png",
-        // 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
-      ];
-      // 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
-      var nextBackgroundImage = bgImageUrls[nextSlide];
-      console.log(nextBackgroundImage);
+	$(".yj-main-s2-bg").css(
+		"background-image",
+		"url('main/imgFolder/yj-main-s2-img1.png')"
+	);
+	// 슬릭 슬라이더의 beforeChange 이벤트 리스너 등록
+	$(".yj-main-s2-list").on(
+		"beforeChange",
+		function(event, slick, currentSlide, nextSlide) {
+			console.log(currentSlide);
+			// 각 슬라이드의 배경 이미지 URL을 설정할 배열
+			var bgImageUrls = [
+				"main/main/imgFolder/yj-main-s2-img1.png",
+				"main/main/imgFolder/yj-main-s2-img2.png",
+				"main/main/imgFolder/yj-main-s2-img3.png",
+				"main/imgFolder/yj-main-s2-img4.png",
+				"main/imgFolder/yj-main-s2-img5.png",
+				"main/imgFolder/yj-main-s2-img6.png",
+				"main/imgFolder/yj-main-s2-img7.png",
+				// 추가적으로 필요한 만큼 이미지 URL을 추가할 수 있음
+			];
+			// 다음 슬라이드의 인덱스를 기준으로 배경 이미지 설정
+			var nextBackgroundImage = bgImageUrls[nextSlide];
+			console.log(nextBackgroundImage);
 
 			// 배경 이미지 변경
 			$(".yj-main-s2-bg").css(
@@ -227,7 +251,8 @@ $(document).ready(function() {
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 3
 
-let wow;
+/*let wow;
+
 
 function textAni() {
 	const text = textElement.dataset.text;
@@ -247,6 +272,23 @@ function textAni() {
 			clearInterval(wow);
 		}
 	}, 150);
+}
+*/
+
+let wows = [];
+function textAni(textElement) {
+	const text = textElement.dataset.text;
+	let i = 0;
+
+	wow = setInterval(() => {
+		if (i < text.length) {
+			const span = document.createElement("span");
+			span.textContent = text[i];
+			i++;
+			textElement.appendChild(span);
+		}
+	}, 200);
+	wows.push(wow);
 }
 
 // ////////// ////////// ////////// ////////// ////////// //////////

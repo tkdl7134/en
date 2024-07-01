@@ -13,47 +13,6 @@ form {
   display: contents;
 }
 
-/* LOGO & NAV */
-/* 
-#yj-main-s2-logo {
-  z-index: 4;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 3rem;
-  left: 4rem;
-}
-
-#yj-main-s2-logo img {
-  width: 100%;
-  height: 100%;
-  animation: logo-float 2s ease-in-out infinite;
-}
-
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translate(0, 0%);
-  }
-  50% {
-    transform: translate(0, 5%);
-  }
-}
-
-#yj-main-s2-menu {
-  z-index: 4;
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
-}
-
-#yj-main-s2-menu img {
-  width: 100%;
-  height: 100%;
-} */
-
 /* invitation page */
 
 #je_container-invitionPreview {
@@ -73,17 +32,55 @@ form {
 }
 
 /* 버튼 */
-.je_previewBtns{
-	position: absolute;
-	top: 50%;
-	left: 25%;
+a {
+  text-decoration: none;
+  color: #5c5c5c;
 }
 
-/* .je_wishlistSet-btn {
+.je_previewBtns {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 25%;
-} */
+  writing-mode: vertical-lr;
+}
+
+.je_wishlistSet-btn {
+  /* border: 1px solid; */
+  margin-left: 0.5rem;
+  margin-right: 3rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #5c5c5c;
+}
+.je_wishlistSet-btn:hover {
+  color: #ff2828;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.je_wishlistSet-btn:not(hover) {
+  transition: 0.3s ease-in-out;
+}
+
+.je_delete-btn,
+.je_update-btn {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.je_delete-btn > a:hover,
+.je_update-btn > a:hover {
+  color: #ff2828;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.je_delete-btn > a:not(hover),
+.je_update-btn > a:not(hover) {
+  transition: 0.3s ease-in-out;
+}
+
+
+
 
 /* 초대장 */
 .je_invitation {

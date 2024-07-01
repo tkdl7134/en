@@ -1,5 +1,6 @@
 package com.enmusubi.product;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,10 @@ import java.util.Iterator;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.enmusubi.main.DBManager;
+import com.enmusubi.member.MemberDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -123,9 +127,10 @@ public class ProductDAO {
 				System.out.println("유효 PK 아님");
 				return;
 			}
-
 			// s_event 삽입
-			pstmtEvent.setString(1, "testuser11");
+			HttpSession session = request.getSession();
+			String userId = (String) session.getAttribute("m_id");
+			pstmtEvent.setString(1, userId);
 			pstmtEvent.setString(2, "");
 
 			// s_event_func 삽입
@@ -281,7 +286,7 @@ public class ProductDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			int intEno=Integer.parseInt(request.getParameter("eno"));
+			int intEno= (int)(request.getAttribute("je_eventNo"));
 			pstmt.setInt(1, intEno);
 			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
@@ -613,6 +618,24 @@ public class ProductDAO {
 			
 			if (pstmtWedding.executeUpdate() == 1) {
 				System.out.println("wedding(본식) 수정 완료");
+				
+				if (new1 != null) { 
+					File f = new File(path + "/" + old1);
+					f.delete();
+				}
+				if (new2 != null) { 
+					File f = new File(path + "/" + old2);
+					f.delete();
+				}
+				if (new3 != null) { 
+					File f = new File(path + "/" + old3);
+					f.delete();
+				}
+				if (new4 != null) { 
+					File f = new File(path + "/" + old4);
+					f.delete();
+				}
+				
 			}
 			if (pstmtReception.executeUpdate() == 1) {
 				System.out.println("reception(피로연) 수정 완료");
