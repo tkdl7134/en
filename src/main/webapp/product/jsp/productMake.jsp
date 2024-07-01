@@ -21,12 +21,12 @@
 </head>
 <body>
 <!-- 로고 / 네비 -->
-	<div id="yj-main-s2-logo">
+	<!-- <div id="yj-main-s2-logo">
 	  <img src="product/imgFolder/Logo.png" alt="" />
 	</div>
 	<div id="yj-main-s2-menu">
 	  <img src="product/imgFolder/menu_btn_1.png" alt="" />
-	</div>
+	</div> -->
     <!-- 템플릿 제작 page -->
     <div id="je_container-productMake">
       <div class="je_pageDeco-top">

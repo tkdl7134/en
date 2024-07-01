@@ -15,8 +15,8 @@ public class ProductMakeC extends HttpServlet {
 		
 		
 		ProductDAO.getTemplateForm(request);
-		request.getRequestDispatcher("product/jsp/productMake.jsp").forward(request, response);
-	
+		request.setAttribute("settingPage", "jsp/productMake.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

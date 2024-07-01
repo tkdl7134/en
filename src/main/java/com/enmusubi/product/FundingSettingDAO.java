@@ -122,7 +122,11 @@ public class FundingSettingDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
-		DBManager dbManager = DBManager.getInstance();		
+		DBManager dbManager = DBManager.getInstance();
+//		String sqlCheck = "select s_pay where wl_no =? ";
+//		if (sqlCheck > rs.next) {
+//			delete 실행 안 되고 경고창 뜨게?
+//		}
 		String sql = "delete s_pay where wl_no = ?";
 		String sql2 = "delete s_wishlist where wl_no = ?";
 		try {

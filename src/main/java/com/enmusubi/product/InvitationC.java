@@ -17,7 +17,8 @@ public class InvitationC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO.regIvitation(request);
 		ProductDAO.getInvitation(request);
-		request.getRequestDispatcher("product/jsp/invitationPreview.jsp").forward(request, response);
+		request.setAttribute("settingPage", "jsp/invitationPreview.jsp");
+		request.getRequestDispatcher("product/index.jsp").forward(request, response);
 		
 	}
 

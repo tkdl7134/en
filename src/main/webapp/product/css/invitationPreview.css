@@ -14,7 +14,7 @@ form {
 }
 
 /* LOGO & NAV */
-
+/* 
 #yj-main-s2-logo {
   z-index: 4;
   width: 150px;
@@ -52,7 +52,7 @@ form {
 #yj-main-s2-menu img {
   width: 100%;
   height: 100%;
-}
+} */
 
 /* invitation page */
 
@@ -63,7 +63,7 @@ form {
   padding: 0;
 }
 .je_content-invitationPreview {
-  /* background-color: aqua; */
+/*   background-color: aqua; */
   width: 85vw;
   height: 100%;
   display: flex;
