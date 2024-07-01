@@ -304,7 +304,11 @@ body {
 	  });
 
 	  // 入力フィールドに英字のみ許可
-	  document.querySelector('input[name="m_name_rome_mei"], input[name="m_name_rome_sei"]').addEventListener("input", function() {
+	  document.querySelector('input[name="m_name_rome_mei"]').addEventListener("input", function() {
+	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
+	  });
+	  
+	  document.querySelector('input[name="m_name_rome_sei"]').addEventListener("input", function() {
 	    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // 英字のみ許可
 	  });
 	});
@@ -315,6 +319,10 @@ body {
         const m_name_mei = document.querySelector('input[name="m_name_mei"]');
         const m_name_kana_sei = document.querySelector('input[name="m_name_kana_sei"]');
         const m_name_kana_mei = document.querySelector('input[name="m_name_kana_mei"]');
+        const m_email = document.querySelector('input[name="m_email"]');
+        const m_pw = document.querySelector('input[name="m_pw"]');
+        const m_pw_confirm = document.querySelector('input[name="m_pw_confirm"]');
+        const m_id = document.querySelector('input[name="m_id"]');
 
         const removeWhitespace = (e) => {
             e.target.value = e.target.value.replace(/\s/g, '');
@@ -324,6 +332,10 @@ body {
         m_name_mei.addEventListener('input', removeWhitespace);
         m_name_kana_sei.addEventListener('input', removeWhitespace);
         m_name_kana_mei.addEventListener('input', removeWhitespace);
+        m_email.addEventListener('input', removeWhitespace);
+        m_pw.addEventListener('input', removeWhitespace);
+        m_pw_confirm.addEventListener('input', removeWhitespace);
+        m_id.addEventListener('input', removeWhitespace);
     });
 	
 	// input 요소를 선택합니다.
