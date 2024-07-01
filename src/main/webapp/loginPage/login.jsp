@@ -78,8 +78,21 @@ body {
 		</div>
 	</div>
 
-
 	<script>
+	
+	// 入力フィールドに空白除外
+	document.addEventListener('DOMContentLoaded', (event) => {
+        const m_id = document.querySelector('input[name="m_id"]');
+		const m_pw = document.querySelector('input[name="m_pw"]');
+
+        const removeWhitespace = (e) => {
+            e.target.value = e.target.value.replace(/\s/g, '');
+        };
+
+        m_id.addEventListener('input', removeWhitespace);
+        m_pw.addEventListener('input', removeWhitespace);
+    });
+	
 		$(document).ready(function() {
 			$('#loginForm').submit(function(event) {
 				event.preventDefault(); // 기본 폼 제출 방지
@@ -189,6 +202,8 @@ body {
 
 		// 페이지가 로드될 때 값을 불러옴
 		window.addEventListener('load', loadFromSessionStorage);
+		
+		
 	</script>
 
 </body>
