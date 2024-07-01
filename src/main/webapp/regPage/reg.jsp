@@ -291,6 +291,10 @@ body {
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("btnReg");
 	  
+	// ID 필드에 대한 입력 제한
+	    document.querySelector('input[name="m_id"]').addEventListener("input", function() {
+	        this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); // 영문자와 숫자만 허용
+	    });
 	  
 	  // 入力フィールドに数字のみ許可
 	  document.querySelectorAll('input[name="m_phone"], input[name="m_birthY"], input[name="m_birthM"], input[name="m_birthYD"]').forEach(input => {
@@ -456,7 +460,6 @@ function register() {
 	    }
 	    
 	 // 아이디 중복 확인이 안 되었을 경우 경고 메시지 표시
-
 		const pw = document.getElementById('m_pw').value;
 		const pwConfirm = document.getElementById('m_pw_confirm').value;
 		
