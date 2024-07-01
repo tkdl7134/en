@@ -98,6 +98,10 @@ form {
   z-index: 0;
 }
 
+.je_invitation:-webkit-scrollbar{	/* 스크롤바숨기기 크롬,사파리, 오페라, 엣지 */
+	display: none;
+}
+
 .je_invitation > img {
   width: 100%;
   position: absolute;
