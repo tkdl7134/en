@@ -4,11 +4,6 @@ const sections = document.querySelectorAll(".yj-main-section");
 let currentSectionIndex = 0;
 let isThrottled = false;
 
-sections.forEach((e)=> {
-	console.log(e);
-	console.log(sections.length);
-})
-
 function throttle(callback, time) {
 	if (!isThrottled) {
 		callback();
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			});
 		});
 	})
-});
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // 메뉴 버튼 클릭 이벤트
@@ -122,6 +116,21 @@ menus.forEach((menu) => {
 const s2CardConAll = document.querySelectorAll(".yj-main-section");
 const s2Mouseicn = document.querySelector(".yj-main-s2-cursor");
 
+// s2CardConAll.forEach((card) => {
+//   card.addEventListener("mouseenter", function (event) {
+//     console.log(111);
+//     s2Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-s2-drag.png";
+//     card.style.cursor = "none";
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-none");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-block");
+//   });
+
+//   card.addEventListener("mouseleave", function () {
+//     console.log(222);
+//     s2Mouseicn.classList.remove("yj-main-s2-cursor-block");
+//     s2Mouseicn.classList.add("yj-main-s2-cursor-none");
+//   });
+// });
 const centerX = window.innerWidth / 2;
 const centerY = window.innerHeight / 2;
 const radiusX = 560;
@@ -247,10 +256,11 @@ function textAni() {
 			clearInterval(wow);
 		}
 	}, 150);
-}
+};
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 4
+
 // 섹션 4의 이미지들(.clickable-image)를 클릭하면 섹션 5로 스크롤
 const section4 = document.getElementById("yj-main-s4");
 const clickableImages = document.querySelectorAll(".clickable-image");
@@ -327,23 +337,23 @@ const s6CardConAll = document.querySelectorAll("#yj-main-s6");
 const s6Mouseicn = document.querySelector(".yj-main-s6-cursor");
 
 s6CardConAll.forEach((card) => {
-	card.addEventListener("mouseenter", function(event) {
-		s6Mouseicn.querySelector("img").src =
-			"main/imgFolder/yj-main-default-scroll.png";
-		card.style.cursor = "none";
-		s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
-		s6Mouseicn.classList.add("yj-main-s6-cursor-block");
-	});
+  card.addEventListener("mouseenter", function(event) {
+    s6Mouseicn.querySelector("img").src = "main/imgFolder/yj-main-default-scroll.png";
+    card.style.cursor = "none";
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-none");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-block");
+  });
 
-	card.addEventListener("mouseleave", function() {
-		s6Mouseicn.classList.remove("yj-main-s6-cursor-block");
-		s6Mouseicn.classList.add("yj-main-s6-cursor-none");
-	});
+  card.addEventListener("mouseleave", function() {
+    s6Mouseicn.classList.remove("yj-main-s6-cursor-block");
+    s6Mouseicn.classList.add("yj-main-s6-cursor-none");
+  });
 });
 
 document.addEventListener("mousemove", (event) => {
-	const mouseX = event.clientX;
-	const mouseY = event.clientY;
-	s6Mouseicn.style.left = mouseX + "px";
-	s6Mouseicn.style.top = mouseY + "px";
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  s6Mouseicn.style.left = mouseX + "px";
+  s6Mouseicn.style.top = mouseY + "px";
+});
 });
