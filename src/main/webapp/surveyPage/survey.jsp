@@ -52,7 +52,14 @@
 			<div class="main-content">
 				<div class="main-content-words">
 					<div>お手数ではございますが、ご出欠情報のご登録をお願い申し上げます。</div>
-               		 	<div style="margin-top: 0.5rem">${minus40Days }までにご返信をお願いいたします。</div>
+            		<c:choose>
+               			<c:when test="${minus40Days == '日付 未定'}">
+                    		<div style="margin-top: 0.5rem">結婚式の日付はまだ未確定です。</div>
+                		</c:when>
+                		<c:otherwise>
+                    		<div style="margin-top: 0.5rem">${minus40Days}までにご返信をお願いいたします。</div>
+                		</c:otherwise>
+            		</c:choose>            		
             		<div>
 						<img src="surveyPage/imgFolder/pointline.png" alt="menu-button"
 							style="width: 100%; height: 100%" />
@@ -126,7 +133,7 @@
 												class="name-input" id="romaName" name="roma-name" required value="${members.m_last_name_rome}" disabled="disabled" /> 
 												<input style="font-size: 1.2rem;" type="text"
 												placeholder="First Name" class="name-input" id="romaName" name="roma-name"
-												required value="${members.m_first_name_rome}" />
+												required disabled="disabled" value="${members.m_first_name_rome}" />
 											</label>
 										 </c:when>
 										 <c:otherwise>
@@ -188,12 +195,12 @@
 										<div>
 											メールアドレス<input style="font-size: 1.2rem;" type="email"
 												class="contact-input" id="email" name="email"
-												placeholder="enmusubi@gmail.com" required value="${members.m_email}" />
+												placeholder="enmusubi@gmail.com" required disabled="disabled" value="${members.m_email}" />
 										</div>
 										<div>
 											電話番号 <input style="font-size: 1.2rem;" type="number"
 												class="contact-input" id="phonenum" name="phonenum"
-												placeholder="000-0000-0000" required value="${members.m_phone}" />
+												placeholder="000-0000-0000" required disabled="disabled" value="${members.m_phone}" />
 										</div>
 								</div>
 							</c:when>

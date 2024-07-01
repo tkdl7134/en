@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="product/css/picker.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="product/js/productMake.js"></script>
+<script src="product/js/invitationUpdateChk.js" defer></script>
+<script src="product/js/validChk.js" defer></script>
 <script type="text/javascript">
 window.onload = function() {
 	printInfo();
@@ -116,7 +118,7 @@ window.onload = function() {
           </div>
         </div>
         <!-- input -->
-        <form action="InvitationUpdateC" method="post" enctype="multipart/form-data">
+        <form action="InvitationUpdateC" method="post" enctype="multipart/form-data" onsubmit="return call()">
           <div class="je_template-input je_template-container">
             <div class="je_content-title">作成欄</div>
             <div class="je_content-boxes">

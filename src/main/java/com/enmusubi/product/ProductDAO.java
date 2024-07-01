@@ -1,5 +1,6 @@
 package com.enmusubi.product;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -613,6 +614,24 @@ public class ProductDAO {
 			
 			if (pstmtWedding.executeUpdate() == 1) {
 				System.out.println("wedding(본식) 수정 완료");
+				
+				if (new1 != null) { 
+					File f = new File(path + "/" + old1);
+					f.delete();
+				}
+				if (new2 != null) { 
+					File f = new File(path + "/" + old2);
+					f.delete();
+				}
+				if (new3 != null) { 
+					File f = new File(path + "/" + old3);
+					f.delete();
+				}
+				if (new4 != null) { 
+					File f = new File(path + "/" + old4);
+					f.delete();
+				}
+				
 			}
 			if (pstmtReception.executeUpdate() == 1) {
 				System.out.println("reception(피로연) 수정 완료");
