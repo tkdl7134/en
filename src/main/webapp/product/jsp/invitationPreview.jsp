@@ -10,20 +10,23 @@
 </head>
 <body>
   <!-- 로고 / 네비 -->
-    <div id="yj-main-s2-logo">
+   <!--  <div id="yj-main-s2-logo">
       <img src="product/imgFolder/Logo.png" alt="" />
     </div>
     <div id="yj-main-s2-menu">
       <img src="product/imgFolder/menu_btn_1.png" alt="" />
-    </div>
+    </div> -->
     <!-- 초대장 내용 -->
     <div id="je_container-invitionPreview">
       <div class="je_content-invitationPreview">
         <!-- 버튼 -->
-        <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
+        <%-- <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div> --%>
+       <div class="je_previewBtns">
+       		<div class="je_previewBtn je_wishlistSet-btn" onclick="location.href='SelectWishiC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
+	        <div class="je_previewBtn je_delete-btn"><a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()">삭제하기</a></div>
+	        <div class="je_previewBtn je_update-btn"><a href="InvitationUpdateC?eno=${inviteInfo.e_no}">수정하기</a></div>
+       </div> 
       
-        <div ><a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()">삭제하기</a></div>
-        <div ><a href="InvitationUpdateC?eno=${inviteInfo.e_no}">수정하기</a></div>
         
         <div></div>
         <!-- 초대장 -->
