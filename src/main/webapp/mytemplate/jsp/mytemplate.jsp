@@ -34,7 +34,7 @@
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
                 <div class="hw_menubar_item">
-                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMyMeeting()">✿ 会リスト ✿</a>
+                    <a class="hw_menubar_menu" href="">✿ 会リスト ✿</a>
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
             </nav>
