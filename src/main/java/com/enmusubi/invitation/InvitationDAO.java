@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Comparator;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.enmusubi.main.DBManager;
 
 public class InvitationDAO {
@@ -31,6 +33,12 @@ public class InvitationDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DBManager dbManager = DBManager.getInstance();
+
+        // 세션에서 m_id와 e_no 값을 가져옴
+        HttpSession session = request.getSession();
+        String m_id = (String) session.getAttribute("m_id");
+        String e_no = (String) session.getAttribute("e_no");
+
         String sql = "SELECT se.e_no, sm.m_id, sm.m_name, sm.m_phone, sm.m_email, "
                 + "sg.g_attend, sg.g_guest_type, sg.g_message, sg.g_relation, "
                 + "sa.allergy, sp.p_adult, sp.p_child, sp.p_baby "
@@ -39,11 +47,13 @@ public class InvitationDAO {
                 + "LEFT JOIN s_event se ON sg.e_no = se.e_no "
                 + "LEFT JOIN s_party sp ON sg.m_id = sp.m_id "
                 + "LEFT JOIN s_allergy sa ON sg.m_id = sa.m_id "
-                + "WHERE se.m_id = 'testuser' AND sg.e_no = '1'";
+                + "WHERE se.m_id = ? AND sg.e_no = ?";
 
         try {
             con = dbManager.connect();
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, m_id);
+            pstmt.setString(2, e_no);
             rs = pstmt.executeQuery();
 
             invitationsYes = new ArrayList<>();
@@ -55,39 +65,38 @@ public class InvitationDAO {
             InvitationDTO i = null;
 
             while (rs.next()) {
-                int e_no = rs.getInt("e_no");
+                int eventNo = rs.getInt("e_no");
+                String memberId = rs.getString("m_id");
+                String mName = rs.getString("m_name");
+                String mPhone = rs.getString("m_phone");
+                String mEmail = rs.getString("m_email");
 
-                String m_id = rs.getString("m_id");
-                String m_name = rs.getString("m_name");
-                String m_phone = rs.getString("m_phone");
-                String m_email = rs.getString("m_email");
-
-                String g_attend = rs.getString("g_attend");
-                String g_guest_type = rs.getString("g_guest_type");
-                String g_message = rs.getString("g_message");
-                String g_relation = rs.getString("g_relation");
+                String gAttend = rs.getString("g_attend");
+                String gGuestType = rs.getString("g_guest_type");
+                String gMessage = rs.getString("g_message");
+                String gRelation = rs.getString("g_relation");
 
                 String allergy = rs.getString("allergy");
 
-                int p_adult = rs.getInt("p_adult");
-                int p_child = rs.getInt("p_child");
-                int p_baby = rs.getInt("p_baby");
+                int pAdult = rs.getInt("p_adult");
+                int pChild = rs.getInt("p_child");
+                int pBaby = rs.getInt("p_baby");
 
-                i = new InvitationDTO(e_no, m_id, m_name, m_phone, m_email, g_attend,
-                        g_guest_type, g_message, g_relation, allergy, p_adult, p_child, p_baby);
+                i = new InvitationDTO(eventNo, memberId, mName, mPhone, mEmail, gAttend,
+                        gGuestType, gMessage, gRelation, allergy, pAdult, pChild, pBaby);
 
-                if ("yes".equalsIgnoreCase(g_attend)) {
+                if ("yes".equalsIgnoreCase(gAttend)) {
                     invitationsYes.add(i);
-                    if ("新郎".equalsIgnoreCase(g_guest_type)) {
+                    if ("新郎".equalsIgnoreCase(gGuestType)) {
                         invitationsYesMale.add(i);
-                    } else if ("新婦".equalsIgnoreCase(g_guest_type)) {
+                    } else if ("新婦".equalsIgnoreCase(gGuestType)) {
                         invitationsYesFemale.add(i);
                     }
-                } else if ("no".equalsIgnoreCase(g_attend)) {
+                } else if ("no".equalsIgnoreCase(gAttend)) {
                     invitationsNo.add(i);
-                    if ("新郎".equalsIgnoreCase(g_guest_type)) {
+                    if ("新郎".equalsIgnoreCase(gGuestType)) {
                         invitationsNoMale.add(i);
-                    } else if ("新婦".equalsIgnoreCase(g_guest_type)) {
+                    } else if ("新婦".equalsIgnoreCase(gGuestType)) {
                         invitationsNoFemale.add(i);
                     }
                 }
@@ -107,7 +116,8 @@ public class InvitationDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-        	dbManager.close(con, pstmt, rs);
+            dbManager.close(con, pstmt, rs);
         }
     }
+
 }
