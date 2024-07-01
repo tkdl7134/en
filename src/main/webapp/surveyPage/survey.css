@@ -185,6 +185,7 @@ header {
 .name-input {
   margin-left: 2rem;
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .slick-arrow {
@@ -385,9 +386,9 @@ legend div:nth-child(1) {
 
 .tg-survey-button {
   background-color: #fff;
-  color: #684c38;
+  color: black;
   padding: 1rem 2rem;
-  border: 2px solid #ffe2f0;
+  border: 2px solid #DA2025;
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bolder;
@@ -582,9 +583,4 @@ dialog::backdrop {
 .emergency-words{
 	font-size: 1rem !important;
 	color: red;
-}
-
-
-.tg-slide-page, .tg-slide-second-page, .tg-slide-third-page, .tg-slide-forth-page {
-    transition: transform 0.5s ease-in-out;
 }

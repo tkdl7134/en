@@ -7,6 +7,7 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="surveyPage/survey.css" />
+<link rel="stylesheet" href="surveyPage/surveyCheckBox.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
@@ -182,23 +183,33 @@
 
 									<div class="couple-container">
 										<div>カテゴリー</div>
-										<label> <input name="couple" type="checkbox" id="groomCheckbox"
-											value="新郎" /> 新郎側ゲスト
-										</label> <label> <input name="couple" type="checkbox" id="brideCheckbox"
-											value="新婦" /> 新婦側ゲスト
-										</label>
+										<span>
+										<input name="couple" type="checkbox" id="groomCheckbox"
+											value="新郎" /><label for="groomCheckbox" class="cb1"></label> 新郎側ゲスト
+										</span> 
+										<span>
+										<input name="couple" type="checkbox" id="brideCheckbox"
+											value="新婦" /><label for="brideCheckbox" class="cb1"></label> 新婦側ゲスト
+										</span>
 									</div>
 									<div class="relationship-container">
 										<div>作成者との関係</div>
+										<span> <input  name="relation" type="checkbox"
+											 value="家族" id="familyCheckbox" />
+											 <label for="familyCheckbox" class="cb1"></label> 家族
+										</span> 
 										<span> <input name="relation" type="checkbox"
-											value="家族" id="familyCheckbox"/> 家族
-										</span> <span> <input name="relation" type="checkbox"
-											value="親友" id="friendCheckbox"/> 親友
-										</span> <span> <input name="relation" type="checkbox"
-											value="職場の同僚" id="colleaguesCheckbox"/> 職場の同僚
-										</span> <label> <input name="relation" type="checkbox"
-											value="その他" id="othersCheckbox"/> その他
-										</label>
+											 value="親友" id="friendCheckbox"/> 
+											 <label for="friendCheckbox" class="cb1"></label>親友
+										</span> 
+										<span> <input name="relation" type="checkbox"
+											 value="職場の同僚" id="colleaguesCheckbox"/> 
+											 <label for="colleaguesCheckbox" class="cb1"></label>職場の同僚
+										</span> 
+										<span><input name="relation" type="checkbox"
+											 value="その他" id="othersCheckbox"/>
+											 <label for="othersCheckbox" class="cb1"></label>その他	
+										</span>
 									</div>
 								</div>
 							</div>
@@ -223,7 +234,7 @@
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
-											<div class="emergency-words">❂
+											<div class="emergency-words">✿
 												情報の修正が必要な場合は、マイページにてお願いします</div>
 										</c:if>
 									</c:when>
@@ -243,7 +254,7 @@
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
-											<div class="emergency-words">❂
+											<div class="emergency-words">✿
 												情報の修正が必要な場合は、マイページにてお願いします</div>
 										</c:if>
 									</c:otherwise>
@@ -374,7 +385,7 @@
 														</div>
 													</div>
 													<c:if test="${not empty members.a_address}">
-														<div class="emergency-words">❂
+														<div class="emergency-words">✿
 															情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 											</fieldset>
