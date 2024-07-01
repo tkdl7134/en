@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+  font-family: "Noto Serif Jp", serif;
   background-color: #fffbf7;
   margin: 0; /* == 기본 margin 제거 */
   height: 100vh; /* == 뷰포트 높이를 채우도록 설정 */
@@ -73,7 +74,29 @@ body {
   flex-direction: column;
   align-items: center;
   z-index: 1000;
-  width: 175px;
+  justify-content:flex-start;
+}
+
+.yj-main-nav a {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+yj-main-nav a:visited {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+
+.yj-main-nav a:hover {
+  color: #fd5356;
+  text-decoration: none;
+  text-shadow: 0 0 3px #ffd0e9;
+}
+
+.yj-main-nav a:active {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
 }
 
 .nav-hidden {
@@ -85,12 +108,21 @@ body {
 }
 
 .nav-fakeDiv {
-  height: 50px;
+  height: 90px;
+}
+
+.nav-text {
+  text-align: center;
+  font-size: 12px;
+  margin: 40px 0;
 }
 
 .nav-topBtn {
   width: 100px;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-topBtn > a {
@@ -102,20 +134,22 @@ body {
 
 .nav-topBtn > a > img {
   width: 100%; /* Ensures the image fills the anchor tag */
+  height: 100%;
+  object-fit: contain;
 }
 
 .nav-logout button {
-    background-color: #ff69b4; /* 핑크색 */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: #ff69b4; /* 핑크색 */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .nav-logout button:hover {
-    background-color: #ff1493; /* 호버 시 색 변화 */
+  background-color: #ff1493; /* 호버 시 색 변화 */
 }
 /* ////////// ////////// ////////// ////////// ////////// ////////// */
 /* Section 1 */
@@ -410,7 +444,7 @@ body {
 .yj-main-s4-cursor {
   z-index: 100;
   pointer-events: none;
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .yj-main-s4-cursor-none {

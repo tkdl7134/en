@@ -42,7 +42,9 @@ pageEncoding="UTF-8"%>
     <!-- Section 2 -->
     <div class="yj-main-section" id="yj-main-s2">
       <div class="yj-main-logo">
-        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+        <a href="#" class="mainLogo"
+          ><img src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고"
+        /></a>
       </div>
 
       <jsp:include page="${mainNav }" />
@@ -110,7 +112,9 @@ pageEncoding="UTF-8"%>
     <!-- Section 3 -->
     <div class="yj-main-section" id="yj-main-s3">
       <div class="yj-main-logo">
-        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고" /></a>
+        <a href="#" class="mainLogo"
+          ><img src="main/imgFolder/yj-main-logo.png" alt="섹션3 로고"
+        /></a>
       </div>
 
       <jsp:include page="${mainNav }" />
@@ -138,7 +142,9 @@ pageEncoding="UTF-8"%>
     <!-- Section 4 -->
     <div class="yj-main-section" id="yj-main-s4">
       <div class="yj-main-logo">
-        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션4 로고" /></a>
+        <a href="#" class="mainLogo"
+          ><img src="main/imgFolder/yj-main-logo.png" alt="섹션4 로고"
+        /></a>
       </div>
 
       <jsp:include page="${mainNav }" />
@@ -286,7 +292,9 @@ pageEncoding="UTF-8"%>
     <!-- Section 5 -->
     <div class="yj-main-section" id="yj-main-s5">
       <div class="yj-main-logo">
-        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션5 로고" /></a>
+        <a href="#" class="mainLogo"
+          ><img src="main/imgFolder/yj-main-logo.png" alt="섹션5 로고"
+        /></a>
       </div>
 
       <jsp:include page="${mainNav }" />
@@ -308,12 +316,13 @@ pageEncoding="UTF-8"%>
 
     <!-- Section 6 -->
     <div class="yj-main-section" id="yj-main-s6">
-    
       <div class="yj-main-s6-cursor yj-main-s6-cursor-none">
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
       </div>
       <div class="yj-main-logo">
-        <a href="#" class="mainLogo"><img src="main/imgFolder/yj-main-logo.png" alt="섹션6 로고" /></a>
+        <a href="#" class="mainLogo"
+          ><img src="main/imgFolder/yj-main-logo.png" alt="섹션6 로고"
+        /></a>
       </div>
 
       <jsp:include page="${mainNav }" />

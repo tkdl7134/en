@@ -19,7 +19,7 @@
             <a href="ProductController"><h3>商品紹介</h3></a>
           </div>
           <div class="nav-text">
-            <h3>더 많은 서비스<br />이용을 위해서는<br />어쩌구저쩌구</h3>
+            <h3> ログインして <br /> より多くのサービスを <br /> ご利用ください </h3>
           </div>
           <div class="nav-topBtn">
             <a href="#"
