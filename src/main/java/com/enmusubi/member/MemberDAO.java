@@ -499,6 +499,8 @@ public class MemberDAO {
 		MemberDTO dto = new MemberDTO(m_id, m_pw, combinedName, combinedKana, combinedRome, combinedBirth, m_gender, m_email,
 				m_regdate, m_img, m_phone, combinedAddress, a_postcode);
 
+		session.setAttribute("m_name", combinedName);
+		
 		try {
 			updateMemberInfo(dto);
 	        response.sendRedirect("MemberDetailC"); // 수정 후 마이페이지로 이동
