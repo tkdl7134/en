@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
         <a href="mytemplateController"><h3>• テンプレート</h3></a>
         <a href="MyMeetingC"><h3>• 会リスト</h3></a>
       </div>
-      <div class="nav-invitation">
+      <div class="nav-productAF">
         <a href="ProductController"><h3>商品紹介</h3></a>
       </div>
       <form action="MemberLogoutC" method="post">
