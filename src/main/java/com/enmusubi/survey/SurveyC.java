@@ -30,6 +30,7 @@ public class SurveyC extends HttpServlet {
                 "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", 
                 "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県");
 
+		
     		SurveyDAO.ddaywedding(request);
             SurveyDAO.processLogin(request);
             // 결과를 JSP 페이지로 포워딩	
