@@ -123,3 +123,61 @@ function copyToClipboard() {
 	document.execCommand("copy");
 	alert("URL이 복사되었습니다: " + copyText.value);
 }
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+	const mainLogo = document.querySelectorAll(".mainLogo");
+	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+	mainLogo.forEach((logo) => {
+		logo.addEventListener('mouseover', (event) => {
+			event.preventDefault();
+			mouseCursor.classList.add("yj-main-s6-cursor-none");
+			logo.style.cursor = "pointer";
+		});
+		logo.addEventListener('mouseleave', (event) => {
+			event.preventDefault();
+			mouseCursor.classList.remove("yj-main-s6-cursor-none");
+			logo.style.cursor = "none";
+		});
+		logo.addEventListener('click', (event) => {
+			event.preventDefault(); // 기본 동작을 막습니다 (페이지 새로고침 방지)
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth' // 부드럽게 스크롤됩니다
+			});
+		});
+	})
+});
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// 메뉴 버튼 클릭 이벤트
+const menus = document.querySelectorAll(".yj-main-menu");
+
+menus.forEach((menu) => {
+	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+	const navi = menu.parentElement.querySelector(".yj-main-nav");
+	menu.addEventListener("click", function() {
+		console.log(menu);
+		console.log(navi);
+		const menuBtn = menu.querySelector("img");
+		if (navi.classList.contains("nav-hidden")) {
+			menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+			navi.classList.remove("nav-hidden");
+			navi.classList.add("nav-show");
+		} else {
+			menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+			navi.classList.remove("nav-show");
+			navi.classList.add("nav-hidden");
+		}
+	});
+	menu.addEventListener('mouseover', (event) => {
+		event.preventDefault();
+		mouseCursor.classList.add("yj-main-s6-cursor-none");
+		menu.style.cursor = "pointer";
+	});
+	menu.addEventListener('mouseleave', (event) => {
+		event.preventDefault();
+		mouseCursor.classList.remove("yj-main-s6-cursor-none");
+		menu.style.cursor = "none";
+	});
+});

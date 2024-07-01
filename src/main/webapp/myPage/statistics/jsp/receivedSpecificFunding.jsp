@@ -86,8 +86,14 @@
     <div id="canvas-content-container">
       <div class="canvas-content">
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-			
- 					<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
+
+		<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+		</div>
+
+		<jsp:include page="${mainNav }" />
+
  	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
 	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
