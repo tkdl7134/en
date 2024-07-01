@@ -297,6 +297,29 @@ body {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.hs_pwcheck {
+	position: absolute;
+	right: 3rem;
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	background-color: white;
+}
+
+.show {
+   background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+   background-size: contain;
+   background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hide {
+  	background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+  	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .hs_content-input.building {
 	margin-bottom: 4rem;
 }
