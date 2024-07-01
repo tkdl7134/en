@@ -1,35 +1,34 @@
 function call(){
-	const groomKanjiL = document.querySelector("input[name='groomKanjiL']");
-	const groomKanjiF = document.querySelector("input[name='groomKanjiF']");
-	const groomKanaL = document.querySelector("input[name='groomKanaL']");
-	const groomKanaF = document.querySelector("input[name='groomKanaF']");
-	const groomRomaL = document.querySelector("input[name='groomRomaL']");
-	const groomRomaF = document.querySelector("input[name='groomRomaF']");
+	const groomKanjiL = document.querySelector("input[name='new_groomL']");
+	const groomKanjiF = document.querySelector("input[name='new_groomF']");
+	const groomKanaL = document.querySelector("input[name='new_groomKanaL']");
+	const groomKanaF = document.querySelector("input[name='new_groomKanaF']");
+	const groomRomaL = document.querySelector("input[name='new_groomRomaL']");
+	const groomRomaF = document.querySelector("input[name='new_groomRomaF']");
 	
-	const brideKanjiL = document.querySelector("input[name='brideKanjiL']");
-	const brideKanjiF = document.querySelector("input[name='brideKanjiF']");
-	const brideKanaL = document.querySelector("input[name='brideKanaL']");
-	const brideKanaF = document.querySelector("input[name='brideKanaF']");
-	const brideRomaL = document.querySelector("input[name='brideRomaL']");
-	const brideRomaF = document.querySelector("input[name='brideRomaF']");
+	const brideKanjiL = document.querySelector("input[name='new_brideL']");
+	const brideKanjiF = document.querySelector("input[name='new_brideF']");
+	const brideKanaL = document.querySelector("input[name='new_brideKanaL']");
+	const brideKanaF = document.querySelector("input[name='new_brideKanaF']");
+	const brideRomaL = document.querySelector("input[name='new_brideRomaL']");
+	const brideRomaF = document.querySelector("input[name='new_brideRomaF']");
 	
-	const weddingDay = document.querySelector("input[name='weddingDay']");
-	const marriageTime = document.querySelector("input[name='marriageTime']");
-	const marriageTime_a = document.querySelector("input[name='marriageTime_a']");
-	const marriage_place = document.querySelector("input[name='marriage_place']");
-	const marriage_addr = document.querySelector("input[name='marriage_addr']");
-	const receptionTime = document.querySelector("input[name='receptionTime']");
-	const receptionTime_a = document.querySelector("input[name='receptionTime_a']");
-	const reception_place = document.querySelector("input[name='reception_place']");
-	const reception_addr = document.querySelector("input[name='reception_addr']");
+	const weddingDay = document.querySelector("input[name='new_weddingDay']");
+	const marriageTime = document.querySelector("input[name='new_marriageTime']");
+	const marriageTime_a = document.querySelector("input[name='new_marriageTime_a']");
+	const marriage_place = document.querySelector("input[name='new_marriage_place']");
+	const marriage_addr = document.querySelector("input[name='new_marriage_addr']");
+	const receptionTime = document.querySelector("input[name='new_receptionTime']");
+	const receptionTime_a = document.querySelector("input[name='new_receptionTime_a']");
+	const reception_place = document.querySelector("input[name='new_reception_place']");
+	const reception_addr = document.querySelector("input[name='new_reception_addr']");
 
-	const helloMessage = document.querySelector("textarea[name='helloMessage']");
-	const byeMessage = document.querySelector("textarea[name='byeMessage']");
-	const photo1 = document.querySelector("input[name='photo1']");
-	const photo2 = document.querySelector("input[name='photo2']");
-	const photo3 = document.querySelector("input[name='photo3']");
-	const photo4 = document.querySelector("input[name='photo4']");
-  console.log(groomKanjiL);
+	const helloMessage = document.querySelector("textarea[name='new_helloMessage']");
+	const byeMessage = document.querySelector("textarea[name='new_byeMessage']");
+	const photo1 = document.querySelector("input[name='new_photo1']");
+	const photo2 = document.querySelector("input[name='new_photo2']");
+	const photo3 = document.querySelector("input[name='new_photo3']");
+	const photo4 = document.querySelector("input[name='new_photo4']");
  
  
  
