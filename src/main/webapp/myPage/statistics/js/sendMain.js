@@ -151,18 +151,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		});
 	})
 });
+// 로고 버튼 클릭 이벤트
+document.addEventListener('DOMContentLoaded', (event) => {
+	const mainLogo = document.querySelector(".mainLogo");
+	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+	
+		mainLogo.addEventListener('click', (event) => {
+			event.preventDefault();
+			mainLogo.style.cursor = "pointer";
+			location.href='MainC';
+		});
+
+	
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // 메뉴 버튼 클릭 이벤트
-const menus = document.querySelectorAll(".yj-main-menu");
-
-menus.forEach((menu) => {
-	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
-	const navi = menu.parentElement.querySelector(".yj-main-nav");
-	menu.addEventListener("click", function() {
-		console.log(menu);
+	const menus = document.querySelector(".yj-main-menu");
+	const navi = document.querySelector(".yj-main-nav");
+		console.log(menus);
 		console.log(navi);
-		const menuBtn = menu.querySelector("img");
+	menus.addEventListener("click", function() {
+		console.log(menus);
+		console.log(navi);
+		const menuBtn = menus.querySelector("img");
 		if (navi.classList.contains("nav-hidden")) {
 			menuBtn.src = "main/imgFolder/yj-main-menu2.png";
 			navi.classList.remove("nav-hidden");
@@ -173,14 +184,7 @@ menus.forEach((menu) => {
 			navi.classList.add("nav-hidden");
 		}
 	});
-	menu.addEventListener('mouseover', (event) => {
-		event.preventDefault();
-		mouseCursor.classList.add("yj-main-s6-cursor-none");
-		menu.style.cursor = "pointer";
-	});
-	menu.addEventListener('mouseleave', (event) => {
-		event.preventDefault();
-		mouseCursor.classList.remove("yj-main-s6-cursor-none");
-		menu.style.cursor = "none";
-	});
+
+
 });
+

@@ -82,15 +82,13 @@ width: 1rem;
 </head>
 <body id="page_top">
 
-	<div class="yj-main-section" id="yj-main-s2">
-
 		<div class="yj-main-logo">
 			<a href="#" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
-		</div>
-
-		<jsp:include page="${mainNav }" />
 	</div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
 			
 	<div id="background1">
 		<div class="canvas-container">
