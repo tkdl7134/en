@@ -1,6 +1,5 @@
 const hello = document.createElement("span");
 const box = document.querySelector("#picked");
-console.log("box : " + box);
 box.appendChild(hello);
 hello.textContent = "あなたの選択!->";
 hello.classList.add('kh-sta-picked');

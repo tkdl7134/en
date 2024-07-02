@@ -41,10 +41,8 @@ public class fundDAO {
 				fldto.setPercent(rs.getString("percent"));
 				flists.add(fldto);
 			}
-			System.out.println(flists);
 			Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 			String json = gson.toJson(flists);
-			System.out.println(json);
 			response.getWriter().print(json);
 			request.setAttribute("list", flists);
 			request.setAttribute("jsonList", json);
@@ -66,7 +64,6 @@ public class fundDAO {
 		String eno = request.getParameter("eno");
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("m_id");
-		System.out.println(mid);
 		
 		String pt = request.getParameter("paytype");
 		String price = request.getParameter("price");
@@ -77,11 +74,7 @@ public class fundDAO {
 		else {
 			wlno = request.getParameter("wlno");
 		}
-		System.out.println(eno);
-		System.out.println(mid);
-		System.out.println(pt);
-		System.out.println(price);
-		System.out.println(wlno);
+
 		DBManager dbManager = DBManager.getInstance();
 		try {
 			con = dbManager.connect();
@@ -112,7 +105,6 @@ public class fundDAO {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			HttpSession session = request.getSession();
-			System.out.println(session.getAttribute("m_id"));
 			if (session.getAttribute("m_id").equals(null)) {
 				return false;
 			}
