@@ -125,6 +125,9 @@ function copyToClipboard() {
 }
 
 
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// 로고 버튼 클릭 이벤트
 document.addEventListener('DOMContentLoaded', (event) => {
 	const mainLogo = document.querySelectorAll(".mainLogo");
 	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
