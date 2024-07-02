@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-body {
+.yj-main-body {
   font-family: "Noto Serif Jp", serif;
   background-color: #fffbf7;
   margin: 0; /* == 기본 margin 제거 */
