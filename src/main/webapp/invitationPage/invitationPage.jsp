@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +20,8 @@
         </a>
         <h1 class="hw_pagetitle">アンケート 管理</h1>
     </div>
-    <form id="invitationForm" action="InvitationC" method="post">
+    <form id="invitationForm" action="InvitationController" method="post">
+        <input type="hidden" name="e_no" value="${param.e_no}" />
         <div class="hw_container">
             <main class="hw_invitation_main">
                 <div class="hw_card">
@@ -112,8 +114,7 @@
                             <c:forEach var="invitation" items="${invitationsYes}" varStatus="status">
                                 <div class="hw_invitation_content">
                                     <span class="hw_invitation_small">${invitation.m_name}</span>
-                                    <span class="hw_invitation_middie">大人: ${invitation.p_adult}
-                                        子供: ${invitation.p_child} 幼児: ${invitation.p_baby}</span>
+                                    <span class="hw_invitation_middie">大人: ${invitation.p_adult} 子供: ${invitation.p_child} 幼児: ${invitation.p_baby}</span>
                                     <span class="hw_invitation_big">${invitation.allergy}${invitation.g_message}</span>
                                 </div>
                             </c:forEach>

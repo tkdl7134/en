@@ -91,10 +91,10 @@
 			data-text="縁は不思議な力で結ばれるものであり、 永遠に続く絆です"></div>
 
 		<div class="vertical-text" id="verticalText2"
-			data-text=" 時間と空間を超えて私たちの縁はさらに固くなり、 "></div>
+			data-text="時間と空間を超えて私たちの縁はさらに固くなり、"></div>
 
 		<div class="vertical-text" id="verticalText3"
-			data-text=" お互いにとって慰めと力となります "></div>
+			data-text="お互いにとって慰めと力となります"></div>
 
 		<div class="yj-main-s3-img">
 			<img id="currentSlideImage" src="main/imgFolder/yj-main-s2-img1.png"

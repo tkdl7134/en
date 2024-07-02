@@ -13,7 +13,10 @@ import java.util.Iterator;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.enmusubi.main.DBManager;
+import com.enmusubi.member.MemberDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -124,9 +127,10 @@ public class ProductDAO {
 				System.out.println("유효 PK 아님");
 				return;
 			}
-
 			// s_event 삽입
-			pstmtEvent.setString(1, "testuser11");
+			HttpSession session = request.getSession();
+			String userId = (String) session.getAttribute("m_id");
+			pstmtEvent.setString(1, userId);
 			pstmtEvent.setString(2, "");
 
 			// s_event_func 삽입
@@ -282,7 +286,7 @@ public class ProductDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			int intEno=Integer.parseInt(request.getParameter("eno"));
+			int intEno= (int)(request.getAttribute("je_eventNo"));
 			pstmt.setInt(1, intEno);
 			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
