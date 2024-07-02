@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.enmusubi.finance.funding.fundDAO;
 import com.google.gson.JsonArray;
@@ -22,6 +23,16 @@ public class receivedSpecificFundingC extends HttpServlet {
 		StatisticsDAO.getAjaxData(request, response);
 		StatisticsDAO.getProductRanking(request);
 		StatisticsDAO.getFundData(request , response);
+		HttpSession session = request.getSession(false);
+
+		if (session != null && session.getAttribute("m_name") != null) {
+			System.out.println("세션 생존");
+			request.setAttribute("mainNav", "../../../main/mainNavAF.jsp");
+		} else {
+			System.out.println("세션 죽음");
+			request.setAttribute("mainNav", "../../../main/mainNavBF.jsp");
+		}
+
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedSpecificFunding.jsp").forward(request, response);
 
 	
