@@ -179,6 +179,8 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .je_photos {
@@ -296,13 +298,15 @@ form {
 }
 
 #je_finish-message {
-    width: 100%;
+    width: 90%;
     margin-top: 25rem;
     text-align: center;
     height: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 1.5rem;
+    margin-right: 1rem;
 }
 
 #je_photoPre1 img,

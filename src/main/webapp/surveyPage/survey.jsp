@@ -459,8 +459,8 @@
 											</span>
 											<span style="font-size: 1.5rem;"> 
 												<input
-												type="checkbox" name="allergy" value="yes" id="allergyCheckbox2" />
-												<label for="allergyCheckbox2" class="cb2"></label>
+												type="checkbox" name="allergy" value="yes" id="allergyCheckbox" />
+												<label for="allergyCheckbox" class="cb2"></label>
 												 はい
 											</span>
 										</div>
@@ -846,7 +846,7 @@ function handleFormSubmit() {
             document.getElementById('city').value.trim() === '' && 
             document.getElementById('address').value.trim() === '') {
         alert('住所を入力します');
-        invalidField = document.getElementById('adult');
+        invalidField = document.getElementById('postal-code');
         $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('adult').value.trim() === '0' && 
             document.getElementById('child').value.trim() === '0' && 
@@ -854,7 +854,7 @@ function handleFormSubmit() {
         alert('同伴人数を入力します');
         invalidField = document.getElementById('adult');
         $('.survey-input').slick('slickGoTo', 3);
-    } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
+    } else if (!(document.getElementById('allergyCheckbox').checked)) {
         alert('アレルギーの種類を入力します');
         invalidField = document.getElementById('allergy-type');
         $('.survey-input').slick('slickGoTo', 3);
