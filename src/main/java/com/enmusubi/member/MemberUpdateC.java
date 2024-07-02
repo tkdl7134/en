@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.Interceptor;
 
@@ -17,6 +18,17 @@ public class MemberUpdateC extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		if (Interceptor.LoginInterceptor(request, response)) {
+			
+			HttpSession session = request.getSession(false);
+
+			if (session != null && session.getAttribute("m_name") != null) {
+				System.out.println("세션 생존");
+				request.setAttribute("mainNav", "../main/mainNavAF.jsp");
+			} else {
+				System.out.println("세션 죽음");
+				request.setAttribute("mainNav", "../main/mainNavBF.jsp");
+			}
+			
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 	}

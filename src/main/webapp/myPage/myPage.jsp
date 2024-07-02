@@ -11,7 +11,7 @@
 <title>会員情報</title>
 
 <link rel="stylesheet" type="text/css" href="myPage/mypage.css">
-
+<link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -55,14 +55,13 @@ body {
 
 		<div class="hs_background">
 
-			<div class="yj-main-s2-logo">
-				<img class="yj-main-s2-logo img" alt=""
-					src="loginPage/ImgFolder/Logo.png">
-			</div>
-			<div class="yj-main-s2-menu">
-				<img class="yj-main-s2-menu img" alt=""
-					src="loginPage/ImgFolder/default_menu_1.png">
-			</div>
+			<div class="yj-main-logo">
+			<a href="MainC" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+		</div>
+		
+		<jsp:include page="${mainNav }" />
+		
 			<h1 class="hs_title">会員情報</h1>
 
 			<div class="hs_mypage-menus">
@@ -72,17 +71,13 @@ body {
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 				<div class="hs_btn-container">
-					<a href="#" class="hs_btn ">✿ テンプレート管理 ✿</a> <img
+					<a href="mytemplateController" class="hs_btn ">✿ テンプレート管理 ✿</a> <img
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
-				<!-- <div class="hs_btn-container">
-					<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img
-						class="yellow_line" alt=""
-						src="loginPage/ImgFolder/yellow_line.png">
-				</div> -->
+				
 				<div class="hs_btn-container">
-					<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 			</div>
@@ -92,7 +87,6 @@ body {
 				<div class="hs_content-title-account">
 					<div class="hs_content-title-text">アカウント情報</div>
 				</div>
-
 
 				<div class="hs_container-input">
 					<div class="hs_content-input id">
@@ -190,6 +184,26 @@ body {
 	</c:if>
 
 	<script>
+	const menus = document.querySelectorAll(".yj-main-menu");
+
+	menus.forEach((menu) => {
+		const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+		const navi = menu.parentElement.querySelector(".yj-main-nav");
+		menu.addEventListener("click", function() {
+			console.log(menu);
+			console.log(navi);
+			const menuBtn = menu.querySelector("img");
+			if (navi.classList.contains("nav-hidden")) {
+				menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+				navi.classList.remove("nav-hidden");
+				navi.classList.add("nav-show");
+			} else {
+				menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+				navi.classList.remove("nav-show");
+				navi.classList.add("nav-hidden");
+			}
+		});
+	});
 	
 	 document.addEventListener("DOMContentLoaded", function () {
 	        var sessionAddress = "${addressParts[0]}";

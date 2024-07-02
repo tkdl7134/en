@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <div class="yj-main-menubox">
 	<div class="yj-main-menu">
 		<img alt="" src="main/imgFolder/yj-main-menu1.png" />

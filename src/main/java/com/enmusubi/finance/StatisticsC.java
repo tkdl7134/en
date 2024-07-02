@@ -13,7 +13,6 @@ import com.enmusubi.finance.funding.fundDAO;
 public class StatisticsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(fundDAO.financeCheck(request)) {
-			
 		fundDAO.insertWishiPick(request);
 		request.setAttribute("title", "ファンディング");
 		request.setAttribute("page", "fund/fundstatistic.jsp");
