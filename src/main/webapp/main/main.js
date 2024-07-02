@@ -410,3 +410,14 @@ document.addEventListener("mousemove", (event) => {
 	s6Mouseicn.style.left = mouseX + "px";
 	s6Mouseicn.style.top = mouseY + "px";
 });
+
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// Section 7
+  document.getElementById('footer-topBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });

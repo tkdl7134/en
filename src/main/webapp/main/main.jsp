@@ -23,7 +23,7 @@ pageEncoding="UTF-8"%>
     ></script>
   </head>
 
-  <body>
+  <body class="yj-main-body">
     <!-- Section 1 -->
     <div class="yj-main-section" id="yj-main-s1">
       <div class="yj-main-s1-musubi">
@@ -457,7 +457,7 @@ pageEncoding="UTF-8"%>
 
       <footer>
         <div class="yj-main-footer">
-          <div class="yj-main-footer-content">
+          <div class="yj-main-footer-content1">
             <div class="footer-logo">
               <img src="main/imgFolder/yj-main-logo.png" alt="푸터 로고" />
             </div>
@@ -468,35 +468,45 @@ pageEncoding="UTF-8"%>
               <a href="ProductController">商品紹介</a>
             </div>
           </div>
-          <div class="footer-links">
-            <!-- 우선 텍스트로써 넣어만 두기 -->
-            <a href="">よくあるご質問</a>
-            <a href="">お問い合わせ</a>
-            <a href="">個人情報保護方針</a>
-            <a href="">サイト内検索</a>
-          </div>
-          <div class="footer-social">
-            <a href="#"
-              ><img src="main/imgFolder/yj-main-s7-facebook.png" alt="Facebook"
-            /></a>
-            <a href="#"
-              ><img
-                src="main/imgFolder/yj-main-s7-instagram.png"
-                alt="Instagram"
-            /></a>
-            <a href="#"
-              ><img src="main/imgFolder/yj-main-s7-twitter.png" alt="Twitter"
-            /></a>
-            <a href="#"
-              ><img src="main/imgFolder/yj-main-s7-youtube.png" alt="Youtube"
-            /></a>
+
+          <div class="yj-main-footer-content2">
+            <div class="footer-social">
+              <!-- 우선 텍스트로써 넣어만 두기 -->
+              <a
+                ><img
+                  src="main/imgFolder/yj-main-s7-facebook.png"
+                  alt="Facebook"
+              /></a>
+              <a
+                ><img
+                  src="main/imgFolder/yj-main-s7-instagram.png"
+                  alt="Instagram"
+              /></a>
+              <a
+                ><img src="main/imgFolder/yj-main-s7-twitter.png" alt="Twitter"
+              /></a>
+              <a
+                ><img src="main/imgFolder/yj-main-s7-youtube.png" alt="Youtube"
+              /></a>
+            </div>
+            <div class="footer-links">
+              <!-- 우선 텍스트로써 넣어만 두기 -->
+              <a>よくあるご質問</a>
+              <a>お問い合わせ</a>
+              <a>個人情報保護方針</a>
+              <a>サイト内検索</a>
+            </div>
+            <div class="footer-copyright">
+              <a>© 2024 EnMusubi Association. All rights reserved.</a>
+            </div>
           </div>
 
           <div class="footer-topBtn">
-            <img src="main/imgFolder/yj-main-topBtn.png" alt="푸터 탑버튼" />
-          </div>
-          <div class="footer-copyright">
-            <p>© 2024 EnMusubi Association. All rights reserved.</p>
+            <img
+              id="footer-topBtn"
+              src="main/imgFolder/yj-main-topBtn.png"
+              alt="푸터 탑버튼"
+            />
           </div>
         </div>
       </footer>
