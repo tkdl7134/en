@@ -20,7 +20,7 @@ public class MemberDeleteC extends HttpServlet {
 			throws ServletException, IOException {
 		MemberDAO.memberDeleteC(request, response);
 		
-		response.sendRedirect("HSC");
+		response.sendRedirect("MainC");
 		
     }
 }

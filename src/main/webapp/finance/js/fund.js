@@ -17,7 +17,7 @@ $.ajax({
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.wl_no}">
 						<div style="height: 18rem">
-							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" />
+							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" onerror="this.onerror=null; this.src='finance/img/プレゼント.png';"/>
 						</div>
 						<div>
 							<h1 style="margin:0">${element.wl_product}</h1>
