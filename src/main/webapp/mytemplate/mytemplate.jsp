@@ -7,20 +7,29 @@
 <meta charset="UTF-8">
 <title>Template Management</title>
 <link rel="stylesheet" href="mytemplate/mytemplate.css">
-<script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
+<script type="text/javascript" src="mytemplate/mytemplate.js"></script>
 </head>
 
 <body id="page_top" class="hw_background_image">
+<div class="yj-main-section" id="yj-main-s2">
 
-    <header class="hw_head">
+		<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+		</div>
+
+		<jsp:include page="${mainNav }" />
+</div>
+   <!--  <header class="hw_head">
         <a class="hw_logo" href="main.jsp">
             <img src="mytemplate/imgFolder/logo.png" alt="logo">
         </a>
         <a class="hw_menu" href="main.jsp">
             <img src="mytemplate/imgFolder/menu_btn.png" alt="menu">
         </a>
-        <h1 class="hw_page_title">テンプレート 管理</h1>
     </header>
+        --> 
+        <h1 class="hw_page_title">テンプレート 管理</h1>
 
     <form id="templateForm" action="mytemplateController" method="post">
         <div class="hw_container">

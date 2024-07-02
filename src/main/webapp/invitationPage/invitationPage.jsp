@@ -11,13 +11,24 @@
 <script type="text/javascript" src="invitationPage/invitationPage.js"></script>
 </head>
 <body id="page_top" class="background-image">
-    <div class="hw_up_img">
+
+<div class="yj-main-section" id="yj-main-s2">
+
+		<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+		</div>
+
+		<jsp:include page="${mainNav }" />
+</div>
+    <!-- div class="hw_up_img">
         <a class="hw_logo" href="main.jsp">
             <img src="invitationPage/imgFolder/logo.png" alt="logo">
         </a>
         <a class="hw_menu" href="main.jsp">
             <img src="invitationPage/imgFolder/menu_btn.png" alt="메뉴">
         </a>
+         -->
         <h1 class="hw_pagetitle">アンケート 管理</h1>
     </div>
     <form id="invitationForm" action="InvitationController" method="post">
