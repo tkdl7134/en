@@ -12,7 +12,21 @@
   cursor: pointer;
 }
 
-.cb1::before, .cb1::after{
+.cb2 {
+  height: 20px;
+  width:20px;
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+}
+
+.cb1::before, .cb1::after,
+.cb2::before, .cb2::after {
   position: absolute;
   height: 0;
   width: 4px;
@@ -24,16 +38,16 @@
   content: ' ';
   transition: opacity ease 0.5;
 }
-.cb1::before{
+.cb1::before, .cb2::after{
   background-color: #CD0000;
 }
-.cb1::before {
+.cb1::before, .cb2::before {
   top: 14.4px;
   left: 8.2px;
   box-shadow: 0 0 0 1px transparent;
   transform: rotate(-135deg);
 }
-.cb1::after{
+.cb1::after, .cb2::after{
   top: 7.4px;
   left: 1px;
   transform: rotate(-45deg);
@@ -126,6 +140,34 @@ input[id="brideCheckbox"]:checked + .cb1::before{
   animation: topcheck 0.4s ease 0s forwards;
 }
 
+input[id="allergyCheckbox"]:checked + .cb2 {
+  border-color: #ed0606;
+}
+
+input[id="allergyCheckbox"]:checked + .cb2::after{
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="allergyCheckbox"]:checked + .cb2::before{
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}
+
+input[id="allergyCheckbox2"]:checked + .cb2 {
+  border-color: #ed0606;
+}
+
+input[id="allergyCheckbox2"]:checked + .cb2::after{
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="allergyCheckbox2"]:checked + .cb2::before{
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}
+
 input[type="checkbox"] {
   display: none; /* 모든 체크박스 input 요소 숨기기 */
 }
@@ -133,6 +175,12 @@ input[type="checkbox"] {
 .couple-container label {
 	margin-right: 1rem;
 }
+
+.allergy-question label {
+	margin-right: 1rem;
+	margin-left: 5rem;
+}
+
 
 @keyframes bottomcheck {
   0% {

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="surveyPage/survey.css" />
 <link rel="stylesheet" href="surveyPage/surveyCheckBox.css" />
+<link rel="stylesheet" href="surveyPage/surveySelect.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
@@ -100,18 +101,22 @@
 												<c:when test="${loginType == 'normal' }">
 													<c:set var="members" value="${members }" />
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> <input
+														<div style="font-size: 1.5rem;">名前</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
 														name="name" required value="${members.m_first_name}"
-														disabled="disabled" /> <input style="font-size: 1.2rem;"
+														disabled="disabled" /> 
+														<input 
+														style="font-size: 1.2rem;"
 														type="text" placeholder="Last Name" class="name-input"
 														id="name" name="name" required
 														value="${members.m_last_name}" disabled="disabled" />
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
 														name="kata-name" required
@@ -123,12 +128,14 @@
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														<div style="font-size: 1.5rem;">ローマ字</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
 														value="${members.m_last_name_rome}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="romaName"
 														name="roma-name" required disabled="disabled"
 														value="${members.m_first_name_rome}" />
@@ -140,36 +147,48 @@
 												</c:when>
 												<c:otherwise>
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> <input
+														<div style="font-size: 1.5rem;">名前</div> 
+														<input
 														style="font-size: 1rem;" type="text" placeholder="姓"
 														class="name-input" id="name" name="name" required
-														value="${members.m_first_name}" disabled="disabled" /> <input
+														value="${members.m_first_name}" 
+														 <c:if test="${not empty members.m_first_name}">disabled="disabled"</c:if> />										
+														<input
 														style="font-size: 1.2rem;" type="text" placeholder="名"
 														class="name-input" id="name" name="name" required
-														value="${members.m_last_name}" disabled="disabled" />
+														value="${members.m_last_name}" 
+														 <c:if test="${not empty members.m_last_name}">disabled="disabled"</c:if> />										
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<input
 														style="font-size: 1rem;" type="text" placeholder="せい"
 														class="name-input" id="kataName" name="kata-name" required
-														value="${members.m_first_name_kana}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														value="${members.m_first_name_kana}" 
+														 <c:if test="${not empty members.m_first_name_kana}">disabled="disabled"</c:if> />										
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="めい" class="name-input" id="kataName"
 														name="kata-name" required
-														value="${members.m_last_name_kana}" disabled="disabled" />
+														value="${members.m_last_name_kana}" 
+														 <c:if test="${not empty members.m_last_name_kana}">disabled="disabled"</c:if> />										
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														<div style="font-size: 1.5rem;">ローマ字</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
-														value="${members.m_last_name_rome}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														value="${members.m_last_name_rome}" 
+														 <c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />										
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" id="romaName" class="name-input"
 														name="roma-name" required
-														value="${members.m_first_name_rome}" disabled="disabled" />
+														value="${members.m_first_name_rome}" 
+														 <c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />										
 													</label>
 													</br>
 													<c:if test="${not empty members.m_first_name}">
@@ -229,8 +248,8 @@
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type="number"
 													class="contact-input" id="phonenum" name="phonenum"
-													placeholder="000-0000-0000" required disabled="disabled"
-													value="${members.m_phone}" />
+													placeholder="000-0000-0000" required 
+													disabled="disabled" value="${members.m_phone}" />
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
@@ -244,13 +263,15 @@
 												メールアドレス<input style="font-size: 1.2rem;" type="email"
 													class="contact-input" id="email" name="email"
 													placeholder="enmusubi@gmail.com" required
-													value="${members.m_email}" />
+													value="${members.m_email}" 
+													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />										
 											</div>
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type="number"
 													class="contact-input" id="phonenum" name="phonenum"
 													placeholder="000-0000-0000" required
-													value="${members.m_phone}" />
+													value="${members.m_phone}"
+													<c:if test="${not empty members.m_phone}">disabled="disabled"</c:if> />													
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
@@ -343,14 +364,14 @@
 																value="${members.a_postcode }"
 																<c:if test="${not empty members.a_postcode}">disabled="disabled"</c:if> />
 														</div>
-													</div>
+												</div>
 													<div class="address-contents-container">
 														<div>
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
 															<select style="font-size: 1.4rem" id="prefecture"
-																name="address" required
+																name="address" class="pl" required
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
 																<option value="">${members.a_prefecture}</option>
 																<c:forEach var="prefecture" items="${prefectures}">
@@ -399,17 +420,17 @@
 									<div>同伴人数</div>
 									<div class="together-people">大人</div>
 									<input type="button" onclick='count("plus","adult")' value="+" />
-									<input style="width: 2rem; font-size: 1rem;" class="result"
+									<input style="width: 2rem; font-size: 1.2rem;" class="result"
 										value="0" id="adult" name="adult" /> <input type="button"
 										onclick='count("minus","adult")' value="-" />
 									<div value="子供" class="together-people">子供</div>
 									<input type="button" onclick='count("plus","child")' value="+" />
-									<input style="width: 2rem; font-size: 1rem" class="result"
+									<input style="width: 2rem; font-size: 1.2rem" class="result"
 										value="0" id="child" name="child" /> <input type="button"
 										onclick='count("minus","child")' value="-" />
 									<div value="幼児" class="together-people">幼児</div>
 									<input type="button" onclick='count("plus","baby")' value="+" />
-									<input style="width: 2rem; font-size: 1rem;"
+									<input style="width: 2rem; font-size: 1.2rem;"
 										class="result baby" value="0" id="baby" name="baby" /> <input
 										type="button" onclick='count("minus","baby")' value="-" />
 								</div>
@@ -426,11 +447,18 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-											<label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="no" checked /> いいえ
-											</label> <label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="yes" /> はい
-											</label>
+											<span style="font-size: 1.5rem;"> 
+												<input
+												type="checkbox" name="allergy" value="no" id="allergyCheckbox" />
+												<label for="allergyCheckbox" class="cb2"></label>
+												 いいえ
+											</span>
+											<span style="font-size: 1.5rem;"> 
+												<input
+												type="checkbox" name="allergy" value="yes" id="allergyCheckbox2" />
+												<label for="allergyCheckbox2" class="cb2"></label>
+												 はい
+											</span>
 										</div>
 
 										<div class="allergy-details" id="allergy-details"
