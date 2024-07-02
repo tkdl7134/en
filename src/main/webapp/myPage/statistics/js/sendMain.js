@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
 function showPopup(url) {
 	document.getElementById('popup-url').value = url;
 	document.getElementById('popup').style.display = 'block';
@@ -123,3 +124,68 @@ function copyToClipboard() {
 	document.execCommand("copy");
 	alert("URL이 복사되었습니다: " + copyText.value);
 }
+
+
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// 로고 버튼 클릭 이벤트
+document.addEventListener('DOMContentLoaded', (event) => {
+	const mainLogo = document.querySelectorAll(".mainLogo");
+	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+	mainLogo.forEach((logo) => {
+		logo.addEventListener('mouseover', (event) => {
+			event.preventDefault();
+			mouseCursor.classList.add("yj-main-s6-cursor-none");
+			logo.style.cursor = "pointer";
+		});
+		logo.addEventListener('mouseleave', (event) => {
+			event.preventDefault();
+			mouseCursor.classList.remove("yj-main-s6-cursor-none");
+			logo.style.cursor = "none";
+		});
+		logo.addEventListener('click', (event) => {
+			event.preventDefault(); // 기본 동작을 막습니다 (페이지 새로고침 방지)
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth' // 부드럽게 스크롤됩니다
+			});
+		});
+	})
+});
+// 로고 버튼 클릭 이벤트
+document.addEventListener('DOMContentLoaded', (event) => {
+	const mainLogo = document.querySelector(".mainLogo");
+	const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+	
+		mainLogo.addEventListener('click', (event) => {
+			event.preventDefault();
+			mainLogo.style.cursor = "pointer";
+			location.href='MainC';
+		});
+
+	
+
+// ////////// ////////// ////////// ////////// ////////// //////////
+// 메뉴 버튼 클릭 이벤트
+	const menus = document.querySelector(".yj-main-menu");
+	const navi = document.querySelector(".yj-main-nav");
+		console.log(menus);
+		console.log(navi);
+	menus.addEventListener("click", function() {
+		console.log(menus);
+		console.log(navi);
+		const menuBtn = menus.querySelector("img");
+		if (navi.classList.contains("nav-hidden")) {
+			menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+			navi.classList.remove("nav-hidden");
+			navi.classList.add("nav-show");
+		} else {
+			menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+			navi.classList.remove("nav-show");
+			navi.classList.add("nav-hidden");
+		}
+	});
+
+
+});
+

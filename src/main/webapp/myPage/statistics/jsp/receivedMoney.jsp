@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="myPage/statistics/css/receivedMoney.css" />
 <link rel="stylesheet" href="finance/css/fund.css" />
+<link rel="stylesheet" href="product/index.css" />
+<script defer="defer" type="text/javascript"
+	src="product/index.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
@@ -27,13 +30,18 @@
 </head>
 <body>
 	<div class="recFund-container">
-		<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-		<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img" alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+	</div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
 		<div class="jh-half-circle">
 		
 		
 		
-		<div style="margin-left : 52rem; display : flex;" class="recFund-title">
+		<div style="margin-left : 52rem; margin-top : 2rem; display : flex;" class="recFund-title">
 		<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 		<div style="font-size: 25px; font-weight : bold;margin-left: 1rem; margin-top: 0.3rem;">の現状</div>
 		</div>

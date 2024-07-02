@@ -149,12 +149,30 @@ header {
 }
 
 .together-container > input {
-  padding-left: 0.7rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .together-container input {
   font-family: "Noto Serif JP", serif;
   border-color: black;
+}
+
+.togeter-button {
+  font-size: 1.5rem;
+  border: none;
+  background-color: #FBC1BF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.togeter-button:hover {
+  background-color: red;
+}
+
+.togeter-button:disabled {
+  background-color: #FBC1BF;
+  cursor: not-allowed;
 }
 
 .name-container > input {
@@ -464,7 +482,7 @@ legend div:nth-child(1) {
   background-size: cover;
   background-position: center;
   transform: rotate(10deg);
-  transition: transform 0.5s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .reject-notes-container {
