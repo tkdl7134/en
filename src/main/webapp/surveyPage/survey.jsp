@@ -221,7 +221,7 @@
 													disabled="disabled" value="${members.m_email}" />
 											</div>
 											<div>
-												電話番号 <input style="font-size: 1.2rem;" type="number"
+												電話番号 <input style="font-size: 1.2rem;" type="text"
 													class="contact-input" id="phonenum" name="phonenum"
 													placeholder="000-0000-0000" required disabled="disabled"
 													value="${members.m_phone}" />
@@ -242,7 +242,7 @@
 													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />
 											</div>
 											<div>
-												電話番号 <input style="font-size: 1.2rem;" type="number"
+												電話番号 <input style="font-size: 1.2rem;" type=""text""
 													class="contact-input" id="phonenum" name="phonenum"
 													placeholder="000-0000-0000" required
 													value="${members.m_phone}"
@@ -469,7 +469,7 @@
 
 								<div>
 
-									<button type="button" class="submitBtn" class="tg-survey-button"
+									<button type="button" id="submitBtn" class="tg-survey-button"
 										onclick="handleFormSubmit()">
 										<span>送信</span>
 									</button>
@@ -492,7 +492,7 @@
 											</div>
 										</div>
 
-										<button type="button" class="submitBtn" class="tg-survey-button"
+										<button type="button" id="submitBtn"  class="tg-survey-button"
 											onclick="handleFormSubmitWithoutAllergy()">
 											<span>送信</span>
 										</button>

@@ -399,7 +399,8 @@ legend div:nth-child(1) {
 }
 
 .tg-survey-button:hover {
-  transform: scale(1); /* �샇踰� �떆 �빟媛� �솗�� */
+  transform: scale(1.1);
+  background-color:#FBC1BF;
 }
 
 .recMain-container {
