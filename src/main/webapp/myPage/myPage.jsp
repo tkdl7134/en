@@ -75,11 +75,7 @@ body {
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
-				<!-- <div class="hs_btn-container">
-					<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img
-						class="yellow_line" alt=""
-						src="loginPage/ImgFolder/yellow_line.png">
-				</div> -->
+				
 				<div class="hs_btn-container">
 					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
@@ -91,7 +87,6 @@ body {
 				<div class="hs_content-title-account">
 					<div class="hs_content-title-text">アカウント情報</div>
 				</div>
-
 
 				<div class="hs_container-input">
 					<div class="hs_content-input id">
