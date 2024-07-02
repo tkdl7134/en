@@ -34,7 +34,7 @@
 
           <!-- update / delete -->
           <c:forEach items="${fundings }" var="f">
-          <form class="fundingUpdateForm" onsubmit="return call()">
+          <form class="fundingUpdateForm" >
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">
               <div class="je_fundingBox-redlineL"></div>
@@ -44,7 +44,7 @@
               </div>
               <div class="je_detail-title je_table-img">${f.wl_product }</div>
               <div class="je_detail-input">
-                <input type="text" name ="wl_up_price" placeholder="${f.wl_price } 円" />
+                <input type="number" name ="wl_up_price" placeholder="${f.wl_price } 円"/>
                 <input type="hidden" name ="wl_no" value="${f.wl_no }" />
               </div>
               <div class="je_detail-buttons">
@@ -58,7 +58,7 @@
          
          <!-- insert -->
           <c:forEach items="${basicNames }" var="b">
-         <form class="fundingRegForm" onsubmit="return call()">
+         <form class="fundingRegForm">
      <input type="hidden" name="eno" value="${je_eventNo }">
             <div class="je_fundingBox">
             <div class="je_fundingBox-details">
@@ -70,7 +70,7 @@
               <div class="je_detail-title je_table-img">${b }</div>
               <input type="hidden" name="product_name" value="${b }">
               <div class="je_detail-input">
-                <input type="text" placeholder="円" name="product_price"/>
+                <input type="number" placeholder="円" name="product_price" id="basic_funding_price"/>
               </div>
               <div class="je_detail-button je_reg-button"><button type="submit">登録</button></div>
             </div>
@@ -89,12 +89,12 @@
                 <img src="product/imgFolder/funding-more.png" alt="" />
               </div>
               <div class="je_detail-inputName">
-                <input type="text" placeholder="アイテム" name="product_name"/>
+                <input type="text" placeholder="アイテム" name="product_name" />
               </div>
               <div class="je_detail-input je_input-price">
-                <input type="text" placeholder="円" name="product_price" />
+                <input id="je_new-funding-price" type="number" placeholder="円" name="product_price" />
               </div>
-              <div class="je_detail-button"><button>登録</button></div>
+              <div class="je_detail-button"><button type="submit">登録</button></div>
             </div>
           </div>
           </form>

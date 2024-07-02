@@ -174,12 +174,13 @@ a {
 }
 
 .je_invitaton-message {
-  margin-top: 9.5rem;
-  height: 10rem;
-  width: 100%;
-  align-content: center;
-  font-size: 1.3rem;
-  text-align: center;
+    margin-top: 7.5rem;
+    height: 11rem;
+    width: 90%;
+    align-content: center;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-left: 1.8rem;
 }
 
 .je_days {
@@ -243,10 +244,11 @@ a {
 }
 
 .je_finish-message {
-  margin-top: 31rem;
-  height: 10rem;
-  width: 100%;
-  align-content: center;
-  font-size: 1.3rem;
-  text-align: center;
+    margin-top: 26rem;
+    height: 12rem;
+    width: 90%;
+    align-content: center;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-left: 1.6rem;
 }

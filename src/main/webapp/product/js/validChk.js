@@ -1,5 +1,5 @@
 function isEmpty(input){
-	return !input.value;
+	return !input.value.trim();
 }
 
 function isNotNumber(input){
