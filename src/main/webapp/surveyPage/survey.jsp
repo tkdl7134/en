@@ -115,7 +115,7 @@
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<div style="font-size: 1.5rem;">フリガナ</div> 
 														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
@@ -133,15 +133,16 @@
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
-														value="${members.m_last_name_rome}" disabled="disabled" />
+														value="${members.m_first_name_rome}" disabled="disabled" />
 														<input 
 														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="romaName"
 														name="roma-name" required disabled="disabled"
-														value="${members.m_first_name_rome}" />
+														value="${members.m_last_name_rome}" />
 													</label>
 													<c:if test="${not empty members.m_first_name}">
-														<div class="emergency-words">❂
+														<div class="emergency-words"
+															 style="margin-top: 0.5rem"> ✿
 															情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 												</c:when>
@@ -161,7 +162,7 @@
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<div style="font-size: 1.5rem;">フリガナ</div> 
 														<input
 														style="font-size: 1rem;" type="text" placeholder="せい"
 														class="name-input" id="kataName" name="kata-name" required
@@ -185,14 +186,15 @@
 														 <c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />										
 														<input 
 														style="font-size: 1.2rem;" type="text"
-														placeholder="First Name" id="romaName" class="name-input"
+														placeholder="Ｆamily Name" id="romaName" class="name-input"
 														name="roma-name" required
 														value="${members.m_first_name_rome}" 
 														 <c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />										
 													</label>
 													</br>
 													<c:if test="${not empty members.m_first_name}">
-														<div class="emergency-words">❂
+														<div class="emergency-words"
+															style="margin-top: 0.5rem"> ✿
 															情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 												</c:otherwise>
@@ -459,8 +461,8 @@
 											</span>
 											<span style="font-size: 1.5rem;"> 
 												<input
-												type="checkbox" name="allergy" value="yes" id="allergyCheckbox" />
-												<label for="allergyCheckbox" class="cb2"></label>
+												type="checkbox" name="allergy" value="yes" id="allergyCheckbox2" />
+												<label for="allergyCheckbox2" class="cb2"></label>
 												 はい
 											</span>
 										</div>
@@ -511,7 +513,7 @@
 										</div>
 
 										<button type="button" id="submitBtn" class="tg-survey-button"
-											onclick="openModal()">
+											onclick="openModalWithoutAllergy()">
 											<span>送信</span>
 										</button>
 
@@ -769,25 +771,47 @@ if (this.checked) {
 
 
 function openModal() {
-	console.log("activatge");
-	if(handleFormSubmit()=='yes'){
-	    const modal = document.getElementById("tg-modal");
-	    const modalContent = document.querySelector(".tg-modal-container");
-	    document.querySelector(".tk_survey_main").style.opacity="0";
-	    body = document.querySelector("body");
-	    body.style.transition= "background-color 0.5s ease";
-	    body.style.backgroundColor="#ffe0e0";
-	    modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
-	    setTimeout(() => {
-	        modal.style.opacity = "1";
-	        modalContent.style.transform = "scale(1)";
-	        modalContent.style.opacity = "1";
-	        modalContent.style.animation = "burstIn 0.5s forwards";
-	    }, 10);
-	}
-	else{
-	}
+    console.log("activatge");
+    if (handleFormSubmit() === 'yes') {
+        const modal = document.getElementById("tg-modal");
+        const modalContent = document.querySelector(".tg-modal-container");
+        document.querySelector(".tk_survey_main").style.opacity = "0";
+        const body = document.querySelector("body");
+        body.style.transition = "background-color 0.5s ease";
+        body.style.backgroundColor = "#ffe0e0";
+        modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+        setTimeout(() => {
+            modal.style.opacity = "1";
+            modalContent.style.transform = "scale(1)";
+            modalContent.style.opacity = "1";
+            modalContent.style.animation = "burstIn 0.5s forwards";
+        }, 10);
+    } else {
+        console.log("Validation failed");
+    }
 }
+
+function openModalWithoutAllergy() {
+    console.log("activatge");
+    if (handleFormSubmitWithoutAllergy() === 'yes') {
+        const modal = document.getElementById("tg-modal");
+        const modalContent = document.querySelector(".tg-modal-container");
+        document.querySelector(".tk_survey_main").style.opacity = "0";
+        const body = document.querySelector("body");
+        body.style.transition = "background-color 0.5s ease";
+        body.style.backgroundColor = "#ffe0e0";
+        modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
+        setTimeout(() => {
+            modal.style.opacity = "1";
+            modalContent.style.transform = "scale(1)";
+            modalContent.style.opacity = "1";
+            modalContent.style.animation = "burstIn 0.5s forwards";
+        }, 10);
+    } else {
+        console.log("Validation failed");
+    }
+}
+
 	let formArray = $("#surveyForm").serializeArray();
 	console.log(formArray);
 function ajaxThing(){
@@ -824,12 +848,13 @@ function handleFormSubmit() {
     }  else if (document.getElementById('romaName').value.trim() === '') {
         alert('ローマ字の名前を入力します');
         invalidField = document.getElementById('romaName');
+        $('.survey-input').slick('slickGoTo', 1);
     }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
         alert('新郎または新婦を選択します');
         invalidField = document.getElementById('groomCheckbox');
         $('.survey-input').slick('slickGoTo', 1);
     }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
-    		!document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
+            !document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
         alert('作成者との関係を選択します');
         invalidField = document.getElementById('familyCheckbox');
         $('.survey-input').slick('slickGoTo', 1);
@@ -842,7 +867,7 @@ function handleFormSubmit() {
         invalidField = document.getElementById('phonenum');
         $('.survey-input').slick('slickGoTo', 2);
     } else if (document.getElementById('postal-code').value.trim() === '' && 
-    		document.getElementById('prefecture').value.trim() === '' && 
+            document.getElementById('prefecture').value.trim() === '' && 
             document.getElementById('city').value.trim() === '' && 
             document.getElementById('address').value.trim() === '') {
         alert('住所を入力します');
@@ -854,21 +879,70 @@ function handleFormSubmit() {
         alert('同伴人数を入力します');
         invalidField = document.getElementById('adult');
         $('.survey-input').slick('slickGoTo', 3);
-    } else if (!(document.getElementById('allergyCheckbox').checked)) {
-        alert('アレルギーの種類を入力します');
+    } else if (document.getElementById('allergyCheckbox').checked && 
+            document.getElementById('allergyCheckbox2').checked && 
+            document.getElementById('allergy-type').value.trim() === '') {
+        alert('アレルギーの種類を入力してください');
         invalidField = document.getElementById('allergy-type');
+        $('.survey-input').slick('slickGoTo', 3); // 4번째 슬라이드로 이동
+    }
+
+    if (invalidField) {
+        invalidField.focus();
+        return 'no'; // 폼 제출 중지
+    }
+
+    return 'yes'; // 폼 제출 허용
+}
+
+function handleFormSubmitWithoutAllergy() {
+    let invalidField = null;
+    let slideIndex = 0; // slideIndex 변수 선언
+
+    if (document.getElementById('name').value.trim() === '') {
+        alert('名前を入力します');
+        invalidField = document.getElementById('name');
+        $('.survey-input').slick('slickGoTo', 1);
+    } else if (document.getElementById('kataName').value.trim() === '') {
+        alert('カタカナ名を入力します');
+        invalidField = document.getElementById('kataName');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (document.getElementById('romaName').value.trim() === '') {
+        alert('ローマ字の名前を入力します');
+        invalidField = document.getElementById('romaName');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
+        alert('新郎または新婦を選択します');
+        invalidField = document.getElementById('groomCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
+            !document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
+        alert('作成者との関係を選択します');
+        invalidField = document.getElementById('familyCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (document.getElementById('email').value.trim() === '') {
+        alert('メールを入力します');
+        invalidField = document.getElementById('email');
+        $('.survey-input').slick('slickGoTo', 2);
+    }  else if (document.getElementById('phonenum').value.trim() === '') {
+        alert('連絡先を入力します');
+        invalidField = document.getElementById('phonenum');
+        $('.survey-input').slick('slickGoTo', 2);
+    } else if (document.getElementById('postal-code').value.trim() === '' && 
+            document.getElementById('prefecture').value.trim() === '' && 
+            document.getElementById('city').value.trim() === '' && 
+            document.getElementById('address').value.trim() === '') {
+        alert('住所を入力します');
+        invalidField = document.getElementById('postal-code');
         $('.survey-input').slick('slickGoTo', 3);
     } 
-
-    if (invalidField != null) {
-        goToSlide(slideIndex); // 해당 슬라이드로 이동
-        setTimeout(function() {
-            invalidField.focus(); // 포커스 설정
-        }, 500); // 비동기 처리로 포커스 설정
-        return 'no';
-    } else {
-    	return 'yes';
+    
+    if (invalidField) {
+        invalidField.focus();
+        return 'no'; // 폼 제출 중지
     }
+
+    return 'yes'; // 폼 제출 허용
 }
 
 document.getElementById('prefecture').addEventListener('change', function() {

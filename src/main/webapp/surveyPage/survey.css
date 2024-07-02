@@ -74,7 +74,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
 .tg-include-btu-page {
@@ -95,7 +95,6 @@ header {
 }
 
 .main-content-words > div:nth-child(3) {
-  margin-top: 1.2rem;
   width: 42rem;
   height: 0.15rem;
 }
@@ -494,7 +493,7 @@ legend div:nth-child(1) {
 }
 .reject-notes-container textarea {
   width: 50rem;
-  height: 20rem; /* textarea �넂�씠 議곗젅 */
+  height: 15rem; /* textarea �넂�씠 議곗젅 */
   padding: 4px;
   border: 2px solid black;
   box-sizing: border-box;
