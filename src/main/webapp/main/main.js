@@ -89,7 +89,7 @@ const wheelHandler = (event) => {
 				}, 100); // 100ms 지연 후 텍스트 애니메이션 시작
 			}, delay);
 			aniTimeouts.push(aniTimeout);
-			delay += textElement.dataset.text.length * 100 + 200; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
+			delay += textElement.dataset.text.length * 200 + 100; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
 		});
 	} else if (currentSectionIndex == 4) {
 		document.removeEventListener("mousemove", mouseMoveHandler);
@@ -102,6 +102,7 @@ const debouncedWheelHandler = debounce(wheelHandler, 100);
 
 // 요소에 휠 이벤트 추가
 document.addEventListener('wheel', debouncedWheelHandler);
+
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // 로고 버튼 클릭 이벤트
@@ -269,6 +270,16 @@ $(document).ready(function() {
 		});
 });
 
+
+// トップに戻る
+//        document.querySelector('.nav-topBtn a').addEventListener('click', function(e) {
+//            e.preventDefault();
+//            window.scrollTo({
+//                top: 0,
+//                behavior: 'smooth'
+//            });
+//        });
+
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 3
 
@@ -414,6 +425,7 @@ document.addEventListener("mousemove", (event) => {
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // Section 7
+// トップに戻る
   document.getElementById('footer-topBtn').addEventListener('click', function(event) {
     event.preventDefault();
     window.scrollTo({

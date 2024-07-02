@@ -3,14 +3,12 @@
 .yj-main-body {
   font-family: "Noto Serif Jp", serif;
   background-color: #fffbf7;
-  margin: 0; /* == 기본 margin 제거 */
-  height: 100vh; /* == 뷰포트 높이를 채우도록 설정 */
-  /* Prevent default scrolling (== 기본 스크롤 숨기기) */
+  margin: 0;
+  height: 100vh;
   overflow: hidden;
 }
 
 .yj-main-section {
-  /* 뷰포트 전체를 채우도록 설정 */
   height: 100vh;
 }
 
@@ -120,8 +118,7 @@ yj-main-nav a:visited {
 .nav-login,
 .nav-register,
 .nav-productBF {
-  /* 	height: 10px; */
-  margin: 1px 0; /* 각 섹션의 마진을 동일하게 설정 */
+  margin: 1px 0;
 }
 
 .nav-hidden {
@@ -149,7 +146,7 @@ yj-main-nav a:visited {
 }
 
 .nav-topBtn > a > img {
-  width: 100%; /* Ensures the image fills the anchor tag */
+  width: 100%;
   height: 100%;
   object-fit: contain;
 }
@@ -188,8 +185,8 @@ yj-main-nav a:visited {
 
 .nav-myPageList a {
   text-align: left;
-  display: block; /* 각 링크를 블록 요소로 설정하여 세로로 나열 */
-  margin: 10px 0; /* 각 링크 간격 조정 */
+  display: block;
+  margin: 10px 0;
 }
 
 .nav-myPageList a h3 {
@@ -222,13 +219,12 @@ yj-main-nav a:visited {
 
 .nav-topBtn > a {
   display: block;
-  /* Ensures that the anchor tag behaves like a block element */
-  width: 100%; /* Makes the anchor tag as wide as its container */
-  height: 100%; /* Makes the anchor tag as tall as its container */
+  width: 100%;
+  height: 100%;
 }
 
 .nav-topBtn > a > img {
-  width: 100%; /* Ensures the image fills the anchor tag */
+  width: 100%;
   height: 100%;
   object-fit: contain;
 }
@@ -240,7 +236,7 @@ yj-main-nav a:visited {
 }
 
 .nav-logout button {
-  background-color: #ff6978; /* 핑크색 */
+  background-color: #ff6978;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -251,7 +247,7 @@ yj-main-nav a:visited {
 }
 
 .nav-logout button:hover {
-  background-color: #ff4356; /* 호버 시 색 변화 */
+  background-color: #ff4356;
 }
 
 /* ////////// ////////// ////////// ////////// ////////// ////////// */
@@ -405,7 +401,6 @@ yj-main-nav a:visited {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* cursor: pointer; */
 }
 
 .yj-main-s2-img > img {
@@ -536,10 +531,10 @@ yj-main-nav a:visited {
   z-index: 1;
   background-image: url("imgFolder/yj-main-default-bg.png ");
   display: flex;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  height: 100vh; /*Viewport의 높이를 100%로 설정 */
-  position: relative; /* position을 relative로 설정 */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Viewport 높이 100%로 설정 */
+  position: relative;
   overflow: hidden;
 }
 
@@ -557,9 +552,8 @@ yj-main-nav a:visited {
 .yj-main-s4-flexContainer {
   z-index: 2;
   display: flex;
-  flex-wrap: nowrap; /* Ensures items stay in a single row */
+  flex-wrap: nowrap;
   overflow: hidden;
-  /* Allows horizontal scrolling if content overflows */
   column-gap: 3rem;
   align-items: center;
 }
@@ -588,22 +582,20 @@ yj-main-nav a:visited {
 .yj-main-s4-container {
   display: flex;
   flex-direction: column;
-  /* Stack images vertically within each column */
   row-gap: 3rem;
   /* animation */
   animation: imgs-float 2s ease-in-out infinite;
 }
 
 .yj-main-s4-container img {
-  max-width: 100%; /* Ensures images don't exceed their container width */
-  height: auto; /* Maintains aspect ratio */
+  max-width: 100%;
+  height: auto;
   /* transition */
   transform: scale(1);
   transition: all 1s ease-out;
 }
 
 .yj-main-s4-container img:hover {
-  /* animation: none; */
   transform: scale(1.1);
 }
 
@@ -623,17 +615,44 @@ yj-main-nav a:visited {
   background-image: url("imgFolder/yj-main-default-bg.png ");
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .yj-main-s5-bigCon {
+  position: relative;
+  width: 80%;
   display: flex;
   justify-content: center;
-  transform: translate(20%, 0);
+  /* transform: translate(20%, 0); */
+}
+
+.yj-main-s5-vText {
+  position: absolute;
+  right: 45rem;
+  top: 10%;
+  height: 700px;
+  display: flex;
+  margin-top: 130px;
+  margin-right: 250px;
+  line-height: 50px;
+}
+
+.yj-main-s5-vText p {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgb(80, 80, 80);
+  text-shadow: 0 0 2px white;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.yj-main-s5-vText p:nth-child(1) {
+  margin-top: 100px;
 }
 
 .yj-main-s5-cursor {
-  /* z-index: 100; */
-  /* pointer-events: none; */
   display: none;
   position: absolute;
   width: 50px;
@@ -649,14 +668,13 @@ yj-main-nav a:visited {
 }
 
 .yj-main-s5-container {
-  /* size */
   width: 35rem;
   height: 100vh;
   background-color: #fff5f4;
   box-shadow: 0 5px 15px 5px #fd5356;
   overflow-y: overlay;
-  position: relative;
-  right: 5vw;
+  position: absolute;
+  right: 8vw;
 }
 
 .yj-main-s5-invitation {
@@ -673,10 +691,10 @@ yj-main-nav a:visited {
   z-index: 1;
   background-image: url("imgFolder/yj-main-default-bg.png ");
   display: flex;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  height: 100vh; /*Viewport의 높이를 100%로 설정 */
-  position: relative; /* position을 relative로 설정 */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
   overflow: hidden;
 }
 
@@ -714,9 +732,8 @@ yj-main-nav a:visited {
 .yj-main-s6-flexContainer {
   z-index: 2;
   display: flex;
-  flex-wrap: nowrap; /* Ensures items stay in a single row */
+  flex-wrap: nowrap;
   overflow: hidden;
-  /* Allows horizontal scrolling if content overflows */
   column-gap: 3rem;
   align-items: center;
 }
@@ -747,22 +764,20 @@ yj-main-nav a:visited {
 .yj-main-s6-container {
   display: flex;
   flex-direction: column;
-  /* Stack images vertically within each column */
   row-gap: 3rem;
   /* animation */
   animation: imgs-float 2s ease-in-out infinite;
 }
 
 .yj-main-s6-container img {
-  max-width: 100%; /* Ensures images don't exceed their container width */
-  height: auto; /* Maintains aspect ratio */
+  max-width: 100%;
+  height: auto;
   /* transition */
   transform: scale(1);
   transition: all 1s ease-out;
 }
 
 .yj-main-s6-container img:hover {
-  /* animation: none; */
   transform: scale(1.1);
 }
 
@@ -828,10 +843,26 @@ footer {
 
 .footer-nav a {
   margin: 5px 30px;
-  color: #333;
+  color: rgb(50, 50, 50);
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
+  position: relative;
+}
+
+.footer-nav a::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 1px;
+  background-color: #aeaeae;
+}
+
+.footer-nav a:last-child::after {
+  display: none;
 }
 
 .footer-nav a:hover {
@@ -872,7 +903,7 @@ footer {
 
 .footer-links a {
   margin: 5px 20px;
-  color: #333;
+  color: rgb(50, 50, 50);
   text-decoration: none;
   font-size: 12px;
 }
@@ -884,7 +915,7 @@ footer {
 
 .footer-copyright {
   font-size: 10px;
-  color: #666;
+  color: #aaaaaa;
   margin-left: 70px;
   margin-top: 30px;
 }
