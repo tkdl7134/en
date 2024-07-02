@@ -9,7 +9,7 @@
 	charset="UTF-8"></script>
 
 <link rel="stylesheet" type="text/css" href="myPage/update.css">
-
+<link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -45,14 +45,12 @@ body {
 
 	<div class="hs_background">
 
-		<div class="yj-main-s2-logo">
-			<img class="yj-main-s2-logo img" alt=""
-				src="loginPage/ImgFolder/Logo.png">
+		<div class="yj-main-logo">
+			<a href="MainC" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
 		</div>
-		<div class="yj-main-s2-menu">
-			<img class="yj-main-s2-menu img" alt=""
-				src="loginPage/ImgFolder/default_menu_1.png">
-		</div>
+		
+		<jsp:include page="${mainNav }" />
 
 		<h1 class="hs_title">会員情報修正</h1>
 
@@ -293,6 +291,27 @@ body {
 	</div>
 
 	<script>
+	
+	const menus = document.querySelectorAll(".yj-main-menu");
+
+	menus.forEach((menu) => {
+		const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+		const navi = menu.parentElement.querySelector(".yj-main-nav");
+		menu.addEventListener("click", function() {
+			console.log(menu);
+			console.log(navi);
+			const menuBtn = menu.querySelector("img");
+			if (navi.classList.contains("nav-hidden")) {
+				menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+				navi.classList.remove("nav-hidden");
+				navi.classList.add("nav-show");
+			} else {
+				menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+				navi.classList.remove("nav-show");
+				navi.classList.add("nav-hidden");
+			}
+		});
+	});
 	
 	function goBack() {
         window.history.back();

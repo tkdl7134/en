@@ -17,7 +17,7 @@
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 
-<body>
+<body class="yj-main-body">
 	<!-- Section 1 -->
 	<div class="yj-main-section" id="yj-main-s1">
 		<div class="yj-main-s1-musubi">
