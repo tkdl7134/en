@@ -122,7 +122,7 @@ pageEncoding="UTF-8"%>
       <div
         class="vertical-text"
         id="verticalText2"
-        data-text="時間と空間を超えて私たちの縁はさらに固くなり、"
+        data-text="時間と空間を超えて私たちの縁はさらに固くなり"
       ></div>
 
       <div
@@ -310,15 +310,19 @@ pageEncoding="UTF-8"%>
         <img alt="" src="main/imgFolder/yj-main-default-scroll.png" />
       </div>
 
-      <div class="yj-main-s5-bigCon">
-        <div class="yj-main-s5-container">
-          <img
-            class="yj-main-s5-invitation"
-            src="main/imgFolder/yj-main-s5-invitation.png"
-            alt=""
-          />
+        <div class="yj-main-s5-bigCon">
+        <div class="yj-main-s5-vText">
+          <p>幸せな瞬間を共に過ごすためにご招待いたします</p>
+          <p>縁とは、大切な人々が出会うために作られた架け橋です</p>
+        </div> 
+          <div class="yj-main-s5-container">
+            <img
+              class="yj-main-s5-invitation"
+              src="main/imgFolder/yj-main-s5-invitation.png"
+              alt=""
+            />
+          </div>
         </div>
-      </div>
     </div>
 
     <!-- Section 6 -->
