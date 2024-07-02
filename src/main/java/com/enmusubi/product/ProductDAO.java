@@ -99,8 +99,6 @@ public class ProductDAO {
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 
-//		create sequence e_no_seq;
-
 		String sqlEvent = "insert into s_event values(e_no_seq.nextval, ?, ?)";
 		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?)";
 		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -140,7 +138,7 @@ public class ProductDAO {
 			// s_wedding_info table 삽입
 
 //			System.out.println(mr.getParameter("templatePK"));
-			System.out.println(mr.getParameter("groomRomaL"));
+//			System.out.println(mr.getParameter("groomRomaL"));
 			String groomName_kanji = mr.getParameter("groomKanjiL") + " " + mr.getParameter("groomKanjiF");
 			String groomName_kana = mr.getParameter("groomKanaL") + " " + mr.getParameter("groomKanaF");
 			String groomName_roma = mr.getParameter("groomRomaL") + " " + mr.getParameter("groomRomaF");
@@ -152,8 +150,8 @@ public class ProductDAO {
 			hello = hello.replaceAll("\r\n", "<br>");
 			bye = bye.replaceAll("\r\n", "<br>");
 
-			System.out.println(templatePK + " " + groomName_kanji + " " + groomName_kana + " " + groomName_roma + " "
-					+ brideName_kanji + " " + brideName_kana + " " + brideName_roma + " " + " " + hello + " " + bye);
+//			System.out.println(templatePK + " " + groomName_kanji + " " + groomName_kana + " " + groomName_roma + " "
+//					+ brideName_kanji + " " + brideName_kana + " " + brideName_roma + " " + " " + hello + " " + bye);
 
 			pstmtWeddingInfo.setInt(1, templatePK);
 			pstmtWeddingInfo.setString(2, groomName_kanji);
@@ -186,7 +184,7 @@ public class ProductDAO {
 			String receptionTime = remove + " " + r_time;
 			String weddingAssemleTime = remove + " " + m_timeA;
 			String receptionAssembleTime = remove + " " + r_timeA;
-			System.out.println(weddingTime);
+//			System.out.println(weddingTime);
 
 			SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 			Date weddingT = dateTimeFormat.parse(weddingTime);
@@ -197,17 +195,8 @@ public class ProductDAO {
 			java.sql.Timestamp reception_time = new java.sql.Timestamp(receptionT.getTime());
 			java.sql.Timestamp wedding_assemble_time = new java.sql.Timestamp(weddingAT.getTime());
 			java.sql.Timestamp reception_assemble_time = new java.sql.Timestamp(receptionAT.getTime());
-			System.out.println(wedding_time);
+//			System.out.println(wedding_time);
 
-//			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-//			Date weddingAT = timeFormat.parse(m_timeA);
-//			Date receptionAT = timeFormat.parse(r_timeA);
-			System.out.println(wedding_assemble_time);
-
-//			System.out.println("m_time : " + m_timeA);
-//			
-//			Date weddingAssemble = timeFormat.parse(m_timeA);
-//			java.sql.Date weddingA = new java.sql.Date(weddingAssemble.getTime());
 
 			// 본식
 			pstmtWedding.setTimestamp(1, wedding_time); // weddingday+marriagetime
