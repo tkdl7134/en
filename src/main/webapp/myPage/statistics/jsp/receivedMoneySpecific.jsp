@@ -18,6 +18,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        background-color : #FFF5F4;
       }
       #background1,
       #background2 {
@@ -40,6 +41,7 @@
         background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
         background-position: bottom center;
         bottom: 940px;
+        margin-top : 60rem;
       }
       #canvas-content-container {
         z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
@@ -68,14 +70,12 @@
       }
       .canvas-content {
         position: absolute;
-        top: -670px;
+        top: -90vh;
         left: 50%;
         transform: translate(-50%, 0);
             display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: -18rem;
       }
     </style>
 
@@ -88,9 +88,6 @@
         <canvas class="canvas" id="canvas1"></canvas>
       </div>
     </div>
-    <div id="canvas-content-container">
-      <div class="canvas-content">
-        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
         <div class="yj-main-logo">
 			<a href="#" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
@@ -98,6 +95,9 @@
 	<jsp:include page="${mainNav }" />
 	
 	<jsp:include page="${settingPage }"></jsp:include>
+    <div id="canvas-content-container">
+      <div class="canvas-content">
+        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
 	<div style="display : flex; " class="recSpecMoneyTitle">
 	<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 	<div  style="margin-top: 0.3rem; smargin-left: 1rem;font-size: 25px; font-weight : bold;">の現状</div>
@@ -110,14 +110,6 @@
 	<div style="display: flex; " id="toGoLines">
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
-
-
-    <div  id="fundSpecProduct-img" style=""><img style="width: 37.5rem;" id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/bg_wedding_chapel.jpg"></div>
-  	<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-  	<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
-    
-    
-    
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div  style="height : 100rem; max-height : 80rem;" id="fundSpec-dataBoard-container">
@@ -237,11 +229,11 @@
           handleMouseMove(event, ctx2, canvas2);
         });
         background1.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainC?eno='+${eno};
         });
 
         background2.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainC?eno='${eno};
         });
       });
     </script>
