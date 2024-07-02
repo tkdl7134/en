@@ -251,6 +251,7 @@ public class ProductDAO {
 		}
 
 	}
+
 	private static boolean isTemplatePKValid(int templatePK) {
 		return true; // 항상 유효
 	}
@@ -275,7 +276,7 @@ public class ProductDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			int intEno= (int)(request.getAttribute("je_eventNo"));
+			int intEno = (int) (request.getAttribute("je_eventNo"));
 			pstmt.setInt(1, intEno);
 			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
@@ -305,12 +306,11 @@ public class ProductDAO {
 
 				System.out.println(inviteMSG);
 
-				inviteInfo = new invitaitonDTO((int) intEno, rs.getInt("t_pk"),
-						rs.getString("t_template"), rs.getString("w_groom"), rs.getString("w_bride"), inviteMSG, byeMSG,
-						rs.getString("w_img1"), rs.getString("w_img2"), rs.getString("w_img3"), rs.getString("w_img4"),
-						weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time,
-						rs.getString("wedding_place"), rs.getString("wedding_addr"), rs.getString("reception_place"),
-						rs.getString("reception_addr"));
+				inviteInfo = new invitaitonDTO((int) intEno, rs.getInt("t_pk"), rs.getString("t_template"),
+						rs.getString("w_groom"), rs.getString("w_bride"), inviteMSG, byeMSG, rs.getString("w_img1"),
+						rs.getString("w_img2"), rs.getString("w_img3"), rs.getString("w_img4"), weddingDay, weddingTime,
+						weddingA_Time, receptionTime, receptionA_Time, rs.getString("wedding_place"),
+						rs.getString("wedding_addr"), rs.getString("reception_place"), rs.getString("reception_addr"));
 			}
 			request.setAttribute("inviteInfo", inviteInfo);
 
@@ -332,39 +332,38 @@ public class ProductDAO {
 		PreparedStatement pstmt4 = null;
 		PreparedStatement pstmt5 = null;
 		DBManager dbManager = DBManager.getInstance();
-		  String sql = "delete from s_reception where e_no = ?";
-		  String sql2 = "delete from s_wedding_info where e_no = ?";
-		  String sql3 = "delete from s_event_func where e_no = ?";
-		  String sql4 = "delete from s_wishlist where e_no = ?";
-		  String sql5 = "delete from s_event where e_no = ?";
-		  
+		String sql = "delete from s_reception where e_no = ?";
+		String sql2 = "delete from s_wedding_info where e_no = ?";
+		String sql3 = "delete from s_event_func where e_no = ?";
+		String sql4 = "delete from s_wishlist where e_no = ?";
+		String sql5 = "delete from s_event where e_no = ?";
+
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("eno")));
 			pstmt.executeUpdate();
-			
+
 			pstmt2 = con.prepareStatement(sql2);
 			pstmt2.setInt(1, Integer.parseInt(request.getParameter("eno")));
 			pstmt2.executeUpdate();
-			
+
 			pstmt3 = con.prepareStatement(sql3);
 			pstmt3.setInt(1, Integer.parseInt(request.getParameter("eno")));
 			pstmt3.executeUpdate();
-			
+
 			pstmt4 = con.prepareStatement(sql4);
 			pstmt4.setInt(1, Integer.parseInt(request.getParameter("eno")));
 			pstmt4.executeUpdate();
-			
+
 			pstmt5 = con.prepareStatement(sql5);
 			pstmt5.setInt(1, Integer.parseInt(request.getParameter("eno")));
 //			pstmt5.executeUpdate();
-			
-			if (pstmt5.executeUpdate() ==1) {
+
+			if (pstmt5.executeUpdate() == 1) {
 				System.out.println("삭제성공");
 			}
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("초대장 삭제 쪽 오류");
@@ -375,62 +374,60 @@ public class ProductDAO {
 			dbManager.close(null, pstmt4, null);
 			dbManager.close(null, pstmt5, null);
 		}
-		
+
 	}
 
-	
 	public static void getOneInvitation(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sql = "SELECT w.*, t.t_template,"
-					+ " rw.r_time AS wedding_time, rw.r_time_assemble AS wedding_assemble_time,"
-					+ " rr.r_time AS reception_time, rr.r_time_assemble AS reception_assemble_time,"
-					+ " rw.r_place AS wedding_place, rw.r_addr AS wedding_addr, rr.r_place AS reception_place,"
-					+ " rr.r_addr AS reception_addr FROM s_wedding_info w"
-					+ " JOIN s_template t ON w.t_pk = t.t_pk"
-					+ " JOIN s_reception rw ON w.e_no = rw.e_no AND rw.r_type = 'wedding'"
-					+ " JOIN s_reception rr ON w.e_no = rr.e_no AND rr.r_type = 'reception' WHERE w.e_no = ?";
-		
+				+ " rw.r_time AS wedding_time, rw.r_time_assemble AS wedding_assemble_time,"
+				+ " rr.r_time AS reception_time, rr.r_time_assemble AS reception_assemble_time,"
+				+ " rw.r_place AS wedding_place, rw.r_addr AS wedding_addr, rr.r_place AS reception_place,"
+				+ " rr.r_addr AS reception_addr FROM s_wedding_info w" + " JOIN s_template t ON w.t_pk = t.t_pk"
+				+ " JOIN s_reception rw ON w.e_no = rw.e_no AND rw.r_type = 'wedding'"
+				+ " JOIN s_reception rr ON w.e_no = rr.e_no AND rr.r_type = 'reception' WHERE w.e_no = ?";
+
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("eno")));
 			rs = pstmt.executeQuery();
-			
+
 			invitationAllInfoDTO inviationAll = null;
 			if (rs.next()) {
 				String w_groom = rs.getString("w_groom");
 				String[] w_groomLF = w_groom.split(" ");
 				String w_groomL = w_groomLF[0];
 				String w_groomF = w_groomLF[1];
-				
+
 				String w_groom_kana = rs.getString("w_groom_kana");
 				String[] w_groom_kanaLF = w_groom_kana.split(" ");
 				String w_groom_kanaL = w_groom_kanaLF[0];
 				String w_groom_kanaF = w_groom_kanaLF[1];
-				
+
 				String w_groom_eng = rs.getString("w_groom_eng");
 				String[] w_groom_engLF = w_groom_eng.split(" ");
 				String w_groom_engL = w_groom_engLF[0];
 				String w_groom_engF = w_groom_engLF[1];
-				
+
 				String w_bride = rs.getString("w_bride");
 				String[] w_brideLF = w_bride.split(" ");
 				String w_brideL = w_brideLF[0];
 				String w_brideF = w_brideLF[1];
-				
+
 				String w_bride_kana = rs.getString("w_bride_kana");
 				String[] w_bride_kanaLF = w_bride_kana.split(" ");
 				String w_bride_kanaL = w_bride_kanaLF[0];
 				String w_bride_kanaF = w_bride_kanaLF[1];
-				
+
 				String w_bride_eng = rs.getString("w_bride_eng");
 				String[] w_bride_engLF = w_bride_eng.split(" ");
 				String w_bride_engL = w_bride_engLF[0];
 				String w_bride_engF = w_bride_engLF[1];
-				
+
 				Timestamp weddingDT = rs.getTimestamp("wedding_time");
 				Timestamp weddingADT = rs.getTimestamp("wedding_assemble_time");
 				Timestamp receptionDT = rs.getTimestamp("reception_time");
@@ -451,26 +448,25 @@ public class ProductDAO {
 				System.out.println(inviteMSG);
 				byeMSG = byeMSG.replaceAll("<br>", "\r\n");
 
-				inviationAll = new invitationAllInfoDTO
-				(Integer.parseInt(request.getParameter("eno")), rs.getInt("t_pk"), rs.getString("t_template"),
-				w_groomL, w_groomF, w_groom_kanaL, w_groom_kanaF, w_groom_engL, w_groom_engF,
-				w_brideL, w_brideF, w_bride_kanaL, w_bride_kanaF, w_bride_engL, w_bride_engF,
-				inviteMSG, byeMSG, rs.getString("w_img1"),rs.getString("w_img2"), rs.getString("w_img3"), rs.getString("w_img4"),
-				weddingDay, weddingTime, weddingA_Time, receptionTime, receptionA_Time,
-				rs.getString("wedding_place"),rs.getString("wedding_addr"), 
-				rs.getString("reception_place"), rs.getString("reception_addr"));
-				
+				inviationAll = new invitationAllInfoDTO(Integer.parseInt(request.getParameter("eno")),
+						rs.getInt("t_pk"), rs.getString("t_template"), w_groomL, w_groomF, w_groom_kanaL, w_groom_kanaF,
+						w_groom_engL, w_groom_engF, w_brideL, w_brideF, w_bride_kanaL, w_bride_kanaF, w_bride_engL,
+						w_bride_engF, inviteMSG, byeMSG, rs.getString("w_img1"), rs.getString("w_img2"),
+						rs.getString("w_img3"), rs.getString("w_img4"), weddingDay, weddingTime, weddingA_Time,
+						receptionTime, receptionA_Time, rs.getString("wedding_place"), rs.getString("wedding_addr"),
+						rs.getString("reception_place"), rs.getString("reception_addr"));
+
 			}
 			request.setAttribute("invitationAll", inviationAll);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("update 전, 전체 정보 보여주기 쪽 error");
-		}finally {
+		} finally {
 			dbManager.close(con, pstmt, rs);
 		}
 	}
-	
+
 	public static void updateInvitaion(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmtWeddingInfo = null;
@@ -480,43 +476,42 @@ public class ProductDAO {
 		DBManager dbManager = DBManager.getInstance();
 		String sqlWedding = "update s_reception set r_time=?, r_time_assemble=?, r_place=?, r_addr=? where e_no = ? and r_type = 'wedding' ";
 		String sqlReception = "update s_reception set r_time=?, r_time_assemble=?, r_place=?, r_addr=? where e_no = ? and r_type = 'reception'";
-		
-		
+
 		try {
 			con = dbManager.connect();
 			pstmtWedding = con.prepareStatement(sqlWedding);
 			pstmtReception = con.prepareStatement(sqlReception);
-			
+
 			String path = request.getServletContext().getRealPath("product/imgFolder");
 			MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8",
 					new DefaultFileRenamePolicy());
 
 			// weddingInfo 수정
-			
+
 			String hello = mr.getParameter("new_helloMessage");
 			String bye = mr.getParameter("new_byeMessage");
 			hello = hello.replaceAll("\r\n", "<br>");
 			bye = bye.replaceAll("\r\n", "<br>");
-			
+
 			String sqlWeddingInfo = "update s_wedding_info set w_groom=?, w_groom_kana=?, w_groom_eng=?,"
 					+ " w_bride=?, w_bride_kana=?, w_bride_eng=?, w_img1=?, w_img2=?, w_img3=?, w_img4=? ";
 			if (hello != null) {
 				sqlWeddingInfo += ", w_msg_invite=?";
 			}
 			if (bye != null) {
-				sqlWeddingInfo += ", w_msg_bye=?";	
+				sqlWeddingInfo += ", w_msg_bye=?";
 			}
 			sqlWeddingInfo += " where e_no = ?";
-			
+
 			pstmtWeddingInfo = con.prepareStatement(sqlWeddingInfo); // 전부 다 13개 ~ 11개
-			
+
 			String g = mr.getParameter("new_groomL") + " " + mr.getParameter("new_groomF");
 			String g_kana = mr.getParameter("new_groomKanaL") + " " + mr.getParameter("new_groomKanaF");
 			String g_eng = mr.getParameter("new_groomRomaL") + " " + mr.getParameter("new_groomRomaF");
 			String b = mr.getParameter("new_brideL") + " " + mr.getParameter("new_brideF");
 			String b_kana = mr.getParameter("new_brideKanaL") + " " + mr.getParameter("new_brideKanaF");
 			String b_eng = mr.getParameter("new_brideRomaL") + " " + mr.getParameter("new_brideRomaF");
-			
+
 			String old1 = mr.getParameter("oldPhoto1");
 			String old2 = mr.getParameter("oldPhoto2");
 			String old3 = mr.getParameter("oldPhoto3");
@@ -529,11 +524,19 @@ public class ProductDAO {
 			String photo2 = old2;
 			String photo3 = old3;
 			String photo4 = old4;
-			if (new1 != null) { photo1 = new1; }
-			if (new2 != null) { photo2 = new2; }
-			if (new3 != null) { photo3 = new3; }
-			if (new4 != null) {	photo4 = new4; }
-			
+			if (new1 != null) {
+				photo1 = new1;
+			}
+			if (new2 != null) {
+				photo2 = new2;
+			}
+			if (new3 != null) {
+				photo3 = new3;
+			}
+			if (new4 != null) {
+				photo4 = new4;
+			}
+
 			pstmtWeddingInfo.setString(1, g);
 			pstmtWeddingInfo.setString(2, g_kana);
 			pstmtWeddingInfo.setString(3, g_eng);
@@ -544,12 +547,12 @@ public class ProductDAO {
 			pstmtWeddingInfo.setString(8, photo2);
 			pstmtWeddingInfo.setString(9, photo3);
 			pstmtWeddingInfo.setString(10, photo4);
-			
+
 			if (hello != null && bye != null) {
 				pstmtWeddingInfo.setString(11, hello);
 				pstmtWeddingInfo.setString(12, bye);
 				pstmtWeddingInfo.setInt(13, Integer.parseInt(mr.getParameter("eno")));
-			} else if (hello != null && bye == null ) {
+			} else if (hello != null && bye == null) {
 				pstmtWeddingInfo.setString(11, hello);
 				pstmtWeddingInfo.setInt(12, Integer.parseInt(mr.getParameter("eno")));
 			} else if (hello == null && bye != null) {
@@ -558,11 +561,11 @@ public class ProductDAO {
 			} else {
 				pstmtWeddingInfo.setInt(11, Integer.parseInt(mr.getParameter("eno")));
 			}
-			
+
 			if (pstmtWeddingInfo.executeUpdate() == 1) {
 				System.out.println("weddingInfo 수정 완료");
 			}
-			
+
 			// wedding / reception 날짜 및 시간 수정
 
 			String weddingDay = mr.getParameter("new_weddingDay");
@@ -590,7 +593,6 @@ public class ProductDAO {
 			java.sql.Timestamp wedding_assemble_time = new java.sql.Timestamp(weddingAT.getTime());
 			java.sql.Timestamp reception_assemble_time = new java.sql.Timestamp(receptionAT.getTime());
 
-
 			// 본식
 			pstmtWedding.setTimestamp(1, wedding_time); // weddingday+marriagetime
 			pstmtWedding.setTimestamp(2, wedding_assemble_time);
@@ -604,34 +606,34 @@ public class ProductDAO {
 			pstmtReception.setString(3, mr.getParameter("new_reception_place"));
 			pstmtReception.setString(4, mr.getParameter("new_reception_addr"));
 			pstmtReception.setString(5, mr.getParameter("eno"));
-			
+
 			if (pstmtWedding.executeUpdate() == 1) {
 				System.out.println("wedding(본식) 수정 완료");
-				
-				if (new1 != null) { 
+
+				if (new1 != null) {
 					File f = new File(path + "/" + old1);
 					f.delete();
 				}
-				if (new2 != null) { 
+				if (new2 != null) {
 					File f = new File(path + "/" + old2);
 					f.delete();
 				}
-				if (new3 != null) { 
+				if (new3 != null) {
 					File f = new File(path + "/" + old3);
 					f.delete();
 				}
-				if (new4 != null) { 
+				if (new4 != null) {
 					File f = new File(path + "/" + old4);
 					f.delete();
 				}
-				
+
 			}
 			if (pstmtReception.executeUpdate() == 1) {
 				System.out.println("reception(피로연) 수정 완료");
 			}
-			
+
 			request.setAttribute("je_eventNo", Integer.parseInt(mr.getParameter("eno")));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("SERVER ERROR");
@@ -640,10 +642,7 @@ public class ProductDAO {
 			dbManager.close(null, pstmtWedding, null);
 			dbManager.close(null, pstmtWeddingInfo, null);
 		}
-		
+
 	}
 
-
 }
-
-
