@@ -308,6 +308,7 @@ legend div:nth-child(1) {
   height: 5rem;
   font-family: "Noto Serif JP", serif;
   border-color: black;
+  resize: none;
 }
 
 .address-contents-container > div:nth-child(2) > div:nth-child(2) {
@@ -378,6 +379,7 @@ legend div:nth-child(1) {
   resize: none;
   font-size: 1.5rem;
   font-family: "Noto Serif JP", serif;
+  resize: none;
 }
 
 .special-notes-container {
@@ -400,6 +402,7 @@ legend div:nth-child(1) {
   box-sizing: border-box;
   resize: vertical;
   font-family: "Noto Serif JP", serif;
+  resize: none;
   /* �꽭濡� �겕湲� 議곗젅留� �뿀�슜 */
 }
 
@@ -465,8 +468,6 @@ legend div:nth-child(1) {
   text-align: center;
 }
 
-.entry-box-img:hover,
-.no-entry-box-img:hover,
 .entry-box-img.selected,
 .no-entry-box-img.selected {
   background-image: url("imgFolder/entry-backgroundimg-react.png");
@@ -493,12 +494,13 @@ legend div:nth-child(1) {
 }
 .reject-notes-container textarea {
   width: 50rem;
-  height: 25rem; /* textarea �넂�씠 議곗젅 */
+  height: 20rem; /* textarea �넂�씠 議곗젅 */
   padding: 4px;
   border: 2px solid black;
   box-sizing: border-box;
   resize: vertical; /* �꽭濡� �겕湲� 議곗젅留� �뿀�슜 */
   font-family: "Noto Serif JP", serif;
+  resize: none;
 }
 
 .congra-img-container {
