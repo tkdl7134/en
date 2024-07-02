@@ -7,6 +7,8 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="surveyPage/survey.css" />
+<link rel="stylesheet" href="surveyPage/surveyCheckBox.css" />
+<link rel="stylesheet" href="surveyPage/surveySelect.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link
@@ -84,7 +86,7 @@
 								</div>
 							</div>
 							<div>
-								<div class="tg-slide-page">
+								<div class="tg-slide-page" id="slide-0">
 									<div class="name-container">
 										<fieldset>
 											<legend>
@@ -99,18 +101,22 @@
 												<c:when test="${loginType == 'normal' }">
 													<c:set var="members" value="${members }" />
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> <input
+														<div style="font-size: 1.5rem;">名前</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
 														name="name" required value="${members.m_first_name}"
-														disabled="disabled" /> <input style="font-size: 1.2rem;"
+														disabled="disabled" /> 
+														<input 
+														style="font-size: 1.2rem;"
 														type="text" placeholder="Last Name" class="name-input"
 														id="name" name="name" required
 														value="${members.m_last_name}" disabled="disabled" />
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
 														name="kata-name" required
@@ -122,12 +128,14 @@
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														<div style="font-size: 1.5rem;">ローマ字</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
 														value="${members.m_last_name_rome}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="romaName"
 														name="roma-name" required disabled="disabled"
 														value="${members.m_first_name_rome}" />
@@ -139,36 +147,48 @@
 												</c:when>
 												<c:otherwise>
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> <input
+														<div style="font-size: 1.5rem;">名前</div> 
+														<input
 														style="font-size: 1rem;" type="text" placeholder="姓"
 														class="name-input" id="name" name="name" required
-														value="${members.m_first_name}" disabled="disabled" /> <input
+														value="${members.m_first_name}" 
+														 <c:if test="${not empty members.m_first_name}">disabled="disabled"</c:if> />										
+														<input
 														style="font-size: 1.2rem;" type="text" placeholder="名"
 														class="name-input" id="name" name="name" required
-														value="${members.m_last_name}" disabled="disabled" />
+														value="${members.m_last_name}" 
+														 <c:if test="${not empty members.m_last_name}">disabled="disabled"</c:if> />										
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">カタカナ</div> <input
+														<div style="font-size: 1.5rem;">カタカナ</div> 
+														<input
 														style="font-size: 1rem;" type="text" placeholder="せい"
 														class="name-input" id="kataName" name="kata-name" required
-														value="${members.m_first_name_kana}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														value="${members.m_first_name_kana}" 
+														 <c:if test="${not empty members.m_first_name_kana}">disabled="disabled"</c:if> />										
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="めい" class="name-input" id="kataName"
 														name="kata-name" required
-														value="${members.m_last_name_kana}" disabled="disabled" />
+														value="${members.m_last_name_kana}" 
+														 <c:if test="${not empty members.m_last_name_kana}">disabled="disabled"</c:if> />										
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> <input
+														<div style="font-size: 1.5rem;">ローマ字</div> 
+														<input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
-														value="${members.m_last_name_rome}" disabled="disabled" />
-														<input style="font-size: 1.2rem;" type="text"
+														value="${members.m_last_name_rome}" 
+														 <c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />										
+														<input 
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" id="romaName" class="name-input"
 														name="roma-name" required
-														value="${members.m_first_name_rome}" disabled="disabled" />
+														value="${members.m_first_name_rome}" 
+														 <c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />										
 													</label>
 													</br>
 													<c:if test="${not empty members.m_first_name}">
@@ -182,28 +202,38 @@
 
 									<div class="couple-container">
 										<div>カテゴリー</div>
-										<label> <input name="couple" type="checkbox"
-											value="新郎" /> 新郎側ゲスト
-										</label> <label> <input name="couple" type="checkbox"
-											value="新婦" /> 新婦側ゲスト
-										</label>
+										<span>
+										<input name="couple" type="checkbox" id="groomCheckbox"
+											value="新郎" /><label for="groomCheckbox" class="cb1"></label> 新郎側ゲスト
+										</span> 
+										<span>
+										<input name="couple" type="checkbox" id="brideCheckbox"
+											value="新婦" /><label for="brideCheckbox" class="cb1"></label> 新婦側ゲスト
+										</span>
 									</div>
 									<div class="relationship-container">
 										<div>作成者との関係</div>
+										<span> <input  name="relation" type="checkbox"
+											 value="家族" id="familyCheckbox" />
+											 <label for="familyCheckbox" class="cb1"></label> 家族
+										</span> 
 										<span> <input name="relation" type="checkbox"
-											value="家族" /> 家族
-										</span> <span> <input name="relation" type="checkbox"
-											value="親友" /> 親友
-										</span> <span> <input name="relation" type="checkbox"
-											value="職場の同僚" /> 職場の同僚
-										</span> <label> <input name="relation" type="checkbox"
-											value="その他" /> その他
-										</label>
+											 value="親友" id="friendCheckbox"/> 
+											 <label for="friendCheckbox" class="cb1"></label>親友
+										</span> 
+										<span> <input name="relation" type="checkbox"
+											 value="職場の同僚" id="colleaguesCheckbox"/> 
+											 <label for="colleaguesCheckbox" class="cb1"></label>職場の同僚
+										</span> 
+										<span><input name="relation" type="checkbox"
+											 value="その他" id="othersCheckbox"/>
+											 <label for="othersCheckbox" class="cb1"></label>その他	
+										</span>
 									</div>
 								</div>
 							</div>
 
-							<div class="tg-slide-second-page">
+							<div class="tg-slide-second-page" id="slide-1">
 
 								<c:choose>
 									<c:when test="${loginType == 'normal' }">
@@ -218,12 +248,12 @@
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type="number"
 													class="contact-input" id="phonenum" name="phonenum"
-													placeholder="000-0000-0000" required disabled="disabled"
-													value="${members.m_phone}" />
+													placeholder="000-0000-0000" required 
+													disabled="disabled" value="${members.m_phone}" />
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
-											<div class="emergency-words">❂
+											<div class="emergency-words">✿
 												情報の修正が必要な場合は、マイページにてお願いします</div>
 										</c:if>
 									</c:when>
@@ -233,17 +263,19 @@
 												メールアドレス<input style="font-size: 1.2rem;" type="email"
 													class="contact-input" id="email" name="email"
 													placeholder="enmusubi@gmail.com" required
-													value="${members.m_email}" />
+													value="${members.m_email}" 
+													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />										
 											</div>
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type="number"
 													class="contact-input" id="phonenum" name="phonenum"
 													placeholder="000-0000-0000" required
-													value="${members.m_phone}" />
+													value="${members.m_phone}"
+													<c:if test="${not empty members.m_phone}">disabled="disabled"</c:if> />													
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
-											<div class="emergency-words">❂
+											<div class="emergency-words">✿
 												情報の修正が必要な場合は、マイページにてお願いします</div>
 										</c:if>
 									</c:otherwise>
@@ -332,14 +364,14 @@
 																value="${members.a_postcode }"
 																<c:if test="${not empty members.a_postcode}">disabled="disabled"</c:if> />
 														</div>
-													</div>
+												</div>
 													<div class="address-contents-container">
 														<div>
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
 															<select style="font-size: 1.4rem" id="prefecture"
-																name="address" required
+																name="address" class="pl" required
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
 																<option value="">${members.a_prefecture}</option>
 																<c:forEach var="prefecture" items="${prefectures}">
@@ -374,7 +406,7 @@
 														</div>
 													</div>
 													<c:if test="${not empty members.a_address}">
-														<div class="emergency-words">❂
+														<div class="emergency-words">✿
 															情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 											</fieldset>
@@ -382,23 +414,23 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
-							<div class="tg-slide-third-page">
+							<div class="tg-slide-third-page" id="slide-2" >
 
 								<div class="together-container">
 									<div>同伴人数</div>
 									<div class="together-people">大人</div>
 									<input type="button" onclick='count("plus","adult")' value="+" />
-									<input style="width: 2rem; font-size: 1rem;" class="result"
+									<input style="width: 2rem; font-size: 1.2rem;" class="result"
 										value="0" id="adult" name="adult" /> <input type="button"
 										onclick='count("minus","adult")' value="-" />
 									<div value="子供" class="together-people">子供</div>
 									<input type="button" onclick='count("plus","child")' value="+" />
-									<input style="width: 2rem; font-size: 1rem" class="result"
+									<input style="width: 2rem; font-size: 1.2rem" class="result"
 										value="0" id="child" name="child" /> <input type="button"
 										onclick='count("minus","child")' value="-" />
 									<div value="幼児" class="together-people">幼児</div>
 									<input type="button" onclick='count("plus","baby")' value="+" />
-									<input style="width: 2rem; font-size: 1rem;"
+									<input style="width: 2rem; font-size: 1.2rem;"
 										class="result baby" value="0" id="baby" name="baby" /> <input
 										type="button" onclick='count("minus","baby")' value="-" />
 								</div>
@@ -415,11 +447,18 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-											<label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="no" checked /> いいえ
-											</label> <label> <input style="font-size: 1.5rem;"
-												type="radio" name="allergy" value="yes" /> はい
-											</label>
+											<span style="font-size: 1.5rem;"> 
+												<input
+												type="checkbox" name="allergy" value="no" id="allergyCheckbox" />
+												<label for="allergyCheckbox" class="cb2"></label>
+												 いいえ
+											</span>
+											<span style="font-size: 1.5rem;"> 
+												<input
+												type="checkbox" name="allergy" value="yes" id="allergyCheckbox2" />
+												<label for="allergyCheckbox2" class="cb2"></label>
+												 はい
+											</span>
 										</div>
 
 										<div class="allergy-details" id="allergy-details"
@@ -455,7 +494,7 @@
 
 							<div>
 
-								<div class="tg-slide-forth-page">
+								<div class="tg-slide-forth-page" id="slide-3">
 
 									<div class="reject-notes-container">
 										<div style="line-height: 3rem; font-size: 1.5rem;">
@@ -724,6 +763,7 @@ if (this.checked) {
     });
 });
 
+
 function openModal() {
 	console.log("activatge");
 	if(handleFormSubmit()=='yes'){
@@ -742,7 +782,6 @@ function openModal() {
 	    }, 10);
 	}
 	else{
-		alert("ddddddddddd");
 	}
 }
 	let formArray = $("#surveyForm").serializeArray();
@@ -755,7 +794,7 @@ function ajaxThing(){
 	    type: "POST",
 	    data: formArray,
 	    success: function(response) {
-	        alert("회원 정보가 성공적으로 업데이트 되었습니다.");
+	        alert("会員情報が正常に更新されました。");
 	        // 추가적인 처리 로직
 	    },
 	    error: function(xhr, status, error) {
@@ -768,33 +807,60 @@ function ajaxThing(){
 
 function handleFormSubmit() {
     let invalidField = null;
-    if (document.getElementById('kanziName').value.trim() === '') {
-        alert('한자 이름을 입력하세요');
-        invalidField = document.getElementById('kanziName');
+    let slideIndex = 0; // slideIndex 변수 선언
+
+    if (document.getElementById('name').value.trim() === '') {
+        alert('名前を入力します');
+        invalidField = document.getElementById('name');
+        $('.survey-input').slick('slickGoTo', 1);
     } else if (document.getElementById('kataName').value.trim() === '') {
-        alert('카타카나 이름을 입력하세요');
+        alert('カタカナ名を入力します');
         invalidField = document.getElementById('kataName');
+        $('.survey-input').slick('slickGoTo', 1);
     }  else if (document.getElementById('romaName').value.trim() === '') {
-        alert('로마자 이름을 입력하세요');
+        alert('ローマ字の名前を入力します');
         invalidField = document.getElementById('romaName');
     }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
-        alert('신랑 또는 신부를 선택하세요');
+        alert('新郎または新婦を選択します');
         invalidField = document.getElementById('groomCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
+    		!document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
+        alert('作成者との関係を選択します');
+        invalidField = document.getElementById('familyCheckbox');
+        $('.survey-input').slick('slickGoTo', 1);
+    }  else if (document.getElementById('email').value.trim() === '') {
+        alert('メールを入力します');
+        invalidField = document.getElementById('email');
+        $('.survey-input').slick('slickGoTo', 2);
+    }  else if (document.getElementById('phonenum').value.trim() === '') {
+        alert('連絡先を入力します');
+        invalidField = document.getElementById('phonenum');
+        $('.survey-input').slick('slickGoTo', 2);
+    } else if (document.getElementById('postal-code').value.trim() === '' && 
+    		document.getElementById('prefecture').value.trim() === '' && 
+            document.getElementById('city').value.trim() === '' && 
+            document.getElementById('address').value.trim() === '') {
+        alert('住所を入力します');
+        invalidField = document.getElementById('adult');
+        $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('adult').value.trim() === '0' && 
             document.getElementById('child').value.trim() === '0' && 
             document.getElementById('baby').value.trim() === '0') {
-        alert('동반 인원을 입력하세요');
+        alert('同伴人数を入力します');
         invalidField = document.getElementById('adult');
+        $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('allergy').checked || document.getElementById('allergy-type').value.trim() === '') {
-        alert('아레르기 종류를 입력하세요');
+        alert('アレルギーの種類を入力します');
         invalidField = document.getElementById('allergy-type');
+        $('.survey-input').slick('slickGoTo', 3);
     } 
 
     if (invalidField != null) {
-    	console.log('ㅎㅇ')
+        goToSlide(slideIndex); // 해당 슬라이드로 이동
         setTimeout(function() {
             invalidField.focus(); // 포커스 설정
-        }, 0); // 비동기 처리로 포커스 설정
+        }, 500); // 비동기 처리로 포커스 설정
         return 'no';
     } else {
     	return 'yes';
