@@ -20,22 +20,13 @@
 
 		<jsp:include page="${mainNav }" />
 </div>
-   <!--  <header class="hw_head">
-        <a class="hw_logo" href="main.jsp">
-            <img src="mytemplate/imgFolder/logo.png" alt="logo">
-        </a>
-        <a class="hw_menu" href="main.jsp">
-            <img src="mytemplate/imgFolder/menu_btn.png" alt="menu">
-        </a>
-    </header>
-        --> 
         <h1 class="hw_page_title">テンプレート 管理</h1>
 
     <form id="templateForm" action="mytemplateController" method="post">
         <div class="hw_container">
             <nav class="hw_menubar">
                 <div class="hw_menubar_item">
-                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMemberUpdate()">✿ 会員情報 ✿</a>
+                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMemberDetailC()">✿ 会員情報 ✿</a>
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
                 <div class="hw_menubar_item">
@@ -43,7 +34,7 @@
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
                 <div class="hw_menubar_item">
-                    <a class="hw_menubar_menu" href="">✿ 会リスト ✿</a>
+                    <a class="hw_menubar_menu" href="javascript:void(0);" onclick="navigateToMyMeeting()">✿ 会リスト ✿</a>
                     <img class="hw_yellow_line" alt="" src="mytemplate/imgFolder/yellow_line.png">
                 </div>
             </nav>
@@ -105,5 +96,16 @@
         </div>
     </div>
     <script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
+    <script type="text/javascript">
+        function navigateToMemberDetailC() {
+            const m_id = "<%= request.getParameter("m_id") %>";
+            window.location.href = `MemberDetailC?m_id=${m_id}`;
+        }
+
+        function navigateToMyMeeting() {
+            const e_no = "<%= request.getParameter("m_id") %>";
+            window.location.href = `MyMeetingC?e_no=${m_id}`;
+        }
+    </script>
 </body>
 </html>
