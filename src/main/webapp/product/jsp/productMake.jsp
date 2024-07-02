@@ -119,7 +119,7 @@
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="groomKanjiL" id="je_g-kanji1" 
-                           type="text" placeholder="姓" oninput="printName()"/>
+                           type="text" placeholder="姓" oninput="printName()" />
                           <input name="groomKanjiF" id="je_g-kanji2"
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
@@ -128,18 +128,18 @@
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="groomKanaL" id="je_g-kana1" 
-                          type="text" placeholder="セイ" onkeyup="printName()"/>
+                          type="text" placeholder="セイ" onkeyup="printName()" oninput="return groomKanaChk()"/>
                           <input name="groomKanaF" id="je_g-kana2"
-                           type="text" placeholder="メイ" onkeyup="printName()"/>
+                           type="text" placeholder="メイ" onkeyup="printName()" onblur="return groomKanaChk()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="groomRomaL" id="je_g-roma1" 
-                           type="text" placeholder="Last Name" onkeyup="printName()"/>
+                           type="text" placeholder="Last Name" onkeyup="printName()" onblur="return groomEngChk()"/>
                           <input name="groomRomaF" id="je_g-roma2"
-                          type="text" placeholder="First Name" onkeyup="printName()"/>
+                          type="text" placeholder="First Name" onkeyup="printName()" onblur="return groomEngChk()"/>
                         </div>
                       </div>
                     </div>
@@ -164,18 +164,18 @@
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="brideKanaL" id="je_b-kana1"
-                          type="text" placeholder="セイ" oninput="printName()"/>
+                          type="text" placeholder="セイ" oninput="printName()" onblur="return brideKanaChk()"/>
                           <input name="brideKanaF"  id="je_b-kana2"
-                          type="text" placeholder="メイ" oninput="printName()"/>
+                          type="text" placeholder="メイ" oninput="printName()" onblur="return brideKanaChk()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="brideRomaL" id="je_b-roma1"
-                          type="text" placeholder="Last Name" oninput="printName()"/>
+                          type="text" placeholder="Last Name" oninput="printName()" onblur="return brideEngChk()"/>
                           <input name="brideRomaF"  id="je_b-roma2"
-                          type="text" placeholder="First Name" oninput="printName()"/>
+                          type="text" placeholder="First Name" oninput="printName()" onblur="return brideEngChk()"/>
                         </div>
                       </div>
                     </div>
@@ -293,7 +293,7 @@
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="helloMessage" rows="6" cols="40" id="je_invite-m"
-                            oninput="printInfo()"></textarea>
+                            oninput="printInfo()" maxlength="180"></textarea>
                         </div>
                       </div>
                     </div>
@@ -309,7 +309,7 @@
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="byeMessage" id="je_finish-m" rows="10" 
-                          oninput="printInfo()"></textarea>
+                          oninput="printInfo()" maxlength="190"></textarea>
                         </div>
                       </div>
                     </div>
@@ -323,23 +323,23 @@
                       <div class="je_photo-inputbox">
                         <div class="je_inputbox-input">
                           <div id="je_photobox1" class="je_photobox">
-                            <input type="file" name="photo1" id="je_photoInput1" onchange="readURL(this);"/>
+                            <input type="file" name="photo1" id="je_photoInput1" onchange="readURL(this);" oninput="return photoType1()"/>
                             <div id="je_photoOut1"></div>
                             <span>写真１</span>
                           </div>
                           <div id="je_photobox2" class="je_photobox">
-                            <input type="file" name="photo2" id="je_photoInput2" onchange="readURL(this);"/>
+                            <input type="file" name="photo2" id="je_photoInput2" onchange="readURL(this);" oninput="return photoType2()"/>
                             <div id="je_photoOut2"></div>
                             <span>写真２</span>
                           </div>
                           <div id="je_photobox3" class="je_photobox">
-                            <input type="file" name="photo3" id="je_photoInput3" onchange="readURL(this);"/>
+                            <input type="file" name="photo3" id="je_photoInput3" onchange="readURL(this);" oninput="return photoType3()"/>
                             <div id="je_photoOut3"></div>
                             <span>写真３</span>
                           </div>
                           <div id="je_photobox4" class="je_photobox">
                             <input
-                              type="file" name="photo4" id="je_photoInput4" onchange="readURL(this);"/>
+                              type="file" name="photo4" id="je_photoInput4" onchange="readURL(this);" oninput="return photoType4()"/>
                             <div id="je_photoOut4"></div>
                             <span>写真4</span>
                           </div>
