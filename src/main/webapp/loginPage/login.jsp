@@ -35,6 +35,26 @@ body {
 	user-select: none; /* 표준 */
 	background-color: #FFF5F4;
 }
+
+.yj-main-logo {
+    z-index: 4;
+    width: 130px;
+    height: 130px;
+    position: fixed;
+    top: 4rem;
+    left: 5rem;
+}
+
+.yj-main-menubox {
+    position: fixed;
+    top: 6rem;
+    right: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 175px;
+}
+
 </style>
 
 </head>
