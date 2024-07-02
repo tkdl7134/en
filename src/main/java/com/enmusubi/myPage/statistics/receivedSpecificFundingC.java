@@ -27,10 +27,10 @@ public class receivedSpecificFundingC extends HttpServlet {
 
 		if (session != null && session.getAttribute("m_name") != null) {
 			System.out.println("세션 생존");
-			request.setAttribute("mainNav", "main/mainNavAF.jsp");
+			request.setAttribute("mainNav", "../../../main/mainNavAF.jsp");
 		} else {
 			System.out.println("세션 죽음");
-			request.setAttribute("mainNav", "main/mainNavBF.jsp");
+			request.setAttribute("mainNav", "../../../main/mainNavBF.jsp");
 		}
 
 		request.getRequestDispatcher("myPage/statistics/jsp/receivedSpecificFunding.jsp").forward(request, response);

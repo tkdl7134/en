@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="myPage/statistics/css/receivedSpecificFund.css" />
+<link rel="stylesheet" href="product/index.css" />
+<script defer="defer" type="text/javascript"
+	src="product/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -65,7 +68,7 @@
       }
       .canvas-content {
         position: absolute;
-        top: -670px;
+        top: -600px;
         left: 50%;
         transform: translate(-50%, 0);
             display: flex;
@@ -83,17 +86,17 @@
         <canvas class="canvas" id="canvas1"></canvas>
       </div>
     </div>
+    <div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+	</div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
     <div id="canvas-content-container">
       <div class="canvas-content">
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-
-		<div class="yj-main-logo">
-			<a href="#" class="mainLogo"><img
-				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
-		</div>
-
-		<jsp:include page="${mainNav }" />
-
+	
  	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
 	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>

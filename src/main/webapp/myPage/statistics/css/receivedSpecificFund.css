@@ -95,7 +95,7 @@ body {
 
 .yj-main-nav {
   transform: translateY(60px);
-  background-image: url("imgFolder/yj-main-menu3.png");
+  background-image: url("../../../imgFolder/yj-main-menu3.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 170px;

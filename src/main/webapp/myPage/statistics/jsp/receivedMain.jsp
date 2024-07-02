@@ -11,8 +11,13 @@
 <body>
 
 	<div class="recMain-container"> 
-		<div class="yj-main-s2-logo" ><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-		<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
+	<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+	</div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
 	<div id="recMain-title">心からのお伝え</div>
 	<div id="recMain-header"><img id="header-img" alt="" src="myPage/statistics/imgFolder/footer.png"></div>
 	<div  style="display : flex; margin-top : 8rem; " id="toGoTexts">

@@ -7,12 +7,15 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="myPage/statistics/css/receivedFund.css" />
+<link rel="stylesheet" href="product/index.css" />
 <link rel="stylesheet" href="finance/css/fund.css" />
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
 <script defer="defer" type="text/javascript"
 	src="myPage/statistics/js/receivedFunding.js"></script>
+<script defer="defer" type="text/javascript"
+	src="product/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 /* 클리핑 컨테이너의 CSS */
@@ -27,8 +30,13 @@
 </head>
 <body>
 	<div class="recFund-container">
-		<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-		<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
+		<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
+	</div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
 		<div class="jh-half-circle">
 		<input id="myParam" type="hidden" value="${param.eno}">
 		<div class="recFund-title">ファンディング の現状</div>
