@@ -24,7 +24,14 @@ public class InvitationDTO {
     public InvitationDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+    
+    public String getFormattedPhone() {
+        if (m_phone != null && m_phone.length() == 11) {
+            return m_phone.replaceFirst("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");
+        }
+        return m_phone;
+    }
+    
 
 	public InvitationDTO(int e_no, String m_id, String m_name, String m_phone, String m_email, String g_attend,
 			String g_guest_type, String g_message, String g_relation, String allergy, int p_adult, int p_child,

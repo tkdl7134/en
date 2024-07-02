@@ -89,6 +89,7 @@ body {
     align-items: center;
     margin-top: 15rem;
     padding: 3rem;
+    gap: 5rem;
 }
 
 .hw_menubar_item {
@@ -115,8 +116,7 @@ body {
 }
 
 .hw_yellow_line {
-    width: 9rem;
-    height: 1rem;
+    width: 15rem;
 }
 
 /* 메인 스타일 */
