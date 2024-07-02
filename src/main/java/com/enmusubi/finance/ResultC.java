@@ -14,6 +14,7 @@ public class ResultC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("loginType",fundDAO.IDTypeCheck(request));
 		request.setAttribute("page", "financeresult.jsp");
+		request.getSession().removeAttribute("eno");
 		request.getRequestDispatcher("finance/index.jsp").forward(request, response);
 	}
 

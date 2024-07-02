@@ -10,7 +10,6 @@ $.ajax({
 	async: false,
 	dataType: "json",
 	success: function(response) {
-		console.log(response);
 		jsoninfos = response;
 		response.forEach((element, index) => {
 			eventno = element.e_no;
@@ -18,7 +17,7 @@ $.ajax({
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.wl_no}">
 						<div style="height: 18rem">
-							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" />
+							<img style="height: 100%" alt="noImg" src="finance/img/${element.wl_product}.png" onerror="this.onerror=null; this.src='finance/img/プレゼント.png';"/>
 						</div>
 						<div>
 							<h1 style="margin:0">${element.wl_product}</h1>
@@ -92,7 +91,6 @@ $.ajax({
 				event.stopPropagation();
 			});
 			element.addEventListener("click", function(event) {
-				console.log(jsoninfos);
 				let cardParent = event.target.closest(".kh-fund-card");
 				element.classList.add("kh-f-rotate");
 				if (cardParent) {
@@ -315,13 +313,10 @@ function goStatistic(wlno) {
 				statisticModal.querySelector('.kh-f-statistic-name > div:nth-child(1)').classList.remove('kh-f-none');
 				let statisBars = statisticModal.querySelectorAll('.kh-f-statistic-abled-bar')
 				statisBars.forEach((element) => {
-					console.log(element.getAttribute("data-value"));
 					element.style.width = element.getAttribute("data-value") + "%";
-					console.log(element.style.width);
 				});
 				let statisNumber = statisticModal.querySelectorAll('.kh-f-statistic-percent > h1 > span')
 				statisNumber.forEach((element) => {
-					console.log(element.getAttribute("data-value"));
 					animateValue(element, 0, parseInt(element.getAttribute("data-value")), 1000);
 				});
 				//카운트다운
@@ -343,9 +338,6 @@ function goStatistic(wlno) {
 
 			},
 			error: function(request, status, error) {
-				console.log("code: " + request.status)
-				console.log("message: " + request.responseText)
-				console.log("error: " + error);
 			}
 		});
 

@@ -12,6 +12,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -124,6 +125,7 @@ public class StatisticsDAO {
 				+ "    SELECT wl_no,\r\n"
 				+ "           SUM(p_price) AS total_price\r\n"
 				+ "    FROM s_pay\r\n"
+				+ " WHERE p_type = 'fund'\r\n"
 				+ "    GROUP BY wl_no\r\n"
 				+ ") subquery\r\n"
 				+ "WHERE wl_no = ?";
@@ -528,8 +530,9 @@ public class StatisticsDAO {
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 				
 		// session.getAttribute("m_id")
-		//int eno =Integer.parseInt (request.getParameter ("eno"));
-		int eno = 1;
+	int eno =Integer.parseInt(request.getParameter ("eno"));
+	//	int eno = 1;
+		System.out.println(eno);
 		
 		
 		
@@ -567,9 +570,10 @@ public class StatisticsDAO {
 		// id 받기
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 		// session.getAttribute("m_id")
-//		HttpSession session = request.getSession();
-//	String id = 	(String) session.getAttribute("m_id");
-		String id = "testuser";
+	HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("m_id");
+	//	String id = "testuser";
+		System.out.println(id);
 		int offset = (page - 1) * itemsPerPage;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -606,6 +610,7 @@ public class StatisticsDAO {
 		    int totalItems = 0;
 		    if (rs.next()) {
 		        totalItems = rs.getInt("total");
+		        
 		    }
 		    int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
 		    request.setAttribute("totalPage", totalPages);
@@ -655,4 +660,47 @@ public class StatisticsDAO {
 		}
 	
 }
+	
+	public static void selectFundList(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "WITH wish_fund AS (SELECT wl_no, wl_price, wl_product, e_no, (SELECT SUM(p_price) FROM s_pay sp WHERE p_type = 'fund' AND wl_no = sw.wl_no) AS payed, FLOOR((SELECT SUM(p_price) FROM s_pay sp WHERE p_type = 'fund' AND wl_no = sw.wl_no) / wl_price * 100) AS percent FROM s_wishlist sw WHERE e_no = ?)"
+				+ " SELECT wl_no, wl_price, wl_product, e_no, payed, COALESCE(percent, 0) AS percent FROM wish_fund ORDER BY percent DESC";
+		DBManager dbManager = DBManager.getInstance();
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			String eno = request.getParameter("eno");
+			pstmt.setString(1, eno);
+			rs = pstmt.executeQuery();
+			ArrayList<FundListDTO> flists = new ArrayList<FundListDTO>();
+			while (rs.next()) {
+				FundListDTO fldto = new FundListDTO();
+				fldto.setWl_no(rs.getString("wl_no"));
+				fldto.setWl_product(rs.getString("wl_product"));
+				fldto.setWl_price(rs.getString("wl_price"));
+				fldto.setE_no(rs.getString("e_no"));
+				fldto.setPayed(rs.getString("payed"));
+				fldto.setPercent(rs.getString("percent"));
+				flists.add(fldto);
+			}
+			System.out.println(flists);
+			Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+			String json = gson.toJson(flists);
+			System.out.println(json);
+			response.getWriter().print(json);
+			request.setAttribute("list", flists);
+			request.setAttribute("jsonList", json);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("server err...");
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+
+	}
+	
+	
 }

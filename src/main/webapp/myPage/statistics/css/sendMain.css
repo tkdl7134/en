@@ -23,7 +23,244 @@ header {
 	align-items: center;
 	padding: 3.5rem 3rem;
 }
+.yj-main-logo {
+  z-index: 4;
+  width: 130px;
+  height: 130px;
+  position: fixed;
+  top: 4rem;
+  left: 5rem;
+}
 
+.yj-main-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+/* 센션 2~6 메뉴 */
+.yj-main-menubox {
+  position: fixed;
+  top: 6rem;
+  right: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 175px;
+}
+
+.yj-main-menu {
+  z-index: 4;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+
+.yj-main-menu img {
+  width: 100%;
+  height: 100%;
+}
+
+.yj-main-nav {
+  transform: translateY(60px);
+  background-image: url("../../../main/imgFolder/yj-main-menu3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 170px;
+  height: 600px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.nav-logoDeco {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.nav-logoDeco img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.yj-main-nav a {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+yj-main-nav a:visited {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+
+.yj-main-nav a:hover {
+  color: red;
+  text-decoration: none;
+  text-shadow: 0 0 3px #ffd0e9;
+}
+
+.yj-main-nav a:active {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+
+.nav-login,
+.nav-register,
+.nav-productBF {
+  /* 	height: 10px; */
+  margin: 1px 0; /* 각 섹션의 마진을 동일하게 설정 */
+}
+
+.nav-hidden {
+  display: none;
+}
+
+.nav-show {
+  display: flex;
+}
+
+.nav-fakeDiv {
+  height: 90px;
+}
+
+.nav-textDeco {
+  font-size: 10px;
+  color: #fd5356;
+}
+
+.nav-text {
+  text-align: center;
+  font-size: 10px;
+  color: rgb(80, 80, 80);
+  margin: 15px 0;
+}
+
+.nav-topBtn > a > img {
+  width: 100%; /* Ensures the image fills the anchor tag */
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-yellowDeco {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0;
+}
+
+.nav-yellowDeco > img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.nav-welcome {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.nav-myPage {
+  text-align: center;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.nav-myPageList {
+  margin: -20px 0;
+}
+
+.nav-myPageList a {
+  text-align: left;
+  display: block; /* 각 링크를 블록 요소로 설정하여 세로로 나열 */
+  margin: 10px 0; /* 각 링크 간격 조정 */
+}
+
+.nav-myPageList a h3 {
+  font-weight: 600;
+  font-size: 12px;
+  color: rgb(90, 90, 90);
+}
+
+.nav-myPageList a h3:hover {
+  font-weight: 600;
+  font-size: 12px;
+  color: #fd5356;
+}
+
+.nav-productAF {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.nav-topBtn {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.nav-topBtn > a {
+  display: block;
+  /* Ensures that the anchor tag behaves like a block element */
+  width: 100%; /* Makes the anchor tag as wide as its container */
+  height: 100%; /* Makes the anchor tag as tall as its container */
+}
+
+.nav-topBtn > a > img {
+  width: 100%; /* Ensures the image fills the anchor tag */
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-logout {
+  text-align: center;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.nav-logout button {
+  background-color: #ff6978; /* 핑크색 */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.nav-logout button:hover {
+  background-color: #ff4356; /* 호버 시 색 변화 */
+}
 .hw_logo {
 	 z-index: 4;
     width: 150px;
@@ -40,9 +277,6 @@ header {
 }
 
 .hw_page_title {
-	position: absolute;
-	left: 50%;
-	top: 70px;
 }
 
 @keyframes logo-float {
@@ -284,7 +518,6 @@ main {
 }
 
 .hw_page-content-template {
-	padding: 1rem;
 	border-radius: 0.5rem;
 	position: relative;
 	overflow: hidden;
@@ -298,11 +531,10 @@ main {
 	display: flex;
 	justify-content: center;
 	padding: 0.5rem;
-	gap: 4rem;
+	gap: 0.5rem;
 	z-index: 2;
 	flex-direction: column;
 	opacity: 0;
-	padding: 15rem;
 	border-radius: 30%;
 }
 .hw_template-button:hover{
@@ -470,13 +702,13 @@ main {
 	pointer-events: none;
 }
 
-.canvas-content {
+.jh-whole-con {
 	position: absolute;
-	top: -870px;
 	left: 50%;
 	transform: translate(-50%, 0);
-	height: 70%;
-	width: 70%;
+	height:100vh;
+	width:50%;
+	padding-top:180px;
 }
 .cursor-custom {
 	cursor: url('mytemplate/imgFolder/back_btn.png'), auto;

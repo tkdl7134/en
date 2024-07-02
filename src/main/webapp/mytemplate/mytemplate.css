@@ -19,6 +19,13 @@ body {
 	background-repeat: no-repeat;
 }
 
+/* 헤더 스타일 */
+.hw_head {
+    background-position: top center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    padding: 2rem;
+}
 
 .hw_logo {
     z-index: 4;
@@ -82,6 +89,7 @@ body {
     align-items: center;
     margin-top: 15rem;
     padding: 3rem;
+    gap: 5rem;
 }
 
 .hw_menubar_item {
@@ -108,8 +116,7 @@ body {
 }
 
 .hw_yellow_line {
-    width: 9rem;
-    height: 1rem;
+    width: 15rem;
 }
 
 /* 메인 스타일 */
@@ -171,7 +178,7 @@ main {
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 9rem;
+    padding: 15rem;
     border-radius: 30%;
 }
 
@@ -191,10 +198,7 @@ main {
     background-color: #fff4f4;
     color: #5c5c5c;
 }
-.hw_content_btn:hover {
-    background-color: #ff3b3f;
-    color: white; /* 텍스트 색상도 변경하고 싶다면 추가 */
-}
+
 .hw_template-img {
     display: flex;
     position: relative;
@@ -244,14 +248,14 @@ main {
 
 /* 팝업 창 스타일 */
 .popup {
-      display: none;
+    display: none;
     position: fixed;
     z-index: 3;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    height: 180px;
     width: 300px;
-    height: 130px;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     background-color: #FFF5F4;
@@ -262,6 +266,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 15%;
+    gap: 40px;
 }
 
 .popup-content input {
@@ -270,11 +276,10 @@ main {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-top: 12%;
 }
 
 .popup-content button {
-     background: none;
+    background: none;
     border: none;
     margin: 0.5rem auto;
     cursor: pointer;
@@ -286,14 +291,20 @@ main {
     border: 0.1rem solid #c82626;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.3rem #c82626;
+    background-color: #fff4f4;
+    color: #5c5c5c;
     transition: background-color 0.5s, color 0.5s;
 }
 
 .popup-content button:hover {
-  background-color: #ff3b3f;
+     background-color: #ff3b3f;
     color: #fff4f4;
 }
-
+.hw_content_btn:hover{
+	 background-color: #ff3b3f;
+    color: #fff4f4;
+	
+}
 .close-btn {
     position: absolute;
     top: 10px;
@@ -301,3 +312,254 @@ main {
     font-size: 20px;
     cursor: pointer;
 }
+
+
+
+.yj-main-section {
+  /* 뷰포트 전체를 채우도록 설정 */
+  height: 5vh;
+}
+
+/* 섹션 2~6 로고 */
+.yj-main-logo {
+  z-index: 4;
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: 4rem;
+  left: 5rem;
+}
+
+.yj-main-logo img {
+  width: 100%;
+  height: 100%;
+  /* animation */
+  animation: logo-float 2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translate(0, 0%);
+  }
+  50% {
+    transform: translate(0, 5%);
+  }
+}
+
+/* 센션 2~6 메뉴 */
+.yj-main-menubox {
+  position: absolute;
+  top: 6rem;
+  right: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 175px;
+}
+
+.yj-main-menu {
+  z-index: 4;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+
+.yj-main-menu img {
+  width: 100%;
+  height: 100%;
+}
+
+.yj-main-nav {
+  transform: translateY(60px);
+  background-image: url("../main/imgFolder/yj-main-menu3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 170px;
+  height: 600px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.nav-logoDeco {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.nav-logoDeco img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.yj-main-nav a {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+yj-main-nav a:visited {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+
+.yj-main-nav a:hover {
+  color: red;
+  text-decoration: none;
+  text-shadow: 0 0 3px #ffd0e9;
+}
+
+.yj-main-nav a:active {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+
+.nav-login,
+.nav-register,
+.nav-productBF {
+  /* 	height: 10px; */
+  margin: 1px 0; /* 각 섹션의 마진을 동일하게 설정 */
+}
+
+.nav-hidden {
+  display: none;
+}
+
+.nav-show {
+  display: flex;
+}
+
+.nav-fakeDiv {
+  height: 90px;
+}
+
+.nav-textDeco {
+  font-size: 10px;
+  color: #fd5356;
+}
+
+.nav-text {
+  text-align: center;
+  font-size: 10px;
+  color: rgb(80, 80, 80);
+  margin: 15px 0;
+}
+
+.nav-topBtn > a > img {
+  width: 100%; /* Ensures the image fills the anchor tag */
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-yellowDeco {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0;
+}
+
+.nav-yellowDeco > img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.nav-welcome {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.nav-myPage {
+  text-align: center;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.nav-myPageList {
+  margin: -20px 0;
+}
+
+.nav-myPageList a {
+  text-align: left;
+  display: block; /* 각 링크를 블록 요소로 설정하여 세로로 나열 */
+  margin: 10px 0; /* 각 링크 간격 조정 */
+}
+
+.nav-myPageList a h3 {
+  font-weight: 600;
+  font-size: 12px;
+  color: rgb(90, 90, 90);
+}
+
+.nav-myPageList a h3:hover {
+  font-weight: 600;
+  font-size: 12px;
+  color: #fd5356;
+}
+
+.nav-productAF {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.nav-topBtn {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.nav-topBtn > a {
+  display: block;
+  /* Ensures that the anchor tag behaves like a block element */
+  width: 100%; /* Makes the anchor tag as wide as its container */
+  height: 100%; /* Makes the anchor tag as tall as its container */
+}
+
+.nav-topBtn > a > img {
+  width: 100%; /* Ensures the image fills the anchor tag */
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-logout {
+  text-align: center;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.nav-logout button {
+  background-color: #ff6978; /* 핑크색 */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.nav-logout button:hover {
+  background-color: #ff4356; /* 호버 시 색 변화 */
+}
+
+
+
+

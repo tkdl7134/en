@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.selectbox{
+    margin: 150px auto;
+}
+
+.pl{
+color: black;
+border: 2px solid black;
+box-sizing: border-box;
+border-radius: 10px;
+padding-left: 5px;
+font-style: normal;
+background: url(./img/Polygon_up.png) 93% no-repeat; /*화살표 이미지 삽입*/
+appearance: none;
+text-align: left;
+}
+
+.pl:focus{
+  	border: 2px solid red;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.styled-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.styled-select select {
+  border-radius: 5px;
+  background: white;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+        /* select 요소의 화살표 스타일 */
+.styled-select::after {		
+   content: '\25BC';
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   transform: translateY(-50%);
+   pointer-events: none;
+   font-size: 1.2rem;
+   color: #555;
+        }
+
+/* option 스타일 */
+.styled-select select option {
+   padding: 10px;
+   font-size: 1.4rem;
+        }

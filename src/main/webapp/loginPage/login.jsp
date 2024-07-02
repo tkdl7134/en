@@ -5,6 +5,7 @@
 <head>
 <title>ログイン</title>
 <link rel="stylesheet" type="text/css" href="loginPage/login.css">
+<link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -34,6 +35,26 @@ body {
 	user-select: none; /* 표준 */
 	background-color: #FFF5F4;
 }
+
+.yj-main-logo {
+    z-index: 4;
+    width: 130px;
+    height: 130px;
+    position: fixed;
+    top: 4rem;
+    left: 5rem;
+}
+
+.yj-main-menubox {
+    position: fixed;
+    top: 6rem;
+    right: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 175px;
+}
+
 </style>
 
 </head>
@@ -41,15 +62,12 @@ body {
 
 	<div class="hs_background">
 
-		<div class="yj-main-s2-logo">
-			<img class="yj-main-s2-logo img" alt=""
-				src="loginPage/ImgFolder/Logo.png">
+		<div class="yj-main-logo">
+			<a href="MainC" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
 		</div>
-		<div class="yj-main-s2-menu">
-			<img class="yj-main-s2-menu img" alt=""
-				src="loginPage/ImgFolder/default_menu_1.png">
-		</div>
-
+		
+		<jsp:include page="${mainNav }" />
 
 		<div class="horizontal-container-title">
 			<h1 class="hs_heading">ログイン</h1>
@@ -80,6 +98,26 @@ body {
 	</div>
 
 	<script>
+	const menus = document.querySelectorAll(".yj-main-menu");
+
+	menus.forEach((menu) => {
+		const mouseCursor = document.querySelector(".yj-main-s6-cursor > img");
+		const navi = menu.parentElement.querySelector(".yj-main-nav");
+		menu.addEventListener("click", function() {
+			console.log(menu);
+			console.log(navi);
+			const menuBtn = menu.querySelector("img");
+			if (navi.classList.contains("nav-hidden")) {
+				menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+				navi.classList.remove("nav-hidden");
+				navi.classList.add("nav-show");
+			} else {
+				menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+				navi.classList.remove("nav-show");
+				navi.classList.add("nav-hidden");
+			}
+		});
+	});
 	
 	document.addEventListener('DOMContentLoaded', function() {
 	    // ID 필드에 대한 입력 제한
@@ -204,7 +242,7 @@ body {
 				});
 			});
 		});
-
+/* 
 		// 세션 스토리지에서 값을 불러오는 함수
 		function loadFromSessionStorage() {
 			const birthYear = sessionStorage.getItem('birthYear');
@@ -225,7 +263,7 @@ body {
 		// 페이지가 로드될 때 값을 불러옴
 		window.addEventListener('load', loadFromSessionStorage);
 		
-		
+		 */
 	</script>
 
 </body>
