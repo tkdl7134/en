@@ -535,7 +535,7 @@ main {
 	display: flex;
 	justify-content: center;
 	padding: 0.5rem;
-	gap: 4rem;
+	gap: 0.5rem;
 	z-index: 2;
 	flex-direction: column;
 	opacity: 0;
@@ -709,7 +709,7 @@ main {
 
 .canvas-content {
 	position: absolute;
-	top: -870px;
+	top: -800px;
 	left: 50%;
 	transform: translate(-50%, 0);
 	height: 70%;

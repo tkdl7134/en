@@ -17,17 +17,16 @@ $(document).ready(function() {
         e.preventDefault();
         $('html, body').animate({scrollTop: $('#page_top').offset().top}, 'slow');
     });
- 
     $('.hw_template-img').hover(function() {
-        // 현재 호버된 이미지와 가장 가까운 .hw_template-button에 스타일 적용
-        $(this).css('opacity', '1');
+        // 현재 호버된 이미지에 따라 자식 요소인 #previewImg의 src 속성을 변경
+        $(this).find('#previewImg').attr('src', 'myPage/statistics/imgFolder/offPreview.png');
         $(this).siblings('.hw_template-button').css('opacity', '1');
     }, function() {
-        // 마우스가 이미지에서 벗어났을 때 원래 상태로 돌아가도록 추가
-        $(this).css('opacity', '');
-        $(this).siblings('.hw_template-button').css('opacity', '');
+        // 마우스가 이미지에서 벗어났을 때 자식 요소인 #previewImg의 src 속성을 원래대로 되돌리기
+        const originalSrc = 'myPage/statistics/imgFolder/' + $(this).find('#previewImg').data('originalSrc');
+        $(this).find('#previewImg').attr('src', originalSrc);
+        $(this).siblings('.hw_template-button').css('opacity', '0');
     });
-    
     
     
 });
@@ -64,8 +63,7 @@ width: 1rem;
  
  font-family: 'Noto Serif JP', serif;
     font-size: 17px;
-    border: 1px solid black;
-    border-radius: 15px;
+    
     background-color: #fff4f4;
     height: 3rem;
     text-align: center;
@@ -74,8 +72,9 @@ width: 1rem;
     align-items: center;
  }
  .hw_template-button{
- width : 22.6rem;
+ width : 18.8rem;
  text-align : center;
+   opacity: 0; /* 초기 상태에서 투명하게 설정 */
  
  }
 </style>
@@ -133,11 +132,15 @@ width: 1rem;
 							<c:forEach var="previews" items="${previews}" varStatus="status">
 								<div class="hw_page-content-template">
 									<div class="hw_template-img">
-										<img src="myPage/statistics/imgFolder/${previews.t_preview}" alt="" />
+										<img id="previewImg" src="myPage/statistics/imgFolder/${previews.t_preview}"data-original-src="${previews.t_preview}" alt="" />
 										<div style="display : flex; flex-direction : column;" class="hw_template-button">
-											<div class="hw_content_btn" data-target="#layer2">主催者：${previews.m_name }</div>
-											<div class="hw_content_btn" >開催日：${previews.r_time }</div>
-											<div class="hw_content_btn" >開催場所：${previews.r_addr}</div>
+											<div><img style="width : 4rem;"  alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
+											<div class="hw_content_btn" >主催者 </div>
+											<div style="margin-top: -23px;" class="hw_content_btn" > ${previews.m_name }</div>
+											<div class="hw_content_btn" >日時</div>
+											<div style="margin-top: -23px;" class="hw_content_btn" > ${previews.r_time }</div>
+											<div class="hw_content_btn" >場所</div>
+											<div style="margin-top: -23px;" class="hw_content_btn" > ${previews.r_addr}</div>
 										</div>
 									</div>
 								</div>
