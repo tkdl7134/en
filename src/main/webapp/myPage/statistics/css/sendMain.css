@@ -518,7 +518,6 @@ main {
 }
 
 .hw_page-content-template {
-	padding: 1rem;
 	border-radius: 0.5rem;
 	position: relative;
 	overflow: hidden;
@@ -536,7 +535,6 @@ main {
 	z-index: 2;
 	flex-direction: column;
 	opacity: 0;
-	padding: 15rem;
 	border-radius: 30%;
 }
 .hw_template-button:hover{
@@ -709,7 +707,7 @@ main {
 	left: 50%;
 	transform: translate(-50%, 0);
 	height:100vh;
-	width:100vh;
+	width:50%;
 	padding-top:180px;
 }
 .cursor-custom {
