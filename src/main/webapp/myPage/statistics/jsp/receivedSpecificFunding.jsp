@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="myPage/statistics/css/receivedSpecificFund.css" />
-<link rel="stylesheet" href="product/index.css" />
 <script defer="defer" type="text/javascript"
 	src="product/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
@@ -18,6 +17,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        background-color : #FFF5F4;
       }
       #background1,
       #background2 {
@@ -40,13 +40,13 @@
         background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
         background-position: bottom center;
         bottom: 940px;
+        margin-top: 70%;
       }
       #canvas-content-container {
         z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
         position: relative;
         display: flex;
         background-color: #FFF5F4;
-        
       }
       .canvas-container {
         display: none;
@@ -68,14 +68,12 @@
       }
       .canvas-content {
         position: absolute;
-        top: -600px;
+        top: -90vh;
         left: 50%;
         transform: translate(-50%, 0);
             display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: -18rem;
       }
     </style>
 
@@ -95,9 +93,9 @@
 	<jsp:include page="${settingPage }"></jsp:include>
     <div id="canvas-content-container">
       <div class="canvas-content">
-        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
 	
- 	<div style="font-size: 30px; font-weight : bold; " class="recFundSpecTitle">ファンディング の現状</div>
+        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
+ 	<div style="font-size: 30px; font-weight : bold;" class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
 	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div onclick="location.href='mytemplateController'" style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
@@ -244,11 +242,11 @@
           handleMouseMove(event, ctx2, canvas2);
         });
         background1.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainC?eno='+${eno};
         });
 
         background2.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainCeno='${eno};
         });
       });
     </script>

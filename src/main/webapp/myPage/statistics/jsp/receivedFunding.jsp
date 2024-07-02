@@ -39,8 +39,8 @@
 	<jsp:include page="${settingPage }"></jsp:include>
 		<div class="jh-half-circle">
 		<input id="myParam" type="hidden" value="${param.eno}">
-		<div class="recFund-title">ファンディング の現状</div>
-		<div  style="display : flex; margin-top : 10rem;text-align: center;    justify-content: space-evenly;    width: 60rem;" id="toGoTexts">
+		<div style="margin-top : 2rem;" class="recFund-title">ファンディング の現状</div>
+		<div  style="display : flex; margin-top : 8rem;text-align: center;    justify-content: space-evenly;    width: 60rem;" id="toGoTexts">
 	<div  onclick="location.href='MemberDetailC'" style="width: 10rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div  onclick="location.href='mytemplateController'"  style="color : #ff2828; 	" class="ToGoTexts">✿テンプレート管理 ✿</div>
 	<div  onclick="location.href='MyMeetingC'" style="" class="ToGoTexts">✿ 会リスト ✿</div>
@@ -48,7 +48,7 @@
 	<div style="display: flex; 	 " id="toGoLines">
  <div style="margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="margin-left: 2rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="    margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
-		<div style="margin-top: 8rem; gap : 10rem;" class="kh-f-card-container">
+		<div style="margin-top: 6rem; gap : 10rem;" class="kh-f-card-container">
 			
 			<div class="kh-f-card-fake"></div>
 		
