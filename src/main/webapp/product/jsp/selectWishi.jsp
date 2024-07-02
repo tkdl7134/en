@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>縁結び</title>
 <link rel="stylesheet" type="text/css"
 	href="product/css/selectWishi.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -32,7 +32,7 @@
 				</svg>
 				</a>
 			</div>
-			<h1 class="hs_heading">ログイン</h1>
+			<h1 class="hs_heading">ウィッシュリスト</h1>
 		</div>
 
 
