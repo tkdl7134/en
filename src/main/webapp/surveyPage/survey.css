@@ -34,26 +34,6 @@ header {
   z-index: 1;
 }
 
-/* �쇊履� �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
-.top-left {
-  z-index: 4;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 3rem;
-  left: 4rem;
-}
-
-/* �삤瑜몄そ �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
-.top-menu {
-  z-index: 4;
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
-}
-
 .middle-title {
   display: flex;
   flex-direction: column;
