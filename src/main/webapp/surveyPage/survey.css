@@ -154,6 +154,7 @@ header {
 
 .together-container input {
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .name-container > input {
@@ -176,6 +177,7 @@ header {
 .contact-input {
   width: 15rem;
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .contact-container > input {
@@ -185,6 +187,7 @@ header {
 .name-input {
   margin-left: 2rem;
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .slick-arrow {
@@ -273,6 +276,7 @@ legend div:nth-child(1) {
   width: 20rem;
   height: 1.7rem;
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .address-contents-container select {
@@ -285,6 +289,7 @@ legend div:nth-child(1) {
   width: 20.1rem;
   height: 5rem;
   font-family: "Noto Serif JP", serif;
+  border-color: black;
 }
 
 .address-contents-container > div:nth-child(2) > div:nth-child(2) {
@@ -368,15 +373,12 @@ legend div:nth-child(1) {
   line-height: 3rem;
 }
 
-.allergy-question label {
-  padding-left: 5rem;
-}
-
 .special-notes-container textarea {
   width: 62rem;
   height: 8rem; /* textarea �넂�씠 議곗젅 */
   padding: 4px;
   border: 1px solid #ccc;
+  border-color: black;
   box-sizing: border-box;
   resize: vertical;
   font-family: "Noto Serif JP", serif;
@@ -385,9 +387,9 @@ legend div:nth-child(1) {
 
 .tg-survey-button {
   background-color: #fff;
-  color: #684c38;
+  color: black;
   padding: 1rem 2rem;
-  border: 2px solid #ffe2f0;
+  border: 2px solid #DA2025;
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bolder;
@@ -452,6 +454,8 @@ legend div:nth-child(1) {
   background-image: url("imgFolder/entry-backgroundimg-react.png");
   background-size: cover;
   background-position: center;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease-out;
 }
 
 .entry-box-img.active,
@@ -459,6 +463,8 @@ legend div:nth-child(1) {
   background-image: url("imgFolder/entry-backgroundimg-react.png");
   background-size: cover;
   background-position: center;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease-out;
 }
 
 .reject-notes-container {
