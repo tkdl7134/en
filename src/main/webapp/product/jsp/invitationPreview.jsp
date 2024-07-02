@@ -9,26 +9,21 @@
 <script type="text/javascript" src="product/js/invitationPreview.js"></script>
 </head>
 <body>
-  <!-- 로고 / 네비 -->
-   <!--  <div id="yj-main-s2-logo">
-      <img src="product/imgFolder/Logo.png" alt="" />
-    </div>
-    <div id="yj-main-s2-menu">
-      <img src="product/imgFolder/menu_btn_1.png" alt="" />
-    </div> -->
     <!-- 초대장 내용 -->
     <div id="je_container-invitionPreview">
       <div class="je_content-invitationPreview">
         <!-- 버튼 -->
-        <%-- <div class="je_wishlistSet-btn" onclick="location.href='FundingSettingC?eno=${inviteInfo.e_no}'">위시리스트 설정</div> --%>
-       <div class="je_previewBtns">
-       		<div class="je_previewBtn je_wishlistSet-btn" onclick="location.href='SelectWishiC?eno=${inviteInfo.e_no}'">위시리스트 설정</div>
-	        <div class="je_previewBtn je_delete-btn"><a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()">삭제하기</a></div>
-	        <div class="je_previewBtn je_update-btn"><a href="InvitationUpdateC?eno=${inviteInfo.e_no}">수정하기</a></div>
-       </div> 
-      
-        
-        <div></div>
+    <div class="je_previewBtns">
+      <div class="je_previewBtn je_wishlistSet-btn" onclick="location.href='SelectWishiC?eno=${inviteInfo.e_no}'">
+        ✿ ウィッシュリスト - 設定 ✿
+      </div>
+      <div class="je_previewBtn je_delete-btn">
+        <a href="InvitationDelC?eno=${inviteInfo.e_no}" onclick="deleteCheck()"> ✿ 招待状 - 削除</a>
+      </div>
+      <div class="je_previewBtn je_update-btn">
+        <a href="InvitationUpdateC?eno=${inviteInfo.e_no}"> ✿ 招待状 - 修正</a>
+      </div>
+    </div>
         <!-- 초대장 -->
         <div class="je_invitation">
           <img style="width: 90%" src="product/imgFolder/${inviteInfo.t_template }" alt="" />
