@@ -44,7 +44,7 @@
               </div>
               <div class="je_detail-title je_table-img">${f.wl_product }</div>
               <div class="je_detail-input">
-                <input type="number" name ="wl_up_price" placeholder="${f.wl_price } 円"/>
+                <input type="number" name ="wl_up_price" placeholder="${f.wl_price } 円" oninput="checkMaxPrice(this)"/>
                 <input type="hidden" name ="wl_no" value="${f.wl_no }" />
               </div>
               <div class="je_detail-buttons">
@@ -70,7 +70,7 @@
               <div class="je_detail-title je_table-img">${b }</div>
               <input type="hidden" name="product_name" value="${b }">
               <div class="je_detail-input">
-                <input type="number" placeholder="円" name="product_price" id="basic_funding_price"/>
+                <input type="number" placeholder="円" name="product_price" id="product_price" oninput="checkMaxPrice(this)"/>
               </div>
               <div class="je_detail-button je_reg-button"><button type="submit">登録</button></div>
             </div>
@@ -92,7 +92,7 @@
                 <input type="text" placeholder="アイテム" name="product_name" />
               </div>
               <div class="je_detail-input je_input-price">
-                <input id="je_new-funding-price" type="number" placeholder="円" name="product_price" />
+                <input id="je_new-funding-price" type="number" placeholder="円" name="product_price" oninput="checkMaxPrice(this)"/>
               </div>
               <div class="je_detail-button"><button type="submit">登録</button></div>
             </div>
