@@ -19,7 +19,6 @@
 	
 	<jsp:include page="${settingPage }"></jsp:include>
 	<div id="recMain-title">心からのお伝え</div>
-	<div id="recMain-header"><img id="header-img" alt="" src="myPage/statistics/imgFolder/footer.png"></div>
 	<div  style="display : flex; margin-top : 8rem; " id="toGoTexts">
 	<div onclick="location.href='MemberDetailC'" style="margin-right: 5.5rem;margin-left : -1rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div onclick="location.href='mytemplateController'" style="color : #ff2828;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
