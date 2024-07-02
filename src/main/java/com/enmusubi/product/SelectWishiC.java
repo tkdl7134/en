@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.enmusubi.main.Interceptor;
+
 @WebServlet("/SelectWishiC")
 public class SelectWishiC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(Interceptor.LoginInterceptor(request, response)) {
 		SelectWishiDAO.selectEventFunc(request);
 		request.getRequestDispatcher("product/jsp/selectWishi.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
