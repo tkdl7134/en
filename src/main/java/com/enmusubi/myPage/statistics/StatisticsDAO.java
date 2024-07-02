@@ -532,7 +532,7 @@ public class StatisticsDAO {
 		// session.getAttribute("m_id")
 	int eno =Integer.parseInt(request.getParameter ("eno"));
 	//	int eno = 1;
-		
+		System.out.println(eno);
 		
 		
 		

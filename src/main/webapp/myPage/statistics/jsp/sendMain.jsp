@@ -90,7 +90,6 @@
 }
 
 .hw_template-button {
-	width: 18.8rem;
 	text-align: center;
 	opacity: 0; /* 초기 상태에서 투명하게 설정 */
 }
@@ -117,7 +116,7 @@
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
 
 			<form id="templateForm" action="mytemplateController" method="post">
-				<nav style="margin-top: 7rem; margin-bottom: 10rem;"
+				<nav style="margin-top: 7rem; "
 					class="hw_menubar">
 					<div class="hw_menubar_item">
 						<a href="MemberDetailC" class="hw_menubar_menu" href="">✿ 会員情報
@@ -204,7 +203,7 @@
 			</form>
 		</div>
 	</div>
-	<div id="background2">
+	<div style="margin-top: 20%;" id="background2">
 		<div class="canvas-container">
 			<canvas class="canvas" id="canvas2"></canvas>
 		</div>
