@@ -370,16 +370,20 @@
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
-															<select style="font-size: 1.4rem" id="prefecture"
+															<label class="styled-select">
+																<select style="font-size: 1.4rem" id="prefecture"
 																name="address" class="pl" required
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
-																<option value="">${members.a_prefecture}</option>
+																<c:if test="${empty members.a_prefecture}">
+                													<option value="">都道府県を選択してください</option>
+            													</c:if>		
 																<c:forEach var="prefecture" items="${prefectures}">
 																	<option value="${prefecture }">
 																		<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
 																		${prefecture }
 																</c:forEach>
-															</select>
+																</select>
+															</label>
 														</div>
 													</div>
 													<div class="address-contents-container">
@@ -419,20 +423,20 @@
 								<div class="together-container">
 									<div>同伴人数</div>
 									<div class="together-people">大人</div>
-									<input type="button" onclick='count("plus","adult")' value="+" />
-									<input style="width: 2rem; font-size: 1.2rem;" class="result"
-										value="0" id="adult" name="adult" /> <input type="button"
-										onclick='count("minus","adult")' value="-" />
+										<input type="button" class="togeter-button" onclick='count("plus","adult")' value="+" />																		
+											<input style="width: 2rem; font-size: 1.2rem;" class="result"
+											value="0" id="adult" name="adult" /> 
+										<input type="button" class="togeter-button" onclick='count("minus","adult")' value="-" />
 									<div value="子供" class="together-people">子供</div>
-									<input type="button" onclick='count("plus","child")' value="+" />
-									<input style="width: 2rem; font-size: 1.2rem" class="result"
-										value="0" id="child" name="child" /> <input type="button"
-										onclick='count("minus","child")' value="-" />
+										<input type="button" class="togeter-button" onclick='count("plus","child")' value="+" />
+											<input style="width: 2rem; font-size: 1.2rem" class="result"
+											value="0" id="child" name="child" /> 
+										<input type="button" class="togeter-button" onclick='count("minus","child")' value="-" />
 									<div value="幼児" class="together-people">幼児</div>
-									<input type="button" onclick='count("plus","baby")' value="+" />
-									<input style="width: 2rem; font-size: 1.2rem;"
-										class="result baby" value="0" id="baby" name="baby" /> <input
-										type="button" onclick='count("minus","baby")' value="-" />
+										<input type="button" class="togeter-button" onclick='count("plus","baby")' value="+" />
+											<input style="width: 2rem; font-size: 1.2rem;"class="result" 
+											value="0" id="baby" name="baby" /> 				
+										<input type="button" class="togeter-button" onclick='count("minus","baby")' value="-" />
 								</div>
 
 								<div class="allergy-container">
@@ -866,6 +870,14 @@ function handleFormSubmit() {
     	return 'yes';
     }
 }
+
+document.getElementById('prefecture').addEventListener('change', function() {
+    const firstOption = this.querySelector('option[value=""]');
+    if (firstOption) {
+        firstOption.remove();
+    }
+});
+
 
     </script>
 
