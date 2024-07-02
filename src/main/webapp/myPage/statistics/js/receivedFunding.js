@@ -4,8 +4,8 @@ let isMouseOverCard;
 let jsoninfos;
 //카드 초기배치
 $.ajax({
-	type: "post",
-	url: "FundC",
+	type: "POST",
+	url: "GetFundDataC",
 	data: { eno: eventno },
 	async: false,
 	dataType: "json",
@@ -14,11 +14,13 @@ $.ajax({
 		jsoninfos = response;
 		response.forEach((element, index) => {
 			eventno = element.e_no;
+			
+			
 			$(".kh-f-card-container").append(`
 				<div class="kh-f-card-out">
 					<div class="kh-fund-card" value="${element.wl_no}">
 						<div style="height: 18rem">
-							<img style="height: 100%" alt="noImg" src="myPage/statistics/imgFolder/${element.wl_product}.png" />
+							<img style="height: 100%; width : 100%;" alt="noImg" src="myPage/statistics/imgFolder/${element.wl_product}.png" onerror="this.src='myPage/statistics/imgFolder/else.png';"" />
 						</div>
 						<div>
 							<h1>${element.wl_product}</h3>

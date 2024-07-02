@@ -16,9 +16,41 @@ text-align: left;
 }
 
 .pl:focus{
-    border: 2px solid red;
+  	border: 2px solid red;
     box-sizing: border-box;
     border-radius: 10px;
     outline: 3px solid #F8E4FF;
     border-radius: 10px;
 }
+
+.styled-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.styled-select select {
+  border-radius: 5px;
+  background: white;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+        /* select 요소의 화살표 스타일 */
+.styled-select::after {		
+   content: '\25BC';
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   transform: translateY(-50%);
+   pointer-events: none;
+   font-size: 1.2rem;
+   color: #555;
+        }
+
+/* option 스타일 */
+.styled-select select option {
+   padding: 10px;
+   font-size: 1.4rem;
+        }

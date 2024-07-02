@@ -25,7 +25,12 @@ function onlyKana(input){
   	}
 }
 
+/* function lessThen(input, length){
+	return input.value.length < length;
+} */
+
 function isNotType(input, type){
 	type ="." + type;
 	return input.value.indexOf(type) == -1;
 }
+

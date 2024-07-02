@@ -7,12 +7,15 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="myPage/statistics/css/receivedFund.css" />
+<link rel="stylesheet" href="product/index.css" />
 <link rel="stylesheet" href="finance/css/fund.css" />
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
 <script defer="defer" type="text/javascript"
 	src="myPage/statistics/js/receivedFunding.js"></script>
+<script defer="defer" type="text/javascript"
+	src="product/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 /* 클리핑 컨테이너의 CSS */
@@ -27,18 +30,23 @@
 </head>
 <body>
 	<div class="recFund-container">
-		<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-		<div class="yj-main-s2-menu"><img alt="yj-main-s2-menu img " src="myPage/statistics/imgFolder/navi.png"></div>
-		<div class="jh-half-circle">
-		<input id="myParam" type="hidden" value="${param.eno }">
-		<div class="recFund-title">ファンディング の現状</div>
-		<div  style="display : flex; margin-top : 10rem;  margin-left : 35rem;  " id="toGoTexts">
-	<div  onclick="location.href='MemberDetailC'" style="margin-right: 6rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div  onclick="location.href='mytemplateController'"  style="color : #ff2828; margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='MyMeetingC'" style="margin-left: 5rem;" class="ToGoTexts">✿ 会リスト ✿</div>
+		<div class="yj-main-logo">
+			<a href="#" class="mainLogo"><img
+				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
 	</div>
-	<div style="display: flex; margin-left: 21rem; " id="toGoLines">
- <div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
+	<jsp:include page="${mainNav }" />
+	
+	<jsp:include page="${settingPage }"></jsp:include>
+		<div class="jh-half-circle">
+		<input id="myParam" type="hidden" value="${param.eno}">
+		<div class="recFund-title">ファンディング の現状</div>
+		<div  style="display : flex; margin-top : 10rem;text-align: center;    justify-content: space-evenly;    width: 60rem;" id="toGoTexts">
+	<div  onclick="location.href='MemberDetailC'" style="width: 10rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
+	<div  onclick="location.href='mytemplateController'"  style="color : #ff2828; 	" class="ToGoTexts">✿テンプレート管理 ✿</div>
+	<div  onclick="location.href='MyMeetingC'" style="" class="ToGoTexts">✿ 会リスト ✿</div>
+	</div>
+	<div style="display: flex; 	 " id="toGoLines">
+ <div style="margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="margin-left: 2rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div style="    margin-left: 1rem;"><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
 		<div style="margin-top: 8rem; gap : 10rem;" class="kh-f-card-container">
 			
