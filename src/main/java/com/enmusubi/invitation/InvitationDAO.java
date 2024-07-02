@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Comparator;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import com.enmusubi.main.DBManager;
 
 public class InvitationDAO {
@@ -34,10 +32,9 @@ public class InvitationDAO {
         ResultSet rs = null;
         DBManager dbManager = DBManager.getInstance();
 
-        // 세션에서 m_id와 e_no 값을 가져옴
-        HttpSession session = request.getSession();
-        String m_id = (String) session.getAttribute("m_id");
-        String e_no = (String) session.getAttribute("e_no");
+        // 요청 파라미터에서 m_id와 e_no 값을 가져옴
+    
+        String e_no = request.getParameter("eno");
 
         String sql = "SELECT se.e_no, sm.m_id, sm.m_name, sm.m_phone, sm.m_email, "
                 + "sg.g_attend, sg.g_guest_type, sg.g_message, sg.g_relation, "
@@ -47,13 +44,13 @@ public class InvitationDAO {
                 + "LEFT JOIN s_event se ON sg.e_no = se.e_no "
                 + "LEFT JOIN s_party sp ON sg.m_id = sp.m_id "
                 + "LEFT JOIN s_allergy sa ON sg.m_id = sa.m_id "
-                + "WHERE se.m_id = ? AND sg.e_no = ?";
+                + "WHERE sg.e_no = ?";
 
         try {
             con = dbManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, m_id);
-            pstmt.setString(2, e_no);
+           
+            pstmt.setString(1, e_no);
             rs = pstmt.executeQuery();
 
             invitationsYes = new ArrayList<>();
@@ -119,5 +116,4 @@ public class InvitationDAO {
             dbManager.close(con, pstmt, rs);
         }
     }
-
 }

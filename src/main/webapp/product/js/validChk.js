@@ -17,7 +17,7 @@ function onlyEng(input){
 }
 
 function onlyKana(input){
-	let ok = "アァイィウゥエェオォカキクケコガギグゲゴサシスセソザジズゼゾタチツテトダヂヅデドッナニヌネノハヒフヘホバビブベボパピプペポマミムメモヤャユュヨョラリルレロワヮヲンヴ―";
+	let ok = "アァイィウゥエェオォカキクケコガギグゲゴサシスセソザジズゼゾタチツテトダヂヅデドッナニヌネノハヒフヘホバビブベボパピプペポマミムメモヤャユュヨョラリルレロワヮヲンヴ―ー";
 	for (let i = 0; i < input.value.length; i++) {
 		   if (ok.indexOf(input.value[i]) == -1) {
 		     return true;

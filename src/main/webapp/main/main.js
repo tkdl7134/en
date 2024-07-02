@@ -18,7 +18,6 @@ function throttle(callback, time) {
 		}, time);
 	}
 }
-const textElement = document.getElementById("verticalText1");
 function goToNextSection() {
 	if (currentSectionIndex < sections.length - 1) {
 		currentSectionIndex++;
@@ -32,6 +31,10 @@ function goToPrevSection() {
 		sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
 	}
 }
+const textElements = document.querySelectorAll('.vertical-text');
+let aniTimeout;
+let aniTimeouts = [];
+let wow;
 const wheelHandler = (event) => {
 	if (event.deltaY > 0) {
 		// 스크롤 다운
@@ -41,7 +44,18 @@ const wheelHandler = (event) => {
 		throttle(goToPrevSection, 1000);
 	}
 
-	console.log(currentSectionIndex);
+	if (currentSectionIndex == 1 || currentSectionIndex == 3) {
+		console.log('testing : ' + currentSectionIndex)
+		aniTimeouts.forEach(timeout => clearTimeout(timeout));
+		aniTimeouts = [];		
+		wows.forEach(interval => clearInterval(interval));
+		wows = [];
+		textElements[0].innerHTML = "";
+		textElements[1].innerHTML = "";
+		textElements[2].innerHTML = "";
+	}
+
+
 	if (currentSectionIndex == 1) {
 		document.addEventListener("mousemove", mouseMoveHandler);
 	} else {
@@ -49,8 +63,18 @@ const wheelHandler = (event) => {
 	}
 
 	if (currentSectionIndex == 2) {
-		textElement.textContent = "";
-		textAni();
+
+		let delay = 0;
+		textElements.forEach((textElement, index) => {
+			aniTimeout = setTimeout(() => {
+				textElement.style.opacity = 1; // 배경을 나타나게 함
+				  setTimeout(() => { // 텍스트 애니메이션 시작을 약간 지연시킴
+					textAni(textElement);
+				}, 100); // 100ms 지연 후 텍스트 애니메이션 시작
+			}, delay);
+			aniTimeouts.push(aniTimeout)
+			delay += textElement.dataset.text.length * 100 + 200; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
+		});
 	} else if (currentSectionIndex == 4) {
 		document.removeEventListener("mousemove", mouseMoveHandler);
 		document.querySelector(".yj-main-s4-flexContainer").style.overflow = "";
@@ -251,33 +275,20 @@ function textAni() {
 }
 */
 
-document.addEventListener('DOMContentLoaded', () => {
-  const textElements = document.querySelectorAll('.vertical-text');
-  
-  let delay = 0;
-
-  textElements.forEach((textElement, index) => {
-    setTimeout(() => {
-      textAni(textElement);
-    }, delay);
-    delay += textElement.dataset.text.length * 200 + 500; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
-  });
-});
-
+let wows = [];
 function textAni(textElement) {
-  const text = textElement.dataset.text;
-  let i = 0;
+	const text = textElement.dataset.text;
+	let i = 0;
 
-  const wow = setInterval(() => {
-    if (i < text.length) {
-      const span = document.createElement("span");
-      span.textContent = text[i];
-      i++;
-      textElement.appendChild(span);
-    } else {
-      clearInterval(wow);
-    }
-  }, 200);
+	wow = setInterval(() => {
+		if (i < text.length) {
+			const span = document.createElement("span");
+			span.textContent = text[i];
+			i++;
+			textElement.appendChild(span);
+		}
+	}, 200);
+	wows.push(wow);
 }
 
 // ////////// ////////// ////////// ////////// ////////// //////////

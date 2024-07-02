@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class InvitationDelC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// delete 보내기
-		// 
 		ProductDAO.deleteInvitation(request);
 		request.getRequestDispatcher("ProductController").forward(request, response);
 	}

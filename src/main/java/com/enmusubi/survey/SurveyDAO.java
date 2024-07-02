@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.DBManager;
-import com.enmusubi.product.invitaitonDTO;
 
 public class SurveyDAO {
 	
@@ -44,7 +43,7 @@ public class SurveyDAO {
 	    PreparedStatement pstmtLineMemberUpdate = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    
-	    String sqlLineAddressUpdate = "UPDATE s_address SET a_address=?, a_postcode=? WHERE m_id=?";	    
+	    String sqlLineAddressUpdate = "INSERT INTO s_address (m_id, a_address, a_postcode) VALUES (?, ?, ?)";	    
 	    String sqlLineMemberUpdate = "UPDATE s_member SET m_name=?, m_name_kana=?, m_name_rome=?, m_email=?, m_phone=? WHERE m_id=?";	    
 
 	    
@@ -110,25 +109,25 @@ public class SurveyDAO {
                 System.out.println("개인정보 수정성공!!");
             }
 	          
-	        // 라인 회원은 주소가 입력되어 있지 않아 주소 입력 update 기능 추가
+	        // 라인 회원은 주소가 입력되어 있지 않아 주소 입력 Insert 기능 추가
 	        pstmtLineAddressUpdate = con.prepareStatement(sqlLineAddressUpdate);
 	        
 	        String postcode = request.getParameter("postal-code");
 	        String[] address = request.getParameterValues("address");
-	        String fulladdr = null;
+	        String fulladdr = "";
 	        
 	        for (String s : address) {
 	        	System.out.println(s);
 	        	fulladdr += s + " ";
 	        }
 	        	        
-	        pstmtLineAddressUpdate.setString(1, fulladdr);
-	        pstmtLineAddressUpdate.setString(2, postcode);
-	        pstmtLineAddressUpdate.setString(3, lineUserId);
+	        pstmtLineAddressUpdate.setString(1, lineUserId);
+	        pstmtLineAddressUpdate.setString(2, fulladdr);
+	        pstmtLineAddressUpdate.setString(3, postcode);
 
 	        
 	        if (pstmtLineAddressUpdate.executeUpdate() == 1) {
-	            System.out.println("주소정보 수정성공!!");
+	            System.out.println("주소정보 등록성공!!");
 	        }
 	        
 	        
@@ -473,8 +472,10 @@ public class SurveyDAO {
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-        dbManager.close(con, pstmtAllergy, null);
+        dbManager.close(con, pstmtGuest, null);
         dbManager.close(con, pstmtParty, null);
+        dbManager.close(con, pstmtAllergy, null);
+
 	}
 
 }
