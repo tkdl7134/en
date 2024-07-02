@@ -530,8 +530,8 @@ public class StatisticsDAO {
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 				
 		// session.getAttribute("m_id")
-//	int eno =Integer.parseInt (request.getParameter ("eno"));
-		int eno = 1;
+	int eno =Integer.parseInt(request.getParameter ("eno"));
+	//	int eno = 1;
 		
 		
 		
@@ -570,9 +570,9 @@ public class StatisticsDAO {
 		// id 받기
 		// m_id를 session으로 가져오나? Https Session session = request.getSession()
 		// session.getAttribute("m_id")
-//	HttpSession session = request.getSession();
-//		String id = (String) session.getAttribute("m_id");
-		String id = "testuser";
+	HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("m_id");
+	//	String id = "testuser";
 		System.out.println(id);
 		int offset = (page - 1) * itemsPerPage;
 		Connection con = null;
