@@ -300,7 +300,11 @@ main {
      background-color: #ff3b3f;
     color: #fff4f4;
 }
-
+.hw_content_btn:hover{
+	 background-color: #ff3b3f;
+    color: #fff4f4;
+	
+}
 .close-btn {
     position: absolute;
     top: 10px;
