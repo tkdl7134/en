@@ -18,6 +18,7 @@ function throttle(callback, time) {
 		}, time);
 	}
 }
+
 function goToNextSection() {
 	if (currentSectionIndex < sections.length - 1) {
 		currentSectionIndex++;
@@ -31,30 +32,46 @@ function goToPrevSection() {
 		sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
 	}
 }
+
 const textElements = document.querySelectorAll('.vertical-text');
 let aniTimeout;
 let aniTimeouts = [];
 let wow;
+
+// 디바운스 함수
+function debounce(func, wait) {
+	let timeout;
+	return function(...args) {
+		const context = this;
+		clearTimeout(timeout);
+		timeout = setTimeout(() => func.apply(context, args), wait);
+	};
+}
+
+// 휠 이벤트 핸들러
 const wheelHandler = (event) => {
+	console.log('wheel?')
 	if (event.deltaY > 0) {
 		// 스크롤 다운
-		throttle(goToNextSection, 1000); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
+		throttle(() => goToNextSection(), 100); // throttle 함수를 사용하여 이벤트 처리 간격을 조정할 수 있습니다.
 	} else {
 		// 스크롤 업
-		throttle(goToPrevSection, 1000);
+		throttle(() => goToPrevSection(), 100);
 	}
 
 	if (currentSectionIndex == 1 || currentSectionIndex == 3) {
-		console.log('testing : ' + currentSectionIndex)
+		console.log('testing : ' + currentSectionIndex);
 		aniTimeouts.forEach(timeout => clearTimeout(timeout));
-		aniTimeouts = [];		
+		aniTimeouts = [];
 		wows.forEach(interval => clearInterval(interval));
 		wows = [];
 		textElements[0].innerHTML = "";
 		textElements[1].innerHTML = "";
 		textElements[2].innerHTML = "";
+		textElements[1].style.opacity = 0;
+		textElements[2].style.opacity = 0;
+		
 	}
-
 
 	if (currentSectionIndex == 1) {
 		document.addEventListener("mousemove", mouseMoveHandler);
@@ -63,16 +80,15 @@ const wheelHandler = (event) => {
 	}
 
 	if (currentSectionIndex == 2) {
-
 		let delay = 0;
 		textElements.forEach((textElement, index) => {
 			aniTimeout = setTimeout(() => {
 				textElement.style.opacity = 1; // 배경을 나타나게 함
-				  setTimeout(() => { // 텍스트 애니메이션 시작을 약간 지연시킴
+				setTimeout(() => { // 텍스트 애니메이션 시작을 약간 지연시킴
 					textAni(textElement);
 				}, 100); // 100ms 지연 후 텍스트 애니메이션 시작
 			}, delay);
-			aniTimeouts.push(aniTimeout)
+			aniTimeouts.push(aniTimeout);
 			delay += textElement.dataset.text.length * 100 + 200; // 텍스트 길이에 비례한 지연 시간 + 추가 지연 시간
 		});
 	} else if (currentSectionIndex == 4) {
@@ -80,7 +96,12 @@ const wheelHandler = (event) => {
 		document.querySelector(".yj-main-s4-flexContainer").style.overflow = "";
 	}
 };
-document.addEventListener("wheel", wheelHandler);
+
+// 디바운스를 적용한 휠 이벤트 핸들러
+const debouncedWheelHandler = debounce(wheelHandler, 100);
+
+// 요소에 휠 이벤트 추가
+document.addEventListener('wheel', debouncedWheelHandler);
 
 // ////////// ////////// ////////// ////////// ////////// //////////
 // 로고 버튼 클릭 이벤트

@@ -780,8 +780,13 @@ yj-main-nav a:visited {
 /* Section 7 */
 #yj-main-s7 {
   z-index: 1;
-  background-image: url("imgFolder/yj-main-default-bg.png ");
+  background-image: url("imgFolder/yj-main-default-bg.png");
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .yj-main-s7-cover {
@@ -793,4 +798,106 @@ yj-main-nav a:visited {
 .yj-main-s7-cover img {
   width: 100vw;
   height: 100.5vh;
+}
+
+footer {
+    width: 100%;
+/*     background-color: gray; */
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+    color: rgb(50, 50, 50);
+    position: relative;
+}
+
+.yj-main-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.yj-main-footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-nav a {
+    margin: 5px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    margin: 5px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer-social a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-topBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.footer-topBtn img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
 }
