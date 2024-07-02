@@ -1,5 +1,5 @@
 function isEmpty(input){
-	return !input.value;
+	return !input.value.trim();
 }
 
 function isNotNumber(input){
@@ -25,9 +25,9 @@ function onlyKana(input){
   	}
 }
 
-/* function lessThen(input, length){
-	return input.value.length < length;
-} */
+function lessThen(input, length){
+	return input.value.length <= length;
+}
 
 function isNotType(input, type){
 	type ="." + type;

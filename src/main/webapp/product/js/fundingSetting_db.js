@@ -26,7 +26,15 @@ window.onload = function(){
 $(document).ready(function() {
 	$('.fundingRegForm').submit(function(event) {
 		event.preventDefault(); // 기본제출동작방지
-
+		
+		var isValid = true;
+		$(this).find('input[type="text"], input[type="number"]').each(function() {
+        if (isEmpty(this)) {
+            isValid = false;
+            alert('商品名または価格を入力してください。');
+        } 
+    });
+		if(isValid){
 		var formData = $(this).serialize(); // 폼 데이터 직렬화
 
 		$.ajax({
@@ -42,13 +50,22 @@ $(document).ready(function() {
 			}
 		});
 
-
+		}
 
 	});
+	
 	
 	$('.fundingUpdateForm').submit(function(event) {
 		event.preventDefault(); // 기본제출동작방지
 
+		var isValid = true;
+		$(this).find('input[type="text"], input[type="number"]').each(function() {
+        if (isEmpty(this)) {
+            isValid = false;
+            alert('価格を入力してください。');
+        } 
+    });
+    if(isValid){
 		var formData = $(this).serialize(); // 폼 데이터 직렬화
 
 		$.ajax({
@@ -64,7 +81,7 @@ $(document).ready(function() {
 			}
 		});
 
-
+	}
 
 	});
 
