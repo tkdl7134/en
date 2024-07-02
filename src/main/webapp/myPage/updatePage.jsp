@@ -61,16 +61,13 @@ body {
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
 			<div class="hs_btn-container">
-				<a href="#" class="hs_btn ">✿ テンプレート管理 ✿</a> <img
+				<a href="mytemplateController" class="hs_btn ">✿ テンプレート管理 ✿</a> <img
 					class="yellow_line" alt=""
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
-			<!-- <div class="hs_btn-container">
-				<a href="#" class="hs_btn ">✿ 心からのお伝え ✿</a> <img class="yellow_line"
-					alt="" src="loginPage/ImgFolder/yellow_line.png">
-			</div> -->
+			
 			<div class="hs_btn-container">
-				<a href="#" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+				<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
 					alt="" src="loginPage/ImgFolder/yellow_line.png">
 			</div>
 		</div>
