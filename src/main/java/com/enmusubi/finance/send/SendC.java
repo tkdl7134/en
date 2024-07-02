@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.enmusubi.finance.funding.fundDAO;
+import com.enmusubi.main.Interceptor;
 
 @WebServlet("/SendC")
 public class SendC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("title", "送金");
-		request.setAttribute("page", "send/sending.jsp");
-		request.getRequestDispatcher("finance/index.jsp").forward(request, response);
+		if(Interceptor.LoginInterceptor(request, response)) {
+			request.setAttribute("title", "送金");
+			request.setAttribute("page", "send/sending.jsp");
+			request.getRequestDispatcher("finance/index.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
