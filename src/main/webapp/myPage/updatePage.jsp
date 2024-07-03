@@ -124,22 +124,22 @@ body {
 				<div class="hs_content-title-user">
 					<div class="hs_content-title-text">ユーザー情報</div>
 				</div>
-
+				
 				<div class="hs_container-input">
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name_sei" class="hs_input name_sei"
-							placeholder="姓" maxlength="10">
+							placeholder="姓" maxlength="10" value="${i.m_name1}">
 						<input type="text" name="m_name_mei" class="hs_input name_mei"
-							placeholder="名" maxlength="10">
+							placeholder="名" maxlength="10" value="${i.m_name2}">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
 						<input type="text" name="m_name_kana_sei" class="hs_input kana_sei"
-							placeholder="セイ" maxlength="10">
+							placeholder="セイ" maxlength="10" value="${i.m_name_kana1}">
 						<input type="text" name="m_name_kana_mei" class="hs_input kana_mei"
-							placeholder="メイ" maxlength="10">
+							placeholder="メイ" maxlength="10" value="${i.m_name_kana2}">
 					</div>
 
 					<div class="hs_content-input">
