@@ -327,7 +327,6 @@ yj-main-nav a:visited {
 	top: 5rem;
 	display: flex;
 	flex-direction: column;
-	justify-content : center;
 	align-items : center;
 }
 

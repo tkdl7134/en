@@ -119,12 +119,12 @@
 				<nav style="margin-top: 7rem; "
 					class="hw_menubar">
 					<div class="hw_menubar_item">
-						<a href="MemberDetailC" class="hw_menubar_menu" href="">✿ 会員情報
+						<a href="MemberDetailC" class="hw_menubar_menu">✿ 会員情報
 							✿</a> <img class="hw_yellow_line" alt=""
 							src="invitationPage/imgFolder/yellow_line.png">
 					</div>
 					<div class="hw_menubar_item">
-						<a style="color: #696969;" class="hw_menubar_menu active"
+						<a  class="hw_menubar_menu"
 							href="mytemplateController">✿ テンプレート管理 ✿</a> <img
 							style="width: 13rem;" class="hw_yellow_line" alt=""
 							src="invitationPage/imgFolder/yellow_line.png">

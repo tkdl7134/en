@@ -128,7 +128,7 @@
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="groomKanaL" id="je_g-kana1" 
-                          type="text" placeholder="セイ" onkeyup="printName()" oninput="return groomKanaChk()"/>
+                          type="text" placeholder="セイ" onkeyup="printName()" onblur="return groomKanaChk()"/>
                           <input name="groomKanaF" id="je_g-kana2"
                            type="text" placeholder="メイ" onkeyup="printName()" onblur="return groomKanaChk()"/>
                         </div>

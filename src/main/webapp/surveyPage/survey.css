@@ -34,26 +34,6 @@ header {
   z-index: 1;
 }
 
-/* �쇊履� �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
-.top-left {
-  z-index: 4;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 3rem;
-  left: 4rem;
-}
-
-/* �삤瑜몄そ �쐞 紐⑥꽌由ъ뿉 �쐞移섑븷 �씠誘몄� */
-.top-menu {
-  z-index: 4;
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
-}
-
 .middle-title {
   display: flex;
   flex-direction: column;
@@ -74,7 +54,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
 .tg-include-btu-page {
@@ -95,7 +75,6 @@ header {
 }
 
 .main-content-words > div:nth-child(3) {
-  margin-top: 1.2rem;
   width: 42rem;
   height: 0.15rem;
 }
@@ -420,7 +399,8 @@ legend div:nth-child(1) {
 }
 
 .tg-survey-button:hover {
-  transform: scale(1); /* �샇踰� �떆 �빟媛� �솗�� */
+  transform: scale(1.1);
+  background-color:#FBC1BF;
 }
 
 .recMain-container {
@@ -494,7 +474,7 @@ legend div:nth-child(1) {
 }
 .reject-notes-container textarea {
   width: 50rem;
-  height: 20rem; /* textarea �넂�씠 議곗젅 */
+  height: 15rem; /* textarea �넂�씠 議곗젅 */
   padding: 4px;
   border: 2px solid black;
   box-sizing: border-box;

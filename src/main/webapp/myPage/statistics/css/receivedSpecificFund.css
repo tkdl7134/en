@@ -38,17 +38,12 @@ body {
 	 background-color : #FFF5F4
 }
  
-.yj-main-section {
-  /* 뷰포트 전체를 채우도록 설정 */
-  height: 100vh;
-}
-
-/* 섹션 2~6 로고 */
+/* LOGO */
 .yj-main-logo {
   z-index: 4;
   width: 130px;
   height: 130px;
-  position: absolute;
+  position: fixed;
   top: 4rem;
   left: 5rem;
 }
@@ -72,13 +67,14 @@ body {
 
 /* 센션 2~6 메뉴 */
 .yj-main-menubox {
-  position: absolute;
+  position: fixed;
   top: 6rem;
   right: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 175px;
+      z-index: 100;
 }
 
 .yj-main-menu {
@@ -95,7 +91,7 @@ body {
 
 .yj-main-nav {
   transform: translateY(60px);
-  background-image: url("../../../imgFolder/yj-main-menu3.png");
+  background-image: url("../../../main/imgFolder/yj-main-menu3.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 170px;
@@ -282,11 +278,11 @@ yj-main-nav a:visited {
 .nav-logout button:hover {
   background-color: #ff4356; /* 호버 시 색 변화 */
 }
-
 #fundSpecProduct-img{
 	
 	margin-top: 7rem;
 }
+
 #fundSpecPro-img {
 	
 	

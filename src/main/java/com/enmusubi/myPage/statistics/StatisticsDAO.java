@@ -261,7 +261,7 @@ public class StatisticsDAO {
 			}
 			System.out.println(fundedlists);
 			request.setAttribute("fund", fundedlists);
-				
+			request.setAttribute("eno", e_no);
 			
 			// 날짜 구하는 기능
 			   LocalDateTime currentDateTime = LocalDateTime.now();
