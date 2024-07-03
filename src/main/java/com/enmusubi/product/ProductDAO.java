@@ -100,7 +100,7 @@ public class ProductDAO {
 		DBManager dbManager = DBManager.getInstance();
 
 		String sqlEvent = "insert into s_event values(e_no_seq.nextval, ?, ?)";
-		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?)";
+		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?, ?)";
 		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
@@ -134,6 +134,8 @@ public class ProductDAO {
 			// s_event_func 삽입
 			pstmtEventFunc.setString(1, "yes");
 			pstmtEventFunc.setString(2, "yes");
+			String sessionID = (String)request.getSession().getAttribute("m_id");
+			pstmtEventFunc.setString(3, sessionID);
 
 			// s_wedding_info table 삽입
 
