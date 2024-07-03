@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Template Management</title>
+<title>テンプレート管理</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/sendMain.css">
 <script type="text/javascript" src="myPage/statistics/js/sendMain.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

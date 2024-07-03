@@ -7,7 +7,7 @@
 
 <script src="https://yubinbango.github.io/yubinbango/yubinbango.js"
 	charset="UTF-8"></script>
-
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="regPage/reg.css">
 <link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">

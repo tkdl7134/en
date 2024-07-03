@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>ファンディングの現状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/receivedFund.css" />
 <link rel="stylesheet" href="product/index.css" />
 <link rel="stylesheet" href="finance/css/fund.css" />

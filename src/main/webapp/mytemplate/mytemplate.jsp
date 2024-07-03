@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Template Management</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="mytemplate/mytemplate.css">
 <script type="text/javascript" src="mytemplate/mytemplate.js"></script>
 </head>

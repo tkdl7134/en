@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>MAIN</title>
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="main/main.css" />
     <link
       rel="stylesheet"

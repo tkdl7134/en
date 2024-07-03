@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>テンプレート一覧</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="product/css/productMain.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
