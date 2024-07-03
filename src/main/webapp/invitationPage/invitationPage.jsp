@@ -22,7 +22,7 @@
 
     <jsp:include page="${mainNav }" />
 </div>
-<h1 class="hw_pagetitle">アンケート 管理</h1>
+<h1 class="hw_pagetitle">アンケート管理</h1>
 <form id="invitationForm" action="InvitationController" method="post">
     <input type="hidden" name="e_no" value="${param.e_no}" />
     <div class="hw_container">
