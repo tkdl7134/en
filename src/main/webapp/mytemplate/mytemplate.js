@@ -38,18 +38,10 @@
         }
 
         function submitToInvitationC(e_no) {
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'InvitationC';
-
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'e_no';
-            input.value = e_no;
-            form.appendChild(input);
-
-            document.body.appendChild(form);
-            form.submit();
+			const baseUrl = "http://localhost:8080/En/";
+            const url = `${baseUrl}ReceptionC?eno=${e_no}`;
+            console.log("Navigating to: " + url); // 디버깅 로그
+            window.location.href = url;
         }
 
         function navigateToMemberUpdate() {
