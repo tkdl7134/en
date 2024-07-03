@@ -89,7 +89,7 @@ function amazonSubmit(eno) {
 
 		}
 	});
-	alert("submit complete!");
+	alert("アップデート完了！");
 
 	closeAmazonModal();
 }
@@ -126,7 +126,7 @@ function sendSubmit() {
 
 			}
 		});
-		alert("submit complete!");
+		alert("アップデート完了！");
 		closeSendModal();
 	}
 }
