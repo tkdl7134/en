@@ -17,6 +17,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<div class="survey-container">
@@ -26,19 +27,10 @@
 				style="width: 100%; height: 100%; position: absolute; display: flex; width: 100%; flex-grow: 1; flex-direction: column; height: 100vh; z-index: 1; pointer-events: none;">
 		</div>
 		<header class="tk_survey_header">
-			<div class="top-left">
-				<img src="surveyPage/imgFolder/logo.png" alt="logo"
-					style="width: 100%; height: 100%; animation: logo-float 2s ease-in-out infinite;" />
-			</div>
-
 			<div class="middle-title">
 				<div>出席の方</div>
 			</div>
-
-			<div class="top-menu">
-				<img src="surveyPage/imgFolder/menu-btn.png" alt="menu-button"
-					style="width: 100%; height: 100%" />
-			</div>
+			
 		</header>
 
 		<main class="tk_survey_main">
@@ -101,22 +93,18 @@
 												<c:when test="${loginType == 'normal' }">
 													<c:set var="members" value="${members }" />
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> 
-														<input
+														<div style="font-size: 1.5rem;">名前</div> <input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
 														name="name" required value="${members.m_first_name}"
-														disabled="disabled" /> 
-														<input 
-														style="font-size: 1.2rem;"
+														disabled="disabled" /> <input style="font-size: 1.2rem;"
 														type="text" placeholder="Last Name" class="name-input"
 														id="name" name="name" required
 														value="${members.m_last_name}" disabled="disabled" />
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">フリガナ</div> 
-														<input
+														<div style="font-size: 1.5rem;">フリガナ</div> <input
 														style="font-size: 1rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
 														name="kata-name" required
@@ -128,74 +116,64 @@
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> 
-														<input
+														<div style="font-size: 1.5rem;">ローマ字</div> <input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
 														value="${members.m_first_name_rome}" disabled="disabled" />
-														<input 
-														style="font-size: 1.2rem;" type="text"
+														<input style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="romaName"
 														name="roma-name" required disabled="disabled"
 														value="${members.m_last_name_rome}" />
 													</label>
 													<c:if test="${not empty members.m_first_name}">
-														<div class="emergency-words"
-															 style="margin-top: 0.5rem"> ✿
-															情報の修正が必要な場合は、マイページにてお願いします</div>
+														<div class="emergency-words" style="margin-top: 0.5rem">
+															✿ 情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 												</c:when>
 												<c:otherwise>
 													<label class="kanzi-container">
-														<div style="font-size: 1.5rem;">名前</div> 
-														<input
+														<div style="font-size: 1.5rem;">名前</div> <input
 														style="font-size: 1rem;" type="text" placeholder="姓"
 														class="name-input" id="name" name="name" required
-														value="${members.m_first_name}" 
-														 <c:if test="${not empty members.m_first_name}">disabled="disabled"</c:if> />										
-														<input
-														style="font-size: 1.2rem;" type="text" placeholder="名"
-														class="name-input" id="name" name="name" required
-														value="${members.m_last_name}" 
-														 <c:if test="${not empty members.m_last_name}">disabled="disabled"</c:if> />										
+														value="${members.m_first_name}"
+														<c:if test="${not empty members.m_first_name}">disabled="disabled"</c:if> />
+														<input style="font-size: 1.2rem;" type="text"
+														placeholder="名" class="name-input" id="name" name="name"
+														required value="${members.m_last_name}"
+														<c:if test="${not empty members.m_last_name}">disabled="disabled"</c:if> />
 													</label>
 													<br>
 													<label class="kata-container">
-														<div style="font-size: 1.5rem;">フリガナ</div> 
-														<input
+														<div style="font-size: 1.5rem;">フリガナ</div> <input
 														style="font-size: 1rem;" type="text" placeholder="せい"
 														class="name-input" id="kataName" name="kata-name" required
-														value="${members.m_first_name_kana}" 
-														 <c:if test="${not empty members.m_first_name_kana}">disabled="disabled"</c:if> />										
-														<input 
-														style="font-size: 1.2rem;" type="text"
+														value="${members.m_first_name_kana}"
+														<c:if test="${not empty members.m_first_name_kana}">disabled="disabled"</c:if> />
+														<input style="font-size: 1.2rem;" type="text"
 														placeholder="めい" class="name-input" id="kataName"
 														name="kata-name" required
-														value="${members.m_last_name_kana}" 
-														 <c:if test="${not empty members.m_last_name_kana}">disabled="disabled"</c:if> />										
+														value="${members.m_last_name_kana}"
+														<c:if test="${not empty members.m_last_name_kana}">disabled="disabled"</c:if> />
 													</label>
 													<br>
 													<label class="eng-container">
-														<div style="font-size: 1.5rem;">ローマ字</div> 
-														<input
+														<div style="font-size: 1.5rem;">ローマ字</div> <input
 														style="font-size: 1rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
-														value="${members.m_last_name_rome}" 
-														 <c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />										
-														<input 
-														style="font-size: 1.2rem;" type="text"
+														value="${members.m_last_name_rome}"
+														<c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />
+														<input style="font-size: 1.2rem;" type="text"
 														placeholder="Ｆamily Name" id="romaName" class="name-input"
 														name="roma-name" required
-														value="${members.m_first_name_rome}" 
-														 <c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />										
+														value="${members.m_first_name_rome}"
+														<c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />
 													</label>
 													</br>
 													<c:if test="${not empty members.m_first_name}">
-														<div class="emergency-words"
-															style="margin-top: 0.5rem"> ✿
-															情報の修正が必要な場合は、マイページにてお願いします</div>
+														<div class="emergency-words" style="margin-top: 0.5rem">
+															✿ 情報の修正が必要な場合は、マイページにてお願いします</div>
 													</c:if>
 												</c:otherwise>
 											</c:choose>
@@ -204,33 +182,28 @@
 
 									<div class="couple-container">
 										<div>カテゴリー</div>
-										<span>
-										<input name="couple" type="checkbox" id="groomCheckbox"
-											value="新郎" /><label for="groomCheckbox" class="cb1"></label> 新郎側ゲスト
-										</span> 
-										<span>
-										<input name="couple" type="checkbox" id="brideCheckbox"
-											value="新婦" /><label for="brideCheckbox" class="cb1"></label> 新婦側ゲスト
+										<span> <input name="couple" type="checkbox"
+											id="groomCheckbox" value="新郎" /><label for="groomCheckbox"
+											class="cb1"></label> 新郎側ゲスト
+										</span> <span> <input name="couple" type="checkbox"
+											id="brideCheckbox" value="新婦" /><label for="brideCheckbox"
+											class="cb1"></label> 新婦側ゲスト
 										</span>
 									</div>
 									<div class="relationship-container">
 										<div>作成者との関係</div>
-										<span> <input  name="relation" type="checkbox"
-											 value="家族" id="familyCheckbox" />
-											 <label for="familyCheckbox" class="cb1"></label> 家族
-										</span> 
 										<span> <input name="relation" type="checkbox"
-											 value="親友" id="friendCheckbox"/> 
-											 <label for="friendCheckbox" class="cb1"></label>親友
-										</span> 
-										<span> <input name="relation" type="checkbox"
-											 value="職場の同僚" id="colleaguesCheckbox"/> 
-											 <label for="colleaguesCheckbox" class="cb1"></label>職場の同僚
-										</span> 
-										<span><input name="relation" type="checkbox"
-											 value="その他" id="othersCheckbox"/>
-											 <label for="othersCheckbox" class="cb1"></label>その他	
-										</span>
+											value="家族" id="familyCheckbox" /> <label
+											for="familyCheckbox" class="cb1"></label> 家族
+										</span> <span> <input name="relation" type="checkbox"
+											value="親友" id="friendCheckbox" /> <label for="friendCheckbox"
+											class="cb1"></label>親友
+										</span> <span> <input name="relation" type="checkbox"
+											value="職場の同僚" id="colleaguesCheckbox" /> <label
+											for="colleaguesCheckbox" class="cb1"></label>職場の同僚
+										</span> <span><input name="relation" type="checkbox"
+											value="その他" id="othersCheckbox" /> <label
+											for="othersCheckbox" class="cb1"></label>その他 </span>
 									</div>
 								</div>
 							</div>
@@ -248,10 +221,10 @@
 													disabled="disabled" value="${members.m_email}" />
 											</div>
 											<div>
-												電話番号 <input style="font-size: 1.2rem;" type="number"
+												電話番号 <input style="font-size: 1.2rem;" type="text"
 													class="contact-input" id="phonenum" name="phonenum"
-													placeholder="000-0000-0000" required 
-													disabled="disabled" value="${members.m_phone}" />
+													placeholder="000-0000-0000" required disabled="disabled"
+													value="${members.m_phone}" />
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
@@ -265,15 +238,15 @@
 												メールアドレス<input style="font-size: 1.2rem;" type="email"
 													class="contact-input" id="email" name="email"
 													placeholder="enmusubi@gmail.com" required
-													value="${members.m_email}" 
-													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />										
+													value="${members.m_email}"
+													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />
 											</div>
 											<div>
-												電話番号 <input style="font-size: 1.2rem;" type="number"
+												電話番号 <input style="font-size: 1.2rem;" type=""text""
 													class="contact-input" id="phonenum" name="phonenum"
 													placeholder="000-0000-0000" required
 													value="${members.m_phone}"
-													<c:if test="${not empty members.m_phone}">disabled="disabled"</c:if> />													
+													<c:if test="${not empty members.m_phone}">disabled="disabled"</c:if> />
 											</div>
 										</div>
 										<c:if test="${not empty members.m_first_name}">
@@ -340,6 +313,10 @@
 																disabled="disabled">${members.a_address }</textarea>
 														</div>
 													</div>
+													<c:if test="${not empty members.a_address}">
+														<div class="emergency-words">✿
+															情報の修正が必要な場合は、マイページにてお願いします</div>
+													</c:if>
 											</fieldset>
 										</div>
 									</c:when>
@@ -366,25 +343,25 @@
 																value="${members.a_postcode }"
 																<c:if test="${not empty members.a_postcode}">disabled="disabled"</c:if> />
 														</div>
-												</div>
+													</div>
 													<div class="address-contents-container">
 														<div>
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
-															<label class="styled-select">
-																<select style="font-size: 1.4rem" id="prefecture"
-																name="address" class="pl" required
+															<label class="styled-select"> <select
+																style="font-size: 1.4rem" id="prefecture" name="address"
+																class="pl" required
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
-																<c:if test="${empty members.a_prefecture}">
-                													<option value="">都道府県を選択してください</option>
-            													</c:if>		
-																<c:forEach var="prefecture" items="${prefectures}">
-																	<option value="${prefecture }">
-																		<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
-																		${prefecture }
-																</c:forEach>
-																</select>
+																	<c:if test="${empty members.a_prefecture}">
+																		<option value="">都道府県を選択してください</option>
+																	</c:if>
+																	<c:forEach var="prefecture" items="${prefectures}">
+																		<option value="${prefecture }">
+																			<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
+																			${prefecture }
+																	</c:forEach>
+															</select>
 															</label>
 														</div>
 													</div>
@@ -420,25 +397,31 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
-							<div class="tg-slide-third-page" id="slide-2" >
+							<div class="tg-slide-third-page" id="slide-2">
 
 								<div class="together-container">
 									<div>同伴人数</div>
 									<div class="together-people">大人</div>
-										<input type="button" class="togeter-button" onclick='count("plus","adult")' value="+" />																		
-											<input style="width: 2rem; font-size: 1.2rem;" class="result"
-											value="0" id="adult" name="adult" /> 
-										<input type="button" class="togeter-button" onclick='count("minus","adult")' value="-" />
+									<input type="button" class="togeter-button"
+										onclick='count("plus","adult")' value="+" /> <input
+										style="width: 2rem; font-size: 1.2rem;" class="result"
+										value="0" id="adult" name="adult" /> <input type="button"
+										class="togeter-button" onclick='count("minus","adult")'
+										value="-" />
 									<div value="子供" class="together-people">子供</div>
-										<input type="button" class="togeter-button" onclick='count("plus","child")' value="+" />
-											<input style="width: 2rem; font-size: 1.2rem" class="result"
-											value="0" id="child" name="child" /> 
-										<input type="button" class="togeter-button" onclick='count("minus","child")' value="-" />
+									<input type="button" class="togeter-button"
+										onclick='count("plus","child")' value="+" /> <input
+										style="width: 2rem; font-size: 1.2rem" class="result"
+										value="0" id="child" name="child" /> <input type="button"
+										class="togeter-button" onclick='count("minus","child")'
+										value="-" />
 									<div value="幼児" class="together-people">幼児</div>
-										<input type="button" class="togeter-button" onclick='count("plus","baby")' value="+" />
-											<input style="width: 2rem; font-size: 1.2rem;"class="result" 
-											value="0" id="baby" name="baby" /> 				
-										<input type="button" class="togeter-button" onclick='count("minus","baby")' value="-" />
+									<input type="button" class="togeter-button"
+										onclick='count("plus","baby")' value="+" /> <input
+										style="width: 2rem; font-size: 1.2rem;" class="result"
+										value="0" id="baby" name="baby" /> <input type="button"
+										class="togeter-button" onclick='count("minus","baby")'
+										value="-" />
 								</div>
 
 								<div class="allergy-container">
@@ -453,17 +436,14 @@
 
 										<div class="allergy-question">
 											<span style="font-size: 1.5rem;" for="allergy">アレルギーはありますか？</span>
-											<span style="font-size: 1.5rem;"> 
-												<input
-												type="checkbox" name="allergy" value="no" id="allergyCheckbox" />
-												<label for="allergyCheckbox" class="cb2"></label>
-												 いいえ
-											</span>
-											<span style="font-size: 1.5rem;"> 
-												<input
-												type="checkbox" name="allergy" value="yes" id="allergyCheckbox2" />
-												<label for="allergyCheckbox2" class="cb2"></label>
-												 はい
+											<span style="font-size: 1.5rem;"> <input
+												type="checkbox" name="allergy" value="no"
+												id="allergyCheckbox" /> <label for="allergyCheckbox"
+												class="cb2"></label> いいえ
+											</span> <span style="font-size: 1.5rem;"> <input
+												type="checkbox" name="allergy" value="yes"
+												id="allergyCheckbox2" /> <label for="allergyCheckbox2"
+												class="cb2"></label> はい
 											</span>
 										</div>
 
@@ -490,7 +470,7 @@
 								<div>
 
 									<button type="button" id="submitBtn" class="tg-survey-button"
-										onclick="openModal()">
+										onclick="handleFormSubmit()">
 										<span>送信</span>
 									</button>
 
@@ -512,8 +492,8 @@
 											</div>
 										</div>
 
-										<button type="button" id="submitBtn" class="tg-survey-button"
-											onclick="openModalWithoutAllergy()">
+										<button type="button" id="submitBtn"  class="tg-survey-button"
+											onclick="handleFormSubmitWithoutAllergy()">
 											<span>送信</span>
 										</button>
 
@@ -529,8 +509,8 @@
 							<button type="button" class="next-slide">></button>
 						</div>
 					</div>
+				</form>
 			</div>
-			</form>
 
 
 		</main>
@@ -664,10 +644,7 @@ $(document).ready(function () {
         });
     });
     
-});
 
-
-$(document).ready(function() {
  var $activeBox = null; // 활성화된 상자를 추적할 변수
 
  // 상자를 클릭했을 때 active 클래스를 관리합니다.
@@ -772,7 +749,6 @@ if (this.checked) {
 
 function openModal() {
     console.log("activatge");
-    if (handleFormSubmit() === 'yes') {
         const modal = document.getElementById("tg-modal");
         const modalContent = document.querySelector(".tg-modal-container");
         document.querySelector(".tk_survey_main").style.opacity = "0";
@@ -786,14 +762,10 @@ function openModal() {
             modalContent.style.opacity = "1";
             modalContent.style.animation = "burstIn 0.5s forwards";
         }, 10);
-    } else {
-        console.log("Validation failed");
-    }
 }
 
 function openModalWithoutAllergy() {
     console.log("activatge");
-    if (handleFormSubmitWithoutAllergy() === 'yes') {
         const modal = document.getElementById("tg-modal");
         const modalContent = document.querySelector(".tg-modal-container");
         document.querySelector(".tk_survey_main").style.opacity = "0";
@@ -807,9 +779,6 @@ function openModalWithoutAllergy() {
             modalContent.style.opacity = "1";
             modalContent.style.animation = "burstIn 0.5s forwards";
         }, 10);
-    } else {
-        console.log("Validation failed");
-    }
 }
 
 	let formArray = $("#surveyForm").serializeArray();
@@ -838,112 +807,288 @@ function handleFormSubmit() {
     let slideIndex = 0; // slideIndex 변수 선언
 
     if (document.getElementById('name').value.trim() === '') {
-        alert('名前を入力します');
         invalidField = document.getElementById('name');
-        $('.survey-input').slick('slickGoTo', 1);
+        Swal.fire({
+            icon: 'warning',
+            title: '名前を入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 1);
+        	  }, 200); // 100ms 지연
+        });
     } else if (document.getElementById('kataName').value.trim() === '') {
-        alert('カタカナ名を入力します');
         invalidField = document.getElementById('kataName');
-        $('.survey-input').slick('slickGoTo', 1);
+        Swal.fire({
+            icon: 'warning',
+            title: 'フリガナを入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 1);
+        	  }, 200); // 100ms 지연
+        });
     }  else if (document.getElementById('romaName').value.trim() === '') {
-        alert('ローマ字の名前を入力します');
         invalidField = document.getElementById('romaName');
-        $('.survey-input').slick('slickGoTo', 1);
+        Swal.fire({
+            icon: 'warning',
+            title: 'ローマ字の名前を入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 1);
+        	  }, 200); // 100ms 지연
+        });
     }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
-        alert('新郎または新婦を選択します');
         invalidField = document.getElementById('groomCheckbox');
-        $('.survey-input').slick('slickGoTo', 1);
+        Swal.fire({
+            icon: 'warning',
+            title: '新郎または新婦を選択します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 1);
+        	  }, 200); // 100ms 지연
+        });
     }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
             !document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
-        alert('作成者との関係を選択します');
         invalidField = document.getElementById('familyCheckbox');
-        $('.survey-input').slick('slickGoTo', 1);
+        Swal.fire({
+            icon: 'warning',
+            title: '作成者との関係を選択します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 1);
+        	  }, 200); // 100ms 지연
+        });
     }  else if (document.getElementById('email').value.trim() === '') {
-        alert('メールを入力します');
-        invalidField = document.getElementById('email');
+		invalidField = document.getElementById('email');  		
+        Swal.fire({
+            icon: 'warning',
+            title: 'メールを入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 2);
+        	  }, 200); // 100ms 지연
+        });
+        
         $('.survey-input').slick('slickGoTo', 2);
     }  else if (document.getElementById('phonenum').value.trim() === '') {
-        alert('連絡先を入力します');
         invalidField = document.getElementById('phonenum');
-        $('.survey-input').slick('slickGoTo', 2);
-    } else if (document.getElementById('postal-code').value.trim() === '' && 
+        Swal.fire({
+            icon: 'warning',
+            title: 'メールを入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 2);
+        	  }, 200); // 100ms 지연
+        });
+            } else if (document.getElementById('postal-code').value.trim() === '' && 
             document.getElementById('prefecture').value.trim() === '' && 
             document.getElementById('city').value.trim() === '' && 
             document.getElementById('address').value.trim() === '') {
-        alert('住所を入力します');
         invalidField = document.getElementById('postal-code');
+        Swal.fire({
+            icon: 'warning',
+            title: '住所を入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        }).then(()=> {
+        	 setTimeout(() => {
+       			 $('.survey-input').slick('slickGoTo', 2);
+        	  }, 200); // 100ms 지연
+        });
         $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('adult').value.trim() === '0' && 
             document.getElementById('child').value.trim() === '0' && 
             document.getElementById('baby').value.trim() === '0') {
-        alert('同伴人数を入力します');
+        Swal.fire({
+            icon: 'warning',
+            title: '同伴人数を入力します。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        });
         invalidField = document.getElementById('adult');
         $('.survey-input').slick('slickGoTo', 3);
     } else if (document.getElementById('allergyCheckbox').checked && 
             document.getElementById('allergyCheckbox2').checked && 
             document.getElementById('allergy-type').value.trim() === '') {
-        alert('アレルギーの種類を入力してください');
+        Swal.fire({
+            icon: 'warning',
+            title: 'アレルギーの種類を入力してください。',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal2-confirm'
+            }
+        });
         invalidField = document.getElementById('allergy-type');
         $('.survey-input').slick('slickGoTo', 3); // 4번째 슬라이드로 이동
     }
 
-    if (invalidField) {
-        invalidField.focus();
-        return 'no'; // 폼 제출 중지
+    if (!invalidField) {
+    openModal();
     }
-
-    return 'yes'; // 폼 제출 허용
+    	
 }
 
 function handleFormSubmitWithoutAllergy() {
-    let invalidField = null;
-    let slideIndex = 0; // slideIndex 변수 선언
+	     let invalidField = null;
+	     let slideIndex = 0; // slideIndex 변수 선언
 
-    if (document.getElementById('name').value.trim() === '') {
-        alert('名前を入力します');
-        invalidField = document.getElementById('name');
-        $('.survey-input').slick('slickGoTo', 1);
-    } else if (document.getElementById('kataName').value.trim() === '') {
-        alert('カタカナ名を入力します');
-        invalidField = document.getElementById('kataName');
-        $('.survey-input').slick('slickGoTo', 1);
-    }  else if (document.getElementById('romaName').value.trim() === '') {
-        alert('ローマ字の名前を入力します');
-        invalidField = document.getElementById('romaName');
-        $('.survey-input').slick('slickGoTo', 1);
-    }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
-        alert('新郎または新婦を選択します');
-        invalidField = document.getElementById('groomCheckbox');
-        $('.survey-input').slick('slickGoTo', 1);
-    }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
-            !document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
-        alert('作成者との関係を選択します');
-        invalidField = document.getElementById('familyCheckbox');
-        $('.survey-input').slick('slickGoTo', 1);
-    }  else if (document.getElementById('email').value.trim() === '') {
-        alert('メールを入力します');
-        invalidField = document.getElementById('email');
-        $('.survey-input').slick('slickGoTo', 2);
-    }  else if (document.getElementById('phonenum').value.trim() === '') {
-        alert('連絡先を入力します');
-        invalidField = document.getElementById('phonenum');
-        $('.survey-input').slick('slickGoTo', 2);
-    } else if (document.getElementById('postal-code').value.trim() === '' && 
-            document.getElementById('prefecture').value.trim() === '' && 
-            document.getElementById('city').value.trim() === '' && 
-            document.getElementById('address').value.trim() === '') {
-        alert('住所を入力します');
-        invalidField = document.getElementById('postal-code');
-        $('.survey-input').slick('slickGoTo', 3);
-    } 
-    
-    if (invalidField) {
-        invalidField.focus();
-        return 'no'; // 폼 제출 중지
-    }
-
-    return 'yes'; // 폼 제출 허용
-}
+	     if (document.getElementById('name').value.trim() === '') {
+	         invalidField = document.getElementById('name');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: '名前を入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 1);
+	         	  }, 200); // 100ms 지연
+	         });
+	     } else if (document.getElementById('kataName').value.trim() === '') {
+	         invalidField = document.getElementById('kataName');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: 'フリガナを入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 1);
+	         	  }, 200); // 100ms 지연
+	         });
+	     }  else if (document.getElementById('romaName').value.trim() === '') {
+	         invalidField = document.getElementById('romaName');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: 'ローマ字の名前を入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 1);
+	         	  }, 200); // 100ms 지연
+	         });
+	     }  else if (!document.getElementById('groomCheckbox').checked && !document.getElementById('brideCheckbox').checked) {
+	         invalidField = document.getElementById('groomCheckbox');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: '新郎または新婦を選択します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 1);
+	         	  }, 200); // 100ms 지연
+	         });
+	     }  else if (!document.getElementById('familyCheckbox').checked && !document.getElementById('friendCheckbox').checked && 
+	             !document.getElementById('colleaguesCheckbox').checked && !document.getElementById('othersCheckbox').checked) {
+	         invalidField = document.getElementById('familyCheckbox');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: '作成者との関係を選択します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 1);
+	         	  }, 200); // 100ms 지연
+	         });
+	     }  else if (document.getElementById('email').value.trim() === '') {
+	 		invalidField = document.getElementById('email');  		
+	         Swal.fire({
+	             icon: 'warning',
+	             title: 'メールを入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 2);
+	         	  }, 200); // 100ms 지연
+	         });
+	         
+	         $('.survey-input').slick('slickGoTo', 2);
+	     }  else if (document.getElementById('phonenum').value.trim() === '') {
+	         invalidField = document.getElementById('phonenum');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: 'メールを入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 2);
+	         	  }, 200); // 100ms 지연
+	         });
+	             } else if (document.getElementById('postal-code').value.trim() === '' && 
+	             document.getElementById('prefecture').value.trim() === '' && 
+	             document.getElementById('city').value.trim() === '' && 
+	             document.getElementById('address').value.trim() === '') {
+	         invalidField = document.getElementById('postal-code');
+	         Swal.fire({
+	             icon: 'warning',
+	             title: '住所を入力します。',
+	             customClass: {
+	                 popup: 'swal2-popup',
+	                 confirmButton: 'swal2-confirm'
+	             }
+	         }).then(()=> {
+	         	 setTimeout(() => {
+	        			 $('.survey-input').slick('slickGoTo', 2);
+	         	  }, 200); // 100ms 지연
+	         });
+	         $('.survey-input').slick('slickGoTo', 3);
+	     } 
+  
+	     if (!invalidField) {
+	    	 openModalWithoutAllergy();
+	    	    }
+	    	    	
+	    	}
 
 document.getElementById('prefecture').addEventListener('change', function() {
     const firstOption = this.querySelector('option[value=""]');

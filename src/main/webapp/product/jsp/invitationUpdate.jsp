@@ -143,18 +143,18 @@ window.onload = function() {
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="new_groomKanaL" id="je_g-kana1" value="${invitationAll.w_groom_kanaL }"
-                          type="text" placeholder="せい" onkeyup="printName()"/>
+                          type="text" placeholder="せい" onkeyup="printName()" onblur="return groomKanaChk()"/>
                           <input name="new_groomKanaF" id="je_g-kana2" value="${invitationAll.w_groom_kanaF }"
-                           type="text" placeholder="めい" onkeyup="printName()"/>
+                           type="text" placeholder="めい" onkeyup="printName()" onblur="return groomKanaChk()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="new_groomRomaL" id="je_g-roma1" value="${invitationAll.w_groom_engL }" 
-                           type="text" placeholder="Last Name" onkeyup="printName()"/>
+                           type="text" placeholder="Last Name" onkeyup="printName()" onblur="return groomEngChk()"/>
                           <input name="new_groomRomaF" id="je_g-roma2" value="${invitationAll.w_groom_engF }"
-                          type="text" placeholder="First Name" onkeyup="printName()"/>
+                          type="text" placeholder="First Name" onkeyup="printName()" onblur="return groomEngChk()"/>
                         </div>
                       </div>
                     </div>
@@ -179,18 +179,18 @@ window.onload = function() {
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="new_brideKanaL" id="je_b-kana1" value="${invitationAll.w_bride_kanaL }"
-                          type="text" placeholder="せい" oninput="printName()"/>
+                          type="text" placeholder="せい" oninput="printName()" onblur="return brideKanaChk()"/>
                           <input name="new_brideKanaF"  id="je_b-kana2" value="${invitationAll.w_bride_kanaF }"
-                          type="text" placeholder="めい" oninput="printName()"/>
+                          type="text" placeholder="めい" oninput="printName()" onblur="return brideKanaChk()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
                           <input name="new_brideRomaL" id="je_b-roma1" value="${invitationAll.w_bride_engL }"
-                          type="text" placeholder="Last Name" oninput="printName()"/>
+                          type="text" placeholder="Last Name" oninput="printName()" onblur="return brideEngChk()"/>
                           <input name="new_brideRomaF"  id="je_b-roma2" value="${invitationAll.w_bride_engF }"
-                          type="text" placeholder="First Name" oninput="printName()"/>
+                          type="text" placeholder="First Name" oninput="printName()" onblur="return brideEngChk()"/>
                         </div>
                       </div>
                     </div>
@@ -308,7 +308,7 @@ window.onload = function() {
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="new_helloMessage" rows="6" cols="40" id="je_invite-m"
-                            oninput="printInfo()">${invitationAll.w_message_invite }</textarea>
+                            oninput="printInfo()" maxlength="180">${invitationAll.w_message_invite }</textarea>
                         </div>
                       </div>
                     </div>
@@ -324,7 +324,7 @@ window.onload = function() {
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="new_byeMessage" id="je_finish-m" rows="10" 
-                          oninput="printInfo()">${invitationAll.w_message_bye }</textarea>
+                          oninput="printInfo()" maxlength="190">${invitationAll.w_message_bye }</textarea>
                         </div>
                       </div>
                     </div>
@@ -339,7 +339,7 @@ window.onload = function() {
                         <div class="je_inputbox-input">
                           <div id="je_photobox1" class="je_photobox">
                             <input type="file" name="new_photo1" id="je_photoInput1" 
-                             onchange="readURL(this);"/>
+                             onchange="readURL(this);" oninput="return photoType1()"/>
                              <input name="oldPhoto1" value="${invitationAll.w_img1 }" type="hidden">
                             <div id="je_photoOut1">
                             	<img alt="" src="product/imgFolder/${invitationAll.w_img1 }">
@@ -348,7 +348,7 @@ window.onload = function() {
                           </div>
                           <div id="je_photobox2" class="je_photobox">
                             <input type="file" name="new_photo2" id="je_photoInput2" 
-                             onchange="readURL(this);"/>
+                             onchange="readURL(this);" oninput="return photoType2()"/>
                              <input name="oldPhoto2" value="${invitationAll.w_img2 }" type="hidden">
                             <div id="je_photoOut2">
                             	<img alt="" src="product/imgFolder/${invitationAll.w_img2 }">
@@ -357,7 +357,7 @@ window.onload = function() {
                           </div>
                           <div id="je_photobox3" class="je_photobox">
                             <input type="file" name="new_photo3" id="je_photoInput3" 
-                             onchange="readURL(this);"/>
+                             onchange="readURL(this);" oninput="return photoType3()"/>
                              <input name="oldPhoto3" value="${invitationAll.w_img3 }" type="hidden">
                             <div id="je_photoOut3">
                             	<img alt="" src="product/imgFolder/${invitationAll.w_img3 }">
@@ -366,7 +366,7 @@ window.onload = function() {
                           </div>
                           <div id="je_photobox4" class="je_photobox">
                             <input type="file" name="new_photo4" id="je_photoInput4" 
-                             onchange="readURL(this);"/>
+                             onchange="readURL(this);" oninput="return photoType4()"/>
                              <input name="oldPhoto4" value="${invitationAll.w_img4 }" type="hidden">
                             <div id="je_photoOut4">
                             	<img alt="" src="product/imgFolder/${invitationAll.w_img4 }">
