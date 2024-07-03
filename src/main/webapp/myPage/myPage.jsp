@@ -9,7 +9,7 @@
 
 <head>
 <title>会員情報</title>
-
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="myPage/mypage.css">
 <link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">

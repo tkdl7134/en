@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ファンディング現状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/receivedSpecificMoney.css" />
 <link rel="stylesheet" href="product/index.css" />
 <script defer="defer" type="text/javascript"
