@@ -15,13 +15,14 @@ body {
   height : 100%;
 }
 .recMain-container {
-	 height: 100vh;
     background-image: url(../imgFolder/surveyBackground-img.png);
     display: flex;
     flex-direction: column;
     align-items: center;
     background-repeat : no-repeat;
     background-size : cover;
+    width: 100%;
+    height: 1080px;
 }
 
 

@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ファンディングの現状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/receivedMain.css">
 <script type="text/javascript" src="myPage/statistics/js/receivedMain.js"></script>
 </head>
@@ -19,7 +20,6 @@
 	
 	<jsp:include page="${settingPage }"></jsp:include>
 	<div id="recMain-title">心からのお伝え</div>
-	<div id="recMain-header"><img id="header-img" alt="" src="myPage/statistics/imgFolder/footer.png"></div>
 	<div  style="display : flex; margin-top : 8rem; " id="toGoTexts">
 	<div onclick="location.href='MemberDetailC'" style="margin-right: 5.5rem;margin-left : -1rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div onclick="location.href='mytemplateController'" style="color : #ff2828;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
@@ -31,7 +31,7 @@
 	<div id="recMain-content">
 		<div onclick="location.href='receivedFundingController?eno=${eno}'" class="box-img">
 		<div class="texts">
-		<div class="objective">フンディンぐ</div>
+		<div class="objective">ファンディング</div>
 		<div class="genjyou">の現状</div>
 		</div>
 		<img class="lines" alt="" src="myPage/statistics/imgFolder/line_funding.png">

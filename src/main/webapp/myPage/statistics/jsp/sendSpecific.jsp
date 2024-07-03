@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>特定</title>
+<link rel="icon" href="favicon.ico">
 </head>
 <body>
 

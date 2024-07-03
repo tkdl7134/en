@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>ログイン</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="loginPage/login.css">
 <link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">

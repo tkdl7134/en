@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ファンディング</title>
+<link rel="icon" href="favicon.ico">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="product/index.js"></script>
 <link rel="stylesheet" href="product/index.css" />

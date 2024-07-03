@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Template Management</title>
+<title>テンプレート管理</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="mytemplate/mytemplate.css">
 <script type="text/javascript" src="mytemplate/mytemplate.js"></script>
 </head>
@@ -20,7 +21,7 @@
 
 		<jsp:include page="${mainNav }" />
 </div>
-        <h1 class="hw_page_title">テンプレート 管理</h1>
+        <h1 class="hw_page_title">テンプレート管理</h1>
 
     <form id="templateForm" action="mytemplateController" method="post">
         <div class="hw_container">

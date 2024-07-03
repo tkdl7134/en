@@ -6,7 +6,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>アンケート 管理</title>
+<title>アンケート管理</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="invitationPage/invitationPage.css">
 <script type="text/javascript" src="invitationPage/invitationPage.js"></script>
 </head>
@@ -21,7 +22,7 @@
 
     <jsp:include page="${mainNav }" />
 </div>
-<h1 class="hw_pagetitle">アンケート 管理</h1>
+<h1 class="hw_pagetitle">アンケート管理</h1>
 <form id="invitationForm" action="InvitationController" method="post">
     <input type="hidden" name="e_no" value="${param.e_no}" />
     <div class="hw_container">

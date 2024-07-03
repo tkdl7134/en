@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 
 /* 공통 스타일 */
+ * {
+      user-zoom: none;
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      -ms-user-drag: none;
+      user-select: none;
+    }
 body {
    background-attachment: scroll;
 	background-color: #FFF5F4;
@@ -325,7 +333,7 @@ main {
   z-index: 4;
   width: 130px;
   height: 130px;
-  position: absolute;
+  position: fixed;
   top: 4rem;
   left: 5rem;
 }
@@ -349,20 +357,21 @@ main {
 
 /* 센션 2~6 메뉴 */
 .yj-main-menubox {
-  position: absolute;
+  position: fixed;
   top: 6rem;
   right: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 175px;
+   z-index: 4;
 }
 
 .yj-main-menu {
   z-index: 4;
   width: 70px;
   height: 70px;
-  position: absolute;
+  position: fixed;
 }
 
 .yj-main-menu img {
