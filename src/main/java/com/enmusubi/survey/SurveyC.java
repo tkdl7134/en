@@ -41,8 +41,6 @@ public class SurveyC extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
         HttpSession session = request.getSession();
         String loginType = (String) session.getAttribute("m_id");
         System.out.println(loginType);
