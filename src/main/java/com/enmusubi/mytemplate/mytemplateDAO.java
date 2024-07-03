@@ -96,7 +96,7 @@ public class mytemplateDAO {
         String sql = "SELECT * FROM ( "
                 + "SELECT sw.e_no, st.t_pk, st.t_title, st.t_preview, st.t_example, st.t_template, se.m_id, "
                 + "sw.w_groom, sw.w_bride, sw.w_img1, sw.w_img2, sw.w_img3, "
-                + "ROW_NUMBER() OVER (ORDER BY st.t_pk) AS rnum "
+                + "ROW_NUMBER() OVER (ORDER BY st.t_pk DESC) AS rnum "  // 내림차순 정렬 추가
                 + "FROM s_template st "
                 + "JOIN s_wedding_info sw ON sw.t_pk = st.t_pk "
                 + "JOIN s_event se ON se.e_no = sw.e_no "

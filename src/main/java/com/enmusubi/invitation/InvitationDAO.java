@@ -82,14 +82,14 @@ public class InvitationDAO {
                 i = new InvitationDTO(eventNo, memberId, mName, mPhone, mEmail, gAttend,
                         gGuestType, gMessage, gRelation, allergy, pAdult, pChild, pBaby);
 
-                if ("yes".equalsIgnoreCase(gAttend)) {
+                if ("yes".equalsIgnoreCase(gAttend) || "出席".equalsIgnoreCase(gAttend)) {
                     invitationsYes.add(i);
                     if ("新郎".equalsIgnoreCase(gGuestType)) {
                         invitationsYesMale.add(i);
                     } else if ("新婦".equalsIgnoreCase(gGuestType)) {
                         invitationsYesFemale.add(i);
                     }
-                } else if ("no".equalsIgnoreCase(gAttend)) {
+                } else if ("no".equalsIgnoreCase(gAttend) || "欠席".equalsIgnoreCase(gAttend)) {
                     invitationsNo.add(i);
                     if ("新郎".equalsIgnoreCase(gGuestType)) {
                         invitationsNoMale.add(i);
