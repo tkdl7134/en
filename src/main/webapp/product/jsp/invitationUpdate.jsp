@@ -20,6 +20,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="product/js/productMake.js"></script>
 <script src="product/js/invitationUpdateChk.js" defer></script>
+<script src="product/js/nameValid.js" defer></script>
 <script src="product/js/validChk.js" defer></script>
 <script type="text/javascript">
 window.onload = function() {
@@ -134,28 +135,28 @@ window.onload = function() {
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_groomL" id="je_g-kanji1" value="${invitationAll.w_groomL }"
+                          <input name="new_groomL" id="je_g-kanji1" maxlength="10" value="${invitationAll.w_groomL }"
                            type="text" placeholder="姓" oninput="printName()"/>
-                          <input name="new_groomF" id="je_g-kanji2" value="${invitationAll.w_groomF }"
+                          <input name="new_groomF" id="je_g-kanji2" maxlength="10" value="${invitationAll.w_groomF }"
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_groomKanaL" id="je_g-kana1" value="${invitationAll.w_groom_kanaL }"
-                          type="text" placeholder="せい" onkeyup="printName()" onblur="return groomKanaChk()"/>
-                          <input name="new_groomKanaF" id="je_g-kana2" value="${invitationAll.w_groom_kanaF }"
-                           type="text" placeholder="めい" onkeyup="printName()" onblur="return groomKanaChk()"/>
+                          <input name="new_groomKanaL" id="je_g-kana1" class="kana-input" maxlength="20" value="${invitationAll.w_groom_kanaL }"
+                          type="text" placeholder="せい" onkeyup="printName()"/>
+                          <input name="new_groomKanaF" id="je_g-kana2" class="kana-input" maxlength="20" value="${invitationAll.w_groom_kanaF }"
+                           type="text" placeholder="めい" onkeyup="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_groomRomaL" id="je_g-roma1" value="${invitationAll.w_groom_engL }" 
-                           type="text" placeholder="Last Name" onkeyup="printName()" onblur="return groomEngChk()"/>
-                          <input name="new_groomRomaF" id="je_g-roma2" value="${invitationAll.w_groom_engF }"
-                          type="text" placeholder="First Name" onkeyup="printName()" onblur="return groomEngChk()"/>
+                          <input name="new_groomRomaL" id="je_g-roma1" class="eng-input"  maxlength="20" value="${invitationAll.w_groom_engL }" 
+                           type="text" placeholder="Last Name" onkeyup="printName()" />
+                          <input name="new_groomRomaF" id="je_g-roma2" class="eng-input"  maxlength="20" value="${invitationAll.w_groom_engF }"
+                          type="text" placeholder="First Name" onkeyup="printName()" />
                         </div>
                       </div>
                     </div>
@@ -170,28 +171,28 @@ window.onload = function() {
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_brideL" id="je_b-kanji1"  value="${invitationAll.w_brideL }"
+                          <input name="new_brideL" id="je_b-kanji1" maxlength="10" value="${invitationAll.w_brideL }"
                            type="text" placeholder="姓" oninput="printName()"/>
-                          <input name="new_brideF"  id="je_b-kanji2"  value="${invitationAll.w_brideF }"
+                          <input name="new_brideF"  id="je_b-kanji2" maxlength="10" value="${invitationAll.w_brideF }"
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">カタカナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_brideKanaL" id="je_b-kana1" value="${invitationAll.w_bride_kanaL }"
-                          type="text" placeholder="せい" oninput="printName()" onblur="return brideKanaChk()"/>
-                          <input name="new_brideKanaF"  id="je_b-kana2" value="${invitationAll.w_bride_kanaF }"
-                          type="text" placeholder="めい" oninput="printName()" onblur="return brideKanaChk()"/>
+                          <input name="new_brideKanaL" id="je_b-kana1" class="kana-input"  maxlength="20" value="${invitationAll.w_bride_kanaL }"
+                          type="text" placeholder="せい" oninput="printName()"  />
+                          <input name="new_brideKanaF"  id="je_b-kana2" class="kana-input"  maxlength="20" value="${invitationAll.w_bride_kanaF }"
+                          type="text" placeholder="めい" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="new_brideRomaL" id="je_b-roma1" value="${invitationAll.w_bride_engL }"
-                          type="text" placeholder="Last Name" oninput="printName()" onblur="return brideEngChk()"/>
-                          <input name="new_brideRomaF"  id="je_b-roma2" value="${invitationAll.w_bride_engF }"
-                          type="text" placeholder="First Name" oninput="printName()" onblur="return brideEngChk()"/>
+                          <input name="new_brideRomaL" id="je_b-roma1" class="eng-input" maxlength="20" value="${invitationAll.w_bride_engL }"
+                          type="text" placeholder="Last Name" oninput="printName()">
+                          <input name="new_brideRomaF"  id="je_b-roma2" class="eng-input" maxlength="20" value="${invitationAll.w_bride_engF }"
+                          type="text" placeholder="First Name" oninput="printName()"/>
                         </div>
                       </div>
                     </div>
@@ -236,14 +237,14 @@ window.onload = function() {
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input name="new_marriage_place" id="je_main-building" value="${invitationAll.r_weddingPlace }"
+                          <input name="new_marriage_place" id="je_main-building" maxlength="10" value="${invitationAll.r_weddingPlace }"
                           type="text" oninput="printInfo()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input name="new_marriage_addr" id="je_main-addr" value="${invitationAll.r_weddingAddr }" 
+                          <input name="new_marriage_addr" id="je_main-addr" maxlength="20" value="${invitationAll.r_weddingAddr }" 
                           type="text" oninput="printInfo()"/>
                         </div>
                       </div>
@@ -273,14 +274,14 @@ window.onload = function() {
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input name="new_reception_place" id="je_side-building" value="${invitationAll.r_receptionPlace }"
+                          <input name="new_reception_place" id="je_side-building"  maxlength="10" value="${invitationAll.r_receptionPlace }"
                           type="text" oninput="printInfo()" />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input name="new_reception_addr" id="je_side-addr"  value="${invitationAll.r_receptionAddr }"
+                          <input name="new_reception_addr" id="je_side-addr"  maxlength="20"  value="${invitationAll.r_receptionAddr }"
                           	type="text" oninput="printInfo()"/>
                         </div>
                       </div>
@@ -309,7 +310,7 @@ window.onload = function() {
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="new_helloMessage" rows="6" cols="40" id="je_invite-m"
-                            oninput="printInfo()" maxlength="180">${invitationAll.w_message_invite }</textarea>
+                            oninput="printInfo()" maxlength="135">${invitationAll.w_message_invite }</textarea>
                         </div>
                       </div>
                     </div>
@@ -325,7 +326,7 @@ window.onload = function() {
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="new_byeMessage" id="je_finish-m" rows="10" 
-                          oninput="printInfo()" maxlength="190">${invitationAll.w_message_bye }</textarea>
+                          oninput="printInfo()" maxlength="156">${invitationAll.w_message_bye }</textarea>
                         </div>
                       </div>
                     </div>
