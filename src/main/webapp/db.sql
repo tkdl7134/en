@@ -72,4 +72,3 @@ SELECT * FROM s_wedding_info sw
                 LEFT JOIN s_event se ON sg.e_no = se.e_no 
                 LEFT JOIN s_party sp ON sg.m_id = sp.m_id 
                 LEFT JOIN s_allergy sa ON sg.m_id = sa.m_id 
-                WHERE sg.e_no = ?
