@@ -169,74 +169,7 @@ function call(){
 
 }
 
-function groomKanaChk(){
-	if (onlyKana(groomKanaL) || onlyKana(groomKanaF)) {
-    	alert("カタカナで入力してください");
-    
-	    if (onlyKana(groomKanaL)) {
-	        groomKanaL.focus();
-	    } else {
-	        groomKanaF.focus();
-	    }
-	    return false;
-	}
-}
-function groomEngChk(){
-	if (onlyEng(groomRomaL) || onlyEng(groomRomaF)) {
-    	alert("英語で入力してください");
-    
-	    if (onlyEng(groomRomaL)) {
-	        groomRomaL.focus();
-	    } else {
-	        groomRomaF.focus();
-	    }
-	    return false;
-	}
-}
 
-function brideKanaChk(){
-	if (onlyKana(brideKanaL) || onlyKana(brideKanaF)) {
-    	alert("カタカナで入力してください");
-    
-	    if (onlyKana(brideKanaL)) {
-	        brideKanaL.focus();
-	    } else {
-	        brideKanaF.focus();
-	    }
-	    return false;
-}
-	
-}
-
-function brideEngChk(){
-	if (onlyEng(brideRomaL) || onlyEng(brideRomaF)) {
-	    	alert("英語で入力してください");
-	    
-		    if (onlyEng(brideRomaL)) {
-		        brideRomaL.focus();
-		    } else {
-		        brideRomaF.focus();
-		    }
-		    return false;
-	}
-	
-}
-
-function lengthChk_hello(){
-	if(lessThen(helloMessage, 240)){
-		alert("240");
-		helloMessage.focus();
-		return false;
-	}
-}
-
-function lengthChk_bye(){
-	if(lessThen(byeMessage, 240)){
-		alert("240");
-		helloMessage.focus();
-		return false;
-	}
-}
 function photoType1(){
 	if (isNotType(photo1, "jpg") && isNotType(photo1, "png") && isNotType(photo1, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");

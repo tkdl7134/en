@@ -16,6 +16,8 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700;900&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -95,7 +97,7 @@
 													<c:set var="members" value="${members }" />
 													<label class="kanzi-container">
 														<div style="font-size: 1.5rem;">名前</div> <input
-														style="font-size: 1rem;" type="text"
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
 														name="name" required value="${members.m_first_name}"
 														disabled="disabled" /> <input style="font-size: 1.2rem;"
@@ -106,7 +108,7 @@
 													<br>
 													<label class="kata-container">
 														<div style="font-size: 1.5rem;">フリガナ</div> <input
-														style="font-size: 1rem;" type="text"
+														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
 														name="kata-name" required
 														value="${members.m_first_name_kana}" disabled="disabled" />
@@ -118,7 +120,7 @@
 													<br>
 													<label class="eng-container">
 														<div style="font-size: 1.5rem;">ローマ字</div> <input
-														style="font-size: 1rem;" type="text"
+														style="font-size: 1.2rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
 														value="${members.m_first_name_rome}" disabled="disabled" />
@@ -135,41 +137,41 @@
 												<c:otherwise>
 													<label class="kanzi-container">
 														<div style="font-size: 1.5rem;">名前</div> <input
-														style="font-size: 1rem;" type="text" placeholder="姓"
+														style="font-size: 1.2rem;" type="text" placeholder="姓"
 														class="name-input" id="name" name="name" required
 														value="${members.m_first_name}"
-														<c:if test="${not empty members.m_first_name}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_first_name != 'no'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="名" class="name-input" id="name" name="name"
 														required value="${members.m_last_name}"
-														<c:if test="${not empty members.m_last_name}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_last_name != 'data'}">disabled="disabled"</c:if> />
 													</label>
 													<br>
 													<label class="kata-container">
 														<div style="font-size: 1.5rem;">フリガナ</div> <input
-														style="font-size: 1rem;" type="text" placeholder="せい"
+														style="font-size: 1.2rem;" type="text" placeholder="せい"
 														class="name-input" id="kataName" name="kata-name" required
 														value="${members.m_first_name_kana}"
-														<c:if test="${not empty members.m_first_name_kana}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_first_name_kana != 'no'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="めい" class="name-input" id="kataName"
 														name="kata-name" required
 														value="${members.m_last_name_kana}"
-														<c:if test="${not empty members.m_last_name_kana}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_last_name_kana != 'data'}">disabled="disabled"</c:if> />
 													</label>
 													<br>
 													<label class="eng-container">
 														<div style="font-size: 1.5rem;">ローマ字</div> <input
-														style="font-size: 1rem;" type="text"
+														style="font-size: 1.2rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
 														name="roma-name" required
 														value="${members.m_last_name_rome}"
-														<c:if test="${not empty members.m_last_name_rome}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_last_name_rome != 'data'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
-														placeholder="Ｆamily Name" id="romaName" class="name-input"
+														placeholder="First Name" id="romaName" class="name-input"
 														name="roma-name" required
 														value="${members.m_first_name_rome}"
-														<c:if test="${not empty members.m_first_name_rome}">disabled="disabled"</c:if> />
+														<c:if test="${members.m_first_name_rome != 'no'}">disabled="disabled"</c:if> />
 													</label>
 													</br>
 													<c:if test="${not empty members.m_first_name}">
@@ -240,7 +242,7 @@
 													class="contact-input" id="email" name="email"
 													placeholder="enmusubi@gmail.com" required
 													value="${members.m_email}"
-													<c:if test="${not empty members.m_email}">disabled="disabled"</c:if> />
+													<c:if test="${members.m_email != 'no data'}">disabled="disabled"</c:if> />
 											</div>
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type=""text""
@@ -756,6 +758,7 @@ function openModal() {
         const body = document.querySelector("body");
         body.style.transition = "background-color 0.5s ease";
         body.style.backgroundColor = "#ffe0e0";
+        ajaxThing();
         modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
         setTimeout(() => {
             modal.style.opacity = "1";
@@ -773,6 +776,7 @@ function openModalWithoutAllergy() {
         const body = document.querySelector("body");
         body.style.transition = "background-color 0.5s ease";
         body.style.backgroundColor = "#ffe0e0";
+        ajaxThing();
         modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
         setTimeout(() => {
             modal.style.opacity = "1";
@@ -939,8 +943,8 @@ function handleFormSubmit() {
         });
         invalidField = document.getElementById('adult');
         $('.survey-input').slick('slickGoTo', 3);
-    } else if (document.getElementById('allergyCheckbox').checked && 
-            document.getElementById('allergyCheckbox2').checked && 
+    } else if (!document.getElementById('allergyCheckbox').checked && 
+            !document.getElementById('allergyCheckbox2').checked && 
             document.getElementById('allergy-type').value.trim() === '') {
         Swal.fire({
             icon: 'warning',

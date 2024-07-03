@@ -93,6 +93,10 @@ a {
   box-shadow: 0rem 0rem 2rem #696969;
   margin-right: 0.7rem;
   z-index: 0;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 
 .je_invitation:-webkit-scrollbar{	/* 스크롤바숨기기 크롬,사파리, 오페라, 엣지 */
@@ -187,7 +191,7 @@ a {
   display: flex;
   justify-content: space-between;
   height: 3rem;
-  margin-top: 24rem;
+  margin-top: 23rem;
   margin-left: 4.2rem;
   margin-right: 4.2rem;
   font-size: 1.7rem;
@@ -217,14 +221,15 @@ a {
 }
 
 .je_buildings {
-  display: flex;
-  justify-content: space-between;
-  height: 3rem;
-  margin-top: 1rem;
-  margin-left: 4.2rem;
-  margin-right: 4.2rem;
-  font-size: 1.6rem;
-  font-weight: 200;
+	display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    margin-top: 0rem;
+    margin-left: 4.2rem;
+    margin-right: 4.2rem;
+    font-size: 1.6rem;
+    font-weight: 200;
+    text-wrap: balance;
 }
 
 .je_addrs {
@@ -238,6 +243,10 @@ a {
 }
 .je_addrs > div {
   width: 8rem;
+  margin-top: 0.2rem;
+}
+.je_sideEvent-building{
+	text-align: right;
 }
 .je_sideEvent-addr {
   text-align: right;
@@ -245,7 +254,7 @@ a {
 
 .je_finish-message {
     margin-top: 26rem;
-    height: 12rem;
+    height: 13rem;
     width: 90%;
     align-content: center;
     font-size: 1.3rem;

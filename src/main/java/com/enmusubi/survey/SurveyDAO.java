@@ -11,6 +11,8 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import com.enmusubi.main.DBManager;
 
 public class SurveyDAO {
@@ -235,13 +237,162 @@ public class SurveyDAO {
 	            m.setA_postcode(postcode);
 	            
 	            // 주소를 나누는 로직
+	            String prefectureName ="";
 	            String[] addressParts = fullAddress.split(" ", 3);
+	            switch (addressParts[0]) {
+				case "1":
+                    prefectureName = "北海道";
+                    break;
+                case "2":
+                    prefectureName = "青森県";
+                    break;
+                case "3":
+                    prefectureName = "岩手県";
+                    break;
+                case "4":
+                    prefectureName = "宮城県";
+                    break;
+                case "5":
+                    prefectureName = "秋田県";
+                    break;
+                case "6":
+                    prefectureName = "山形県";
+                    break;
+                case "7":
+                    prefectureName = "福島県";
+                    break;
+                case "8":
+                    prefectureName = "茨城県";
+                    break;
+                case "9":
+                    prefectureName = "栃木県";
+                    break;
+                case "10":
+                    prefectureName = "群馬県";
+                    break;
+                case "11":
+                    prefectureName = "埼玉県";
+                    break;
+                case "12":
+                    prefectureName = "千葉県";
+                    break;
+                case "13":
+                    prefectureName = "東京都";
+                    break;
+                case "14":
+                    prefectureName = "神奈川県";
+                    break;
+                case "15":
+                    prefectureName = "新潟県";
+                    break;
+                case "16":
+                    prefectureName = "富山県";
+                    break;
+                case "17":
+                    prefectureName = "石川県";
+                    break;
+                case "18":
+                    prefectureName = "福井県";
+                    break;
+                case "19":
+                    prefectureName = "山梨県";
+                    break;
+                case "20":
+                    prefectureName = "長野県";
+                    break;
+                case "21":
+                    prefectureName = "岐阜県";
+                    break;
+                case "22":
+                    prefectureName = "静岡県";
+                    break;
+                case "23":
+                    prefectureName = "愛知県";
+                    break;
+                case "24":
+                    prefectureName = "三重県";
+                    break;
+                case "25":
+                    prefectureName = "滋賀県";
+                    break;
+                case "26":
+                    prefectureName = "京都府";
+                    break;
+                case "27":
+                    prefectureName = "大阪府";
+                    break;
+                case "28":
+                    prefectureName = "兵庫県";
+                    break;
+                case "29":
+                    prefectureName = "奈良県";
+                    break;
+                case "30":
+                    prefectureName = "和歌山県";
+                    break;
+                case "31":
+                    prefectureName = "鳥取県";
+                    break;
+                case "32":
+                    prefectureName = "島根県";
+                    break;
+                case "33":
+                    prefectureName = "岡山県";
+                    break;
+                case "34":
+                    prefectureName = "広島県";
+                    break;
+                case "35":
+                    prefectureName = "山口県";
+                    break;
+                case "36":
+                    prefectureName = "徳島県";
+                    break;
+                case "37":
+                    prefectureName = "香川県";
+                    break;
+                case "38":
+                    prefectureName = "愛媛県";
+                    break;
+                case "39":
+                    prefectureName = "高知県";
+                    break;
+                case "40":
+                    prefectureName = "福岡県";
+                    break;
+                case "41":
+                    prefectureName = "佐賀県";
+                    break;
+                case "42":
+                    prefectureName = "長崎県";
+                    break;
+                case "43":
+                    prefectureName = "熊本県";
+                    break;
+                case "44":
+                    prefectureName = "大分県";
+                    break;
+                case "45":
+                    prefectureName = "宮崎県";
+                    break;
+                case "46":
+                    prefectureName = "鹿児島県";
+                    break;
+                case "47":
+                    prefectureName = "沖縄県";
+                    break;
+                case "48":
+                    prefectureName = "海外";
+                    break;
+                default:
+				}
 	            if (addressParts.length >= 3) {
-	                m.setA_prefecture(addressParts[0]);
+	                m.setA_prefecture(prefectureName);
+	                
 	                m.setA_city(addressParts[1]);
 	                m.setA_address(addressParts[2]);
 	            } else {
-	                m.setA_prefecture("");
+	                m.setA_prefecture("");	                
 	                m.setA_city("");
 	                m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
 	            }
@@ -252,6 +403,10 @@ public class SurveyDAO {
 	        
 	        System.out.println(m);
 	        request.setAttribute("members", m);
+	        
+	        // JSON 객체 생성
+	        JSONObject membersJson = new JSONObject(m);
+	        request.setAttribute("membersJson", membersJson.toString());
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -352,6 +507,8 @@ public class SurveyDAO {
 			rsAddress = pstmtAddress.executeQuery();
 			if (rsAddress.next()) {
 				String fullAddress = rsAddress.getString(1);
+				System.out.println(fullAddress);
+				fullAddress = "";
 				String postcode = rsAddress.getString(2);
 				
 				m.setA_postcode(postcode);
