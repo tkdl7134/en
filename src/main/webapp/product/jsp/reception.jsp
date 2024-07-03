@@ -20,15 +20,16 @@
 			<div class="yj-main-s2-menu">
 				<img alt="" src="finance/img/default_menu.png">
 			</div>
-			<div class="i-left-box">
-				<div>
-					<h1>続けるため。。。</h1>
-				</div>
-				<div class="i-btn" onclick="ReceptionLogin()">
-					<h2>会員ログイン</h2>
-				</div>
-				<div style="height: 100px;"></div>
-			</div>
+				<div class="i-left-box">
+			<div class="je_previewBtns">
+		      <div class="je_previewBtn je_login-btn" onclick="ReceptionLogin()">
+		        ✿ 会員ログイン ✿
+		      </div>
+		      <div class="je_previewBtn je_invitation-txt">
+		       続けるため。。。
+		      </div>
+		    </div>
+		</div>
 			<div class="yj-main-s5-bigCon">
 				<div class="yj-main-s5-container">
 					<div class="je_invitation">
