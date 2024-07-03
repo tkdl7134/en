@@ -120,9 +120,9 @@
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="groomKanjiL" id="je_g-kanji1" maxlength="10" 
+                          <input name="groomKanjiL" id="je_g-kanji1" maxlength="5" 
                            type="text" placeholder="姓" oninput="printName()"/>
-                          <input name="groomKanjiF" id="je_g-kanji2" maxlength="10" 
+                          <input name="groomKanjiF" id="je_g-kanji2" maxlength="5" 
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
                       </div>
