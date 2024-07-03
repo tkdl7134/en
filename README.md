@@ -1,4 +1,5 @@
-# 💍프로젝트 소개
+# 💍
+# 🎎프로젝트 소개
 
 # ⏱개발기간
 
@@ -20,3 +21,9 @@
 
 * 최현승 : 유저 정보
 
+# 🛠개발 환경
+
+* Java, JavaScript, HTML, CSS, JQuery, JSP
+* Maven, Tomcat9.0, Oracle DB, Oracle Cloud
+* Eclipse, VScode, SqlDeveloper, DBeaver
+* Notion, Figma, ERDCloud
