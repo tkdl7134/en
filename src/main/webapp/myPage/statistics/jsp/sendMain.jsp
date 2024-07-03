@@ -65,8 +65,8 @@
 }
 
 #background1 {
-	background-image: url("myPage/statistics/imgFolder/halfCircle2.png");
-	background-position: top center;
+	background-image: url("myPage/statistics/imgFolder/halfCircle2.png") ,url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+	background-position: top center , bottom center;
 	background-size:1920px 1080px;
 	top: 0;
 }
@@ -94,6 +94,12 @@
 	text-align: center;
 	opacity: 0; /* 초기 상태에서 투명하게 설정 */
 }
+.jh-whole-con{
+	background-image: url("myPage/statistics/imgFolder/halfCircle2.png") ,url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+	background-position: top center , bottom center;
+	background-repeat : no-repeat;
+
+}
 </style>
 </head>
 <body id="page_top">
@@ -103,11 +109,7 @@
 	</div>
 	<jsp:include page="${mainNav }" />
 	<jsp:include page="${settingPage }"></jsp:include>
-	<div id="background1">
-		<div class="canvas-container">
-			<canvas class="canvas" id="canvas1"></canvas>
-		</div>
-	</div>
+	
 	<div style="position:absolute; left:50%; top:120px; transform:translate(-50%);width: 20rem; text-align: center;" class="hw_page_title">
 		<h1 style="margin: 0;">会リスト</h1>
 	</div>
@@ -172,7 +174,7 @@
 						</div>
 					</div>
 					<div class="bottomUi"
-						style="align-items: center; display: flex; flex-direction: column;">
+						style="align-items: center; display: flex; flex-direction: column; margin-top : 5rem;">
 						<div class="pagination">
 							<c:if test="${currentPage > 1}">
 								<a style="text-decoration: none;" class="SendMainPages"
@@ -204,11 +206,7 @@
 			</form>
 		</div>
 	</div>
-	<div style="margin-top: 20%;" id="background2">
-		<div class="canvas-container">
-			<canvas class="canvas" id="canvas2"></canvas>
-		</div>
-	</div>
+	
 
 	<div class="hw-f-mousemove hw-f-none">
 		<img src="mytemplate/imgFolder/back_btn.png" alt="마우스 아이콘">
