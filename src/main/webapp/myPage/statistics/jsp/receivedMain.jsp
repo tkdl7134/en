@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ファンディングの現状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/receivedMain.css">
 <script type="text/javascript" src="myPage/statistics/js/receivedMain.js"></script>
 </head>

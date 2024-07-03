@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>設問調査</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="surveyPage/survey.css" />
 <link rel="stylesheet" href="surveyPage/surveyCheckBox.css" />
 <link rel="stylesheet" href="surveyPage/surveySelect.css" />

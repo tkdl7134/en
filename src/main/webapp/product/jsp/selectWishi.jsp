@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>縁結び</title>
+<title>ウィッシュリスト</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css"
 	href="product/css/selectWishi.css">
+<link rel="stylesheet" type="text/css"
+	href="main/main.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
@@ -18,20 +21,9 @@
 		<div class="yj-main-s2-logo">
 			<img alt="" src="finance/img/logo.png">
 		</div>
-		<div class="yj-main-s2-menu">
-			<img alt="" src="finance/img/default_menu.png">
-		</div>
+		<jsp:include page="${mainNav }" />
+		
 		<div class="horizontal-container-title">
-			<div class="back-btn">
-				<a href="InvitationC" style="color: black; text-decoration: none;">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-						viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-						class="size-6">
-  					<path stroke-linecap="round" stroke-linejoin="round"
-							d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-				</svg>
-				</a>
-			</div>
 			<h1 class="hs_heading">ウィッシュリスト</h1>
 		</div>
 
