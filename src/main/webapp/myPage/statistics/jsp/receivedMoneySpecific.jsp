@@ -41,7 +41,7 @@
         background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
         background-position: bottom center;
         bottom: 940px;
-        margin-top : 60rem;
+        margin-top : 10%;
       }
       #canvas-content-container {
         z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
