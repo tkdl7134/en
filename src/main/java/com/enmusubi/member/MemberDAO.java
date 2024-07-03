@@ -246,12 +246,14 @@ public class MemberDAO {
 		PreparedStatement pstmtAddress = null;
 		PreparedStatement pstmtGuest = null;
 		PreparedStatement pstmtEvent = null;
+		PreparedStatement pstmtEventFc = null;
 		PreparedStatement pstmtMember = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
 		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
 		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
+		String sqlEventFc = "DELETE FROM s_event_func WHERE m_id = ?";
 
 		try {
 			con = dbManager.connect();
@@ -266,6 +268,10 @@ public class MemberDAO {
 			pstmtGuest.setString(1, m_id);
 			pstmtGuest.executeUpdate();
 
+			pstmtEvent = con.prepareStatement(sqlEventFc);
+			pstmtEvent.setString(1, m_id);
+			pstmtEvent.executeUpdate();
+			
 			pstmtEvent = con.prepareStatement(sqlEvent);
 			pstmtEvent.setString(1, m_id);
 			pstmtEvent.executeUpdate();
@@ -285,6 +291,7 @@ public class MemberDAO {
 		} finally {
 			dbManager.close(con, pstmtAddress, null);
 			dbManager.close(con, pstmtGuest, null);
+			dbManager.close(con, pstmtEventFc, null);
 			dbManager.close(con, pstmtEvent, null);
 			dbManager.close(con, pstmtMember, null);
 		}
@@ -526,7 +533,7 @@ public class MemberDAO {
 				} else {
 					// 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
 					System.out.println("アカウント削除失敗。アカウント情報が存在しません。");
-					response.sendRedirect("HSC");
+					response.sendRedirect("MainC");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
