@@ -25,7 +25,7 @@ body {
 }
 
 header {
-  padding-top: 5rem;
+  padding-top: 4.5rem;
   display: flex;
   justify-content: center;
   padding-left: 8rem;
@@ -54,7 +54,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: 4.5rem;
 }
 
 .tg-include-btu-page {

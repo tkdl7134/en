@@ -96,11 +96,11 @@
 												<c:when test="${loginType == 'normal' }">
 													<c:set var="members" value="${members }" />
 													<label class="kanzi-container">
-														<div style="font-size: 1.2rem;">名前</div> <input
+														<div style="font-size: 1.5rem;">名前</div> <input
 														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
 														name="name" required value="${members.m_first_name}"
-														disabled="disabled" /> <input style="font-size: 1.5rem;"
+														disabled="disabled" /> <input style="font-size: 1.2rem;"
 														type="text" placeholder="Last Name" class="name-input"
 														id="name" name="name" required
 														value="${members.m_last_name}" disabled="disabled" />
@@ -758,6 +758,7 @@ function openModal() {
         const body = document.querySelector("body");
         body.style.transition = "background-color 0.5s ease";
         body.style.backgroundColor = "#ffe0e0";
+        ajaxThing();
         modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
         setTimeout(() => {
             modal.style.opacity = "1";
@@ -775,6 +776,7 @@ function openModalWithoutAllergy() {
         const body = document.querySelector("body");
         body.style.transition = "background-color 0.5s ease";
         body.style.backgroundColor = "#ffe0e0";
+        ajaxThing();
         modal.showModal();  // <dialog> 요소를 표시하는 표준 메서드
         setTimeout(() => {
             modal.style.opacity = "1";
@@ -941,8 +943,8 @@ function handleFormSubmit() {
         });
         invalidField = document.getElementById('adult');
         $('.survey-input').slick('slickGoTo', 3);
-    } else if (document.getElementById('allergyCheckbox').checked && 
-            document.getElementById('allergyCheckbox2').checked && 
+    } else if (!document.getElementById('allergyCheckbox').checked && 
+            !document.getElementById('allergyCheckbox2').checked && 
             document.getElementById('allergy-type').value.trim() === '') {
         Swal.fire({
             icon: 'warning',
