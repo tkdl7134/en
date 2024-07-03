@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>アンケート 管理</title>
+<title>アンケート管理</title>
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="invitationPage/invitationPage.css">
 <script type="text/javascript" src="invitationPage/invitationPage.js"></script>
