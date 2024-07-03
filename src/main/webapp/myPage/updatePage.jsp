@@ -92,7 +92,7 @@ body {
 			</div>
 		</div>
 
-		<form action="MemberUpdateC" method="post" enctype="multipart/form-data">
+		<form action="MemberUpdateC" method="post" enctype="multipart/form-data" id="MemberUpdateC">
 
 			<div class="hs_container">
 
@@ -145,7 +145,7 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome_mei" class="hs_input rome_mei"
-							placeholder="Given name" maxlength="10">
+							placeholder="First name" maxlength="10">
 						<input type="text" name="m_name_rome_sei" class="hs_input rome_sei"
 							placeholder="Last name" maxlength="10">
 					</div>
@@ -552,7 +552,7 @@ body {
 			return false; // 폼 제출 방지
 		}
 		
-			document.querySelector('form').submit();
+			document.querySelector('#MemberUpdateC').submit();
 	}
 	
 	function checkForm() {

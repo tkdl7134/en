@@ -34,6 +34,10 @@ body {
 	cursor: pointer;
 }
 
+.top-button{
+	cursor: pointer;
+}
+
 .hs_title {
 	margin-top: 110px;
 }

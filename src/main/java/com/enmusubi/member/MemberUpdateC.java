@@ -17,20 +17,21 @@ public class MemberUpdateC extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+		
+		HttpSession session = request.getSession(false);
+		
+		if (session != null && session.getAttribute("m_name") != null) {
+			System.out.println("세션 생존");
+			request.setAttribute("mainNav", "../main/mainNavAF.jsp");
+		} else {
+			System.out.println("세션 죽음");
+			request.setAttribute("mainNav", "../main/mainNavBF.jsp");
+		}
+		
 		if (Interceptor.LoginInterceptor(request, response)) {
-			
-			HttpSession session = request.getSession(false);
-
-			if (session != null && session.getAttribute("m_name") != null) {
-				System.out.println("세션 생존");
-				request.setAttribute("mainNav", "../main/mainNavAF.jsp");
-			} else {
-				System.out.println("세션 죽음");
-				request.setAttribute("mainNav", "../main/mainNavBF.jsp");
-			}
-			
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
