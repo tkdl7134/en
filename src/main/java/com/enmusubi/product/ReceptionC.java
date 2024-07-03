@@ -23,7 +23,7 @@ public class ReceptionC extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("m_id"));
-		String eno = request.getParameter("eno");
+		String eno = request.getParameter("e_no");
 		session.setAttribute("eno", eno);
 		if (session.getAttribute("m_id")!=null) {
 			System.out.println("==============");
