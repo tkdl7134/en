@@ -31,7 +31,7 @@
 	<div id="recMain-content">
 		<div onclick="location.href='receivedFundingController?eno=${eno}'" class="box-img">
 		<div class="texts">
-		<div class="objective">フンディンぐ</div>
+		<div class="objective">ファンディング</div>
 		<div class="genjyou">の現状</div>
 		</div>
 		<img class="lines" alt="" src="myPage/statistics/imgFolder/line_funding.png">

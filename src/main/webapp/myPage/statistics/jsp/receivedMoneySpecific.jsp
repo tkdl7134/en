@@ -20,6 +20,7 @@
         display: flex;
         flex-direction: column;
         background-color : #FFF5F4;
+       
       }
       #background1,
       #background2 {
@@ -34,21 +35,28 @@
         background-color: #FFF5F4;
       }
       #background1 {
-        background-image: url("myPage/statistics/imgFolder/halfCircle2.png");
-        background-position: top center;
+       /*  background-image: url("myPage/statistics/imgFolder/halfCircle2.png"),url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: top center , bottom center; */
         top: 0;
+       /*   background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: bottom center; */
       }
       #background2 {
         background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
         background-position: bottom center;
         bottom: 940px;
-        margin-top : 60rem;
+        margin-top : 10%;
       }
       #canvas-content-container {
-        z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
+        z-index: 2; /* 컨텐츠가 캔 버스 위에 오도록 설정 */
         position: relative;
         display: flex;
         background-color: #FFF5F4;
+            background-image: url("myPage/statistics/imgFolder/halfCircle2.png"),url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: top center , bottom center;
+      background-repeat: no-repeat;
+      justify-content : center;
+      height : 145rem;
         
       }
       .canvas-container {
@@ -59,6 +67,7 @@
         width: 100%;
         height: 100%;
         z-index: 1; /* 캔버스가 배경 이미지 위에 오도록 설정 */
+           
       }
       .canvas {
         display: none;
@@ -70,13 +79,12 @@
         pointer-events: none; /* 마우스 이벤트를 캔버스에만 허용하도록 설정 */
       }
       .canvas-content {
-        position: absolute;
         top: -90vh;
         left: 50%;
-        transform: translate(-50%, 0);
             display: flex;
     flex-direction: column;
     align-items: center;
+     
       }
     </style>
 
@@ -84,11 +92,11 @@
 </head>
 <body>
 
-<div id="background1">
+<%-- <div id="background1">
       <div class="canvas-container">
         <canvas class="canvas" id="canvas1"></canvas>
       </div>
-    </div>
+    </div> --%>
         <div class="yj-main-logo">
 			<a href="#" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
@@ -99,7 +107,7 @@
     <div id="canvas-content-container">
       <div class="canvas-content">
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
-	<div style="display : flex; " class="recSpecMoneyTitle">
+	<div style="display : flex; margin-top : 7rem; " class="recSpecMoneyTitle">
 	<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 	<div  style="margin-top: 0.3rem; smargin-left: 1rem;font-size: 25px; font-weight : bold;">の現状</div>
 	</div>
@@ -139,12 +147,12 @@
     
 </div>
 </div>
-    <div id="background2">
+  <%--   <div id="background2">
       <div class="canvas-container">
         <canvas class="canvas" id="canvas2"></canvas>
       </div>
     </div>
-
+ --%>
 
 <script type="text/javascript" src="myPage/statistics/js/receivedSpecificMoney.js"></script>
 </body>

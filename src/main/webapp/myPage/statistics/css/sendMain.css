@@ -316,10 +316,12 @@ yj-main-nav a:visited {
 
 .hw_menubar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	margin-top: 1rem;
 	padding: 3rem;
+	    width: 60rem;
+    margin-left: 17rem;
 }
 
 .hw_menubar_item {
@@ -700,11 +702,6 @@ main {
 }
 
 .jh-whole-con {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
-	height:100vh;
-	width:50%;
 	padding-top:180px;
 }
 .cursor-custom {
