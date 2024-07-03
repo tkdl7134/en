@@ -29,6 +29,7 @@ public class MemberUpdateC extends HttpServlet {
 		}
 		
 		if (Interceptor.LoginInterceptor(request, response)) {
+			MemberDAO.selectMember(request);
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 		

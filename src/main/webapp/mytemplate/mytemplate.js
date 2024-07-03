@@ -38,14 +38,17 @@
         }
 
         function submitToInvitationC(e_no) {
+
+
             const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'InvitationC';
+            form.method = 'get';
+            form.action = 'testC';
 
             const input = document.createElement('input');
-            input.type = 'hidden';
+            input.type = 'number';
             input.name = 'e_no';
             input.value = e_no;
+            input.style.display="none";
             form.appendChild(input);
 
             document.body.appendChild(form);

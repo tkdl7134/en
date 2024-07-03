@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.enmusubi.member.MemberDAO;
-
 @WebServlet("/ReceptionC")
 public class ReceptionC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -22,8 +20,7 @@ public class ReceptionC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("m_id"));
-		String eno = request.getParameter("eno");
+		String eno = request.getParameter("e_no");
 		session.setAttribute("eno", eno);
 		if (session.getAttribute("m_id")!=null) {
 			System.out.println("==============");
