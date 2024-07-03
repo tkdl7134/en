@@ -215,7 +215,7 @@ main {
 }
 
 .hw_template-img > img {
-    width: 100%;
+    height: 100%;
 }
 
 .hw_template-title {
@@ -225,6 +225,26 @@ main {
     font-weight: bold;
 }
 
+.hw_template-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 2rem;
+    width: 20rem;
+    height: 26rem;
+    scale: 99%;
+    border-radius: 50% / 30%;
+    border: 2px solid #ff0000;
+    overflow:hidden
+}
+
+.je_fundingBox-details {
+
+    position: relative;
+    border: 0.2rem solid #ffd600;
+    border-radius: 45% / 35%;
+}
 .hw_share_btn {
     background: none;
     border: none;
