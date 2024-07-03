@@ -1,6 +1,38 @@
 let mouseicn;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function(event) {
+	// 로고 버튼 클릭 이벤트
+
+	const mainLogo = document.querySelector(".yj-main-s2-logo");
+
+	mainLogo.addEventListener('click', (event) => {
+		event.preventDefault();
+		mainLogo.style.cursor = "pointer";
+		location.href = 'MainC';
+	});
+
+
+
+	// ////////// ////////// ////////// ////////// ////////// //////////
+	// 메뉴 버튼 클릭 이벤트
+	const menus = document.querySelector(".yj-main-menu");
+	const navi = document.querySelector(".yj-main-nav");
+	console.log(menus);
+	console.log(navi);
+	menus.addEventListener("click", function() {
+		console.log(menus);
+		console.log(navi);
+		const menuBtn = menus.querySelector("img");
+		if (navi.classList.contains("nav-hidden")) {
+			menuBtn.src = "main/imgFolder/yj-main-menu2.png";
+			navi.classList.remove("nav-hidden");
+			navi.classList.add("nav-show");
+		} else {
+			menuBtn.src = "main/imgFolder/yj-main-menu1.png";
+			navi.classList.remove("nav-show");
+			navi.classList.add("nav-hidden");
+		}
+	});
 
 	//모달
 	const amazonmodal = document.getElementById("AmazonModal");
@@ -57,7 +89,7 @@ function amazonSubmit(eno) {
 
 		}
 	});
-	alert("submit complete!");
+	alert("アップデート完了！");
 
 	closeAmazonModal();
 }
@@ -94,7 +126,7 @@ function sendSubmit() {
 
 			}
 		});
-		alert("submit complete!");
+		alert("アップデート完了！");
 		closeSendModal();
 	}
 }

@@ -343,7 +343,7 @@ main {
   z-index: 4;
   width: 130px;
   height: 130px;
-  position: absolute;
+  position: fixed;
   top: 4rem;
   left: 5rem;
 }
@@ -367,7 +367,8 @@ main {
 
 /* 센션 2~6 메뉴 */
 .yj-main-menubox {
-  position: absolute;
+  position: fixed;
+  z-index: 4;
   top: 6rem;
   right: 5rem;
   display: flex;
@@ -380,7 +381,7 @@ main {
   z-index: 4;
   width: 70px;
   height: 70px;
-  position: absolute;
+  position: fixed;
 }
 
 .yj-main-menu img {

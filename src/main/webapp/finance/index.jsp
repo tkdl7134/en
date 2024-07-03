@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="finance/css/index.css" />
+    <link rel="icon" href="favicon.ico">
     <script src="finance/js/index.js" defer></script>
     
     <title>縁結び</title>
