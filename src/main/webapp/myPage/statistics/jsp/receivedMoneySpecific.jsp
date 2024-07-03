@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ファンディング現状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="myPage/statistics/css/receivedSpecificMoney.css" />
 <link rel="stylesheet" href="product/index.css" />
 <script defer="defer" type="text/javascript"
@@ -18,6 +19,8 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        background-color : #FFF5F4;
+       
       }
       #background1,
       #background2 {
@@ -32,20 +35,28 @@
         background-color: #FFF5F4;
       }
       #background1 {
-        background-image: url("myPage/statistics/imgFolder/halfCircle2.png");
-        background-position: top center;
+       /*  background-image: url("myPage/statistics/imgFolder/halfCircle2.png"),url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: top center , bottom center; */
         top: 0;
+       /*   background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: bottom center; */
       }
       #background2 {
         background-image: url("myPage/statistics/imgFolder/bottomHalfCircle.png");
         background-position: bottom center;
         bottom: 940px;
+        margin-top : 10%;
       }
       #canvas-content-container {
-        z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
+        z-index: 2; /* 컨텐츠가 캔 버스 위에 오도록 설정 */
         position: relative;
         display: flex;
         background-color: #FFF5F4;
+            background-image: url("myPage/statistics/imgFolder/halfCircle2.png"),url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: top center , bottom center;
+      background-repeat: no-repeat;
+      justify-content : center;
+      height : 145rem;
         
       }
       .canvas-container {
@@ -56,6 +67,7 @@
         width: 100%;
         height: 100%;
         z-index: 1; /* 캔버스가 배경 이미지 위에 오도록 설정 */
+           
       }
       .canvas {
         display: none;
@@ -67,15 +79,12 @@
         pointer-events: none; /* 마우스 이벤트를 캔버스에만 허용하도록 설정 */
       }
       .canvas-content {
-        position: absolute;
-        top: -670px;
+        top: -90vh;
         left: 50%;
-        transform: translate(-50%, 0);
             display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: -18rem;
+     
       }
     </style>
 
@@ -83,14 +92,11 @@
 </head>
 <body>
 
-<div id="background1">
+<%-- <div id="background1">
       <div class="canvas-container">
         <canvas class="canvas" id="canvas1"></canvas>
       </div>
-    </div>
-    <div id="canvas-content-container">
-      <div class="canvas-content">
-        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
+    </div> --%>
         <div class="yj-main-logo">
 			<a href="#" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
@@ -98,7 +104,10 @@
 	<jsp:include page="${mainNav }" />
 	
 	<jsp:include page="${settingPage }"></jsp:include>
-	<div style="display : flex; " class="recSpecMoneyTitle">
+    <div id="canvas-content-container">
+      <div class="canvas-content">
+        <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
+	<div style="display : flex; margin-top : 7rem; " class="recSpecMoneyTitle">
 	<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 	<div  style="margin-top: 0.3rem; smargin-left: 1rem;font-size: 25px; font-weight : bold;">の現状</div>
 	</div>
@@ -110,14 +119,6 @@
 	<div style="display: flex; " id="toGoLines">
 	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
 	</div>
-
-
-    <div  id="fundSpecProduct-img" style=""><img style="width: 37.5rem;" id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/bg_wedding_chapel.jpg"></div>
-  	<div class="yj-main-s2-logo"><img class="yj-main-s2-logo img " alt="" src="myPage/statistics/imgFolder/mainbutton.png"></div>
-  	<div class="yj-main-s2-menu"><img class="yj-main-s2-menu img " alt="" src="myPage/statistics/imgFolder/navi.png"></div>
-    
-    
-    
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div  style="height : 100rem; max-height : 80rem;" id="fundSpec-dataBoard-container">
@@ -146,12 +147,12 @@
     
 </div>
 </div>
-    <div id="background2">
+  <%--   <div id="background2">
       <div class="canvas-container">
         <canvas class="canvas" id="canvas2"></canvas>
       </div>
     </div>
-
+ --%>
 
 <script type="text/javascript" src="myPage/statistics/js/receivedSpecificMoney.js"></script>
 </body>
@@ -237,11 +238,11 @@
           handleMouseMove(event, ctx2, canvas2);
         });
         background1.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainC?eno='+${eno};
         });
 
         background2.addEventListener("click", function () {
-            location.href = 'ReceivedMainC';
+            location.href = 'ReceivedMainC?eno='${eno};
         });
       });
     </script>

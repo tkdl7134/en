@@ -1,6 +1,15 @@
 /* Google Fonts에서 폰트 가져오기 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 
+* {
+      user-zoom: none;
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      -ms-user-drag: none;
+      user-select: none;
+    }
+
 /* 공통 스타일 */
 body {
 	background-attachment: scroll;
@@ -343,7 +352,7 @@ main {
   z-index: 4;
   width: 130px;
   height: 130px;
-  position: absolute;
+  position: fixed;
   top: 4rem;
   left: 5rem;
 }
@@ -367,7 +376,8 @@ main {
 
 /* 센션 2~6 메뉴 */
 .yj-main-menubox {
-  position: absolute;
+  position: fixed;
+  z-index: 4;
   top: 6rem;
   right: 5rem;
   display: flex;
@@ -380,7 +390,7 @@ main {
   z-index: 4;
   width: 70px;
   height: 70px;
-  position: absolute;
+  position: fixed;
 }
 
 .yj-main-menu img {

@@ -7,7 +7,7 @@
 
 <script src="https://yubinbango.github.io/yubinbango/yubinbango.js"
 	charset="UTF-8"></script>
-
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="regPage/reg.css">
 <link rel="stylesheet" type="text/css" href="main/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,7 +129,7 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
 						<input type="text" name="m_name_rome_mei"
-							class="hs_input rome_mei" placeholder="Given name" maxlength="10">
+							class="hs_input rome_mei" placeholder="First name" maxlength="10">
 						<input type="text" name="m_name_rome_sei"
 							class="hs_input rome_sei" placeholder="Last name" maxlength="10">
 					</div>
@@ -637,7 +637,6 @@ function register() {
                         
                      	// 중복된 아이디인 경우에만 입력 필드 초기화 및 포커스
                         if (!isIdAvailable) {
-                        	/* alert("このIDは使用中です。別のIDを入力してください。"); // alert 창 표시 */
                         	Swal.fire({
             					icon: 'error',
             					title : 'このIDは使用中です。',
@@ -650,7 +649,6 @@ function register() {
                             $("#m_id").val(""); 
                             $("#m_id").focus(); 
                         } else {
-                            /* alert("このIDは使用可能です。"); // 사용 가능한 ID일 때 alert 창 표시 */
                             Swal.fire({
             					icon: 'success',
             					title : 'このIDは使用可能です。',

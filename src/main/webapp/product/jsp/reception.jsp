@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>招待状</title>
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="product/css/reception.css">
 <link rel="stylesheet" href="product/css/invitationPreview.css">
 <script type="text/javascript" src="product/js/reception.js"></script>

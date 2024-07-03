@@ -29,8 +29,7 @@
 			<h3 class="nav-textDeco">✿✿✿</h3>
 		</div>
 		<div class="nav-topBtn">
-			<a href="#"><img
-				src="main/imgFolder/yj-main-topBtn.png" alt="nav-topBtn" /></a>
+			<a href="#"><img src="main/imgFolder/yj-main-topBtn.png" alt="nav-topBtn" /></a>
 		</div>
 	</div>
 </div>

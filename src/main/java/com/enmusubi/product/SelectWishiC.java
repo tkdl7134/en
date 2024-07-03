@@ -14,6 +14,7 @@ public class SelectWishiC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(Interceptor.LoginInterceptor(request, response)) {
 		SelectWishiDAO.selectEventFunc(request);
+		request.setAttribute("mainNav", "../../main/mainNavAF.jsp");
 		request.getRequestDispatcher("product/jsp/selectWishi.jsp").forward(request, response);
 		}
 	}

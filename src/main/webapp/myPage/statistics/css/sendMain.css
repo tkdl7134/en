@@ -316,10 +316,12 @@ yj-main-nav a:visited {
 
 .hw_menubar {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	margin-top: 1rem;
 	padding: 3rem;
+	    width: 60rem;
+    margin-left: 17rem;
 }
 
 .hw_menubar_item {
@@ -341,9 +343,6 @@ yj-main-nav a:visited {
     color: #ff2828; /* 호버 시 글씨 색상을 붉게 변경 */
 }
 
-.hw_menubar_menu.active {
-    color: #ff2828; /* 평상시에도 붉은색으로 표시 */
-}
 
 
 .hw_yellow_line {
@@ -703,11 +702,6 @@ main {
 }
 
 .jh-whole-con {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
-	height:100vh;
-	width:50%;
 	padding-top:180px;
 }
 .cursor-custom {
