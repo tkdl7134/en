@@ -27,3 +27,6 @@
 * Maven, Tomcat9.0, Oracle DB, Oracle Cloud
 * Eclipse, VScode, SqlDeveloper, DBeaver
 * Notion, Figma, ERDCloud
+
+# 📎참고URL
+<https://www.notion.so/PRJ-6c389ce926fb4596b1a673a725a1df72>
