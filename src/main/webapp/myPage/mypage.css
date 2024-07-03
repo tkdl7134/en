@@ -30,6 +30,8 @@ body {
 	margin: auto;
 }
 
+
+
 .yj-main-menu > img {
 	cursor: pointer;
 }
@@ -59,6 +61,11 @@ body {
 .hs_btn {
 	text-decoration: none;
 	color: #696969;
+}
+
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;;
 }
 
 .hs_btn.me {

@@ -61,6 +61,11 @@ body {
   color: #696969;
 }
 
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;;
+}
+
 .hs_btn.me{
 	color: #ff2828;
 }
