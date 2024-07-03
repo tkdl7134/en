@@ -39,6 +39,7 @@
 
         function submitToInvitationC(e_no) {
 
+
             const form = document.createElement('form');
             form.method = 'get';
             form.action = 'testC';
@@ -52,7 +53,6 @@
 
             document.body.appendChild(form);
             form.submit();
-
         }
 
         function navigateToMemberUpdate() {
