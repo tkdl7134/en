@@ -206,6 +206,11 @@ main {
     background-color: #fff4f4;
     color: #5c5c5c;
 }
+.je_fundingBox-details {
+    position: relative;
+    border: 0.2rem solid #ffd600;
+    border-radius: 45% / 35%;
+}
 
 .hw_template-img {
     display: flex;
@@ -216,6 +221,7 @@ main {
 
 .hw_template-img > img {
     height: 100%;
+    width: 100%;
 }
 
 .hw_template-title {
@@ -239,12 +245,6 @@ main {
     overflow:hidden
 }
 
-.je_fundingBox-details {
-
-    position: relative;
-    border: 0.2rem solid #ffd600;
-    border-radius: 45% / 35%;
-}
 .hw_share_btn {
     background: none;
     border: none;
