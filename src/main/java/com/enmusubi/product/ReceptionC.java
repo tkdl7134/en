@@ -22,7 +22,6 @@ public class ReceptionC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("m_id"));
 		String eno = request.getParameter("e_no");
 		session.setAttribute("eno", eno);
 		if (session.getAttribute("m_id")!=null) {
