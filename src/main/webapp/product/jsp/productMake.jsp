@@ -19,6 +19,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="product/js/productMake.js"></script>
 <script src="product/js/productMakeChk.js" defer></script>
+<script src="product/js/nameValid.js" defer></script>
 <script src="product/js/validChk.js" defer></script>
 </head>
 <body>
@@ -118,28 +119,28 @@
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="groomKanjiL" id="je_g-kanji1" 
-                           type="text" placeholder="姓" oninput="printName()" />
-                          <input name="groomKanjiF" id="je_g-kanji2"
+                          <input name="groomKanjiL" id="je_g-kanji1" maxlength="10" 
+                           type="text" placeholder="姓" oninput="printName()"/>
+                          <input name="groomKanjiF" id="je_g-kanji2" maxlength="10" 
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
-                        <div class="je_inputbox-title">カタカナ</div>
+                        <div class="je_inputbox-title">フリガナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="groomKanaL" id="je_g-kana1" 
-                          type="text" placeholder="セイ" onkeyup="printName()" onblur="return groomKanaChk()"/>
-                          <input name="groomKanaF" id="je_g-kana2"
-                           type="text" placeholder="メイ" onkeyup="printName()" onblur="return groomKanaChk()"/>
+                          <input name="groomKanaL" id="je_g-kana1" class="kana-input" maxlength="20" 
+                          type="text" placeholder="セイ" onkeyup="printName()"/>
+                          <input name="groomKanaF" id="je_g-kana2" class="kana-input" maxlength="20"
+                           type="text" placeholder="メイ" onkeyup="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="groomRomaL" id="je_g-roma1" 
-                           type="text" placeholder="Last Name" onkeyup="printName()" onblur="return groomEngChk()"/>
-                          <input name="groomRomaF" id="je_g-roma2"
-                          type="text" placeholder="First Name" onkeyup="printName()" onblur="return groomEngChk()"/>
+                          <input name="groomRomaL" id="je_g-roma1" class="eng-input"  maxlength="20"
+                           type="text" placeholder="Last Name" onkeyup="printName()" />
+                          <input name="groomRomaF" id="je_g-roma2" class="eng-input" maxlength="20" 
+                          type="text" placeholder="First Name" onkeyup="printName()" />
                         </div>
                       </div>
                     </div>
@@ -154,28 +155,28 @@
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">漢字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="brideKanjiL" id="je_b-kanji1"
+                          <input name="brideKanjiL" id="je_b-kanji1"  maxlength="10"
                            type="text" placeholder="姓" oninput="printName()"/>
-                          <input name="brideKanjiF"  id="je_b-kanji2"
+                          <input name="brideKanjiF"  id="je_b-kanji2" maxlength="10"
                           type="text" placeholder="名" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
-                        <div class="je_inputbox-title">カタカナ</div>
+                        <div class="je_inputbox-title">フリガナ</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="brideKanaL" id="je_b-kana1"
-                          type="text" placeholder="セイ" oninput="printName()" onblur="return brideKanaChk()"/>
-                          <input name="brideKanaF"  id="je_b-kana2"
-                          type="text" placeholder="メイ" oninput="printName()" onblur="return brideKanaChk()"/>
+                          <input name="brideKanaL" id="je_b-kana1" class="kana-input" maxlength="20"
+                          type="text" placeholder="セイ" oninput="printName()"/>
+                          <input name="brideKanaF"  id="je_b-kana2" class="kana-input" maxlength="20"
+                          type="text" placeholder="メイ" oninput="printName()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_name">
                         <div class="je_inputbox-title">ローマ字</div>
                         <div class="je_inputbox-input je_inputBox-name">
-                          <input name="brideRomaL" id="je_b-roma1"
-                          type="text" placeholder="Last Name" oninput="printName()" onblur="return brideEngChk()"/>
-                          <input name="brideRomaF"  id="je_b-roma2"
-                          type="text" placeholder="First Name" oninput="printName()" onblur="return brideEngChk()"/>
+                          <input name="brideRomaL" id="je_b-roma1" class="eng-input" maxlength="20"
+                          type="text" placeholder="Last Name" oninput="printName()" />
+                          <input name="brideRomaF"  id="je_b-roma2" class="eng-input" maxlength="20"
+                          type="text" placeholder="First Name" oninput="printName()" />
                         </div>
                       </div>
                     </div>
@@ -220,14 +221,14 @@
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input name="marriage_place" id="je_main-building" 
+                          <input name="marriage_place" id="je_main-building" maxlength="10"
                           type="text" oninput="printInfo()"/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input name="marriage_addr" id="je_main-addr"  
+                          <input name="marriage_addr" id="je_main-addr" maxlength="20"
                           type="text" oninput="printInfo()"/>
                         </div>
                       </div>
@@ -244,7 +245,7 @@
                         <div class="je_inputbox-title">時間</div>
                         <div class="je_inputbox-input je_time_input">
                           <input name="receptionTime" id="timepicker-r" class="timepicker"
-                            type="text" placeholder="時間選択" autocomplete="off"readonly/>
+                            type="text" placeholder="時間選択" autocomplete="off" readonly/>
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
@@ -257,14 +258,14 @@
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">建物名</div>
                         <div class="je_inputbox-input je_building-input">
-                          <input name="reception_place" id="je_side-building" 
+                          <input name="reception_place" id="je_side-building"  maxlength="10"
                           type="text" oninput="printInfo()" />
                         </div>
                       </div>
                       <div class="je_info-inputbox je_event">
                         <div class="je_inputbox-title">住所</div>
                         <div class="je_inputbox-input je_address-input">
-                          <input name="reception_addr"id="je_side-addr" 
+                          <input name="reception_addr"id="je_side-addr" maxlength="20"
                           	type="text" oninput="printInfo()"/>
                         </div>
                       </div>
@@ -293,7 +294,7 @@
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="helloMessage" rows="6" cols="40" id="je_invite-m"
-                            oninput="printInfo()" maxlength="180"></textarea>
+                            oninput="printInfo()" maxlength="135"></textarea>
                         </div>
                       </div>
                     </div>
@@ -309,7 +310,7 @@
                         <div class="je_inputbox-title">内容</div>
                         <div class="je_inputbox-input">
                           <textarea name="byeMessage" id="je_finish-m" rows="10" 
-                          oninput="printInfo()" maxlength="190"></textarea>
+                          oninput="printInfo()" maxlength="156"></textarea>
                         </div>
                       </div>
                     </div>
