@@ -537,7 +537,7 @@ main {
 	border-radius: 30%;
 }
 .hw_template-button:hover{
-	opacity: 1;
+	/* opacity: 1; */
 }
 .hw_template-button>button {
 	width: 7rem;
