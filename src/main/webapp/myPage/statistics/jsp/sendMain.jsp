@@ -100,6 +100,10 @@
 	background-repeat : no-repeat;
 
 }
+.yj-main-menubox{
+
+z-index : 100;
+}
 </style>
 </head>
 <body id="page_top">
