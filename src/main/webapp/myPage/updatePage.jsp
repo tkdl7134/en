@@ -113,7 +113,7 @@ body {
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード" maxlength="20" minlength="6">
+							placeholder="パスワード" maxlength="12" minlength="6">
 						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					</div>
 					<div class="annai">*半角英数字記号6~12桁</div>
@@ -121,7 +121,7 @@ body {
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20" minlength="6">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="12" minlength="6">
 					</div>
 				</div>
 
