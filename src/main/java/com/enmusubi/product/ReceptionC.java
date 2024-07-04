@@ -12,15 +12,22 @@ import javax.servlet.http.HttpSession;
 public class ReceptionC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ProductDAO.getInvitation(request);
-		request.getRequestDispatcher("product/jsp/reception.jsp").forward(request, response);
+		String eno = request.getParameter("e_no");
+		if(!eno.equals(null)) {
+			request.setAttribute("je_eventNo", eno);
+			ProductDAO.getReception(request);
+			request.getRequestDispatcher("product/jsp/reception.jsp").forward(request, response);
+		}
+		else {
+			response.sendRedirect("MainC");
+		}
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String eno = request.getParameter("e_no");
+		String eno = request.getParameter("eno");
 		session.setAttribute("eno", eno);
 		if (session.getAttribute("m_id")!=null) {
 			System.out.println("==============");

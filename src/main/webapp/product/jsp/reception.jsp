@@ -12,7 +12,7 @@
 </head>
 <body>
 	<form action="ReceptionC" method="post">
-		<input type="hidden" name="eno" value="${param.eno }">
+		<input type="hidden" name="eno" value="${param.e_no }">
 		<div class="i-container">
 			<div class="yj-main-s2-logo">
 				<img alt="" src="finance/img/logo.png">
