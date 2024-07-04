@@ -113,7 +113,7 @@ body {
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード" maxlength="20">
+							placeholder="パスワード" maxlength="20" minlength="6">
 						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					</div>
 					<div class="annai">*半角英数字記号6~12桁</div>
@@ -121,7 +121,7 @@ body {
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20" minlength="6">
 					</div>
 				</div>
 
@@ -529,6 +529,10 @@ body {
 	        { field: $("#a_street"), name: '番地' }
 	    ];
 
+	 // 패스워드 최소 길이 설정
+	    let passwordMinLength = $('#m_pw').attr('minlength') || 8; // 기본적으로 8자리로 설정
+
+	    // 필수 입력 항목 확인
 	    for (let i = 0; i < requiredFields.length; i++) {
 	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
 	            let emptyField = requiredFields[i].field[0];
@@ -540,7 +544,6 @@ body {
 	                    confirmButton: 'swal2-confirm'
 	                },
 	                didClose: () => {
-	                    // SweetAlert2가 닫힌 후 실행
 	                    emptyField.focus();
 	                    emptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	                }
@@ -549,39 +552,56 @@ body {
 	        }
 	    }
 
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-		
-		const emailInput = document.getElementById('emailInput');
-        const emailValue = emailInput.value;
+	    // 패스워드 유효성 검사
+	    let pw = $("#m_pw").val().trim();
+	    let pwConfirm = $("#m_pw_confirm").val().trim();
 
-		if (pw !== pwConfirm) {
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
-				Swal.fire({
-					icon: 'warning',
-					title : 'メールアドレスの形式が正しくありません。',
-					customClass : {
-						popup : 'swal2-popup',
-						confirmButton : 'swal2-confirm'
-					}
-				});
-			return false; // 폼 제출 방지
-		}
-		
-			document.querySelector('#MemberUpdateC').submit();
+	    if (pw.length < passwordMinLength) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'パスワードは最低' + passwordMinLength + '桁以上ご入力ください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false;
+	    }
+
+	    if (pw !== pwConfirm) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'パスワードが一致しません。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false;
+	    }
+
+	    // 이메일 유효성 검사
+	    let emailInput = document.getElementById('emailInput');
+	    let emailValue = emailInput.value;
+
+	    if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'メールアドレスの形式が正しくありません。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false;
+	    }
+
+	    // 모든 유효성 검사 통과 후 폼 제출
+	    document.querySelector('#MemberUpdateC').submit();
+
+	    return true;
 	}
-	
+		
 	function checkForm() {
 	    let m_pw = $("#m_pw").val().trim();
 	    let m_pw_confirm = $("#m_pw_confirm").val().trim();
