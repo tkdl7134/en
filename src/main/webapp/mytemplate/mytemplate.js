@@ -37,7 +37,7 @@
 
         function sendENo(e_no) {
             const baseUrl = "http://localhost:8080/En/";
-            const url = `ReceivedMainC?e_no=${e_no}`;
+            const url = `ReceivedMainC?eno=${e_no}`;
             console.log("Navigating to: " + url); // 디버깅 로그
             window.location.href = url;
         }

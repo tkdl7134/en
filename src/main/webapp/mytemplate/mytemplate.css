@@ -33,6 +33,28 @@ body {
 }
 
 
+
+.hw_menubar {
+	display: flex;
+    justify-content: center;
+    width: 55%;
+    font-size: 15pt;
+    text-align: center;
+    margin: auto;
+    margin-top: 10rem;
+}
+.hw_menubar_item{
+	display: block;
+}
+.yellow_line{
+	width: 15rem;
+	margin-bottom: 100px;
+}
+
+
+
+
+
 /* 헤더 스타일 */
 .hw_head {
     background-position: top center;
@@ -57,10 +79,8 @@ body {
 }
 
 .hw_page_title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80px;
+   text-align: center;
+    margin-top: 110px;
 }
 
 @keyframes logo-float {
@@ -91,23 +111,13 @@ body {
     border-radius: 1rem;
     position: relative;
     z-index: 1;
-
-    margin-top: 14.7%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 네비게이션 바 스타일 */
-.hw_menubar {
-   display: flex;
-	justify-content: center;
-	width: 55%;
-	font-size: 15pt;
-	text-align: center;
-	margin: auto;
-}
 
-.hw_menubar_item {
-    display: block;
-}
 
 .hw_menubar_menu {
     font-size: 1.25rem;
@@ -338,11 +348,6 @@ main {
 }
 
 
-
-.yj-main-section {
-  /* 뷰포트 전체를 채우도록 설정 */
-  height: 5vh;
-}
 
 /* 섹션 2~6 로고 */
 .yj-main-logo {

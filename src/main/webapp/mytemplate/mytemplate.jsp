@@ -21,10 +21,10 @@
 
         <jsp:include page="${mainNav}" />
     </div>
-    <h1 class="hw_page_title">テンプレート 管理</h1>
 
     <form id="templateForm" action="mytemplateController" method="post">
         <div class="hw_container">
+    <h1 class="hw_page_title">テンプレート 管理</h1>
             <nav class="hw_menubar">
                 <div class="hw_menubar_item">
                     <a class="hw_menubar_menu" href="javascript:void(0);"
@@ -44,7 +44,7 @@
                         src="mytemplate/imgFolder/yellow_line.png">
                 </div>
             </nav>
-
+            
             <main class="hw_template_main">
                 <div class="hw_product-page-content">
                     <div class="hw_page-content">
