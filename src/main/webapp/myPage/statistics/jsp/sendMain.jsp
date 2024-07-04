@@ -107,7 +107,8 @@ z-index : 100;
 	font-size: 15pt;
 	text-align: center;
 	margin-top: 10rem;
-	margin-left: 22.5rem;
+	transform: translateX(41%);
+	
 }
 
 .hs_btn-container {
@@ -158,13 +159,13 @@ z-index : 100;
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 				<div class="hs_btn-container">
-					<a href="mytemplateController" class="hs_btn me">✿ テンプレート管理 ✿</a> <img
+					<a href="mytemplateController" class="hs_btn">✿ テンプレート管理 ✿</a> <img
 						class="yellow_line" alt=""
 						src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 				
 				<div class="hs_btn-container">
-					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+					<a href="MyMeetingC" class="hs_btn me">✿ 会リスト ✿</a> <img class="yellow_line"
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 			</div>
