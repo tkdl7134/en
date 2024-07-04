@@ -86,33 +86,6 @@ body {
 	padding: 10rem;
 }
 
-/* .jw-w-container {
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	border-radius: 5vh;
-	transition: transform 0.5s ease, opacity 1s ease;
-}
-
-.jw-w-img-box {
-	width: 14vw;
-	height: 14vw;
-	background-image:
-		url(../../myPage/statistics/imgFolder/opt_red_line.png);
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.2s ease-out;
-}
-
-.jw-w-img-box:hover {
-	transform: rotateZ(10deg);
-	cursor: pointer;
-	background-image: url(../../myPage/statistics/imgFolder/opt_yellow.png);
-} */
 .jw-w-container {
 	width: 100%;
 	display: flex;
@@ -123,8 +96,8 @@ body {
 }
 
 .jw-w-img-box {
-	width: 14rem;
-	height: 14rem;
+	width: 17rem;
+	height: 17rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -163,8 +136,8 @@ body {
 }
 
 .jw-w-tex {
-	padding-top: 30%;
-	padding-bottom: 10%;
+	padding-top: 25%;
+	padding-bottom: 18%;
 	text-align: center;
 }
 
@@ -178,7 +151,6 @@ body {
 
 .jw-w-tex>h4 {
 	color: #999999;
-	paddgin-top: 0.1rem;
 }
 
 dialog {
