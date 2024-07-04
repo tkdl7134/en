@@ -282,7 +282,7 @@ function goStatistic(wlno) {
 			success: function(response) {
 				$(".kh-f-statistic-conCon").html("");
 				closeModal();
-				jsoninfos.forEach((element, index) => {
+				response.forEach((element, index) => {
 					let doms = `
 				<div class="kh-f-statistic-content">
 					<div class="kh-f-statistic-name">
