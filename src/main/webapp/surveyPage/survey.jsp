@@ -100,20 +100,20 @@
 														<input
 														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="name"
-														name="name" required 
+														name="name"   
 														maxlength="20"
                 										title="英語、漢字、数字、および特別文字のみ使用できます。"
                 										oninput="validateKanziInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"	
+                										autocomplete="off"	
 														value="${members.m_first_name}" disabled="disabled" /> 
 														<input style="font-size: 1.2rem;"														
 														type="text" placeholder="Last Name" class="name-input"
-														id="name" name="name" required
-														name="name" required 
+														id="name" name="name"  
+														name="name"  
 														maxlength="20"
                 										title="英語、漢字、数字、および特別文字のみ使用できます。"
                 										oninput="validateKanziInput(this)"
-														oninvalid="setCustomValidationMessage(this)"													
+														autocomplete="off"													
 														value="${members.m_last_name}" disabled="disabled" />
 													</label>
 													<br>
@@ -122,18 +122,19 @@
 														<input
 														style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="kataName"
-														name="kata-name" required
+														name="kata-name" 
 														maxlength="20"
                 										title="フリガナのみ使用できます。"
                 										oninput="validateKanaInput(this)"
+                										autocomplete="off"
 														value="${members.m_first_name_kana}" disabled="disabled" />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="Last Name" class="name-input" id="kataName"
-														name="kata-name" required
+														name="kata-name" 
 														maxlength="20"
                 										title="フリガナのみ使用できます。"
                 										oninput="validateKanaInput(this)"
-														oninvalid="setCustomValidationMessage(this)"													                																								
+														autocomplete="off"													                																								
 														value="${members.m_last_name_kana}" disabled="disabled" />
 													</label>
 													<br>
@@ -142,18 +143,19 @@
 														<input
 														style="font-size: 1.2rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
-														name="roma-name" required
+														name="roma-name" 
 														maxlength="20"
                	 										title="英語のみ使用できます。"
                 										oninput="validateEngInput(this)"
+                										autocomplete="off"
 														value="${members.m_first_name_rome}" disabled="disabled" />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" class="name-input" id="romaName"
-														name="roma-name" required 
+														name="roma-name"  
 														maxlength="20"
                	 										title="英語のみ使用できます。"
                 										oninput="validateEngInput(this)"
-														oninvalid="setCustomValidationMessage(this)"													                										
+														autocomplete="off"													                										
 														disabled="disabled"		
 														value="${members.m_last_name_rome}" />
 													</label>
@@ -166,11 +168,11 @@
 													<label class="kanzi-container">
 														<div style="font-size: 1.5rem;">名前</div> <input
 														style="font-size: 1.2rem;" type="text" placeholder="姓"
-														class="name-input" id="name" name="name" required
+														class="name-input" id="name" name="name" 
 														maxlength="20"
                 										title="英語、漢字、数字、および特別文字のみ使用できます。"
                 										oninput="validateKanziInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"
+                										autocomplete="off"
 														value="${members.m_first_name}"
 														<c:if test="${members.m_first_name != 'no'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
@@ -178,28 +180,28 @@
 														maxlength="20"
                 										title="英語、漢字、数字、および特別文字のみ使用できます。"
                 										oninput="validateKanziInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"
-														required value="${members.m_last_name}"
+                										autocomplete="off"
+														  value="${members.m_last_name}"
 														<c:if test="${members.m_last_name != 'data'}">disabled="disabled"</c:if> />
 													</label>
 													<br>
 													<label class="kata-container">
 														<div style="font-size: 1.5rem;">フリガナ</div> <input
 														style="font-size: 1.2rem;" type="text" placeholder="せい"
-														class="name-input" id="kataName" name="kata-name" required
+														class="name-input" id="kataName" name="kata-name" 
 														maxlength="20"
                 										title="フリガナのみ使用できます。"
                 										oninput="validateKanaInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"
+                										autocomplete="off"
 														value="${members.m_first_name_kana}"
 														<c:if test="${members.m_first_name_kana != 'no'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="めい" class="name-input" id="kataName"
-														name="kata-name" required
+														name="kata-name"  
 														maxlength="20"
                 										title="フリガナのみ使用できます。"
                 										oninput="validateKanaInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"
+                										autocomplete="off"
 														value="${members.m_last_name_kana}"
 														<c:if test="${members.m_last_name_kana != 'data'}">disabled="disabled"</c:if> />
 													</label>
@@ -208,20 +210,20 @@
 														<div style="font-size: 1.5rem;">ローマ字</div> <input
 														style="font-size: 1.2rem;" type="text"
 														placeholder="Last Name" class="name-input" id="romaName"
-														name="roma-name" required
+														name="roma-name"  
 														maxlength="20"
                	 										title="英語のみ使用できます。"
                 										oninput="validateEngInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"                										
+                										autocomplete="off"                										
 														value="${members.m_last_name_rome}"
 														<c:if test="${members.m_last_name_rome != 'data'}">disabled="disabled"</c:if> />
 														<input style="font-size: 1.2rem;" type="text"
 														placeholder="First Name" id="romaName" class="name-input"
-														name="roma-name" required
+														name="roma-name" ""
 														maxlength="20"
                	 										title="英語のみ使用できます。"
                 										oninput="validateEngInput(this)"
-                										oninvalid="setCustomValidationMessage(this)"
+                										autocomplete="off"
 														value="${members.m_first_name_rome}"
 														<c:if test="${members.m_first_name_rome != 'no'}">disabled="disabled"</c:if> />
 													</label>
@@ -272,11 +274,11 @@
 											<div>
 												メールアドレス<input style="font-size: 1.2rem;" type="email"
 													class="contact-input" id="email" name="email"
-													placeholder="enmusubi@gmail.com" required
+													placeholder="enmusubi@gmail.com"  
 													maxlength="50"
                     								title="有効なメールアドレスを入力してください。"
-                    								oninvalid="setCustomValidationMessage(this)"
                     								oninput="validateEmail(this)"
+                    								autocomplete="off"
 													disabled="disabled" value="${members.m_email}" />
 											</div>
 											<div>
@@ -285,8 +287,8 @@
 													maxlength="20"
                     								title="数字のみ入力してください。"
                     								oninput="validatePhoneNumber(this)"
-                    								oninvalid="setCustomValidationMessage(this)"
-													placeholder="000-0000-0000" required disabled="disabled"
+                    								autocomplete="off"
+													placeholder="000-0000-0000"   disabled="disabled"
 													value="${members.m_phone}" />
 											</div>
 										</div>
@@ -301,22 +303,22 @@
 											<div>
 												メールアドレス<input style="font-size: 1.2rem;" type="email"
 													class="contact-input" id="email" name="email"
-													placeholder="enmusubi@gmail.com" required
+													placeholder="enmusubi@gmail.com"  
 													maxlength="50"
                     								title="有効なメールアドレスを入力してください。"
                     								oninput="validateEmail(this)"
-                    								oninvalid="setCustomValidationMessage(this)"
+                    								autocomplete="off"
 													value="${members.m_email}"
 													<c:if test="${members.m_email != 'no data'}">disabled="disabled"</c:if> />
 											</div>
 											<div>
 												電話番号 <input style="font-size: 1.2rem;" type=""text""
 													class="contact-input" id="phonenum" name="phonenum"
-													placeholder="000-0000-0000" required
+													placeholder="000-0000-0000"  
 													maxlength="20"
                     								title="数字のみ入力してください。"
                     								oninput="validatePhoneNumber(this)"
-                    								oninvalid="setCustomValidationMessage(this)"
+                    								autocomplete="off"
 													value="${members.m_phone}"
 													<c:if test="${not empty members.m_phone}">disabled="disabled"</c:if> />
 											</div>
@@ -350,11 +352,10 @@
 														<div>
 															<input style="font-size: 1.4rem" type="text"
 																id="postal-code" name="postal-code"
-																placeholder="123-4567" required
+																placeholder="123-4567"  
 																maxlength="20"
-                        										title="数字のみ入力してください。"
+                        										title="数字、およびハイフンのみ入力してください。"
                         										oninput="validatePostalCode(this)"
-                        										oninvalid="setCustomValidationMessage(this)"
 																value="${members.a_postcode}" disabled="disabled" />
 														</div>
 													</div>
@@ -364,7 +365,7 @@
 														</div>
 														<div>
 															<input style="font-size: 1.4rem" id="prefecture"
-																name="prefecture" required
+																name="prefecture"  
 																value="${members.a_prefecture}" disabled="disabled">
 														</div>
 													</div>
@@ -374,7 +375,7 @@
 														</div>
 														<div>
 															<input style="font-size: 1.4rem" type="text" id="city"
-																name="city" placeholder="新宿区" required
+																name="city" placeholder="新宿区"  
 																maxlength="10"
                         										title="最大10文字まで入力できます。"
 																value="${members.a_city }" disabled="disabled" />
@@ -388,7 +389,7 @@
 														</div>
 														<div>
 															<textarea style="font-size: 1.4rem;" id="address-line1"
-																name="address" placeholder="西新宿2-8-1 新宿ビル 101" required
+																name="address" placeholder="西新宿2-8-1 新宿ビル 101"  
 																maxlength="300"
                         										title="最大300文字まで入力できます。"
 																disabled="disabled">${members.a_address }</textarea>
@@ -420,7 +421,7 @@
 														<div>
 															<input style="font-size: 1.4rem" type="text"
 																id="postal-code" name="postal-code"
-																placeholder="123-4567" required
+																placeholder="123-4567"  
 																maxlength="20"
                         										title="数字のみ入力してください。"
                         										oninput="validatePostalCode(this)"
@@ -433,15 +434,16 @@
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
-															<label class="styled-select"> <select
+															<label class="styled-select"> 
+															<select
 																style="font-size: 1.4rem" id="prefecture" name="address"
-																class="pl" required
+																class="pl"  
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
 																	<c:if test="${empty members.a_prefecture}">
 																		<option value="">都道府県を選択してください</option>
 																	</c:if>
-																	<c:forEach var="prefecture" items="${prefectures}">
-																		<option value="${prefecture }">
+																	<c:forEach var="prefecture" items="${prefectures}" varStatus="var">
+																		<option value="${prefecture }" data-value="${var.count}"></option>
 																			<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
 																			${prefecture }
 																	</c:forEach>
@@ -455,7 +457,7 @@
 														</div>
 														<div>
 															<input style="font-size: 1.4rem" type="text" id="city"
-																name="address" placeholder="新宿区" required
+																name="address" placeholder="新宿区"  
 																maxlength="10"
                         										title="最大10文字まで入力できます。"
 																value="${members.a_city }"
@@ -470,7 +472,7 @@
 														</div>
 														<div>
 															<textarea style="font-size: 1.4rem;" id="address-line1"
-																name="address" placeholder="西新宿2-8-1 新宿ビル 101" required
+																name="address" placeholder="西新宿2-8-1 新宿ビル 101"  
 																maxlength="300"
                         										title="最大300文字まで入力できます。"
 																<c:if test="${not empty members.a_address}">disabled="disabled"</c:if>>${members.a_address }</textarea>
@@ -1203,19 +1205,19 @@ function validateKanziInput(input) {
 }
 
 function validateKanaInput(input) {
-        const regex = /^[\u30A0-\u30FF\s]*$/;
-        const value = input.value;
-        const lastChar = value.charAt(value.length - 1);
+	    // 한글 초성, 중성, 종성도 포함하는 정규식
+	    const regex = /^[\u30A0-\u30FF\u3040-\u309F\s]*$/;
+	    const value = input.value;
 
-        // 카타카나와 띄어쓰기를 제외한 모든 문자를 제거합니다.
-        if (!regex.test(lastChar)) {
-            input.value = value.slice(0, -1);
-            input.setCustomValidity("フリガナのみ使用できます。");
-        } else {
-            input.setCustomValidity("");
-        }
-        input.reportValidity();
-    }
+	    // 조건에 맞지 않는 문자가 있는 경우 입력되지 않도록 처리
+	    if (!regex.test(value)) {
+	        input.setCustomValidity("フリガナのみ使用できます。");
+	        input.value = value.replace(/[/[^\u30A0-\u30FF\u3040-\u309F\s]/g, '');
+	    } else {
+	        input.setCustomValidity("");
+	    }
+	    input.reportValidity();
+	}
 
 function validateEngInput(input) {
         const regex = /^[a-zA-Z\s]*$/;
@@ -1261,13 +1263,16 @@ function validatePhoneNumber(input) {
 }
 
 function validatePostalCode(input) {
-    const regex = /^[0-9\s]*$/;
+    const regex = /^[0-9\s-]*$/;
     const value = input.value;
-    input.value = value.replace(/[^\d\s]/g, ''); // 숫자와 띄어쓰기를 제외한 모든 문자를 제거합니다.
-    if (!regex.test(value)) {
-        input.setCustomValidity("数字とスペースのみ入力してください。");
+    const newValue = value.replace(/[^\d\s-]/g, ''); // 숫자, 띄어쓰기, 하이픈을 제외한 모든 문자를 제거합니다.
+    input.value = newValue;
+    if (!regex.test(newValue)) {
+        input.setCustomValidity("数字、スペース、およびハイフンのみ入力してください。");
+        document.getElementById("postalCodeError").style.display = "block";
     } else {
         input.setCustomValidity("");
+        document.getElementById("postalCodeError").style.display = "none";
     }
     input.reportValidity();
 }
@@ -1296,9 +1301,19 @@ function validateAddressInput(input) {
 }
 
 
-function clearCustomValidationMessage(input) {
-    input.setCustomValidity("");
+
+
+function validateInput(input) {
+    input.setCustomValidity(""); // 기본 메시지 제거
+    const errorMessage = document.getElementById(input.id + "Error");
+    if (input.validity.valueMissing) {
+        errorMessage.style.display = "block";
+    } else {
+        errorMessage.style.display = "none";
+    }
+    input.reportValidity();
 }
+
 
     </script>
 
