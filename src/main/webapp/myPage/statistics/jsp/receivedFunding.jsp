@@ -93,7 +93,7 @@ z-index : 100;
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 			</div>
-		<div style="margin-top: 6rem; gap : 10rem;" class="kh-f-card-container">
+		<div style="margin-top : -5rem; gap : 10rem;" class="kh-f-card-container">
 			
 			<div class="kh-f-card-fake"></div>
 		
