@@ -272,6 +272,7 @@ yj-main-nav a:visited {
 	font-size : 20px;
 	font-weight: bold;
 	color : #696969;
+	cursor : pointer;
 	
 	
 	
@@ -314,7 +315,7 @@ yj-main-nav a:visited {
   height: 100%;
 }
 .jh-half-circle{
-	 width: 116rem;
+	 width: 113rem;
     height: 90vh; /* 높이는 반원이 되도록 합니다 */
     border-top-left-radius: 60rem;
     border-top-right-radius: 60rem;

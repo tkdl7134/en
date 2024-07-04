@@ -664,4 +664,51 @@ public class MemberDAO {
 		System.out.println(request.getParameter("state"));
 
 	}
+
+	public static void selectMember(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "select m.m_id, m.m_pw, m.m_name, m.m_name_kana, m.m_name_rome, EXTRACT(YEAR FROM m.m_birth) AS year,EXTRACT(MONTH FROM m.m_birth) AS month,EXTRACT(DAY FROM m.m_birth) AS day, m.m_gender, m.m_email, m.m_regdate, m.m_img, m.m_phone, a.a_address, a.a_postcode from s_member m left outer join s_address a on m.m_id = a.m_id where m.m_id = ?";
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, (String)request.getSession().getAttribute("m_id"));
+			rs = pstmt.executeQuery();
+			MeberSplitDTO dto = new MeberSplitDTO();
+			if(rs.next()) {
+				System.out.println("select success!");
+				dto.setM_id(rs.getString(1));
+				dto.setM_pw(rs.getString(2));
+				String[] name = rs.getString(3).split(" ");
+				dto.setM_name1(name[0]);
+				dto.setM_name2(name[1]);
+				String[] kana = rs.getString(4).split(" ");
+				dto.setM_name_kana1(kana[0]);
+				dto.setM_name_kana2(kana[1]);
+				String[] roma = rs.getString(5).split(" ");
+				dto.setM_name_rome1(roma[0]);
+				dto.setM_name_rome2(roma[1]);
+				dto.setM_birth_year(rs.getString(6));
+				dto.setM_birth_month(rs.getString(7));
+				dto.setM_birth_day(rs.getString(8));
+				dto.setM_gender(rs.getString(9));
+				dto.setM_email(rs.getString(10));
+				dto.setM_regdate(rs.getString(11));
+				dto.setM_img(rs.getString(12));
+				dto.setM_phone(rs.getString(13));
+				String address[] = rs.getString(14).split(" ");
+				dto.setA_address(address);
+				dto.setA_postcode(rs.getString(15));
+				request.setAttribute("i", dto);
+			}
+			System.out.println(dto);
+			System.out.println(request.getAttribute("i"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+	}
 }

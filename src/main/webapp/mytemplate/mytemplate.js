@@ -38,10 +38,19 @@
         }
 
         function submitToInvitationC(e_no) {
-			const baseUrl = "http://localhost:8080/En/";
-            const url = `${baseUrl}ReceptionC?eno=${e_no}`;
-            console.log("Navigating to: " + url); // 디버깅 로그
-            window.location.href = url;
+            const form = document.createElement('form');
+            form.method = 'get';
+            form.action = 'testC';
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.name = 'e_no';
+            input.value = e_no;
+            input.style.display="none";
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
         }
 
         function navigateToMemberUpdate() {
