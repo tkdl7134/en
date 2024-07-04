@@ -78,8 +78,8 @@ public class SurveyDAO {
             System.out.println("알레르기 타입: " + request.getParameter("allergy-type"));
             
             String[] normalName = request.getParameterValues("name");
-            String[] kataName = request.getParameterValues("kata-name");
-            String[] romaName = request.getParameterValues("roma-name");
+            String[] kataName = request.getParameterValues("kataName");
+            String[] romaName = request.getParameterValues("romaName");
             
             for (String s : romaName) {
 			System.out.println(s);
