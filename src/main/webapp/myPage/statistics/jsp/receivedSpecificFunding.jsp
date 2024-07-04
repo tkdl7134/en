@@ -76,6 +76,37 @@
     flex-direction: column;
     align-items: center;
       }
+      .hs_mypage-menus {
+	display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin-top: 10rem;
+}
+
+.hs_btn-container {
+	display: block;
+}
+
+.hs_btn {
+	text-decoration: none;
+	color: #696969;
+}
+
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;;
+}
+
+.hs_btn.me {
+	color: #ff2828;
+}
+
+.yellow_line {
+	width: 15rem;
+	margin-bottom: 100px;
+}
     </style>
 
 </head>
@@ -97,14 +128,23 @@
 	
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
  	<div style="font-size: 30px; font-weight : bold;margin-top : 1rem;" class="recFundSpecTitle">ファンディング の現状</div>
-  <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
-	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div onclick="location.href='mytemplateController'" style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='MyMeetingC'"  style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
-	</div>
-	<div style="display: flex; " id="toGoLines">
-	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
-	</div>
+	<div class="hs_mypage-menus">
+				<div class="hs_btn-container">
+					<a href="MemberDetailC" class="hs_btn">✿ 会員情報 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				<div class="hs_btn-container">
+					<a href="mytemplateController" class="hs_btn me">✿ テンプレート管理 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				
+				<div class="hs_btn-container">
+					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+						alt="" src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+			</div>
     <div style="margin-top : 2rem;" id="fundSpecProduct-img"><img id="fundSpecPro-img" alt="" src="myPage/statistics/imgFolder/${product }.png"></div>
     <div id="fundSpecProduct-name">${product }</div>
     <div id="fundSpecProduct-rank">現在第${rank }位！ </div>
