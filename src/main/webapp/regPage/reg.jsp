@@ -465,6 +465,7 @@ function register() {
 		
 		// 필수 입력 항목들을 확인
 	    let requiredFields = [
+	        { field: $("#m_id"), name: 'ID' },
 	        { field: $("#m_pw"), name: 'パスワード' },
 	        { field: $("#m_pw_confirm"), name: 'パスワード(確認)' },
 	        { field: $("input[name='m_name_sei']"), name: '名前' },
