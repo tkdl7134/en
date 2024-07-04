@@ -242,7 +242,9 @@ public class MemberDAO {
 		Connection con = null;
 		PreparedStatement pstmtEventFc = null;
 		PreparedStatement pstmtEvent = null;
+		PreparedStatement pstmtAllergy = null;
 		PreparedStatement pstmtParty = null;
+		PreparedStatement pstmtPay = null;
 		PreparedStatement pstmtGuest = null;
 		PreparedStatement pstmtAddress = null;
 		PreparedStatement pstmtMember = null;
@@ -250,6 +252,8 @@ public class MemberDAO {
 		String sqlEventFc = "DELETE FROM s_event_func WHERE m_id = ?";
 		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
 		String sqlParty = "DELETE FROM s_party WHERE m_id = ?";
+		String sqlAllergy = "DELETE FROM s_allergy WHERE m_id = ?";
+		String sqlPay = "DELETE FROM s_pay WHERE m_id = ?";
 		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
@@ -270,6 +274,14 @@ public class MemberDAO {
 			pstmtEvent.executeUpdate();
 			
 			pstmtGuest = con.prepareStatement(sqlParty);
+			pstmtGuest.setString(1, m_id);
+			pstmtGuest.executeUpdate();
+			
+			pstmtGuest = con.prepareStatement(sqlAllergy);
+			pstmtGuest.setString(1, m_id);
+			pstmtGuest.executeUpdate();
+			
+			pstmtGuest = con.prepareStatement(sqlPay);
 			pstmtGuest.setString(1, m_id);
 			pstmtGuest.executeUpdate();
 			
@@ -297,6 +309,8 @@ public class MemberDAO {
 			dbManager.close(con, pstmtEventFc, null);
 			dbManager.close(con, pstmtEvent, null);
 			dbManager.close(con, pstmtParty, null);
+			dbManager.close(con, pstmtAllergy, null);
+			dbManager.close(con, pstmtPay, null);
 			dbManager.close(con, pstmtGuest, null);
 			dbManager.close(con, pstmtAddress, null);
 			dbManager.close(con, pstmtMember, null);
