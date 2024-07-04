@@ -306,6 +306,37 @@ yj-main-nav a:visited {
 	
 	
 }
+.hs_mypage-menus {
+	display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin-top: 10rem;
+}
+
+.hs_btn-container {
+	display: block;
+}
+
+.hs_btn {
+	text-decoration: none;
+	color: #696969;
+}
+
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;;
+}
+
+.hs_btn.me {
+	color: #ff2828;
+}
+
+.yellow_line {
+	width: 15rem;
+	margin-bottom: 100px;
+}
 .ToGoTexts:hover {
 	color : #ff2828;
 	
@@ -313,7 +344,6 @@ yj-main-nav a:visited {
 }
 #recMain-content{
 	   display: flex;
-    margin-top: 2rem;
     width: 80rem;
     justify-content: space-evenly;
     margin-right : 1rem;

@@ -86,6 +86,37 @@
     align-items: center;
      
       }
+          .hs_mypage-menus {
+	display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin-top: 10rem;
+}
+
+.hs_btn-container {
+	display: block;
+}
+
+.hs_btn {
+	text-decoration: none;
+	color: #696969;
+}
+
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;
+}
+
+.hs_btn.me {
+	color: #ff2828;
+}
+
+.yellow_line {
+	width: 15rem;
+	margin-bottom: 100px;
+}
     </style>
 
 
@@ -111,14 +142,23 @@
 	<div style="font-size: 30px; font-weight : bold;">ご祝儀</div>
 	<div  style="margin-top: 0.3rem; smargin-left: 1rem;font-size: 25px; font-weight : bold;">の現状</div>
 	</div>
-	<div  style="display : flex; margin-top : 8rem;   " id="toGoTexts">
-	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div onclick="location.href='mytemplateController'" style="color : #ff2828;	margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='MyMeetingC'" style="margin-left: 6.1rem;" class="ToGoTexts">✿ 会リスト ✿</div>
-	</div>
-	<div style="display: flex; " id="toGoLines">
-	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
-	</div>
+		<div class="hs_mypage-menus">
+				<div class="hs_btn-container">
+					<a href="MemberDetailC" class="hs_btn">✿ 会員情報 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				<div class="hs_btn-container">
+					<a href="mytemplateController" class="hs_btn me">✿ テンプレート管理 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				
+				<div class="hs_btn-container">
+					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+						alt="" src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+			</div>
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div  style="height : 100rem; max-height : 80rem;" id="fundSpec-dataBoard-container">

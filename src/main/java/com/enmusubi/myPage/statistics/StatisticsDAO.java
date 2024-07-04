@@ -374,7 +374,6 @@ public class StatisticsDAO {
 		// event no 가져오기
 		int eventNo = Integer.parseInt(request.getParameter("eno")) ;
 		
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
