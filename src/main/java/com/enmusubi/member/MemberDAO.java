@@ -2,16 +2,13 @@ package com.enmusubi.member;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -245,12 +242,14 @@ public class MemberDAO {
 		Connection con = null;
 		PreparedStatement pstmtEventFc = null;
 		PreparedStatement pstmtEvent = null;
+		PreparedStatement pstmtParty = null;
 		PreparedStatement pstmtGuest = null;
 		PreparedStatement pstmtAddress = null;
 		PreparedStatement pstmtMember = null;
 		DBManager dbManager = DBManager.getInstance();
 		String sqlEventFc = "DELETE FROM s_event_func WHERE m_id = ?";
 		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
+		String sqlParty = "DELETE FROM s_party WHERE m_id = ?";
 		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
@@ -258,6 +257,8 @@ public class MemberDAO {
 		try {
 			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
+			
+			deleteEvent(m_id);
 
 			// 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
 			pstmtEvent = con.prepareStatement(sqlEventFc);
@@ -267,6 +268,10 @@ public class MemberDAO {
 			pstmtEvent = con.prepareStatement(sqlEvent);
 			pstmtEvent.setString(1, m_id);
 			pstmtEvent.executeUpdate();
+			
+			pstmtGuest = con.prepareStatement(sqlParty);
+			pstmtGuest.setString(1, m_id);
+			pstmtGuest.executeUpdate();
 			
 			pstmtGuest = con.prepareStatement(sqlGuest);
 			pstmtGuest.setString(1, m_id);
@@ -291,12 +296,60 @@ public class MemberDAO {
 		} finally {
 			dbManager.close(con, pstmtEventFc, null);
 			dbManager.close(con, pstmtEvent, null);
+			dbManager.close(con, pstmtParty, null);
 			dbManager.close(con, pstmtGuest, null);
 			dbManager.close(con, pstmtAddress, null);
 			dbManager.close(con, pstmtMember, null);
 		}
 	}
 
+	public static void deleteEvent(String sessionID) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sql = "select e_no from s_event where m_id = ?";
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sessionID);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				deleteEventChild(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+	}
+	
+	public static void deleteEventChild(String eno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DBManager dbManager = DBManager.getInstance();
+		String sqlR = "delete from s_reception where e_no = ?";
+		String sqlW = "delete from s_wedding_info where e_no = ?";
+		try {
+			con=dbManager.connect();
+			pstmt = con.prepareStatement(sqlR);
+			pstmt.setString(1, eno);
+			if(pstmt.executeUpdate()>0){
+				System.out.println("reception delete success!");
+			}
+			pstmt = con.prepareStatement(sqlW);
+			pstmt.setString(1, eno);
+			if(pstmt.executeUpdate()>0){
+				System.out.println("wedding info delete success!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbManager.close(con, pstmt, null);
+		}
+	}
 	// ResultSet -> DTO 변환 (마이페이지 등)
 	private static MemberDTO createMemberDTO(ResultSet rs) throws SQLException {
 		MemberDTO dto = new MemberDTO();

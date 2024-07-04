@@ -79,10 +79,10 @@ body {
 				<div class="hs_login">
 					<div class="hs_login id">ID</div>
 					<input type="text" id="m_id" name="m_id" placeholder="縁結びID"
-						class="hs_input" maxlength="20">
+						class="hs_input" maxlength="12">
 					<div class="hs_login pw">パスワード</div>
 					<input type="password" id="m_pw" name="m_pw" placeholder="パスワード"
-						class="hs_input" maxlength="20">
+						class="hs_input" maxlength="12">
 						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					<button type="submit" class="hs_btn-login">ログイン</button>
 				</div>
@@ -184,8 +184,8 @@ body {
 					return;
 				}
 
-				// 모든 버튼과 입력 필드를 
-				$('button, input').prop('disabled', true);
+				// 모든 입력 필드, 버튼, 링크 등 비활성화
+		        $('input, button, a').prop('disabled', true);
 
 				// 서버로 로그인 요청
 				$.ajax({
@@ -209,7 +209,6 @@ body {
 							location.href = 'MainC'; // 로그인 성공 후 이동할 페이지
 							}
 						} else {
-							/* alert('IDまたはPWが一致しません。'); //메시지 출력 */
 							Swal.fire({
 								icon : 'error',
 								title : 'IDまたはPWが一致しません。',
@@ -221,8 +220,8 @@ body {
 							$("#m_id").val("");
 							$("#m_pw").val("");
 
-							// 모든 버튼과 입력 필드를 다시 활성화
-							$('button, input').prop('disabled', false);
+							// 모든 입력 필드, 버튼, 링크 등 활성화
+					        $('input, button, a').prop('disabled', false);
 						}
 					},
 					error : function() {
@@ -233,8 +232,8 @@ body {
 								confirmButton : 'swal2-confirm'
 							}
 						});
-						// 모든 버튼과 입력 필드를 다시 활성화
-						$('button, input').prop('disabled', false);
+						// 모든 입력 필드, 버튼, 링크 등 활성화
+				        $('input, button, a').prop('disabled', false);
 					}
 				});
 			});
