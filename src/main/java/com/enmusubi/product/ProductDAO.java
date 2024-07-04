@@ -346,7 +346,6 @@ public class ProductDAO {
 			pstmt = con.prepareStatement(sql);
 			int intEno = Integer.parseInt((String)(request.getAttribute("je_eventNo")));
 			pstmt.setInt(1, intEno);
-			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
 			
 			invitaitonDTO inviteInfo = null;
