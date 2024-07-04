@@ -79,10 +79,10 @@ body {
 				<div class="hs_login">
 					<div class="hs_login id">ID</div>
 					<input type="text" id="m_id" name="m_id" placeholder="縁結びID"
-						class="hs_input" maxlength="20">
+						class="hs_input" maxlength="12">
 					<div class="hs_login pw">パスワード</div>
 					<input type="password" id="m_pw" name="m_pw" placeholder="パスワード"
-						class="hs_input" maxlength="20">
+						class="hs_input" maxlength="12">
 						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					<button type="submit" class="hs_btn-login">ログイン</button>
 				</div>
