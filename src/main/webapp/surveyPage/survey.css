@@ -25,7 +25,7 @@ body {
 }
 
 header {
-  padding-top: 4.5rem;
+  padding-top: 5rem;
   display: flex;
   justify-content: center;
   padding-left: 8rem;
@@ -54,7 +54,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4.5rem;
+  padding-top: 7rem;
 }
 
 .tg-include-btu-page {
@@ -409,6 +409,7 @@ legend div:nth-child(1) {
   justify-content: center;
   align-items: center;
   gap: 7rem;
+  margin-top: 3rem;
 }
 
 .entry-box-img {
@@ -588,4 +589,15 @@ dialog::backdrop {
 .emergency-words{
 	font-size: 1rem !important;
 	color: red;
+}
+
+input:invalid:focus {
+    border: 3px solid red;
+    outline: none;
+}
+
+.error-message {
+	position: relative;
+	right: 7.5rem;
+	bottom: 1rem;
 }
