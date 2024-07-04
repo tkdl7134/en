@@ -243,32 +243,38 @@ public class MemberDAO {
 	// 회원탈퇴
 	public int deleteMember(String m_id) throws SQLException {
 		Connection con = null;
-		PreparedStatement pstmtAddress = null;
-		PreparedStatement pstmtGuest = null;
+		PreparedStatement pstmtEventFc = null;
 		PreparedStatement pstmtEvent = null;
+		PreparedStatement pstmtGuest = null;
+		PreparedStatement pstmtAddress = null;
 		PreparedStatement pstmtMember = null;
 		DBManager dbManager = DBManager.getInstance();
+		String sqlEventFc = "DELETE FROM s_event_func WHERE m_id = ?";
+		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
+		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
 		String sqlAddress = "DELETE FROM s_Address WHERE m_id = ?";
 		String sqlMember = "DELETE FROM s_Member WHERE m_id = ?";
-		String sqlGuest = "DELETE FROM s_guest WHERE m_id = ?";
-		String sqlEvent = "DELETE FROM s_event WHERE m_id = ?";
 
 		try {
 			con = dbManager.connect();
 			con.setAutoCommit(false); // 트랜잭션 시작
 
 			// 주소 정보 삭제 (외래 키 제약 조건으로 인해 Member 삭제 전에 처리)
-			pstmtAddress = con.prepareStatement(sqlAddress);
-			pstmtAddress.setString(1, m_id);
-			pstmtAddress.executeUpdate();
-
-			pstmtGuest = con.prepareStatement(sqlGuest);
-			pstmtGuest.setString(1, m_id);
-			pstmtGuest.executeUpdate();
-
+			pstmtEvent = con.prepareStatement(sqlEventFc);
+			pstmtEvent.setString(1, m_id);
+			pstmtEvent.executeUpdate();
+			
 			pstmtEvent = con.prepareStatement(sqlEvent);
 			pstmtEvent.setString(1, m_id);
 			pstmtEvent.executeUpdate();
+			
+			pstmtGuest = con.prepareStatement(sqlGuest);
+			pstmtGuest.setString(1, m_id);
+			pstmtGuest.executeUpdate();
+			
+			pstmtAddress = con.prepareStatement(sqlAddress);
+			pstmtAddress.setString(1, m_id);
+			pstmtAddress.executeUpdate();
 
 			// 회원 정보 삭제
 			pstmtMember = con.prepareStatement(sqlMember);
@@ -283,9 +289,10 @@ public class MemberDAO {
 			}
 			throw e;
 		} finally {
-			dbManager.close(con, pstmtAddress, null);
-			dbManager.close(con, pstmtGuest, null);
+			dbManager.close(con, pstmtEventFc, null);
 			dbManager.close(con, pstmtEvent, null);
+			dbManager.close(con, pstmtGuest, null);
+			dbManager.close(con, pstmtAddress, null);
 			dbManager.close(con, pstmtMember, null);
 		}
 	}
@@ -526,7 +533,7 @@ public class MemberDAO {
 				} else {
 					// 탈퇴 실패 처리 (회원 정보가 없는 경우 등)
 					System.out.println("アカウント削除失敗。アカウント情報が存在しません。");
-					response.sendRedirect("HSC");
+					response.sendRedirect("MainC");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
