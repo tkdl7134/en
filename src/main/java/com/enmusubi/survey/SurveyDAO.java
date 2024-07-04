@@ -59,8 +59,7 @@ public class SurveyDAO {
 	        
 	        // 라인 회원 개인정보 입력
 	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
-
-            
+     
             System.out.println("한자값은: " + request.getParameter("name"));
             System.out.println("카타값은: " + request.getParameter("kata-name"));
             System.out.println("로마값은: " + request.getParameter("roma-name"));

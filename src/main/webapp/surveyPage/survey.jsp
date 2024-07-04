@@ -434,16 +434,15 @@
 															<span for="prefecture">都道府県</span>
 														</div>
 														<div>
-															<label class="styled-select"> 
-															<select
+															<label class="styled-select"> <select
 																style="font-size: 1.4rem" id="prefecture" name="address"
 																class="pl"  
 																<c:if test="${not empty members.a_prefecture}">disabled="disabled"</c:if>>
 																	<c:if test="${empty members.a_prefecture}">
 																		<option value="">都道府県を選択してください</option>
 																	</c:if>
-																	<c:forEach var="prefecture" items="${prefectures}" varStatus="var">
-																		<option value="${prefecture }" data-value="${var.count}"></option>
+																	<c:forEach var="prefecture" items="${prefectures}">
+																		<option value="${prefecture }">
 																			<c:if test="${prefecture == members.a_prefecture}">selected</c:if>
 																			${prefecture }
 																	</c:forEach>
@@ -1212,7 +1211,7 @@ function validateKanaInput(input) {
 	    // 조건에 맞지 않는 문자가 있는 경우 입력되지 않도록 처리
 	    if (!regex.test(value)) {
 	        input.setCustomValidity("フリガナのみ使用できます。");
-	        input.value = value.replace(/[/[^\u30A0-\u30FF\u3040-\u309F\s]/g, '');
+	        input.value = value.replace(/[^a-zA-Z\u3131-\u314E\u314F-\u3163\uAC00-\uD7A3\u4E00-\u9FFF\u3040-\u30FF\s]/g, '');
 	    } else {
 	        input.setCustomValidity("");
 	    }
