@@ -31,7 +31,7 @@
 		</div>
 		<header class="tk_survey_header">
 			<div class="middle-title">
-				<div>出席の方</div>
+				<div>招待状の返信</div>
 			</div>
 			
 		</header>
