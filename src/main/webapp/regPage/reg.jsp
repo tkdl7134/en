@@ -87,21 +87,23 @@ body {
 					<div class="hs_content-input id">
 						<div class="hs_content-text id">ID</div>
 						<input type="text" name="m_id" id="m_id" class="hs_input id"
-							placeholder="縁結びID" maxlength="20">
+							placeholder="縁結びID" maxlength="12" minlength="6">
 						<button type="button" onclick="dupleChk()" class="hs_idcheck">チェック</button>
 					</div>
+					<div class="annai">*半角英数字6~12桁</div>
 
 					<div class="hs_content-input pw">
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
-							placeholder="パスワード" maxlength="20">
+							placeholder="パスワード" maxlength="12" minlength="6">
 							<button type="button" id="show_pw" class="hs_pwcheck show"></button>
-
 					</div>
+							<div class="annai">*半角英数字記号6~12桁</div>
+							
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
 						<input type="password" name="m_pw_confirm" id="m_pw_confirm"
-							class="hs_input pw" placeholder="パスワード(確認)" maxlength="20">
+							class="hs_input pw" placeholder="パスワード(確認)" maxlength="12" minlength="6">
 					</div>
 				</div>
 
@@ -329,7 +331,7 @@ body {
 	document.addEventListener("DOMContentLoaded", function() {
 	  const registerButton = document.getElementById("btnReg");
 	  
-	// ID 필드에 대한 입력 제한
+	  //ID 필드에 대한 입력 제한
 	    document.querySelector('input[name="m_id"]').addEventListener("input", function() {
 	        this.value = this.value.replace(/[^a-zA-Z0-9]/g, ''); // 영문자와 숫자만 허용
 	    });
@@ -482,7 +484,11 @@ function register() {
 	        { field: $("#a_city"), name: '市区町村' },
 	        { field: $("#a_street"), name: '番地' }
 	    ];
+		
+	    // 패스워드 최소 길이 설정
+	    let passwordMinLength = $('#m_pw').attr('minlength') || 8; // 기본적으로 8자리로 설정
 
+	    // 필수 입력 항목 확인
 	    for (let i = 0; i < requiredFields.length; i++) {
 	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
 	            let emptyField = requiredFields[i].field[0];
@@ -494,7 +500,6 @@ function register() {
 	                    confirmButton: 'swal2-confirm'
 	                },
 	                didClose: () => {
-	                    // SweetAlert2가 닫힌 후 실행
 	                    emptyField.focus();
 	                    emptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	                }
@@ -502,51 +507,55 @@ function register() {
 	            return false;
 	        }
 	    }
-	    
-	 // 아이디 중복 확인이 안 되었을 경우 경고 메시지 표시
-		const pw = document.getElementById('m_pw').value;
-		const pwConfirm = document.getElementById('m_pw_confirm').value;
-		
-		const emailInput = document.getElementById('emailInput');
-        const emailValue = emailInput.value;
 
-	    if (!isIdChecked || !isIdAvailable) {
+	    // 패스워드 유효성 검사
+	    let pw = $("#m_pw").val().trim();
+	    let pwConfirm = $("#m_pw_confirm").val().trim();
+
+	    if (pw.length < passwordMinLength) {
 	        Swal.fire({
 	            icon: 'warning',
-	            title: 'IDチェックを行ってください。',
+	            title: 'パスワードは最低' + passwordMinLength + '桁以上ご入力ください。',
 	            customClass: {
 	                popup: 'swal2-popup',
 	                confirmButton: 'swal2-confirm'
 	            }
 	        });
-	        return false; // 폼 제출 방지
+	        return false;
 	    }
-	    
-		if (pw !== pwConfirm) {
-			Swal.fire({
-				icon: 'warning',
-				title : 'パスワードが一致しません。',
-				customClass : {
-					popup : 'swal2-popup',
-					confirmButton : 'swal2-confirm'
-				}
-			});
-			return false; // 폼 제출 방지
-		}
-		
-			if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
-				Swal.fire({
-					icon: 'warning',
-					title : 'メールアドレスの形式が正しくありません。',
-					customClass : {
-						popup : 'swal2-popup',
-						confirmButton : 'swal2-confirm'
-					}
-				});
-			return false; // 폼 제출 방지
-		}
-		
-			document.querySelector('form').submit();
+
+	    if (pw !== pwConfirm) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'パスワードが一致しません。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false;
+	    }
+
+	    // 이메일 유효성 검사
+	    let emailInput = document.getElementById('emailInput');
+	    let emailValue = emailInput.value;
+
+	    if (!(emailValue.includes('@') && emailValue.includes('.')) || emailValue.includes(' ')) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'メールアドレスの形式が正しくありません。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false;
+	    }
+
+	    // 모든 유효성 검사 통과 후 폼 제출
+	    document.querySelector('form').submit();
+
+	    return true;
 	}
 	
 	function checkForm() {
@@ -611,11 +620,11 @@ function register() {
                 return;
             }
             
-            if (specialCharPattern.test(id)) { // id에 특수문자가 포함되어 있는 경우
+         // 입력값 유효성 검사
+            if (id.trim().length < $('#m_id').attr('minlength')) {
                 Swal.fire({
-                    icon: 'error',
-                    title: '使用できない文字があります。',
-                    text: '英語と数字のみ入力可能です。',
+                    icon: 'warning',
+                    title: 'IDは最低' + $('#m_id').attr('minlength') + '桁以上ご入力ください。',
                     customClass: {
                         popup: 'swal2-popup',
                         confirmButton: 'swal2-confirm'
