@@ -83,14 +83,14 @@
 }
 
 .show {
-   background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+   background-image: url('ImgFolder/eye_hide_regular_icon_hidden.png');
    background-size: contain;
    background-position: center;
 	background-repeat: no-repeat;
 }
 
 .hide {
-  	background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+  	background-image: url('ImgFolder/eye_hide_regular_icon_show.png');
   	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

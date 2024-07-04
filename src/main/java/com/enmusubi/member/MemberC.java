@@ -23,7 +23,15 @@ public class MemberC extends HttpServlet {
 			request.setAttribute("mainNav", "../main/mainNavBF.jsp");
 		}
 		
+		Object sessionId = session.getAttribute("m_id");
+		if(sessionId == null) {
 			request.getRequestDispatcher("loginPage/login.jsp").forward(request, response);
+		}
+		else {
+			System.out.println("@@@ Current Session ID is : " + sessionId + " @@@");
+			response.sendRedirect("MainC");
+		}
+		
 		
 	}
 
