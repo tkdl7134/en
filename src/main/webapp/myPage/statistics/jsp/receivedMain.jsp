@@ -20,14 +20,23 @@
 	
 	<jsp:include page="${settingPage }"></jsp:include>
 	<div id="recMain-title">心からのお伝え</div>
-	<div  style="display : flex; margin-top : 8rem; " id="toGoTexts">
-	<div onclick="location.href='MemberDetailC'" style="margin-right: 5.5rem;margin-left : -1rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
-	<div onclick="location.href='mytemplateController'" style="color : #ff2828;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
-	<div  onclick="location.href='MyMeetingC'" style="margin-left: 7.4rem;" class="ToGoTexts">✿ 会リスト ✿</div>
-	</div>
-	<div style="display: flex; " id="toGoLines">
-	<div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div><div><img class="yellowLines" alt="" src="myPage/statistics/imgFolder/yellow_line.png"></div>
-	</div>
+	<div class="hs_mypage-menus">
+				<div class="hs_btn-container">
+					<a href="MemberDetailC" class="hs_btn">✿ 会員情報 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				<div class="hs_btn-container">
+					<a href="mytemplateController" class="hs_btn me">✿ テンプレート管理 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				
+				<div class="hs_btn-container">
+					<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
+						alt="" src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+			</div>
 	<div id="recMain-content">
 		<div onclick="location.href='receivedFundingController?eno=${eno}'" class="box-img">
 		<div class="texts">

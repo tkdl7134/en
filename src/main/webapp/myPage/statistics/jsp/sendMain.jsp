@@ -100,6 +100,39 @@
 
 z-index : 100;
 }
+ .hs_mypage-menus {
+	display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin-top: 10rem;
+	transform: translateX(41%);
+	
+}
+
+.hs_btn-container {
+	display: block;
+}
+
+.hs_btn {
+	text-decoration: none;
+	color: #696969;
+}
+
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;
+}
+
+.hs_btn.me {
+	color: #ff2828;
+}
+
+.yellow_line {
+	width: 15rem;
+	margin-bottom: 100px;
+}
 </style>
 </head>
 <body id="page_top">
@@ -119,28 +152,23 @@ z-index : 100;
 			<!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
 
 			<form id="templateForm" action="mytemplateController" method="post">
-				<nav style="margin-top: 7rem; "
-					class="hw_menubar">
-					<div class="hw_menubar_item">
-						<a href="MemberDetailC" class="hw_menubar_menu">✿ 会員情報
-							✿</a> <img class="hw_yellow_line" alt=""
-							src="invitationPage/imgFolder/yellow_line.png">
-					</div>
-					<div class="hw_menubar_item">
-						<a  class="hw_menubar_menu"
-							href="mytemplateController">✿ テンプレート管理 ✿</a> <img
-							style="width: 13rem;" class="hw_yellow_line" alt=""
-							src="invitationPage/imgFolder/yellow_line.png">
-					</div>
-
-					<div class="hw_menubar_item">
-						<a style="color: #ff2828;" href='MyMeetingC'
-							class="hw_menubar_menu" href="">✿ 会リスト ✿</a> <img
-							class="hw_yellow_line" alt=""
-							src="invitationPage/imgFolder/yellow_line.png">
-					</div>
-				</nav>
-
+				<div class="hs_mypage-menus">
+				<div class="hs_btn-container">
+					<a href="MemberDetailC" class="hs_btn">✿ 会員情報 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				<div class="hs_btn-container">
+					<a href="mytemplateController" class="hs_btn">✿ テンプレート管理 ✿</a> <img
+						class="yellow_line" alt=""
+						src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+				
+				<div class="hs_btn-container">
+					<a href="MyMeetingC" class="hs_btn me">✿ 会リスト ✿</a> <img class="yellow_line"
+						alt="" src="loginPage/ImgFolder/yellow_line.png">
+				</div>
+			</div>
 				<main>
 					<div
 						style="display: flex; flex-direction: column; align-items: center; justify-content: center;"

@@ -29,7 +29,9 @@ body {
 	background-image: url('imgFolder/up_page.png'), url('imgFolder/down_page.png');
 	background-position: top center, bottom center;
 	background-repeat: no-repeat;
+	background-size: contain; /* 추가된 속성 */
 }
+
 
 /* 헤더 스타일 */
 .hw_head {
@@ -58,7 +60,7 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 70px;
+    top: 80px;
 }
 
 @keyframes logo-float {
@@ -87,29 +89,24 @@ body {
 /* 페이지 컨테이너 */
 .hw_container {
     border-radius: 1rem;
-    max-width: 90%;
-    margin: auto;
     position: relative;
     z-index: 1;
-    padding: 0 1rem;
+
+    margin-top: 14.7%;
 }
 
 /* 네비게이션 바 스타일 */
 .hw_menubar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15rem;
-    padding: 3rem;
-    gap: 5rem;
+   display: flex;
+	justify-content: center;
+	width: 55%;
+	font-size: 15pt;
+	text-align: center;
+	margin: auto;
 }
 
 .hw_menubar_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
+    display: block;
 }
 
 .hw_menubar_menu {
@@ -117,6 +114,7 @@ body {
     text-decoration-line: none;
     color: #696969;
     transition: color 0.3s ease;
+    font-weight: bold;
 }
 
 .hw_menubar_menu:hover {
@@ -128,7 +126,8 @@ body {
 }
 
 .hw_yellow_line {
-    width: 15rem;
+   width: 15rem;
+    margin-bottom: 100px;
 }
 
 /* 메인 스타일 */
@@ -138,6 +137,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 2rem;
 }
 
 /* 버튼 스타일 */
@@ -172,10 +172,8 @@ main {
 }
 
 .hw_page-content-template {
-    padding: 1rem;
     border-radius: 0.5rem;
     position: relative;
-    overflow: hidden;
 }
 
 .hw_template-button {
@@ -186,12 +184,13 @@ main {
     display: flex;
     justify-content: center;
     padding: 0.5rem;
-    gap: 2rem;
+    gap: 5rem;
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 8rem;
+    padding: 12rem;
     border-radius: 30%;
+    height: 21rem;
 }
 
 .hw_template-button:hover {
@@ -199,8 +198,8 @@ main {
 }
 
 .hw_template-button > button {
-    width: 7rem;
-    height: 1.8rem;
+    width: 10rem;
+    height: 2.2rem;
     font-size: 1rem;
     font-weight: bold;
     border: 0.1rem solid #c82626;
@@ -232,9 +231,6 @@ main {
     align-items: center;
     flex-shrink: 0;
     gap: 2rem;
-    width: 20rem;
-    height: 26rem;
-    scale: 100%;
     overflow:hidden;
     
     position: relative;
@@ -244,11 +240,11 @@ main {
 .hw_share_btn {
     background: none;
     border: none;
-    margin: 0.5rem auto;
+    margin: 4rem auto;
     cursor: pointer;
     display: block;
-    width: 7rem;
-    height: 1.8rem;
+    width: 6rem;
+    height: 2rem;
     font-family: "Noto Serif JP", serif !important; /* 폰트 패밀리 추가 */
     font-size: 1rem;
     font-weight: bold;
