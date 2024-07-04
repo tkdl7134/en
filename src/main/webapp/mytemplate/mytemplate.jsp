@@ -19,7 +19,7 @@
                 src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
         </div>
 
-        <jsp:include page="${mainNav }" />
+        <jsp:include page="${mainNav}" />
     </div>
     <h1 class="hw_page_title">テンプレート 管理</h1>
 
@@ -107,17 +107,5 @@
             <button onclick="copyToClipboard()">URL 복사</button>
         </div>
     </div>
-    <script type="text/javascript" src="mytemplate/js/mytemplate.js"></script>
-    <script type="text/javascript">
-        function navigateToMemberDetailC() {
-            const m_id = "<%=request.getParameter("m_id")%>";
-            window.location.href = `MemberDetailC?m_id=${m_id}`;
-        }
-
-        function navigateToMyMeeting() {
-            const e_no = "<%=request.getParameter("m_id")%>`;
-            window.location.href = `MyMeetingC?e_no=${m_id}`;
-        }
-    </script>
-</body>
+    </body>
 </html>
