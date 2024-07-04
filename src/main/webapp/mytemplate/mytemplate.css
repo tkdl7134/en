@@ -186,7 +186,7 @@ main {
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 15rem;
+    padding: 8rem;
     border-radius: 30%;
 }
 
@@ -208,15 +208,6 @@ main {
 }
 .je_fundingBox-details {
     position: relative;
-    border: 0.2rem solid #ffd600;
-    border-radius: 45% / 35%;
-}
-
-.hw_template-img {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
 }
 
 .hw_template-img > img {
@@ -239,10 +230,11 @@ main {
     gap: 2rem;
     width: 20rem;
     height: 26rem;
-    scale: 99%;
-    border-radius: 50% / 30%;
-    border: 2px solid #ff0000;
-    overflow:hidden
+    scale: 100%;
+    overflow:hidden;
+    
+    position: relative;
+    justify-content: center;
 }
 
 .hw_share_btn {
@@ -271,7 +263,9 @@ main {
 /* 페이지네이션 */
 .pagination {
     text-decoration-line: none;
-    margin-top: 8%;
+    padding: 1%;
+    margin: 1%;
+    
 }
 
 /* 팝업 창 스타일 */

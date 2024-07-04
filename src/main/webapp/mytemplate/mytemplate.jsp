@@ -52,7 +52,7 @@
                             <div class="hw_page-content-template">
                                 <div class="je_fundingBox-details">
                                     <div class="hw_template-img">
-                                        <img src="product/imgFolder/${template.w_img1}" alt="" />
+                                        <img src="product/imgFolder/${template.t_preview}" alt="" />
                                         <div class="hw_template-button">
                                             <button class="hw_content_btn" type="button"
                                                 onclick="submitToInvitationC('${template.e_no}')">テンプレート</button>
