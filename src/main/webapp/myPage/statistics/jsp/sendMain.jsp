@@ -100,7 +100,7 @@
 
 z-index : 100;
 }
-          .hs_mypage-menus {
+ .hs_mypage-menus {
 	display: flex;
 	justify-content: center;
 	width: 55%;
