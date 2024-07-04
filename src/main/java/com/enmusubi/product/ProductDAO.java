@@ -134,6 +134,7 @@ public class ProductDAO {
 			// s_event_func 삽입
 			pstmtEventFunc.setString(1, "yes");
 			pstmtEventFunc.setString(2, "yes");
+
 			String sessionID = (String)request.getSession().getAttribute("m_id");
 			pstmtEventFunc.setString(3, sessionID);
 
