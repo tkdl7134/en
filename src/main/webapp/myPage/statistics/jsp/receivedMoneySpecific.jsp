@@ -56,8 +56,7 @@
         background-position: top center , bottom center;
       background-repeat: no-repeat;
       justify-content : center;
-      height : 145rem;
-        
+      height : 175rem;
       }
       .canvas-container {
         display: none;
@@ -117,6 +116,11 @@
 	width: 15rem;
 	margin-bottom: 100px;
 }
+.MoneyImg {
+border-radius : 45px;
+overflow : hidden;
+border : 1px
+}
     </style>
 
 
@@ -159,6 +163,7 @@
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 			</div>
+			<div class="MoneyImg"><img alt="" src="myPage/statistics/imgFolder/bg_wedding_chapel.jpg"></div>
     <div style="margin-top : 5rem;" id="fundSpec-leftPrice">✿ いただいたお祝いの気持ちです。どうぞその気持ちをご確認ください ✿</div>
 	<div style="margin-top : 5rem;"><img alt="" src="myPage/statistics/imgFolder/lineLong.png"></div>
     <div  style="height : 100rem; max-height : 80rem;" id="fundSpec-dataBoard-container">
