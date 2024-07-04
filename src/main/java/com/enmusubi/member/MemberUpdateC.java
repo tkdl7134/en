@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.Interceptor;
+import com.enmusubi.survey.SurveyDAO;
 
 
 @WebServlet("/MemberUpdateC")

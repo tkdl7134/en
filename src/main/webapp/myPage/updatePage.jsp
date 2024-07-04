@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,24 +41,23 @@ body {
 }
 
 .yj-main-logo {
-    z-index: 4;
-    width: 130px;
-    height: 130px;
-    position: fixed;
-    top: 4rem;
-    left: 5rem;
+	z-index: 4;
+	width: 130px;
+	height: 130px;
+	position: fixed;
+	top: 4rem;
+	left: 5rem;
 }
 
 .yj-main-menubox {
-    position: fixed;
-    top: 6rem;
-    right: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 175px;
+	position: fixed;
+	top: 6rem;
+	right: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 175px;
 }
-
 </style>
 </head>
 
@@ -69,7 +69,7 @@ body {
 			<a href="MainC" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
 		</div>
-		
+
 		<jsp:include page="${mainNav }" />
 
 		<h1 class="hs_title">会員情報修正</h1>
@@ -85,14 +85,16 @@ body {
 					class="yellow_line" alt=""
 					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
-			
+
 			<div class="hs_btn-container">
-				<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img class="yellow_line"
-					alt="" src="loginPage/ImgFolder/yellow_line.png">
+				<a href="MyMeetingC" class="hs_btn ">✿ 会リスト ✿</a> <img
+					class="yellow_line" alt=""
+					src="loginPage/ImgFolder/yellow_line.png">
 			</div>
 		</div>
 
-		<form action="MemberUpdateC" method="post" enctype="multipart/form-data" id="MemberUpdateC">
+		<form action="MemberUpdateC" method="post"
+			enctype="multipart/form-data" id="MemberUpdateC">
 
 			<div class="hs_container">
 
@@ -112,7 +114,7 @@ body {
 						<div class="hs_content-text pw">パスワード</div>
 						<input type="password" name="m_pw" id="m_pw" class="hs_input pw"
 							placeholder="パスワード" maxlength="20">
-							<button type="button" id="show_pw" class="hs_pwcheck show"></button>
+						<button type="button" id="show_pw" class="hs_pwcheck show"></button>
 					</div>
 					<div class="hs_content-input pw-confirm">
 						<div class="hs_content-text pwconfirm">パスワード(確認)</div>
@@ -124,30 +126,32 @@ body {
 				<div class="hs_content-title-user">
 					<div class="hs_content-title-text">ユーザー情報</div>
 				</div>
-				
+
 				<div class="hs_container-input">
 					<div class="hs_content-input name">
 						<div class="hs_content-text name">名前</div>
 						<input type="text" name="m_name_sei" class="hs_input name_sei"
-							placeholder="姓" maxlength="10" value="${i.m_name1}">
-						<input type="text" name="m_name_mei" class="hs_input name_mei"
+							placeholder="姓" maxlength="10" value="${i.m_name1}"> <input
+							type="text" name="m_name_mei" class="hs_input name_mei"
 							placeholder="名" maxlength="10" value="${i.m_name2}">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text kana">フリガナ</div>
-						<input type="text" name="m_name_kana_sei" class="hs_input kana_sei"
-							placeholder="セイ" maxlength="10" value="${i.m_name_kana1}">
-						<input type="text" name="m_name_kana_mei" class="hs_input kana_mei"
-							placeholder="メイ" maxlength="10" value="${i.m_name_kana2}">
+						<input type="text" name="m_name_kana_sei"
+							class="hs_input kana_sei" placeholder="セイ" maxlength="10"
+							value="${i.m_name_kana1}"> <input type="text"
+							name="m_name_kana_mei" class="hs_input kana_mei" placeholder="メイ"
+							maxlength="10" value="${i.m_name_kana2}">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text rome">名前(ローマ字)</div>
-						<input type="text" name="m_name_rome_mei" class="hs_input rome_mei"
-							placeholder="First name" maxlength="10">
-						<input type="text" name="m_name_rome_sei" class="hs_input rome_sei"
-							placeholder="Last name" maxlength="10">
+						<input type="text" name="m_name_rome_mei"
+							class="hs_input rome_mei" placeholder="First name" maxlength="10"
+							value="${i.m_name_rome1}"> <input type="text"
+							name="m_name_rome_sei" class="hs_input rome_sei"
+							placeholder="Last name" maxlength="10" value="${i.m_name_rome2}">
 					</div>
 
 					<div class="hs_content-input">
@@ -155,17 +159,20 @@ body {
 						<div class="radio-gender">
 							<div class="radio-gender male">
 								<input type="radio" id="gender_male" name="m_gender"
-									class="hs_input gender" value="男性"> <label
+									class="hs_input gender" value="男性"
+									<c:if test="${i.m_gender eq '男性'}">checked</c:if>> <label
 									for="gender_male">男性</label>
 							</div>
 							<div class="radio-gender male">
 								<input type="radio" id="gender_female" name="m_gender"
-									class="hs_input gender" value="女性"> <label
+									class="hs_input gender" value="女性"
+									<c:if test="${i.m_gender eq '女性'}">checked</c:if>> <label
 									for="gender_female">女性</label>
 							</div>
 							<div class="radio-gender male">
 								<input type="radio" id="gender_other" name="m_gender"
-									class="hs_input gender" value="その他"> <label
+									class="hs_input gender" value="その他"
+									<c:if test="${i.m_gender eq 'その他'}">checked</c:if>> <label
 									for="gender_other">その他</label>
 							</div>
 						</div>
@@ -174,26 +181,28 @@ body {
 					<div class="hs_content-input">
 						<div class="hs_content-text birth">生年月日</div>
 						<input type="text" name="m_birthY" id="m_birthY"
-							class="hs_input birth" maxlength="4">
+							class="hs_input birth" maxlength="4" value="${i.m_birth_year}">
 						<div class="hs_content-text bd">年</div>
 						<input type="text" name="m_birthM" id="m_birthM"
-							class="hs_input birth" maxlength="2">
+							class="hs_input birth" maxlength="2" value="${i.m_birth_month}">
 						<div class="hs_content-text bd">月</div>
 						<input type="text" name="m_birthD" id="m_birthD"
-							class="hs_input birth" maxlength="2">
+							class="hs_input birth" maxlength="2" value="${i.m_birth_day}">
 						<div class="hs_content-text bd">日</div>
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text email">メールアドレス</div>
 						<input type="email" name="m_email" class="hs_input email"
-							placeholder="example@example.com" id="emailInput" maxlength="50">
+							placeholder="example@example.com" id="emailInput" maxlength="50"
+							value="${i.m_email}">
 					</div>
 
 					<div class="hs_content-input">
 						<div class="hs_content-text phone">電話番号</div>
 						<input type="text" name="m_phone" class="hs_input phone"
-							placeholder="ハイフン(-)なしでご入力ください" maxlength="15">
+							placeholder="ハイフン(-)なしでご入力ください" maxlength="15"
+							value="${i.m_phone}">
 					</div>
 
 					<div class="h-adr">
@@ -204,10 +213,11 @@ body {
 							<div class="hs_content-text postmark">〒</div>
 							<input type="text" name="a_postcode" id="a_postcode"
 								class="hs_input post p-postal-code" placeholder="郵便番号"
-								maxlength="8">
+								maxlength="8" value="${i.a_postcode}">
 						</div>
 
 						<div class="hs_content-input">
+							<input type="hidden" value="${i.a_address[0]}" id="adnum">
 							<label for="a_prefecture" class="hs_content-text prefecture">都道府県</label>
 							<select id="a_prefecture" name="a_prefecture"
 								class="hs_input prefecture p-region-id">
@@ -266,36 +276,37 @@ body {
 						<div class="hs_content-input">
 							<div class="hs_content-text city">住所</div>
 							<input type="text" name="a_city" id="a_city"
-								class="hs_input city p-locality p-street-address p-extended-address" placeholder="市区町村"
-								maxlength="50">
+								class="hs_input city p-locality p-street-address p-extended-address"
+								placeholder="市区町村" maxlength="50" value="${i.a_address[1]}">
 						</div>
 
 						<div class="hs_content-input">
 							<div class="hs_content-text street"></div>
 							<input type="text" name="a_street" id="a_street"
-								class="hs_input street" placeholder="番地"
-								maxlength="50">
+								class="hs_input street" placeholder="番地" maxlength="50"
+								value="${i.a_address[2]}">
 						</div>
 
 						<div class="hs_content-input building">
 							<div class="hs_content-text building"></div>
 							<input type="text" name="a_building" id="a_building"
-								class="hs_input building"
-								placeholder="建物名 ・ 部屋番号" maxlength="50">
+								class="hs_input building" placeholder="建物名 ・ 部屋番号"
+								maxlength="50"
+								value="${i.a_address[3] != null ? i.a_address[3] : ''}">
 						</div>
 					</div>
-					
-					<div class="hs_content-input img">
+
+					<%-- <div class="hs_content-input img">
 						<div class="hs_content-text img">プロフィール画像</div>
-						<input type="file" name="newImg" id="m_img" class="hs_input img">
+						<input type="file" name="newImg" id="m_img" class="hs_input img" value="${m_img}">
 						<input type="hidden" name="oldImg">
-					</div>
+					</div> --%>
 					<div class="btn-box">
-					<button id="btnReg" class="btn-reg" type="button"
-						onclick="register()">修正</button>
+						<button id="btnReg" class="btn-reg" type="button"
+							onclick="register()">修正</button>
 						<button id="btnReg" class="btn-back" type="button"
-						onclick="goBack()">取消</button>
-						</div>
+							onclick="goBack()">取消</button>
+					</div>
 
 				</div>
 			</div>
@@ -308,6 +319,14 @@ body {
 	</div>
 
 	<script>
+	
+	document.addEventListener('DOMContentLoaded', function() {
+	    let options = document.querySelectorAll("#a_prefecture option");
+	    let select = document.getElementById("a_prefecture");
+	    let val = document.getElementById("adnum").value;
+	    console.log(val);
+		select.value = val;
+	});
 	
 	const menus = document.querySelectorAll(".yj-main-menu");
 
@@ -510,12 +529,18 @@ body {
 
 	    for (let i = 0; i < requiredFields.length; i++) {
 	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
+	            let emptyField = requiredFields[i].field[0];
 	            Swal.fire({
 	                icon: 'warning',
 	                title: '入力してない項目があります。',
 	                customClass: {
 	                    popup: 'swal2-popup',
 	                    confirmButton: 'swal2-confirm'
+	                },
+	                didClose: () => {
+	                    // SweetAlert2가 닫힌 후 실행
+	                    emptyField.focus();
+	                    emptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	                }
 	            });
 	            return false;
