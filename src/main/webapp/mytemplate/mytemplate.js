@@ -7,7 +7,7 @@
         }
 
         function navigateToMyMeeting() {
-            window.location.href = `MyMeetingC?e_no=${e_no}`;
+            window.location.href = `MyMeetingC?eno=${e_no}`;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
