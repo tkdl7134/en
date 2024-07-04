@@ -28,7 +28,7 @@
 		</div>
 
 
-		<div id="canvas-content-container">
+		<div id="canvas-content-container" style="flex-direction:column;align-items: center">
 			<div class="jw-w-big-container">
 				<div class="jw-w-container">
 					<div class="jw-w-img-box" onclick="location.href='FundingSettingC?eno=${sdto.eno}'">
