@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.enmusubi.main.Interceptor;
+import com.enmusubi.survey.SurveyDAO;
 
 
 @WebServlet("/MemberUpdateC")
@@ -29,6 +30,7 @@ public class MemberUpdateC extends HttpServlet {
 		}
 		
 		if (Interceptor.LoginInterceptor(request, response)) {
+			MemberDAO.selectMember(request);
 			request.getRequestDispatcher("myPage/updatePage.jsp").forward(request, response);
 		}
 		

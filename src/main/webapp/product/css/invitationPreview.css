@@ -68,17 +68,38 @@ a {
   font-size: 2rem;
   font-weight: 900;
 }
+
+.je_login-btn {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #5c5c5c;
+}
+
 .je_delete-btn > a:hover,
-.je_update-btn > a:hover {
+.je_update-btn > a:hover,
+.je_login-btn:hover {
   color: #ff2828;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
+
 .je_delete-btn > a:not(hover),
-.je_update-btn > a:not(hover) {
+.je_update-btn > a:not(hover),
+.je_login-btn:not(hover) {
   transition: 0.3s ease-in-out;
 }
 
+
+.je_invitation-txt {
+	margin-left: 2.5rem;
+    margin-right: 3rem;
+    margin-top: 6rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #5c5c5c;
+}
 
 
 
@@ -93,6 +114,10 @@ a {
   box-shadow: 0rem 0rem 2rem #696969;
   margin-right: 0.7rem;
   z-index: 0;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 
 .je_invitation:-webkit-scrollbar{	/* 스크롤바숨기기 크롬,사파리, 오페라, 엣지 */

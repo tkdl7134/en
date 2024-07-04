@@ -169,6 +169,7 @@ function call(){
 
 }
 
+
 function photoType1(){
 	if (isNotType(photo1, "jpg") && isNotType(photo1, "png") && isNotType(photo1, "jpeg")) {
 	    alert("「jpg・png・jpeg」 のような形式のファイルを添付してください。 ");

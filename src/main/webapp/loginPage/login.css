@@ -43,7 +43,6 @@
 
 .hs_container-login-border {
 	background-image: url(ImgFolder/BG.png);
-	/* background-position: center; */
 	margin: auto;
 	margin-top: 10rem;
 	background-size: 100% 100%;
@@ -84,14 +83,14 @@
 }
 
 .show {
-   background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+   background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
    background-size: contain;
    background-position: center;
 	background-repeat: no-repeat;
 }
 
 .hide {
-  	background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+  	background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
   	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

@@ -9,10 +9,14 @@
       -o-user-drag: none;
       -ms-user-drag: none;
       user-select: none;
+      -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
     }
 body {
-   background-attachment: scroll;
+    background-attachment: scroll;
 	background-color: #FFF5F4;
+	
 	font-family: "Noto Serif JP", serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
@@ -186,7 +190,7 @@ main {
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 15rem;
+    padding: 8rem;
     border-radius: 30%;
 }
 
@@ -206,15 +210,12 @@ main {
     background-color: #fff4f4;
     color: #5c5c5c;
 }
-
-.hw_template-img {
-    display: flex;
+.je_fundingBox-details {
     position: relative;
-    justify-content: center;
-    align-items: center;
 }
 
 .hw_template-img > img {
+    height: 100%;
     width: 100%;
 }
 
@@ -225,6 +226,21 @@ main {
     font-weight: bold;
 }
 
+.hw_template-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 2rem;
+    width: 20rem;
+    height: 26rem;
+    scale: 100%;
+    overflow:hidden;
+    
+    position: relative;
+    justify-content: center;
+}
+
 .hw_share_btn {
     background: none;
     border: none;
@@ -233,6 +249,7 @@ main {
     display: block;
     width: 7rem;
     height: 1.8rem;
+    font-family: "Noto Serif JP", serif !important; /* 폰트 패밀리 추가 */
     font-size: 1rem;
     font-weight: bold;
     border: 0.1rem solid #c82626;
@@ -243,6 +260,7 @@ main {
     transition: background-color 0.5s, color 0.5s;
 }
 
+
 .hw_share_btn:hover {
     background-color: #ff3b3f;
     color: #fff4f4;
@@ -251,7 +269,9 @@ main {
 /* 페이지네이션 */
 .pagination {
     text-decoration-line: none;
-    margin-top: 8%;
+    padding: 1%;
+    margin: 1%;
+    
 }
 
 /* 팝업 창 스타일 */

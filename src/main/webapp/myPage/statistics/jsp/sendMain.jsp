@@ -29,9 +29,7 @@
 													.find('#previewImg')
 													.attr('src',
 															'myPage/statistics/imgFolder/offPreview.png');
-											$(this).siblings(
-													'.hw_template-button').css(
-													'opacity', '1');
+											  $(this).find('.hw_template-button').css('opacity', '1');
 										},
 										function() {
 											// 마우스가 이미지에서 벗어났을 때 자식 요소인 #previewImg의 src 속성을 원래대로 되돌리기
@@ -41,9 +39,7 @@
 															.data('originalSrc');
 											$(this).find('#previewImg').attr(
 													'src', originalSrc);
-											$(this).siblings(
-													'.hw_template-button').css(
-													'opacity', '0');
+										     $(this).find('.hw_template-button').css('opacity', '0');
 										});
 
 					});

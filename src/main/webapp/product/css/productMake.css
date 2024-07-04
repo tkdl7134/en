@@ -84,10 +84,14 @@ form {
 
 /* output */
 .je_template-output {
-     width: 33.3rem;
-    height: 123rem;
-    overflow-y: scroll;
-    position: relative;
+  width: 33.3rem;
+  height: 123rem;
+  overflow-y: scroll;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 .je_template-output::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
@@ -243,7 +247,7 @@ form {
 	text-align: right;
 }
 #je_sideEvent-addr {
-	margin-left: 2rem;
+	margin-left: 3rem;
 }
 
 #je_photoPre4 {

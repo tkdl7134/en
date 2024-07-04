@@ -61,6 +61,11 @@ body {
   color: #696969;
 }
 
+.hs_btn:hover {
+	text-decoration: none;
+	color: #ff2828;;
+}
+
 .hs_btn.me{
 	color: #ff2828;
 }
@@ -276,14 +281,14 @@ body {
 }
 
 .show {
-   background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
+   background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
    background-size: contain;
    background-position: center;
 	background-repeat: no-repeat;
 }
 
 .hide {
-  	background-image: url('ImgFolder/eye_hide_regular_icon_hidden.svg');
+  	background-image: url('ImgFolder/eye_hide_regular_icon_show.svg');
   	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

@@ -100,7 +100,7 @@ public class ProductDAO {
 		DBManager dbManager = DBManager.getInstance();
 
 		String sqlEvent = "insert into s_event values(e_no_seq.nextval, ?, ?)";
-		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?)";
+		String sqlEventFunc = "insert into s_event_func values(e_no_seq.currval, ?, ?, ?)";
 		String sqlWeddingInfo = "insert into s_wedding_info values(e_no_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sqlWedding = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
 		String sqlReception = "insert into s_reception values(s_reception_seq.nextval, e_no_seq.currval, ?, ?, ?, ?, ?)";
@@ -134,6 +134,9 @@ public class ProductDAO {
 			// s_event_func 삽입
 			pstmtEventFunc.setString(1, "yes");
 			pstmtEventFunc.setString(2, "yes");
+
+			String sessionID = (String)request.getSession().getAttribute("m_id");
+			pstmtEventFunc.setString(3, sessionID);
 
 			// s_wedding_info table 삽입
 
@@ -276,7 +279,7 @@ public class ProductDAO {
 		try {
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			int intEno = (int) (request.getAttribute("je_eventNo"));
+			int intEno = (int)(request.getAttribute("je_eventNo"));
 			pstmt.setInt(1, intEno);
 			System.out.println(request.getAttribute("je_eventNo"));
 			rs = pstmt.executeQuery();
@@ -321,6 +324,70 @@ public class ProductDAO {
 			dbManager.close(con, pstmt, rs);
 		}
 
+	}
+	public static void getReception(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DBManager dbManager = DBManager.getInstance();
+		
+		String sql = "SELECT e.e_no, w.t_pk,"
+				+ " w.w_groom, w.w_bride, w.w_msg_invite, w.w_msg_bye, w.w_img1, w.w_img2, w.w_img3, w.w_img4,"
+				+ " t.t_template," + " rw.r_time AS wedding_time," + " rw.r_time_assemble AS wedding_assemble_time,"
+				+ " rr.r_time AS reception_time," + " rr.r_time_assemble AS reception_assemble_time,"
+				+ " rw.r_place AS wedding_place," + " rw.r_addr AS wedding_addr," + " rr.r_place AS reception_place,"
+				+ " rr.r_addr AS reception_addr " + " FROM s_event e" + " JOIN s_wedding_info w ON e.e_no = w.e_no"
+				+ " JOIN s_template t ON w.t_pk = t.t_pk"
+				+ " JOIN s_reception rw ON e.e_no = rw.e_no AND rw.r_type = 'wedding'"
+				+ " JOIN s_reception rr ON e.e_no = rr.e_no AND rr.r_type = 'reception'" + " WHERE e.e_no = ? ";
+		
+		try {
+			con = dbManager.connect();
+			pstmt = con.prepareStatement(sql);
+			int intEno = Integer.parseInt((String)(request.getAttribute("je_eventNo")));
+			pstmt.setInt(1, intEno);
+			rs = pstmt.executeQuery();
+			
+			invitaitonDTO inviteInfo = null;
+			if (rs.next()) {
+				Timestamp weddingDT = rs.getTimestamp("wedding_time");
+				Timestamp weddingADT = rs.getTimestamp("wedding_assemble_time");
+				Timestamp receptionDT = rs.getTimestamp("reception_time");
+				Timestamp receptionADT = rs.getTimestamp("reception_assemble_time");
+//				if (weddingDT != null || ) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd E", Locale.JAPANESE);
+				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+				SimpleDateFormat timeFormat2 = new SimpleDateFormat("集合  " + "HH:mm");
+				
+				String weddingDay = dateFormat.format(weddingDT);
+				String weddingTime = timeFormat.format(weddingDT);
+				String weddingA_Time = timeFormat2.format(weddingADT);
+				String receptionTime = timeFormat.format(receptionDT);
+				String receptionA_Time = timeFormat2.format(receptionADT);
+				
+				String inviteMSG = rs.getString("w_msg_invite");
+				String byeMSG = rs.getString("w_msg_bye");
+				inviteMSG = inviteMSG.replaceAll("\r\n", "<br>");
+				System.out.println(inviteMSG);
+				byeMSG = byeMSG.replaceAll("\r\n", "<br>");
+				
+				System.out.println(inviteMSG);
+				
+				inviteInfo = new invitaitonDTO((int) intEno, rs.getInt("t_pk"), rs.getString("t_template"),
+						rs.getString("w_groom"), rs.getString("w_bride"), inviteMSG, byeMSG, rs.getString("w_img1"),
+						rs.getString("w_img2"), rs.getString("w_img3"), rs.getString("w_img4"), weddingDay, weddingTime,
+						weddingA_Time, receptionTime, receptionA_Time, rs.getString("wedding_place"),
+						rs.getString("wedding_addr"), rs.getString("reception_place"), rs.getString("reception_addr"));
+			}
+			request.setAttribute("inviteInfo", inviteInfo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("invitation 정보뽑아오기 쪽 error");
+		} finally {
+			dbManager.close(con, pstmt, rs);
+		}
+		
 	}
 
 	// 초대장 삭제하기
