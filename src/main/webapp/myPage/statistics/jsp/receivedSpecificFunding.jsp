@@ -96,7 +96,7 @@
       <div class="canvas-content">
 	
         <!-- 첫 번째 배경 이미지와 두 번째 배경 이미지 사이에 들어갈 컨텐츠 -->
- 	<div style="font-size: 30px; font-weight : bold;" class="recFundSpecTitle">ファンディング の現状</div>
+ 	<div style="font-size: 30px; font-weight : bold;margin-top : 1rem;" class="recFundSpecTitle">ファンディング の現状</div>
   <div  style="display : flex;  margin-top: 10rem;  " id="toGoTexts">
 	<div  onclick="location.href='MemberDetailC'" style="margin-right: 4rem;width: 10rem;margin-top: 0.3rem; " class="ToGoTexts">✿ 会員情報 ✿</div>
 	<div onclick="location.href='mytemplateController'" style="color : #ff2828;margin-left: 0.7rem;	" class="ToGoTexts">✿テンプレート管理 ✿</div>
