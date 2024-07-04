@@ -94,7 +94,7 @@
 						alt="" src="loginPage/ImgFolder/yellow_line.png">
 				</div>
 			</div>
-		<div style="height : 43rem; gap : 10rem;" class="kh-f-card-container">
+		<div style="margin-top: -5rem;gap : 10rem;" class="kh-f-card-container">
 			
 			<div class="kh-f-card-fake"></div>
 		
