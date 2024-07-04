@@ -60,9 +60,9 @@ public class SurveyDAO {
 	        // 라인 회원 개인정보 입력
 	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
      
-            System.out.println("한자값은: " + request.getParameter("name"));
-            System.out.println("카타값은: " + request.getParameter("kata-name"));
-            System.out.println("로마값은: " + request.getParameter("roma-name"));
+            System.out.println("이름값은: " + request.getParameter("name"));
+            System.out.println("카타값은: " + request.getParameter("kataName"));
+            System.out.println("로마값은: " + request.getParameter("romaName"));
             System.out.println("이메일: " + request.getParameter("email"));
             System.out.println("폰번: " + request.getParameter("phonenum"));
             System.out.println("주소번호: " + request.getParameter("postal-code"));
@@ -238,6 +238,7 @@ public class SurveyDAO {
 	            // 주소를 나누는 로직
 	            String prefectureName ="";
 	            String[] addressParts = fullAddress.split(" ", 3);
+	            System.out.println(addressParts);
 	            switch (addressParts[0]) {
 				case "1":
                     prefectureName = "北海道";
@@ -506,7 +507,6 @@ public class SurveyDAO {
 			rsAddress = pstmtAddress.executeQuery();
 			if (rsAddress.next()) {
 				String fullAddress = rsAddress.getString(1);
-				System.out.println(fullAddress);
 				fullAddress = "";
 				String postcode = rsAddress.getString(2);
 				
