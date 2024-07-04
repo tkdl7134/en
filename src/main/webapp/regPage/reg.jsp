@@ -624,7 +624,7 @@ function register() {
             if (id.trim().length < $('#m_id').attr('minlength')) {
                 Swal.fire({
                     icon: 'warning',
-                    title: 'IDは最低' + $('#m_id').attr('minlength') + '桁以上ご入力ください。',
+                    title: '最低' + $('#m_id').attr('minlength') + '桁以上ご入力ください。',
                     customClass: {
                         popup: 'swal2-popup',
                         confirmButton: 'swal2-confirm'
