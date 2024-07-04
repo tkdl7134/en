@@ -137,6 +137,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 2rem;
 }
 
 /* 버튼 스타일 */
@@ -183,12 +184,13 @@ main {
     display: flex;
     justify-content: center;
     padding: 0.5rem;
-    gap: 2rem;
+    gap: 5rem;
     z-index: 2;
     flex-direction: column;
     opacity: 0;
-    padding: 8rem;
+    padding: 12rem;
     border-radius: 30%;
+    height: 21rem;
 }
 
 .hw_template-button:hover {
@@ -196,8 +198,8 @@ main {
 }
 
 .hw_template-button > button {
-    width: 7rem;
-    height: 1.8rem;
+    width: 10rem;
+    height: 2.2rem;
     font-size: 1rem;
     font-weight: bold;
     border: 0.1rem solid #c82626;
@@ -238,11 +240,11 @@ main {
 .hw_share_btn {
     background: none;
     border: none;
-    margin: 0.5rem auto;
+    margin: 4rem auto;
     cursor: pointer;
     display: block;
-    width: 7rem;
-    height: 1.8rem;
+    width: 6rem;
+    height: 2rem;
     font-family: "Noto Serif JP", serif !important; /* 폰트 패밀리 추가 */
     font-size: 1rem;
     font-weight: bold;
