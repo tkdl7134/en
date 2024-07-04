@@ -268,10 +268,10 @@ body {
 						</div>
 					</div>
 
-					<div class="hs_content-input img">
+					<!-- <div class="hs_content-input img">
 						<div class="hs_content-text img">プロフィール画像</div>
 						<input type="file" name="m_img" id="m_img" class="hs_input img">
-					</div>
+					</div> -->
 
 					<div class="btn-box">
 						<button id="btnReg" class="btn-reg" type="button"
@@ -485,12 +485,18 @@ function register() {
 
 	    for (let i = 0; i < requiredFields.length; i++) {
 	        if (requiredFields[i].field.val() === null || requiredFields[i].field.val().trim() === '') {
+	            let emptyField = requiredFields[i].field[0];
 	            Swal.fire({
 	                icon: 'warning',
 	                title: '入力してない項目があります。',
 	                customClass: {
 	                    popup: 'swal2-popup',
 	                    confirmButton: 'swal2-confirm'
+	                },
+	                didClose: () => {
+	                    // SweetAlert2가 닫힌 후 실행
+	                    emptyField.focus();
+	                    emptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	                }
 	            });
 	            return false;
