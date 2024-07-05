@@ -46,16 +46,15 @@
 .kh-f-btn:active {
 	box-shadow: none;
 }
-.kh-f-tex{
 	
-}
 .kh-f-tex>a{
 	color:black;
 	text-decoration: none;
 	font-size:1.2rem;
 }
-.kh-f-tex:hover{
-color: red;
+
+.kh-f-tex>a:hover{
+  color: red;
   text-decoration: none;
   text-shadow: 0 0 3px #ffd0e9;
 }

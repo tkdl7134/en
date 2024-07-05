@@ -60,9 +60,9 @@ public class SurveyDAO {
 	        // 라인 회원 개인정보 입력
 	        pstmtLineMemberUpdate = con.prepareStatement(sqlLineMemberUpdate);
      
-            System.out.println("한자값은: " + request.getParameter("name"));
-            System.out.println("카타값은: " + request.getParameter("kata-name"));
-            System.out.println("로마값은: " + request.getParameter("roma-name"));
+            System.out.println("이름값은: " + request.getParameter("name"));
+            System.out.println("카타값은: " + request.getParameter("kataName"));
+            System.out.println("로마값은: " + request.getParameter("romaName"));
             System.out.println("이메일: " + request.getParameter("email"));
             System.out.println("폰번: " + request.getParameter("phonenum"));
             System.out.println("주소번호: " + request.getParameter("postal-code"));
@@ -78,8 +78,8 @@ public class SurveyDAO {
             System.out.println("알레르기 타입: " + request.getParameter("allergy-type"));
             
             String[] normalName = request.getParameterValues("name");
-            String[] kataName = request.getParameterValues("kata-name");
-            String[] romaName = request.getParameterValues("roma-name");
+            String[] kataName = request.getParameterValues("kataName");
+            String[] romaName = request.getParameterValues("romaName");
             
             for (String s : romaName) {
 			System.out.println(s);
@@ -238,6 +238,7 @@ public class SurveyDAO {
 	            // 주소를 나누는 로직
 	            String prefectureName ="";
 	            String[] addressParts = fullAddress.split(" ", 3);
+	            System.out.println(addressParts);
 	            switch (addressParts[0]) {
 				case "1":
                     prefectureName = "北海道";
@@ -385,16 +386,10 @@ public class SurveyDAO {
                     break;
                 default:
 				}
-	            if (addressParts.length >= 3) {
 	                m.setA_prefecture(prefectureName);
-	                
 	                m.setA_city(addressParts[1]);
 	                m.setA_address(addressParts[2]);
-	            } else {
-	                m.setA_prefecture("");	                
-	                m.setA_city("");
-	                m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
-	            }
+
 
 	            System.out.println(rsAddress.getString(1));
 	            System.out.println(rsAddress.getString(2));
@@ -506,7 +501,6 @@ public class SurveyDAO {
 			rsAddress = pstmtAddress.executeQuery();
 			if (rsAddress.next()) {
 				String fullAddress = rsAddress.getString(1);
-				System.out.println(fullAddress);
 				fullAddress = "";
 				String postcode = rsAddress.getString(2);
 				
