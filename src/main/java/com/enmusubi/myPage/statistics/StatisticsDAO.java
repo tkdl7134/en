@@ -88,19 +88,22 @@ public class StatisticsDAO {
 		// ranking 구하는 메서드
 		String wl_no_param = request.getParameter("wlno");
 		ArrayList<FundListDTO> flists = (ArrayList<FundListDTO>) request.getAttribute("list");
-		String wl_no = null;
+		String e_no = null;
 		String wl_product = null;
+		String wl_no = null;
 		
 		if (flists != null && wl_no_param != null) {
 		    for (FundListDTO fldto : flists) {
 		        // e_no_param과 현재 객체의 e_no를 비교합니다.
 		        if (wl_no_param.equals(fldto.getWl_no())) {
-		             wl_no = fldto.getWl_no();
+		             e_no = fldto.getE_no();
 		             wl_product = fldto.getWl_product();
+		             wl_no = fldto.getWl_no();
 
 		            // wl_no, wl_product 값을 출력합니다.
-		            System.out.println("wl_no: " + wl_no);
+		            System.out.println("e_no: " + e_no);
 		            System.out.println("wl_product: " + wl_product);
+		            System.out.println(wl_no);
 		        }
 		    }
 		} else {
@@ -118,16 +121,19 @@ public class StatisticsDAO {
 		
 		
 		
-		String sql = "SELECT wl_no,\r\n"
-				+ "       total_price,\r\n"
-				+ "       RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
+		String sql = " SELECT wl_no, total_price, rank_of_total_price\r\n"
 				+ "FROM (\r\n"
 				+ "    SELECT wl_no,\r\n"
-				+ "           SUM(p_price) AS total_price\r\n"
-				+ "    FROM s_pay\r\n"
-				+ " WHERE p_type = 'fund'\r\n"
-				+ "    GROUP BY wl_no\r\n"
-				+ ") subquery\r\n"
+				+ "           total_price,\r\n"
+				+ "           RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
+				+ "    FROM (\r\n"
+				+ "        SELECT wl_no,\r\n"
+				+ "               SUM(p_price) AS total_price\r\n"
+				+ "        FROM s_pay\r\n"
+				+ "        WHERE p_type = 'fund' AND e_no = ?\r\n"
+				+ "        GROUP BY wl_no\r\n"
+				+ "    ) subquery\r\n"
+				+ ") ranked_subquery\r\n"
 				+ "WHERE wl_no = ?";
 		
 		String sql2 = "select wl_price from s_wishlist where wl_product=?";
@@ -135,11 +141,13 @@ public class StatisticsDAO {
 			
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, wl_no);
+			pstmt.setString(1, e_no);
+			pstmt.setString(2, wl_no);
 			rs= pstmt.executeQuery();
 			String rank = null;
 			int price = 0;
 			int totalPrice = 0;
+			
 			if(rs.next()) {
 			
 				
@@ -170,6 +178,7 @@ public class StatisticsDAO {
 			request.setAttribute("priceStatement", priceStatement);
 			request.setAttribute("product", wl_product);
 			request.setAttribute("wlno", wl_no);
+			request.setAttribute("eno", e_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
