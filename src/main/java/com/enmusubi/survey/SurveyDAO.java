@@ -386,16 +386,10 @@ public class SurveyDAO {
                     break;
                 default:
 				}
-	            if (addressParts.length >= 3) {
 	                m.setA_prefecture(prefectureName);
-	                
 	                m.setA_city(addressParts[1]);
 	                m.setA_address(addressParts[2]);
-	            } else {
-	                m.setA_prefecture("");	                
-	                m.setA_city("");
-	                m.setA_address(fullAddress); // 기본값으로 전체 주소 설정
-	            }
+
 
 	            System.out.println(rsAddress.getString(1));
 	            System.out.println(rsAddress.getString(2));
