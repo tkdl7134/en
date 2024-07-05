@@ -209,7 +209,6 @@ public class MemberDAO {
 //      정보 합치기 (구분자 사용)
 		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
-		// 1997-03-31
 		m_birthM = String.format("%02d", Integer.parseInt(m_birthM));
 		m_birthD = String.format("%02d", Integer.parseInt(m_birthD));
 				
@@ -540,6 +539,8 @@ public class MemberDAO {
 //      정보 합치기 (구분자 사용)
 		String delimiter = " "; // 구분자 (주소에 포함되지 않을 특수 문자 사용)
 		String combinedAddress = a_prefecture + delimiter + a_city + delimiter + a_street + delimiter + a_building;
+		m_birthM = String.format("%02d", Integer.parseInt(m_birthM));
+		m_birthD = String.format("%02d", Integer.parseInt(m_birthD));
 		String combinedBirth = m_birthY + delimiter + m_birthM + delimiter + m_birthD;
 		String combinedName = m_name_sei + delimiter + m_name_mei;
 		String combinedKana = m_name_kana_sei + delimiter + m_name_kana_mei;
