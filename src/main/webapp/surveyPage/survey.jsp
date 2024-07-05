@@ -1032,20 +1032,7 @@ function handleFormSubmit() {
         	  }, 200); // 100ms 지연
         });
         $('.survey-input').slick('slickGoTo', 3);
-    } else if (document.getElementById('adult').value.trim() === '0' && 
-            document.getElementById('child').value.trim() === '0' && 
-            document.getElementById('baby').value.trim() === '0') {
-        Swal.fire({
-            icon: 'warning',
-            title: '同伴人数を入力します。',
-            customClass: {
-                popup: 'swal2-popup',
-                confirmButton: 'swal2-confirm'
-            }
-        });
-        invalidField = document.getElementById('adult');
-        $('.survey-input').slick('slickGoTo', 3);
-    } else if (!document.getElementById('allergyCheckbox').checked && 
+    }  else if (!document.getElementById('allergyCheckbox').checked && 
             !document.getElementById('allergyCheckbox2').checked && 
             document.getElementById('allergy-type').value.trim() === '') {
         Swal.fire({

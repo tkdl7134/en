@@ -524,8 +524,11 @@ function register() {
 	        });
 	        return false;
 	    }
+	    
+	    const ppw = document.getElementById('m_pw').value;
+		const ppwConfirm = document.getElementById('m_pw_confirm').value;
 
-	    if (pw !== pwConfirm) {
+	    if (ppw !== ppwConfirm) {
 	        Swal.fire({
 	            icon: 'warning',
 	            title: 'パスワードが一致しません。',
@@ -536,6 +539,19 @@ function register() {
 	        });
 	        return false;
 	    }
+	    
+	    if (!isIdChecked || !isIdAvailable) {
+	        Swal.fire({
+	            icon: 'warning',
+	            title: 'IDチェックを行ってください。',
+	            customClass: {
+	                popup: 'swal2-popup',
+	                confirmButton: 'swal2-confirm'
+	            }
+	        });
+	        return false; // 폼 제출 방지
+	    }
+
 
 	    // 이메일 유효성 검사
 	    let emailInput = document.getElementById('emailInput');
@@ -597,8 +613,8 @@ function register() {
 	$("input, select").on("change keyup", checkForm);
 	
 	// 아이디 중복 확인 플래그 초기화
-    isIdChecked = false; // 중복 확인 플래그 초기화
-    isIdAvailable = false; // 사용 가능 플래그 초기화
+    let isIdChecked = false; // 중복 확인 플래그 초기화
+    let isIdAvailable = false; // 사용 가능 플래그 초기화
 
         function dupleChk(){
         	isIdChecked = false; // 중복 확인 플래그 초기화
