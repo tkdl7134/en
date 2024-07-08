@@ -439,6 +439,7 @@ public class StatisticsDAO {
 
 		
 		int eno = Integer.parseInt(request.getParameter("eno")) ;
+		System.out.println(eno);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -455,19 +456,28 @@ public class StatisticsDAO {
 		
 		
 		if (order.equals("M")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_price desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send'order by p_price desc";
 			
 		}else if (order.equals("D")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_date desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send'order by p_date desc";
 			
 		}else if (order.equals("N")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by m_name desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send' order by m_name desc";
 		}
 		try {
 			con = dbManager.connect();
