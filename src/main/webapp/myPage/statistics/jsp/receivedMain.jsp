@@ -52,7 +52,7 @@
 		</div>
 		<img class="lines"  alt="" src="myPage/statistics/imgFolder/line_present.png">
 		</div>
-		<div onclick="location.href='receivedMoneyController?eno=1'" class="box-img">
+		<div onclick="location.href='receivedMoneyController?eno=${eno}'" class="box-img">
 		<div class="texts">
 		<div style="margin-left: 3.5rem;" class="objective">ご祝儀</div>
 		<div style="" class="genjyou">の現状</div>

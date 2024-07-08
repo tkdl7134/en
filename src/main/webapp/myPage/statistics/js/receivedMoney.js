@@ -1,4 +1,4 @@
-let eventno = 1;
+let eventno = document.querySelector('#eventNo').value;
 let scrollTimeout;
 let isMouseOverCard;
 let jsoninfos;
@@ -40,7 +40,7 @@ $.ajax({
 							✿心のお伝え✿
 						</div>
 						<div>
-							<img style="height: 100%;width: 7rem; margin-top: 2rem;" alt="noImg" src="myPage/statistics/imgFolder/${picNum}.png" />
+							<img style="height: 100%;width: 7rem; margin-top: 2rem;" alt="noImg" src="myPage/statistics/imgFolder/${picNum}.png" onerror="this.src='myPage/statistics/imgFolder/その他.png';" />
 						</div>
 						
 					</div>

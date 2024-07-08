@@ -73,7 +73,7 @@ z-index : 100;
 	
 	<jsp:include page="${settingPage }"></jsp:include>
 		<div style="display: flex;justify-content: center;flex-direction: column;align-items: center;" class="jh-half-circle">
-		
+		<input type="hidden" id="eventNo" value="${param.eno }">
 		
 		
 		<div style=" margin-top : 2rem; display : flex;" class="recFund-title">
