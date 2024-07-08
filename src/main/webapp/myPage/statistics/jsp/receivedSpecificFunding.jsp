@@ -51,7 +51,7 @@
         background-position: top center , bottom center;
       background-repeat: no-repeat;
       justify-content : center;
-      height : 200rem;
+      height : 205rem;
       }
       .canvas-container {
         display: none;
