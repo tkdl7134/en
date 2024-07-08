@@ -217,6 +217,6 @@ let monthAndDay = dateParts.slice(1).join('-');  // 월과 일만 결합
    
 });
 function GoToTop() {
-    var location = document.querySelector("#background1").offsetTop;
+    var location = document.querySelector("#canvas-content-container").offsetTop;
     window.scrollTo({top:location, behavior:'smooth'});
 }

@@ -37,6 +37,7 @@ public class StatisticsDAO {
 		String startDate = request.getParameter("startDate");
 	    String endDate = request.getParameter("endDate");
 	    String e_no = request.getParameter("eno");
+	    String wl_no= request.getParameter("wlno");
 	    System.out.println(startDate);
 	    System.out.println(endDate);
 	    System.out.println(e_no);
@@ -45,17 +46,18 @@ public class StatisticsDAO {
 	    ResultSet rs = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    JsonArray jsonArray = new JsonArray();
-	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
-	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund'" +
-	             "GROUP BY p_date " +
-	             "ORDER BY p_date";		
+	    String sql =  "select p_date,(select sum(p_price) total_price from s_pay WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund' and wl_no=?)total_price from s_pay where (p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')) and e_no=? and p_type='fund' and wl_no=? and rownum <2";		
 	    try {
 	        con = dbManager.connect();
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, startDate);
 	        pstmt.setString(2, endDate);
 	        pstmt.setString(3, e_no);
+	        pstmt.setString(4, wl_no);
+	        pstmt.setString(5, startDate);
+	        pstmt.setString(6, endDate);
+	        pstmt.setString(7, e_no);
+	        pstmt.setString(8, wl_no);
 	        rs = pstmt.executeQuery();
 	        
 	        while (rs.next()) {
