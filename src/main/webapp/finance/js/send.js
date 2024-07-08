@@ -1,4 +1,3 @@
-let eventno = 1;
 
 let card = document.querySelectorAll(".kh-s-card-out");
 let spop = document.querySelector(".kh-s-popup");
@@ -168,7 +167,6 @@ function goFinal(wlno) {
 	const container = document.querySelector("#kh-input-box");
 	const sinput = document.querySelector(".kh-s-input");
 	const warnspan = document.querySelector("#kh-warn-text");
-	const eno = eventno;
 	if (sinput.value == "") {
 		container.classList.add("vibration");
 		setTimeout(function() {
@@ -180,6 +178,6 @@ function goFinal(wlno) {
 		}
 	} else {
 		let justnum = sinput.value.replace(',','');
-		location.href = "InsertFundC?paytype=send&price=" + justnum +"&eno=" + eno +"&wlno=" + wlno;
+		location.href = "InsertFundC?paytype=send&price=" + justnum + "&wlno=" + wlno;
 	}
 }
