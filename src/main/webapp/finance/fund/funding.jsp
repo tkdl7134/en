@@ -32,7 +32,7 @@
 <div class="kh-f-popup">
 	<div class="kh-f-popup-in">
 		<div class="kh-f-img-box">
-			<img alt="noImg" src="" style="height: 100%" id="kh-f-img" onerror="this.onerror=null; this.src='finance/img/プレゼント.png';"/>
+			<img alt="noImg" style="height: 100%" id="kh-f-img"  src="" onerror="this.onerror=null; this.src='finance/img/プレゼント.png';"/>
 		</div>
 		<div class="kh-f-product-des">
 			<h3>
