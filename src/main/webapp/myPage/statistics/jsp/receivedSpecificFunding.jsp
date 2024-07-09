@@ -45,15 +45,16 @@
       }
       #canvas-content-container {
         z-index: 2; /* 컨텐츠가 캔버스 위에 오도록 설정 */
-        position: relative;
         display: flex;
         background-color: #FFF5F4;
+          background-image: url("myPage/statistics/imgFolder/halfCircle2.png"),url("myPage/statistics/imgFolder/bottomHalfCircle.png");
+        background-position: top center , bottom center;
+      background-repeat: no-repeat;
+      justify-content : center;
+      height : 205rem;
       }
       .canvas-container {
         display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         z-index: 1; /* 캔버스가 배경 이미지 위에 오도록 설정 */
@@ -68,13 +69,10 @@
         pointer-events: none; /* 마우스 이벤트를 캔버스에만 허용하도록 설정 */
       }
       .canvas-content {
-        position: absolute;
-        top: -90vh;
-        left: 50%;
-        transform: translate(-50%, 0);
             display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5%;
       }
       .hs_mypage-menus {
 	display: flex;
@@ -111,11 +109,7 @@
 
 </head>
 <body>
-<div id="background1">
-      <div class="canvas-container">
-        <canvas class="canvas" id="canvas1"></canvas>
-      </div>
-    </div>
+
     <div class="yj-main-logo">
 			<a href="#" class="mainLogo"><img
 				src="main/imgFolder/yj-main-logo.png" alt="섹션2 로고" /></a>
@@ -192,11 +186,7 @@
     <div class="recSpecReturn-img"><img onclick="GoToTop()" style="width : 12rem;" alt="" src="myPage/statistics/imgFolder/top_button.png"></div>
 </div>
 </div>
-    <div id="background2">
-      <div class="canvas-container">
-        <canvas class="canvas" id="canvas2"></canvas>
-      </div>
-    </div>
+    
 
 
 <script type="text/javascript" src="myPage/statistics/js/receivedSpecificFund.js"></script>

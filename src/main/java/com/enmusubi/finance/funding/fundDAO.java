@@ -61,7 +61,7 @@ public class fundDAO {
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO S_PAY values(?,?,?,?,?,sysdate)";
 		// e_no,m_id,p_type,p_price,wl_no
-		String eno = request.getParameter("eno");
+		String eno = (String)request.getSession().getAttribute("eno");
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("m_id");
 		

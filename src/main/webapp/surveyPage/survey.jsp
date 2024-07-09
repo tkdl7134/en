@@ -636,7 +636,7 @@
 			</div>
 		</div>
 		<div class="tg-modal-img-box"
-			onclick="location.href='https://www.amazon.com/-/ko/ref=nav_logo'">
+			onclick="location.href='${alink}'">
 			<h2>ウィッシュリスト</h2>
 			<div class="tg-modal-ribbon">
 				<img alt="noImg" src="myPage/statistics/imgFolder/line_present.png">

@@ -37,6 +37,7 @@ public class StatisticsDAO {
 		String startDate = request.getParameter("startDate");
 	    String endDate = request.getParameter("endDate");
 	    String e_no = request.getParameter("eno");
+	    String wl_no= request.getParameter("wlno");
 	    System.out.println(startDate);
 	    System.out.println(endDate);
 	    System.out.println(e_no);
@@ -45,17 +46,18 @@ public class StatisticsDAO {
 	    ResultSet rs = null;
 	    DBManager dbManager = DBManager.getInstance();
 	    JsonArray jsonArray = new JsonArray();
-	    String sql =  "SELECT p_date, SUM(p_price) AS total_price " +
-	             "FROM s_pay " +
-	             "WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund'" +
-	             "GROUP BY p_date " +
-	             "ORDER BY p_date";		
+	    String sql =  "select p_date,(select sum(p_price) total_price from s_pay WHERE p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(? || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and e_no=? and p_type='fund' and wl_no=?)total_price from s_pay where (p_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')) and e_no=? and p_type='fund' and wl_no=? and rownum <2";		
 	    try {
 	        con = dbManager.connect();
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, startDate);
 	        pstmt.setString(2, endDate);
 	        pstmt.setString(3, e_no);
+	        pstmt.setString(4, wl_no);
+	        pstmt.setString(5, startDate);
+	        pstmt.setString(6, endDate);
+	        pstmt.setString(7, e_no);
+	        pstmt.setString(8, wl_no);
 	        rs = pstmt.executeQuery();
 	        
 	        while (rs.next()) {
@@ -88,19 +90,22 @@ public class StatisticsDAO {
 		// ranking 구하는 메서드
 		String wl_no_param = request.getParameter("wlno");
 		ArrayList<FundListDTO> flists = (ArrayList<FundListDTO>) request.getAttribute("list");
-		String wl_no = null;
+		String e_no = null;
 		String wl_product = null;
+		String wl_no = null;
 		
 		if (flists != null && wl_no_param != null) {
 		    for (FundListDTO fldto : flists) {
 		        // e_no_param과 현재 객체의 e_no를 비교합니다.
 		        if (wl_no_param.equals(fldto.getWl_no())) {
-		             wl_no = fldto.getWl_no();
+		             e_no = fldto.getE_no();
 		             wl_product = fldto.getWl_product();
+		             wl_no = fldto.getWl_no();
 
 		            // wl_no, wl_product 값을 출력합니다.
-		            System.out.println("wl_no: " + wl_no);
+		            System.out.println("e_no: " + e_no);
 		            System.out.println("wl_product: " + wl_product);
+		            System.out.println(wl_no);
 		        }
 		    }
 		} else {
@@ -118,16 +123,19 @@ public class StatisticsDAO {
 		
 		
 		
-		String sql = "SELECT wl_no,\r\n"
-				+ "       total_price,\r\n"
-				+ "       RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
+		String sql = " SELECT wl_no, total_price, rank_of_total_price\r\n"
 				+ "FROM (\r\n"
 				+ "    SELECT wl_no,\r\n"
-				+ "           SUM(p_price) AS total_price\r\n"
-				+ "    FROM s_pay\r\n"
-				+ " WHERE p_type = 'fund'\r\n"
-				+ "    GROUP BY wl_no\r\n"
-				+ ") subquery\r\n"
+				+ "           total_price,\r\n"
+				+ "           RANK() OVER (ORDER BY total_price DESC) AS rank_of_total_price\r\n"
+				+ "    FROM (\r\n"
+				+ "        SELECT wl_no,\r\n"
+				+ "               SUM(p_price) AS total_price\r\n"
+				+ "        FROM s_pay\r\n"
+				+ "        WHERE p_type = 'fund' AND e_no = ?\r\n"
+				+ "        GROUP BY wl_no\r\n"
+				+ "    ) subquery\r\n"
+				+ ") ranked_subquery\r\n"
 				+ "WHERE wl_no = ?";
 		
 		String sql2 = "select wl_price from s_wishlist where wl_product=?";
@@ -135,11 +143,13 @@ public class StatisticsDAO {
 			
 			con = dbManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, wl_no);
+			pstmt.setString(1, e_no);
+			pstmt.setString(2, wl_no);
 			rs= pstmt.executeQuery();
 			String rank = null;
 			int price = 0;
 			int totalPrice = 0;
+			
 			if(rs.next()) {
 			
 				
@@ -170,6 +180,7 @@ public class StatisticsDAO {
 			request.setAttribute("priceStatement", priceStatement);
 			request.setAttribute("product", wl_product);
 			request.setAttribute("wlno", wl_no);
+			request.setAttribute("eno", e_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -373,7 +384,7 @@ public class StatisticsDAO {
 
 		// event no 가져오기
 		int eventNo = Integer.parseInt(request.getParameter("eno")) ;
-		
+		System.out.println(eventNo);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
@@ -428,6 +439,7 @@ public class StatisticsDAO {
 
 		
 		int eno = Integer.parseInt(request.getParameter("eno")) ;
+		System.out.println(eno);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -444,19 +456,28 @@ public class StatisticsDAO {
 		
 		
 		if (order.equals("M")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_price desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send'order by p_price desc";
 			
 		}else if (order.equals("D")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by p_date desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send'order by p_date desc";
 			
 		}else if (order.equals("N")) {
-			sql = "SELECT s_pay.p_price, s_pay.p_date, s_member.m_name\r\n"
-					+ "FROM s_pay\r\n"
-					+ "INNER JOIN s_member ON s_pay.m_id = s_member.m_id where e_no=? and p_type='send' order by m_name desc";
+			sql = "SELECT s_member.m_name, s_pay.p_date , s_pay.p_price\r\n"
+					+ "				FROM s_guest\r\n"
+					+ "				JOIN s_member ON s_guest.m_id = s_member.m_id\r\n"
+					+ "				JOIN s_pay ON s_guest.m_id = s_pay.m_id\r\n"
+					+ "				WHERE s_guest.e_no = ?\r\n"
+					+ "				  AND s_pay.p_type = 'send' order by m_name desc";
 		}
 		try {
 			con = dbManager.connect();

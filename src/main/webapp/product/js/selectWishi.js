@@ -83,7 +83,7 @@ function amazonSubmit(eno) {
 	$.ajax({
 		type: "post",
 		url: "SelectWishiC",
-		data: { "alink": alink, "eno": eno },
+		data: { "alink": alink, "eno": eno , "type":"amazon"},
 		dataType: "json",
 		success: function(response) {
 
