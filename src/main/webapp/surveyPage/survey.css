@@ -449,6 +449,15 @@ legend div:nth-child(1) {
   text-align: center;
 }
 
+.entry-box-img:hover,
+.no-entry-box-img:hover {
+  background-image: url("imgFolder/entry-backgroundimg-react.png");
+  background-size: cover;
+  background-position: center;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease-out;
+}
+
 .entry-box-img.selected,
 .no-entry-box-img.selected {
   background-image: url("imgFolder/entry-backgroundimg-react.png");
